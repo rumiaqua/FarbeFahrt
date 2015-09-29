@@ -18,6 +18,79 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Frame\BaseScene.cpp" />
+    <ClCompile Include="Frame\MyGame.cpp" />
+    <ClCompile Include="Frame\WinMain.cpp" />
+    <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
+    <ClCompile Include="Root\Actor\BaseActor.cpp" />
+    <ClCompile Include="Root\Actor\Camera\Camera.cpp" />
+    <ClCompile Include="Root\Actor\Enemy.cpp" />
+    <ClCompile Include="Root\Actor\Field\Field.cpp" />
+    <ClCompile Include="Root\Actor\Player.cpp" />
+    <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
+    <ClCompile Include="Root\Frame\BaseScene.cpp" />
+    <ClCompile Include="Root\Frame\MyGame.cpp" />
+    <ClCompile Include="Root\Frame\WinMain.cpp" />
+    <ClCompile Include="Root\Scene\GameMain.cpp" />
+    <ClCompile Include="Root\Scene\GameMenu.cpp" />
+    <ClCompile Include="Root\Scene\GameTitle.cpp" />
+    <ClCompile Include="Root\Utility\Input.cpp" />
+    <ClCompile Include="Root\Utility\Loader.cpp" />
+    <ClCompile Include="Root\Utility\Math.cpp" />
+    <ClCompile Include="Root\Utility\NowLoading.cpp" />
+    <ClCompile Include="Root\Utility\Renderer.cpp" />
+    <ClCompile Include="Root\Utility\SE.cpp" />
+    <ClCompile Include="Root\World.cpp" />
+    <ClCompile Include="Scene\GameMain.cpp" />
+    <ClCompile Include="Scene\GameMenu.cpp" />
+    <ClCompile Include="Scene\GameTitle.cpp" />
+    <ClCompile Include="Utility\Input.cpp" />
+    <ClCompile Include="Utility\Loader.cpp" />
+    <ClCompile Include="Utility\Math.cpp" />
+    <ClCompile Include="Utility\NowLoading.cpp" />
+    <ClCompile Include="Utility\Renderer.cpp" />
+    <ClCompile Include="Utility\SE.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Frame\BaseScene.h" />
+    <ClInclude Include="Frame\MyGame.h" />
+    <ClInclude Include="Root\Actor\Actor.h" />
+    <ClInclude Include="Root\Actor\ActorManager\ActorManager.h" />
+    <ClInclude Include="Root\Actor\ActorManager\ActorTag.h" />
+    <ClInclude Include="Root\Actor\BaseActor.h" />
+    <ClInclude Include="Root\Actor\Camera\Camera.h" />
+    <ClInclude Include="Root\Actor\Enemy.h" />
+    <ClInclude Include="Root\Actor\Field\Field.h" />
+    <ClInclude Include="Root\Actor\Player.h" />
+    <ClInclude Include="Root\Actor\SkyDome\Skydome.h" />
+    <ClInclude Include="Root\Frame\BaseScene.h" />
+    <ClInclude Include="Root\Frame\MyGame.h" />
+    <ClInclude Include="Root\IWorld.h" />
+    <ClInclude Include="Root\Scene\GameMain.h" />
+    <ClInclude Include="Root\Scene\GameMenu.h" />
+    <ClInclude Include="Root\Scene\GameTitle.h" />
+    <ClInclude Include="Root\Utility\Def.h" />
+    <ClInclude Include="Root\Utility\Input.h" />
+    <ClInclude Include="Root\Utility\Loader.h" />
+    <ClInclude Include="Root\Utility\Math.h" />
+    <ClInclude Include="Root\Utility\NowLoading.h" />
+    <ClInclude Include="Root\Utility\Optional.h" />
+    <ClInclude Include="Root\Utility\Renderer.h" />
+    <ClInclude Include="Root\Utility\SE.h" />
+    <ClInclude Include="Root\World.h" />
+    <ClInclude Include="Scene\GameMain.h" />
+    <ClInclude Include="Scene\GameMenu.h" />
+    <ClInclude Include="Scene\GameTitle.h" />
+    <ClInclude Include="Utility\Def.h" />
+    <ClInclude Include="Utility\Input.h" />
+    <ClInclude Include="Utility\Loader.h" />
+    <ClInclude Include="Utility\Math.h" />
+    <ClInclude Include="Utility\NowLoading.h" />
+    <ClInclude Include="Utility\Optional.h" />
+    <ClInclude Include="Utility\Renderer.h" />
+    <ClInclude Include="Utility\SE.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -151,9 +224,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
