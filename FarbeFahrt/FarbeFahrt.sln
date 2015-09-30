@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FarbeFahrt", "FarbeFahrt\FarbeFahrt.vcxproj", "{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FarbeFahrt", "FarbeFahrt\FarbeFahrt.vcxproj", "{29F2531E-D613-458E-B0F5-B5439379478F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}.Debug|x64.ActiveCfg = Debug|x64
-		{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}.Debug|x64.Build.0 = Debug|x64
-		{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}.Debug|x86.ActiveCfg = Debug|Win32
-		{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}.Debug|x86.Build.0 = Debug|Win32
-		{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}.Release|x64.ActiveCfg = Release|x64
-		{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}.Release|x64.Build.0 = Release|x64
-		{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}.Release|x86.ActiveCfg = Release|Win32
-		{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}.Release|x86.Build.0 = Release|Win32
+		{29F2531E-D613-458E-B0F5-B5439379478F}.Debug|x64.ActiveCfg = Debug|x64
+		{29F2531E-D613-458E-B0F5-B5439379478F}.Debug|x64.Build.0 = Debug|x64
+		{29F2531E-D613-458E-B0F5-B5439379478F}.Debug|x86.ActiveCfg = Debug|Win32
+		{29F2531E-D613-458E-B0F5-B5439379478F}.Debug|x86.Build.0 = Debug|Win32
+		{29F2531E-D613-458E-B0F5-B5439379478F}.Release|x64.ActiveCfg = Release|x64
+		{29F2531E-D613-458E-B0F5-B5439379478F}.Release|x64.Build.0 = Release|x64
+		{29F2531E-D613-458E-B0F5-B5439379478F}.Release|x86.ActiveCfg = Release|Win32
+		{29F2531E-D613-458E-B0F5-B5439379478F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
