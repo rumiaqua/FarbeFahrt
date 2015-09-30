@@ -19,9 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Frame\BaseScene.cpp" />
-    <ClCompile Include="Frame\MyGame.cpp" />
-    <ClCompile Include="Frame\WinMain.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
     <ClCompile Include="Root\Actor\Camera\Camera.cpp" />
@@ -42,19 +39,8 @@
     <ClCompile Include="Root\Utility\Renderer.cpp" />
     <ClCompile Include="Root\Utility\SE.cpp" />
     <ClCompile Include="Root\World.cpp" />
-    <ClCompile Include="Scene\GameMain.cpp" />
-    <ClCompile Include="Scene\GameMenu.cpp" />
-    <ClCompile Include="Scene\GameTitle.cpp" />
-    <ClCompile Include="Utility\Input.cpp" />
-    <ClCompile Include="Utility\Loader.cpp" />
-    <ClCompile Include="Utility\Math.cpp" />
-    <ClCompile Include="Utility\NowLoading.cpp" />
-    <ClCompile Include="Utility\Renderer.cpp" />
-    <ClCompile Include="Utility\SE.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Frame\BaseScene.h" />
-    <ClInclude Include="Frame\MyGame.h" />
     <ClInclude Include="Root\Actor\Actor.h" />
     <ClInclude Include="Root\Actor\ActorManager\ActorManager.h" />
     <ClInclude Include="Root\Actor\ActorManager\ActorTag.h" />
@@ -79,17 +65,6 @@
     <ClInclude Include="Root\Utility\Renderer.h" />
     <ClInclude Include="Root\Utility\SE.h" />
     <ClInclude Include="Root\World.h" />
-    <ClInclude Include="Scene\GameMain.h" />
-    <ClInclude Include="Scene\GameMenu.h" />
-    <ClInclude Include="Scene\GameTitle.h" />
-    <ClInclude Include="Utility\Def.h" />
-    <ClInclude Include="Utility\Input.h" />
-    <ClInclude Include="Utility\Loader.h" />
-    <ClInclude Include="Utility\Math.h" />
-    <ClInclude Include="Utility\NowLoading.h" />
-    <ClInclude Include="Utility\Optional.h" />
-    <ClInclude Include="Utility\Renderer.h" />
-    <ClInclude Include="Utility\SE.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}</ProjectGuid>
@@ -114,15 +89,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -179,10 +154,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Root;../DxLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../DxLib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -216,6 +194,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

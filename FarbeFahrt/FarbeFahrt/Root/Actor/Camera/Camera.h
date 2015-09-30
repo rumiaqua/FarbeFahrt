@@ -1,5 +1,5 @@
 #pragma once
-#include "Root/Actor/BaseActor.h"
+#include "Actor/BaseActor.h"
 #include "Utility/Def.h"
 class Camera :
 	public BaseActor

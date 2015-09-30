@@ -1,6 +1,6 @@
 #pragma once
 #include "Utility/Renderer.h"
-#include "Root/IWorld.h"
+#include "IWorld.h"
 #include "Actor.h"
 #include <string>
 #include <algorithm>

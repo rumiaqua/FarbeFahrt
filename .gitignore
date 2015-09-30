@@ -196,4 +196,4 @@ FakesAssemblies/
 *.opt
 
 # DxLib log
-log.txt
+[Ll]og.txt

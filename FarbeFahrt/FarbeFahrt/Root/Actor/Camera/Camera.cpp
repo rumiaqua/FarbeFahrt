@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "Root/Actor/Enemy.h"
+#include "Actor/Enemy.h"
 #include <memory>
 Camera::Camera(IWorld& world) :
 BaseActor(world, "Camera", VGet(0, 0, 0), VGet(0, 0, 0))

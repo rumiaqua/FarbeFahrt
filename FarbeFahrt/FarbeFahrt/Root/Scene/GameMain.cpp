@@ -1,18 +1,18 @@
 #include "GameMain.h"
 #include "Utility/Renderer.h"
-#include "Root/Actor/Player.h"
-#include "Root/Actor/Camera/Camera.h"
-#include "Root/Actor/SkyDome/Skydome.h"
-#include "Root/Actor/Field/Field.h"
+#include "Actor/Player.h"
+#include "Actor/Camera/Camera.h"
+#include "Actor/SkyDome/Skydome.h"
+#include "Actor/Field/Field.h"
 GameMain::GameMain()
 {
 }
 void GameMain::loadContents(Loader& loader)
 {
-	loader.loadModel("Player", "Model/MMD–‚“±Žo’íVer1.1/ƒKƒuƒŠƒGƒ‰.pmx");
-	loader.loadModel("sky", "Model/skydome/’‹‚ÌŒŽ.x");
-	loader.loadModel("field", "Model/test/aa.mqo");
-	loader.loadTexture("test", "Texture/test.jpg");
+	loader.loadModel("Player", "Resources/Model/MMD–‚“±Žo’íVer1.1/ƒKƒuƒŠƒGƒ‰.pmx");
+	loader.loadModel("sky", "Resources/Model/skydome/’‹‚ÌŒŽ.x");
+	loader.loadModel("field", "Resources/Model/terrain/terrain.mqo");
+	loader.loadTexture("test", "Resources/terrain/’n–Ê.jpg");
 }
 void GameMain::initialize()
 {
