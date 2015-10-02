@@ -43,7 +43,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	while (ProcessMessage() == 0 && !Input::isClicked(KEY_INPUT_ESCAPE))
 	{
-		ShowCursor(false);
+		ShowCursor(true);
 		Input::update();
 		myGame->run();
 	}
