@@ -25,8 +25,9 @@ struct SEData
 
 class SE
 {
-public:
+private:
 	SE();
+public:
 	~SE();
 	static SE& instance();
 public:
