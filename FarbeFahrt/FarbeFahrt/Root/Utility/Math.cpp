@@ -78,19 +78,14 @@ namespace Math
 		return std::sqrtf(x);
 	}
 
+	float Clamp(float x, float y, float z)
+	{
+		return Min({ Max({ x, y }), z });
+	}
+
 	float Saturate(float x)
 	{
 		return Clamp(x, 0.0f, 1.0f);
-	}
-
-	float Angle(const VECTOR& from, const VECTOR& to)
-	{
-		return Math::Acos(VDot(VNorm(from), VNorm(to)));
-	}
-
-	float LengthSquared(const VECTOR& v)
-	{
-		return VDot(v, v);
 	}
 
 	float Smooth(float x, int y)
@@ -100,8 +95,8 @@ namespace Math
 		return i / f;
 	}
 
-	float Clamp(float x, float y, float z)
+	VECTOR VLerp(const VECTOR& from, const VECTOR& to, float t)
 	{
-		return Min({ Max({ x, y }), z });
+		return VAdd(from, VScale(VSub(to, from), t));
 	}
 }

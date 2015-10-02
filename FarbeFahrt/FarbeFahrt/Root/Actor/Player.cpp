@@ -57,12 +57,12 @@ void Player::playerInput()
 	}
 
 	// ˆÚ“®—Ê‚ª0‚Å‚È‚¯‚ê‚ÎˆÚ“®ˆ—‚Æƒ‚ƒfƒ‹‘€ì
-	if (Math::LengthSquared(moveVec) != 0.0f)
+	if (VSquareSize(moveVec) != 0.0f)
 	{
 		// •½sˆÚ“®
 		position = VAdd(position, moveVec);
 		// ˆÚ“®—Ê‚É‡‚í‚¹‚Äƒ‚ƒfƒ‹‚ğ‰ñ“]
-		float angle = Math::Angle(frontVec, moveVec) * Math::Sign(VCross(frontVec, moveVec).y);
+		float angle = VRad(frontVec, moveVec) * Math::Sign(VCross(frontVec, moveVec).y);
 		rotation.y = cameraRotateY - angle + DX_PI;
 
 		state = PlayerState::walking;

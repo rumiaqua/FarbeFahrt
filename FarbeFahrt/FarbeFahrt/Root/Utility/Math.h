@@ -145,12 +145,5 @@ namespace Math
 		return *std::min_element(args.begin(), args.end());
 	}
 
-	/// <summary>ベクトルのなす角を返す</summary>
-	/// <param name="from">始ベクトル</param>
-	/// <param name="to">終ベクトル</param>
-	float Angle(const DxLib::VECTOR& from, const DxLib::VECTOR& to);
-
-	/// <summary>長さの二乗を返す</summary>
-	/// <param name="v">ベクトル</param>
-	float LengthSquared(const DxLib::VECTOR& v);
+	DxLib::VECTOR VLerp(const DxLib::VECTOR& from, const DxLib::VECTOR& to, float t);
 }
