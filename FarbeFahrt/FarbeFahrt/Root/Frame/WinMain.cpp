@@ -3,7 +3,6 @@
 #include "Utility/Def.h"
 #include <memory>
 #include "Utility/Input.h"
-#include "Utility/SE.h"
 
 bool isFullScreen;
 void init()
@@ -42,19 +41,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//ÉQÅ[ÉÄñ{ëÃ
 	auto myGame = std::make_unique<MyGame>();
 
-	auto& se = SE::instance();
-	ContentMap map;
-	map["TEST"].filename = "SE/test.wav";
-	map["TEST"].handle = LoadSoundMem("SE/test.wav");
-	se.setSEData(map);
-
 	while (ProcessMessage() == 0 && !Input::isClicked(KEY_INPUT_ESCAPE))
 	{
 		ShowCursor(false);
 		Input::update();
 		myGame->run();
 	}
-	se.initSE();
 	DxLib_End();
 	return 0;
 }

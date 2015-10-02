@@ -13,6 +13,7 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadModel("sky", "Resources/Model/skydome/’‹‚ÌŒŽ.x");
 	loader.loadModel("field", "Resources/Model/terrain/terrain.mqo");
 	loader.loadTexture("test", "Resources/terrain/’n–Ê.jpg");
+	loader.loadSE("bang", "Resources/SE/test.wav");
 }
 void GameMain::initialize()
 {
