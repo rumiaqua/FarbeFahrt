@@ -26,17 +26,17 @@ void Camera::onUpdate()
 	targetPos = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
 
 	//カメラ移動処理
-	GetCursorPos(&mousePos);
-		if ((mousePos.x) < nScreenCenterX - 1.0f)//マウスが左に動いたとき
-		{
-			ang -= (nScreenCenterX - mousePos.x)*0.001f;
-		}
-		if ((mousePos.x) > nScreenCenterX + 1.0f)//マウスが右に動いたとき
-		{
-			ang += (mousePos.x - nScreenCenterX)*0.001f;
-		}
-		angleReset(ang);
-		SetCursorPos(nScreenCenterX, nScreenCenterY);
+	//GetCursorPos(&mousePos);
+	//	if ((mousePos.x) < nScreenCenterX - 1.0f)//マウスが左に動いたとき
+	//	{
+	//		ang -= (nScreenCenterX - mousePos.x)*0.001f;
+	//	}
+	//	if ((mousePos.x) > nScreenCenterX + 1.0f)//マウスが右に動いたとき
+	//	{
+	//		ang += (mousePos.x - nScreenCenterX)*0.001f;
+	//	}
+	//	angleReset(ang);
+	//	SetCursorPos(nScreenCenterX, nScreenCenterY);
 	}
 
 	rotate(position.x, position.z, ang, targetPos.x, targetPos.z);
