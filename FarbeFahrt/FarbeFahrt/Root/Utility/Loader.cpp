@@ -108,9 +108,23 @@ ContentMap& Loader::getSEList()
 {
 	return m_SEList;
 }
-
 void Loader::cleanUp()
 {
+	for (auto &data : m_modelList)
+	{
+		MV1DeleteModel(data.second.handle);
+	}
+	for (auto &data : m_textureList)
+	{
+		DeleteGraph(data.second.handle);
+	}
+	for (auto &data : m_BGMList)
+	{
+		DeleteSoundMem(data.second.handle);
+	}for (auto &data : m_SEList)
+	{
+		DeleteSoundMem(data.second.handle);
+	}
 	m_modelList.clear();
 	m_textureList.clear();
 	m_BGMList.clear();
