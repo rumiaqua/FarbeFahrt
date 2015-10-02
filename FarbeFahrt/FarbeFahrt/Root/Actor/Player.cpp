@@ -35,7 +35,7 @@ void Player::playerInput()
 
 	if (Input::isClicked(KEY_INPUT_SPACE))
 	{
-		SE::instance().playSE("TEST");
+		SE::playSE("bang");
 	}
 
 	// ˆÚ“®ˆ—
