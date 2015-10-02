@@ -39,18 +39,18 @@ void Player::playerInput()
 	}
 
 	// à⁄ìÆèàóù
-	if (Input::isPressed(KEY_INPUT_W))
+	/*if (Input::isPressed(KEY_INPUT_W))
 	{
 		moveVec = VAdd(moveVec, VScale(frontVec, moveSpeed));
-	}
+	}*/
 	if (Input::isPressed(KEY_INPUT_A))
 	{
 		moveVec = VAdd(moveVec, VScale(leftVec, moveSpeed));
 	}
-	if (Input::isPressed(KEY_INPUT_S))
+	/*if (Input::isPressed(KEY_INPUT_S))
 	{
 		moveVec = VAdd(moveVec, VScale(frontVec, -moveSpeed));
-	}
+	}*/
 	if (Input::isPressed(KEY_INPUT_D))
 	{
 		moveVec = VAdd(moveVec, VScale(leftVec, -moveSpeed));
