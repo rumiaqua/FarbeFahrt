@@ -3,6 +3,7 @@
 #include "Scene/GameTitle.h"
 #include "Scene/GameMenu.h"
 #include "Scene/GameMain.h"
+#include "Utility/SE.h"
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
 //シーンの追加、最初のシーン設定
@@ -37,6 +38,8 @@ void MyGame::run()
 	}
 	render.setModelData(loader.getModelList());
 	render.setTextureData(loader.getTextureList());
+	SE::setSEData(loader.getSEList());
+
 	if (loader.isLoad())//読み込み中だったら
 	{
 		//nowLoading.draw(render);

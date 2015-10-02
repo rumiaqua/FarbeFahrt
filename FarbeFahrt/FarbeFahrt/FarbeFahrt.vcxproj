@@ -67,7 +67,7 @@
     <ClInclude Include="Root\World.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{29F2531E-D613-458E-B0F5-B5439379478F}</ProjectGuid>
+    <ProjectGuid>{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>FarbeFahrt</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>

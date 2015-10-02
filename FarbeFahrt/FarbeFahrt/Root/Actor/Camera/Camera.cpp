@@ -20,13 +20,13 @@ void Camera::onUpdate()
 	}
 	else
 	{
-		rotation = VGet(0.0f, ang, 0.0f);
-		position = VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
+	rotation = VGet(0.0f, ang, 0.0f);
+	position = VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
+	
+	targetPos = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
 
-		targetPos = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
-
-		//カメラ移動処理
-		GetCursorPos(&mousePos);
+	//カメラ移動処理
+	GetCursorPos(&mousePos);
 		if ((mousePos.x) < nScreenCenterX - 1.0f)//マウスが左に動いたとき
 		{
 			ang -= (nScreenCenterX - mousePos.x)*0.001f;
