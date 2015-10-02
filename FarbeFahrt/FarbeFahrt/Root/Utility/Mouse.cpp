@@ -1,5 +1,4 @@
 #include "Mouse.h"
-#include "DxLib.h"
 
 Mouse::Mouse()
 {

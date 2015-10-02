@@ -2,7 +2,7 @@
 
 # include <array>
 
-typedef struct tagPOINT POINT;
+# include <DxLib.h>
 
 /// <summary>マウスクラス</summary>
 class Mouse
