@@ -1,6 +1,9 @@
 #pragma once
 #include "Actor/BaseActor.h"
 #include "Utility/Def.h"
+
+#include "Utility/Input.h"
+
 class Camera :
 	public BaseActor
 {
