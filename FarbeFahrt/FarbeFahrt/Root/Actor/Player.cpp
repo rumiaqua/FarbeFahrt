@@ -3,6 +3,10 @@
 #include "Utility/SE.h"
 #include "Utility/Math.h"
 
+# include "Collision/Sphere.h"
+
+# include "Utility/Debug.h"
+
 Player::Player(IWorld& world, const VECTOR position) :
 BaseActor(world, "Player", position, VGet(0, DX_PI_F, 0))
 {
@@ -12,6 +16,13 @@ BaseActor(world, "Player", position, VGet(0, DX_PI_F, 0))
 }
 void Player::onUpdate()
 {
+	Sphere s { position, 10.0f };
+
+	if (s.Intersects(&s))
+	{
+		Debug::print("Hello C++ World\n");
+	}
+
 	playerInput();
 }
 void Player::playerInput()

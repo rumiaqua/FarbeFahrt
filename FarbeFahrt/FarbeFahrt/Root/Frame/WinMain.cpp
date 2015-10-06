@@ -4,6 +4,7 @@
 #include <memory>
 #include "Utility/Input.h"
 #include "Utility/Mouse.h"
+#include "Utility/Debug.h"
 
 bool isFullScreen;
 void init()
@@ -47,6 +48,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ShowCursor(true);
 		Input::update();
 		Mouse::update();
+		Debug::update();
 		myGame->run();
 	}
 	DxLib_End();
