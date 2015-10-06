@@ -19,5 +19,16 @@ private:
 private:
 	POINT mousePos;
 	VECTOR targetPos;
+	VECTOR currentPos;
+	VECTOR targetRot;
+	VECTOR currentRot;
+	VECTOR focusRot;
+	VECTOR focus;
+	VECTOR dif;
+
+	bool fadeFlag = false;
+
+	float t = 0.0f;
+	float second;
 	float ang;
 };
