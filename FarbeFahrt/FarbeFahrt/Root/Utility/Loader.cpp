@@ -14,19 +14,19 @@ void Loader::load()
 	SetUseASyncLoadFlag(TRUE);
 	for (auto &data : m_textureList)
 	{
-		data.second.handle = LoadGraph(("Resources" + data.second.filename).c_str());
+		data.second.handle = LoadGraph(("Resources/" + data.second.filename).c_str());
 	}
 	for (auto &data : m_modelList)
 	{
-		data.second.handle = MV1LoadModel(("Resources" + data.second.filename).c_str());
+		data.second.handle = MV1LoadModel(("Resources/" + data.second.filename).c_str());
 	}
 	for (auto &data : m_BGMList)
 	{
-		data.second.handle = LoadSoundMem(("Resources" + data.second.filename).c_str());
+		data.second.handle = LoadSoundMem(("Resources/" + data.second.filename).c_str());
 	}
 	for (auto &data : m_SEList)
 	{
-		data.second.handle = LoadSoundMem(("Resources" + data.second.filename).c_str());
+		data.second.handle = LoadSoundMem(("Resources/" + data.second.filename).c_str());
 	}
 
 	SetUseASyncLoadFlag(FALSE);

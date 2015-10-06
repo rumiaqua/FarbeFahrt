@@ -63,7 +63,7 @@ void Player::playerInput()
 		position = VAdd(position, moveVec);
 		// ˆÚ“®—Ê‚É‡‚í‚¹‚Äƒ‚ƒfƒ‹‚ğ‰ñ“]
 		float angle = VRad(frontVec, moveVec) * Math::Sign(VCross(frontVec, moveVec).y);
-		rotation.y = cameraRotateY - angle + DX_PI;
+		rotation.y = cameraRotateY - angle + DX_PI_F;
 
 		state = PlayerState::walking;
 	}
@@ -76,4 +76,5 @@ void Player::onDraw(Renderer& render)const
 {
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
 	render.drawSkinModel("Player", position, rotation,(int)state,1.0f);
+	render.drawTexture("test", 0, 0, 1.0f, 1.0f, 0.0f);
 }
