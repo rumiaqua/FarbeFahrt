@@ -13,7 +13,7 @@
 struct ContentData{
 	int handle;
 	std::string filename;
-	ContentData(int handle,std::string filename)
+	ContentData(int handle,const std::string& filename)
 	{
 		this->handle = handle;
 		this->filename = filename;

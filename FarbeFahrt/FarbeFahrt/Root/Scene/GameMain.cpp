@@ -9,11 +9,11 @@ GameMain::GameMain()
 }
 void GameMain::loadContents(Loader& loader)
 {
-	loader.loadModel("Player", "Model/MMD–‚“±Žo’íVer1.1/ƒKƒuƒŠƒGƒ‰.pmx");
-	loader.loadModel("sky", "Model/skydome/’‹‚ÌŒŽ.x");
-	loader.loadModel("field", "Model/terrain/terrain.mqo");
-	loader.loadTexture("test", "terrain/’n–Ê.jpg");
-	loader.loadSE("bang", "SE/test.wav");
+	loader.loadContent("Player", "Model/MMD–‚“±Žo’íVer1.1/ƒKƒuƒŠƒGƒ‰.pmx");
+	loader.loadContent("sky", "Model/skydome/’‹‚ÌŒŽ.x");
+	loader.loadContent("field", "Model/terrain/terrain.mqo");
+	loader.loadContent("test", "terrain/’n–Ê.jpg");
+	loader.loadContent("bang", "SE/test.wav");
 }
 void GameMain::initialize()
 {
@@ -21,7 +21,7 @@ void GameMain::initialize()
 	world->addActor(ActorTag::Player, std::make_shared<Player>(*world, VGet(0.0f, 0.0f, 0.0f)));
 	world->addCamera(std::make_shared<Camera>(*world));
 	world->addField(std::make_shared<Field>(*world));
-	world->addSkydome(std::make_shared<Skydome>(*world));
+	world->addSkydome(std::make_shared<Skydome>(*world)); 
 }
 void GameMain::update()
 {

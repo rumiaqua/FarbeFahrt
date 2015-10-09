@@ -108,6 +108,6 @@ void Renderer::drawTexture(const std::string& name, int x, int y, float width, f
 	int textureSizeX;
 	int textureSizeY;
 	GetGraphSize(data, &textureSizeX, &textureSizeY);
-	DrawRotaGraph3(x, y,0, 0, 1.0f, 1.0f,
+	DrawRotaGraph3(x, y,textureSizeX, textureSizeY, width, height,
 		(double)angle, data, FALSE, FALSE);
 }
