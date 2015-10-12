@@ -16,12 +16,20 @@ BaseActor(world, "Player", position, VGet(0, DX_PI_F, 0))
 }
 void Player::onUpdate()
 {
-	Sphere s { position, 10.0f };
+	IShape* s = new Sphere(position, 10.0f);
 
-	if (s.Intersects(&s))
+	IShape* t = new Sphere({ 0, position.y, 0 }, 10.0f);
+
+	Debug::print("s:(%f, %f, %f)\n", s->origin.x, s->origin.y, s->origin.z);
+	Debug::print("t:(%f, %f, %f)\n", t->origin.x, t->origin.y, t->origin.z);
+
+	if (s->intersects(t))
 	{
 		Debug::print("Hello C++ World\n");
 	}
+
+	delete s;
+	delete t;
 
 	playerInput();
 }

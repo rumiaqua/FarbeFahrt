@@ -9,22 +9,32 @@ Sphere::Sphere(const VECTOR& origin, float radius)
 
 }
 
-bool Sphere::Intersects(Sphere* shape) const
+bool Sphere::intersects(const IShape* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return shape->intersects(this);
 }
 
-bool Sphere::Intersects(Capsule* shape) const
+bool Sphere::intersects(const Sphere* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return Collision::intersects(this, shape);
 }
 
-bool Sphere::Intersects(Line* shape) const
+bool Sphere::intersects(const Capsule* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return Collision::intersects(this, shape);
 }
 
-bool Sphere::Intersects(Triangle* shape) const
+bool Sphere::intersects(const Line* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return Collision::intersects(this, shape);
+}
+
+bool Sphere::intersects(const Triangle* shape) const
+{
+	return Collision::intersects(this, shape);
+}
+
+void Sphere::draw() const
+{
+	DrawSphere3D(origin, radius, 10, -1, -1, FALSE);
 }

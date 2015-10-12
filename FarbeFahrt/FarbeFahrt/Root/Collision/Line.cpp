@@ -9,22 +9,32 @@ Line::Line(const VECTOR& origin, const VECTOR& end)
 
 }
 
-bool Line::Intersects(Sphere* shape) const
+bool Line::intersects(const IShape* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return shape->intersects(this);
 }
 
-bool Line::Intersects(Capsule* shape) const
+bool Line::intersects(const Sphere* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return Collision::intersects(this, shape);
 }
 
-bool Line::Intersects(Line* shape) const
+bool Line::intersects(const Capsule* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return Collision::intersects(this, shape);
 }
 
-bool Line::Intersects(Triangle* shape) const
+bool Line::intersects(const Line* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return Collision::intersects(this, shape);
+}
+
+bool Line::intersects(const Triangle* shape) const
+{
+	return Collision::intersects(this, shape);
+}
+
+void Line::draw() const
+{
+	DrawLine3D(origin, end, -1);
 }

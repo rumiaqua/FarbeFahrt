@@ -10,23 +10,32 @@ Triangle::Triangle(const VECTOR& p0, const VECTOR& p1, const VECTOR& p2)
 
 }
 
- bool Triangle::Intersects(Sphere* shape) const
+bool Triangle::intersects(const IShape* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return shape->intersects(this);
 }
 
- bool Triangle::Intersects(Capsule* shape) const
- {
-	 return Collision::Intersects(this, shape);
- }
+bool Triangle::intersects(const Sphere* shape) const
+{
+	return Collision::intersects(this, shape);
+}
 
- bool Triangle::Intersects(Line* shape) const
- {
-	 return Collision::Intersects(this, shape);
- }
+bool Triangle::intersects(const Capsule* shape) const
+{
+	return Collision::intersects(this, shape);
+}
 
- bool Triangle::Intersects(Triangle* shape) const
- {
-	 return Collision::Intersects(this, shape);
- }
- 
+bool Triangle::intersects(const Line* shape) const
+{
+	return Collision::intersects(this, shape);
+}
+
+bool Triangle::intersects(const Triangle* shape) const
+{
+	return Collision::intersects(this, shape);
+}
+
+void Triangle::draw() const
+{
+	DrawTriangle3D(origin, p1, p2, -1, FALSE);
+}

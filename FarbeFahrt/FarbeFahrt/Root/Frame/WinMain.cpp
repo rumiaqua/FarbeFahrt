@@ -24,7 +24,7 @@ void init()
 		isFullScreen = false;
 	}
 
-	ChangeWindowMode(TRUE);
+	ChangeWindowMode(!isFullScreen);
 	SetUseDirect3D9Ex(TRUE);
 	MV1SetUseOrigShader(TRUE);
 	SetFullSceneAntiAliasingMode(4, 4);//ÇøÇÂÇ¡Ç∆Ç´ÇÍÇ¢Ç…Ç»ÇÈÅI

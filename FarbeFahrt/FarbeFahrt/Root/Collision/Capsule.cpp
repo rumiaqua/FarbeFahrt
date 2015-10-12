@@ -10,22 +10,32 @@ Capsule::Capsule(const VECTOR& origin, const VECTOR& end, float radius)
 
 }
 
-bool Capsule::Intersects(Sphere* shape) const
+bool Capsule::intersects(const IShape* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return shape->intersects(this);
 }
 
-bool Capsule::Intersects(Capsule* shape) const
+bool Capsule::intersects(const Sphere* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return Collision::intersects(this, shape);
 }
 
-bool Capsule::Intersects(Line* shape) const
+bool Capsule::intersects(const Capsule* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return Collision::intersects(this, shape);
 }
 
-bool Capsule::Intersects(Triangle* shape) const
+bool Capsule::intersects(const Line* shape) const
 {
-	return Collision::Intersects(this, shape);
+	return Collision::intersects(this, shape);
+}
+
+bool Capsule::intersects(const Triangle* shape) const
+{
+	return Collision::intersects(this, shape);
+}
+
+void Capsule::draw() const
+{
+	DrawCapsule3D(origin, end, radius, 10, -1, -1, FALSE);
 }
