@@ -4,6 +4,7 @@
 #include <memory>
 #include "Utility/Input.h"
 #include "Utility/Mouse.h"
+#include "Utility/Debug.h"
 
 bool isFullScreen;
 void init()
@@ -23,7 +24,7 @@ void init()
 		isFullScreen = false;
 	}
 
-	ChangeWindowMode(TRUE);
+	ChangeWindowMode(!isFullScreen);
 	SetUseDirect3D9Ex(TRUE);
 	MV1SetUseOrigShader(TRUE);
 	SetFullSceneAntiAliasingMode(4, 4);//‚¿‚å‚Á‚Æ‚«‚ê‚¢‚É‚È‚éI
@@ -47,6 +48,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ShowCursor(true);
 		Input::update();
 		Mouse::update();
+		Debug::update();
 		myGame->run();
 	}
 	DxLib_End();
