@@ -146,4 +146,12 @@ namespace Math
 	}
 
 	DxLib::VECTOR VLerp(const DxLib::VECTOR& from, const DxLib::VECTOR& to, float t);
+
+	template <typename Type>
+	bool IsContains(Type value, Type min, Type max)
+	{
+		return
+			min <= value &&
+			value <= max;
+	}
 }

@@ -7,6 +7,13 @@
 #include <atomic>
 #include "DxLib.h"
 #include "Utility/Def.h"
+
+#include "Collision/IShape.h"
+#include "Collision/Sphere.h"
+#include "Collision/Capsule.h"
+#include "Collision/Line.h"
+#include "Collision/Triangle.h"
+
 //描画のためのデータ
 
 struct ModelData{
@@ -44,7 +51,13 @@ public:
 	void setScale(const std::string& name, const VECTOR& scale);
 
 	//2D系関数
-	void drawTexture(const std::string& name, int x, int y,int cx,int cy, float width, float height,float angle);
+	void drawTexture(const std::string& name, int x, int y, float width, float height,float angle);
+public:
+	// -----------------------------------------------------------
+	// プリミティブ型描画
+	// -----------------------------------------------------------
+
+	void drawPrimitive(const Sphere& sphere) const;
 private:
 	std::unordered_map<std::string, ModelData> m_modelData;
 	std::unordered_map<std::string, int> m_textureData;

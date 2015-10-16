@@ -4,6 +4,8 @@
 #include "Actor/Camera/Camera.h"
 #include "Actor/SkyDome/Skydome.h"
 #include "Actor/Field/Field.h"
+#include "Utility/Debug.h"
+
 GameMain::GameMain()
 {
 }
@@ -22,7 +24,9 @@ void GameMain::initialize()
 	world->addActor(ActorTag::Player, std::make_shared<Player>(*world, VGet(0.0f, 0.0f, 0.0f)));
 	world->addCamera(std::make_shared<Camera>(*world));
 	world->addField(std::make_shared<Field>(*world));
-	world->addSkydome(std::make_shared<Skydome>(*world)); 
+	world->addSkydome(std::make_shared<Skydome>(*world));
+
+	Debug::setClear(true);
 }
 void GameMain::update()
 {
