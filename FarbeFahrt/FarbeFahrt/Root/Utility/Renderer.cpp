@@ -24,6 +24,7 @@ void Renderer::setTextureData(const ContentMap& textureData)
 		m_textureData.emplace(data.first,data.second.handle);
 	}
 }
+
 void Renderer::draw()const
 {
 
@@ -102,12 +103,8 @@ void Renderer::setScale(const std::string& name, const VECTOR& scale)
 	MV1SetScale(m_modelData[name].modelHandle, scale);
 }
 
-void Renderer::drawTexture(const std::string& name, int x, int y, float width, float height, float angle)
+void Renderer::drawTexture(const std::string& name, int x, int y,int cx,int cy, float width, float height, float angle)
 {
-	const auto& data = m_textureData[name];
-	int textureSizeX;
-	int textureSizeY;
-	GetGraphSize(data, &textureSizeX, &textureSizeY);
-	DrawRotaGraph3(x, y,0, 0, 1.0f, 1.0f,
-		(double)angle, data, FALSE, FALSE);
+	DrawRotaGraph3(x, y,cx, cy, width, height,
+		(double)angle, m_textureData[name], FALSE, FALSE);
 }

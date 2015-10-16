@@ -11,11 +11,12 @@ GameMain::GameMain()
 }
 void GameMain::loadContents(Loader& loader)
 {
-	loader.loadModel("Player", "Resources/Model/MMD–‚“±o’íVer1.1/ƒKƒuƒŠƒGƒ‰.pmx");
-	loader.loadModel("sky", "Resources/Model/skydome/’‹‚ÌŒ.x");
-	loader.loadModel("field", "Resources/Model/terrain/terrain.mqo");
-	loader.loadTexture("test", "Resources/terrain/’n–Ê.jpg");
-	loader.loadSE("bang", "Resources/SE/test.wav");
+	loader.loadContent("Player", "Model/MMD–‚“±o’íVer1.1/ƒKƒuƒŠƒGƒ‰.pmx");
+	loader.loadContent("sky", "Model/skydome/’‹‚ÌŒ.x");
+	loader.loadContent("field", "Model/terrain/terrain.mqo");
+	loader.loadContent("bang", "SE/test.wav");
+	loader.loadContent("kari", "Texture/‰¼‚è‚»[‚·.png");
+
 }
 void GameMain::initialize()
 {

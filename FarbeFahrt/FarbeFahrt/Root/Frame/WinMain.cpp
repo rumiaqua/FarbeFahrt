@@ -20,7 +20,7 @@ void init()
 	else
 	{
 		//ウィンドウモード
-		SetGraphMode(1024, 768, 32);
+		SetGraphMode(1024,768, 32);
 		isFullScreen = false;
 	}
 
