@@ -1,102 +1,98 @@
 # include "Math.h"
-# include "DxLib.h"
+
+# include <cmath>
 
 namespace Math
 {
-	float ToRadian(float x)
+	double toRadian(double x)
 	{
 		return x * Radian;
 	}
 
-	float ToDegree(float x)
+	double toDegree(double x)
 	{
 		return x * Degree;
 	}
 
-	float Sin(float x)
+	double sin(double x)
 	{
-		return std::sinf(x);
+		return std::sin(x);
 	}
 
-	float Cos(float x)
+	double cos(double x)
 	{
-		return std::cosf(x);
+		return std::cos(x);
 	}
 
-	float Tan(float x)
+	double tan(double x)
 	{
-		return std::tanf(x);
+		return std::tan(x);
 	}
 
-	float Asin(float x)
+	double asin(double x)
 	{
-		return std::asinf(x);
+		return std::asin(x);
 	}
 
-	float Acos(float x)
+	double acos(double x)
 	{
-		return std::acosf(x);
+		return std::acos(x);
 	}
 
-	float Atan(float x)
+	double atan(double x)
 	{
-		return std::atanf(x);
+		return std::atan(x);
 	}
 
-	float Atan2(float y, float x)
+	double atan2(double y, double x)
 	{
-		return std::atan2f(y, x);
+		return std::atan2(y, x);
 	}
 
-	float Floor(float x)
+	double floor(double x)
 	{
-		return std::floorf(x);
+		return std::floor(x);
 	}
 
-	float Ceiling(float x)
+	double ceiling(double x)
 	{
-		return std::ceilf(x);
+		return std::ceil(x);
 	}
 
-	float Round(float x)
+	double round(double x)
 	{
-		return std::roundf(x);
+		return std::round(x);
 	}
 
-	float Sign(float x)
+	double sign(double x)
 	{
-		return std::signbit(x) ? 1.0f : -1.0f;
+		return std::signbit(x) ? 1.0 : -1.0;
 	}
 
-	float Pow(float x, float y)
+	double pow(double x, double y)
 	{
-		return std::powf(x, y);
+		return std::pow(x, y);
 	}
 
-	float Sqrt(float x)
+	double sqrt(double x)
 	{
-		return std::sqrtf(x);
+		return std::sqrt(x);
 	}
 
-	float Clamp(float x, float y, float z)
+	double smooth(double x, int y)
 	{
-		return Min({ Max({ x, y }), z });
-	}
-
-	float Saturate(float x)
-	{
-		return Clamp(x, 0.0f, 1.0f);
-	}
-
-	float Smooth(float x, int y)
-	{
-		float f = Pow(10.0f, -static_cast<float>(y));
+		double f = Math::pow(10.0, -static_cast<double>(y));
 		int i = (int)(x * f);
 		return i / f;
 	}
 
-	VECTOR VLerp(const VECTOR& from, const VECTOR& to, float t)
+	double saturate(double x)
 	{
-		return VAdd(from, VScale(VSub(to, from), t));
+		return clamp(x, 0.0, 1.0);
+	}
+
+	double clamp(double x, double y, double z)
+	{
+		return Math::minElement({ Math::maxElement({ x, y }), z });
 	}
 }

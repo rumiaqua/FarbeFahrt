@@ -3,6 +3,9 @@
 #include <memory>
 #include "Utility/Math.h"
 
+# include "Utility/Vector3.h"
+# include "Utility/MemoryCast.h"
+
 Camera::Camera(IWorld& world) :
 BaseActor(world, "Camera", VGet(0, 0, 0), VGet(0, 0, 0))
 {
@@ -79,8 +82,11 @@ void Camera::onUpdate()
 
 	t += 1 / (60.0f * second);
 	t = t > 1.0f ? 1.0f : t;
-	position = Math::VLerp(currentPos, targetPos, t);
-	focusRot = Math::VLerp(currentRot, targetRot, t);
+	// position = Math::VLerp(currentPos, targetPos, t);
+	position = memory_cast<VECTOR>(
+			Vector3::lerp(memory_cast<Vector3>(currentPos), memory_cast<Vector3>(targetPos), t));
+	focusRot = memory_cast<VECTOR>(
+		Vector3::lerp(memory_cast<Vector3>(currentRot), memory_cast<Vector3>(targetRot), t));
 
 	SetCameraPositionAndTarget_UpVecY(position, focusRot);
 
