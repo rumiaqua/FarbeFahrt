@@ -12,8 +12,9 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("Player", "Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx");
 	loader.loadContent("sky", "Model/skydome/昼の月.x");
 	loader.loadContent("field", "Model/terrain/terrain.mqo");
-	loader.loadContent("test", "terrain/地面.jpg");
 	loader.loadContent("bang", "SE/test.wav");
+	loader.loadContent("kari", "Texture/仮りそーす.png");
+
 }
 void GameMain::initialize()
 {

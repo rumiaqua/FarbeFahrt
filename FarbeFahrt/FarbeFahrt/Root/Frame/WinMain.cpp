@@ -19,11 +19,11 @@ void init()
 	else
 	{
 		//ウィンドウモード
-		SetGraphMode(1024, 768, 32);
+		SetGraphMode(1024,768, 32);
 		isFullScreen = false;
 	}
 
-	ChangeWindowMode(TRUE);
+	ChangeWindowMode(!isFullScreen);
 	SetUseDirect3D9Ex(TRUE);
 	MV1SetUseOrigShader(TRUE);
 	SetFullSceneAntiAliasingMode(4, 4);//ちょっときれいになる！

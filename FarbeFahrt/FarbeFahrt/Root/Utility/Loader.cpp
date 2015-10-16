@@ -1,18 +1,10 @@
 #include "Loader.h"
 #include <algorithm>
 #include "DxLib.h"
-
+#include <iostream>
 Loader::Loader()
 {
-
-
 	m_ContentList.clear();
-
-
-
-
-
-
 	//std::string‚ÆAenum‚Æconst char*‚ğˆø”‚É‚Æ‚èint‚ğ•Ô‚·ŠÖ”‚Ì\‘¢‘Ì
 	//‚Ìstd::unordred_map
 	//‚Éemplace‚·‚é
@@ -39,7 +31,6 @@ Loader::Loader()
 	emplaceFunc("bmp", ContentTag::Texture, bindLoadGraph);
 	emplaceFunc("wav", ContentTag::SE, bindLoadSoundMem);
 	emplaceFunc("mp3", ContentTag::BGM, bindLoadSoundMem);
-
 
 
 }
@@ -80,6 +71,7 @@ void Loader::load()
 	for (auto& data : m_ContentList)
 	{
 		data.second.handle = m_LoadFunc[GetExtension(data.second.filename)].func( ("Resources/" + data.second.filename).c_str());
+
 	}
 	//SetUseASyncLoadFlag(FALSE);
 	isLoadCompleted = false;
@@ -87,7 +79,7 @@ void Loader::load()
 bool Loader::isLoad()
 {
 	int count = std::count_if(m_ContentList.begin(), m_ContentList.end(),
-		[&](const std::pair<std::string, ContentDataPlusTag>& contentData)
+		[&](const std::pair<std::string, ContentDataAndTag>& contentData)
 	{return (CheckHandleASyncLoad(contentData.second.handle) == TRUE); });
 	//count > 0 ‚Å“Ç‚İ‚İ’†
 	return !!count;
@@ -98,6 +90,8 @@ void Loader::loadContent(const std::string& name, const std::string& filename)
 		std::forward_as_tuple(name),
 		std::forward_as_tuple(m_LoadFunc[GetExtension(filename)].tag, 0, filename));
 }
+
+
 ContentMap Loader::getContentList(const ContentTag& tag)
 {
 	ContentMap returnData;

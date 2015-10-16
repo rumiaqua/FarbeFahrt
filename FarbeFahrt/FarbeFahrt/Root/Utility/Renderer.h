@@ -44,7 +44,7 @@ public:
 	void setScale(const std::string& name, const VECTOR& scale);
 
 	//2Dånä÷êî
-	void drawTexture(const std::string& name, int x, int y, float width, float height,float angle);
+	void drawTexture(const std::string& name, int x, int y,int cx,int cy, float width, float height,float angle);
 private:
 	std::unordered_map<std::string, ModelData> m_modelData;
 	std::unordered_map<std::string, int> m_textureData;

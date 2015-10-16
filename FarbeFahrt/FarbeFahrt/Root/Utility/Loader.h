@@ -13,18 +13,18 @@ enum class ContentTag
 	BGM,
 	SE
 };
-struct ContentDataPlusTag
+struct ContentDataAndTag
 {
 	ContentTag tag;
 	int handle;
 	std::string filename;
-	ContentDataPlusTag(ContentTag tag, int handle, const std::string& filename)
+	ContentDataAndTag(ContentTag tag, int handle, const std::string& filename)
 	{
 		this->tag = tag;
 		this->handle = handle;
 		this->filename = filename;
 	}
-	ContentDataPlusTag(){}
+	ContentDataAndTag(){}
 };
 struct FuncAndTag
 {
@@ -37,13 +37,14 @@ struct FuncAndTag
 	}
 	FuncAndTag(){}
 };
-using ContentMapPlusTag = std::unordered_map<std::string, ContentDataPlusTag>;
+using ContentMapPlusTag = std::unordered_map<std::string, ContentDataAndTag>;
 class Loader
 {
 public:
 	Loader();
 	~Loader();
 	void loadContent(const std::string& name, const std::string& filename);
+	void DuplicateContent(const std::string& basename, const std::string& duplicate);
 	void load();
 	void cleanUp();
 	bool isLoad();
