@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseActor.h"
+#include "Collision/Capsule.h"
 
 enum class PlayerState
 {
@@ -22,4 +23,5 @@ private:
 	PlayerState state;
 	float moveSpeed;
 	bool moveFlag;
+	Capsule capsule;
 };

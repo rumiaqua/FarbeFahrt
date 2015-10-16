@@ -7,8 +7,11 @@
 
 # include "Utility/Debug.h"
 
+# include "Utility/Mouse.h"
+
 Player::Player(IWorld& world, const VECTOR position) :
 BaseActor(world, "Player", position, VGet(0, DX_PI_F, 0))
+, capsule(position, position, 5.0f)
 {
 	moveSpeed = 1.5f;
 	state = PlayerState::standing;
@@ -90,9 +93,26 @@ void Player::playerInput()
 	{
 		state = PlayerState::standing;
 	}
+
+	if (Mouse::isClicked(MOUSE_INPUT_MIDDLE))
+	{
+		VECTOR nearClip = Mouse::screenPointToWorld(0.0f);
+		VECTOR farClip = Mouse::screenPointToWorld(1.0f);
+		struct Ray
+		{
+			VECTOR origin;
+			VECTOR direction;
+		} ray;
+		ray.origin = position;
+		ray.direction = VNorm(VSub(farClip, nearClip));
+
+		capsule.origin = ray.origin;
+		capsule.end = VAdd(ray.origin, VScale(ray.direction, 100.0f));
+	}
 }
 void Player::onDraw(Renderer& render)const
 {
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
 	render.drawSkinModel("Player", position, rotation,(int)state,1.0f);
+	capsule.draw();
 }
