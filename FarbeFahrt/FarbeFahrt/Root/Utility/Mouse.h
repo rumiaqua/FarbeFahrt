@@ -27,7 +27,7 @@ public:
 	static void update();
 
 	/// <summary>マウスの座標を返す</summary>
-	static POINT Position();
+	static POINT position();
 
 	/// <summary>押された瞬間かどうかを返す</summary>
 	/// <param name="mouseCode">DxLibのマウスコード</param>
@@ -43,6 +43,8 @@ public:
 
 	/// <summary>ホイールの変化量を返す</summary>
 	static int scrollValue();
+
+	static VECTOR screenPointToWorld(float z);
 
 private:
 
