@@ -83,8 +83,8 @@ bool Collision::intersects(const Line* l1, const Line* l2)
 
 	// ”ä—¦‚ª 0.0 ‚©‚ç 1.0 ‚ÌŠÔ‚É–³‚¯‚ê‚Îü•ª‚ÍŒğ·‚µ‚Ä‚¢‚È‚¢
 	if (
-		!Math::IsContains(d1, 0.0f, 1.0f) ||
-		!Math::IsContains(d2, 0.0f, 1.0f))
+		!Math::isContains(d1, 0.0f, 1.0f) ||
+		!Math::isContains(d2, 0.0f, 1.0f))
 	{
 		return false;
 	}

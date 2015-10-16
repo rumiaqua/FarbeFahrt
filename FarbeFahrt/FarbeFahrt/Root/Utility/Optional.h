@@ -6,7 +6,7 @@
 const struct NullOpt
 {
 
-} None;
+} none;
 
 /// <summary>無効値を表現できる値クラス</summary>
 template <typename Type>
@@ -90,7 +90,7 @@ public:
 		}
 		else if (!own && other)
 		{
-			Create(*other);
+			create(*other);
 		}
 		else if (own && !other)
 		{
@@ -116,12 +116,14 @@ public:
 	/// <summary>生成</summary>
 	void create(const Type& value)
 	{
+		release();
 		m_value.reset(new Type(value));
 	}
 
 	/// <summary>生成</summary>
 	void create(Type&& value)
 	{
+		release();
 		m_value.reset(new Type(std::forward<Type>(value)));
 	}
 
@@ -201,7 +203,7 @@ private:
 	std::unique_ptr<Type> m_value;
 };
 
-/// <summary>optionalを構築する</summary>
+/// <summary>Optionalを構築する</summary>
 /// <param name="args">引数</param>
 template <typename Type, typename ...Args>
 Optional<Type>&& makeOptional(Args&& ...args)
@@ -210,17 +212,10 @@ Optional<Type>&& makeOptional(Args&& ...args)
 }
 
 template <typename Type>
-bool operator == (const Optional<Type>& o1, const Optional<Type>& o2)
+std::ostream& operator << (std::ostream& stream, const Optional<Type>& opt)
 {
-	if (o1.IsEnabled() != o2.IsEnabled())
-	{
-		return false;
-	}
-	if (!o1)
-	{
-		return true;
-	}
-	return *o1 == *o2;
+	stream << opt.Ref();
+	return stream;
 }
 
 template <typename Type>
@@ -236,6 +231,12 @@ bool operator == (const Optional<Type>& o, const NullOpt&)
 }
 
 template <typename Type>
+bool operator != (const Optional<Type>& o, const NullOpt&)
+{
+	return o;
+}
+
+template <typename Type>
 bool operator == (const NullOpt&, const Optional<Type>& o)
 {
 	return !o;
@@ -245,4 +246,18 @@ template <typename Type>
 bool operator != (const NullOpt&, const Optional<Type>& o)
 {
 	return o;
+}
+
+template <typename Type>
+bool operator == (const Optional<Type>& o1, const Optional<Type>& o2)
+{
+	if (o1.isEnabled() != o2.isEnabled())
+	{
+		return false;
+	}
+	if (!o1)
+	{
+		return true;
+	}
+	return *o1 == *o2;
 }
