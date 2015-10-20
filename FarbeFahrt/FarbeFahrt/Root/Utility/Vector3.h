@@ -68,9 +68,9 @@ public:
 	/// <summary>”z—ñ‚É•ÏŠ·‚·‚é</summary>
 	operator const float* () const;
 
-	operator DxLib::VECTOR& ();
+	operator VECTOR& ();
 
-	operator const DxLib::VECTOR&() const;
+	operator const VECTOR&() const;
 
 public:
 
