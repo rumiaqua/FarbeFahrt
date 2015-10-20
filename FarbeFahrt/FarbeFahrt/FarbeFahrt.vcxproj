@@ -62,6 +62,7 @@
     <ClInclude Include="Root\Actor\ActorManager\ActorTag.h" />
     <ClInclude Include="Root\Actor\BaseActor.h" />
     <ClInclude Include="Root\Actor\Camera\Camera.h" />
+    <ClInclude Include="Root\Actor\Camera\CameraMode.h" />
     <ClInclude Include="Root\Actor\Enemy.h" />
     <ClInclude Include="Root\Actor\Field\Field.h" />
     <ClInclude Include="Root\Actor\Player.h" />

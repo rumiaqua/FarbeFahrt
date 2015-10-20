@@ -1,9 +1,5 @@
 # pragma once
-
-namespace DxLib
-{
-	typedef struct tagVECTOR VECTOR;
-}
+#include "Dxlib.h"
 
 // -------------------------------------------------------------------
 // ‘O’uéŒ¾
