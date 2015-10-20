@@ -671,9 +671,9 @@ Matrix Matrix::lerp(const Matrix& m1, const Matrix& m2, float t)
 	Matrix r1 = Matrix::rotation(m1);
 	Matrix r2 = Matrix::rotation(m2);
 	Vector3 translate = Vector3::lerp(Matrix::translation(m1), Matrix::translation(m2), t);
-	Vector3 xAxis = Vector3::slerp(Matrix::right(r1), Matrix::right(r2), t);
-	Vector3 yAxis = Vector3::slerp(Matrix::up(r1), Matrix::up(r2), t);
-	Vector3 zAxis = Vector3::slerp(Matrix::forward(r1), Matrix::forward(r2), t);
+	Vector3 xAxis = Vector3::slerp(Vector3(Matrix::right(r1)), Vector3(Matrix::right(r2)), t);
+	Vector3 yAxis = Vector3::slerp(Vector3(Matrix::up(r1)), Vector3(Matrix::up(r2)), t);
+	Vector3 zAxis = Vector3::slerp(Vector3(Matrix::forward(r1)), Vector3(Matrix::forward(r2)), t);
 	Vector3 scale = Vector3::lerp(Matrix::scaling(m1), Matrix::scaling(m2), t);
 	return Matrix(
 		xAxis.x * scale.x, xAxis.y * scale.x, xAxis.z * scale.x, 0.0f,
