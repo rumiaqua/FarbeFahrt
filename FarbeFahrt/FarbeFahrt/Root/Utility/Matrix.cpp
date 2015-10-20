@@ -603,6 +603,29 @@ Vector4 Matrix::forward(const Matrix & matrix)
 	return Vector4(matrix.m31, matrix.m32, matrix.m33, 0.0f);
 }
 
+Vector3 Matrix::translation(const Matrix& matrix)
+{
+	return Vector3(matrix.m41, matrix.m42, matrix.m43);
+}
+
+Matrix Matrix::rotation(const Matrix& matrix)
+{
+	Vector3 scale = scaling(matrix);
+	return Matrix(
+		matrix.m11 / scale.x, matrix.m12 / scale.x, matrix.m13 / scale.x, 0.0f,
+		matrix.m21 / scale.y, matrix.m22 / scale.y, matrix.m23 / scale.y, 0.0f,
+		matrix.m31 / scale.z, matrix.m32 / scale.z, matrix.m33 / scale.z, 0.0f,
+		0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+Vector3 Matrix::scaling(const Matrix& matrix)
+{
+	return Vector3(
+		memory_cast<Vector4>(matrix.mat[0])->length(),
+		memory_cast<Vector4>(matrix.mat[1])->length(),
+		memory_cast<Vector4>(matrix.mat[2])->length());
+}
+
 Matrix Matrix::lookAt(const Vector3& position, const Vector3& target, const Vector3& up)
 {
 	Matrix matrix;
@@ -641,6 +664,22 @@ Matrix Matrix::viewport(int width, int height)
 		0, -h, 0, 0,
 		0, 0, 1, 0,
 		w, h, 0, 1);
+}
+
+Matrix Matrix::lerp(const Matrix& m1, const Matrix& m2, float t)
+{
+	Matrix r1 = Matrix::rotation(m1);
+	Matrix r2 = Matrix::rotation(m2);
+	Vector3 translate = Vector3::lerp(Matrix::translation(m1), Matrix::translation(m2), t);
+	Vector3 xAxis = Vector3::slerp(Matrix::right(r1), Matrix::right(r2), t);
+	Vector3 yAxis = Vector3::slerp(Matrix::up(r1), Matrix::up(r2), t);
+	Vector3 zAxis = Vector3::slerp(Matrix::forward(r1), Matrix::forward(r2), t);
+	Vector3 scale = Vector3::lerp(Matrix::scaling(m1), Matrix::scaling(m2), t);
+	return Matrix(
+		xAxis.x * scale.x, xAxis.y * scale.x, xAxis.z * scale.x, 0.0f,
+		xAxis.x * scale.y, xAxis.y * scale.y, xAxis.z * scale.y, 0.0f,
+		xAxis.x * scale.z, xAxis.y * scale.z, xAxis.z * scale.z, 0.0f,
+		translate.x, translate.y, translate.z, 1.0f);
 }
 
 bool operator == (const Matrix& m1, const Matrix& m2)
