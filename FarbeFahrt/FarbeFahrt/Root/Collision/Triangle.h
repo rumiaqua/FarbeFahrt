@@ -6,7 +6,7 @@ class Triangle : public IShape
 {
 public:
 
-	Triangle(const VECTOR& p0, const VECTOR& p1, const VECTOR& p2);
+	Triangle(const Vector3& p0, const Vector3& p1, const Vector3& p2);
 
 	virtual bool intersects(const IShape* shape) const override;
 
@@ -22,7 +22,7 @@ public:
 
 public:
 
-	VECTOR p1;
+	Vector3 p1;
 
-	VECTOR p2;
+	Vector3 p2;
 };

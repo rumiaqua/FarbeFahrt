@@ -1,6 +1,6 @@
 # include "IShape.h"
 
-IShape::IShape(const VECTOR& origin)
+IShape::IShape(const Vector3& origin)
 	: origin(origin)
 {
 

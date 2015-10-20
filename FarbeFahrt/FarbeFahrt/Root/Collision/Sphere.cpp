@@ -2,7 +2,11 @@
 
 # include "Collision.h"
 
-Sphere::Sphere(const VECTOR& origin, float radius)
+# include <DxLib.h>
+
+# include "Utility/MemoryCast.h"
+
+Sphere::Sphere(const Vector3& origin, float radius)
 	: IShape(origin)
 	, radius(radius)
 {
@@ -36,5 +40,7 @@ bool Sphere::intersects(const Triangle* shape) const
 
 void Sphere::draw() const
 {
-	DrawSphere3D(origin, radius, 10, -1, -1, FALSE);
+	DrawSphere3D(
+		memory_cast<VECTOR>(origin),
+		radius, 10, -1, -1, FALSE);
 }

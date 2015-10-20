@@ -6,10 +6,11 @@
 #include <algorithm>
 #include <functional>
 #include <forward_list>
+# include "Utility/Vector3.h"
 class BaseActor
 {
 public:
-	BaseActor(IWorld& world, const std::string& name, const VECTOR& position, const VECTOR& rotation);
+	BaseActor(IWorld& world, const std::string& name, const Vector3& position, const Vector3& rotation);
 	BaseActor(const std::string& name = "none");
 	virtual ~BaseActor();
 
@@ -21,8 +22,8 @@ public:
 
 	const std::string& getName()const;
 
-	VECTOR getPosition()const;
-	VECTOR getRotation()const;
+	Vector3 getPosition()const;
+	Vector3 getRotation()const;
 
 	Actor findChildren(const std::string& name);
 	Actor findChildren(std::function<bool(const BaseActor&)>func);
@@ -43,8 +44,8 @@ private:
 protected:
 	IWorld* world;
 	std::string name;
-	VECTOR position;
-	VECTOR rotation;
+	Vector3 position;
+	Vector3 rotation;
 	bool dead;
 private:
 	std::forward_list<Actor>children;

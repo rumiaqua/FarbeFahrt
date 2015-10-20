@@ -12,8 +12,8 @@
 # include "Utility/Vector3.h"
 # include "Utility/MemoryCast.h"
 
-Player::Player(IWorld& world, const VECTOR position) :
-BaseActor(world, "Player", position, VGet(0, DX_PI_F, 0))
+Player::Player(IWorld& world, const Vector3& position) :
+BaseActor(world, "Player", position, Vector3(0.0f, DX_PI_F, 0.0f))
 , capsule(position, position, 5.0f)
 {
 	moveSpeed = 1.5f;
@@ -94,7 +94,7 @@ void Player::playerInput()
 	{
 		// ïΩçsà⁄ìÆ
 		// position = VAdd(position, moveVec);
-		position = memory_cast<VECTOR>(memory_cast<Vector3>(position) + moveVec);
+		position = memory_cast<Vector3>(position) + moveVec;
 		// à⁄ìÆó Ç…çáÇÌÇπÇƒÉÇÉfÉãÇâÒì]
 		float angle = Vector3::angle(frontVec, moveVec) * (float)Math::sign(Vector3::cross(frontVec, moveVec).y);
 		// float angle = VRad(frontVec, moveVec) * Math::Sign(VCross(frontVec, moveVec).y);
@@ -109,18 +109,20 @@ void Player::playerInput()
 
 	if (Mouse::isClicked(MOUSE_INPUT_MIDDLE))
 	{
-		VECTOR nearClip = Mouse::screenPointToWorld(0.0f);
-		VECTOR farClip = Mouse::screenPointToWorld(1.0f);
+		Vector3 nearClip = Mouse::screenPointToWorld(0.0f);
+		Vector3 farClip = Mouse::screenPointToWorld(1.0f);
 		struct Ray
 		{
-			VECTOR origin;
-			VECTOR direction;
+			Vector3 origin;
+			Vector3 direction;
 		} ray;
 		ray.origin = position;
-		ray.direction = VNorm(VSub(farClip, nearClip));
+		ray.direction = //VNorm(VSub(farClip, nearClip));
+			Vector3::normalize(farClip - nearClip);
 
 		capsule.origin = ray.origin;
-		capsule.end = VAdd(ray.origin, VScale(ray.direction, 100.0f));
+		capsule.end = // VAdd(ray.origin, VScale(ray.direction, 100.0f));
+			ray.origin + ray.direction * 100.0f;
 	}
 }
 void Player::onDraw(Renderer& render)const

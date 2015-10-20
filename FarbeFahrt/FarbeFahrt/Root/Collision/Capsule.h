@@ -6,7 +6,7 @@ class Capsule : public IShape
 {
 public:
 
-	Capsule(const VECTOR& origin, const VECTOR& end, float radius);
+	Capsule(const Vector3& origin, const Vector3& end, float radius);
 
 	virtual bool intersects(const IShape* shape) const override;
 
@@ -22,7 +22,7 @@ public:
 
 public:
 
-	VECTOR end;
+	Vector3 end;
 
 	float radius;
 };

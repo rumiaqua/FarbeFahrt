@@ -1,6 +1,6 @@
 # pragma once
 
-# include <DxLib.h>
+# include "Utility/Vector3.h"
 
 class Sphere;
 class Capsule;
@@ -11,7 +11,7 @@ class IShape
 {
 public:
 
-	IShape(const VECTOR& origin);
+	IShape(const Vector3& origin);
 
 	virtual ~IShape();
 
@@ -29,5 +29,5 @@ public:
 
 public:
 
-	VECTOR origin;
+	Vector3 origin;
 };

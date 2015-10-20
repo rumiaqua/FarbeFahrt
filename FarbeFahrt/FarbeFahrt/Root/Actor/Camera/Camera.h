@@ -4,6 +4,8 @@
 
 #include "Utility/Input.h"
 
+# include "Utility/Point2.h"
+
 class Camera :
 	public BaseActor
 {
@@ -17,14 +19,14 @@ private:
 	void rotate(float &x, float &z, const float ang, const float targetX, const float targetY);
 	void angleReset(float &ang);
 private:
-	POINT mousePos;
-	VECTOR targetPos;
-	VECTOR currentPos;
-	VECTOR targetRot;
-	VECTOR currentRot;
-	VECTOR focusRot;
-	VECTOR focus;
-	VECTOR dif;
+	Point2 mousePos;
+	Vector3 targetPos;
+	Vector3 currentPos;
+	Vector3 targetRot;
+	Vector3 currentRot;
+	Vector3 focusRot;
+	Vector3 focus;
+	Vector3 dif;
 
 	bool fadeFlag = false;
 

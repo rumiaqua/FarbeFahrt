@@ -1,5 +1,7 @@
 #include "Mouse.h"
 
+# include <DxLib.h>
+
 Mouse::Mouse()
 {
 
@@ -26,7 +28,7 @@ void Mouse::update()
 	ins.m_currentBuffer = GetMouseInput();
 }
 
-POINT Mouse::position()
+Point2 Mouse::position()
 {
 	Mouse& ins = instance();
 	return ins.m_position;
@@ -60,17 +62,17 @@ int Mouse::scrollValue()
 	return ins.m_scrollValue;
 }
 
-VECTOR Mouse::screenPointToWorld(float z)
+Vector3 Mouse::screenPointToWorld(float z)
 {
 	MATRIX view = GetCameraViewMatrix();
 	MATRIX projection = GetCameraProjectionMatrix();
 	MATRIX viewport = GetCameraViewportMatrix();
 	MATRIX inverse = MInverse(MMult(MMult(view, projection), viewport));
 	float w = 1.0f;
-	POINT pos = position();
-	VECTOR in { pos.x, pos.y, z };
-	VECTOR v;
-	VectorTransform4(&v, &w, &in, &w, &inverse);
+	Point2 pos = position();
+	Vector3 in { static_cast<float>(pos.x), static_cast<float>(pos.y), z };
+	Vector3 v;
+	VectorTransform4(&(VECTOR)v, &w, &(VECTOR)in, &w, &inverse);
 	v.x /= w;
 	v.y /= w;
 	v.z /= w;

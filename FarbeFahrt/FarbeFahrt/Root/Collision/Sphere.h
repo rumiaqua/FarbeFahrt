@@ -6,7 +6,7 @@ class Sphere : public IShape
 {
 public:
 
-	Sphere(const VECTOR& origin, float radius);
+	Sphere(const Vector3& origin, float radius);
 
 	virtual bool intersects(const IShape* shape) const override;
 

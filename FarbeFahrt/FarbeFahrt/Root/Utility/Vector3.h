@@ -1,5 +1,10 @@
 # pragma once
 
+namespace DxLib
+{
+	typedef struct tagVECTOR VECTOR;
+}
+
 // -------------------------------------------------------------------
 // ëOíuêÈåæ
 // -------------------------------------------------------------------
@@ -63,6 +68,10 @@ public:
 
 	/// <summary>îzóÒÇ…ïœä∑Ç∑ÇÈ</summary>
 	operator const float* () const;
+
+	operator DxLib::VECTOR& ();
+
+	operator const DxLib::VECTOR&() const;
 
 public:
 

@@ -2,7 +2,11 @@
 
 # include "Collision.h"
 
-Capsule::Capsule(const VECTOR& origin, const VECTOR& end, float radius)
+# include <DxLib.h>
+
+# include "Utility/MemoryCast.h"
+
+Capsule::Capsule(const Vector3& origin, const Vector3& end, float radius)
 	: IShape(origin)
 	, end(end)
 	, radius(radius)
@@ -37,5 +41,8 @@ bool Capsule::intersects(const Triangle* shape) const
 
 void Capsule::draw() const
 {
-	DrawCapsule3D(origin, end, radius, 10, -1, -1, FALSE);
+	DrawCapsule3D(
+		memory_cast<VECTOR>(origin),
+		memory_cast<VECTOR>(end),
+		radius, 10, -1, -1, FALSE);
 }

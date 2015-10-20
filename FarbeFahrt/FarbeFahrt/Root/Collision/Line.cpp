@@ -2,7 +2,11 @@
 
 # include "Collision.h"
 
-Line::Line(const VECTOR& origin, const VECTOR& end)
+# include <DxLib.h>
+
+# include "Utility/MemoryCast.h"
+
+Line::Line(const Vector3& origin, const Vector3& end)
 	: IShape(origin)
 	, end(end)
 {
@@ -36,5 +40,8 @@ bool Line::intersects(const Triangle* shape) const
 
 void Line::draw() const
 {
-	DrawLine3D(origin, end, -1);
+	DrawLine3D(
+		memory_cast<VECTOR>(origin),
+		memory_cast<VECTOR>(end),
+		-1);
 }

@@ -2,7 +2,8 @@
 
 # include <array>
 
-# include <DxLib.h>
+# include "Point2.h"
+# include "Vector3.h"
 
 /// <summary>マウスクラス</summary>
 class Mouse
@@ -27,7 +28,7 @@ public:
 	static void update();
 
 	/// <summary>マウスの座標を返す</summary>
-	static POINT position();
+	static Point2 position();
 
 	/// <summary>押された瞬間かどうかを返す</summary>
 	/// <param name="mouseCode">DxLibのマウスコード</param>
@@ -44,11 +45,11 @@ public:
 	/// <summary>ホイールの変化量を返す</summary>
 	static int scrollValue();
 
-	static VECTOR screenPointToWorld(float z);
+	static Vector3 screenPointToWorld(float z);
 
 private:
 
-	POINT m_position;
+	Point2 m_position;
 
 	int m_scrollValue;
 

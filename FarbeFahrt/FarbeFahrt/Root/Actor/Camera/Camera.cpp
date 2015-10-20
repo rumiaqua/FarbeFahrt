@@ -7,7 +7,7 @@
 # include "Utility/MemoryCast.h"
 
 Camera::Camera(IWorld& world) :
-BaseActor(world, "Camera", VGet(0, 0, 0), VGet(0, 0, 0))
+BaseActor(world, "Camera", Vector3::zero(), Vector3::zero())
 {
 	ang = 0.0f;
 	focusRot = { 0, 0, 0 };
@@ -32,10 +32,11 @@ void Camera::onUpdate()
 
 	if (Input::isClicked(KEY_INPUT_Z))
 	{
-		dif = VSub(targetPos, position);
+		dif = // VSub(targetPos, position);
+			targetPos - position;
 		currentPos = position;
 		targetPos = { 0.0f, 140.0f, -150.0f };
-		currentRot = GetCameraTarget();
+		currentRot = memory_cast<Vector3>(GetCameraTarget());
 		targetRot = { 0.0f, 0.0f, 0.0f };
 
 		fadeFlag = true;
@@ -45,7 +46,8 @@ void Camera::onUpdate()
 
 	if (Input::isClicked(KEY_INPUT_X))
 	{
-		dif = VSub(targetPos, position);	
+		dif = // VSub(targetPos, position);	
+			targetPos - position;
 		fadeFlag = false;
 
 		t = 0;
@@ -54,10 +56,13 @@ void Camera::onUpdate()
 	if (fadeFlag == false)
 	{
 		currentPos = position;
-		targetPos = VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
-		currentRot = GetCameraTarget();
-		targetRot = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
-		rotation = VGet(0.0f, ang, 0.0f);
+		targetPos = // VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
+			player->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+		currentRot = memory_cast<Vector3>(GetCameraTarget());
+		targetRot = // VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
+			player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+		rotation = // VGet(0.0f, ang, 0.0f);
+			Vector3(0.0f, ang, 0.0f);
 	}
 
 	/*if (Input::isPressed(KEY_INPUT_Z))
@@ -83,10 +88,10 @@ void Camera::onUpdate()
 	t += 1 / (60.0f * second);
 	t = t > 1.0f ? 1.0f : t;
 	// position = Math::VLerp(currentPos, targetPos, t);
-	position = memory_cast<VECTOR>(
-			Vector3::lerp(memory_cast<Vector3>(currentPos), memory_cast<Vector3>(targetPos), t));
-	focusRot = memory_cast<VECTOR>(
-		Vector3::lerp(memory_cast<Vector3>(currentRot), memory_cast<Vector3>(targetRot), t));
+	position =
+		Vector3::lerp(currentPos, targetPos, t);
+	focusRot =
+		Vector3::lerp(currentRot, targetRot, t);
 
 	SetCameraPositionAndTarget_UpVecY(position, focusRot);
 

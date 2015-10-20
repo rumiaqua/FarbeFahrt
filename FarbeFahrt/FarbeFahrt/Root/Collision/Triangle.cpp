@@ -2,7 +2,11 @@
 
 # include "Collision.h"
 
-Triangle::Triangle(const VECTOR& p0, const VECTOR& p1, const VECTOR& p2)
+# include <DxLib.h>
+
+# include "Utility/MemoryCast.h"
+
+Triangle::Triangle(const Vector3& p0, const Vector3& p1, const Vector3& p2)
 	: IShape(p0)
 	, p1(p1)
 	, p2(p2)
@@ -37,5 +41,9 @@ bool Triangle::intersects(const Triangle* shape) const
 
 void Triangle::draw() const
 {
-	DrawTriangle3D(origin, p1, p2, -1, FALSE);
+	DrawTriangle3D(
+		memory_cast<VECTOR>(origin),
+		memory_cast<VECTOR>(p1),
+		memory_cast<VECTOR>(p2),
+		-1, FALSE);
 }

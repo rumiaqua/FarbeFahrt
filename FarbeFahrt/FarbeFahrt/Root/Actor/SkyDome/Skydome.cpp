@@ -1,7 +1,7 @@
 #include "Skydome.h"
 
 Skydome::Skydome(IWorld& world) :
-BaseActor(world, "Skydome", VGet(0, 0, 0), VGet(0, 0, 0))
+BaseActor(world, "Skydome", Vector3::zero(), Vector3::zero())
 {
 
 }

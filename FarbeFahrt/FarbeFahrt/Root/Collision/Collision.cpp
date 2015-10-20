@@ -6,6 +6,10 @@
 
 # include "Utility/Math.h"
 
+# include <DxLib.h>
+
+# include "Utility/MemoryCast.h"
+
 bool Collision::intersects(const Sphere* s1, const Sphere* s2)
 {
 	return HitCheck_Sphere_Sphere(

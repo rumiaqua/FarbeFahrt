@@ -1,6 +1,6 @@
 #include "BaseActor.h"
 
-BaseActor::BaseActor(IWorld& world, const std::string& name, const VECTOR& position, const VECTOR& rotation)
+BaseActor::BaseActor(IWorld& world, const std::string& name, const Vector3& position, const Vector3& rotation)
 	:world(&world),
 	name(name),
 	position(position),
@@ -12,8 +12,8 @@ BaseActor::BaseActor(IWorld& world, const std::string& name, const VECTOR& posit
 BaseActor::BaseActor(const std::string& name) :
 world(nullptr),
 name(name),
-position(VGet(0.0f, 0.0f, 0.0f)),
-rotation(VGet(0.0f, 0.0f, 0.0f)),
+position(Vector3::zero()),
+rotation(Vector3::zero()),
 dead(false)
 {
 }
@@ -37,11 +37,11 @@ const std::string& BaseActor::getName()const
 {
 	return name;
 }
-VECTOR BaseActor::getPosition()const
+Vector3 BaseActor::getPosition()const
 {
 	return position;
 }
-VECTOR BaseActor::getRotation()const
+Vector3 BaseActor::getRotation()const
 {
 	return rotation;
 }

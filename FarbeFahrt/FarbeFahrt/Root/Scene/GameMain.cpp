@@ -21,7 +21,7 @@ void GameMain::loadContents(Loader& loader)
 void GameMain::initialize()
 {
 	world = std::make_shared<World>();
-	world->addActor(ActorTag::Player, std::make_shared<Player>(*world, VGet(0.0f, 0.0f, 0.0f)));
+	world->addActor(ActorTag::Player, std::make_shared<Player>(*world, Vector3::zero()));
 	world->addCamera(std::make_shared<Camera>(*world));
 	world->addField(std::make_shared<Field>(*world));
 	world->addSkydome(std::make_shared<Skydome>(*world));

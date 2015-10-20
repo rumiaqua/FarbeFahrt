@@ -4,6 +4,10 @@
 # include "String.h"
 # include "Math.h"
 
+# include "MemoryCast.h"
+
+# include <DxLib.h>
+
 const Vector3& Vector3::zero()
 {
 	static Vector3 zero { 0.0f, 0.0f, 0.0f };
@@ -102,6 +106,16 @@ Vector3::operator float* ()
 Vector3::operator const float* () const
 {
 	return elm;
+}
+
+Vector3::operator VECTOR&()
+{
+	return memory_cast<VECTOR>(*this);
+}
+
+Vector3::operator const VECTOR&() const
+{
+	return memory_cast<VECTOR>(*this);
 }
 
 String Vector3::toString() const
