@@ -11,7 +11,7 @@ class BaseActor
 {
 public:
 	BaseActor(IWorld& world, const std::string& name, const Vector3& position, const Vector3& rotation);
-	BaseActor(const std::string& name = "none");
+	explicit BaseActor(const std::string& name = "none");
 	virtual ~BaseActor();
 
 	void update();

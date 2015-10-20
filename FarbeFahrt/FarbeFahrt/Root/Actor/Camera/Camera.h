@@ -11,7 +11,7 @@ class Camera :
 	public BaseActor
 {
 public:
-	Camera(IWorld& world);
+	explicit Camera(IWorld& world);
 private:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
@@ -19,6 +19,7 @@ private:
 	void fadeInCamera();
 	void fadeOutCamera();
 	void defaultCamera();
+	void lockCamera();
 	void initCamera();
 	void cameraSet();
 	void toPlayerCamera();

@@ -42,10 +42,10 @@ public:
 	Vector2(float x, float y);
 
 	/// <summary>三次元ベクトルから構築する</summary>
-	Vector2(const Vector3& v);
+	explicit Vector2(const Vector3& v);
 
 	/// <summary>二次元点から構築する</summary>
-	Vector2(const Point2& v);
+	explicit Vector2(const Point2& v);
 
 	/// <summary>代入演算子</summary>
 	Vector2& operator = (const Vector2& v);

@@ -5,7 +5,7 @@
 class nowLoading
 {
 public:
-	nowLoading(Renderer render);
+	explicit nowLoading(Renderer render);
 
 private:
 

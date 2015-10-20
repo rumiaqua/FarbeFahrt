@@ -11,7 +11,7 @@ class IShape
 {
 public:
 
-	IShape(const Vector3& origin);
+	explicit IShape(const Vector3& origin);
 
 	virtual ~IShape();
 

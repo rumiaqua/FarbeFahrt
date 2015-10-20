@@ -49,13 +49,13 @@ public:
 	Vector3(float x, float y, float z);
 
 	/// <summary>四次元ベクトルから構築する</summary>
-	Vector3(const Vector4& v);
+	explicit Vector3(const Vector4& v);
 
 	/// <summary>三次元点から構築する</summary>
-	Vector3(const Point3& v);
+	explicit Vector3(const Point3& v);
 
 	/// <summary>DxLibのベクトルから構築する</summary>
-	Vector3(const VECTOR& v);
+	explicit Vector3(const VECTOR& v);
 
 	/// <summary>代入演算子</summary>
 	Vector3& operator = (const Vector3& v);

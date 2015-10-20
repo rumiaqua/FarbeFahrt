@@ -25,7 +25,7 @@ public:
 	Matrix();
 
 	/// <summary>配列から構築する</summary>
-	Matrix(const float* m);
+	explicit Matrix(const float* m);
 
 	/// <summary>要素を指定して構築する</summary>
 	Matrix(

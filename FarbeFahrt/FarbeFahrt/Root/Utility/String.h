@@ -11,19 +11,19 @@ public:
 
 	/// <summary>マルチバイト文字列で初期化</summary>
 	/// <param name="str">マルチバイト文字列</param>
-	String(const char* str);
+	explicit String(const char* str);
 
 	/// <summary>ワイド文字列で初期化</summary>
 	/// <param name="str">ワイド文字列</param>
-	String(const wchar_t* str);
+	explicit String(const wchar_t* str);
 
 	/// <summary>stringクラスで初期化</summary>
 	/// <param name="str">stringクラス</param>
-	String(const std::string& str);
+	explicit String(const std::string& str);
 
 	/// <summary>wstringクラスで初期化</summary>
 	/// <param name="str">wstringクラス</param>
-	String(const std::wstring& str);
+	explicit String(const std::wstring& str);
 
 public:
 

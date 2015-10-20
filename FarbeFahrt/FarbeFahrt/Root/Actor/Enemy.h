@@ -4,7 +4,7 @@ class Enemy :
 	public BaseActor
 {
 public:
-	Enemy(IWorld& world);
+	explicit Enemy(IWorld& world);
 public:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
