@@ -42,10 +42,10 @@ public:
 	Point2(int x, int y);
 
 	/// <summary>三次元点から構築する</summary>
-	Point2(const Point3& v);
+	explicit Point2(const Point3& v);
 
 	/// <summary>二次元点から構築する</summary>
-	Point2(const Vector2& v);
+	explicit Point2(const Vector2& v);
 
 	/// <summary>代入演算子</summary>
 	Point2& operator = (const Point2& v);

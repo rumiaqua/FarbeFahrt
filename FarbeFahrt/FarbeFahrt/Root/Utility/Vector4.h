@@ -33,7 +33,7 @@ public:
 	Vector4(const Vector3& v, float w);
 
 	/// <summary>四次元点から構築する</summary>
-	Vector4(const Point4& v);
+	explicit Vector4(const Point4& v);
 
 	/// <summary>代入演算子</summary>
 	Vector4& operator = (const Vector4& v);

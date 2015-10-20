@@ -368,7 +368,7 @@ Matrix& Matrix::rotate(Matrix& matrix, const Vector3& axis, float angle)
 
 Matrix& Matrix::rotate(Matrix& matrix, const Vector4& rotation)
 {
-	return rotate(matrix, rotation, rotation.w);
+	return rotate(matrix, Vector3(rotation), rotation.w);
 }
 
 Matrix& Matrix::scale(Matrix& matrix, const Vector3& scaling)
@@ -386,7 +386,7 @@ Matrix& Matrix::transform(Matrix& matrix, const Vector3& translation, const Vect
 
 Matrix& Matrix::transform(Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling)
 {
-	return transform(matrix, translation, rotation, rotation.w, scaling);
+	return transform(matrix, translation, Vector3(rotation), rotation.w, scaling);
 }
 
 Matrix& Matrix::transpose(Matrix& matrix)
@@ -414,7 +414,7 @@ Matrix Matrix::rotated(const Matrix& matrix, const Vector3& axis, float angle)
 Matrix Matrix::rotated(const Matrix& matrix, const Vector4& rotation)
 {
 	Matrix m = matrix;
-	return rotate(m, rotation, rotation.w);
+	return rotate(m, Vector3(rotation), rotation.w);
 }
 
 Matrix Matrix::scaled(const Matrix& matrix, const Vector3& scaling)
@@ -432,7 +432,7 @@ Matrix Matrix::transformed(const Matrix& matrix, const Vector3& translation, con
 Matrix Matrix::transformed(const Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling)
 {
 	Matrix m = matrix;
-	return transform(m, translation, rotation, rotation.w, scaling);
+	return transform(m, translation, Vector3(rotation), rotation.w, scaling);
 }
 
 Matrix Matrix::transposed(const Matrix& matrix)
@@ -671,7 +671,7 @@ Matrix operator * (const Matrix& m1, const Matrix& m2)
 
 Vector3 operator * (const Vector3& v, const Matrix& m)
 {
-	return Vector4(v, 1.0f) * m;
+	return Vector3(Vector4(v, 1.0f) * m);
 }
 
 Vector4 operator * (const Vector4& v, const Matrix& m)

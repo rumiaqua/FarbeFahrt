@@ -48,10 +48,10 @@ public:
 	Point3(int x, int y, int z);
 
 	/// <summary>四次元点から構築する</summary>
-	Point3(const Point4& v);
+	explicit Point3(const Point4& v);
 
 	/// <summary>三次元ベクトルから構築する</summary>
-	Point3(const Vector3& v);
+	explicit Point3(const Vector3& v);
 
 	/// <summary>代入演算子</summary>
 	Point3& operator = (const Point3& v);

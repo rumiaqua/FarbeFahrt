@@ -45,6 +45,7 @@ void Camera::onUpdate()
 	printfDx("cur.x:%f cur.y:%f cur.z:%f\n", currentPos.x, currentPos.y, currentPos.z);
 	printfDx("t:%f\n", t);*/
 }
+
 void Camera::angleReset(float &ang)
 {
 	if (abs(ang) >= DX_PI_F * 2)
