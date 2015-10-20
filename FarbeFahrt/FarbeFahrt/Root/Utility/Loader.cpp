@@ -67,13 +67,13 @@ void Loader::ErrLog(int contentHandle, const std::string& filename)
 }
 void Loader::load()
 {
-	//SetUseASyncLoadFlag(TRUE);
+	SetUseASyncLoadFlag(TRUE);
 	for (auto& data : m_ContentList)
 	{
 		data.second.handle = m_LoadFunc[GetExtension(data.second.filename)].func( ("Resources/" + data.second.filename).c_str());
 
 	}
-	//SetUseASyncLoadFlag(FALSE);
+	SetUseASyncLoadFlag(FALSE);
 	isLoadCompleted = false;
 }
 bool Loader::isLoad()
