@@ -7,7 +7,7 @@
 # include "Utility/MemoryCast.h"
 
 Camera::Camera(IWorld& world) :
-BaseActor(world, "Camera", Vector3::zero(), Vector3::zero())
+	BaseActor(world, "Camera", Vector3::zero(), Vector3::zero())
 {
 	ang = 0.0f;
 	focusRot = { 0, 0, 0 };
@@ -26,11 +26,11 @@ BaseActor(world, "Camera", Vector3::zero(), Vector3::zero())
 	chaseFlag = false;
 	cameraMode = CameraMode::Init;
 
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Chase, [this](){ this->chaseCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeIn, [this](){ this->fadeInCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeOut, [this](){ this->fadeOutCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Default, [this](){ this->defaultCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Init, [this](){ this->initCamera(); }));
+	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Chase, [this] () { this->chaseCamera(); }));
+	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeIn, [this] () { this->fadeInCamera(); }));
+	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeOut, [this] () { this->fadeOutCamera(); }));
+	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Default, [this] () { this->defaultCamera(); }));
+	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Init, [this] () { this->initCamera(); }));
 }
 void Camera::onUpdate()
 {
@@ -69,42 +69,42 @@ void Camera::onDraw(Renderer& render)const
 }
 
 void Camera::chaseCamera()
-	{
+{
 	playerCheck();
 
-	dif = VSub(targetPos, position);
-		currentPos = position;
-	targetPos = VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
+	dif = targetPos - position;
+	currentPos = position;
+	targetPos = player->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
 	currentRot = GetCameraTarget();
-	targetRot = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
-	rotation = VGet(0.0f, ang, 0.0f);
-	}
+	targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	rotation = Vector3(0.0f, ang, 0.0f);
+}
 
 void Camera::fadeInCamera()
-	{
+{
 	playerCheck();
 
-	dif = VSub(targetPos, position);
+	dif = targetPos - position;
 	currentPos = position;
-	targetPos = VAdd(playerPos, VGet(0.0f, 20.0f, -30.0f));
+	targetPos = playerPos + Vector3(0.0f, 20.0f, -30.0f);
 	currentRot = GetCameraTarget();
-	targetRot = VAdd(playerPos, VGet(0.0f, 15.0f, 0.0f));
-	rotation = VGet(0.0f, ang, 0.0f);
+	targetRot = playerPos + Vector3(0.0f, 15.0f, 0.0f);
+	rotation = Vector3(0.0f, ang, 0.0f);
 	chaseFlag = true;
 	cameraMode = CameraMode::Default;
-	}
-	
+}
+
 void Camera::fadeOutCamera()
-	{
+{
 	playerCheck();
 
-	dif = VSub(targetPos, position);
-		currentPos = position;
+	dif = targetPos - position;
+	currentPos = position;
 	targetPos = { 0.0f, 140.0f, -150.0f };
 	currentRot = GetCameraTarget();
 	targetRot = { 0.0f, 0.0f, 0.0f };
 	cameraMode = CameraMode::Default;
-	}
+}
 
 void Camera::defaultCamera()
 {
@@ -112,23 +112,23 @@ void Camera::defaultCamera()
 
 	if (chaseFlag == true)
 	{
-		targetPos = VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
-		targetRot = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
+		targetPos = player->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+		targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 		if (t >= 1)
-	{
+		{
 			chaseFlag = false;
 			cameraMode = CameraMode::Chase;
-	}
+		}
 	}
 }
 
 void Camera::initCamera()
-	{
+{
 	playerCheck();
 
-	targetPos = VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
-	targetRot = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
-	rotation = VGet(0.0f, ang, 0.0f);
+	targetPos = player->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+	targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	rotation = Vector3(0.0f, ang, 0.0f);
 
 	rotate(position.x, position.z, ang, focusRot.x, focusRot.z);
 	position = targetPos;
@@ -174,16 +174,16 @@ void Camera::toPlayerCamera()
 		cameraMode = CameraMode::FadeIn;
 		t = 0;
 	}
-	}
+}
 
 void Camera::cameraControl()
 {
 	if (t < 1)
 	{
 		return;
-}
+	}
 	else
-{
+	{
 		toBookCamera();
 		toPlayerCamera();
 	}

@@ -31,13 +31,13 @@ private:
 	void rotate(float &x, float &z, const float ang, const float targetX, const float targetY);
 	void angleReset(float &ang);
 private:
-	VECTOR targetPos;
-	VECTOR currentPos;
-	VECTOR targetRot;
-	VECTOR currentRot;
-	VECTOR focusRot;
-	VECTOR dif;
-	VECTOR playerPos;
+	Vector3 targetPos;
+	Vector3 currentPos;
+	Vector3 targetRot;
+	Vector3 currentRot;
+	Vector3 focusRot;
+	Vector3 dif;
+	Vector3 playerPos;
 
 	bool chaseFlag;
 

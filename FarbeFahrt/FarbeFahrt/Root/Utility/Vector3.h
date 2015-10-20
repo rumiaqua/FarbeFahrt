@@ -55,7 +55,7 @@ public:
 	explicit Vector3(const Point3& v);
 
 	/// <summary>DxLibのベクトルから構築する</summary>
-	explicit Vector3(const VECTOR& v);
+	Vector3(const VECTOR& v);
 
 	/// <summary>代入演算子</summary>
 	Vector3& operator = (const Vector3& v);
