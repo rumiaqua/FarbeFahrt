@@ -14,36 +14,36 @@ Triangle::Triangle(const Vector3& p0, const Vector3& p1, const Vector3& p2)
 
 }
 
-bool Triangle::intersects(const IShape* shape) const
+bool Triangle::intersects(const IShape& shape) const
 {
-	return shape->intersects(this);
+	return shape.intersects(*this);
 }
 
-bool Triangle::intersects(const Sphere* shape) const
+bool Triangle::intersects(const Sphere& shape) const
 {
-	return Collision::intersects(this, shape);
+	return Collision::intersects(*this, shape);
 }
 
-bool Triangle::intersects(const Capsule* shape) const
+bool Triangle::intersects(const Capsule& shape) const
 {
-	return Collision::intersects(this, shape);
+	return Collision::intersects(*this, shape);
 }
 
-bool Triangle::intersects(const Line* shape) const
+bool Triangle::intersects(const Line& shape) const
 {
-	return Collision::intersects(this, shape);
+	return Collision::intersects(*this, shape);
 }
 
-bool Triangle::intersects(const Triangle* shape) const
+bool Triangle::intersects(const Triangle& shape) const
 {
-	return Collision::intersects(this, shape);
+	return Collision::intersects(*this, shape);
 }
 
 void Triangle::draw() const
 {
 	DrawTriangle3D(
-		memory_cast<VECTOR>(origin),
-		memory_cast<VECTOR>(p1),
-		memory_cast<VECTOR>(p2),
+		origin,
+		p1,
+		p2,
 		-1, FALSE);
 }

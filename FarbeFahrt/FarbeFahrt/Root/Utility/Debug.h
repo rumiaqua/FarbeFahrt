@@ -30,6 +30,14 @@ public:
 		printfDx(format, std::forward<Args>(args)...);
 	}
 
+	/// <summary>画面にデバッグ表示したあと改行する</summary>
+	template <typename ...Args>
+	inline static void println(const char* format, Args&& ...args)
+	{
+		print(format, args);
+		printfDx("\n");
+	}
+
 	/// <summary>更新処理</summary>
 	static void update();
 
@@ -45,7 +53,12 @@ public:
 	/// <summary>メッセージボックスを表示する</summary>
 	static void show(const char* messsage, const char* caption, UINT style);
 
+	/// <summary>フォントサイズを変更する</summary>
+	static void changeFontSize(int fontSize);
+
 private:
 
 	bool m_isClear;
+
+	int m_fontSize;
 };

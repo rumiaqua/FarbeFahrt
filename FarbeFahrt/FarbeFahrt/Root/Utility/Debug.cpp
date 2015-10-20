@@ -2,6 +2,7 @@
 
 Debug::Debug()
 	: m_isClear(false)
+	, m_fontSize(GetFontSize())
 {
 
 }
@@ -38,4 +39,9 @@ void Debug::clear()
 void Debug::show(const char* message, const char* caption, UINT style)
 {
 	MessageBox(NULL, message, caption, style);
+}
+
+void Debug::changeFontSize(int fontSize)
+{
+	SetFontSize(instance().m_fontSize = fontSize);
 }

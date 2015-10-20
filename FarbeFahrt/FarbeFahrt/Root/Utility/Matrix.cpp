@@ -82,9 +82,10 @@ Matrix::Matrix(
 
 }
 
-Matrix::Matrix(const Matrix& m)
-	: Matrix(m.elm)
+Matrix::Matrix(const MATRIX& m)
+	: Matrix(&m.m[0][0])
 {
+
 }
 
 Matrix& Matrix::operator = (const Matrix& m)
@@ -120,6 +121,16 @@ Matrix::operator float* ()
 Matrix::operator const float* () const
 {
 	return elm;
+}
+
+Matrix::operator MATRIX& ()
+{
+	return memory_cast<MATRIX>(*this);
+}
+
+Matrix::operator const MATRIX& () const
+{
+	return memory_cast<MATRIX>(*this);
 }
 
 bool Matrix::isIdentity() const

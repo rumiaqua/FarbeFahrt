@@ -15,15 +15,15 @@ public:
 
 	virtual ~IShape();
 
-	virtual bool intersects(const IShape* shape) const = 0;
+	virtual bool intersects(const IShape& shape) const = 0;
 
-	virtual bool intersects(const Sphere* shape) const = 0;
+	virtual bool intersects(const Sphere& shape) const = 0;
 
-	virtual bool intersects(const Capsule* shape) const = 0;
+	virtual bool intersects(const Capsule& shape) const = 0;
 
-	virtual bool intersects(const Line* shape) const = 0;
+	virtual bool intersects(const Line& shape) const = 0;
 
-	virtual bool intersects(const Triangle* shape) const = 0;
+	virtual bool intersects(const Triangle& shape) const = 0;
 
 	virtual void draw() const = 0;
 
