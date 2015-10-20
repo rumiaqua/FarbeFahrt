@@ -288,6 +288,12 @@ public:
 
 	static Vector4 forward(const Matrix& matrix);
 
+	static Vector3 translation(const Matrix& matrix);
+
+	static Matrix rotation(const Matrix& matrix);
+
+	static Vector3 scaling(const Matrix& matrix);
+
 public:
 
 	static Matrix lookAt(const Vector3& position, const Vector3& target, const Vector3& up);
@@ -295,6 +301,8 @@ public:
 	static Matrix perspective(float fov, float aspect, float nearclip, float farclip);
 
 	static Matrix viewport(int width, int height);
+
+	static Matrix lerp(const Matrix& m1, const Matrix& m2, float t);
 
 public:
 
