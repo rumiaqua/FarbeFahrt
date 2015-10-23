@@ -11,19 +11,19 @@ public:
 
 	/// <summary>マルチバイト文字列で初期化</summary>
 	/// <param name="str">マルチバイト文字列</param>
-	explicit String(const char* str);
+	String(const char* str);
 
 	/// <summary>ワイド文字列で初期化</summary>
 	/// <param name="str">ワイド文字列</param>
-	explicit String(const wchar_t* str);
+	String(const wchar_t* str);
 
 	/// <summary>stringクラスで初期化</summary>
 	/// <param name="str">stringクラス</param>
-	explicit String(const std::string& str);
+	String(const std::string& str);
 
 	/// <summary>wstringクラスで初期化</summary>
 	/// <param name="str">wstringクラス</param>
-	explicit String(const std::wstring& str);
+	String(const std::wstring& str);
 
 public:
 
@@ -46,12 +46,6 @@ public:
 	/// <summary>マルチバイト文字列を返す</summary>
 	std::string toNarrow() const;
 
-	/// <summary>マルチバイト文字列を返す</summary>
-	const char* const c_str() const;
-
-	/// <summary>ワイド文字列を返す</summary>
-	const wchar_t* const w_str() const;
-
 public:
 
 	/// <summary>文字列の長さを返す</summary>
@@ -73,14 +67,6 @@ public:
 	/// <summary>ワイド文字列を返す</summary>
 	/// <param name="str">文字列</param>
 	static std::wstring toWide(const String& str);
-
-	/// <summary>マルチバイト文字列を返す</summary>
-	/// <param name="str">文字列</param>
-	static const char* const c_str(const String& str);
-
-	/// <summary>ワイド文字列を返す</summary>
-	/// <param name="str">文字列</param>
-	static const wchar_t* const w_str(const String& str);
 
 	static String create(const String& value);
 

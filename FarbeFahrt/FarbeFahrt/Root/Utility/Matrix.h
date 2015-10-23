@@ -1,6 +1,7 @@
 # pragma once
 
 # include "Vector4.h"
+# include <DxLib.h>
 
 // -------------------------------------------------------------------
 // 前置宣言
@@ -35,7 +36,7 @@ public:
 		float m41, float m42, float m43, float m44);
 
 	/// <summary>コピーコンストラクタ</summary>
-	Matrix(const Matrix& m);
+	Matrix(const MATRIX& m);
 
 	/// <summary>代入演算子</summary>
 	Matrix& operator = (const Matrix& m);
@@ -47,6 +48,10 @@ public:
 
 	/// <summary>配列に変換する</summary>
 	operator const float* () const;
+
+	operator MATRIX& ();
+
+	operator const MATRIX& () const;
 
 public:
 
@@ -288,6 +293,12 @@ public:
 
 	static Vector4 forward(const Matrix& matrix);
 
+	static Vector3 translation(const Matrix& matrix);
+
+	static Matrix rotation(const Matrix& matrix);
+
+	static Vector3 scaling(const Matrix& matrix);
+
 public:
 
 	static Matrix lookAt(const Vector3& position, const Vector3& target, const Vector3& up);
@@ -295,6 +306,8 @@ public:
 	static Matrix perspective(float fov, float aspect, float nearclip, float farclip);
 
 	static Matrix viewport(int width, int height);
+
+	static Matrix lerp(const Matrix& m1, const Matrix& m2, float t);
 
 public:
 

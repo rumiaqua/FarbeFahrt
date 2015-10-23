@@ -27,7 +27,6 @@ private:
 	void toPlayerCamera();
 	void toBookCamera();
 	void toFixCamera();
-	void cameraControl();
 	void playerCheck();
 	void actorCheck(const std::string actorName);
 

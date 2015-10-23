@@ -96,7 +96,6 @@ void Camera::fadeInCamera()
 
 void Camera::fadeOutCamera()
 {
-	t = 0;
 	currentPos = position;
 	targetPos = { 0.0f, 140.0f, -150.0f };
 	currentRot = memory_cast<Vector3>(GetCameraTarget());
@@ -125,7 +124,7 @@ void Camera::lockCamera()
 
 	currentRot = memory_cast<Vector3>(GetCameraTarget());
 	targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
-	
+
 	//ˆÚs‚Å‚«‚éƒJƒƒ‰
 	toBookCamera();
 	toPlayerCamera();
@@ -224,26 +223,12 @@ void Camera::toFixCamera()
 	}
 }
 
-void Camera::cameraControl()
-{
-	if (t < 1)
-	{
-		return;
-	}
-	else
-	{
-		toBookCamera();
-		toPlayerCamera();
-		toFixCamera();
-	}
-}
-
 void Camera::playerCheck()
 {
-	player = world->findActor("Player");	
+	player = world->findActor("Player");
 }
 
 void Camera::actorCheck(const std::string actorName)
 {
-	actor = world->findActor(actorName);	
+	actor = world->findActor(actorName);
 }

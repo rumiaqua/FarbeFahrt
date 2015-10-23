@@ -25,9 +25,17 @@ public:
 
 	/// <summary>画面にデバッグ表示する</summary>
 	template <typename ...Args>
-	inline static void print(const char* format, Args&& ...args)
+	inline static void print(const String& format, Args&& ...args)
 	{
-		printfDx(format, std::forward<Args>(args)...);
+		printfDx(format.toNarrow().c_str(), std::forward<Args>(args)...);
+	}
+
+	/// <summary>画面にデバッグ表示したあと改行する</summary>
+	template <typename ...Args>
+	inline static void println(const String& format, Args&& ...args)
+	{
+		print(format.toNarrow().c_str(), std::forward<Args>(args)...);
+		printfDx("\n");
 	}
 
 	/// <summary>更新処理</summary>
@@ -45,7 +53,12 @@ public:
 	/// <summary>メッセージボックスを表示する</summary>
 	static void show(const char* messsage, const char* caption, UINT style);
 
+	/// <summary>フォントサイズを変更する</summary>
+	static void changeFontSize(int fontSize);
+
 private:
 
 	bool m_isClear;
+
+	int m_fontSize;
 };

@@ -1,4 +1,5 @@
 #include "Mouse.h"
+# include "Matrix.h"
 
 # include <DxLib.h>
 
@@ -64,17 +65,14 @@ int Mouse::scrollValue()
 
 Vector3 Mouse::screenPointToWorld(float z)
 {
-	MATRIX view = GetCameraViewMatrix();
-	MATRIX projection = GetCameraProjectionMatrix();
-	MATRIX viewport = GetCameraViewportMatrix();
-	MATRIX inverse = MInverse(MMult(MMult(view, projection), viewport));
-	float w = 1.0f;
+	Matrix view = GetCameraViewMatrix();
+	Matrix projection = GetCameraProjectionMatrix();
+	Matrix viewport = GetCameraViewportMatrix();
+	Matrix inverse = (view * projection * viewport).inversed();
 	Point2 pos = position();
-	Vector3 in { static_cast<float>(pos.x), static_cast<float>(pos.y), z };
-	Vector3 v;
-	VectorTransform4(&(VECTOR)v, &w, &(VECTOR)in, &w, &inverse);
-	v.x /= w;
-	v.y /= w;
-	v.z /= w;
-	return v;
+	Vector4 v = Vector4(static_cast<float>(pos.x), static_cast<float>(pos.y), z, 1.0f) * inverse;
+	v.x /= v.w;
+	v.y /= v.w;
+	v.z /= v.w;
+	return Vector3(v);
 }

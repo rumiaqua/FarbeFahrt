@@ -13,35 +13,35 @@ Line::Line(const Vector3& origin, const Vector3& end)
 
 }
 
-bool Line::intersects(const IShape* shape) const
+bool Line::intersects(const IShape& shape) const
 {
-	return shape->intersects(this);
+	return shape.intersects(*this);
 }
 
-bool Line::intersects(const Sphere* shape) const
+bool Line::intersects(const Sphere& shape) const
 {
-	return Collision::intersects(this, shape);
+	return Collision::intersects(*this, shape);
 }
 
-bool Line::intersects(const Capsule* shape) const
+bool Line::intersects(const Capsule& shape) const
 {
-	return Collision::intersects(this, shape);
+	return Collision::intersects(*this, shape);
 }
 
-bool Line::intersects(const Line* shape) const
+bool Line::intersects(const Line& shape) const
 {
-	return Collision::intersects(this, shape);
+	return Collision::intersects(*this, shape);
 }
 
-bool Line::intersects(const Triangle* shape) const
+bool Line::intersects(const Triangle& shape) const
 {
-	return Collision::intersects(this, shape);
+	return Collision::intersects(*this, shape);
 }
 
 void Line::draw() const
 {
 	DrawLine3D(
-		memory_cast<VECTOR>(origin),
-		memory_cast<VECTOR>(end),
+		origin,
+		end,
 		-1);
 }
