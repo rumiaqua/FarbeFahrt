@@ -5,6 +5,10 @@
 
 # include "Utility/Vector3.h"
 # include "Utility/MemoryCast.h"
+#include "Utility/MemoryCast.h"
+#include "Utility/String.h"
+
+#include "Utility/Debug.h"
 
 Camera::Camera(IWorld& world) :
 BaseActor(world, "Camera", Vector3::zero(), Vector3::zero())
@@ -23,27 +27,25 @@ BaseActor(world, "Camera", Vector3::zero(), Vector3::zero())
 
 	second = 1;
 
-	chaseFlag = false;
+	chaseFlag = ChaseFlag::Void;
 	cameraMode = CameraMode::Init;
+
+	actor = nullptr;
 
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Chase, [this](){ this->chaseCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeIn, [this](){ this->fadeInCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeOut, [this](){ this->fadeOutCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Default, [this](){ this->defaultCamera(); }));
+	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeInFix, [this](){ this->fadeInFixCamera(); }));
+	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::LockAt, [this](){ this->lockCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Init, [this](){ this->initCamera(); }));
 }
 void Camera::onUpdate()
 {
 	playerCheck();
+	if (player == nullptr)return;
 
-	cameraControl();
 	cameraSet();
-
-	/*clsDx();
-	printfDx("pos_.x:%f pos_.y:%f pos_.z:%f\n", position.x, position.y, position.z);
-	printfDx("target.x:%f target.y:%f target.z:%f\n", targetPos.x, targetPos.y, targetPos.z);
-	printfDx("cur.x:%f cur.y:%f cur.z:%f\n", currentPos.x, currentPos.y, currentPos.z);
-	printfDx("t:%f\n", t);*/
 }
 
 void Camera::angleReset(float &ang)
@@ -55,6 +57,7 @@ void Camera::angleReset(float &ang)
 		printfDx("%f\n", ang);
 	}
 }
+
 void Camera::rotate(float &x, float &z, const float ang, const float targetX, const float targetZ)
 {
 	const float ox = x - targetX, oy = z - targetZ;
@@ -69,66 +72,99 @@ void Camera::onDraw(Renderer& render)const
 }
 
 void Camera::chaseCamera()
-	{
-	playerCheck();
+{
+	currentPos = position;
+	targetPos = player->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+	currentRot = memory_cast<Vector3>(GetCameraTarget());
+	targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 
-	dif = VSub(targetPos, position);
-		currentPos = position;
-	targetPos = VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
-	currentRot = GetCameraTarget();
-	targetRot = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
-	rotation = VGet(0.0f, ang, 0.0f);
-	}
+	//移行できるカメラ
+	toBookCamera();
+	toFixCamera();
+}
 
 void Camera::fadeInCamera()
-	{
-	playerCheck();
-
-	dif = VSub(targetPos, position);
+{
 	currentPos = position;
-	targetPos = VAdd(playerPos, VGet(0.0f, 20.0f, -30.0f));
-	currentRot = GetCameraTarget();
-	targetRot = VAdd(playerPos, VGet(0.0f, 15.0f, 0.0f));
-	rotation = VGet(0.0f, ang, 0.0f);
-	chaseFlag = true;
+	t = 0;
+	targetPos = playerPos + Vector3(0.0f, 20.0f, -30.0f);
+	currentRot = memory_cast<Vector3>(GetCameraTarget());
+	targetRot = playerPos + Vector3(0.0f, 15.0f, 0.0f);
+	chaseFlag = ChaseFlag::Move;
 	cameraMode = CameraMode::Default;
-	}
-	
-void Camera::fadeOutCamera()
-	{
-	playerCheck();
+}
 
-	dif = VSub(targetPos, position);
-		currentPos = position;
+void Camera::fadeOutCamera()
+{
+	t = 0;
+	currentPos = position;
 	targetPos = { 0.0f, 140.0f, -150.0f };
-	currentRot = GetCameraTarget();
+	currentRot = memory_cast<Vector3>(GetCameraTarget());
 	targetRot = { 0.0f, 0.0f, 0.0f };
 	cameraMode = CameraMode::Default;
-	}
+}
+
+void Camera::fadeInFixCamera()
+{
+	actorCheck(actor->getName());
+	if (actor == nullptr)return;
+
+	currentPos = position;
+	targetPos = position;
+	t = 0;
+	currentRot = memory_cast<Vector3>(GetCameraTarget());
+	targetRot = actorPos + Vector3(0.0f, 15.0f, 0.0f);
+	chaseFlag = ChaseFlag::Stay;
+	cameraMode = CameraMode::Default;
+}
+
+void Camera::lockCamera()
+{
+	actorCheck(actor->getName());
+	if (actor == nullptr)return;
+
+	currentRot = memory_cast<Vector3>(GetCameraTarget());
+	targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	
+	//移行できるカメラ
+	toBookCamera();
+	toPlayerCamera();
+}
 
 void Camera::defaultCamera()
 {
-	playerCheck();
-
-	if (chaseFlag == true)
+	if (chaseFlag == ChaseFlag::Move)
 	{
-		targetPos = VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
-		targetRot = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
+		targetPos = player->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+		targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 		if (t >= 1)
-	{
-			chaseFlag = false;
+		{
+			chaseFlag = ChaseFlag::Void;
 			cameraMode = CameraMode::Chase;
+		}
 	}
+	else if (chaseFlag == ChaseFlag::Stay)
+	{
+		targetPos = position;
+		targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+		if (t >= 1)
+		{
+			chaseFlag = ChaseFlag::Void;
+			cameraMode = CameraMode::LockAt;
+		}
+	}
+	else
+	{
+		//移行できるカメラ
+		toPlayerCamera();
+		toFixCamera();
 	}
 }
 
 void Camera::initCamera()
-	{
-	playerCheck();
-
-	targetPos = VAdd(player->getPosition(), VGet(0.0f, 20.0f, -30.0f));
-	targetRot = VAdd(player->getPosition(), VGet(0.0f, 15.0f, 0.0f));
-	rotation = VGet(0.0f, ang, 0.0f);
+{
+	targetPos = player->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+	targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 
 	rotate(position.x, position.z, ang, focusRot.x, focusRot.z);
 	position = targetPos;
@@ -144,7 +180,6 @@ void Camera::cameraSet()
 	funcs.at(cameraMode)();
 
 	rotate(position.x, position.z, ang, focusRot.x, focusRot.z);
-
 	t += 1 / (60.0f * second);
 	t = t > 1.0f ? 1.0f : t;
 	position = Vector3::lerp(currentPos, targetPos, static_cast<float>(Math::sin(Math::HalfPi * t)));
@@ -156,10 +191,10 @@ void Camera::cameraSet()
 //キー：Zで本視点
 void Camera::toBookCamera()
 {
-	if (Input::isClicked(KEY_INPUT_Z) && cameraMode == CameraMode::Chase)
+	if (Input::isClicked(KEY_INPUT_Z))
 	{
-		cameraMode = CameraMode::FadeOut;
 		t = 0;
+		cameraMode = CameraMode::FadeOut;
 	}
 }
 
@@ -167,30 +202,48 @@ void Camera::toBookCamera()
 void Camera::toPlayerCamera()
 {
 	playerCheck();
+	if (player == nullptr)return;
 
-	if (Input::isClicked(KEY_INPUT_X) && cameraMode == CameraMode::Default)
+	if (Input::isClicked(KEY_INPUT_X))
 	{
 		playerPos = player->getPosition();
 		cameraMode = CameraMode::FadeIn;
-		t = 0;
 	}
+}
+
+//キー：Cでカメラ固定回転
+void Camera::toFixCamera()
+{
+	actorCheck("Player");
+	if (actor == nullptr)return;
+
+	if (Input::isClicked(KEY_INPUT_C))
+	{
+		actorPos = actor->getPosition();
+		cameraMode = CameraMode::FadeInFix;
 	}
+}
 
 void Camera::cameraControl()
 {
 	if (t < 1)
 	{
 		return;
-}
+	}
 	else
-{
+	{
 		toBookCamera();
 		toPlayerCamera();
+		toFixCamera();
 	}
 }
 
 void Camera::playerCheck()
 {
-	player = world->findActor("Player");
-	if (player == nullptr)return;
+	player = world->findActor("Player");	
+}
+
+void Camera::actorCheck(const std::string actorName)
+{
+	actor = world->findActor(actorName);	
 }

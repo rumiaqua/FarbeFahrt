@@ -2,6 +2,7 @@
 #include "Actor/BaseActor.h"
 #include "Utility/Def.h"
 #include "CameraMode.h"
+#include "ChaseFlag.h"
 #include "Utility/Input.h"
 
 #include <functional>
@@ -19,29 +20,33 @@ private:
 	void fadeInCamera();
 	void fadeOutCamera();
 	void defaultCamera();
+	void fadeInFixCamera();
 	void lockCamera();
 	void initCamera();
 	void cameraSet();
 	void toPlayerCamera();
 	void toBookCamera();
+	void toFixCamera();
 	void cameraControl();
 	void playerCheck();
+	void actorCheck(const std::string actorName);
+
+	std::shared_ptr<BaseActor> actor;
 private:
 	//ÉJÉÅÉââÒì]
 	void rotate(float &x, float &z, const float ang, const float targetX, const float targetY);
 	void angleReset(float &ang);
 private:
-	VECTOR targetPos;
-	VECTOR currentPos;
-	VECTOR targetRot;
-	VECTOR currentRot;
-	VECTOR focusRot;
-	VECTOR dif;
-	VECTOR playerPos;
-
-	bool chaseFlag;
+	Vector3 targetPos;
+	Vector3 currentPos;
+	Vector3 targetRot;
+	Vector3 currentRot;
+	Vector3 focusRot;
+	Vector3 playerPos;
+	Vector3 actorPos;
 
 	CameraMode cameraMode;
+	ChaseFlag chaseFlag;
 
 	float t = 0.0f;
 	float second;

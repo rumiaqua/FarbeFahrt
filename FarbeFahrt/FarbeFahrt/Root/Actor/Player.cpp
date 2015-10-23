@@ -22,7 +22,7 @@ BaseActor(world, "Player", position, Vector3(0.0f, DX_PI_F, 0.0f))
 }
 void Player::onUpdate()
 {
-	IShape* s = new Sphere(position, 10.0f);
+	/*IShape* s = new Sphere(position, 10.0f);
 
 	IShape* t = new Sphere({ 0, position.y, 0 }, 10.0f);
 
@@ -35,7 +35,7 @@ void Player::onUpdate()
 	}
 
 	delete s;
-	delete t;
+	delete t;*/
 
 	playerInput();
 }
