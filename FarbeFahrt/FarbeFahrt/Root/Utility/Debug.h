@@ -34,7 +34,7 @@ public:
 	template <typename ...Args>
 	inline static void println(const char* format, Args&& ...args)
 	{
-		print(format, args);
+		print(format, std::forward<Args>(args)...);
 		printfDx("\n");
 	}
 
