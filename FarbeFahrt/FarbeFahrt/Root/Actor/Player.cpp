@@ -23,12 +23,10 @@ void Player::playerInput()
 	Vector3 moveVec;
 	// カメラ座標
 	const Vector3 cameraPos = world->findCamera()->getPosition();
-	// カメラのY回転量
-	const float cameraRotateY = world->findCamera()->getRotation().y;
 	// 前方ベクトル
-	Vector3 frontVec = position - cameraPos;
+	Vector3 frontVec = Vector3::forward();
 	// 左方ベクトル
-	Vector3 leftVec = Vector3::cross(frontVec, Vector3::up());
+	Vector3 leftVec = Vector3::left();
 
 	// XZ平面に射影して正規化
 	leftVec.y = 0;
@@ -50,17 +48,20 @@ void Player::playerInput()
 	{
 		moveVec -= leftVec * moveSpeed;
 	}
+	if (Input::isPressed(KEY_INPUT_W))
+	{
+		moveVec += frontVec * moveSpeed;
+	}
+	if (Input::isPressed(KEY_INPUT_S))
+	{
+		moveVec -= frontVec * moveSpeed;
+	}
 
 	// 移動量が0でなければ移動処理とモデル操作
 	if (moveVec.lengthSquared() != 0.0f)
 	{
 		// 平行移動
 		position += moveVec;
-		// 移動量に合わせてモデルを回転
-		float angle =
-			Vector3::angle(frontVec, moveVec) *
-			static_cast<float>(Math::sign(Vector3::cross(frontVec, moveVec).y));
-		rotation.y = cameraRotateY - angle + DX_PI_F;
 
 		state = PlayerState::walking;
 	}
