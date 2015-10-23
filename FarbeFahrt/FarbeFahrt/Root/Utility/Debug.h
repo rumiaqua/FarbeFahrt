@@ -1,7 +1,7 @@
 # pragma once
 
 # include <Dxlib.h>
-
+# include "String.h"
 # include <utility>
 
 /// <summary>デバッグ情報</summary>

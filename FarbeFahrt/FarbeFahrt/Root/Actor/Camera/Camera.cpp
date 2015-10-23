@@ -154,9 +154,12 @@ void Camera::defaultCamera()
 	}
 	else
 	{
-		//移行できるカメラ
-		toPlayerCamera();
-		toFixCamera();
+		if (t >= 1)
+		{
+			//移行できるカメラ
+			toPlayerCamera();
+			toFixCamera();
+		}
 	}
 }
 
@@ -178,7 +181,6 @@ void Camera::cameraSet()
 {
 	funcs.at(cameraMode)();
 
-	rotate(position.x, position.z, ang, focusRot.x, focusRot.z);
 	t += 1 / (60.0f * second);
 	t = t > 1.0f ? 1.0f : t;
 	position = Vector3::lerp(currentPos, targetPos, static_cast<float>(Math::sin(Math::HalfPi * t)));
