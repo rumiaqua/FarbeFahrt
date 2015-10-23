@@ -3,6 +3,7 @@
 # include "Vector2.h"
 # include "String.h"
 # include "Math.h"
+# include "MemoryCast.h"
 
 const Point2& Point2::zero()
 {
@@ -72,6 +73,13 @@ Point2::Point2(const Vector2& v)
 {
 }
 
+Point2::Point2(const POINT& p)
+	: x(p.x)
+	, y(p.y)
+{
+
+}
+
 Point2& Point2::operator = (const Point2& v)
 {
 	x = v.x;
@@ -87,6 +95,16 @@ Point2::operator int* ()
 Point2::operator const int* () const
 {
 	return elm;
+}
+
+Point2::operator POINT& ()
+{
+	return memory_cast<POINT>(*this);
+}
+
+Point2::operator const POINT& () const
+{
+	return memory_cast<POINT>(*this);
 }
 
 String Point2::toString() const

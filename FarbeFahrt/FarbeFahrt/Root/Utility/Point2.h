@@ -1,5 +1,7 @@
 # pragma once
 
+# include <DxLib.h>
+
 // -------------------------------------------------------------------
 // 前置宣言
 // -------------------------------------------------------------------
@@ -47,6 +49,9 @@ public:
 	/// <summary>二次元点から構築する</summary>
 	explicit Point2(const Vector2& v);
 
+	/// <summary>DxLib::POINTから構築する</summary>
+	Point2(const POINT& p);
+
 	/// <summary>代入演算子</summary>
 	Point2& operator = (const Point2& v);
 
@@ -57,6 +62,12 @@ public:
 
 	/// <summary>配列に変換する</summary>
 	operator const int* () const;
+
+	/// <summary>DxLib::POINTに変換する</summary>
+	operator POINT& ();
+
+	/// <summary>DxLib::POINTに変換する</summary>
+	operator const POINT& () const;
 
 public:
 
