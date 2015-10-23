@@ -25,16 +25,16 @@ public:
 
 	/// <summary>画面にデバッグ表示する</summary>
 	template <typename ...Args>
-	inline static void print(const char* format, Args&& ...args)
+	inline static void print(const String& format, Args&& ...args)
 	{
-		printfDx(format, std::forward<Args>(args)...);
+		printfDx(format.toNarrow().c_str(), std::forward<Args>(args)...);
 	}
 
 	/// <summary>画面にデバッグ表示したあと改行する</summary>
 	template <typename ...Args>
-	inline static void println(const char* format, Args&& ...args)
+	inline static void println(const String& format, Args&& ...args)
 	{
-		print(format, std::forward<Args>(args)...);
+		print(format.toNarrow().c_str(), std::forward<Args>(args)...);
 		printfDx("\n");
 	}
 

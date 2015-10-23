@@ -58,16 +58,6 @@ std::string String::toNarrow() const
 	return toNarrow(*this);
 }
 
-const char* const String::c_str() const
-{
-	return c_str(*this);
-}
-
-const wchar_t* const String::w_str() const
-{
-	return w_str(*this);
-}
-
 std::wstring String::toWide(const std::string& narrow)
 {
 	int length =
@@ -104,16 +94,6 @@ std::string String::toNarrow(const String& str)
 std::wstring String::toWide(const String& str)
 {
 	return str.m_str;
-}
-
-const char* const String::c_str(const String& str)
-{
-	return toNarrow(str).c_str();
-}
-
-const wchar_t * const String::w_str(const String& str)
-{
-	return toWide(str).c_str();
 }
 
 String String::create(const String& value)
