@@ -31,7 +31,7 @@ void ActorManager::addActor(ActorTag tag, const Actor& actor)
 {
 	m_actors[tag]->addChild(actor);
 }
-Actor ActorManager::findActor(const std::string& name)
+Actor ActorManager::findActor(const String& name)
 {
 	return m_root.findChildren(name);
 }

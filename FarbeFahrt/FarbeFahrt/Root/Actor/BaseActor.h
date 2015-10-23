@@ -6,11 +6,12 @@
 #include <algorithm>
 #include <functional>
 #include <forward_list>
-# include "Utility/Vector3.h"
+# include "Utility/Pose.h"
+# include "Utility/String.h"
 class BaseActor
 {
 public:
-	BaseActor(IWorld& world, const std::string& name, const Vector3& position, const Vector3& rotation);
+	BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation);
 	explicit BaseActor(const std::string& name = "none");
 	virtual ~BaseActor();
 
@@ -20,12 +21,16 @@ public:
 	bool isDead()const;
 	void kill();
 
-	const std::string& getName()const;
+	const String& getName()const;
 
-	Vector3 getPosition()const;
-	Vector3 getRotation()const;
+	Matrix getPose() const;
+	Vector3& getPosition();
+	const Vector3& getPosition() const;
+	Matrix& getRotation();
+	const Matrix& getRotation() const;
+	Matrix getWorldPose() const;
 
-	Actor findChildren(const std::string& name);
+	Actor findChildren(const String& name);
 	Actor findChildren(std::function<bool(const BaseActor&)>func);
 
 	void addChild(const Actor& child);
@@ -35,18 +40,21 @@ public:
 	void clearChildren();
 	void removeChildren();
 
+	void sendMessage(const String& message, const void* parameter);
+
 	BaseActor(const BaseActor& other) = delete;
 	BaseActor& operator = (const BaseActor& other) = delete;
 
 private:
 	virtual void onUpdate();
 	virtual void onDraw(Renderer& render)const;
+	virtual void onMessage(const String& message, const void* parameter);
 protected:
 	IWorld* world;
-	std::string name;
-	Vector3 position;
-	Vector3 rotation;
+	String name;
+	Pose pose;
 	bool dead;
 private:
+	ActorRef parent;
 	std::forward_list<Actor>children;
 };

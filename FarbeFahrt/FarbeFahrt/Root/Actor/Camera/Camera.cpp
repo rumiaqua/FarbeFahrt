@@ -11,7 +11,7 @@
 #include "Utility/Debug.h"
 
 Camera::Camera(IWorld& world) :
-BaseActor(world, "Camera", Vector3::zero(), Vector3::zero())
+BaseActor(world, "Camera", Vector3::zero(), Matrix::identity())
 {
 	ang = 0.0f;
 	focusRot = { 0, 0, 0 };
@@ -69,11 +69,13 @@ void Camera::rotate(float &x, float &z, const float ang, const float targetX, co
 
 void Camera::onDraw(Renderer& render)const
 {
+	Debug::println(String::create("focusRot : ", focusRot.toString()));
+	Debug::println(String::create("focusRot : ", focusRot.toString()));
 }
 
 void Camera::chaseCamera()
 {
-	currentPos = position;
+	currentPos = getPosition();
 	targetPos = player->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
 	currentRot = memory_cast<Vector3>(GetCameraTarget());
 	targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
@@ -85,7 +87,7 @@ void Camera::chaseCamera()
 
 void Camera::fadeInCamera()
 {
-	currentPos = position;
+	currentPos = getPosition();
 	t = 0;
 	targetPos = playerPos + Vector3(0.0f, 20.0f, -30.0f);
 	currentRot = memory_cast<Vector3>(GetCameraTarget());
@@ -96,7 +98,7 @@ void Camera::fadeInCamera()
 
 void Camera::fadeOutCamera()
 {
-	currentPos = position;
+	currentPos = getPosition();
 	targetPos = { 0.0f, 140.0f, -150.0f };
 	currentRot = memory_cast<Vector3>(GetCameraTarget());
 	targetRot = { 0.0f, 0.0f, 0.0f };
@@ -105,11 +107,11 @@ void Camera::fadeOutCamera()
 
 void Camera::fadeInFixCamera()
 {
-	actorCheck(actor->getName());
+	actorCheck(actor->getName().toNarrow());
 	if (actor == nullptr)return;
 
-	currentPos = position;
-	targetPos = position;
+	currentPos = getPosition();
+	targetPos = getPosition();
 	t = 0;
 	currentRot = memory_cast<Vector3>(GetCameraTarget());
 	targetRot = actorPos + Vector3(0.0f, 15.0f, 0.0f);
@@ -119,7 +121,7 @@ void Camera::fadeInFixCamera()
 
 void Camera::lockCamera()
 {
-	actorCheck(actor->getName());
+	actorCheck(actor->getName().toNarrow());
 	if (actor == nullptr)return;
 
 	currentRot = memory_cast<Vector3>(GetCameraTarget());
@@ -144,7 +146,7 @@ void Camera::defaultCamera()
 	}
 	else if (chaseFlag == ChaseFlag::Stay)
 	{
-		targetPos = position;
+		targetPos = getPosition();
 		targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 		if (t >= 1)
 		{
@@ -165,11 +167,11 @@ void Camera::initCamera()
 	targetPos = player->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
 	targetRot = player->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 
-	rotate(position.x, position.z, ang, focusRot.x, focusRot.z);
-	position = targetPos;
+	rotate(getPosition().x, getPosition().z, ang, focusRot.x, focusRot.z);
+	getPosition() = targetPos;
 	focusRot = targetRot;
 
-	SetCameraPositionAndTarget_UpVecY(position, focusRot);
+	SetCameraPositionAndTarget_UpVecY(getPosition(), focusRot);
 
 	cameraMode = CameraMode::Chase;
 }
@@ -178,13 +180,13 @@ void Camera::cameraSet()
 {
 	funcs.at(cameraMode)();
 
-	rotate(position.x, position.z, ang, focusRot.x, focusRot.z);
+	rotate(getPosition().x, getPosition().z, ang, focusRot.x, focusRot.z);
 	t += 1 / (60.0f * second);
 	t = t > 1.0f ? 1.0f : t;
-	position = Vector3::lerp(currentPos, targetPos, static_cast<float>(Math::sin(Math::HalfPi * t)));
+	getPosition() = Vector3::lerp(currentPos, targetPos, static_cast<float>(Math::sin(Math::HalfPi * t)));
 	focusRot = Vector3::lerp(currentRot, targetRot, static_cast<float>(Math::sin(Math::HalfPi * t)));
 
-	SetCameraPositionAndTarget_UpVecY(position, focusRot);
+	SetCameraPositionAndTarget_UpVecY(getPosition(), focusRot);
 }
 
 //キー：Zで本視点

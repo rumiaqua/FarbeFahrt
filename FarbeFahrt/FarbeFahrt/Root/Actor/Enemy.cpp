@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 Enemy::Enemy(IWorld& world) :
-BaseActor(world, "Skydome", Vector3::zero(), Vector3::zero())
+BaseActor(world, "Skydome", Vector3::zero(), Matrix::identity())
 {
 
 }

@@ -30,16 +30,18 @@ void Renderer::draw()const
 
 }
 
-void Renderer::drawNormalModel(const std::string& name, const VECTOR& position, const VECTOR& rotation)const
+void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const
 {
 	const int &handle = m_modelData.at(name).modelHandle;
 	MV1SetPosition(handle, position);
-	MV1SetRotationXYZ(handle, rotation);
+	float x, y, z;
+	GetMatrixXYZRotation(&(MATRIX&)rotation, &x, &y, &z);
+	MV1SetRotationXYZ(handle, { x, y, z });
 
 	MV1DrawModel(handle);
 
 }
-void Renderer::drawSkinModel(const std::string& name, const VECTOR& position, const VECTOR& rotation, int animNumber, float speed)
+void Renderer::drawSkinModel(const std::string& name, const Vector3& position, const Matrix& rotation, int animNumber, float speed)
 {
 	//見辛いから後々関数分けする予定
 	//サンプル丸パクリスペクト
@@ -98,7 +100,7 @@ void Renderer::drawSkinModel(const std::string& name, const VECTOR& position, co
 	drawNormalModel(name, position, rotation);
 }
 
-void Renderer::setScale(const std::string& name, const VECTOR& scale)
+void Renderer::setScale(const std::string& name, const Vector3& scale)
 {
 	MV1SetScale(m_modelData[name].modelHandle, scale);
 }

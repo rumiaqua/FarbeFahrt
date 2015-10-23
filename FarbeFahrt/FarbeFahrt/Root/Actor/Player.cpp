@@ -6,7 +6,7 @@
 # include "Utility/Vector3.h"
 
 Player::Player(IWorld& world, const Vector3& position) :
-BaseActor(world, "Player", position, Vector3(0.0f, DX_PI_F, 0.0f))
+BaseActor(world, "Player", position, Matrix::rotation(Vector3::up(), Math::Pi))
 , capsule(position, position, 5.0f)
 {
 	moveSpeed = 1.5f;
@@ -24,9 +24,9 @@ void Player::playerInput()
 	// カメラ座標
 	const Vector3 cameraPos = world->findCamera()->getPosition();
 	// カメラのY回転量
-	const float cameraRotateY = world->findCamera()->getRotation().y;
+	// const float cameraRotateY = world->findCamera()->getRotation().getVec().y;
 	// 前方ベクトル
-	Vector3 frontVec = position - cameraPos;
+	Vector3 frontVec = getPosition() - cameraPos;
 	// 左方ベクトル
 	Vector3 leftVec = Vector3::cross(frontVec, Vector3::up());
 
@@ -55,12 +55,12 @@ void Player::playerInput()
 	if (moveVec.lengthSquared() != 0.0f)
 	{
 		// 平行移動
-		position += moveVec;
+		getPosition() += moveVec;
 		// 移動量に合わせてモデルを回転
 		float angle =
 			Vector3::angle(frontVec, moveVec) *
 			static_cast<float>(Math::sign(Vector3::cross(frontVec, moveVec).y));
-		rotation.y = cameraRotateY - angle + DX_PI_F;
+		// rotation.y = cameraRotateY - angle + DX_PI_F;
 
 		state = PlayerState::walking;
 	}
@@ -72,5 +72,5 @@ void Player::playerInput()
 void Player::onDraw(Renderer& render)const
 {
 	//ここで描画方法変えられますよ
-	render.drawSkinModel("Player", position, rotation,(int)state,1.0f);
+	render.drawSkinModel("Player", getPosition(), getRotation(),(int)state,1.0f);
 }
