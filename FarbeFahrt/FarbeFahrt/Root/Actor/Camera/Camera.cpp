@@ -156,10 +156,13 @@ void Camera::defaultCamera()
 	}
 	else
 	{
+		if (t >= 1)
+		{
 		//ˆÚs‚Å‚«‚éƒJƒƒ‰
 		toPlayerCamera();
 		toFixCamera();
 	}
+}
 }
 
 void Camera::initCamera()
