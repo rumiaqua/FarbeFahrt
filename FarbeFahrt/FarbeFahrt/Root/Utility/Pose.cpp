@@ -9,7 +9,7 @@ Pose::Pose()
 
 Pose::Pose(const Vector3& position, const Matrix& matrix)
 	: position(position)
-	, rotation(rotation)
+	, rotation(matrix)
 {
 
 }

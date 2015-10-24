@@ -34,9 +34,7 @@ void Renderer::drawNormalModel(const std::string& name, const Vector3& position,
 {
 	const int &handle = m_modelData.at(name).modelHandle;
 	MV1SetPosition(handle, position);
-	float x, y, z;
-	GetMatrixXYZRotation(&(MATRIX&)rotation, &x, &y, &z);
-	MV1SetRotationXYZ(handle, { x, y, z });
+	MV1SetRotationMatrix(handle, rotation);
 
 	MV1DrawModel(handle);
 
