@@ -33,14 +33,16 @@ private:
 	std::shared_ptr<BaseActor> actor;
 private:
 	//ÉJÉÅÉââÒì]
-	void rotate(float &x, float &z, const float ang, const float targetX, const float targetY);
-	void angleReset(float &ang);
+	// void rotate(float &x, float &z, const float ang, const float targetX, const float targetY);
+	// void angleReset(float &ang);
 private:
 	Vector3 targetPos;
 	Vector3 currentPos;
+
 	Vector3 targetRot;
 	Vector3 currentRot;
-	Vector3 focusRot;
+	// Vector3 focusRot;
+
 	Vector3 playerPos;
 	Vector3 actorPos;
 
@@ -48,8 +50,8 @@ private:
 	ChaseFlag chaseFlag;
 
 	float t = 0.0f;
-	float second;
-	float ang;
+	// float second;
+	// float ang;
 
 	using Func = std::function<void()>;
 	std::unordered_map<CameraMode,Func> funcs;
