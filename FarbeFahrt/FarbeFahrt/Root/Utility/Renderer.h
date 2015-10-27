@@ -50,7 +50,7 @@ public://MyGameで実装
 	void draw()const;
 public:
 	void drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const;
-	void drawSkinModel(const std::string& name, const Vector3& position, const Matrix& rotation, int animNumber, float speed);//アニメーション付き
+	void drawSkinModel(const std::string& name, const Vector3& position, const Matrix& rotation, int animNumber, float frame);//アニメーション付き
 	void setScale(const std::string& name, const Vector3& scale);
 
 	//2D系関数

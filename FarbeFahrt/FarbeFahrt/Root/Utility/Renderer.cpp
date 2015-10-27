@@ -39,7 +39,8 @@ void Renderer::drawNormalModel(const std::string& name, const Vector3& position,
 	MV1DrawModel(handle);
 
 }
-void Renderer::drawSkinModel(const std::string& name, const Vector3& position, const Matrix& rotation, int animNumber, float speed)
+void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
+	const Matrix& rotation, int animNumber, float frame)
 {
 	//見辛いから後々関数分けする予定
 	//サンプル丸パクリスペクト
@@ -73,8 +74,8 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position, c
 	}
 	if (modelData.playAnim1 != -1)
 	{
-		animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim1);
-		modelData.animPlayCount1 += speed;
+		animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim1); 
+		modelData.animPlayCount1 = frame;
 		if (modelData.animPlayCount1 >= animTotalTime)
 		{
 			modelData.animPlayCount1 = fmod(modelData.animPlayCount1, animTotalTime);
@@ -85,7 +86,7 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position, c
 	if (modelData.playAnim2 != -1)
 	{
 		animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim2);
-		modelData.animPlayCount2 += speed;
+		modelData.animPlayCount2 = frame;
 		if (modelData.animPlayCount2 >= animTotalTime)
 		{
 			modelData.animPlayCount2 = fmod(modelData.animPlayCount2, animTotalTime);
