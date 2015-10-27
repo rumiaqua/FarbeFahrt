@@ -5,6 +5,10 @@
 #include "DxLib.h"
 #include "Utility/Renderer.h"
 #include "Utility/Loader.h"
+
+class ISceneMediator;
+class SceneManager;
+
 enum Scene{
 	NullScene = 1,
 	drawGameTitle,
@@ -14,19 +18,17 @@ enum Scene{
 class BaseScene
 {
 public:
+	friend SceneManager;
+public:
 	BaseScene();
 	virtual void loadContents(Loader& loader) = 0;
 	virtual void initialize() = 0;
 	virtual void update() = 0;
 	virtual void draw(Renderer& render) = 0;
 	virtual void cleanUp() = 0;
-	//refreshSceneはMyGameで呼び出す用だからな
-	//シーンを変えるときはchangeSceneだからな
-	void refreshScene(Scene *scene);
-	bool isChangeScene(Scene scene);
-	bool isCleanUp();
 	virtual ~BaseScene();
+private:
+	void setManagerPtr(ISceneMediator* const mediator);
 protected:
-	void changeScene(Scene scene);
-protected:
+	ISceneMediator* m_manager;
 };

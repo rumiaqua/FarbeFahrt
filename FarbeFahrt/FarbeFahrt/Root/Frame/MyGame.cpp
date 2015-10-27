@@ -10,12 +10,13 @@
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 MyGame::MyGame()
 	:m_breakflag(false),
-	initFlag(true),
-	m_scene(Scene::drawGameMain)//最初に設定するシーンはここ！
+	initFlag(true)
 {
-	func.emplace(Scene::drawGameTitle, std::make_unique<GameTitle>());
-	func.emplace(Scene::drawGameMenu, std::make_unique<GameMenu>());
-	func.emplace(Scene::drawGameMain, std::make_unique<GameMain>());
+	m_sceneManager.addScene<GameTitle>(Scene::drawGameTitle);
+	m_sceneManager.addScene<GameMenu>(Scene::drawGameMenu);
+	m_sceneManager.addScene<GameMain>(Scene::drawGameMain);
+
+	m_sceneManager.pushScene(Scene::drawGameMain);
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
@@ -25,42 +26,33 @@ MyGame::MyGame()
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 void MyGame::run()
 {
-	if (func[m_scene]->isChangeScene(m_scene))
+	// シーンに変更があった時
+	if (m_sceneManager.hasChanged())
 	{
-		if (func[m_scene]->isCleanUp())
-		{
-			func[m_scene]->cleanUp();
-			loader.cleanUp();
-		}
-		func[m_scene]->refreshScene(&m_scene);
-		func[m_scene]->loadContents(loader);//ここでモデル読み込もう(実際には配列に入れてるだけ)
+		// スタック操作
+		m_sceneManager.resolve(loader);
 		loader.load();
 	}
 
-	if (loader.isLoad())//読み込み中だったら
+	// ロード中なら何もしない
+	if (loader.isLoad())
 	{
-		//nowLoading.draw(render);
-		//読み込み中のアニメーション処理
 		return;
 	}
 
-	if (loader.onCompleted())
-	{
+	// ロードが終了したら
+	if (true)
+		{
 		render.setModelData(loader.getModelList());
 		render.setTextureData(loader.getTextureList());
 		SE::setSEData(loader.getSEList());
 	}
 
+	// 更新
+	m_sceneManager.update();
 
-	if (initFlag)//読み込みが終わった時点で一度だけ初期化
-	{
-		func[m_scene]->initialize();
-		initFlag = false;
-	}
-
-	func[m_scene]->update();
+	// 描画
 	ClearDrawScreen();
-	func[m_scene]->draw(render);
-	render.draw();
+	m_sceneManager.draw(render);
 	ScreenFlip();
 }

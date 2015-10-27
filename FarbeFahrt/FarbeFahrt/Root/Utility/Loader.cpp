@@ -71,9 +71,12 @@ void Loader::load()
 	SetUseASyncLoadFlag(TRUE);
 	for (auto& data : m_ContentList)
 	{
-		data.second.handle =
-			m_LoadFunc.at(GetExtension(data.second.filename))
-			.func( ("Resources/" + data.second.filename).c_str());
+		if (m_ContentList.find(data.first)->second.handle != 0)
+		{
+			continue;
+		}
+
+		data.second.handle = m_LoadFunc[GetExtension(data.second.filename)].func( ("Resources/" + data.second.filename).c_str());
 
 	}
 	SetUseASyncLoadFlag(FALSE);
