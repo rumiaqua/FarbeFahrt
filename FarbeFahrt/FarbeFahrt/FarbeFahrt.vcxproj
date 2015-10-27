@@ -104,6 +104,16 @@
     <ClInclude Include="Root\Utility\SE.h" />
     <ClInclude Include="Root\World.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Model\平原\くさ.pmx" />
+    <None Include="Resources\Model\平原\橋.pmx" />
+    <None Include="Resources\Model\平原\橋2.pmx" />
+    <None Include="Resources\Model\平原\針葉樹.pmx" />
+    <None Include="Resources\Model\本2\book.pmx" />
+    <None Include="Resources\Model\本2\book001.vmd" />
+    <None Include="Resources\Model\本2\book002.vmd" />
+    <None Include="Resources\Model\本\本完成(仮).pmx" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
