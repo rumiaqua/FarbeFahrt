@@ -6,6 +6,8 @@
 #include "Actor/Field/Field.h"
 #include "Utility/Debug.h"
 
+# include "SceneManager.h"
+
 GameMain::GameMain()
 {
 }
@@ -27,10 +29,16 @@ void GameMain::initialize()
 	world->addSkydome(std::make_shared<Skydome>(*world));
 
 	Debug::setClear(true);
+	Debug::changeFontSize(16);
 }
 void GameMain::update()
 {
 	world->update();
+
+	if (Input::isClicked(KEY_INPUT_RETURN))
+	{
+		m_manager->pushScene(Scene::drawGameTitle);
+	}
 }
 void GameMain::draw(Renderer& render)
 {
