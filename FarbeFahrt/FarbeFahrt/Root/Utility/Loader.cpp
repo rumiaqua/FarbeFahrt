@@ -67,14 +67,16 @@ void Loader::ErrLog(int contentHandle, const std::string& filename)
 }
 void Loader::load()
 {
+	isLoadCompleted = false;
 	SetUseASyncLoadFlag(TRUE);
 	for (auto& data : m_ContentList)
 	{
-		data.second.handle = m_LoadFunc[GetExtension(data.second.filename)].func( ("Resources/" + data.second.filename).c_str());
+		data.second.handle =
+			m_LoadFunc.at(GetExtension(data.second.filename))
+			.func( ("Resources/" + data.second.filename).c_str());
 
 	}
 	SetUseASyncLoadFlag(FALSE);
-	isLoadCompleted = false;
 }
 bool Loader::isLoad()
 {
@@ -83,6 +85,17 @@ bool Loader::isLoad()
 	{return (CheckHandleASyncLoad(contentData.second.handle) == TRUE); });
 	//count > 0 で読み込み中
 	return !!count;
+}
+bool Loader::onCompleted()
+{
+	// ロードが終了しているかどうか
+	bool current = isLoadCompleted;
+
+	// 非同期読込数が0かどうか
+	bool async = GetASyncLoadNum() == 0;
+
+	// ロードが終了している　もしくは　非同期読込数が0でない場合
+	return isLoadCompleted = !current && async;
 }
 void Loader::loadContent(const std::string& name, const std::string& filename)
 {

@@ -36,9 +36,6 @@ void MyGame::run()
 		func[m_scene]->loadContents(loader);//ここでモデル読み込もう(実際には配列に入れてるだけ)
 		loader.load();
 	}
-	render.setModelData(loader.getModelList());
-	render.setTextureData(loader.getTextureList());
-	SE::setSEData(loader.getSEList());
 
 	if (loader.isLoad())//読み込み中だったら
 	{
@@ -46,14 +43,21 @@ void MyGame::run()
 		//読み込み中のアニメーション処理
 		return;
 	}
-	else
+
+	if (loader.onCompleted())
 	{
-		if (initFlag)//読み込みが終わった時点で一度だけ初期化
-		{
-			func[m_scene]->initialize();
-			initFlag = false;
-		}
+		render.setModelData(loader.getModelList());
+		render.setTextureData(loader.getTextureList());
+		SE::setSEData(loader.getSEList());
 	}
+
+
+	if (initFlag)//読み込みが終わった時点で一度だけ初期化
+	{
+		func[m_scene]->initialize();
+		initFlag = false;
+	}
+
 	func[m_scene]->update();
 	ClearDrawScreen();
 	func[m_scene]->draw(render);

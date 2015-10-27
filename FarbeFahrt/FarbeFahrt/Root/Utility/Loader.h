@@ -48,6 +48,7 @@ public:
 	void load();
 	void cleanUp();
 	bool isLoad();
+	bool onCompleted();
 private:
 	void ErrLog(int ContentHandle, const std::string& filename);
 	ContentMap getContentList(const ContentTag& tag);
