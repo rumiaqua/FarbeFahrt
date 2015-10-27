@@ -35,7 +35,7 @@ bool SceneManager::hasChanged() const
 
 void SceneManager::changeScene(const Scene& scene)
 {
-	m_ops.emplace_back([&] (Loader& loader)
+	pushOperation([&] (Loader& loader)
 	{
 		for (auto&& scene : m_stack)
 		{
@@ -50,7 +50,7 @@ void SceneManager::changeScene(const Scene& scene)
 
 void SceneManager::replaceScene(const Scene& scene)
 {
-	m_ops.emplace_back([=] (Loader& loader)
+	pushOperation([=] (Loader& loader)
 	{
 		m_scenes.at(m_stack.back())->cleanUp();
 		m_stack.pop_back();
@@ -62,7 +62,7 @@ void SceneManager::replaceScene(const Scene& scene)
 
 void SceneManager::pushScene(const Scene& scene)
 {
-	m_ops.emplace_back([=] (Loader& loader)
+	pushOperation([=] (Loader& loader)
 	{
 		m_stack.push_back(scene);
 		m_scenes.at(scene)->initialize();
@@ -72,9 +72,14 @@ void SceneManager::pushScene(const Scene& scene)
 
 void SceneManager::popScene()
 {
-	m_ops.emplace_back([=] (Loader&)
+	pushOperation([=] (Loader&)
 	{
 		m_scenes.at(m_stack.back())->cleanUp();
 		m_stack.pop_back();
 	});
+}
+
+void SceneManager::pushOperation(const Operation& operation)
+{
+	m_ops.emplace_back(operation);
 }

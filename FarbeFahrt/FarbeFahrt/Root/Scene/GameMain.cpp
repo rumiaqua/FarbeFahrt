@@ -6,7 +6,7 @@
 #include "Actor/Field/Field.h"
 #include "Utility/Debug.h"
 
-# include "SceneManager.h"
+# include "ISceneMediator.h"
 
 GameMain::GameMain()
 {

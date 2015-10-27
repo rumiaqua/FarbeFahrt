@@ -272,6 +272,12 @@
     <ClInclude Include="Root\Actor\Camera\CameraMatrix.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Scene\SceneManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\ISceneMediator.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Model\本2\book.pmx" />

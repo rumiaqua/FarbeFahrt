@@ -41,8 +41,8 @@ void MyGame::run()
 	}
 
 	// ƒ[ƒh‚ªI—¹‚µ‚½‚ç
-	if (true)
-		{
+	if (loader.onCompleted())
+	{
 		render.setModelData(loader.getModelList());
 		render.setTextureData(loader.getTextureList());
 		SE::setSEData(loader.getSEList());

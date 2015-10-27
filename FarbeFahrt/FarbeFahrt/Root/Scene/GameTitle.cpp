@@ -4,7 +4,7 @@
 # include "Utility/Input.h"
 # include "Utility/Debug.h"
 
-# include "SceneManager.h"
+# include "ISceneMediator.h"
 
 GameTitle::GameTitle()
 {

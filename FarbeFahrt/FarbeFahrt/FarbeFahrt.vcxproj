@@ -81,6 +81,7 @@
     <ClInclude Include="Root\Frame\BaseScene.h" />
     <ClInclude Include="Root\Frame\MyGame.h" />
     <ClInclude Include="Root\IWorld.h" />
+    <ClInclude Include="Root\Scene\ISceneMediator.h" />
     <ClInclude Include="Root\Scene\SceneManager.h" />
     <ClInclude Include="Root\Utility\Matrix.h" />
     <ClInclude Include="Root\Utility\MemoryCast.h" />
