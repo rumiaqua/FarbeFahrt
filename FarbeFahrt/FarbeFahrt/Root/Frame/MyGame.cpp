@@ -1,8 +1,11 @@
 #include "MyGame.h"
+
 #include "BaseScene.h"
+
 #include "Scene/GameTitle.h"
 #include "Scene/GameMenu.h"
 #include "Scene/GameMain.h"
+
 #include "Utility/SE.h"
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
@@ -16,6 +19,7 @@ MyGame::MyGame()
 	m_sceneManager.addScene<GameMenu>(Scene::drawGameMenu);
 	m_sceneManager.addScene<GameMain>(Scene::drawGameMain);
 
+	// 最初のシーンはゲームメイン
 	m_sceneManager.pushScene(Scene::drawGameMain);
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +

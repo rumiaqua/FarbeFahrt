@@ -289,4 +289,18 @@
     <None Include="Resources\Model\平原\橋2.pmx" />
     <None Include="Resources\Model\平原\橋.pmx" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Texture\curtain.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 真ん中.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 上.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 下.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

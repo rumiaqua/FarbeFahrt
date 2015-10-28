@@ -27,6 +27,10 @@ void GameTitle::draw(Renderer& render)
 }
 void GameTitle::cleanUp(){
 }
+bool GameTitle::isSwallow() const
+{
+	return false;
+}
 GameTitle::~GameTitle()
 {
 }

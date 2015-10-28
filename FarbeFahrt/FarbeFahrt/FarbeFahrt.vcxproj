@@ -119,6 +119,12 @@
     <None Include="Resources\Model\本2\book002.vmd" />
     <None Include="Resources\Model\本\本完成(仮).pmx" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Texture\curtain.png" />
+    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 上.png" />
+    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 下.png" />
+    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 真ん中.png" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

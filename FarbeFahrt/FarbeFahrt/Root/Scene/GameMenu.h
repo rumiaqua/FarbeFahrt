@@ -10,5 +10,6 @@ public:
 	void update()override;
 	void draw(Renderer& render)override;
 	void cleanUp() override;
+	bool isSwallow() const override;
 	~GameMenu();
 };

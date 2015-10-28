@@ -3,11 +3,11 @@
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 #pragma once
 #include "DxLib.h"
-#include "Utility/Renderer.h"
-#include "Utility/Loader.h"
 
 class ISceneMediator;
 class SceneManager;
+class Loader;
+class Renderer;
 
 enum Scene{
 	NullScene = 1,
@@ -26,6 +26,7 @@ public:
 	virtual void update() = 0;
 	virtual void draw(Renderer& render) = 0;
 	virtual void cleanUp() = 0;
+	virtual bool isSwallow() const = 0;
 	virtual ~BaseScene();
 private:
 	void setManagerPtr(ISceneMediator* const mediator);

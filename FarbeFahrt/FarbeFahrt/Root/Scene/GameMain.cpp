@@ -1,10 +1,13 @@
 #include "GameMain.h"
-#include "Utility/Renderer.h"
+
 #include "Actor/Player.h"
 #include "Actor/Camera/Camera.h"
 #include "Actor/SkyDome/Skydome.h"
 #include "Actor/Field/Field.h"
+
 #include "Utility/Debug.h"
+# include "Utility/Loader.h"
+# include "Utility/Renderer.h"
 
 # include "ISceneMediator.h"
 
@@ -35,9 +38,10 @@ void GameMain::update()
 {
 	world->update();
 
+	// エンターキーでタイトルシーンをプッシュする
 	if (Input::isClicked(KEY_INPUT_RETURN))
 	{
-		m_manager->pushScene(Scene::drawGameTitle);
+		m_manager->pushScene(Scene::drawGameTitle, 60.0f);
 	}
 }
 void GameMain::draw(Renderer& render)
@@ -48,6 +52,11 @@ void GameMain::draw(Renderer& render)
 void GameMain::cleanUp()
 {
 
+}
+
+bool GameMain::isSwallow() const
+{
+	return false;
 }
 
 GameMain::~GameMain()

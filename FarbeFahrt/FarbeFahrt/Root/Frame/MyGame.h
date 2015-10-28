@@ -3,6 +3,7 @@
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 #pragma once
 #include "DxLib.h"
+
 #include "Utility/Renderer.h"
 #include "Utility/Loader.h"
 

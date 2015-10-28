@@ -18,6 +18,10 @@ void GameMenu::draw(Renderer& render)
 void GameMenu::cleanUp()
 {
 }
+bool GameMenu::isSwallow() const
+{
+	return false;
+}
 GameMenu::~GameMenu()
 {
 
