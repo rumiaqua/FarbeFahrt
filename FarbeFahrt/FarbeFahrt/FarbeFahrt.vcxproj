@@ -35,7 +35,9 @@
     <ClCompile Include="Root\Frame\BaseScene.cpp" />
     <ClCompile Include="Root\Frame\MyGame.cpp" />
     <ClCompile Include="Root\Frame\WinMain.cpp" />
+    <ClCompile Include="Root\Scene\Editor.cpp" />
     <ClCompile Include="Root\Scene\SceneManager.cpp" />
+    <ClCompile Include="Root\Utility\FreeCamera.cpp" />
     <ClCompile Include="Root\Utility\Matrix.cpp" />
     <ClCompile Include="Root\Utility\Point2.cpp" />
     <ClCompile Include="Root\Utility\Point3.cpp" />
@@ -81,8 +83,10 @@
     <ClInclude Include="Root\Frame\BaseScene.h" />
     <ClInclude Include="Root\Frame\MyGame.h" />
     <ClInclude Include="Root\IWorld.h" />
+    <ClInclude Include="Root\Scene\Editor.h" />
     <ClInclude Include="Root\Scene\ISceneMediator.h" />
     <ClInclude Include="Root\Scene\SceneManager.h" />
+    <ClInclude Include="Root\Utility\FreeCamera.h" />
     <ClInclude Include="Root\Utility\Matrix.h" />
     <ClInclude Include="Root\Utility\MemoryCast.h" />
     <ClInclude Include="Root\Utility\Point2.h" />

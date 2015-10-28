@@ -38,8 +38,14 @@ void GameMain::update()
 {
 	world->update();
 
-	// エンターキーでタイトルシーンをプッシュする
+	// エンターでエディターシーンをプッシュする
 	if (Input::isClicked(KEY_INPUT_RETURN))
+	{
+		m_manager->pushScene(Scene::Editor);
+	}
+
+	// スペースキーでタイトルシーンをプッシュする	
+	if (Input::isClicked(KEY_INPUT_SPACE))
 	{
 		m_manager->pushScene(Scene::drawGameTitle, 60.0f);
 	}

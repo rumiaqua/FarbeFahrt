@@ -9,11 +9,12 @@ class SceneManager;
 class Loader;
 class Renderer;
 
-enum Scene{
+enum class Scene{
 	NullScene = 1,
 	drawGameTitle,
 	drawGameMenu,
-	drawGameMain
+	drawGameMain,
+	Editor,
 };
 class BaseScene
 {
