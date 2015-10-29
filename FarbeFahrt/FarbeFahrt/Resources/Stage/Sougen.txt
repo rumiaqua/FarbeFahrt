@@ -1,0 +1,21 @@
+# 使用するリソースリスト
+r,Player,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
+r,sky,Model/skydome/昼の月.x
+r,field,Model/terrain/terrain.mqo
+
+# プレイヤーの位置
+p,0, 0, 0
+
+# カメラの情報
+# 座標を指定する？
+
+# フィールドの情報
+# field
+
+# スカイドームの情報
+# sky
+
+# その他配置されたオブジェクトの情報
+# クラス名,リソース名,座標
+o,Enemy,Player,0,0,100
+o,Enemy,Player,100,0,0

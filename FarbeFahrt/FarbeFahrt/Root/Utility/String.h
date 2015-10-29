@@ -118,4 +118,16 @@ private:
 	std::wstring m_str;
 };
 
+namespace std
+{
+	template <>
+	struct hash<String>
+	{
+		inline std::size_t operator() (const String& key) const
+		{
+			return std::hash<std::string>()(key.toNarrow());
+		}
+	};
+}
+
 std::ostream& operator << (std::ostream& stream, const String& str);

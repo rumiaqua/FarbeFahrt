@@ -6,6 +6,7 @@
 #include "Scene/GameMenu.h"
 #include "Scene/GameMain.h"
 # include "Scene/Editor.h"
+# include "Scene/StageScene.h"
 
 #include "Utility/SE.h"
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
@@ -20,9 +21,12 @@ MyGame::MyGame()
 	m_sceneManager.addScene<GameMenu>(Scene::drawGameMenu);
 	m_sceneManager.addScene<GameMain>(Scene::drawGameMain);
 	m_sceneManager.addScene<Editor>(Scene::Editor);
+	m_sceneManager.addScene<StageScene>(Scene::Stage);
 
 	// 最初のシーンはゲームメイン
-	m_sceneManager.pushScene(Scene::drawGameMain);
+	// m_sceneManager.pushScene(Scene::drawGameMain);
+	m_sceneManager.pushScene(Scene::Stage);
+	m_sceneManager.pushScene(Scene::Editor);
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
