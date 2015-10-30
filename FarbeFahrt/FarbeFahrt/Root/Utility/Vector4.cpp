@@ -144,7 +144,7 @@ Vector4 Vector4::lerp(const Vector4& start, const Vector4& end, float t)
 
 String Vector4::toString(const Vector4& v)
 {
-	return String::create("(", v.x, ", ", v.y, ", ", v.z, ", ", v.w, ")");
+	return String::Create("(", v.x, ", ", v.y, ", ", v.z, ", ", v.w, ")");
 }
 
 bool operator == (const Vector4& v1, const Vector4& v2)

@@ -140,7 +140,7 @@ float Vector2::angle(const Vector2& v) const
 
 String Vector2::toString(const Vector2& v)
 {
-	return String::create("(", v.x, ", ", v.y, ")");
+	return String::Create("(", v.x, ", ", v.y, ")");
 }
 
 float Vector2::dot(const Vector2& v1, const Vector2& v2)

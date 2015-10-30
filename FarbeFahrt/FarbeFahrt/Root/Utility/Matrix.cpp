@@ -310,7 +310,7 @@ float Matrix::determinant(const Matrix& matrix)
 
 String Matrix::toString(const Matrix& m)
 {
-	return String::create(
+	return String::Create(
 		"f[0] : ", memory_cast<Vector4>(m.mat[0])->toString(), "\n",
 		"f[1] : ", memory_cast<Vector4>(m.mat[1])->toString(), "\n",
 		"f[2] : ", memory_cast<Vector4>(m.mat[2])->toString(), "\n",

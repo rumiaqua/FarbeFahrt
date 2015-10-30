@@ -108,7 +108,7 @@ float Point4::length(const Point4& v)
 
 String Point4::toString(const Point4& v)
 {
-	return String::create("(", v.x, ", ", v.y, ", ", v.z, ", ", v.w, ")");
+	return String::Create("(", v.x, ", ", v.y, ", ", v.z, ", ", v.w, ")");
 }
 
 bool operator == (const Point4& v1, const Point4& v2)

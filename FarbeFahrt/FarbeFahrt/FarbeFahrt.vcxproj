@@ -44,6 +44,7 @@
     <ClCompile Include="Root\Utility\Point3.cpp" />
     <ClCompile Include="Root\Utility\Point4.cpp" />
     <ClCompile Include="Root\Utility\Pose.cpp" />
+    <ClCompile Include="Root\Utility\StageData.cpp" />
     <ClCompile Include="Root\Utility\StageFactory.cpp" />
     <ClCompile Include="Root\Utility\String.cpp" />
     <ClCompile Include="Root\Utility\Vector2.cpp" />
@@ -63,6 +64,7 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Utility\ScriptStageBuilder.h" />
     <ClInclude Include="Root\Actor\Actor.h" />
     <ClInclude Include="Root\Actor\ActorManager\ActorManager.h" />
     <ClInclude Include="Root\Actor\ActorManager\ActorTag.h" />
@@ -90,12 +92,14 @@
     <ClInclude Include="Root\Scene\SceneManager.h" />
     <ClInclude Include="Root\Scene\StageScene.h" />
     <ClInclude Include="Root\Utility\FreeCamera.h" />
+    <ClInclude Include="Root\Utility\IStageBuilder.h" />
     <ClInclude Include="Root\Utility\Matrix.h" />
     <ClInclude Include="Root\Utility\MemoryCast.h" />
     <ClInclude Include="Root\Utility\Point2.h" />
     <ClInclude Include="Root\Utility\Point3.h" />
     <ClInclude Include="Root\Utility\Point4.h" />
     <ClInclude Include="Root\Utility\Pose.h" />
+    <ClInclude Include="Root\Utility\StageData.h" />
     <ClInclude Include="Root\Utility\StageFactory.h" />
     <ClInclude Include="Root\Utility\String.h" />
     <ClInclude Include="Root\Utility\ValueType.h" />

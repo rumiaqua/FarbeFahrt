@@ -134,7 +134,7 @@ float Point2::length() const
 
 String Point2::toString(const Point2& v)
 {
-	return String::create("(", v.x, ", ", v.y, ")");
+	return String::Create("(", v.x, ", ", v.y, ")");
 }
 
 int Point2::dot(const Point2& v1, const Point2& v2)

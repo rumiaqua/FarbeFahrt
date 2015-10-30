@@ -1,6 +1,9 @@
 # include "StageScene.h"
 
 # include "Utility/Loader.h"
+# include "Utility/Input.h"
+# include "Utility/ScriptStageBuilder.h"
+# include "Utility/Debug.h"
 
 StageScene::StageScene()
 {
@@ -24,6 +27,13 @@ void StageScene::initialize()
 void StageScene::update()
 {
 	world->update();
+
+	// Save Action
+	/*if (Input::isClicked(KEY_INPUT_1))
+	{
+		ScriptStageBuilder builder;
+		builder.save("Resources/Stage/Sougen1.txt", world->getData());
+	}*/
 }
 
 void StageScene::draw(Renderer& render)

@@ -29,7 +29,7 @@ void GameTitle::cleanUp(){
 }
 bool GameTitle::isSwallow() const
 {
-	return false;
+	return true;
 }
 GameTitle::~GameTitle()
 {

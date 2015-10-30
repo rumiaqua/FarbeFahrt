@@ -11,6 +11,7 @@
 Editor::Editor()
 	: m_camera()
 	, m_isWorldMode(false)
+	, m_isAccel(false)
 {
 
 }
@@ -42,6 +43,7 @@ void Editor::update()
 	// モード処理
 	mode();
 
+	// 基準処理
 	if (m_isWorldMode)
 	{
 		right = Vector3::right();
@@ -49,12 +51,15 @@ void Editor::update()
 		forward = Vector3::forward();
 	}
 
+	// 加速処理
+	const float accel = m_isAccel ? 3.0f : 1.0f;
+
 	// 移動処理
-	const float speed = 1.0f;
+	const float speed = 1.0f * accel;
 	move(speed, right, up, forward);
 
 	// 回転処理
-	const double angle = Math::toRadian(0.5);
+	const double angle = Math::toRadian(0.5) * accel;
 	rotate(angle, right, up, forward);
 
 	// シーン遷移処理
@@ -68,9 +73,10 @@ void Editor::draw(Renderer& render)
 	Debug::println("A:Left D:Right E:Up X:Down W:Forward S:Backward");
 	Debug::println("Rotate");
 	Debug::println("←→:XAxis ↑↓:YAxis");
-	Debug::println(String::create("Toggle ", m_isWorldMode ? "World" : "Local", " Mode"));
-	Debug::println(String::create("LShift:", m_isWorldMode ? "Local" : "World", " Mode"));
-	Debug::println("←→:XAxis ↑↓:YAxis");
+	Debug::println(String::Create("Toggle Pivot Mode"));
+	Debug::println(String::Create("Space:", m_isWorldMode ? "Local" : "World", " Mode"));
+	Debug::println(String::Create("Toggle Speed Mode"));
+	Debug::println(String::Create("LShift:", m_isAccel ? "Low" : "High", " Speed Mode"));
 	Debug::println("Scene");
 	Debug::println("Return:Pop current Scene.");
 
@@ -89,9 +95,14 @@ bool Editor::isSwallow() const
 
 void Editor::mode()
 {
-	if (Input::isClicked(KEY_INPUT_LSHIFT))
+	if (Input::isClicked(KEY_INPUT_SPACE))
 	{
 		m_isWorldMode = !m_isWorldMode;
+	}
+
+	if (Input::isClicked(KEY_INPUT_LSHIFT))
+	{
+		m_isAccel = !m_isAccel;
 	}
 }
 

@@ -1,6 +1,10 @@
 #pragma once
 #include "IWorld.h"
+
 #include "Actor/ActorManager/ActorManager.h"
+
+# include "Utility/StageData.h"
+
 #include <string>
 class World : public IWorld
 {
@@ -15,6 +19,7 @@ public:
 	virtual Actor findActor(const std::string& name)override;
 	virtual Actor findCamera()override;
 	virtual Actor findField()override;
+	StageData getData() const;
 private:
 	ActorManager actors;
 	Actor camera;

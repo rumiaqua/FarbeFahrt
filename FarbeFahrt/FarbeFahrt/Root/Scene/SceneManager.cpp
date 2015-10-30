@@ -230,9 +230,10 @@ void SceneManager::FadeOut::update()
 	SceneManager* manager = dynamic_cast<SceneManager*>(m_manager);
 	// VS2013にはジェネリックキャプチャがないので応急処置
 	auto& count = m_fadeCount;
+	auto& isSwallow = m_isSwallow;
 	manager->pushOperation([=] (Loader& loader)
 	{
-		manager->push(std::make_shared<FadeIn>(count), loader);
+		manager->push(std::make_shared<FadeIn>(count, isSwallow), loader);
 	});
 }
 

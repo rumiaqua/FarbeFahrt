@@ -37,4 +37,6 @@ private:
 	FreeCamera m_camera;
 
 	bool m_isWorldMode;
+
+	bool m_isAccel;
 };
