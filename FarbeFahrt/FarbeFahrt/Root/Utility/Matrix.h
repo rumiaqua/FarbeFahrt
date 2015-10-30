@@ -77,7 +77,7 @@ public:
 
 	/// <summary>•½sˆÚ“®‚·‚é</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
-	Matrix& translate(const Vector3& translation);
+	Matrix& Translate(const Vector3& translation);
 
 	/// <summary>‰ñ“]‚·‚é</summary>
 	/// <param name="axis">‰ñ“]²</param>
@@ -160,154 +160,154 @@ public:
 public:
 
 	/// <summary>’PˆÊs—ñ‚©‚Ç‚¤‚©‚ğ•Ô‚·</summary>
-	static bool isIdentity(const Matrix& m);
+	static bool IsIdentity(const Matrix& m);
 
 	/// <summary>—ës—ñ‚©‚Ç‚¤‚©‚ğ•Ô‚·</summary>
-	static bool isZero(const Matrix& m);
+	static bool IsZero(const Matrix& m);
 
 	/// <summary>‹ts—ñ‚ªì‚ê‚é‚©‚ğ•Ô‚·</summary>
-	static bool canInverse(const Matrix& m);
+	static bool CanInverse(const Matrix& m);
 
 	/// <summary>‹ts—ñ‚©‚Ç‚¤‚©‚ğ•Ô‚·</summary>
-	static bool isInverse(const Matrix& m1, const Matrix& m2);
+	static bool IsInverse(const Matrix& m1, const Matrix& m2);
 
 	/// <summary>s—ñ®‚ğ•Ô‚·</summary>
-	static float determinant(const Matrix& m);
+	static float Determinant(const Matrix& m);
 
 	/// <summary>•¶š—ñ‚É•ÏŠ·‚·‚é</summary>
-	static String toString(const Matrix& m);
+	static String ToString(const Matrix& m);
 
 public:
 
 	/// <summary>•½sˆÚ“®s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
-	static Matrix translation(const Vector3& translation);
+	static Matrix Translation(const Vector3& translation);
 
 	/// <summary>‰ñ“]s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
-	static Matrix rotation(const Vector3& axis, float angle);
+	static Matrix Rotation(const Vector3& axis, float angle);
 
 	/// <summary>‰ñ“]s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	static Matrix rotation(const Vector4& rotation);
+	static Matrix Rotation(const Vector4& rotation);
 
 	/// <summary>Šg‘åk¬s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix scaling(const Vector3& scaling);
+	static Matrix Scaling(const Vector3& scaling);
 
 	/// <summary>ƒAƒtƒBƒ“•ÏŠ·s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix transformation(const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
+	static Matrix Transformation(const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
 
 	/// <summary>ƒAƒtƒBƒ“•ÏŠ·s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
 	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix transformation(const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
+	static Matrix Transformation(const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
 
 public:
 
 	/// <summary>•½sˆÚ“®‚·‚é</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
-	static Matrix& translate(Matrix& matrix, const Vector3& translation);
+	static Matrix& Translate(Matrix& matrix, const Vector3& translation);
 
 	/// <summary>‰ñ“]‚·‚é</summary>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
-	static Matrix& rotate(Matrix& matrix, const Vector3& axis, float angle);
+	static Matrix& Rotate(Matrix& matrix, const Vector3& axis, float angle);
 
 	/// <summary>‰ñ“]‚·‚é</summary>
 	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	static Matrix& rotate(Matrix& matrix, const Vector4& rotation);
+	static Matrix& Rotate(Matrix& matrix, const Vector4& rotation);
 
 	/// <summary>Šg‘åk¬‚·‚é</summary>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix& scale(Matrix& matrix, const Vector3& scaling);
+	static Matrix& Scale(Matrix& matrix, const Vector3& scaling);
 
 	/// <summary>ƒAƒtƒBƒ“•ÏŠ·‚·‚é</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix& transform(Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
+	static Matrix& Transform(Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
 
 	/// <summary>ƒAƒtƒBƒ“•ÏŠ·‚·‚é</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
 	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix& transform(Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
+	static Matrix& Transform(Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
 
 	/// <summary>“]’us—ñ‚É‚·‚é</summary>
-	static Matrix& transpose(Matrix& matrix);
+	static Matrix& Transpose(Matrix& matrix);
 
 	/// <summary>‹ts—ñ‚É‚·‚é</summary>
-	static Matrix& inverse(Matrix& matrix);
+	static Matrix& Inverse(Matrix& matrix);
 
 public:
 
 	/// <summary>•½sˆÚ“®‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
-	static Matrix translated(const Matrix& matrix, const Vector3& translation);
+	static Matrix Translated(const Matrix& matrix, const Vector3& translation);
 
 	/// <summary>‰ñ“]‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
-	static Matrix rotated(const Matrix& matrix, const Vector3& axis, float angle);
+	static Matrix Rotated(const Matrix& matrix, const Vector3& axis, float angle);
 
 	/// <summary>‰ñ“]‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	static Matrix rotated(const Matrix& matrix, const Vector4& rotation);
+	static Matrix Rotated(const Matrix& matrix, const Vector4& rotation);
 
 	/// <summary>Šg‘åk¬‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix scaled(const Matrix& matrix, const Vector3& scaling);
+	static Matrix Scaled(const Matrix& matrix, const Vector3& scaling);
 
 	/// <summary>ƒAƒtƒBƒ“•ÏŠ·‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix transformed(const Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
+	static Matrix Transformed(const Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
 
 	/// <summary>ƒAƒtƒBƒ“•ÏŠ·‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="translation">•½sˆÚ“®—Ê</param>
 	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix transformed(const Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
+	static Matrix Transformed(const Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
 
 	/// <summary>“]’us—ñ‚ğ•Ô‚·</summary>
-	static Matrix transposed(const Matrix& matrix);
+	static Matrix Transposed(const Matrix& matrix);
 
 	/// <summary>‹ts—ñ‚ğ•Ô‚·</summary>
-	static Matrix inversed(const Matrix& matrix);
+	static Matrix Inversed(const Matrix& matrix);
 
 public:
 
-	static Vector4 up(const Matrix& matrix);
+	static Vector4 Up(const Matrix& matrix);
 
-	static Vector4 right(const Matrix& matrix);
+	static Vector4 Right(const Matrix& matrix);
 
-	static Vector4 forward(const Matrix& matrix);
+	static Vector4 Forward(const Matrix& matrix);
 
-	static Vector3 translation(const Matrix& matrix);
+	static Vector3 Translation(const Matrix& matrix);
 
-	static Matrix rotation(const Matrix& matrix);
+	static Matrix Rotation(const Matrix& matrix);
 
-	static Vector3 scaling(const Matrix& matrix);
+	static Vector3 Scaling(const Matrix& matrix);
 
 public:
 
-	static Matrix lookAt(const Vector3& position, const Vector3& target, const Vector3& up);
+	static Matrix LookAt(const Vector3& position, const Vector3& target, const Vector3& up);
 
-	static Matrix perspective(float fov, float aspect, float nearclip, float farclip);
+	static Matrix Perspective(float fov, float aspect, float nearclip, float farclip);
 
-	static Matrix viewport(int width, int height);
+	static Matrix Viewport(int width, int height);
 
-	static Matrix lerp(const Matrix& m1, const Matrix& m2, float t);
+	static Matrix Lerp(const Matrix& m1, const Matrix& m2, float t);
 
 public:
 

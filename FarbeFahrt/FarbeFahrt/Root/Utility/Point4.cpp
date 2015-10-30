@@ -73,40 +73,40 @@ Point4::operator const int* () const
 
 String Point4::toString() const
 {
-	return toString(*this);
+	return ToString(*this);
 }
 
 int Point4::dot(const Point4& v) const
 {
-	return dot(*this, v);
+	return Dot(*this, v);
 }
 
 int Point4::lengthSquared() const
 {
-	return lengthSquared(*this);
+	return LengthSquared(*this);
 }
 
 float Point4::length() const
 {
-	return length(*this);
+	return Length(*this);
 }
 
-int Point4::dot(const Point4& v1, const Point4& v2)
+int Point4::Dot(const Point4& v1, const Point4& v2)
 {
 	return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w;
 }
 
-int Point4::lengthSquared(const Point4& v)
+int Point4::LengthSquared(const Point4& v)
 {
-	return dot(v, v);
+	return Dot(v, v);
 }
 
-float Point4::length(const Point4& v)
+float Point4::Length(const Point4& v)
 {
-	return static_cast<float>(Math::sqrt(lengthSquared(v)));
+	return static_cast<float>(Math::Sqrt(LengthSquared(v)));
 }
 
-String Point4::toString(const Point4& v)
+String Point4::ToString(const Point4& v)
 {
 	return String::Create("(", v.x, ", ", v.y, ", ", v.z, ", ", v.w, ")");
 }
