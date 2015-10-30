@@ -45,7 +45,7 @@ public:
 	BaseActor(const BaseActor& other) = delete;
 	BaseActor& operator = (const BaseActor& other) = delete;
 
-private:
+protected:
 	virtual void onUpdate();
 	virtual void onDraw(Renderer& render)const;
 	virtual void onMessage(const String& message, const void* parameter);

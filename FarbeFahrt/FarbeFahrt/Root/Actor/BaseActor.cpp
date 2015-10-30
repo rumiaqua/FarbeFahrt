@@ -59,11 +59,13 @@ const Matrix& BaseActor::getRotation() const
 }
 Matrix BaseActor::getWorldPose() const
 {
-	Matrix worldPose = pose.getPose();
-	while (ActorRef actor = parent)
+	Matrix worldPose = getPose();
+	const BaseActor* actor = this; 	
+	while (actor = actor->parent)
 	{
 		worldPose *= actor->getPose();
 	}
+
 	return worldPose;
 }
 Actor BaseActor::findChildren(const String& name)

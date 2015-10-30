@@ -2,27 +2,45 @@
 #include "Utility/Input.h"
 #include "Utility/SE.h"
 #include "Utility/Math.h"
-# include "Utility/Debug.h"
-# include "Utility/Vector3.h"
+#include "Utility/Debug.h"
+#include "Utility/Vector3.h"
+
+#include "Utility/Debug.h"
+
+#include "Stand.h"
+#include "Utility/MemoryCast.h"
 
 Player::Player(IWorld& world, const Vector3& position) :
-BaseActor(world, "Player", position, Matrix::rotation(Vector3::up(), Math::Pi))
-, capsule(position, position, 5.0f)
+	BaseActor(world, "Player", position, Matrix::rotation(Vector3::up(), Math::Pi))
+	, capsule(position, position, 5.0f)
 {
 	moveSpeed = 1.5f;
 	state = PlayerState::standing;
 	moveFlag = false;
+
+	Vector3 standPos = { 0,0,30 };
+	//スタンドを生成
+	this->addChild(std::make_shared<Stand>(world, standPos));
+
+	stand = findChildren([](const BaseActor& actor) {return actor.getName() == "Stand"; });
 }
 void Player::onUpdate()
 {
 	playerInput();
+	
+	float messageParam = Math::toRadian(2.0);
+	if (Input::isPressed(KEY_INPUT_Q))
+	{
+		stand->sendMessage("Rotation", &messageParam);
+	}
+
+	BaseActor::onUpdate();
 }
+
 void Player::playerInput()
 {
 	// 移動量
 	Vector3 moveVec;
-	// カメラ座標
-	const Vector3 cameraPos = world->findCamera()->getPosition();
 	// 前方ベクトル
 	Vector3 frontVec = Vector3::forward();
 	// 左方ベクトル
@@ -73,5 +91,7 @@ void Player::playerInput()
 void Player::onDraw(Renderer& render)const
 {
 	//ここで描画方法変えられますよ
-	render.drawSkinModel("Player", getPosition(), getRotation(),(int)state,1.0f);
+	render.drawSkinModel("Player", getPosition(), getRotation(), (int)state, 1.0f);
+
+	BaseActor::onDraw(render);
 }

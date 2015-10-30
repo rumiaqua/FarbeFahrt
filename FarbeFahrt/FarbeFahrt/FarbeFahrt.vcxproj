@@ -22,10 +22,12 @@
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
     <ClCompile Include="Root\Actor\Camera\Camera.cpp" />
+    <ClCompile Include="Root\Actor\Camera\CameraMatrix.cpp" />
     <ClCompile Include="Root\Actor\Enemy.cpp" />
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
+    <ClCompile Include="Root\Actor\Stand.cpp" />
     <ClCompile Include="Root\Collision\Capsule.cpp" />
     <ClCompile Include="Root\Collision\Collision.cpp" />
     <ClCompile Include="Root\Collision\IShape.cpp" />
@@ -78,6 +80,7 @@
     <ClInclude Include="Root\Actor\Field\Field.h" />
     <ClInclude Include="Root\Actor\Player.h" />
     <ClInclude Include="Root\Actor\SkyDome\Skydome.h" />
+    <ClInclude Include="Root\Actor\Stand.h" />
     <ClInclude Include="Root\Collision\Capsule.h" />
     <ClInclude Include="Root\Collision\Collision.h" />
     <ClInclude Include="Root\Collision\IShape.h" />
@@ -150,26 +153,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
