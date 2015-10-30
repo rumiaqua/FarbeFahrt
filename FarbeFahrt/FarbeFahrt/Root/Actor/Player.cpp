@@ -6,7 +6,7 @@
 # include "Utility/Vector3.h"
 
 Player::Player(IWorld& world, const Vector3& position) :
-BaseActor(world, "Player", position, Matrix::rotation(Vector3::up(), Math::Pi))
+BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI))
 , capsule(position, position, 5.0f)
 {
 	moveSpeed = 1.5f;
@@ -24,9 +24,9 @@ void Player::playerInput()
 	// カメラ座標
 	const Vector3 cameraPos = world->findCamera()->getPosition();
 	// 前方ベクトル
-	Vector3 frontVec = Vector3::forward();
+	Vector3 frontVec = Vector3::Forward();
 	// 左方ベクトル
-	Vector3 leftVec = Vector3::left();
+	Vector3 leftVec = Vector3::Left();
 
 	// XZ平面に射影して正規化
 	leftVec.y = 0;
@@ -34,25 +34,25 @@ void Player::playerInput()
 	frontVec.y = 0;
 	frontVec.normalize();
 
-	if (Input::isClicked(KEY_INPUT_SPACE))
+	if (Input::IsClicked(KEY_INPUT_SPACE))
 	{
 		SE::playSE("bang");
 	}
 
 	// 移動処理
-	if (Input::isPressed(KEY_INPUT_A))
+	if (Input::IsPressed(KEY_INPUT_A))
 	{
 		moveVec += leftVec * moveSpeed;
 	}
-	if (Input::isPressed(KEY_INPUT_D))
+	if (Input::IsPressed(KEY_INPUT_D))
 	{
 		moveVec -= leftVec * moveSpeed;
 	}
-	if (Input::isPressed(KEY_INPUT_W))
+	if (Input::IsPressed(KEY_INPUT_W))
 	{
 		moveVec += frontVec * moveSpeed;
 	}
-	if (Input::isPressed(KEY_INPUT_S))
+	if (Input::IsPressed(KEY_INPUT_S))
 	{
 		moveVec -= frontVec * moveSpeed;
 	}

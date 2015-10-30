@@ -55,9 +55,6 @@ public:
 	/// <param name="v">点</param>
 	int dot(const Point4& v) const;
 
-	/// <summary>正規化する</summary>
-	Point4& normalize();
-
 	/// <summary>長さの二乗を返す</summary>
 	int lengthSquared() const;
 
@@ -68,18 +65,18 @@ public:
 
 	/// <summary>文字列に変換して返す</summary>
 	/// <param name="v">点</param>
-	static String toString(const Point4& v);
+	static String ToString(const Point4& v);
 
 	/// <summary>内積を返す</summary>
-	static int dot(const Point4& v1, const Point4& v2);
+	static int Dot(const Point4& v1, const Point4& v2);
 
 	/// <summary>長さの二乗を返す</summary>
 	/// <param name="v">点</param>
-	static int lengthSquared(const Point4& v);
+	static int LengthSquared(const Point4& v);
 
 	/// <summary>長さを返す</summary>
 	/// <param name="v">点</param>
-	static float length(const Point4& v);
+	static float Length(const Point4& v);
 
 public:
 

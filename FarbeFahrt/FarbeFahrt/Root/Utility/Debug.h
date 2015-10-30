@@ -19,42 +19,42 @@ private:
 	Debug& operator = (const Debug&) = delete;
 
 	/// <summary>単一インスタンスを返す</summary>
-	static Debug& instance();
+	static Debug& Instance();
 
 public:
 
 	/// <summary>画面にデバッグ表示する</summary>
 	template <typename ...Args>
-	inline static void print(const String& format, Args&& ...args)
+	inline static void Print(const String& format, Args&& ...args)
 	{
 		printfDx(format.toNarrow().c_str(), std::forward<Args>(args)...);
 	}
 
 	/// <summary>画面にデバッグ表示したあと改行する</summary>
 	template <typename ...Args>
-	inline static void println(const String& format, Args&& ...args)
+	inline static void Println(const String& format, Args&& ...args)
 	{
-		print(format.toNarrow().c_str(), std::forward<Args>(args)...);
+		Print(format.toNarrow().c_str(), std::forward<Args>(args)...);
 		printfDx("\n");
 	}
 
 	/// <summary>更新処理</summary>
-	static void update();
+	static void Update();
 
 	/// <summary>毎フレームクリアするかどうかを設定する</summary>
-	static void setClear(bool isClear);
+	static void SetClear(bool isClear);
 
 	/// <summary>毎フレームクリアするかどうかを返す</summary>
-	static bool isClear();
+	static bool IsClear();
 
 	/// <summary>デバッグ表示をクリアする</summary>
-	static void clear();
+	static void Clear();
 
 	/// <summary>メッセージボックスを表示する</summary>
-	static void show(const char* messsage, const char* caption, UINT style);
+	static void Show(const char* messsage, const char* caption, UINT style);
 
 	/// <summary>フォントサイズを変更する</summary>
-	static void changeFontSize(int fontSize);
+	static void ChangeFontSize(int fontSize);
 
 private:
 

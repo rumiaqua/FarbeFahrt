@@ -43,12 +43,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//ÉQÅ[ÉÄñ{ëÃ
 	auto myGame = std::make_unique<MyGame>();
 
-	while (ProcessMessage() == 0 && !Input::isClicked(KEY_INPUT_ESCAPE))
+	while (ProcessMessage() == 0 && !Input::IsClicked(KEY_INPUT_ESCAPE))
 	{
 		ShowCursor(true);
-		Input::update();
-		Mouse::update();
-		Debug::update();
+		Input::Update();
+		Mouse::Update();
+		Debug::Update();
 		myGame->run();
 	}
 	DxLib_End();

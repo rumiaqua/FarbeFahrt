@@ -13,22 +13,22 @@ class Vector2
 public:
 
 	/// <summary>(0, 0)で初期化されたベクトルを返す</summary>
-	static const Vector2& zero();
+	static const Vector2& Zero();
 
 	/// <summary>(1, 1)で初期化されたベクトルを返す</summary>
-	static const Vector2& one();
+	static const Vector2& One();
 
 	/// <summary>(-1, 0)で初期化されたベクトルを返す</summary>
-	static const Vector2& left();
+	static const Vector2& Left();
 
 	/// <summary>(1, 0)で初期化されたベクトルを返す</summary>
-	static const Vector2& right();
+	static const Vector2& Right();
 
 	/// <summary>(0, -1)で初期化されたベクトルを返す</summary>
-	static const Vector2& up();
+	static const Vector2& Up();
 
 	/// <summary>(0, 1)で初期化されたベクトルを返す</summary>
-	static const Vector2& down();
+	static const Vector2& Down();
 
 public:
 
@@ -98,47 +98,47 @@ public:
 
 	/// <summary>文字列に変換して返す</summary>
 	/// <param name="v">ベクトル</param>
-	static String toString(const Vector2& v);
+	static String ToString(const Vector2& v);
 
 	/// <summary>内積を返す</summary>
 	/// <param name="v1">ベクトル</param>
 	/// <param name="v2">ベクトル</param>
-	static float dot(const Vector2& v1, const Vector2& v2);
+	static float Dot(const Vector2& v1, const Vector2& v2);
 
 	/// <summary>外積を返す</summary>
-	static float cross(const Vector2& v1, const Vector2& v2);
+	static float Cross(const Vector2& v1, const Vector2& v2);
 
 	/// <summary>長さの二乗を返す</summary>
 	/// <param name="v">ベクトル</param>
-	static float lengthSquared(const Vector2& v);
+	static float LengthSquared(const Vector2& v);
 
 	/// <summary>長さを返す</summary>
 	/// <param name="v">ベクトル</param>
-	static float length(const Vector2& v);
+	static float Length(const Vector2& v);
 
 	/// <summary>正規化したベクトルを返す</summary>
 	/// <param name="v">ベクトル</param>
-	static Vector2 normalize(const Vector2& v);
+	static Vector2 Nornalize(const Vector2& v);
 
 	/// <summary>任意軸で回転したベクトル返す</summary>
 	/// <param name="point">任意点</param>
 	/// <param name="origin">中心点</param>
 	/// <param name="angle">回転量</param>
-	static Vector2 rotate(const Vector2& point, const Vector2& origin, float angle);
+	static Vector2 Rotate(const Vector2& point, const Vector2& origin, float angle);
 
 	/// <summary>投影したベクトルを返す</summary>
 	/// <param name="v">ベクトル</param>
 	/// <param name="target">対象のベクトル</param>
-	static Vector2 projection(const Vector2& v, const Vector2& target);
+	static Vector2 Projection(const Vector2& v, const Vector2& target);
 
 	/// <summary>線形補間したベクトルを返す</summary>
 	/// <param name="start">開始ベクトル</param>
 	/// <param name="end">終了ベクトル</param>
 	/// <param name="t">遷移率</param>
-	static Vector2 lerp(const Vector2& start, const Vector2& end, float t);
+	static Vector2 Lerp(const Vector2& start, const Vector2& end, float t);
 
 	/// <summary>ベクトルのなす角を返す</summary>
-	static float angle(const Vector2& v1, const Vector2& v2);
+	static float Angle(const Vector2& v1, const Vector2& v2);
 
 public:
 

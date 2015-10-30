@@ -7,41 +7,41 @@ Debug::Debug()
 
 }
 
-Debug& Debug::instance()
+Debug& Debug::Instance()
 {
 	static Debug instance;
 	return instance;
 }
 
-void Debug::update()
+void Debug::Update()
 {
-	if (isClear())
+	if (IsClear())
 	{
-		clear();
+		Clear();
 	}
 }
 
-void Debug::setClear(bool isClear)
+void Debug::SetClear(bool isClear)
 {
-	instance().m_isClear = isClear;
+	Instance().m_isClear = isClear;
 }
 
-bool Debug::isClear()
+bool Debug::IsClear()
 {
-	return instance().m_isClear;
+	return Instance().m_isClear;
 }
 
-void Debug::clear()
+void Debug::Clear()
 {
 	clsDx();
 }
 
-void Debug::show(const char* message, const char* caption, UINT style)
+void Debug::Show(const char* message, const char* caption, UINT style)
 {
 	MessageBox(NULL, message, caption, style);
 }
 
-void Debug::changeFontSize(int fontSize)
+void Debug::ChangeFontSize(int fontSize)
 {
-	SetFontSize(instance().m_fontSize = fontSize);
+	SetFontSize(Instance().m_fontSize = fontSize);
 }

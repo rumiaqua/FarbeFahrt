@@ -13,12 +13,12 @@
 namespace
 {
 	// 何秒かけて遷移するか
-	static const float Second = 1.0f;
+	static const float SECOND = 1.0f;
 	using Func = std::function<void()>;
 }
 
 Camera::Camera(IWorld& world) :
-BaseActor(world, "Camera", Vector3::zero(), Matrix::identity())
+BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity())
 {
 	SetCameraNearFar(1.0f, 12000.0f);
 	SetCursorPos(nScreenCenterX, nScreenCenterY);
@@ -163,10 +163,10 @@ void Camera::cameraSet()
 
 	funcs.at(cameraState.cameraMode)();
 
-	t += 1 / (60.0f * Second);
+	t += 1 / (60.0f * SECOND);
 	t = t > 1.0f ? 1.0f : t;
-	getPosition() = Vector3::lerp(cameraMatrix.currentPos, cameraMatrix.targetPos, static_cast<float>(Math::sin(Math::HalfPi * t)));
-	Vector3 focus = Vector3::lerp(cameraMatrix.currentRot, cameraMatrix.targetRot, static_cast<float>(Math::sin(Math::HalfPi * t)));
+	getPosition() = Vector3::Lerp(cameraMatrix.currentPos, cameraMatrix.targetPos, static_cast<float>(Math::Sin(Math::HALF_PI * t)));
+	Vector3 focus = Vector3::Lerp(cameraMatrix.currentRot, cameraMatrix.targetRot, static_cast<float>(Math::Sin(Math::HALF_PI * t)));
 
 	SetCameraPositionAndTarget_UpVecY(getPosition(), focus);
 }
@@ -174,7 +174,7 @@ void Camera::cameraSet()
 //キー：Zで本視点
 void Camera::toBookCamera()
 {
-	if (Input::isClicked(KEY_INPUT_Z))
+	if (Input::IsClicked(KEY_INPUT_Z))
 	{
 		t = 0;
 		cameraState.cameraMode = CameraMode::FadeOut;
@@ -184,7 +184,7 @@ void Camera::toBookCamera()
 //キー：Xでプレイヤー視点
 void Camera::toPlayerCamera()
 {
-	if (Input::isClicked(KEY_INPUT_X))
+	if (Input::IsClicked(KEY_INPUT_X))
 	{
 		cameraState.cameraMode = CameraMode::FadeIn;
 	}
@@ -193,7 +193,7 @@ void Camera::toPlayerCamera()
 //キー：Cでカメラ固定回転
 void Camera::toFixCamera()
 {
-	if (Input::isClicked(KEY_INPUT_C))
+	if (Input::IsClicked(KEY_INPUT_C))
 	{
 		cameraState.cameraMode = CameraMode::FadeInFix;
 	}

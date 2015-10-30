@@ -16,7 +16,7 @@ Pose::Pose(const Vector3& position, const Matrix& matrix)
 
 Matrix Pose::getPose() const
 {
-	return Matrix::translation(position) * rotation;
+	return Matrix::Translation(position) * rotation;
 }
 
 Vector3& Pose::getPosition()
