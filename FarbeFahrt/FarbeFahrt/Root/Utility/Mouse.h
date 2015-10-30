@@ -19,33 +19,35 @@ private:
 	/// <summary>代入演算子の削除</summary>
 	Mouse& operator = (const Mouse&) = delete;
 
+private:
+
 	/// <summary>静的インスタンスを返す</summary>
-	static Mouse& instance();
+	static Mouse& Instance();
 
 public:
 
 	/// <summary>更新処理</summary>
-	static void update();
+	static void Update();
 
 	/// <summary>マウスの座標を返す</summary>
-	static Point2 position();
+	static Point2 Position();
 
 	/// <summary>押された瞬間かどうかを返す</summary>
 	/// <param name="mouseCode">DxLibのマウスコード</param>
-	static bool isClicked(int mouseCode);
+	static bool IsClicked(int mouseCode);
 
 	/// <summary>押されているかどうかを返す</summary>
 	/// <param name="mouseCode">DxLibのマウスコード</param>
-	static bool isPressed(int mouseCode);
+	static bool IsPressed(int mouseCode);
 
 	/// <summary>離された瞬間かどうかを返す</summary>
 	/// <param name="mouseCode">DxLibのマウスコード</param>
-	static bool isReleased(int mouseCode);
+	static bool IsReleased(int mouseCode);
 
 	/// <summary>ホイールの変化量を返す</summary>
-	static int scrollValue();
+	static int ScrollValue();
 
-	static Vector3 screenPointToWorld(float z);
+	static Vector3 ScreenPointToWorld(float z);
 
 private:
 

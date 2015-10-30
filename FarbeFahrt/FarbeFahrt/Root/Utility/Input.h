@@ -23,24 +23,24 @@ private:
 private:
 
 	/// <summary>単一のインスタンスを返す</summary>
-	static Input& instance();
+	static Input& Instance();
 
 public:
 
 	/// <summary>キー情報の更新</summary>
-	static void update();
+	static void Update();
 
 	/// <summary>押した瞬間かどうかを返す</summary>
 	/// <param name="keyCode">DxLibのキーコード</param>
-	static bool isClicked(int keyCode);
+	static bool IsClicked(int keyCode);
 
 	/// <summary>押されているかどうかを返す</summary>
 	/// <param name="keyCode">DxLibのキーコード</param>
-	static bool isPressed(int keyCode);
+	static bool IsPressed(int keyCode);
 
 	/// <summary>離した瞬間かどうかを返す</summary>
 	/// <param name="keyCode">DxLibのキーコード</param>
-	static bool isReleased(int keyCode);
+	static bool IsReleased(int keyCode);
 
 private:
 

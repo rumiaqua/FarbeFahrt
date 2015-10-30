@@ -4,13 +4,13 @@
 # include "Math.h"
 # include "String.h"
 
-const Vector4& Vector4::zero()
+const Vector4& Vector4::Zero()
 {
 	static Vector4 zero { 0.0f, 0.0f, 0.0f, 0.0f };
 	return zero;
 }
 
-const Vector4& Vector4::one()
+const Vector4& Vector4::One()
 {
 	static Vector4 one { 1.0f, 1.0f, 1.0f, 1.0f };
 	return one;
@@ -74,75 +74,75 @@ Vector4::operator const float* () const
 
 String Vector4::toString() const
 {
-	return toString(*this);
+	return ToString(*this);
 }
 
  float Vector4::dot(const Vector4& v) const
 {
-	return dot(*this, v);
+	return Dot(*this, v);
 }
 
  float Vector4::lengthSquared() const
 {
-	return lengthSquared(*this);
+	return LengthSquared(*this);
 }
 
  float Vector4::length() const
 {
-	return length(*this);
+	return Length(*this);
 }
 
 Vector4& Vector4::normalize()
 {
-	*this = normalize(*this);
+	*this = Normalize(*this);
 	return *this;
 }
 
 Vector4& Vector4::projection(const Vector4& v)
 {
-	*this = projection(*this, v);
+	*this = Projection(*this, v);
 	return *this;
 }
 
 
-float Vector4::dot(const Vector4& v1, const Vector4& v2)
+float Vector4::Dot(const Vector4& v1, const Vector4& v2)
 {
 	return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w;
 }
 
-float Vector4::lengthSquared(const Vector4& v)
+float Vector4::LengthSquared(const Vector4& v)
 {
-	return dot(v, v);
+	return Dot(v, v);
 }
 
-float Vector4::length(const Vector4& v)
+float Vector4::Length(const Vector4& v)
 {
-	return static_cast<float>(Math::sqrt(lengthSquared(v)));
+	return static_cast<float>(Math::Sqrt(LengthSquared(v)));
 }
 
-Vector4 Vector4::normalize(const Vector4& v)
+Vector4 Vector4::Normalize(const Vector4& v)
 {
-	float lengthSq = lengthSquared(v);
+	float lengthSq = LengthSquared(v);
 	if (lengthSq == 0.0f)
 	{
 		return v;
 	}
 
-	return v / static_cast<float>(Math::sqrt(lengthSq));
+	return v / static_cast<float>(Math::Sqrt(lengthSq));
 }
 
-Vector4 Vector4::projection(const Vector4& v, const Vector4& target)
+Vector4 Vector4::Projection(const Vector4& v, const Vector4& target)
 {
-	Vector4 normal = normalize(target);
-	return dot(v, normal) * normal;
+	Vector4 normal = Normalize(target);
+	return Dot(v, normal) * normal;
 }
 
-Vector4 Vector4::lerp(const Vector4& start, const Vector4& end, float t)
+Vector4 Vector4::Lerp(const Vector4& start, const Vector4& end, float t)
 {
 	return start + (end - start) * t;
 }
 
-String Vector4::toString(const Vector4& v)
+String Vector4::ToString(const Vector4& v)
 {
 	return String::Create("(", v.x, ", ", v.y, ", ", v.z, ", ", v.w, ")");
 }

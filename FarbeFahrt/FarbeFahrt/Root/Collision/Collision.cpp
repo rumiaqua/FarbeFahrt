@@ -73,12 +73,12 @@ bool Collision::intersects(const Line& l, const Capsule& c)
 bool Collision::intersects(const Line& l1, const Line& l2)
 {
 	Vector3 ac = l2.origin - l1.origin;
-	Vector3 n1 = Vector3::normalize(l1.end - l1.origin);
-	Vector3 n2 = Vector3::normalize(l2.end - l2.origin);
+	Vector3 n1 = Vector3::Normalize(l1.end - l1.origin);
+	Vector3 n2 = Vector3::Normalize(l2.end - l2.origin);
 
-	float t1 = Vector3::dot(n1, ac);
-	float t2 = Vector3::dot(n2, ac);
-	float dot = Vector3::dot(n1, n2);
+	float t1 = Vector3::Dot(n1, ac);
+	float t2 = Vector3::Dot(n2, ac);
+	float dot = Vector3::Dot(n1, n2);
 	float pow = dot * dot;
 
 	// 最近点を通る直線が通る各線分上の点の比率
@@ -87,8 +87,8 @@ bool Collision::intersects(const Line& l1, const Line& l2)
 
 	// 比率が 0.0 から 1.0 の間に無ければ線分は交差していない
 	if (
-		!Math::isContains(d1, 0.0f, 1.0f) ||
-		!Math::isContains(d2, 0.0f, 1.0f))
+		!Math::IsContains(d1, 0.0f, 1.0f) ||
+		!Math::IsContains(d2, 0.0f, 1.0f))
 	{
 		return false;
 	}
@@ -98,7 +98,7 @@ bool Collision::intersects(const Line& l1, const Line& l2)
 	Vector3 sub = p1 - p2;
 
 	// 最近点同士の距離が限りなく0に近ければ交差している
-	return Vector3::dot(sub, sub) < 0.0001f;
+	return Vector3::Dot(sub, sub) < 0.0001f;
 }
 
 bool Collision::intersects(const Line& l, const Triangle& t)

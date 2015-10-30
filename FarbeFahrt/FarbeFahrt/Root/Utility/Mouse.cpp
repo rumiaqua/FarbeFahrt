@@ -8,15 +8,15 @@ Mouse::Mouse()
 
 }
 
-Mouse& Mouse::instance()
+Mouse& Mouse::Instance()
 {
 	static Mouse instance;
 	return instance;
 }
 
-void Mouse::update()
+void Mouse::Update()
 {
-	Mouse& ins = instance();
+	Mouse& ins = Instance();
 
 	int x, y;
 	GetMousePoint(&x, &y);
@@ -29,47 +29,47 @@ void Mouse::update()
 	ins.m_currentBuffer = GetMouseInput();
 }
 
-Point2 Mouse::position()
+Point2 Mouse::Position()
 {
-	Mouse& ins = instance();
+	Mouse& ins = Instance();
 	return ins.m_position;
 }
 
-bool Mouse::isClicked(int mouseCode)
+bool Mouse::IsClicked(int mouseCode)
 {
-	Mouse& ins = instance();
+	Mouse& ins = Instance();
 	return
 		!(ins.m_previousBuffer & mouseCode) &&
 		(ins.m_currentBuffer & mouseCode);
 }
 
-bool Mouse::isPressed(int mouseCode)
+bool Mouse::IsPressed(int mouseCode)
 {
-	Mouse& ins = instance();
+	Mouse& ins = Instance();
 	return !!(ins.m_currentBuffer & mouseCode);
 }
 
-bool Mouse::isReleased(int mouseCode)
+bool Mouse::IsReleased(int mouseCode)
 {
-	Mouse& ins = instance();
+	Mouse& ins = Instance();
 	return
 		(ins.m_previousBuffer & mouseCode) &&
 		!(ins.m_currentBuffer & mouseCode);
 }
 
-int Mouse::scrollValue()
+int Mouse::ScrollValue()
 {
-	Mouse& ins = instance();
+	Mouse& ins = Instance();
 	return ins.m_scrollValue;
 }
 
-Vector3 Mouse::screenPointToWorld(float z)
+Vector3 Mouse::ScreenPointToWorld(float z)
 {
 	Matrix view = GetCameraViewMatrix();
 	Matrix projection = GetCameraProjectionMatrix();
 	Matrix viewport = GetCameraViewportMatrix();
 	Matrix inverse = (view * projection * viewport).inversed();
-	Point2 pos = position();
+	Point2 pos = Position();
 	Vector4 v = Vector4(static_cast<float>(pos.x), static_cast<float>(pos.y), z, 1.0f) * inverse;
 	v.x /= v.w;
 	v.y /= v.w;

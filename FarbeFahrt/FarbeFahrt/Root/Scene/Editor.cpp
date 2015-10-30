@@ -23,12 +23,12 @@ void Editor::loadContents(Loader& loader)
 
 void Editor::initialize()
 {
-	Debug::setClear(true);
+	Debug::SetClear(true);
 
 	Matrix view = memory_cast<Matrix>(GetCameraViewMatrix());
 	view.inverse();
-	Vector3 position = Matrix::translation(view);
-	Vector3 forward = Vector3(Matrix::forward(view));
+	Vector3 position = Matrix::Translation(view);
+	Vector3 forward = Vector3(Matrix::Forward(view));
 	m_camera.setPosition(position);
 	m_camera.setDirection(forward);
 }
@@ -46,21 +46,21 @@ void Editor::update()
 	// Šî€ˆ—
 	if (m_isWorldMode)
 	{
-		right = Vector3::right();
-		up = Vector3::up();
-		forward = Vector3::forward();
+		right = Vector3::Right();
+		up = Vector3::Up();
+		forward = Vector3::Forward();
 	}
 
 	// ‰Á‘¬ˆ—
-	const float accel = m_isAccel ? 3.0f : 1.0f;
+	const float ACCEL = m_isAccel ? 3.0f : 1.0f;
 
 	// ˆÚ“®ˆ—
-	const float speed = 1.0f * accel;
-	move(speed, right, up, forward);
+	const float SPEED = 1.0f * ACCEL;
+	move(SPEED, right, up, forward);
 
 	// ‰ñ“]ˆ—
-	const double angle = Math::toRadian(0.5) * accel;
-	rotate(angle, right, up, forward);
+	const double ANGLE = Math::ToRadian(0.5) * ACCEL;
+	rotate(ANGLE, right, up, forward);
 
 	// ƒV[ƒ“‘JˆÚˆ—
 	scene();
@@ -68,17 +68,17 @@ void Editor::update()
 
 void Editor::draw(Renderer& render)
 {
-	Debug::println("Editor Mode.");
-	Debug::println("Translate");
-	Debug::println("A:Left D:Right E:Up X:Down W:Forward S:Backward");
-	Debug::println("Rotate");
-	Debug::println("©¨:XAxis ª«:YAxis");
-	Debug::println(String::Create("Toggle Pivot Mode"));
-	Debug::println(String::Create("Space:", m_isWorldMode ? "Local" : "World", " Mode"));
-	Debug::println(String::Create("Toggle Speed Mode"));
-	Debug::println(String::Create("LShift:", m_isAccel ? "Low" : "High", " Speed Mode"));
-	Debug::println("Scene");
-	Debug::println("Return:Pop current Scene.");
+	Debug::Println("Editor Mode.");
+	Debug::Println("Translate");
+	Debug::Println("A:Left D:Right E:Up X:Down W:Forward S:Backward");
+	Debug::Println("Rotate");
+	Debug::Println("©¨:XAxis ª«:YAxis");
+	Debug::Println(String::Create("Toggle Pivot Mode"));
+	Debug::Println(String::Create("Space:", m_isWorldMode ? "Local" : "World", " Mode"));
+	Debug::Println(String::Create("Toggle Speed Mode"));
+	Debug::Println(String::Create("LShift:", m_isAccel ? "Low" : "High", " Speed Mode"));
+	Debug::Println("Scene");
+	Debug::Println("Return:Pop current Scene.");
 
 	m_camera.apply();
 }
@@ -95,12 +95,12 @@ bool Editor::isSwallow() const
 
 void Editor::mode()
 {
-	if (Input::isClicked(KEY_INPUT_SPACE))
+	if (Input::IsClicked(KEY_INPUT_SPACE))
 	{
 		m_isWorldMode = !m_isWorldMode;
 	}
 
-	if (Input::isClicked(KEY_INPUT_LSHIFT))
+	if (Input::IsClicked(KEY_INPUT_LSHIFT))
 	{
 		m_isAccel = !m_isAccel;
 	}
@@ -108,27 +108,27 @@ void Editor::mode()
 
 void Editor::move(float speed, const Vector3& right, const Vector3& up, const Vector3& forward)
 {
-	if (Input::isPressed(KEY_INPUT_A))
+	if (Input::IsPressed(KEY_INPUT_A))
 	{
 		m_camera.move(-right * speed);
 	}
-	if (Input::isPressed(KEY_INPUT_D))
+	if (Input::IsPressed(KEY_INPUT_D))
 	{
 		m_camera.move(right * speed);
 	}
-	if (Input::isPressed(KEY_INPUT_E))
+	if (Input::IsPressed(KEY_INPUT_E))
 	{
 		m_camera.move(up * speed);
 	}
-	if (Input::isPressed(KEY_INPUT_X))
+	if (Input::IsPressed(KEY_INPUT_X))
 	{
 		m_camera.move(-up * speed);
 	}
-	if (Input::isPressed(KEY_INPUT_W))
+	if (Input::IsPressed(KEY_INPUT_W))
 	{
 		m_camera.move(forward * speed);
 	}
-	if (Input::isPressed(KEY_INPUT_S))
+	if (Input::IsPressed(KEY_INPUT_S))
 	{
 		m_camera.move(-forward * speed);
 	}
@@ -136,19 +136,19 @@ void Editor::move(float speed, const Vector3& right, const Vector3& up, const Ve
 
 void Editor::rotate(double angle, const Vector3& X, const Vector3& Y, const Vector3& Z)
 {
-	if (Input::isPressed(KEY_INPUT_UP))
+	if (Input::IsPressed(KEY_INPUT_UP))
 	{
 		m_camera.rotate(X, angle);
 	}
-	if (Input::isPressed(KEY_INPUT_DOWN))
+	if (Input::IsPressed(KEY_INPUT_DOWN))
 	{
 		m_camera.rotate(X, -angle);
 	}
-	if (Input::isPressed(KEY_INPUT_LEFT))
+	if (Input::IsPressed(KEY_INPUT_LEFT))
 	{
 		m_camera.rotate(Y, angle);
 	}
-	if (Input::isPressed(KEY_INPUT_RIGHT))
+	if (Input::IsPressed(KEY_INPUT_RIGHT))
 	{
 		m_camera.rotate(Y, -angle);
 	}
@@ -156,7 +156,7 @@ void Editor::rotate(double angle, const Vector3& X, const Vector3& Y, const Vect
 
 void Editor::scene()
 {
-	if (Input::isClicked(KEY_INPUT_RETURN))
+	if (Input::IsClicked(KEY_INPUT_RETURN))
 	{
 		m_manager->popScene();
 	}

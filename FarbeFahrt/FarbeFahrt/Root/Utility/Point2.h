@@ -15,22 +15,22 @@ class Point2
 public:
 
 	/// <summary>(0, 0)で初期化された点を返す</summary>
-	static const Point2& zero();
+	static const Point2& Zero();
 
 	/// <summary>(1, 1)で初期化された点を返す</summary>
-	static const Point2& one();
+	static const Point2& One();
 
 	/// <summary>(-1, 0)で初期化された点を返す</summary>
-	static const Point2& left();
+	static const Point2& Left();
 
 	/// <summary>(1, 0)で初期化された点を返す</summary>
-	static const Point2& right();
+	static const Point2& Right();
 
 	/// <summary>(0, -1)で初期化された点を返す</summary>
-	static const Point2& up();
+	static const Point2& Up();
 
 	/// <summary>(0, 1)で初期化された点を返す</summary>
-	static const Point2& down();
+	static const Point2& Down();
 
 public:
 
@@ -94,23 +94,23 @@ public:
 
 	/// <summary>文字列に変換して返す</summary>
 	/// <param name="v">点</param>
-	static String toString(const Point2& v);
+	static String ToString(const Point2& v);
 
 	/// <summary>内積を返す</summary>
 	/// <param name="v1">点</param>
 	/// <param name="v2">点</param>
-	static int dot(const Point2& v1, const Point2& v2);
+	static int Dot(const Point2& v1, const Point2& v2);
 
 	/// <summary>外積を返す</summary>
-	static int cross(const Point2& v1, const Point2& v2);
+	static int Cross(const Point2& v1, const Point2& v2);
 
 	/// <summary>長さの二乗を返す</summary>
 	/// <param name="v">点</param>
-	static int lengthSquared(const Point2& v);
+	static int LengthSquared(const Point2& v);
 
 	/// <summary>長さを返す</summary>
 	/// <param name="v">点</param>
-	static float length(const Point2& v);
+	static float Length(const Point2& v);
 
 public:
 

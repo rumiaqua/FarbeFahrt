@@ -4,7 +4,7 @@
 #include "Utility/Debug.h"
 
 Stand::Stand(IWorld& world, const Vector3& position) :
-	BaseActor(world, "Stand", position, Matrix::rotation(Vector3::forward(),Math::toRadian(45)))
+	BaseActor(world, "Stand", position, Matrix::Rotation(Vector3::Forward(), (float)Math::ToRadian(45.0)))
 	, capsule(position, position, 5.0f)
 {
 }
@@ -14,13 +14,13 @@ void Stand::onUpdate()
 }
 void Stand::onDraw(Renderer& render)const
 {
-	Debug::println(getPose().toString());
-	Debug::println("");
-	Debug::println(getWorldPose().toString());
+	Debug::Println(getPose().toString());
+	Debug::Println("");
+	Debug::Println(getWorldPose().toString());
 
 	Matrix pose = getWorldPose();
-	Vector3 pos = Matrix::translation(pose);
-	Matrix rot = Matrix::rotation(pose);
+	Vector3 pos = Matrix::Translation(pose);
+	Matrix rot = Matrix::Rotation(pose);
 
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
 	render.drawNormalModel("Player", pos, rot);
@@ -29,5 +29,5 @@ void Stand::onDraw(Renderer& render)const
 void Stand::onMessage(const String & message, const void * parameter)
 {
 	if (message == "Rotation")
-		Matrix::rotate(getRotation(), Vector3::up(), *(const float*)parameter);
+		Matrix::Rotate(getRotation(), Vector3::Up(), *(const float*)parameter);
 }

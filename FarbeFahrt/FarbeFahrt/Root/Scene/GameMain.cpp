@@ -26,26 +26,26 @@ void GameMain::loadContents(Loader& loader)
 void GameMain::initialize()
 {
 	world = std::make_shared<World>();
-	world->addActor(ActorTag::Player, std::make_shared<Player>(*world, Vector3::zero()));
+	world->addActor(ActorTag::Player, std::make_shared<Player>(*world, Vector3::Zero()));
 	world->addCamera(std::make_shared<Camera>(*world));
 	world->addField(std::make_shared<Field>(*world));
 	world->addSkydome(std::make_shared<Skydome>(*world));
 
-	Debug::setClear(true);
-	Debug::changeFontSize(16);
+	Debug::SetClear(true);
+	Debug::ChangeFontSize(16);
 }
 void GameMain::update()
 {
 	world->update();
 
 	// エンターでエディターシーンをプッシュする
-	if (Input::isClicked(KEY_INPUT_RETURN))
+	if (Input::IsClicked(KEY_INPUT_RETURN))
 	{
 		m_manager->pushScene(Scene::Editor);
 	}
 
 	// スペースキーでタイトルシーンをプッシュする	
-	if (Input::isClicked(KEY_INPUT_SPACE))
+	if (Input::IsClicked(KEY_INPUT_SPACE))
 	{
 		m_manager->pushScene(Scene::drawGameTitle, 60.0f);
 	}
