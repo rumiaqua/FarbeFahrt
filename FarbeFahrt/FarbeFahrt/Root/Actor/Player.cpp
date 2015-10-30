@@ -28,8 +28,8 @@ void Player::onUpdate()
 {
 	playerInput();
 	
-	float messageParam = Math::toRadian(2.0);
-	if (Input::isPressed(KEY_INPUT_Q))
+	float messageParam = Math::ToRadian(2.0);
+	if (Input::IsPressed(KEY_INPUT_Q))
 	{
 		stand->sendMessage("Rotation", &messageParam);
 	}
