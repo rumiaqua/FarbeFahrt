@@ -45,7 +45,7 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 	//見辛いから後々関数分けする予定
 	//サンプル丸パクリスペクト
 	float animTotalTime;
-	auto& modelData = m_modelData[name];
+	auto& modelData = m_modelData.at(name);
 	modelData.isSkinMesh = true;
 	if (animNumber != modelData.animNumber)//アニメーションが切り替わった時
 	{
@@ -101,11 +101,11 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 
 void Renderer::setScale(const std::string& name, const Vector3& scale)
 {
-	MV1SetScale(m_modelData[name].modelHandle, scale);
+	MV1SetScale(m_modelData.at(name).modelHandle, scale);
 }
 
-void Renderer::drawTexture(const std::string& name, int x, int y,int cx,int cy, float width, float height, float angle)
+void Renderer::drawTexture(const std::string& name, int x, int y,int cx,int cy, float width, float height, float angle) const
 {
 	DrawRotaGraph3(x, y,cx, cy, width, height,
-		(double)angle, m_textureData[name], FALSE, FALSE);
+		(double)angle, m_textureData.at(name), FALSE, FALSE);
 }

@@ -8,7 +8,7 @@ BaseActor(world, "Skydome", Vector3::Zero(), Matrix::identity())
 void Skydome::onUpdate()
 {
 	//カメラのポジションを取得
-	getPosition() = world->findCamera()->getPosition();
+	getPosition() = m_world->findCamera()->getPosition();
 }
 void Skydome::onDraw(Renderer& render)const
 {

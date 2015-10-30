@@ -47,16 +47,16 @@ public:
 	void DuplicateContent(const std::string& basename, const std::string& duplicate);
 	void load();
 	void cleanUp();
-	bool isLoad();
+	bool isLoad() const;
 	bool onCompleted();
 private:
 	void ErrLog(int ContentHandle, const std::string& filename);
-	ContentMap getContentList(const ContentTag& tag);
+	ContentMap getContentList(const ContentTag& tag) const;
 public:
-	ContentMap getModelList();//renderで使う
-	ContentMap getTextureList();//こっちもrenderで使う
-	ContentMap getBGMList();//ただしおめーはダメだ
-	ContentMap getSEList();//ただしおめーはダメだ
+	ContentMap getModelList() const;//renderで使う
+	ContentMap getTextureList() const;//こっちもrenderで使う
+	ContentMap getBGMList() const;//ただしおめーはダメだ
+	ContentMap getSEList() const;//ただしおめーはダメだ
 	//セーブデータとかできたら増えるかも
 private:
 	ContentMapPlusTag m_ContentList;

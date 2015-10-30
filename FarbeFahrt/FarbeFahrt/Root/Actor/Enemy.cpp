@@ -11,5 +11,5 @@ void Enemy::onUpdate()
 }
 void Enemy::onDraw(Renderer& render)const
 {
-	render.drawNormalModel(name.toNarrow(), getPosition(), getRotation());
+	render.drawNormalModel(m_name.toNarrow(), getPosition(), getRotation());
 }

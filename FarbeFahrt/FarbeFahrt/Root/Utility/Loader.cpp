@@ -81,7 +81,7 @@ void Loader::load()
 	}
 	SetUseASyncLoadFlag(FALSE);
 }
-bool Loader::isLoad()
+bool Loader::isLoad() const
 {
 	int count = std::count_if(m_ContentList.begin(), m_ContentList.end(),
 		[&](const std::pair<std::string, ContentDataAndTag>& contentData)
@@ -108,7 +108,7 @@ void Loader::loadContent(const std::string& name, const std::string& filename)
 }
 
 
-ContentMap Loader::getContentList(const ContentTag& tag)
+ContentMap Loader::getContentList(const ContentTag& tag) const
 {
 	ContentMap returnData;
 	for (auto& data : m_ContentList)
@@ -122,19 +122,19 @@ ContentMap Loader::getContentList(const ContentTag& tag)
 	}
 	return returnData;
 }
-ContentMap Loader::getModelList()
+ContentMap Loader::getModelList() const
 {
 	return getContentList(ContentTag::Model);
 }
-ContentMap Loader::getTextureList()
+ContentMap Loader::getTextureList() const
 {
 	return getContentList(ContentTag::Texture);
 }
-ContentMap Loader::getBGMList()
+ContentMap Loader::getBGMList() const
 {
 	return getContentList(ContentTag::BGM);
 }
-ContentMap Loader::getSEList()
+ContentMap Loader::getSEList() const
 {
 	return getContentList(ContentTag::SE);
 }

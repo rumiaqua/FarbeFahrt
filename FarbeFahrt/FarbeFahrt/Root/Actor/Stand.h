@@ -13,5 +13,5 @@ private:
 	virtual void onMessage(const String& message, const void* parameter)override;
 
 private:
-	Capsule capsule;
+	Capsule m_capsule;
 };

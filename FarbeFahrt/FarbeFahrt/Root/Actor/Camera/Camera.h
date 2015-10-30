@@ -31,9 +31,9 @@ private:
 	void actorCheck(const std::string actorName);
 	
 private:	
-	float t = 0.0f;
+	float m_t = 0.0f;
 
-	CameraState cameraState;
-	CameraMatrix cameraMatrix;	
-	std::shared_ptr<BaseActor> actor;
+	CameraState m_cameraState;
+	CameraMatrix m_cameraMatrix;
+	std::shared_ptr<BaseActor> m_actor;
 };
