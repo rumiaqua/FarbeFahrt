@@ -26,6 +26,7 @@
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
+    <ClCompile Include="Root\Actor\StaicObject.cpp" />
     <ClCompile Include="Root\Actor\Stand.cpp" />
     <ClCompile Include="Root\Collision\Capsule.cpp" />
     <ClCompile Include="Root\Collision\Collision.cpp" />
@@ -64,6 +65,7 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Actor\StaicObject.h" />
     <ClInclude Include="Root\Utility\ScriptStageBuilder.h" />
     <ClInclude Include="Root\Actor\Actor.h" />
     <ClInclude Include="Root\Actor\ActorManager\ActorManager.h" />
