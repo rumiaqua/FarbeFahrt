@@ -131,6 +131,8 @@
     <None Include="Resources\Model\本2\book001.vmd" />
     <None Include="Resources\Model\本2\book002.vmd" />
     <None Include="Resources\Model\本\本完成(仮).pmx" />
+    <None Include="Root\Scene\FadeIn.inl" />
+    <None Include="Root\Scene\FadeOut.inl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\curtain.png" />
