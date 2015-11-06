@@ -1,6 +1,6 @@
 #include "GameTitle.h"
 #include <Windows.h>
-
+#include "Utility\Loader.h"
 # include "Utility/Input.h"
 # include "Utility/Debug.h"
 
@@ -12,6 +12,12 @@ GameTitle::GameTitle()
 }
 void GameTitle::loadContents(Loader& loader)
 {
+	loader.loadContent("Player", "Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx");
+	loader.loadContent("sky", "Model/skydome/昼の月.x");
+	loader.loadContent("field", "Model/terrain/terrain.mqo");
+	loader.loadContent("bang", "SE/test.wav");
+	loader.loadContent("kari", "Texture/仮りそーす.png");
+	loader.loadContent("book", "Model/本2/book.pmx");
 }
 void GameTitle::initialize(){
 }

@@ -43,10 +43,10 @@ void MyGame::run()
 		m_sceneManager.resolve(loader);
 		loader.load();
 	}
-
 	// ƒ[ƒh’†‚È‚ç‰½‚à‚µ‚È‚¢
 	if (loader.isLoad())
 	{
+
 		return;
 	}
 
