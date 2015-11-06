@@ -18,11 +18,13 @@ struct ContentDataAndTag
 	ContentTag tag;
 	int handle;
 	std::string filename;
-	ContentDataAndTag(ContentTag tag, int handle, const std::string& filename)
+	bool use;
+	ContentDataAndTag(ContentTag tag, int handle, const std::string& filename,bool use)
 	{
 		this->tag = tag;
 		this->handle = handle;
 		this->filename = filename;
+		this->use = use;
 	}
 	ContentDataAndTag(){}
 };
@@ -51,6 +53,7 @@ public:
 	bool onCompleted();
 private:
 	void ErrLog(int ContentHandle, const std::string& filename);
+	void deleteModel();//別スレッドだよ
 	ContentMap getContentList(const ContentTag& tag) const;
 public:
 	ContentMap getModelList() const;//renderで使う
@@ -60,6 +63,7 @@ public:
 	//セーブデータとかできたら増えるかも
 private:
 	ContentMapPlusTag m_ContentList;
+	ContentMapPlusTag m_oldContentList;
 	std::unordered_map<std::string, FuncAndTag> m_LoadFunc;
 	bool isLoadCompleted;
 };

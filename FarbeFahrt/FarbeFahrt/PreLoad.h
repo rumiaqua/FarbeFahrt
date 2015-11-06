@@ -1,6 +1,6 @@
 #pragma once
 #include "Frame\BaseScene.h"
-class PreLoad :
+class PreLoad : 
 	public BaseScene
 {
 public:
