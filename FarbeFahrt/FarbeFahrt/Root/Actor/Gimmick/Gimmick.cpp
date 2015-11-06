@@ -1,14 +1,16 @@
-#include "SkinObject.h"
+#include "Gimmick.h"
+
+#include "Gimmick.h"
 #include "Utility/Math.h"
 
 #include "Utility/Input.h"
 
-namespace 
+namespace
 {
 	float flame = 0.0f;
 }
 
-SkinObject::SkinObject(IWorld & world, const String& modelName, const Vector3 & position, int anmNo, float flameSpeed,float maxFlame) :
+Gimmick::Gimmick(IWorld & world, const String& modelName, const Vector3 & position, int anmNo, float flameSpeed, float maxFlame) :
 	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI))
 	, m_capsule(position, position, 5.0f)
 {
@@ -18,29 +20,27 @@ SkinObject::SkinObject(IWorld & world, const String& modelName, const Vector3 & 
 	m_anmNo = anmNo;
 }
 
-void SkinObject::flameReset()
+void Gimmick::flameReset()
 {
 	flame = 0;
 }
 
-void SkinObject::onUpdate()
+void Gimmick::onUpdate()
 {
-	if(flame <= m_maxFlame * m_flameSpeed)
+	if (flame <= m_maxFlame * m_flameSpeed)
 	{
 		flame += m_flameSpeed;
 	}
 	BaseActor::onUpdate();
 }
 
-void SkinObject::onDraw(Renderer & render) const
+void Gimmick::onDraw(Renderer & render) const
 {
 	render.drawSkinModel(m_name.toNarrow(), getPosition(), getRotation(), m_anmNo, flame);
 
 	BaseActor::onDraw(render);
 }
 
-void SkinObject::onMessage(const String & message, const void * parameter)
+void Gimmick::onMessage(const String & message, const void * parameter)
 {
-	/*if (message == "Rotation")
-		Matrix::Rotate(getRotation(), Vector3::Up(), *(const float*)parameter);*/
 }

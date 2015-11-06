@@ -25,6 +25,5 @@ private:
 	float m_moveSpeed;
 	bool m_moveFlag;
 	Capsule m_capsule;
-
-	Actor m_stand;
+	float m_flame;
 };

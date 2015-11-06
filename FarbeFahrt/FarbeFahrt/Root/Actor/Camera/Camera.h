@@ -4,6 +4,7 @@
 #include "Utility/Input.h"
 #include "CameraState.h"
 #include "CameraMatrix.h"
+#include "World.h"
 
 #include <functional>
 #include <unordered_map>
@@ -16,6 +17,7 @@ public:
 private:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
+	void cameraInput();
 	void chaseCamera();
 	void fadeInCamera();
 	void fadeOutCamera();
