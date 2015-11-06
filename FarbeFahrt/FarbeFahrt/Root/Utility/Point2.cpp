@@ -5,37 +5,37 @@
 # include "Math.h"
 # include "MemoryCast.h"
 
-const Point2& Point2::zero()
+const Point2& Point2::Zero()
 {
 	static Point2 zero { 0, 0 };
 	return zero;
 }
 
-const Point2& Point2::one()
+const Point2& Point2::One()
 {
 	static Point2 one { 1, 1 };
 	return one;
 }
 
-const Point2& Point2::left()
+const Point2& Point2::Left()
 {
 	static Point2 left { -1, 0 };
 	return left;
 }
 
-const Point2& Point2::right()
+const Point2& Point2::Right()
 {
 	static Point2 right { 1, 0 };
 	return right;
 }
 
-const Point2& Point2::up()
+const Point2& Point2::Up()
 {
 	static Point2 up { 0, -1 };
 	return up;
 }
 
-const Point2& Point2::down()
+const Point2& Point2::Down()
 {
 	static Point2 down { 0, 1 };
 	return down;
@@ -109,52 +109,52 @@ Point2::operator const POINT& () const
 
 String Point2::toString() const
 {
-	return toString(*this);
+	return ToString(*this);
 }
 
 int Point2::dot(const Point2& v) const
 {
-	return dot(*this, v);
+	return Dot(*this, v);
 }
 
 int Point2::cross(const Point2& v) const
 {
-	return cross(*this, v);
+	return Cross(*this, v);
 }
 
 int Point2::lengthSquared() const
 {
-	return lengthSquared(*this);
+	return LengthSquared(*this);
 }
 
 float Point2::length() const
 {
-	return length(*this);
+	return Length(*this);
 }
 
-String Point2::toString(const Point2& v)
+String Point2::ToString(const Point2& v)
 {
-	return String::create("(", v.x, ", ", v.y, ")");
+	return String::Create("(", v.x, ", ", v.y, ")");
 }
 
-int Point2::dot(const Point2& v1, const Point2& v2)
+int Point2::Dot(const Point2& v1, const Point2& v2)
 {
 	return v1.x * v2.x + v1.y * v2.y;
 }
 
-int Point2::cross(const Point2& v1, const Point2& v2)
+int Point2::Cross(const Point2& v1, const Point2& v2)
 {
 	return v1.x * v2.y - v1.y * v2.x;
 }
 
-int Point2::lengthSquared(const Point2& v)
+int Point2::LengthSquared(const Point2& v)
 {
-	return dot(v, v);
+	return Dot(v, v);
 }
 
-float Point2::length(const Point2& v)
+float Point2::Length(const Point2& v)
 {
-	return static_cast<float>(Math::sqrt(lengthSquared(v)));
+	return static_cast<float>(Math::Sqrt(LengthSquared(v)));
 }
 
 bool operator == (const Point2& v1, const Point2& v2)

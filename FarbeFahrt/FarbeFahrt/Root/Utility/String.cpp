@@ -21,7 +21,7 @@ String::String(const wchar_t* str)
 }
 
 String::String(const std::string& str)
-	: m_str(toWide(str))
+	: m_str(ToWide(str))
 {
 
 }
@@ -45,20 +45,20 @@ wchar_t String::operator[](unsigned int index) const
 
 unsigned int String::length() const
 {
-	return length(*this);
+	return Length(*this);
 }
 
 std::wstring String::toWide() const
 {
-	return toWide(*this);
+	return ToWide(*this);
 }
 
 std::string String::toNarrow() const
 {
-	return toNarrow(*this);
+	return ToNarrow(*this);
 }
 
-std::wstring String::toWide(const std::string& narrow)
+std::wstring String::ToWide(const std::string& narrow)
 {
 	int length =
 		MultiByteToWideChar(CP_ACP, 0, narrow.c_str(), -1, NULL, 0);
@@ -69,7 +69,7 @@ std::wstring String::toWide(const std::string& narrow)
 	return result;
 }
 
-std::string String::toNarrow(const std::wstring& wide)
+std::string String::ToNarrow(const std::wstring& wide)
 {
 	int length = WideCharToMultiByte(
 		CP_OEMCP, 0, wide.c_str(), -1, NULL, 0, NULL, NULL);
@@ -81,89 +81,103 @@ std::string String::toNarrow(const std::wstring& wide)
 	return result;
 }
 
-unsigned int String::length(const String& str)
+unsigned int String::Length(const String& str)
 {
 	return (unsigned int)str.m_str.length();
 }
 
-std::string String::toNarrow(const String& str)
+std::string String::ToNarrow(const String& str)
 {
-	return toNarrow(str.m_str);
+	return ToNarrow(str.m_str);
 }
 
-std::wstring String::toWide(const String& str)
+std::wstring String::ToWide(const String& str)
 {
 	return str.m_str;
 }
 
-String String::create(const String& value)
+String String::Create(const String& value)
 {
 	return value;
 }
 
-String String::create(const char* value)
+String String::Create(const char* value)
 {
 	return String(value);
 }
 
-String String::create(const wchar_t* value)
+String String::Create(const wchar_t* value)
 {
 	return String(value);
 }
 
-String String::create(const std::string& value)
+String String::Create(const std::string& value)
 {
 	return String(value);
 }
 
-String String::create(const std::wstring& value)
+String String::Create(const std::wstring& value)
 {
 	return String(value);
 }
 
-String String::create(long double value)
+String String::Create(long double value)
 {
 	return std::to_string(value);
 }
 
-String String::create(double value)
+String String::Create(double value)
 {
 	return std::to_string(value);
 }
 
-String String::create(float value)
+String String::Create(float value)
 {
 	return std::to_string(value);
 }
 
-String String::create(unsigned long long value)
+String String::Create(unsigned long long value)
 {
 	return std::to_string(value);
 }
 
-String String::create(long long value)
+String String::Create(long long value)
 {
 	return std::to_string(value);
 }
 
-String String::create(unsigned long value)
+String String::Create(unsigned long value)
 {
 	return std::to_string(value);
 }
 
-String String::create(long value)
+String String::Create(long value)
 {
 	return std::to_string(value);
 }
 
-String String::create(unsigned int value)
+String String::Create(unsigned int value)
 {
 	return std::to_string(value);
 }
 
-String String::create(int value)
+String String::Create(int value)
 {
 	return std::to_string(value);
+}
+
+std::vector<String> String::Split(const String& str, char delim)
+{
+	std::vector<String> res;
+	size_t current = 0, found;
+	std::string s = str.toNarrow();
+	while ((found = s.find_first_of(delim, current)) != std::string::npos)
+	{
+		res.push_back(std::string(s, current, found - current));
+		current = found + 1;
+	}
+	res.push_back(std::string(s, current, s.size() - current));
+	return res;
 }
 
 bool String::operator == (const String& str) const
@@ -190,6 +204,6 @@ String String::operator + (const String& str) const
 
 std::ostream& operator << (std::ostream& stream, const String& str)
 {
-	stream << String::toNarrow(str);
+	stream << String::ToNarrow(str);
 	return stream;
 }

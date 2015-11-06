@@ -63,9 +63,6 @@
     <ClCompile Include="Root\Utility\Math.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Utility\NowLoading.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Utility\Renderer.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -135,10 +132,19 @@
     <ClCompile Include="Root\Scene\Editor.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="PreLoad.cpp">
+    <ClCompile Include="Root\Utility\StageFactory.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceList.cpp">
+    <ClCompile Include="Root\Scene\StageScene.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Utility\StageData.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Actor\Stand.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Actor\StaicObject.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -195,9 +201,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Utility\Math.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Utility\NowLoading.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Utility\Optional.h">
@@ -281,9 +284,6 @@
     <ClInclude Include="Root\Actor\Camera\CameraState.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Actor\Camera\CameraMatrix.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Root\Scene\SceneManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -296,12 +296,6 @@
     <ClInclude Include="Root\Utility\FreeCamera.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="PreLoad.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceList.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Model\本2\book.pmx" />
@@ -312,6 +306,12 @@
     <None Include="Resources\Model\平原\くさ.pmx" />
     <None Include="Resources\Model\平原\橋2.pmx" />
     <None Include="Resources\Model\平原\橋.pmx" />
+    <None Include="Root\Scene\FadeOut.inl">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
+    <None Include="Root\Scene\FadeIn.inl">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\curtain.png">
@@ -326,5 +326,8 @@
     <Image Include="Resources\Texture\NowLoading\ロード画面　改定 下.png">
       <Filter>リソース ファイル</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\Stage\Sougen.txt" />
   </ItemGroup>
 </Project>

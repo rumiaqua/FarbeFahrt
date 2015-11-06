@@ -8,7 +8,7 @@
 
 GameTitle::GameTitle()
 {
-	Debug::changeFontSize(30);
+	Debug::ChangeFontSize(30);
 }
 void GameTitle::loadContents(Loader& loader)
 {
@@ -16,20 +16,20 @@ void GameTitle::loadContents(Loader& loader)
 void GameTitle::initialize(){
 }
 void GameTitle::update(){
-	if (Input::isClicked(KEY_INPUT_RETURN))
+	if (Input::IsClicked(KEY_INPUT_RETURN))
 	{
 		m_manager->popScene();
 	}
 }
 void GameTitle::draw(Renderer& render)
 {
-	Debug::println("‚½‚¢‚Æ‚é‚ª‚ß‚ñ‚¾‚æ");
+	Debug::Println("‚½‚¢‚Æ‚é‚ª‚ß‚ñ‚¾‚æ");
 }
 void GameTitle::cleanUp(){
 }
 bool GameTitle::isSwallow() const
 {
-	return false;
+	return true;
 }
 GameTitle::~GameTitle()
 {

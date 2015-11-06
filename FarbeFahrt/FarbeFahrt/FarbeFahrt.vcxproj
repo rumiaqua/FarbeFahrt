@@ -28,6 +28,8 @@
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
+    <ClCompile Include="Root\Actor\StaicObject.cpp" />
+    <ClCompile Include="Root\Actor\Stand.cpp" />
     <ClCompile Include="Root\Collision\Capsule.cpp" />
     <ClCompile Include="Root\Collision\Collision.cpp" />
     <ClCompile Include="Root\Collision\IShape.cpp" />
@@ -39,12 +41,15 @@
     <ClCompile Include="Root\Frame\WinMain.cpp" />
     <ClCompile Include="Root\Scene\Editor.cpp" />
     <ClCompile Include="Root\Scene\SceneManager.cpp" />
+    <ClCompile Include="Root\Scene\StageScene.cpp" />
     <ClCompile Include="Root\Utility\FreeCamera.cpp" />
     <ClCompile Include="Root\Utility\Matrix.cpp" />
     <ClCompile Include="Root\Utility\Point2.cpp" />
     <ClCompile Include="Root\Utility\Point3.cpp" />
     <ClCompile Include="Root\Utility\Point4.cpp" />
     <ClCompile Include="Root\Utility\Pose.cpp" />
+    <ClCompile Include="Root\Utility\StageData.cpp" />
+    <ClCompile Include="Root\Utility\StageFactory.cpp" />
     <ClCompile Include="Root\Utility\String.cpp" />
     <ClCompile Include="Root\Utility\Vector2.cpp" />
     <ClCompile Include="Root\Utility\Vector3.cpp" />
@@ -57,12 +62,13 @@
     <ClCompile Include="Root\Utility\Loader.cpp" />
     <ClCompile Include="Root\Utility\Math.cpp" />
     <ClCompile Include="Root\Utility\Mouse.cpp" />
-    <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Utility\Renderer.cpp" />
     <ClCompile Include="Root\Utility\SE.cpp" />
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Actor\StaicObject.h" />
+    <ClInclude Include="Root\Utility\ScriptStageBuilder.h" />
     <ClInclude Include="PreLoad.h" />
     <ClInclude Include="ResourceList.h" />
     <ClInclude Include="Root\Actor\Actor.h" />
@@ -70,7 +76,6 @@
     <ClInclude Include="Root\Actor\ActorManager\ActorTag.h" />
     <ClInclude Include="Root\Actor\BaseActor.h" />
     <ClInclude Include="Root\Actor\Camera\Camera.h" />
-    <ClInclude Include="Root\Actor\Camera\CameraMatrix.h" />
     <ClInclude Include="Root\Actor\Camera\CameraMode.h" />
     <ClInclude Include="Root\Actor\Camera\CameraState.h" />
     <ClInclude Include="Root\Actor\Camera\ChaseFlag.h" />
@@ -78,6 +83,7 @@
     <ClInclude Include="Root\Actor\Field\Field.h" />
     <ClInclude Include="Root\Actor\Player.h" />
     <ClInclude Include="Root\Actor\SkyDome\Skydome.h" />
+    <ClInclude Include="Root\Actor\Stand.h" />
     <ClInclude Include="Root\Collision\Capsule.h" />
     <ClInclude Include="Root\Collision\Collision.h" />
     <ClInclude Include="Root\Collision\IShape.h" />
@@ -90,13 +96,17 @@
     <ClInclude Include="Root\Scene\Editor.h" />
     <ClInclude Include="Root\Scene\ISceneMediator.h" />
     <ClInclude Include="Root\Scene\SceneManager.h" />
+    <ClInclude Include="Root\Scene\StageScene.h" />
     <ClInclude Include="Root\Utility\FreeCamera.h" />
+    <ClInclude Include="Root\Utility\IStageBuilder.h" />
     <ClInclude Include="Root\Utility\Matrix.h" />
     <ClInclude Include="Root\Utility\MemoryCast.h" />
     <ClInclude Include="Root\Utility\Point2.h" />
     <ClInclude Include="Root\Utility\Point3.h" />
     <ClInclude Include="Root\Utility\Point4.h" />
     <ClInclude Include="Root\Utility\Pose.h" />
+    <ClInclude Include="Root\Utility\StageData.h" />
+    <ClInclude Include="Root\Utility\StageFactory.h" />
     <ClInclude Include="Root\Utility\String.h" />
     <ClInclude Include="Root\Utility\ValueType.h" />
     <ClInclude Include="Root\Utility\Vector2.h" />
@@ -111,7 +121,6 @@
     <ClInclude Include="Root\Utility\Loader.h" />
     <ClInclude Include="Root\Utility\Math.h" />
     <ClInclude Include="Root\Utility\Mouse.h" />
-    <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Utility\Optional.h" />
     <ClInclude Include="Root\Utility\Renderer.h" />
     <ClInclude Include="Root\Utility\SE.h" />
@@ -126,12 +135,17 @@
     <None Include="Resources\Model\本2\book001.vmd" />
     <None Include="Resources\Model\本2\book002.vmd" />
     <None Include="Resources\Model\本\本完成(仮).pmx" />
+    <None Include="Root\Scene\FadeIn.inl" />
+    <None Include="Root\Scene\FadeOut.inl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\curtain.png" />
     <Image Include="Resources\Texture\NowLoading\ロード画面　改定 上.png" />
     <Image Include="Resources\Texture\NowLoading\ロード画面　改定 下.png" />
     <Image Include="Resources\Texture\NowLoading\ロード画面　改定 真ん中.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\Stage\Sougen.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}</ProjectGuid>
@@ -143,26 +157,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>

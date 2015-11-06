@@ -15,6 +15,7 @@ enum class Scene{
 	drawGameMenu,
 	drawGameMain,
 	Editor,
+	Stage,
 };
 class BaseScene
 {

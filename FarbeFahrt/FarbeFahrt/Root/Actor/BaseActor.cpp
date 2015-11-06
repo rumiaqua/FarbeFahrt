@@ -1,22 +1,25 @@
 #include "BaseActor.h"
 
 BaseActor::BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation)
-	:world(&world),
-	name(name),
-	pose(position, rotation),
-	dead(false),
-	parent(nullptr)
+	: m_world(&world)
+	, m_name(name)
+	, m_pose(position, rotation)
+	, m_dead(false)
+	, m_parent(nullptr)
 {
+
 }
 //デフォルトコンストラクタ
-BaseActor::BaseActor(const std::string& name) :
-world(nullptr),
-name(name),
-pose(),
-dead(false),
-parent(nullptr)
+BaseActor::BaseActor(const std::string& name)
+	: m_world(nullptr)
+	, m_name(name)
+	, m_pose()
+	, m_dead(false)
+	, m_parent(nullptr)
 {
+
 }
+
 void BaseActor::update()
 {
 	onUpdate();
@@ -27,60 +30,62 @@ void BaseActor::draw(Renderer& render)const
 }
 bool BaseActor::isDead()const
 {
-	return dead;
+	return m_dead;
 }
 void BaseActor::kill()
 {
-	dead = true;
+	m_dead = true;
 }
-const String& BaseActor::getName()const
+const String& BaseActor::getName() const
 {
-	return name;
+	return m_name;
 }
 Matrix BaseActor::getPose() const
 {
-	return pose.getPose();
+	return m_pose.getPose();
 }
 Vector3& BaseActor::getPosition()
 {
-	return pose.getPosition();
+	return m_pose.getPosition();
 }
 const Vector3& BaseActor::getPosition() const
 {
-	return pose.getPosition();
+	return m_pose.getPosition();
 }
 Matrix& BaseActor::getRotation()
 {
-	return pose.getRotation();
+	return m_pose.getRotation();
 }
 const Matrix& BaseActor::getRotation() const
 {
-	return pose.getRotation();
+	return m_pose.getRotation();
 }
 Matrix BaseActor::getWorldPose() const
 {
-	Matrix worldPose = pose.getPose();
-	while (ActorRef actor = parent)
+	Matrix worldPose = getPose();
+	const BaseActor* actor = this;
+	while (actor = actor->m_parent)
 	{
 		worldPose *= actor->getPose();
 	}
+
 	return worldPose;
 }
-Actor BaseActor::findChildren(const String& name)
+Actor BaseActor::find(const String& name) const
 {
-	return findChildren([&](const BaseActor& actor){return actor.getName() == name; });
+	return findPred([&] (const BaseActor& actor) {return actor.getName() == name; });
 }
-Actor BaseActor::findChildren(std::function<bool(const BaseActor&)> func)
+Actor BaseActor::findPred(const std::function<bool(const BaseActor&)>& func) const
 {
-	auto i = std::find_if(children.begin(), children.end(),
-		[&](const Actor& child){return func(*child); });
-	if (i != children.end())
+	auto i = std::find_if(m_children.begin(), m_children.end(),
+		[&] (const Actor& child) {return func(*child); });
+	if (i != m_children.end())
 	{
 		return *i;
 	}
-	for (auto child : children)
+	for (auto&& child : m_children)
 	{
-		auto actor = child->findChildren(func);
+		auto actor = child->findPred(func);
 		if (actor != nullptr)
 		{
 			return actor;
@@ -90,32 +95,28 @@ Actor BaseActor::findChildren(std::function<bool(const BaseActor&)> func)
 }
 void BaseActor::addChild(const Actor& child)
 {
-	children.push_front(child);
-	child->parent = this;
+	m_children.push_front(child);
+	child->m_parent = this;
 }
-void BaseActor::eachChildren(std::function<void(BaseActor&)> func)
+void BaseActor::eachChildren(const std::function<void(BaseActor&)>& func)
 {
-	std::for_each(children.begin(), children.end(),
-		[&](const Actor& actor){func(*actor); });
+	std::for_each(m_children.begin(), m_children.end(),
+		[&] (const Actor& actor) {func(*actor); });
 }
-void BaseActor::eachChildren(std::function<void(const BaseActor&)> func)const
+void BaseActor::eachChildren(const std::function<void(const BaseActor&)>& func)const
 {
-	std::for_each(children.begin(), children.end(),
-		[&](const Actor& actor){func(*actor); });
+	std::for_each(m_children.begin(), m_children.end(),
+		[&] (const Actor& actor) {func(*actor); });
 }
-void BaseActor::removeChildren(std::function<bool(BaseActor& actor)> func)
+void BaseActor::removeChildren(const std::function<bool(BaseActor& actor)>& func)
 {
-	children.remove_if
-		([&](const Actor& actor){return func(*actor); });
-}
-void BaseActor::clearChildren()
-{
-	children.clear();
+	m_children.remove_if
+		([&] (const Actor& actor) {return func(*actor); });
 }
 void BaseActor::removeChildren()
 {
-	removeChildren([](BaseActor& actor){return actor.isDead(); });
-	eachChildren([](BaseActor&actor){actor.removeChildren(); });
+	removeChildren([] (BaseActor& actor) {return actor.isDead(); });
+	eachChildren([] (BaseActor&actor) {actor.removeChildren(); });
 }
 
 void BaseActor::sendMessage(const String& message, const void* parameter)
@@ -125,12 +126,12 @@ void BaseActor::sendMessage(const String& message, const void* parameter)
 
 void BaseActor::onUpdate()
 {
-	eachChildren([&](BaseActor& actor){actor.update(); });
+	eachChildren([&] (BaseActor& actor) {actor.update(); });
 }
 
-void BaseActor::onDraw(Renderer& render)const
+void BaseActor::onDraw(Renderer& render) const
 {
-	eachChildren([&](const BaseActor& actor){actor.draw(render); });
+	eachChildren([&] (const BaseActor& actor) {actor.draw(render); });
 }
 
 void BaseActor::onMessage(const String& message, const void* parameter)

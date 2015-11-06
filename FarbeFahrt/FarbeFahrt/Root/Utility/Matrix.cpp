@@ -135,150 +135,150 @@ Matrix::operator const MATRIX& () const
 
 bool Matrix::isIdentity() const
 {
-	return isIdentity(*this);
+	return IsIdentity(*this);
 }
 
 bool Matrix::isZero() const
 {
-	return isZero(*this);
+	return IsZero(*this);
 }
 
 bool Matrix::canInverse() const
 {
-	return canInverse(*this);
+	return CanInverse(*this);
 }
 
 bool Matrix::isInverse(const Matrix& matrix) const
 {
-	return isInverse(*this, matrix);
+	return IsInverse(*this, matrix);
 }
 
 float Matrix::determinant() const
 {
-	return determinant(*this);
+	return Determinant(*this);
 }
 
 String Matrix::toString() const
 {
-	return toString(*this);
+	return ToString(*this);
 }
 
-Matrix& Matrix::translate(const Vector3& translation)
+Matrix& Matrix::Translate(const Vector3& translation)
 {
-	return translate(*this, translation);
+	return Translate(*this, translation);
 }
 
 Matrix& Matrix::rotate(const Vector3& axis, float angle)
 {
-	return rotate(*this, axis, angle);
+	return Rotate(*this, axis, angle);
 }
 
 Matrix& Matrix::rotate(const Vector4& rotation)
 {
-	return rotate(*this, rotation);
+	return Rotate(*this, rotation);
 }
 
 Matrix& Matrix::scale(const Vector3& scaling)
 {
-	return scale(*this, scaling);
+	return Scale(*this, scaling);
 }
 
 Matrix& Matrix::transform(const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling)
 {
-	return transform(*this, translation, axis, angle, scaling);
+	return Transform(*this, translation, axis, angle, scaling);
 }
 
 Matrix& Matrix::transform(const Vector3& translation, const Vector4& rotation, const Vector3& scaling)
 {
-	return transform(*this, translation, rotation, scaling);
+	return Transform(*this, translation, rotation, scaling);
 }
 
 Matrix& Matrix::transpose()
 {
-	return transpose(*this);
+	return Transpose(*this);
 }
 
 Matrix& Matrix::inverse()
 {
-	return inverse(*this);
+	return Inverse(*this);
 }
 
 Matrix Matrix::translated(const Vector3& translation) const
 {
-	return translated(*this, translation);
+	return Translated(*this, translation);
 }
 
 Matrix Matrix::rotated(const Vector3& axis, float angle) const
 {
-	return rotated(*this, axis, angle);
+	return Rotated(*this, axis, angle);
 }
 
 Matrix Matrix::rotated(const Vector4& rotation) const
 {
-	return rotated(*this, rotation);
+	return Rotated(*this, rotation);
 }
 
 Matrix Matrix::scaled(const Vector3& scaling) const
 {
-	return scaled(*this, scaling);
+	return Scaled(*this, scaling);
 }
 
 Matrix Matrix::transformed(const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling) const
 {
-	return transformed(*this, translation, axis, angle, scaling);
+	return Transformed(*this, translation, axis, angle, scaling);
 }
 
 Matrix Matrix::transformed(const Vector3& translation, const Vector4& rotation, const Vector3& scaling) const
 {
-	return transformed(*this, translation, rotation, scaling);
+	return Transformed(*this, translation, rotation, scaling);
 }
 
 Matrix Matrix::transposed() const
 {
-	return transposed(*this);
+	return Transposed(*this);
 }
 
 Matrix Matrix::inversed() const
 {
-	return inversed(*this);
+	return Inversed(*this);
 }
 
 Vector4 Matrix::up() const
 {
-	return up(*this);
+	return Up(*this);
 }
 
 Vector4 Matrix::right() const
 {
-	return right(*this);
+	return Right(*this);
 }
 
 Vector4 Matrix::forward() const
 {
-	return forward(*this);
+	return Forward(*this);
 }
 
-bool Matrix::isIdentity(const Matrix& m)
+bool Matrix::IsIdentity(const Matrix& m)
 {
 	return m == identity();
 }
 
-bool Matrix::isZero(const Matrix& m)
+bool Matrix::IsZero(const Matrix& m)
 {
 	return m == zero();
 }
 
-bool Matrix::canInverse(const Matrix& m)
+bool Matrix::CanInverse(const Matrix& m)
 {
-	return determinant(m) != 0.0;
+	return Determinant(m) != 0.0;
 }
 
-bool Matrix::isInverse(const Matrix& m1, const Matrix& m2)
+bool Matrix::IsInverse(const Matrix& m1, const Matrix& m2)
 {
-	return isIdentity(m1 * m2);
+	return IsIdentity(m1 * m2);
 }
 
-float Matrix::determinant(const Matrix& matrix)
+float Matrix::Determinant(const Matrix& matrix)
 {
 	double det =
 		matrix.mat[0][0] * matrix.mat[1][1] * matrix.mat[2][2] * matrix.mat[3][3] +
@@ -308,46 +308,46 @@ float Matrix::determinant(const Matrix& matrix)
 	return (float)det;
 }
 
-String Matrix::toString(const Matrix& m)
+String Matrix::ToString(const Matrix& m)
 {
-	return String::create(
+	return String::Create(
 		"f[0] : ", memory_cast<Vector4>(m.mat[0])->toString(), "\n",
 		"f[1] : ", memory_cast<Vector4>(m.mat[1])->toString(), "\n",
 		"f[2] : ", memory_cast<Vector4>(m.mat[2])->toString(), "\n",
 		"f[3] : ", memory_cast<Vector4>(m.mat[3])->toString());
 }
 
-Matrix Matrix::translation(const Vector3& translation)
+Matrix Matrix::Translation(const Vector3& translation)
 {
-	return translated(identity(), translation);
+	return Translated(identity(), translation);
 }
 
-Matrix Matrix::rotation(const Vector3& axis, float angle)
+Matrix Matrix::Rotation(const Vector3& axis, float angle)
 {
-	return rotated(identity(), axis, angle);
+	return Rotated(identity(), axis, angle);
 }
 
-Matrix Matrix::rotation(const Vector4& rotation)
+Matrix Matrix::Rotation(const Vector4& rotation)
 {
-	return rotated(identity(), rotation);
+	return Rotated(identity(), rotation);
 }
 
-Matrix Matrix::scaling(const Vector3& scaling)
+Matrix Matrix::Scaling(const Vector3& scaling)
 {
-	return scaled(identity(), scaling);
+	return Scaled(identity(), scaling);
 }
 
-Matrix Matrix::transformation(const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling)
+Matrix Matrix::Transformation(const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling)
 {
-	return transformed(identity(), translation, axis, angle, scaling);
+	return Transformed(identity(), translation, axis, angle, scaling);
 }
 
-Matrix Matrix::transformation(const Vector3& translation, const Vector4& rotation, const Vector3& scaling)
+Matrix Matrix::Transformation(const Vector3& translation, const Vector4& rotation, const Vector3& scaling)
 {
-	return transformed(identity(), translation, rotation, scaling);
+	return Transformed(identity(), translation, rotation, scaling);
 }
 
-Matrix& Matrix::translate(Matrix& matrix, const Vector3& translation)
+Matrix& Matrix::Translate(Matrix& matrix, const Vector3& translation)
 {
 	matrix.m41 += translation.x;
 	matrix.m42 += translation.y;
@@ -355,7 +355,7 @@ Matrix& Matrix::translate(Matrix& matrix, const Vector3& translation)
 	return matrix;
 }
 
-Matrix& Matrix::rotate(Matrix& matrix, const Vector3& axis, float angle)
+Matrix& Matrix::Rotate(Matrix& matrix, const Vector3& axis, float angle)
 {
 	Vector4 X = Vector4(Vector3(matrix.m11, matrix.m12, matrix.m13).rotate(axis, angle), 0.0f);
 	Vector4 Y = Vector4(Vector3(matrix.m21, matrix.m22, matrix.m23).rotate(axis, angle), 0.0f);
@@ -366,12 +366,12 @@ Matrix& Matrix::rotate(Matrix& matrix, const Vector3& axis, float angle)
 	return matrix;
 }
 
-Matrix& Matrix::rotate(Matrix& matrix, const Vector4& rotation)
+Matrix& Matrix::Rotate(Matrix& matrix, const Vector4& rotation)
 {
-	return rotate(matrix, Vector3(rotation), rotation.w);
+	return Rotate(matrix, Vector3(rotation), rotation.w);
 }
 
-Matrix& Matrix::scale(Matrix& matrix, const Vector3& scaling)
+Matrix& Matrix::Scale(Matrix& matrix, const Vector3& scaling)
 {
 	matrix.m11 *= scaling.x; matrix.m12 *= scaling.x; matrix.m13 *= scaling.x;
 	matrix.m21 *= scaling.y; matrix.m22 *= scaling.y; matrix.m23 *= scaling.y;
@@ -379,63 +379,63 @@ Matrix& Matrix::scale(Matrix& matrix, const Vector3& scaling)
 	return matrix;
 }
 
-Matrix& Matrix::transform(Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling)
+Matrix& Matrix::Transform(Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling)
 {
-	return translate(rotate(scale(matrix, scaling), axis, angle), translation);
+	return Translate(Rotate(Scale(matrix, scaling), axis, angle), translation);
 }
 
-Matrix& Matrix::transform(Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling)
+Matrix& Matrix::Transform(Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling)
 {
-	return transform(matrix, translation, Vector3(rotation), rotation.w, scaling);
+	return Transform(matrix, translation, Vector3(rotation), rotation.w, scaling);
 }
 
-Matrix& Matrix::transpose(Matrix& matrix)
+Matrix& Matrix::Transpose(Matrix& matrix)
 {
-	return matrix = transposed(matrix);
+	return matrix = Transposed(matrix);
 }
 
-Matrix& Matrix::inverse(Matrix& matrix)
+Matrix& Matrix::Inverse(Matrix& matrix)
 {
-	return matrix = inversed(matrix);
+	return matrix = Inversed(matrix);
 }
 
-Matrix Matrix::translated(const Matrix& matrix, const Vector3& translation)
-{
-	Matrix m = matrix;
-	return translate(m, translation);
-}
-
-Matrix Matrix::rotated(const Matrix& matrix, const Vector3& axis, float angle)
+Matrix Matrix::Translated(const Matrix& matrix, const Vector3& translation)
 {
 	Matrix m = matrix;
-	return rotate(m, axis, angle);
+	return Translate(m, translation);
 }
 
-Matrix Matrix::rotated(const Matrix& matrix, const Vector4& rotation)
+Matrix Matrix::Rotated(const Matrix& matrix, const Vector3& axis, float angle)
 {
 	Matrix m = matrix;
-	return rotate(m, Vector3(rotation), rotation.w);
+	return Rotate(m, axis, angle);
 }
 
-Matrix Matrix::scaled(const Matrix& matrix, const Vector3& scaling)
+Matrix Matrix::Rotated(const Matrix& matrix, const Vector4& rotation)
 {
 	Matrix m = matrix;
-	return scale(m, scaling);
+	return Rotate(m, Vector3(rotation), rotation.w);
 }
 
-Matrix Matrix::transformed(const Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling)
+Matrix Matrix::Scaled(const Matrix& matrix, const Vector3& scaling)
 {
 	Matrix m = matrix;
-	return transform(m, translation, axis, angle, scaling);
+	return Scale(m, scaling);
 }
 
-Matrix Matrix::transformed(const Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling)
+Matrix Matrix::Transformed(const Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling)
 {
 	Matrix m = matrix;
-	return transform(m, translation, Vector3(rotation), rotation.w, scaling);
+	return Transform(m, translation, axis, angle, scaling);
 }
 
-Matrix Matrix::transposed(const Matrix& matrix)
+Matrix Matrix::Transformed(const Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling)
+{
+	Matrix m = matrix;
+	return Transform(m, translation, Vector3(rotation), rotation.w, scaling);
+}
+
+Matrix Matrix::Transposed(const Matrix& matrix)
 {
 	return Matrix {
 		matrix.m11, matrix.m21, matrix.m31, matrix.m41,
@@ -444,9 +444,9 @@ Matrix Matrix::transposed(const Matrix& matrix)
 		matrix.m14, matrix.m24, matrix.m34, matrix.m44 };
 }
 
-Matrix Matrix::inversed(const Matrix& matrix)
+Matrix Matrix::Inversed(const Matrix& matrix)
 {
-	float det = determinant(matrix);
+	float det = Determinant(matrix);
 
 	if (det == 0.0f)
 	{
@@ -588,29 +588,29 @@ Matrix Matrix::inversed(const Matrix& matrix)
 		(float)m41, (float)m42, (float)m43, (float)m44);
 }
 
-Vector4 Matrix::up(const Matrix& matrix)
+Vector4 Matrix::Up(const Matrix& matrix)
 {
 	return Vector4(matrix.m21, matrix.m22, matrix.m23, 0.0f);
 }
 
-Vector4 Matrix::right(const Matrix & matrix)
+Vector4 Matrix::Right(const Matrix & matrix)
 {
 	return Vector4(matrix.m11, matrix.m12, matrix.m13, 0.0f);
 }
 
-Vector4 Matrix::forward(const Matrix & matrix)
+Vector4 Matrix::Forward(const Matrix & matrix)
 {
 	return Vector4(matrix.m31, matrix.m32, matrix.m33, 0.0f);
 }
 
-Vector3 Matrix::translation(const Matrix& matrix)
+Vector3 Matrix::Translation(const Matrix& matrix)
 {
 	return Vector3(matrix.m41, matrix.m42, matrix.m43);
 }
 
-Matrix Matrix::rotation(const Matrix& matrix)
+Matrix Matrix::Rotation(const Matrix& matrix)
 {
-	Vector3 scale = scaling(matrix);
+	Vector3 scale = Scaling(matrix);
 	return Matrix(
 		matrix.m11 / scale.x, matrix.m12 / scale.x, matrix.m13 / scale.x, 0.0f,
 		matrix.m21 / scale.y, matrix.m22 / scale.y, matrix.m23 / scale.y, 0.0f,
@@ -618,7 +618,7 @@ Matrix Matrix::rotation(const Matrix& matrix)
 		0.0f, 0.0f, 0.0f, 1.0f);
 }
 
-Vector3 Matrix::scaling(const Matrix& matrix)
+Vector3 Matrix::Scaling(const Matrix& matrix)
 {
 	return Vector3(
 		memory_cast<Vector4>(matrix.mat[0])->length(),
@@ -626,25 +626,25 @@ Vector3 Matrix::scaling(const Matrix& matrix)
 		memory_cast<Vector4>(matrix.mat[2])->length());
 }
 
-Matrix Matrix::lookAt(const Vector3& position, const Vector3& target, const Vector3& up)
+Matrix Matrix::LookAt(const Vector3& position, const Vector3& target, const Vector3& up)
 {
 	Matrix matrix;
-	Vector3 Z = Vector3::normalize(target - position);
-	Vector3 X = Vector3::normalize(Vector3::cross(up, Z));
-	Vector3 Y = Vector3::cross(Z, X);
+	Vector3 Z = Vector3::Normalize(target - position);
+	Vector3 X = Vector3::Normalize(Vector3::Cross(up, Z));
+	Vector3 Y = Vector3::Cross(Z, X);
 	matrix.m11 = X.x; matrix.m21 = X.y; matrix.m31 = X.z;
 	matrix.m12 = Y.x; matrix.m22 = Y.y; matrix.m32 = Y.z;
 	matrix.m13 = Z.x; matrix.m23 = Z.y; matrix.m33 = Z.z;
 	Vector3 pos = -position;
-	matrix.m41 = Vector3::dot(pos, X);
-	matrix.m42 = Vector3::dot(pos, Y);
-	matrix.m43 = Vector3::dot(pos, Z);
+	matrix.m41 = Vector3::Dot(pos, X);
+	matrix.m42 = Vector3::Dot(pos, Y);
+	matrix.m43 = Vector3::Dot(pos, Z);
 	return matrix;
 }
 
-Matrix Matrix::perspective(float fov, float aspect, float nearclip, float farclip)
+Matrix Matrix::Perspective(float fov, float aspect, float nearclip, float farclip)
 {
-	double y = 1 / (float)Math::tan(fov / 2.0);
+	double y = 1 / (float)Math::Tan(fov / 2.0);
 	double x = y / aspect;
 	double z = farclip / (farclip - nearclip);
 	double w = -z * nearclip;
@@ -655,7 +655,7 @@ Matrix Matrix::perspective(float fov, float aspect, float nearclip, float farcli
 		0, 0, (float)w, 0);
 }
 
-Matrix Matrix::viewport(int width, int height)
+Matrix Matrix::Viewport(int width, int height)
 {
 	float w = width / 2.0f;
 	float h = height / 2.0f;
@@ -666,15 +666,15 @@ Matrix Matrix::viewport(int width, int height)
 		w, h, 0, 1);
 }
 
-Matrix Matrix::lerp(const Matrix& m1, const Matrix& m2, float t)
+Matrix Matrix::Lerp(const Matrix& m1, const Matrix& m2, float t)
 {
-	Matrix r1 = Matrix::rotation(m1);
-	Matrix r2 = Matrix::rotation(m2);
-	Vector3 translate = Vector3::lerp(Matrix::translation(m1), Matrix::translation(m2), t);
-	Vector3 xAxis = Vector3::slerp(Vector3(Matrix::right(r1)), Vector3(Matrix::right(r2)), t);
-	Vector3 yAxis = Vector3::slerp(Vector3(Matrix::up(r1)), Vector3(Matrix::up(r2)), t);
-	Vector3 zAxis = Vector3::slerp(Vector3(Matrix::forward(r1)), Vector3(Matrix::forward(r2)), t);
-	Vector3 scale = Vector3::lerp(Matrix::scaling(m1), Matrix::scaling(m2), t);
+	Matrix r1 = Matrix::Rotation(m1);
+	Matrix r2 = Matrix::Rotation(m2);
+	Vector3 translate = Vector3::Lerp(Matrix::Translation(m1), Matrix::Translation(m2), t);
+	Vector3 xAxis = Vector3::Slerp(Vector3(Matrix::Right(r1)), Vector3(Matrix::Right(r2)), t);
+	Vector3 yAxis = Vector3::Slerp(Vector3(Matrix::Up(r1)), Vector3(Matrix::Up(r2)), t);
+	Vector3 zAxis = Vector3::Slerp(Vector3(Matrix::Forward(r1)), Vector3(Matrix::Forward(r2)), t);
+	Vector3 scale = Vector3::Lerp(Matrix::Scaling(m1), Matrix::Scaling(m2), t);
 	return Matrix(
 		xAxis.x * scale.x, xAxis.y * scale.x, xAxis.z * scale.x, 0.0f,
 		xAxis.x * scale.y, xAxis.y * scale.y, xAxis.z * scale.y, 0.0f,

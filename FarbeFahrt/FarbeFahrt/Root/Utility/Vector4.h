@@ -13,10 +13,10 @@ class Vector4
 public:
 
 	/// <summary>(0, 0, 0)で初期化されたベクトルを返す</summary>
-	static const Vector4& zero();
+	static const Vector4& Zero();
 
 	/// <summary>(1, 1, 1)で初期化されたベクトルを返す</summary>
-	static const Vector4& one();
+	static const Vector4& One();
 
 public:
 
@@ -72,33 +72,33 @@ public:
 
 	/// <summary>文字列に変換して返す</summary>
 	/// <param name="v">ベクトル</param>
-	static String toString(const Vector4& v);
+	static String ToString(const Vector4& v);
 
 	/// <summary>内積を返す</summary>
-	static float dot(const Vector4& v1, const Vector4& v2);
+	static float Dot(const Vector4& v1, const Vector4& v2);
 
 	/// <summary>長さの二乗を返す</summary>
 	/// <param name="v">ベクトル</param>
-	static float lengthSquared(const Vector4& v);
+	static float LengthSquared(const Vector4& v);
 
 	/// <summary>長さを返す</summary>
 	/// <param name="v">ベクトル</param>
-	static float length(const Vector4& v);
+	static float Length(const Vector4& v);
 
 	/// <summary>正規化したベクトル返す</summary>
 	/// <param name="v">ベクトル</param>
-	static Vector4 normalize(const Vector4& v);
+	static Vector4 Normalize(const Vector4& v);
 
 	/// <summary>射影したベクトルを返す</summary>
 	/// <param name="v">ベクトル</param>
 	/// <param name="target">対象のベクトル</param>
-	static Vector4 projection(const Vector4& v, const Vector4& target);
+	static Vector4 Projection(const Vector4& v, const Vector4& target);
 
 	/// <summary>線形補間したベクトルを返す</summary>
 	/// <param name="start">開始ベクトル</param>
 	/// <param name="end">終了ベクトル</param>
 	/// <param name="t">遷移率</param>
-	static Vector4 lerp(const Vector4& start, const Vector4& end, float t);
+	static Vector4 Lerp(const Vector4& start, const Vector4& end, float t);
 
 public:
 

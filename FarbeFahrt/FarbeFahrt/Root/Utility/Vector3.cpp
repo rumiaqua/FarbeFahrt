@@ -8,43 +8,43 @@
 
 # include <DxLib.h>
 
-const Vector3& Vector3::zero()
+const Vector3& Vector3::Zero()
 {
 	static Vector3 zero { 0.0f, 0.0f, 0.0f };
 	return zero;
 }
 
-const Vector3& Vector3::one()
+const Vector3& Vector3::One()
 {
 	static Vector3 one { 1.0f, 1.0f, 1.0f };
 	return one;
 }
 
-const Vector3& Vector3::left()
+const Vector3& Vector3::Left()
 {
 	static Vector3 left { -1.0f, 0.0f, 0.0f };
 	return left;
 }
 
-const Vector3& Vector3::right()
+const Vector3& Vector3::Right()
 {
 	static Vector3 right { 1.0f, 0.0f, 0.0f };
 	return right;
 }
 
-const Vector3& Vector3::up()
+const Vector3& Vector3::Up()
 {
 	static Vector3 up { 0.0f, 1.0f, 0.0f };
 	return up;
 }
 
-const Vector3& Vector3::down()
+const Vector3& Vector3::Down()
 {
 	static Vector3 down { 0.0f, -1.0f, 0.0f };
 	return down;
 }
 
-const Vector3& Vector3::forward()
+const Vector3& Vector3::Forward()
 {
 	static Vector3 forward { 0.0f, 0.0f, 1.0f };
 	return forward;
@@ -126,65 +126,65 @@ Vector3::operator const VECTOR&() const
 	return memory_cast<VECTOR>(*this);
 }
 
-String Vector3::toString() const
+String Vector3::ToString() const
 {
 	return toString(*this);
 }
 
 float Vector3::dot(const Vector3& v) const
 {
-	return dot(*this, v);
+	return Dot(*this, v);
 }
 
 Vector3 Vector3::cross(const Vector3& v) const
 {
-	return cross(*this, v);
+	return Cross(*this, v);
 }
 
 float Vector3::lengthSquared() const
 {
-	return lengthSquared(*this);
+	return LengthSquared(*this);
 }
 
 float Vector3::length() const
 {
-	return length(*this);
+	return Length(*this);
 }
 
 Vector3& Vector3::normalize()
 {
-	*this = normalize(*this);
+	*this = Normalize(*this);
 	return *this;
 }
 
 Vector3& Vector3::rotate(const Vector3& axis, float angle)
 {
-	*this = rotate(*this, axis, angle);
+	*this = Rotate(*this, axis, angle);
 	return *this;
 }
 
 Vector3& Vector3::projection(const Vector3& v)
 {
-	*this = projection(*this, v);
+	*this = Projection(*this, v);
 	return *this;
 }
 
 float Vector3::angle(const Vector3& v) const
 {
-	return angle(*this, v);
+	return Angle(*this, v);
 }
 
 String Vector3::toString(const Vector3& v)
 {
-	return String::create("(", v.x, ", ", v.y, ", ", v.z, ")");
+	return String::Create("(", v.x, ", ", v.y, ", ", v.z, ")");
 }
 
-float Vector3::dot(const Vector3& v1, const Vector3& v2)
+float Vector3::Dot(const Vector3& v1, const Vector3& v2)
 {
 	return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 }
 
-Vector3 Vector3::cross(const Vector3& v1, const Vector3& v2)
+Vector3 Vector3::Cross(const Vector3& v1, const Vector3& v2)
 {
 	return Vector3(
 		v1.y * v2.z - v1.z * v2.y,
@@ -192,55 +192,55 @@ Vector3 Vector3::cross(const Vector3& v1, const Vector3& v2)
 		v1.x * v2.y - v1.y * v2.x);
 }
 
-float Vector3::lengthSquared(const Vector3& v)
+float Vector3::LengthSquared(const Vector3& v)
 {
-	return dot(v, v);
+	return Dot(v, v);
 }
 
-float Vector3::length(const Vector3& v)
+float Vector3::Length(const Vector3& v)
 {
-	return static_cast<float>(Math::sqrt(lengthSquared(v)));
+	return static_cast<float>(Math::Sqrt(LengthSquared(v)));
 }
 
-Vector3 Vector3::normalize(const Vector3& v)
+Vector3 Vector3::Normalize(const Vector3& v)
 {
-	float lengthSq = lengthSquared(v);
+	float lengthSq = LengthSquared(v);
 	if (lengthSq == 0.0f)
 	{
 		return v;
 	}
 
-	return v / static_cast<float>(Math::sqrt(lengthSq));
+	return v / static_cast<float>(Math::Sqrt(lengthSq));
 }
 
-Vector3 Vector3::rotate(const Vector3& point, const Vector3& axis, float angle)
+Vector3 Vector3::Rotate(const Vector3& point, const Vector3& axis, float angle)
 {
-	Vector3 v = dot(point, axis) * normalize(axis);
+	Vector3 v = Dot(point, axis) * Normalize(axis);
 	return
 		v +
-		static_cast<float>(Math::cos(angle)) * (point - v) +
-		static_cast<float>(Math::sin(angle)) * cross(point, axis);
+		static_cast<float>(Math::Cos(angle)) * (point - v) +
+		static_cast<float>(Math::Sin(angle)) * Cross(point, axis);
 }
 
-Vector3 Vector3::projection(const Vector3& v, const Vector3& target)
+Vector3 Vector3::Projection(const Vector3& v, const Vector3& target)
 {
-	Vector3 normal = normalize(target);
-	return dot(v, normal) * normal;
+	Vector3 normal = Normalize(target);
+	return Dot(v, normal) * normal;
 }
 
-Vector3 Vector3::lerp(const Vector3& start, const Vector3& end, float t)
+Vector3 Vector3::Lerp(const Vector3& start, const Vector3& end, float t)
 {
 	return start + (end - start) * t;
 }
 
-float Vector3::angle(const Vector3& v1, const Vector3& v2)
+float Vector3::Angle(const Vector3& v1, const Vector3& v2)
 {
-	return static_cast<float>(Math::acos(dot(normalize(v1), normalize(v2))));
+	return static_cast<float>(Math::Acos(Dot(Normalize(v1), Normalize(v2))));
 }
 
-Vector3 Vector3::slerp(const Vector3& start, const Vector3& end, float t)
+Vector3 Vector3::Slerp(const Vector3& start, const Vector3& end, float t)
 {
-	return rotate(start, cross(end, start), angle(start, end) * t);
+	return Rotate(start, Cross(end, start), Angle(start, end) * t);
 }
 
 bool operator == (const Vector3& v1, const Vector3& v2)

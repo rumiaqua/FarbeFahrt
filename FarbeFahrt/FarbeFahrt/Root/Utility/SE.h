@@ -32,19 +32,19 @@ public:
 	static SE& instance();
 public:
 	//SEを再生する
-	static void playSE(const std::string& name);
+	static void Play(const std::string& name);
 	//SEを停止する
-	static void stopSE(const std::string& name);
+	static void Stop(const std::string& name);
 	//SEが再生中かどうか調べる
-	static void isPlaySE(const std::string& name);
+	static void IsPlay(const std::string& name);
 	//SEのボリュームを変更する(0～255)
-	static void changeVolumeSE(std::string name, int volume);
+	static void ChangeVolume(std::string name, int volume);
 	//SEの周波数を変更する(100～100,000 : -1はデフォルト周波数)
-	static void changeFrequencySE(std::string name, int frequency);
+	static void ChangeFrequency(std::string name, int frequency);
 	//SEの初期化(メモリ内から全消去)
-	static void initSE();
+	static void Init();
 	//SEの取得
-	static void setSEData(const ContentMap& seData);
+	static void SetData(const ContentMap& seData);
 private:
 	std::unordered_map<std::string, SEData> m_seData;
 };

@@ -9,7 +9,7 @@ class IWorld
 public:
 	virtual ~IWorld(){}
 	virtual void addActor(ActorTag tag, const Actor& actor) = 0;
-	virtual Actor findActor(const std::string& name) = 0;
-	virtual Actor findCamera() = 0;
-	virtual Actor findField() = 0;
+	virtual Actor findActor(const std::string& name) const = 0;
+	virtual Actor findCamera() const = 0;
+	virtual Actor findField() const = 0;
 };

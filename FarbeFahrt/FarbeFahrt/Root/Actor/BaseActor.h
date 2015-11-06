@@ -1,60 +1,120 @@
 #pragma once
 #include "Utility/Renderer.h"
+# include "Utility/Pose.h"
+# include "Utility/String.h"
+
 #include "IWorld.h"
 #include "Actor.h"
+
 #include <string>
 #include <algorithm>
 #include <functional>
 #include <forward_list>
-# include "Utility/Pose.h"
-# include "Utility/String.h"
+
+/// <summary>アクター基底クラス</summary>
 class BaseActor
 {
 public:
+
+	/// <summary>コンストラクタ</summary>
 	BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation);
+
 	explicit BaseActor(const std::string& name = "none");
+
+	/// <summary>仮想デストラクタ</summary>
 	virtual ~BaseActor();
 
+	/// <summary>更新</summary>
 	void update();
-	void draw(Renderer& render)const;
 
+	/// <summary>描画</summary>
+	void draw(Renderer& renderer) const;
+
+	/// <summary>死亡しているかを返す</summary>
 	bool isDead()const;
+
+	/// <summary>殺す</summary>
 	void kill();
 
+	/// <summary>名前を取得する</summary>
 	const String& getName()const;
 
+	/// <summary>姿勢を返す</summary>
 	Matrix getPose() const;
-	Vector3& getPosition();
-	const Vector3& getPosition() const;
-	Matrix& getRotation();
-	const Matrix& getRotation() const;
+
+	/// <summary>ワールド姿勢を返す</summary>
 	Matrix getWorldPose() const;
 
-	Actor findChildren(const String& name);
-	Actor findChildren(std::function<bool(const BaseActor&)>func);
+	/// <summary>座標を返す</summary>
+	Vector3& getPosition();
 
+	/// <summary>座標を返す</summary>
+	const Vector3& getPosition() const;
+
+	/// <summary>回転を返す</summary>
+	Matrix& getRotation();
+
+	/// <summary>回転を返す</summary>
+	const Matrix& getRotation() const;
+
+	/// <summary>子を検索</summary>
+	Actor find(const String& name) const;
+
+	/// <summary>条件に一致する子を検索するs</summary>
+	Actor findPred(const std::function<bool(const BaseActor&)>& func) const;
+
+	/// <summary>子に追加</summary>
 	void addChild(const Actor& child);
-	void eachChildren(std::function<void(BaseActor&)>func);
-	void eachChildren(std::function<void(const BaseActor&)>func)const;
-	void removeChildren(std::function<bool(BaseActor&)>func);
-	void clearChildren();
+
+	/// <summary>子に処理を実行する</summary>
+	void eachChildren(const std::function<void(BaseActor&)>& func);
+
+	/// <summary>子に処理を実行する</summary>
+	void eachChildren(const std::function<void(const BaseActor&)>& func)const;
+
+	/// <summary>条件に一致する子を削除する</summary>
+	void removeChildren(const std::function<bool(BaseActor&)>& func);
+
+	/// <summary>子を全て削除する</summary>
 	void removeChildren();
 
+	/// <summary>メッセージを送信する</summary>
 	void sendMessage(const String& message, const void* parameter);
 
+	/// <summary>コピーコンストラクタを削除</summary>
 	BaseActor(const BaseActor& other) = delete;
+
+	/// <summary>代入演算子を削除</summary>
 	BaseActor& operator = (const BaseActor& other) = delete;
 
-private:
-	virtual void onUpdate();
-	virtual void onDraw(Renderer& render)const;
-	virtual void onMessage(const String& message, const void* parameter);
 protected:
-	IWorld* world;
-	String name;
-	Pose pose;
-	bool dead;
-private:
-	ActorRef parent;
-	std::forward_list<Actor>children;
+
+	/// <summary>更新</summary>
+	virtual void onUpdate();
+
+	/// <summary>描画</summary>
+	virtual void onDraw(Renderer& render)const;
+
+	/// <summary>メッセージを受信</summary>
+	virtual void onMessage(const String& message, const void* parameter);
+
+protected:
+
+	/// <summary>ワールド</summary>
+	IWorld* m_world;
+
+	/// <summary>名前</summary>
+	String m_name;
+
+	/// <summary>姿勢</summary>
+	Pose m_pose;
+
+	/// <summary>死亡しているか</summary>
+	bool m_dead;
+
+	/// <summary>親アクターポインタ</summary>
+	ActorRef m_parent;
+
+	/// <summary>子アクターリスト</summary>
+	std::forward_list<Actor> m_children;
 };
