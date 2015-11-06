@@ -160,8 +160,8 @@ void BaseActor::onCollide(BaseActor& actor)
 {
 	if (isCollide(actor))
 	{
-		onMessage("Hit", nullptr);
-		actor.onMessage("Hit", nullptr);
+		onMessage("Hit", (void*)&actor);
+		actor.onMessage("Hit", (void*)&actor);
 	}
 	eachChildren([&] (BaseActor& child) { child.collide(actor); });
 }

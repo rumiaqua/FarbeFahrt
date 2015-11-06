@@ -9,5 +9,4 @@ public:
 	Ray(IWorld& world, const Vector3& begin,const Vector3& end);
 
 private:
-	Line m_line;
 };
