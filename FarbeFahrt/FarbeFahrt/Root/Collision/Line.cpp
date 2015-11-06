@@ -6,8 +6,8 @@
 
 # include "Utility/MemoryCast.h"
 
-Line::Line(const Vector3& origin, const Vector3& end)
-	: IShape(origin)
+Line::Line(const Vector3& begin, const Vector3& end)
+	: begin(begin)
 	, end(end)
 {
 
@@ -41,7 +41,7 @@ bool Line::intersects(const Triangle& shape) const
 void Line::draw() const
 {
 	DrawLine3D(
-		origin,
-		end,
+		origin + begin,
+		origin + end,
 		-1);
 }

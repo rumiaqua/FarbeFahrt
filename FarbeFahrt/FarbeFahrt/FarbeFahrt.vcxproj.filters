@@ -323,6 +323,9 @@
     <ClInclude Include="Root\Actor\SkinObject.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Utility\Memento.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Model\本2\book.pmx" />
