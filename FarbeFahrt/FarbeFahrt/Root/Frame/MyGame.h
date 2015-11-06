@@ -20,4 +20,5 @@ private:
 	bool m_breakflag;
 	bool initFlag;
 	SceneManager m_sceneManager;
+	
 };

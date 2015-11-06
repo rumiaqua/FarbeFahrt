@@ -23,6 +23,7 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("field", "Model/terrain/terrain.mqo");
 	loader.loadContent("bang", "SE/test.wav");
 	loader.loadContent("kari", "Texture/âºÇËÇªÅ[Ç∑.png");
+	loader.loadContent("book", "Model/ñ{2/book.pmx");
 }
 void GameMain::initialize()
 {

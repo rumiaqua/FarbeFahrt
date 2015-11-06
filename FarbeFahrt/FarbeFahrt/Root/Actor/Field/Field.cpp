@@ -7,9 +7,10 @@ Field::Field(IWorld& world)
 
 void Field::onUpdate()
 {
+
 }
 void Field::onDraw(Renderer& render)const
 {
-	render.setScale("field", VGet(0.5f, 0.5f, 0.5f));
-	render.drawNormalModel("field", getPosition(), getRotation());
+	render.setScale("book", VGet(2.0f, 2.0f, 2.0f));
+	render.drawNormalModel("book", getPosition(), getRotation());
 }

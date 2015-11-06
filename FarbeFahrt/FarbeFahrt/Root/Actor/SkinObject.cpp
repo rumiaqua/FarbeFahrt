@@ -34,7 +34,7 @@ void SkinObject::onUpdate()
 
 void SkinObject::onDraw(Renderer & render) const
 {
-	render.drawSkinModel(name.toNarrow(), getPosition(), getRotation(), m_anmNo, flame);
+	render.drawSkinModel(m_name.toNarrow(), getPosition(), getRotation(), m_anmNo, flame);
 
 	BaseActor::onDraw(render);
 }
