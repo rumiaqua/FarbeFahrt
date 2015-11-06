@@ -32,6 +32,7 @@
     <ClCompile Include="Root\Collision\Collision.cpp" />
     <ClCompile Include="Root\Collision\IShape.cpp" />
     <ClCompile Include="Root\Collision\Line.cpp" />
+    <ClCompile Include="Root\Collision\ModelCollider.cpp" />
     <ClCompile Include="Root\Collision\Sphere.cpp" />
     <ClCompile Include="Root\Collision\Triangle.cpp" />
     <ClCompile Include="Root\Frame\BaseScene.cpp" />
@@ -66,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\StaicObject.h" />
+    <ClInclude Include="Root\Collision\ModelCollider.h" />
+    <ClInclude Include="Root\Utility\Memento.h" />
     <ClInclude Include="Root\Utility\ScriptStageBuilder.h" />
     <ClInclude Include="Root\Actor\Actor.h" />
     <ClInclude Include="Root\Actor\ActorManager\ActorManager.h" />

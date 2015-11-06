@@ -33,7 +33,7 @@ void GameMain::initialize()
 	world->addField(std::make_shared<Field>(*world));
 	world->addSkydome(std::make_shared<Skydome>(*world));
 
-	world->addActor(ActorTag::Player, std::make_shared<StaticObject>(*world,"book", Vector3(0,0,-30)));
+	world->addActor(ActorTag::Enemy, std::make_shared<StaticObject>(*world,"book", Vector3(0,0,-30)));
 
 	Debug::SetClear(true);
 	Debug::ChangeFontSize(16);

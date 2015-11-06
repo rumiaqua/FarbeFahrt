@@ -23,6 +23,12 @@ void ActorManager::update()
 {
 	m_root.update();
 	m_root.removeChildren();
+
+	BaseActor& enemys = *m_actors[ActorTag::Enemy];
+	BaseActor& players = *m_actors[ActorTag::Player];
+
+	enemys.eachChildren(
+		[&] (BaseActor& actor) { players.collide(actor); });
 }
 void ActorManager::draw(Renderer& render)const
 {

@@ -6,7 +6,7 @@ class Line : public IShape
 {
 public:
 
-	Line(const Vector3& origin, const Vector3& end);
+	Line(const Vector3& begin, const Vector3& end);
 
 	virtual bool intersects(const IShape& shape) const override;
 
@@ -22,5 +22,6 @@ public:
 
 public:
 
+	Vector3 begin;
 	Vector3 end;
 };

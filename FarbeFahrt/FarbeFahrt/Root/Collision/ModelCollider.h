@@ -2,11 +2,11 @@
 
 # include "IShape.h"
 
-class Triangle : public IShape
+class ModelCollider : public IShape
 {
 public:
 
-	Triangle(const Vector3& p0, const Vector3& p1, const Vector3& p2);
+	ModelCollider(int handle);
 
 	virtual bool intersects(const IShape& shape) const override;
 
@@ -22,9 +22,5 @@ public:
 
 public:
 
-	Vector3 p0;
-
-	Vector3 p1;
-
-	Vector3 p2;
+	int handle;
 };

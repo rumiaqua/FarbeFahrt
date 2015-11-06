@@ -1,11 +1,14 @@
 #include "BaseActor.h"
 
-BaseActor::BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation)
+# include "Collision/IShape.h"
+
+BaseActor::BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation, const IShapePtr& shape)
 	: m_world(&world)
 	, m_name(name)
 	, m_pose(position, rotation)
 	, m_dead(false)
 	, m_parent(nullptr)
+	, m_shape(shape)
 {
 
 }
@@ -16,6 +19,7 @@ BaseActor::BaseActor(const std::string& name)
 	, m_pose()
 	, m_dead(false)
 	, m_parent(nullptr)
+	, m_shape(nullptr)
 {
 
 }
@@ -27,6 +31,10 @@ void BaseActor::update()
 void BaseActor::draw(Renderer& render)const
 {
 	onDraw(render);
+}
+void BaseActor::collide(BaseActor& folder)
+{
+	onCollide(folder);
 }
 bool BaseActor::isDead()const
 {
@@ -124,6 +132,16 @@ void BaseActor::sendMessage(const String& message, const void* parameter)
 	onMessage(message, parameter);
 }
 
+bool BaseActor::isCollide(const BaseActor& other) const
+{
+	// Õ“Ë}Œ`‚ª‹ó‚È‚çÕ“Ë”»’è‚Ís‚È‚í‚È‚¢
+	if (!m_shape || !other.m_shape)
+	{
+		return false;
+	}
+	return m_shape->intersects(*other.m_shape);
+}
+
 void BaseActor::onUpdate()
 {
 	eachChildren([&] (BaseActor& actor) {actor.update(); });
@@ -131,7 +149,21 @@ void BaseActor::onUpdate()
 
 void BaseActor::onDraw(Renderer& render) const
 {
-	eachChildren([&] (const BaseActor& actor) {actor.draw(render); });
+	if (m_shape)
+	{
+		m_shape->transform(getWorldPose())->draw();
+	}
+	eachChildren([&] (const BaseActor& actor) { actor.draw(render); });
+}
+
+void BaseActor::onCollide(BaseActor& actor)
+{
+	if (isCollide(actor))
+	{
+		onMessage("Hit", nullptr);
+		actor.onMessage("Hit", nullptr);
+	}
+	eachChildren([&] (BaseActor& child) { child.collide(actor); });
 }
 
 void BaseActor::onMessage(const String& message, const void* parameter)

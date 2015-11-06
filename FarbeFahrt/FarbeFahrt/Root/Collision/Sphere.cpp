@@ -6,8 +6,8 @@
 
 # include "Utility/MemoryCast.h"
 
-Sphere::Sphere(const Vector3& origin, float radius)
-	: IShape(origin)
+Sphere::Sphere(const Vector3& center, float radius)
+	: center(center)
 	, radius(radius)
 {
 
@@ -41,6 +41,6 @@ bool Sphere::intersects(const Triangle& shape) const
 void Sphere::draw() const
 {
 	DrawSphere3D(
-		origin,
+		origin + center,
 		radius, 10, -1, -1, FALSE);
 }
