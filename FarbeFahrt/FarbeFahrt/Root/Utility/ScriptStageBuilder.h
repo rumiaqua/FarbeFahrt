@@ -42,6 +42,16 @@ public:
 					String::ToValue<float>(split[3]));
 			}
 
+			if (split[0] == "f")
+			{
+				data.fieldName = split[1];
+			}
+
+			if (split[0] == "s")
+			{
+				data.skyName = split[1];
+			}
+
 			if (split[0] == "o")
 			{
 				data.objectList.emplace_back(split[1], split[2], Vector3(
@@ -76,6 +86,10 @@ public:
 			data.playerPosition.x << "," <<
 			data.playerPosition.y << "," <<
 			data.playerPosition.z << std::endl;
+
+		stream << "f," << data.fieldName << std::endl;
+
+		stream << "s," << data.skyName << std::endl;
 
 		stream << "# Objects" << std::endl;
 

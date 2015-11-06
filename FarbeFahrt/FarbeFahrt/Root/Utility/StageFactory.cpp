@@ -21,8 +21,8 @@ void StageFactory::Load(const String& filename)
 void StageFactory::Apply(World& world) const
 {
 	world.addCamera(std::make_shared<Camera>(world));
-	world.addField(std::make_shared<Field>(world));
-	world.addSkydome(std::make_shared<Skydome>(world));
+	world.addField(std::make_shared<Field>(world, m_data.fieldName));
+	world.addSkydome(std::make_shared<Skydome>(world, m_data.skyName));
 
 	world.addActor(ActorTag::Player, std::make_shared<Player>(
 		world, m_data.playerPosition));
