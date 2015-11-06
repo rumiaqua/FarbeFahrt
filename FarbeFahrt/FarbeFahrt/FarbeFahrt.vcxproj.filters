@@ -63,9 +63,6 @@
     <ClCompile Include="Root\Utility\Math.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Utility\NowLoading.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Utility\Renderer.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -209,9 +206,6 @@
     <ClInclude Include="Root\Utility\Math.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Utility\NowLoading.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Root\Utility\Optional.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -339,6 +333,12 @@
     <None Include="Resources\Model\平原\くさ.pmx" />
     <None Include="Resources\Model\平原\橋2.pmx" />
     <None Include="Resources\Model\平原\橋.pmx" />
+    <None Include="Root\Scene\FadeOut.inl">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
+    <None Include="Root\Scene\FadeIn.inl">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\curtain.png">

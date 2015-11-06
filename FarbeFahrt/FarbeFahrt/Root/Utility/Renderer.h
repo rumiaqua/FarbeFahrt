@@ -47,14 +47,14 @@ public:
 public://MyGameで実装
 	void setModelData(const ContentMap& modelData);
 	void setTextureData(const ContentMap& textureData);
-	void draw()const;
+	void draw() const;
 public:
 	void drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const;
 	void drawSkinModel(const std::string& name, const Vector3& position, const Matrix& rotation, int animNumber, float frame);//アニメーション付き
 	void setScale(const std::string& name, const Vector3& scale);
 
 	//2D系関数
-	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle);
+	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
 public:
 	// -----------------------------------------------------------
 	// プリミティブ型描画

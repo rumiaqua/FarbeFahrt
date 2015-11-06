@@ -23,21 +23,21 @@ BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity())
 	SetCameraNearFar(1.0f, 12000.0f);
 	SetCursorPos(nScreenCenterX, nScreenCenterY);
 
-	cameraMatrix.targetPos = { 0.0f, 20.0f, -30.0f };
-	cameraMatrix.currentPos = cameraMatrix.targetPos;
+	m_cameraMatrix.targetPos = { 0.0f, 20.0f, -30.0f };
+	m_cameraMatrix.currentPos = m_cameraMatrix.targetPos;
 
-	cameraMatrix.targetRot = { 0.0f, 15.0f, 0.0f };
-	cameraMatrix.currentRot = cameraMatrix.targetRot;
+	m_cameraMatrix.targetRot = { 0.0f, 15.0f, 0.0f };
+	m_cameraMatrix.currentRot = m_cameraMatrix.targetRot;
 
-	cameraState.chaseFlag = ChaseFlag::Void;
-	cameraState.cameraMode = CameraMode::Init;
+	m_cameraState.chaseFlag = ChaseFlag::Void;
+	m_cameraState.cameraMode = CameraMode::Init;
 
-	actor = nullptr;	
+	m_actor = nullptr;
 }
 void Camera::onUpdate()
 {
 	playerCheck();
-	if (actor == nullptr)return;
+	if (m_actor == nullptr)return;
 
 	cameraSet();
 }
@@ -49,10 +49,10 @@ void Camera::onDraw(Renderer& render)const
 
 void Camera::chaseCamera()
 {
-	cameraMatrix.currentPos = getPosition();
-	cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
-	cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	m_cameraMatrix.currentPos = getPosition();
+	m_cameraMatrix.targetPos = m_actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
+	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 
 	//移行できるカメラ
 	toBookCamera();
@@ -61,45 +61,45 @@ void Camera::chaseCamera()
 
 void Camera::fadeInCamera()
 {
-	cameraMatrix.currentPos = getPosition();
-	t = 0;
-	cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
-	cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
-	cameraState.chaseFlag = ChaseFlag::Move;
-	cameraState.cameraMode = CameraMode::Default;
+	m_cameraMatrix.currentPos = getPosition();
+	m_t = 0;
+	m_cameraMatrix.targetPos = m_actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
+	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	m_cameraState.chaseFlag = ChaseFlag::Move;
+	m_cameraState.cameraMode = CameraMode::Default;
 }
 
 void Camera::fadeOutCamera()
 {
-	cameraMatrix.currentPos = getPosition();
-	cameraMatrix.targetPos = { 0.0f, 140.0f, -150.0f };
-	cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	cameraMatrix.targetRot = { 0.0f, 0.0f, 0.0f };
-	cameraState.cameraMode = CameraMode::Default;
+	m_cameraMatrix.currentPos = getPosition();
+	m_cameraMatrix.targetPos = { 0.0f, 140.0f, -150.0f };
+	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
+	m_cameraMatrix.targetRot = { 0.0f, 0.0f, 0.0f };
+	m_cameraState.cameraMode = CameraMode::Default;
 }
 
 void Camera::fadeInFixCamera()
 {
-	actorCheck(actor->getName().toNarrow());
-	if (actor == nullptr)return;
+	actorCheck(m_actor->getName().toNarrow());
+	if (m_actor == nullptr)return;
 
-	cameraMatrix.currentPos = getPosition();
-	cameraMatrix.targetPos = getPosition();
-	t = 0;
-	cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
-	cameraState.chaseFlag = ChaseFlag::Stay;
-	cameraState.cameraMode = CameraMode::Default;
+	m_cameraMatrix.currentPos = getPosition();
+	m_cameraMatrix.targetPos = getPosition();
+	m_t = 0;
+	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
+	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	m_cameraState.chaseFlag = ChaseFlag::Stay;
+	m_cameraState.cameraMode = CameraMode::Default;
 }
 
 void Camera::lockCamera()
 {
-	actorCheck(actor->getName().toNarrow());
-	if (actor == nullptr)return;
+	actorCheck(m_actor->getName().toNarrow());
+	if (m_actor == nullptr)return;
 
-	cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
+	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 
 	//移行できるカメラ
 	toBookCamera();
@@ -108,29 +108,29 @@ void Camera::lockCamera()
 
 void Camera::defaultCamera()
 {
-	if (cameraState.chaseFlag == ChaseFlag::Move)
+	if (m_cameraState.chaseFlag == ChaseFlag::Move)
 	{
-		cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
-		cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
-		if (t >= 1)
+		m_cameraMatrix.targetPos = m_actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+		m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+		if (m_t >= 1)
 		{
-			cameraState.chaseFlag = ChaseFlag::Void;
-			cameraState.cameraMode = CameraMode::Chase;
+			m_cameraState.chaseFlag = ChaseFlag::Void;
+			m_cameraState.cameraMode = CameraMode::Chase;
 		}
 	}
-	else if (cameraState.chaseFlag == ChaseFlag::Stay)
+	else if (m_cameraState.chaseFlag == ChaseFlag::Stay)
 	{
-		cameraMatrix.targetPos = getPosition();
-		cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
-		if (t >= 1)
+		m_cameraMatrix.targetPos = getPosition();
+		m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+		if (m_t >= 1)
 		{
-			cameraState.chaseFlag = ChaseFlag::Void;
-			cameraState.cameraMode = CameraMode::LockAt;
+			m_cameraState.chaseFlag = ChaseFlag::Void;
+			m_cameraState.cameraMode = CameraMode::LockAt;
 		}
 	}
 	else
 	{
-		if (t >= 1)
+		if (m_t >= 1)
 		{
 		//移行できるカメラ
 		toPlayerCamera();
@@ -141,13 +141,13 @@ void Camera::defaultCamera()
 
 void Camera::initCamera()
 {
-	cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
-	cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
-	getPosition() = cameraMatrix.targetPos;
+	m_cameraMatrix.targetPos = m_actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	getPosition() = m_cameraMatrix.targetPos;
 
-	SetCameraPositionAndTarget_UpVecY(getPosition(), cameraMatrix.targetRot);
+	SetCameraPositionAndTarget_UpVecY(getPosition(), m_cameraMatrix.targetRot);
 
-	cameraState.cameraMode = CameraMode::Chase;
+	m_cameraState.cameraMode = CameraMode::Chase;
 }
 
 void Camera::cameraSet()
@@ -161,12 +161,12 @@ void Camera::cameraSet()
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::LockAt, [this]() { this->lockCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Init, [this]() { this->initCamera(); }));
 
-	funcs.at(cameraState.cameraMode)();
+	funcs.at(m_cameraState.cameraMode)();
 
-	t += 1 / (60.0f * SECOND);
-	t = t > 1.0f ? 1.0f : t;
-	getPosition() = Vector3::Lerp(cameraMatrix.currentPos, cameraMatrix.targetPos, static_cast<float>(Math::Sin(Math::HALF_PI * t)));
-	Vector3 focus = Vector3::Lerp(cameraMatrix.currentRot, cameraMatrix.targetRot, static_cast<float>(Math::Sin(Math::HALF_PI * t)));
+	m_t += 1 / (60.0f * SECOND);
+	m_t = m_t > 1.0f ? 1.0f : m_t;
+	getPosition() = Vector3::Lerp(m_cameraMatrix.currentPos, m_cameraMatrix.targetPos, static_cast<float>(Math::Sin(Math::HALF_PI * m_t)));
+	Vector3 focus = Vector3::Lerp(m_cameraMatrix.currentRot, m_cameraMatrix.targetRot, static_cast<float>(Math::Sin(Math::HALF_PI * m_t)));
 
 	SetCameraPositionAndTarget_UpVecY(getPosition(), focus);
 }
@@ -176,8 +176,8 @@ void Camera::toBookCamera()
 {
 	if (Input::IsClicked(KEY_INPUT_Z))
 	{
-		t = 0;
-		cameraState.cameraMode = CameraMode::FadeOut;
+		m_t = 0;
+		m_cameraState.cameraMode = CameraMode::FadeOut;
 	}
 }
 
@@ -186,7 +186,7 @@ void Camera::toPlayerCamera()
 {
 	if (Input::IsClicked(KEY_INPUT_X))
 	{
-		cameraState.cameraMode = CameraMode::FadeIn;
+		m_cameraState.cameraMode = CameraMode::FadeIn;
 	}
 }
 
@@ -195,7 +195,7 @@ void Camera::toFixCamera()
 {
 	if (Input::IsClicked(KEY_INPUT_C))
 	{
-		cameraState.cameraMode = CameraMode::FadeInFix;
+		m_cameraState.cameraMode = CameraMode::FadeInFix;
 	}
 }
 
@@ -206,5 +206,5 @@ void Camera::playerCheck()
 
 void Camera::actorCheck(const std::string actorName)
 {
-	actor = world->findActor(actorName);
+	m_actor = m_world->findActor(actorName);
 }

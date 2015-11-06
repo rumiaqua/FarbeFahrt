@@ -15,7 +15,7 @@ SE & SE::instance()
 }
 
 //SE‚ğÄ¶
-void SE::playSE(const std::string& name)
+void SE::Play(const std::string& name)
 {
 	SE& se = instance();
 
@@ -31,21 +31,21 @@ void SE::playSE(const std::string& name)
 }
 
 //SE‚ğ’â~
-void SE::stopSE(const std::string& name)
+void SE::Stop(const std::string& name)
 {
 	SE& se = instance();
 	StopSoundMem(se.m_seData[name].seNum);
 }
 
 //SE‚ªÄ¶’†‚©‚Ç‚¤‚©
-void SE::isPlaySE(const std::string& name)
+void SE::IsPlay(const std::string& name)
 {
 	SE& se = instance();
 	CheckSoundMem(se.m_seData[name].seNum);
 }
 
 //‰¹—Ê’²®
-void SE::changeVolumeSE(std::string name,int volume)
+void SE::ChangeVolume(std::string name,int volume)
 {
 	SE& se = instance();
 	//ƒ{ƒŠƒ…[ƒ€‚ğİ’è(0`255)
@@ -53,7 +53,7 @@ void SE::changeVolumeSE(std::string name,int volume)
 }
 
 //ü”g”’²®
-void SE::changeFrequencySE(std::string name, int frequency)
+void SE::ChangeFrequency(std::string name, int frequency)
 {
 	SE& se = instance();
 	//ü”g”‚ğİ’è(100`100,000 : -1‚ÍƒfƒtƒHƒ‹ƒgü”g”)
@@ -61,14 +61,14 @@ void SE::changeFrequencySE(std::string name, int frequency)
 }
 
 //SE‚Ì‰Šú‰»(ƒƒ‚ƒŠ“à‚©‚ç‘Síœ)
-void SE::initSE()
+void SE::Init()
 {
 	SE& se = instance();
 	InitSoundMem();
 }
 
 //SE‚Ìæ“¾
-void SE::setSEData(const ContentMap& seData)
+void SE::SetData(const ContentMap& seData)
 {
 	SE& se = instance();
 	for (auto &data : seData)

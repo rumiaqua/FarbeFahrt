@@ -21,8 +21,10 @@ private:
 private:
 	void playerInput();//“ü—ÍŒni‚½‚¾‚ÌŠÖ”•ª‚¯j
 private:
-	PlayerState state;
-	float moveSpeed;
-	bool moveFlag;
-	Capsule capsule;
+	PlayerState m_state;
+	float m_moveSpeed;
+	bool m_moveFlag;
+	Capsule m_capsule;
+
+	Actor m_stand;
 };

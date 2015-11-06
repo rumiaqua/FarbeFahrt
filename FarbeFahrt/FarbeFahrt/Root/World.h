@@ -16,13 +16,13 @@ public:
 	virtual void addSkydome(const Actor& sky);
 	virtual void addActor(ActorTag tag, const Actor& actor);
 	virtual void addField(const Actor& firld);
-	virtual Actor findActor(const std::string& name)override;
-	virtual Actor findCamera()override;
-	virtual Actor findField()override;
+	virtual Actor findActor(const std::string& name) const override;
+	virtual Actor findCamera() const override;
+	virtual Actor findField() const override;
 	StageData getData() const;
 private:
-	ActorManager actors;
-	Actor camera;
-	Actor sky;
-	Actor field;
+	ActorManager m_actors;
+	Actor m_camera;
+	Actor m_sky;
+	Actor m_field;
 };

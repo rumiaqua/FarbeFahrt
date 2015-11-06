@@ -1,6 +1,7 @@
 #include "ActorManager.h"
 
 ActorManager::ActorManager()
+	: m_root()
 {
 	initialize();
 }
@@ -11,7 +12,7 @@ void ActorManager::initialize()
 	m_actors[ActorTag::NPC] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Item] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Effect] = std::make_shared<BaseActor>();
-	m_root.clearChildren();
+	m_root.removeChildren();
 	m_root.addChild(m_actors[ActorTag::Player]);
 	m_root.addChild(m_actors[ActorTag::Enemy]);
 	m_root.addChild(m_actors[ActorTag::NPC]);
@@ -31,7 +32,8 @@ void ActorManager::addActor(ActorTag tag, const Actor& actor)
 {
 	m_actors[tag]->addChild(actor);
 }
-Actor ActorManager::findActor(const String& name)
+
+Actor ActorManager::findActor(const String& name) const
 {
-	return m_root.findChildren(name);
+	return m_root.find(name);
 }

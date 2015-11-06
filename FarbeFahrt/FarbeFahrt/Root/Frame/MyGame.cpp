@@ -55,7 +55,7 @@ void MyGame::run()
 	{
 		render.setModelData(loader.getModelList());
 		render.setTextureData(loader.getTextureList());
-		SE::setSEData(loader.getSEList());
+		SE::SetData(loader.getSEList());
 	}
 
 	// XV

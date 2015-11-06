@@ -61,7 +61,6 @@
     <ClCompile Include="Root\Utility\Loader.cpp" />
     <ClCompile Include="Root\Utility\Math.cpp" />
     <ClCompile Include="Root\Utility\Mouse.cpp" />
-    <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Utility\Renderer.cpp" />
     <ClCompile Include="Root\Utility\SE.cpp" />
     <ClCompile Include="Root\World.cpp" />
@@ -120,7 +119,6 @@
     <ClInclude Include="Root\Utility\Loader.h" />
     <ClInclude Include="Root\Utility\Math.h" />
     <ClInclude Include="Root\Utility\Mouse.h" />
-    <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Utility\Optional.h" />
     <ClInclude Include="Root\Utility\Renderer.h" />
     <ClInclude Include="Root\Utility\SE.h" />
@@ -135,6 +133,8 @@
     <None Include="Resources\Model\本2\book001.vmd" />
     <None Include="Resources\Model\本2\book002.vmd" />
     <None Include="Resources\Model\本\本完成(仮).pmx" />
+    <None Include="Root\Scene\FadeIn.inl" />
+    <None Include="Root\Scene\FadeOut.inl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\curtain.png" />

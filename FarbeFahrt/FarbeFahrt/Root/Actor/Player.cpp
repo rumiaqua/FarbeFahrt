@@ -10,9 +10,9 @@
 #include "Stand.h"
 #include "Utility/MemoryCast.h"
 
-Player::Player(IWorld& world, const Vector3& position) :
-BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI))
-, capsule(position, position, 5.0f)
+Player::Player(IWorld& world, const Vector3& position)
+	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI))
+	, m_capsule(position, position, 5.0f)
 {
 	moveSpeed = 1.5f;
 	state = PlayerState::standing;
@@ -44,25 +44,25 @@ void Player::playerInput()
 
 	if (Input::IsClicked(KEY_INPUT_SPACE))
 	{
-		SE::playSE("bang");
+		SE::Play("bang");
 	}
 
 	// ˆÚ“®ˆ—
 	if (Input::IsPressed(KEY_INPUT_A))
 	{
-		moveVec += leftVec * moveSpeed;
+		moveVec += leftVec * m_moveSpeed;
 	}
 	if (Input::IsPressed(KEY_INPUT_D))
 	{
-		moveVec -= leftVec * moveSpeed;
+		moveVec -= leftVec * m_moveSpeed;
 	}
 	if (Input::IsPressed(KEY_INPUT_W))
 	{
-		moveVec += frontVec * moveSpeed;
+		moveVec += frontVec * m_moveSpeed;
 	}
 	if (Input::IsPressed(KEY_INPUT_S))
 	{
-		moveVec -= frontVec * moveSpeed;
+		moveVec -= frontVec * m_moveSpeed;
 	}
 
 	// ˆÚ“®—Ê‚ª0‚Å‚È‚¯‚ê‚ÎˆÚ“®ˆ—‚Æƒ‚ƒfƒ‹‘€ì
@@ -71,17 +71,17 @@ void Player::playerInput()
 		// •½sˆÚ“®
 		getPosition() += moveVec;
 
-		state = PlayerState::walking;
+		m_state = PlayerState::walking;
 	}
 	else
 	{
-		state = PlayerState::standing;
+		m_state = PlayerState::standing;
 	}
 }
 void Player::onDraw(Renderer& render)const
 {
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
-	render.drawSkinModel("Player", getPosition(), getRotation(), (int)state, 1.0f);
+	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, 1.0f);
 
 	BaseActor::onDraw(render);
 }

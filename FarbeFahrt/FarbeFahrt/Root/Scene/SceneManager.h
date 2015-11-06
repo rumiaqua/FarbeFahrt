@@ -1,12 +1,15 @@
 # pragma once
 
+# include "ISceneMediator.h"
+
 # include <memory>
 # include <unordered_map>
 # include <functional>
 
-# include "Frame/BaseScene.h"
-
-# include "ISceneMediator.h"
+class BaseScene;
+class FadeOut;
+class Loader;
+class Renderer;
 
 namespace
 {
@@ -22,65 +25,9 @@ namespace
 
 class SceneManager : public ISceneMediator
 {
-private:
+public:
 
-	/// <summary>フェードイン専用シーン</summary>
-	class FadeIn final : public BaseScene
-	{
-	public:
-
-		FadeIn(float fadeCount, bool isSwallow = false);
-
-		void loadContents(Loader& loader) override;
-
-		void initialize() override;
-
-		void update() override;
-
-		void draw(Renderer& renderer) override;
-
-		void cleanUp() override;
-
-		bool isSwallow() const override;
-
-	private:
-
-		const float m_fadeCount;
-
-		float m_currentCount;
-
-		const bool m_isSwallow;
-	};
-
-	/// <summary>フェードアウト専用シーン</summary>
-	class FadeOut final : public BaseScene
-	{
-	public:
-
-		FadeOut(float fadeCount, const std::function<void()>& operation, bool isSwallow = false);
-
-		void loadContents(Loader& loader) override;
-
-		void initialize() override;
-
-		void update() override;
-
-		void draw(Renderer& renderer) override;
-
-		void cleanUp() override;
-
-		bool isSwallow() const override;
-
-	private:
-
-		const float m_fadeCount;
-
-		float m_currentCount;
-
-		const std::function<void()> m_operation;
-
-		const bool m_isSwallow;
-	};
+	friend FadeOut;
 
 public:
 
@@ -89,14 +36,23 @@ public:
 
 public:
 
+	template <typename Type, typename ...Args>
+	ScenePtr create(Args&& ...args)
+	{
+		ScenePtr scene = std::make_shared<Type>(
+			std::forward<Args>(args)...);
+		scene->m_manager = this;
+		return scene;
+	}
+
 	/// <summary>シーンの追加</summary>
 	/// <param name="scene">シーン識別子</param>
 	/// <param name="args">コンストラクタ引数</param>
 	template <typename Type, typename ...Args>
 	void addScene(const Scene& scene, Args&& ...args)
 	{
-		m_scenes.insert(std::make_pair(scene, std::make_shared<Type>(std::forward<Args>(args)...)));
-		m_scenes.at(scene)->setManagerPtr(this);
+		m_scenes.insert(std::make_pair(
+			scene, create<Type>(std::forward<Args>(args)...)));
 	}
 
 	/// <summary>更新</summary>
