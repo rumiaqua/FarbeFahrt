@@ -14,9 +14,9 @@ Player::Player(IWorld& world, const Vector3& position)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI))
 	, m_capsule(position, position, 5.0f)
 {
-	moveSpeed = 1.5f;
-	state = PlayerState::standing;
-	moveFlag = false;
+	m_moveSpeed = 1.5f;
+	m_state = PlayerState::standing;
+	m_moveFlag = false;
 }
 void Player::onUpdate()
 {

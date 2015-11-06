@@ -12,7 +12,7 @@ SkinObject::SkinObject(IWorld & world, const String& modelName, const Vector3 & 
 	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI))
 	, m_capsule(position, position, 5.0f)
 {
-	name = modelName;
+	m_name = modelName;
 	m_flameSpeed = flameSpeed;
 	m_maxFlame = maxFlame;
 	m_anmNo = anmNo;
