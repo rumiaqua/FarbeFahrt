@@ -25,6 +25,4 @@ private:
 	float moveSpeed;
 	bool moveFlag;
 	Capsule capsule;
-
-	Actor stand;
 };

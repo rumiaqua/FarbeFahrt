@@ -17,22 +17,12 @@ BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI))
 	moveSpeed = 1.5f;
 	state = PlayerState::standing;
 	moveFlag = false;
-
-	Vector3 standPos = { 0,0,30 };
-	//ƒXƒ^ƒ“ƒh‚ð¶¬
-	this->addChild(std::make_shared<Stand>(world, standPos));
-
-	stand = findChildren([](const BaseActor& actor) {return actor.getName() == "Stand"; });
 }
 void Player::onUpdate()
 {
 	playerInput();
 	
 	float messageParam = Math::ToRadian(2.0);
-	if (Input::IsPressed(KEY_INPUT_Q))
-	{
-		stand->sendMessage("Rotation", &messageParam);
-	}
 
 	BaseActor::onUpdate();
 }
