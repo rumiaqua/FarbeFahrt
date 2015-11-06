@@ -11,13 +11,16 @@
 #include <functional>
 #include <forward_list>
 
+class IShape;
+using IShapePtr = std::shared_ptr<IShape>;
+
 /// <summary>アクター基底クラス</summary>
 class BaseActor
 {
 public:
 
 	/// <summary>コンストラクタ</summary>
-	BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation);
+	BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation, const IShapePtr& shape);
 
 	explicit BaseActor(const std::string& name = "none");
 
@@ -29,6 +32,9 @@ public:
 
 	/// <summary>描画</summary>
 	void draw(Renderer& renderer) const;
+
+	/// <summary>衝突判定</summary>
+	void collide(BaseActor& folder);
 
 	/// <summary>死亡しているかを返す</summary>
 	bool isDead()const;
@@ -87,6 +93,8 @@ public:
 	/// <summary>代入演算子を削除</summary>
 	BaseActor& operator = (const BaseActor& other) = delete;
 
+	bool isCollide(const BaseActor& other) const;
+
 protected:
 
 	/// <summary>更新</summary>
@@ -94,6 +102,9 @@ protected:
 
 	/// <summary>描画</summary>
 	virtual void onDraw(Renderer& render)const;
+
+	/// <summary>衝突応答</summary>
+	virtual void onCollide(BaseActor& actor);
 
 	/// <summary>メッセージを受信</summary>
 	virtual void onMessage(const String& message, const void* parameter);
@@ -117,4 +128,7 @@ protected:
 
 	/// <summary>子アクターリスト</summary>
 	std::forward_list<Actor> m_children;
+
+	/// <summary>衝突図形</summary>
+	IShapePtr m_shape;
 };

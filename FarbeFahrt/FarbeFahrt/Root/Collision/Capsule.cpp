@@ -6,8 +6,8 @@
 
 # include "Utility/MemoryCast.h"
 
-Capsule::Capsule(const Vector3& origin, const Vector3& end, float radius)
-	: IShape(origin)
+Capsule::Capsule(const Vector3& begin, const Vector3& end, float radius)
+	: begin(begin)
 	, end(end)
 	, radius(radius)
 {
@@ -42,7 +42,7 @@ bool Capsule::intersects(const Triangle& shape) const
 void Capsule::draw() const
 {
 	DrawCapsule3D(
-		origin,
-		end,
+		origin + begin,
+		origin + end,
 		radius, 10, -1, -1, FALSE);
 }

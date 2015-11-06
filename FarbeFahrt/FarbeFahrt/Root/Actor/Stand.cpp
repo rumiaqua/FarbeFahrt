@@ -4,7 +4,7 @@
 #include "Utility/Debug.h"
 
 Stand::Stand(IWorld& world, const Vector3& position)
-	: BaseActor(world, "Stand", position, Matrix::Rotation(Vector3::Forward(), (float)Math::ToRadian(45.0)))
+	: BaseActor(world, "Stand", position, Matrix::Rotation(Vector3::Forward(), (float)Math::ToRadian(45.0)), nullptr)
 	, m_capsule(position, position, 5.0f)
 {
 }

@@ -20,7 +20,7 @@ namespace
 }
 
 Camera::Camera(IWorld& world) :
-BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity())
+BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
 {
 	SetCameraNearFar(1.0f, 12000.0f);
 	SetCursorPos(nScreenCenterX, nScreenCenterY);

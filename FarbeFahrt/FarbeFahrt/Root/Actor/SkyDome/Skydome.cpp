@@ -1,7 +1,7 @@
 #include "Skydome.h"
 
 Skydome::Skydome(IWorld& world) :
-BaseActor(world, "Skydome", Vector3::Zero(), Matrix::identity())
+BaseActor(world, "Skydome", Vector3::Zero(), Matrix::identity(), nullptr)
 {
 
 }

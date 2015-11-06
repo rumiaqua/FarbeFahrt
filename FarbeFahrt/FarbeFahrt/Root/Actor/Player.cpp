@@ -5,14 +5,20 @@
 #include "Utility/Debug.h"
 #include "Utility/Vector3.h"
 
+# include "Collision/ModelCollider.h"
+
 #include "Utility/Debug.h"
 
 #include "Stand.h"
 #include "Utility/MemoryCast.h"
 
 Player::Player(IWorld& world, const Vector3& position)
-	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI))
-	, m_capsule(position, position, 5.0f)
+	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI),
+		std::make_unique<Sphere>(Vector3::Zero(), 10.0f)
+		// std::make_unique<Triangle>(Vector3::Zero(), Vector3(-10, -20, 0), Vector3(10, -20, 0)))
+		// std::make_unique<Capsule>(Vector3(0, -10, 0), Vector3(0, 10, 0), 10.0f)
+		// std::make_unique<Line>(Vector3(10, 0, 0), Vector3(-10, 0, 0))
+		)
 {
 	m_moveSpeed = 1.5f;
 	m_state = PlayerState::standing;
@@ -42,11 +48,6 @@ void Player::playerInput()
 	leftVec.normalize();
 	frontVec.y = 0;
 	frontVec.normalize();
-
-	if (Input::IsClicked(KEY_INPUT_SPACE))
-	{
-		SE::Play("bang");
-	}
 
 	// à⁄ìÆèàóù
 	if (Input::IsPressed(KEY_INPUT_A))
@@ -85,4 +86,17 @@ void Player::onDraw(Renderer& render)const
 	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_flame);
 
 	BaseActor::onDraw(render);
+}
+
+void Player::onCollide(BaseActor& actor)
+{
+	BaseActor::onCollide(actor);
+}
+
+void Player::onMessage(const String& message, const void* parameter)
+{
+	if (message == "Hit")
+	{
+		Debug::Println("Ç†ÇΩÇ¡ÇƒÇÈÇÊ");
+	}
 }

@@ -23,6 +23,8 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("field", "Model/terrain/terrain.mqo");
 	loader.loadContent("bang", "SE/test.wav");
 	loader.loadContent("kari", "Texture/‰¼‚è‚»[‚·.png");
+	loader.loadContent("book", "Model/–{2/book.pmx");
+
 }
 void GameMain::initialize()
 {
@@ -31,6 +33,8 @@ void GameMain::initialize()
 	world->addCamera(std::make_shared<Camera>(*world));
 	world->addField(std::make_shared<Field>(*world));
 	world->addSkydome(std::make_shared<Skydome>(*world));
+
+	world->addActor(ActorTag::Enemy, std::make_shared<StaticObject>(*world,"book", Vector3(0,0,-30)));
 
 	Debug::SetClear(true);
 	Debug::ChangeFontSize(16);
