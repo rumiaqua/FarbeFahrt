@@ -15,7 +15,6 @@ private:
 	virtual void onMessage(const String& message, const void* parameter)override;
 
 private:
-	Capsule m_capsule;
 	float m_flameSpeed;
 	float m_maxFlame;
 	int m_anmNo;

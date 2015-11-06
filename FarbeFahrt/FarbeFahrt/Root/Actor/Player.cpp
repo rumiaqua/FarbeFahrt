@@ -18,6 +18,7 @@ Player::Player(IWorld& world, const Vector3& position)
 		// std::make_unique<Triangle>(Vector3::Zero(), Vector3(-10, -20, 0), Vector3(10, -20, 0)))
 		// std::make_unique<Capsule>(Vector3(0, -10, 0), Vector3(0, 10, 0), 10.0f)
 		// std::make_unique<Line>(Vector3(10, 0, 0), Vector3(-10, 0, 0))
+		// std::make_unique<ModelCollider>(‚±‚±‚É–¼‘O)
 		)
 {
 	m_moveSpeed = 1.5f;
@@ -78,6 +79,8 @@ void Player::playerInput()
 	{
 		m_state = PlayerState::standing;
 	}
+
+	// getPosition().y -= 1.0f;
 }
 void Player::onDraw(Renderer& render)const
 {
