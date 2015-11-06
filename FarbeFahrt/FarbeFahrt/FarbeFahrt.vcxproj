@@ -22,8 +22,10 @@
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
     <ClCompile Include="Root\Actor\Camera\Camera.cpp" />
+    <ClCompile Include="Root\Actor\Camera\Ray.cpp" />
     <ClCompile Include="Root\Actor\Enemy.cpp" />
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
+    <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\SkinObject.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
@@ -67,6 +69,8 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Actor\Camera\Ray.h" />
+    <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Actor\SkinObject.h" />
     <ClInclude Include="Root\Actor\StaicObject.h" />
     <ClInclude Include="Root\Collision\ModelCollider.h" />

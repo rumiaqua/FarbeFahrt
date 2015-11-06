@@ -25,4 +25,6 @@ private:
 	PlayerState m_state;
 	float m_moveSpeed;
 	bool m_moveFlag;
+	Capsule m_capsule;
+	float m_flame;
 };
