@@ -11,13 +11,13 @@ void init()
 {
 	SetMainWindowText("3Dだよ");
 	//仕様変更あるかも？？
-	if (MessageBox(NULL, "フルスクリーンで表示しますか？\n「いいえ」を選択すると1024×768になります",
+	/*if (MessageBox(NULL, "フルスクリーンで表示しますか？\n「いいえ」を選択すると1024×768になります",
 		"確認", MB_YESNO | MB_ICONQUESTION) == IDYES)
 	{
 		SetGraphMode(nScreenSizeX, nScreenSizeY, 32);
 		isFullScreen = true;
 	}
-	else
+	else*/
 	{
 		//ウィンドウモード
 		SetGraphMode(1024,768, 32);

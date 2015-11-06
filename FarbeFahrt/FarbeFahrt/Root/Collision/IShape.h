@@ -6,12 +6,13 @@ class Sphere;
 class Capsule;
 class Line;
 class Triangle;
+class Matrix;
 
 class IShape
 {
 public:
 
-	explicit IShape(const Vector3& origin);
+	explicit IShape();
 
 	virtual ~IShape();
 
@@ -26,6 +27,8 @@ public:
 	virtual bool intersects(const Triangle& shape) const = 0;
 
 	virtual void draw() const = 0;
+
+	IShape* const transform(const Matrix& pose);
 
 public:
 

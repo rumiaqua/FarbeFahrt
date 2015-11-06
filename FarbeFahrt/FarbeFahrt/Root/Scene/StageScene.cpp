@@ -12,7 +12,8 @@ StageScene::StageScene()
 
 void StageScene::loadContents(Loader& loader)
 {
-	for (auto&& resource : m_factory.Resources())
+	auto& panda = m_factory.Resources();
+	for (auto&& resource : panda)
 	{
 		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
 	}

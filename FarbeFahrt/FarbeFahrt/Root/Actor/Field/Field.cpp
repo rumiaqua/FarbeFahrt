@@ -1,7 +1,7 @@
 #include "Field.h"
 
-Field::Field(IWorld& world)
-	:BaseActor(world, "field", Vector3(0.0f, -90.0f, 0.0f), Matrix::identity())
+Field::Field(IWorld& world, const String& name)
+	:BaseActor(world, name, Vector3(0.0f, -90.0f, 0.0f), Matrix::identity(), nullptr)
 {
 }
 
@@ -11,6 +11,11 @@ void Field::onUpdate()
 }
 void Field::onDraw(Renderer& render)const
 {
-	render.setScale("book", VGet(2.0f, 2.0f, 2.0f));
-	render.drawNormalModel("book", getPosition(), getRotation());
+	render.setScale(m_name.toNarrow(), VGet(0.5f, 0.5f, 0.5f));
+	render.drawNormalModel(m_name.toNarrow(), getPosition(), getRotation());
+}
+
+void Field::onCollide(BaseActor& actor)
+{
+
 }

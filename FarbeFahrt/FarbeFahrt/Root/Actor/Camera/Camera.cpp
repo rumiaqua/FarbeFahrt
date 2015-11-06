@@ -2,6 +2,8 @@
 #include "Actor/Enemy.h"
 #include <memory>
 #include "Utility/Math.h"
+#include "Utility/Mouse.h"
+#include "Ray.h"
 
 # include "Utility/Vector3.h"
 # include "Utility/MemoryCast.h"
@@ -18,7 +20,7 @@ namespace
 }
 
 Camera::Camera(IWorld& world) :
-BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity())
+BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
 {
 	SetCameraNearFar(1.0f, 12000.0f);
 	SetCursorPos(nScreenCenterX, nScreenCenterY);
@@ -39,12 +41,22 @@ void Camera::onUpdate()
 	playerCheck();
 	if (m_actor == nullptr)return;
 
+	cameraInput();
 	cameraSet();
 }
 
 void Camera::onDraw(Renderer& render)const
 {
 
+}
+
+void Camera::cameraInput()
+{
+	if (Mouse::IsClicked(MOUSE_INPUT_LEFT))
+	{
+		auto world = std::make_shared<World>();
+		world->addActor(ActorTag::Effect,std::make_shared<Ray>(*world, Mouse::ScreenPointToWorld(0.0f), Mouse::ScreenPointToWorld(1.0f)));
+	}
 }
 
 void Camera::chaseCamera()

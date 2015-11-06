@@ -1,7 +1,8 @@
 # include "IShape.h"
+# include "Utility/Matrix.h"
 
-IShape::IShape(const Vector3& origin)
-	: origin(origin)
+IShape::IShape()
+	: origin(Vector3::Zero())
 {
 
 }
@@ -9,4 +10,10 @@ IShape::IShape(const Vector3& origin)
 IShape::~IShape()
 {
 
+}
+
+IShape* const IShape::transform(const Matrix& pose)
+{
+	this->origin = Matrix::Translation(pose);
+	return this;
 }

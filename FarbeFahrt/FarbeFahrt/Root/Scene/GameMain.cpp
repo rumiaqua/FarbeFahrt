@@ -30,8 +30,10 @@ void GameMain::initialize()
 	world = std::make_shared<World>();
 	world->addActor(ActorTag::Player, std::make_shared<Player>(*world, Vector3::Zero()));
 	world->addCamera(std::make_shared<Camera>(*world));
-	world->addField(std::make_shared<Field>(*world));
-	world->addSkydome(std::make_shared<Skydome>(*world));
+	world->addField(std::make_shared<Field>(*world, "field"));
+	world->addSkydome(std::make_shared<Skydome>(*world, "sky"));
+
+	world->addActor(ActorTag::Enemy, std::make_shared<StaticObject>(*world,"book", Vector3(0,0,-30)));
 
 	Debug::SetClear(true);
 	Debug::ChangeFontSize(16);

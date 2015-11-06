@@ -24,8 +24,10 @@
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
     <ClCompile Include="Root\Actor\Camera\Camera.cpp" />
+    <ClCompile Include="Root\Actor\Camera\Ray.cpp" />
     <ClCompile Include="Root\Actor\Enemy.cpp" />
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
+    <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\SkinObject.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
@@ -35,6 +37,7 @@
     <ClCompile Include="Root\Collision\Collision.cpp" />
     <ClCompile Include="Root\Collision\IShape.cpp" />
     <ClCompile Include="Root\Collision\Line.cpp" />
+    <ClCompile Include="Root\Collision\ModelCollider.cpp" />
     <ClCompile Include="Root\Collision\Sphere.cpp" />
     <ClCompile Include="Root\Collision\Triangle.cpp" />
     <ClCompile Include="Root\Frame\BaseScene.cpp" />
@@ -49,6 +52,7 @@
     <ClCompile Include="Root\Utility\Point3.cpp" />
     <ClCompile Include="Root\Utility\Point4.cpp" />
     <ClCompile Include="Root\Utility\Pose.cpp" />
+    <ClCompile Include="Root\Utility\SingletonFinalizer.cpp" />
     <ClCompile Include="Root\Utility\StageData.cpp" />
     <ClCompile Include="Root\Utility\StageFactory.cpp" />
     <ClCompile Include="Root\Utility\String.cpp" />
@@ -68,9 +72,13 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Actor\Camera\Ray.h" />
+    <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="HandleList.h" />
     <ClInclude Include="Root\Actor\SkinObject.h" />
     <ClInclude Include="Root\Actor\StaicObject.h" />
+    <ClInclude Include="Root\Collision\ModelCollider.h" />
+    <ClInclude Include="Root\Utility\Memento.h" />
     <ClInclude Include="Root\Utility\ScriptStageBuilder.h" />
     <ClInclude Include="PreLoad.h" />
     <ClInclude Include="Root\Actor\Actor.h" />
@@ -107,6 +115,7 @@
     <ClInclude Include="Root\Utility\Point3.h" />
     <ClInclude Include="Root\Utility\Point4.h" />
     <ClInclude Include="Root\Utility\Pose.h" />
+    <ClInclude Include="Root\Utility\SingletonFinalizer.h" />
     <ClInclude Include="Root\Utility\StageData.h" />
     <ClInclude Include="Root\Utility\StageFactory.h" />
     <ClInclude Include="Root\Utility\String.h" />

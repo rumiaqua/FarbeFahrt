@@ -7,7 +7,7 @@
 # include "Utility/MemoryCast.h"
 
 Triangle::Triangle(const Vector3& p0, const Vector3& p1, const Vector3& p2)
-	: IShape(p0)
+	: p0(p0)
 	, p1(p1)
 	, p2(p2)
 {
@@ -42,8 +42,8 @@ bool Triangle::intersects(const Triangle& shape) const
 void Triangle::draw() const
 {
 	DrawTriangle3D(
-		origin,
-		p1,
-		p2,
+		origin + p0,
+		origin + p1,
+		origin + p2,
 		-1, FALSE);
 }
