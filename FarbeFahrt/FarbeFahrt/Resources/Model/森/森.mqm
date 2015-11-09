@@ -1,0 +1,31 @@
+Metasequoia Document
+Format Text Ver 1.1
+
+Material 25 {
+	"mat1" shader(3) col(1.000 1.000 1.000 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00)
+	"Ç¶" shader(3) col(1.000 0.267 0.875 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00)
+	"Ç®" shader(3) col(1.000 0.996 0.271 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00)
+	"îß" shader(3) col(1.000 0.788 0.388 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.000) power(5.00) tex("hada.tga")
+	"ìµÅAîíä·" shader(3) col(0.976 0.980 1.000 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.000) power(5.00) tex("me.bmp")
+	"îØ" shader(3) col(1.000 0.933 0.169 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.000) power(5.00) tex("kami.tga")
+	"ïûçï" shader(3) col(0.000 0.000 0.000 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.000) power(5.00) tex("huku.tga")
+	"ïûîí" shader(3) col(1.000 1.000 1.000 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.000) power(5.00) tex("hukusiro.tga")
+	"ñXéq" shader(3) col(0.000 0.000 0.000 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.000) power(5.00) tex("bousi.tga")
+	"îØâe" shader(3) col(1.000 1.000 1.000 0.000) dif(1.000) amb(0.753) emi(0.000) spc(0.000) power(5.00) tex("hada.tga")
+	"ëïè¸" shader(3) col(1.000 0.439 0.471 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.000) power(5.00) tex("bousi.tga")
+	"ïÛêŒ" shader(3) col(0.412 1.000 0.416 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.667) power(50.00) tex("bousi.tga")
+	"ñXéqïÛêŒ" shader(3) col(0.600 1.000 0.545 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.667) power(50.00) tex("bousi.tga")
+	"ñXéqëïè¸" shader(3) col(1.000 0.267 0.000 1.000) dif(1.000) amb(0.753) emi(0.000) spc(0.000) power(5.00) tex("bousi.tga")
+	"îwåi" shader(3) col(1.000 1.000 1.000 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00) tex("heigen.jpg")
+	"mat2" shader(3) col(1.000 1.000 1.000 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00) tex("C:\Users\ishikawa kouya\Desktop\êX\êXÅiÇ©ÇËÅj.jpg")
+	"mat3" shader(3) col(0.239 1.000 0.286 1.000) dif(0.800) amb(0.600) emi(0.188) spc(0.000) power(5.00)
+	"mat4" shader(3) col(0.259 1.000 0.176 1.000) dif(0.800) amb(0.600) emi(0.200) spc(0.000) power(5.00)
+	"mat5" shader(3) col(0.208 0.561 0.125 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.262) power(5.00)
+	"mat6" shader(3) col(0.714 0.341 0.082 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.175) power(5.00)
+	"mat7" shader(3) col(0.243 0.506 0.067 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00)
+	"mat8" shader(3) col(0.051 1.000 0.012 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00)
+	"mat9" shader(3) col(0.000 1.000 0.984 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00)
+	"ìπ" shader(3) col(1.000 1.000 1.000 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00) tex("ìπ.png")
+	"ìπÇQ" shader(3) col(1.000 1.000 1.000 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00) tex("ìπ2.png")
+}
+Eof

@@ -1,8 +1,8 @@
 # 使用するリソースリスト
 r,Player,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 r,sky,Model/skydome/昼の月.x
-r,field,Model/terrain/terrain.mqo
-# r,field,Model/terrain/平原.mqo
+# r,field,Model/terrain/terrain.mqo
+r,field,Model/森/森.mqo
 
 # プレイヤーの位置
 p,0,0,0
@@ -12,7 +12,7 @@ p,0,0,0
 
 # フィールドの情報
 # field
-f,field
+f,field,5
 
 # スカイドームの情報
 # sky
