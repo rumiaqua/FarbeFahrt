@@ -14,11 +14,11 @@
 
 Player::Player(IWorld& world, const Vector3& position)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI),
-		std::make_unique<Sphere>(Vector3::Zero(), 10.0f)
+		// std::make_unique<Sphere>(Vector3::Zero(), 10.0f)
 		// std::make_unique<Triangle>(Vector3::Zero(), Vector3(-10, -20, 0), Vector3(10, -20, 0)))
 		// std::make_unique<Capsule>(Vector3(0, -10, 0), Vector3(0, 10, 0), 10.0f)
 		// std::make_unique<Line>(Vector3(10, 0, 0), Vector3(-10, 0, 0))
-		// std::make_unique<ModelCollider>(‚±‚±‚É–¼‘O)
+		std::make_unique<ModelCollider>("Player")
 		)
 {
 	m_moveSpeed = 1.5f;
@@ -90,7 +90,7 @@ void Player::playerInput()
 void Player::onDraw(Renderer& render)const
 {
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
-	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_flame);
+	// render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_flame);
 
 	BaseActor::onDraw(render);
 }

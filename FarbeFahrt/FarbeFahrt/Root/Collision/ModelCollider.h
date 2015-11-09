@@ -2,11 +2,13 @@
 
 # include "IShape.h"
 
+# include "Utility/String.h"
+
 class ModelCollider : public IShape
 {
 public:
 
-	ModelCollider(int handle);
+	ModelCollider(const String& name);
 
 	virtual bool intersects(const IShape& shape) const override;
 
@@ -22,5 +24,5 @@ public:
 
 public:
 
-	int handle;
+	String name;
 };

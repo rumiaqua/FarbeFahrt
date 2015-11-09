@@ -2,6 +2,10 @@
 #include <algorithm>
 #include "DxLib.h"
 #include <iostream>
+
+# include "SingletonFinalizer.h"
+# include "Experimental/HandleManager.h"
+
 Loader::Loader()
 {
 	m_ContentList.clear();
@@ -77,7 +81,7 @@ void Loader::load()
 		}
 
 		data.second.handle = m_LoadFunc[GetExtension(data.second.filename)].func( ("Resources/" + data.second.filename).c_str());
-
+		Singleton<HandleManager>::Instance().Register(data.first, data.second.handle);
 	}
 	SetUseASyncLoadFlag(FALSE);
 }
@@ -142,6 +146,7 @@ void Loader::cleanUp()
 {
 	for (auto &data : m_ContentList)
 	{
+		Singleton<HandleManager>::Instance().Delete(data.first);
 		MV1DeleteModel(data.second.handle);
 	}
 	m_ContentList.clear();

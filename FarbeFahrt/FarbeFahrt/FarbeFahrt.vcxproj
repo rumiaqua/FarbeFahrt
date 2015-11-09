@@ -38,6 +38,7 @@
     <ClCompile Include="Root\Collision\ModelCollider.cpp" />
     <ClCompile Include="Root\Collision\Sphere.cpp" />
     <ClCompile Include="Root\Collision\Triangle.cpp" />
+    <ClCompile Include="Root\Experimental\HandleManager.cpp" />
     <ClCompile Include="Root\Frame\BaseScene.cpp" />
     <ClCompile Include="Root\Frame\MyGame.cpp" />
     <ClCompile Include="Root\Frame\WinMain.cpp" />
@@ -75,6 +76,7 @@
     <ClInclude Include="Root\Actor\SkinObject.h" />
     <ClInclude Include="Root\Actor\StaicObject.h" />
     <ClInclude Include="Root\Collision\ModelCollider.h" />
+    <ClInclude Include="Root\Experimental\HandleManager.h" />
     <ClInclude Include="Root\Utility\Memento.h" />
     <ClInclude Include="Root\Utility\ScriptStageBuilder.h" />
     <ClInclude Include="Root\Actor\Actor.h" />
