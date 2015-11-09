@@ -20,5 +20,7 @@ struct StageData
 
 	ResourceList resourceList;
 	Vector3 playerPosition;
+	String fieldName;
+	String skyName;
 	ObjectList objectList;
 };
