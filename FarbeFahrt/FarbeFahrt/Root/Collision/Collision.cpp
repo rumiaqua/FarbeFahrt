@@ -10,6 +10,9 @@
 # include <DxLib.h>
 
 # include "Utility/MemoryCast.h"
+# include "Utility/SingletonFinalizer.h"
+
+# include "Experimental/HandleManager.h"
 
 bool Collision::intersects(const Sphere& s1, const Sphere& s2)
 {
@@ -133,40 +136,44 @@ bool Collision::intersects(const Triangle& t1, const Triangle& t2)
 
 bool Collision::intersects(const ModelCollider& model1, const Sphere& sphere2)
 {
-	MV1SetupCollInfo(model1.handle);
+	int handle = Singleton<HandleManager>::Instance().At(model1.name);
+	MV1SetupCollInfo(handle);
 	MV1_COLL_RESULT_POLY_DIM poly =  MV1CollCheck_Sphere(
-		model1.handle, -1, sphere2.center + sphere2.origin, sphere2.radius);
-	MV1TerminateCollInfo(model1.handle);
+		handle, -1, sphere2.center + sphere2.origin, sphere2.radius);
+	MV1TerminateCollInfo(handle);
 
 	return poly.HitNum != 0;
 }
 
 bool Collision::intersects(const ModelCollider& model1, const Capsule& capsule2)
 {
-	MV1SetupCollInfo(model1.handle);
+	int handle = Singleton<HandleManager>::Instance().At(model1.name);
+	MV1SetupCollInfo(handle);
 	MV1_COLL_RESULT_POLY_DIM poly = MV1CollCheck_Capsule(
-		model1.handle, -1, capsule2.origin + capsule2.begin, capsule2.origin + capsule2.end, capsule2.radius);
-	MV1TerminateCollInfo(model1.handle);
+		handle, -1, capsule2.origin + capsule2.begin, capsule2.origin + capsule2.end, capsule2.radius);
+	MV1TerminateCollInfo(handle);
 
 	return poly.HitNum != 0;
 }
 
 bool Collision::intersects(const ModelCollider& model1, const Line& line2)
 {
-	MV1SetupCollInfo(model1.handle);
+	int handle = Singleton<HandleManager>::Instance().At(model1.name);
+	MV1SetupCollInfo(handle);
 	MV1_COLL_RESULT_POLY_DIM poly = MV1CollCheck_LineDim(
-model1.handle, -1, line2.origin + line2.begin, line2.origin + line2.end);
-	MV1TerminateCollInfo(model1.handle);
+		handle, -1, line2.origin + line2.begin, line2.origin + line2.end);
+	MV1TerminateCollInfo(handle);
 
 	return poly.HitNum != 0;
 }
 
 bool Collision::intersects(const ModelCollider& model1, const Triangle& triangle2)
 {
-	MV1SetupCollInfo(model1.handle);
+	int handle = Singleton<HandleManager>::Instance().At(model1.name);
+	MV1SetupCollInfo(handle);
 	MV1_COLL_RESULT_POLY_DIM poly = MV1CollCheck_Triangle(
-		model1.handle, -1, triangle2.origin + triangle2.p0, triangle2.origin + triangle2.p1, triangle2.origin + triangle2.p2);
-	MV1TerminateCollInfo(model1.handle);
+		handle, -1, triangle2.origin + triangle2.p0, triangle2.origin + triangle2.p1, triangle2.origin + triangle2.p2);
+	MV1TerminateCollInfo(handle);
 
 	return poly.HitNum != 0;
 }

@@ -2,10 +2,14 @@
 
 # include "Collision.h"
 
+# include "Utility/SingletonFinalizer.h"
+
+# include "Experimental/HandleManager.h"
+
 # include <DxLib.h>
 
-ModelCollider::ModelCollider(int handle)
-	: handle(handle)
+ModelCollider::ModelCollider(const String& name)
+	: name(name)
 {
 
 }
@@ -37,5 +41,6 @@ bool ModelCollider::intersects(const Triangle& shape) const
 
 void ModelCollider::draw() const
 {
-
+	MV1DrawModelDebug(Singleton<HandleManager>::Instance().At(name),
+		-1, FALSE, 0.0f, TRUE, TRUE);
 }

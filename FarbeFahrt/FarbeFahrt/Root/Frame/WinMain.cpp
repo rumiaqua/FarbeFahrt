@@ -5,6 +5,7 @@
 #include "Utility/Input.h"
 #include "Utility/Mouse.h"
 #include "Utility/Debug.h"
+# include "Utility/SingletonFinalizer.h"
 
 bool isFullScreen;
 void init()
@@ -51,6 +52,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		Debug::Update();
 		myGame->run();
 	}
+	SingletonFinalizer::Finalize();
 	DxLib_End();
 	return 0;
 }
