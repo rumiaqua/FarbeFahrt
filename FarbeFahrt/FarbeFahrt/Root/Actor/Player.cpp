@@ -81,11 +81,11 @@ void Player::playerInput()
 		m_state = PlayerState::standing;
 	}
 
-	getPosition().y -= 1.0f;
-	if (getPosition().y < -100.0f)
-	{
-		getPosition().y = -100.0f;
-	}
+	//getPosition().y -= 1.0f;
+	//if (getPosition().y < -100.0f)
+	//{
+	//	getPosition().y = -100.0f;
+	//}
 }
 void Player::onDraw(Renderer& render)const
 {
