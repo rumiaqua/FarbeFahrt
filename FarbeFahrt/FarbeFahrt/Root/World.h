@@ -2,8 +2,9 @@
 #include "IWorld.h"
 
 #include "Actor/ActorManager/ActorManager.h"
+#include "Utility/StoryManager/StoryManager.h"
 
-# include "Utility/StageData.h"
+#include "Utility/StageData.h"
 
 #include <string>
 class World : public IWorld
@@ -16,13 +17,19 @@ public:
 	virtual void addSkydome(const Actor& sky);
 	virtual void addActor(ActorTag tag, const Actor& actor);
 	virtual void addField(const Actor& firld);
+
 	virtual Actor findActor(const std::string& name) const override;
 	virtual Actor findCamera() const override;
 	virtual Actor findField() const override;
 	StageData getData() const;
+	virtual void initFlag();
+	virtual int getFlag();
+	virtual void setFlag(int flag);
 private:
 	ActorManager m_actors;
+	StoryManager m_storymanager;
 	Actor m_camera;
 	Actor m_sky;
 	Actor m_field;
+
 };
