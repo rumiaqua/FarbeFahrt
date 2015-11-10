@@ -11,6 +11,10 @@
 
 # include "Utility/MemoryCast.h"
 
+# include "Utility\SingletonFinalizer.h"
+
+# include "Utility\HandleList.h"
+
 bool Collision::intersects(const Sphere& s1, const Sphere& s2)
 {
 	return HitCheck_Sphere_Sphere(
@@ -133,10 +137,11 @@ bool Collision::intersects(const Triangle& t1, const Triangle& t2)
 
 bool Collision::intersects(const ModelCollider& model1, const Sphere& sphere2)
 {
-	MV1SetupCollInfo(model1.handle);
+	int handle = Singleton<HandleList>::Instance().getHandle(model1.name.toNarrow());
+	MV1SetupCollInfo(handle);
 	MV1_COLL_RESULT_POLY_DIM poly =  MV1CollCheck_Sphere(
-		model1.handle, -1, sphere2.center + sphere2.origin, sphere2.radius);
-	MV1TerminateCollInfo(model1.handle);
+		handle, -1, sphere2.center + sphere2.origin, sphere2.radius);
+	MV1TerminateCollInfo(handle);
 
 	return poly.HitNum != 0;
 }

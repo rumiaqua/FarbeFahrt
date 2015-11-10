@@ -22,6 +22,7 @@
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
     <ClCompile Include="Root\Actor\Camera\Camera.cpp" />
+    <ClCompile Include="Root\Actor\Camera\CameraMatrix.cpp" />
     <ClCompile Include="Root\Actor\Camera\Ray.cpp" />
     <ClCompile Include="Root\Actor\Enemy.cpp" />
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
@@ -49,6 +50,7 @@
     <ClCompile Include="Root\Scene\StageScene.cpp" />
     <ClCompile Include="Root\Utility\Debug.cpp" />
     <ClCompile Include="Root\Utility\FreeCamera.cpp" />
+    <ClCompile Include="Root\Utility\HandleList.cpp" />
     <ClCompile Include="Root\Utility\Input.cpp" />
     <ClCompile Include="Root\Utility\Loader.cpp" />
     <ClCompile Include="Root\Utility\Math.cpp" />
@@ -76,6 +78,7 @@
     <ClInclude Include="Root\Actor\ActorManager\ActorTag.h" />
     <ClInclude Include="Root\Actor\BaseActor.h" />
     <ClInclude Include="Root\Actor\Camera\Camera.h" />
+    <ClInclude Include="Root\Actor\Camera\CameraMatrix.h" />
     <ClInclude Include="Root\Actor\Camera\CameraMode.h" />
     <ClInclude Include="Root\Actor\Camera\CameraState.h" />
     <ClInclude Include="Root\Actor\Camera\ChaseFlag.h" />
@@ -108,6 +111,7 @@
     <ClInclude Include="Root\Utility\Debug.h" />
     <ClInclude Include="Root\Utility\Def.h" />
     <ClInclude Include="Root\Utility\FreeCamera.h" />
+    <ClInclude Include="Root\Utility\HandleList.h" />
     <ClInclude Include="Root\Utility\Input.h" />
     <ClInclude Include="Root\Utility\IStageBuilder.h" />
     <ClInclude Include="Root\Utility\Loader.h" />

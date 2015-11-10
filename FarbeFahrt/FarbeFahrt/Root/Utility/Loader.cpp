@@ -2,6 +2,7 @@
 #include <algorithm>
 #include "DxLib.h"
 #include <iostream>
+#include <thread>
 Loader::Loader()
 {
 	m_ContentList.clear();
@@ -34,6 +35,7 @@ Loader::Loader()
 
 
 }
+
 std::string GetExtension(const std::string& filename)
 {
 	std::string ext;
@@ -62,7 +64,15 @@ void Loader::ErrLog(int contentHandle, const std::string& filename)
 	if (contentHandle == -1)
 	{
 		MessageBox(NULL, (filename + "読み込みに失敗しました").c_str(), "ファイル読み込みエラー", MB_ICONEXCLAMATION | MB_OK);
+	}
+}
 
+void Loader::deleteModel()
+{
+	for (auto& data : m_oldContentList)
+	{
+		if (!data.second.use)//使われていないモデルを削除
+		MV1DeleteModel(data.second.handle);
 	}
 }
 void Loader::load()
@@ -102,11 +112,20 @@ bool Loader::onCompleted()
 }
 void Loader::loadContent(const std::string& name, const std::string& filename)
 {
+	bool use = true;
+	auto i = m_oldContentList.find(name);
+	if (i != m_oldContentList.end())//前回と同じのが見つかったら
+	{
+		use = false;
+	}
+	else
+	{
+		m_oldContentList[name].use = false;
+	}
 	m_ContentList.emplace(std::piecewise_construct,
 		std::forward_as_tuple(name),
-		std::forward_as_tuple(m_LoadFunc[GetExtension(filename)].tag, 0, filename));
+		std::forward_as_tuple(m_LoadFunc[GetExtension(filename)].tag, 0, filename,use));
 }
-
 
 ContentMap Loader::getContentList(const ContentTag& tag) const
 {
@@ -140,10 +159,11 @@ ContentMap Loader::getSEList() const
 }
 void Loader::cleanUp()
 {
-	for (auto &data : m_ContentList)
-	{
-		MV1DeleteModel(data.second.handle);
-	}
+	m_oldContentList = m_ContentList;
+	//for (auto &data : m_ContentList)
+	//{
+	//	MV1DeleteModel(data.second.handle);
+	//}
 	m_ContentList.clear();
 }
 Loader::~Loader()

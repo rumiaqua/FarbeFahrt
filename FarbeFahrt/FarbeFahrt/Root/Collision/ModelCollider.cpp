@@ -4,8 +4,8 @@
 
 # include <DxLib.h>
 
-ModelCollider::ModelCollider(int handle)
-	: handle(handle)
+ModelCollider::ModelCollider(const String& name)
+	: name(name)
 {
 
 }
