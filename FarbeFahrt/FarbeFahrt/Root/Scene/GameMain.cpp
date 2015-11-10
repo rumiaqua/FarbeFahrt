@@ -6,6 +6,7 @@
 #include "Actor/Field/Field.h"
 #include "Actor/StaicObject.h"
 #include "Actor/SkinObject.h"
+#include "Actor/Gimmick/Gimmick.h"
 
 #include "Utility/Debug.h"
 #include "Utility/Loader.h"
@@ -24,6 +25,7 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("bang", "SE/test.wav");
 	loader.loadContent("kari", "Texture/‰¼‚è‚»[‚·.png");
 	loader.loadContent("book", "Model/–{2/book.pmx");
+	loader.loadContent("test", "Model/MMD–‚“±Žo’íVer1.1/ƒKƒuƒŠƒGƒ‰.pmx");
 }
 void GameMain::initialize()
 {
@@ -33,7 +35,8 @@ void GameMain::initialize()
 	world->addField(std::make_shared<Field>(*world, "field"));
 	world->addSkydome(std::make_shared<Skydome>(*world, "sky"));
 
-	world->addActor(ActorTag::Enemy, std::make_shared<StaticObject>(*world,"book", Vector3(0,0,-30)));
+	//world->addActor(ActorTag::Enemy, std::make_shared<StaticObject>(*world,"book", Vector3(0,0,-30)));
+	world->addActor(ActorTag::Gimmick, std::make_shared<Gimmick>(*world, "test", Vector3(0, 0, 50), 1, 1.0f, 300.0f));
 
 	Debug::SetClear(true);
 	Debug::ChangeFontSize(16);

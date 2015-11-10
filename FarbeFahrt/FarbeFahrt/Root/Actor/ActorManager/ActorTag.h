@@ -5,5 +5,7 @@ enum class ActorTag
 	Enemy,
 	NPC,
 	Item,
-	Effect
+	Effect,
+	Gimmick,
+	Collider
 };

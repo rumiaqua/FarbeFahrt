@@ -7,7 +7,8 @@
 #include "Scene/GameMain.h"
 # include "Scene/Editor.h"
 # include "Scene/StageScene.h"
-
+#include "Utility\SingletonFinalizer.h"
+#include "Utility\HandleList.h"
 #include "Utility/SE.h"
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
@@ -53,6 +54,7 @@ void MyGame::run()
 	// ロードが終了したら
 	if (loader.onCompleted())
 	{
+		Singleton<HandleList>::Instance().setHandleData(loader.getModelList());
 		render.setModelData(loader.getModelList());
 		render.setTextureData(loader.getTextureList());
 		SE::SetData(loader.getSEList());

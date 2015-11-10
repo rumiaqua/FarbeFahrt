@@ -1,5 +1,4 @@
 #include "Field.h"
-
 Field::Field(IWorld& world, const String& name)
 	:BaseActor(world, name, Vector3(0.0f, -90.0f, 0.0f), Matrix::identity(), nullptr)
 {
@@ -7,7 +6,6 @@ Field::Field(IWorld& world, const String& name)
 
 void Field::onUpdate()
 {
-
 }
 void Field::onDraw(Renderer& render)const
 {
