@@ -8,6 +8,9 @@ void World::update()
 	m_sky->update();
 	m_field->update();
 	m_actors.update();
+
+	m_actors.collideField(m_field.get());
+
 	m_camera->update();
 }
 void World::draw(Renderer& render)const
@@ -49,15 +52,6 @@ Actor World::findField() const
 StageData World::getData() const
 {
 	StageData data;
-
-	data.resourceList["Player"] = "Model/MMD–‚“±Žo’íVer1.1/ƒKƒuƒŠƒGƒ‰.pmx";
-	data.resourceList["sky"] = "Model/skydome/’‹‚ÌŒŽ.x";
-	data.resourceList["field"] = "Model/terrain/terrain.mqo";
-
-	data.playerPosition = Vector3(0, 0, 0);
-
-	data.objectList.emplace_back("Enemy", "Player", Vector3(0, 0, 100));
-	data.objectList.emplace_back("Item", "Player", Vector3(100, 0, 0));
 
 	return data;
 }

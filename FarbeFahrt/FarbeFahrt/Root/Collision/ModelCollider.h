@@ -1,7 +1,9 @@
 # pragma once
 
 # include "IShape.h"
-# include "Utility\String.h"
+
+# include "Utility/String.h"
+
 class ModelCollider : public IShape
 {
 public:
@@ -17,6 +19,8 @@ public:
 	virtual bool intersects(const Line& shape) const override;
 
 	virtual bool intersects(const Triangle& shape) const override;
+
+	virtual bool intersects(const ModelCollider& shape) const override;
 
 	virtual void draw() const override;
 

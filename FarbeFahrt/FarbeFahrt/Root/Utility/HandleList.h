@@ -5,7 +5,7 @@ class HandleList
 {
 public:
 	void setHandleData(const ContentMap& contentMap);
-	int getHandle(const std::string& name);
+	int getHandle(const String& name);
 	HandleList();
 	~HandleList();
 private:

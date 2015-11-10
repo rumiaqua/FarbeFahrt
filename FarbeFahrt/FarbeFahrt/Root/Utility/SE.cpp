@@ -45,7 +45,7 @@ void SE::IsPlay(const std::string& name)
 }
 
 //‰¹—Ê’²®
-void SE::ChangeVolume(std::string name,int volume)
+void SE::ChangeVolume(const std::string& name,int volume)
 {
 	SE& se = instance();
 	//ƒ{ƒŠƒ…[ƒ€‚ğİ’è(0`255)
@@ -53,7 +53,7 @@ void SE::ChangeVolume(std::string name,int volume)
 }
 
 //ü”g”’²®
-void SE::ChangeFrequency(std::string name, int frequency)
+void SE::ChangeFrequency(const std::string& name, int frequency)
 {
 	SE& se = instance();
 	//ü”g”‚ğİ’è(100`100,000 : -1‚ÍƒfƒtƒHƒ‹ƒgü”g”)

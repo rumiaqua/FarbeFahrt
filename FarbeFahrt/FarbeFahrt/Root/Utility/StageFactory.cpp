@@ -6,7 +6,6 @@
 # include "Actor/Camera/Camera.h"
 # include "Actor/SkyDome/Skydome.h"
 # include "Actor/Field/Field.h"
-# include "Actor/Enemy.h"
 
 # include "IStageBuilder.h"
 # include "ScriptStageBuilder.h"
@@ -21,7 +20,7 @@ void StageFactory::Load(const String& filename)
 void StageFactory::Apply(World& world) const
 {
 	world.addCamera(std::make_shared<Camera>(world));
-	world.addField(std::make_shared<Field>(world, m_data.fieldName));
+	world.addField(std::make_shared<Field>(world, m_data.fieldName, m_data.fieldScale));
 	world.addSkydome(std::make_shared<Skydome>(world, m_data.skyName));
 
 	world.addActor(ActorTag::Player, std::make_shared<Player>(
@@ -29,18 +28,7 @@ void StageFactory::Apply(World& world) const
 	
 	for (auto&& object : m_data.objectList)
 	{
-		ActorTag tag;
-		if (object.name == "Enemy")
-		{
-			tag = ActorTag::Enemy;
-		}
-		if (object.name == "Item")
-		{
-			tag = ActorTag::Item;
-		}
-
-		world.addActor(tag, std::make_shared<Enemy>(
-			world, object.position, object.resource));
+		// –¢ŽÀ‘•
 	}
 }
 

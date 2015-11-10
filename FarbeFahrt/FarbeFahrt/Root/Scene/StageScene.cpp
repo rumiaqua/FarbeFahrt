@@ -5,6 +5,8 @@
 # include "Utility/ScriptStageBuilder.h"
 # include "Utility/Debug.h"
 
+# include "ISceneMediator.h"
+
 StageScene::StageScene()
 {
 	m_factory.Load("Resources/Stage/Sougen.txt");
@@ -23,11 +25,17 @@ void StageScene::initialize()
 {
 	world = std::make_shared<World>();
 	m_factory.Apply(*world);
+	Debug::SetClear(true);
 }
 
 void StageScene::update()
 {
 	world->update();
+
+	if (Input::IsClicked(KEY_INPUT_RETURN))
+	{
+		m_manager->pushScene(Scene::Editor);
+	}
 
 	// Save Action
 	/*if (Input::isClicked(KEY_INPUT_1))

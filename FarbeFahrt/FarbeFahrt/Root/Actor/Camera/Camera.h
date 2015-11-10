@@ -30,7 +30,7 @@ private:
 	void toBookCamera();
 	void toFixCamera();
 	void playerCheck();
-	void actorCheck(const std::string actorName);
+	void actorCheck(const std::string& actorName);
 	
 private:	
 	float m_t = 0.0f;

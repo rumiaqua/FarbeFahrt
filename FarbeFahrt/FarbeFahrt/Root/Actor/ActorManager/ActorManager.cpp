@@ -1,5 +1,7 @@
 #include "ActorManager.h"
 
+# include "Actor/Field/Field.h"
+
 ActorManager::ActorManager()
 	: m_root()
 {
@@ -34,9 +36,9 @@ void ActorManager::update()
 	BaseActor& gimmicks = *m_actors[ActorTag::Gimmick];
 
 	enemys.eachChildren(
-		[&] (BaseActor& actor) { players.collide(actor); });
+		[&] (BaseActor& actor) { players.collide(&actor); });
 	gimmicks.eachChildren(
-		[&](BaseActor& actor) { colliders.collide(actor); });
+		[&](BaseActor& actor) { colliders.collide(&actor); });
 }
 void ActorManager::draw(Renderer& render)const
 {
@@ -47,7 +49,13 @@ void ActorManager::addActor(ActorTag tag, const Actor& actor)
 	m_actors[tag]->addChild(actor);
 }
 
-Actor ActorManager::findActor(const String& name) const
+Actor ActorManager::findActor(const std::string& name) const
 {
 	return m_root.find(name);
+}
+
+void ActorManager::collideField(BaseActor* field)
+{
+	// field->collide(m_actors.at(ActorTag::Player).get());
+	m_actors.at(ActorTag::Player)->collide(field);
 }

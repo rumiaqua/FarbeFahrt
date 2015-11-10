@@ -31,7 +31,10 @@ public:
 
 			if (split[0] == "r")
 			{
-				data.resourceList.insert(std::make_pair(split[1], split[2]));
+				String& s1 = split[1];
+				String& s2 = split[2];
+				// data.resourceList.insert(std::make_pair(split[1], split[2]));
+				data.resourceList.insert(std::make_pair(s1, s2));
 			}
 
 			if (split[0] == "p")
@@ -45,6 +48,7 @@ public:
 			if (split[0] == "f")
 			{
 				data.fieldName = split[1];
+				data.fieldScale = String::ToValue<float>(split[2]);
 			}
 
 			if (split[0] == "s")
@@ -57,7 +61,7 @@ public:
 				data.objectList.emplace_back(split[1], split[2], Vector3(
 						String::ToValue<float>(split[3]),
 						String::ToValue<float>(split[4]),
-						String::ToValue<float>(split[5])));
+						String::ToValue<float>(split[5])), nullptr);
 			}
 		}
 		return data;

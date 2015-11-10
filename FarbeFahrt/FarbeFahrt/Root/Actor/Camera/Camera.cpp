@@ -1,5 +1,4 @@
 #include "Camera.h"
-#include "Actor/Enemy.h"
 #include <memory>
 #include "Utility/Math.h"
 #include "Utility/Mouse.h"
@@ -43,11 +42,13 @@ void Camera::onUpdate()
 
 	cameraInput();
 	cameraSet();
+
+	BaseActor::onUpdate();
 }
 
 void Camera::onDraw(Renderer& render)const
 {
-
+	BaseActor::onDraw(render);
 }
 
 void Camera::cameraInput()
@@ -221,7 +222,7 @@ void Camera::playerCheck()
 	actorCheck("Player");
 }
 
-void Camera::actorCheck(const std::string actorName)
+void Camera::actorCheck(const std::string& actorName)
 {
 	m_actor = m_world->findActor(actorName);
 }

@@ -38,8 +38,9 @@ void SkinObject::onDraw(Renderer & render) const
 	BaseActor::onDraw(render);
 }
 
-void SkinObject::onMessage(const String & message, const void * parameter)
+void SkinObject::onMessage(const String & message, void* parameter)
 {
 	/*if (message == "Rotation")
 		Matrix::Rotate(getRotation(), Vector3::Up(), *(const float*)parameter);*/
+	BaseActor::onMessage(message, parameter);
 }

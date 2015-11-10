@@ -38,9 +38,9 @@ public:
 	//SEが再生中かどうか調べる
 	static void IsPlay(const std::string& name);
 	//SEのボリュームを変更する(0～255)
-	static void ChangeVolume(std::string name, int volume);
+	static void ChangeVolume(const std::string& name, int volume);
 	//SEの周波数を変更する(100～100,000 : -1はデフォルト周波数)
-	static void ChangeFrequency(std::string name, int frequency);
+	static void ChangeFrequency(const std::string& name, int frequency);
 	//SEの初期化(メモリ内から全消去)
 	static void Init();
 	//SEの取得

@@ -11,7 +11,7 @@ void HandleList::setHandleData(const ContentMap& contentMap)
 {
 	m_contentMap = contentMap;
 }
-int HandleList::getHandle(const std::string& name)
+int HandleList::getHandle(const String& name)
 {
-	return m_contentMap[name].handle;
+	return m_contentMap.at(name.toNarrow()).handle;
 }

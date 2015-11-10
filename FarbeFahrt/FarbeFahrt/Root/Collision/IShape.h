@@ -6,6 +6,7 @@ class Sphere;
 class Capsule;
 class Line;
 class Triangle;
+class ModelCollider;
 class Matrix;
 
 class IShape
@@ -25,6 +26,8 @@ public:
 	virtual bool intersects(const Line& shape) const = 0;
 
 	virtual bool intersects(const Triangle& shape) const = 0;
+
+	virtual bool intersects(const ModelCollider& shape) const = 0;
 
 	virtual void draw() const = 0;
 

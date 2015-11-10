@@ -38,6 +38,11 @@ bool Line::intersects(const Triangle& shape) const
 	return Collision::intersects(*this, shape);
 }
 
+bool Line::intersects(const ModelCollider& shape) const
+{
+	return Collision::intersects(shape, *this);
+}
+
 void Line::draw() const
 {
 	DrawLine3D(

@@ -5,6 +5,8 @@
 
 # include <unordered_map>
 
+class IShape;
+
 struct StageData
 {
 	struct Object
@@ -12,7 +14,8 @@ struct StageData
 		String name;
 		String resource;
 		Vector3 position;
-		Object(const String& name, const String& resource, const Vector3& position);
+		IShape* shape;
+		Object(const String& name, const String& resource, const Vector3& position, IShape* shape);
 	};
 
 	using ResourceList = std::unordered_map<String, String>;
@@ -21,6 +24,7 @@ struct StageData
 	ResourceList resourceList;
 	Vector3 playerPosition;
 	String fieldName;
+	float fieldScale;
 	String skyName;
 	ObjectList objectList;
 };

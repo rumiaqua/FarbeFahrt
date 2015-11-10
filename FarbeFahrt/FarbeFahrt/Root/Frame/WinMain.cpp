@@ -5,7 +5,8 @@
 #include "Utility/Input.h"
 #include "Utility/Mouse.h"
 #include "Utility/Debug.h"
-#include "Utility\SingletonFinalizer.h"
+# include "Utility/SingletonFinalizer.h"
+
 bool isFullScreen;
 void init()
 {
