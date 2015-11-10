@@ -39,6 +39,12 @@ bool ModelCollider::intersects(const Triangle& shape) const
 	return Collision::intersects(*this, shape);
 }
 
+bool ModelCollider::intersects(const ModelCollider& shape) const
+{
+	// ƒ‚ƒfƒ‹‚Æƒ‚ƒfƒ‹‚ÌÕ“Ë”»’è‚Í‚µ‚È‚¢•ûŒü«‚Å
+	return false;
+}
+
 void ModelCollider::draw() const
 {
 	MV1DrawModelDebug(Singleton<HandleManager>::Instance().At(name),

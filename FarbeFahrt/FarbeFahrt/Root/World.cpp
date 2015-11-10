@@ -8,6 +8,9 @@ void World::update()
 	m_sky->update();
 	m_field->update();
 	m_actors.update();
+
+	m_actors.collideField(m_field.get());
+
 	m_camera->update();
 }
 void World::draw(Renderer& render)const

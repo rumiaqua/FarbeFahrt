@@ -9,16 +9,15 @@
 
 #include "Utility/Debug.h"
 
-#include "Stand.h"
 #include "Utility/MemoryCast.h"
 
 Player::Player(IWorld& world, const Vector3& position)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI),
 		// std::make_unique<Sphere>(Vector3::Zero(), 10.0f)
 		// std::make_unique<Triangle>(Vector3::Zero(), Vector3(-10, -20, 0), Vector3(10, -20, 0)))
-		// std::make_unique<Capsule>(Vector3(0, -10, 0), Vector3(0, 10, 0), 10.0f)
+		std::make_unique<Capsule>(Vector3(0, -10, 0), Vector3(0, 10, 0), 10.0f)
 		// std::make_unique<Line>(Vector3(10, 0, 0), Vector3(-10, 0, 0))
-		std::make_unique<ModelCollider>("Player")
+		// std::make_unique<ModelCollider>("Player")
 		)
 {
 	m_moveSpeed = 1.5f;
@@ -81,24 +80,38 @@ void Player::playerInput()
 		m_state = PlayerState::standing;
 	}
 
-	//getPosition().y -= 1.0f;
+	m_pose.position.y -= 2.0f;
+
 	//if (getPosition().y < -100.0f)
 	//{
 	//	getPosition().y = -100.0f;
 	//}
+
+	if (Input::IsClicked(KEY_INPUT_1))
+	{
+		m_pose.position.x = 0;
+		m_pose.position.y = 100;
+		m_pose.position.z = 0;
+	}
 }
 void Player::onDraw(Renderer& render)const
 {
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
-	// render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_flame);
+	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_flame);
 
 	BaseActor::onDraw(render);
 }
 
-void Player::onMessage(const String& message, const void* parameter)
+void Player::onMessage(const String& message, void* parameter)
 {
-	if (message == "Hit")
+	if (message == "onCollide")
 	{
-		Debug::Println("‚ ‚½‚Á‚Ä‚é‚æ");
+		// Debug::Println("‚È‚É‚©‚É‚ ‚½‚Á‚Ä‚é‚æ");
+	}
+	if (message == "HitGround")
+	{
+		Vector3* pos = static_cast<Vector3*>(parameter);
+		m_pose.position = *pos;
+		Debug::Println("‚ä‚©‚Ì‚È‚©‚É‚¢‚é");
 	}
 }

@@ -23,14 +23,12 @@
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
     <ClCompile Include="Root\Actor\Camera\Camera.cpp" />
     <ClCompile Include="Root\Actor\Camera\Ray.cpp" />
-    <ClCompile Include="Root\Actor\Enemy.cpp" />
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\SkinObject.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
     <ClCompile Include="Root\Actor\StaicObject.cpp" />
-    <ClCompile Include="Root\Actor\Stand.cpp" />
     <ClCompile Include="Root\Collision\Capsule.cpp" />
     <ClCompile Include="Root\Collision\Collision.cpp" />
     <ClCompile Include="Root\Collision\IShape.cpp" />
@@ -87,11 +85,9 @@
     <ClInclude Include="Root\Actor\Camera\CameraMode.h" />
     <ClInclude Include="Root\Actor\Camera\CameraState.h" />
     <ClInclude Include="Root\Actor\Camera\ChaseFlag.h" />
-    <ClInclude Include="Root\Actor\Enemy.h" />
     <ClInclude Include="Root\Actor\Field\Field.h" />
     <ClInclude Include="Root\Actor\Player.h" />
     <ClInclude Include="Root\Actor\SkyDome\Skydome.h" />
-    <ClInclude Include="Root\Actor\Stand.h" />
     <ClInclude Include="Root\Collision\Capsule.h" />
     <ClInclude Include="Root\Collision\Collision.h" />
     <ClInclude Include="Root\Collision\IShape.h" />

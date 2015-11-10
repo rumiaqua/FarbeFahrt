@@ -20,6 +20,8 @@ public:
 
 	virtual bool intersects(const Triangle& shape) const override;
 
+	virtual bool intersects(const ModelCollider& shape) const override;
+
 	virtual void draw() const override;
 
 public:

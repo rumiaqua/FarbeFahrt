@@ -140,9 +140,11 @@ bool Collision::intersects(const ModelCollider& model1, const Sphere& sphere2)
 	MV1SetupCollInfo(handle);
 	MV1_COLL_RESULT_POLY_DIM poly =  MV1CollCheck_Sphere(
 		handle, -1, sphere2.center + sphere2.origin, sphere2.radius);
+	bool result = poly.HitNum != 0;
+	MV1CollResultPolyDimTerminate(poly);
 	MV1TerminateCollInfo(handle);
 
-	return poly.HitNum != 0;
+	return result;
 }
 
 bool Collision::intersects(const ModelCollider& model1, const Capsule& capsule2)
@@ -151,9 +153,11 @@ bool Collision::intersects(const ModelCollider& model1, const Capsule& capsule2)
 	MV1SetupCollInfo(handle);
 	MV1_COLL_RESULT_POLY_DIM poly = MV1CollCheck_Capsule(
 		handle, -1, capsule2.origin + capsule2.begin, capsule2.origin + capsule2.end, capsule2.radius);
+	bool result = poly.HitNum != 0;
+	MV1CollResultPolyDimTerminate(poly);
 	MV1TerminateCollInfo(handle);
 
-	return poly.HitNum != 0;
+	return result;
 }
 
 bool Collision::intersects(const ModelCollider& model1, const Line& line2)
@@ -162,9 +166,11 @@ bool Collision::intersects(const ModelCollider& model1, const Line& line2)
 	MV1SetupCollInfo(handle);
 	MV1_COLL_RESULT_POLY_DIM poly = MV1CollCheck_LineDim(
 		handle, -1, line2.origin + line2.begin, line2.origin + line2.end);
+	bool result = poly.HitNum != 0;
+	MV1CollResultPolyDimTerminate(poly);
 	MV1TerminateCollInfo(handle);
 
-	return poly.HitNum != 0;
+	return result;
 }
 
 bool Collision::intersects(const ModelCollider& model1, const Triangle& triangle2)
@@ -173,7 +179,9 @@ bool Collision::intersects(const ModelCollider& model1, const Triangle& triangle
 	MV1SetupCollInfo(handle);
 	MV1_COLL_RESULT_POLY_DIM poly = MV1CollCheck_Triangle(
 		handle, -1, triangle2.origin + triangle2.p0, triangle2.origin + triangle2.p1, triangle2.origin + triangle2.p2);
+	bool result = poly.HitNum != 0;
+	MV1CollResultPolyDimTerminate(poly);
 	MV1TerminateCollInfo(handle);
 
-	return poly.HitNum != 0;
+	return result;
 }

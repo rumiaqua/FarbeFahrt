@@ -5,7 +5,7 @@ r,sky,Model/skydome/昼の月.x
 r,field,Model/森/森.mqo
 
 # プレイヤーの位置
-p,0,0,0
+p,0,0,100
 
 # カメラの情報
 # 座標を指定する？

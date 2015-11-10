@@ -34,7 +34,7 @@ public:
 	void draw(Renderer& renderer) const;
 
 	/// <summary>衝突判定</summary>
-	void collide(BaseActor& folder);
+	void collide(BaseActor* folder);
 
 	/// <summary>死亡しているかを返す</summary>
 	bool isDead()const;
@@ -85,7 +85,7 @@ public:
 	void removeChildren();
 
 	/// <summary>メッセージを送信する</summary>
-	void sendMessage(const String& message, const void* parameter);
+	void sendMessage(const String& message, void* parameter);
 
 	/// <summary>コピーコンストラクタを削除</summary>
 	BaseActor(const BaseActor& other) = delete;
@@ -93,7 +93,7 @@ public:
 	/// <summary>代入演算子を削除</summary>
 	BaseActor& operator = (const BaseActor& other) = delete;
 
-	bool isCollide(const BaseActor& other) const;
+	bool isCollide(const BaseActor* other) const;
 
 protected:
 
@@ -104,10 +104,10 @@ protected:
 	virtual void onDraw(Renderer& render)const;
 
 	/// <summary>衝突応答</summary>
-	virtual void onCollide(BaseActor& actor);
-
+	virtual void onCollide(BaseActor* actor);
+public:
 	/// <summary>メッセージを受信</summary>
-	virtual void onMessage(const String& message, const void* parameter);
+	virtual void onMessage(const String& message, void* parameter);
 
 protected:
 

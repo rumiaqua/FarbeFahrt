@@ -39,11 +39,12 @@ void Gimmick::onDraw(Renderer & render) const
 	BaseActor::onDraw(render);
 }
 
-void Gimmick::onMessage(const String & message, const void * parameter)
+void Gimmick::onMessage(const String & message, void* parameter)
 {
 	// Debug::Println();
 	if (message == "HitGimmick")
 	{
 		kill();
 	}
+	BaseActor::onMessage(message, parameter);
 }

@@ -14,10 +14,11 @@ void Ray::onUpdate()
 	BaseActor::onUpdate();
 }
 
-void Ray::onCollide(BaseActor& actor)
+void Ray::onCollide(BaseActor* actor)
 {
 	kill();
-	actor.sendMessage("HitGimmick",nullptr);
+	actor->sendMessage("HitGimmick",nullptr);
+	// actor->onMessage("HitGimmick", nullptr);
 }
 
 

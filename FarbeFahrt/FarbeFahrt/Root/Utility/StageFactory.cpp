@@ -6,7 +6,6 @@
 # include "Actor/Camera/Camera.h"
 # include "Actor/SkyDome/Skydome.h"
 # include "Actor/Field/Field.h"
-# include "Actor/Enemy.h"
 
 # include "IStageBuilder.h"
 # include "ScriptStageBuilder.h"
@@ -29,18 +28,7 @@ void StageFactory::Apply(World& world) const
 	
 	for (auto&& object : m_data.objectList)
 	{
-		ActorTag tag;
-		if (object.name == "Enemy")
-		{
-			tag = ActorTag::Enemy;
-		}
-		if (object.name == "Item")
-		{
-			tag = ActorTag::Item;
-		}
-
-		world.addActor(tag, std::make_shared<Enemy>(
-			world, object.position, object.resource));
+		// –¢ŽÀ‘•
 	}
 }
 

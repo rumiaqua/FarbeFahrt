@@ -32,7 +32,7 @@ void BaseActor::draw(Renderer& render)const
 {
 	onDraw(render);
 }
-void BaseActor::collide(BaseActor& folder)
+void BaseActor::collide(BaseActor* folder)
 {
 	onCollide(folder);
 }
@@ -127,19 +127,19 @@ void BaseActor::removeChildren()
 	eachChildren([] (BaseActor&actor) {actor.removeChildren(); });
 }
 
-void BaseActor::sendMessage(const String& message, const void* parameter)
+void BaseActor::sendMessage(const String& message, void* parameter)
 {
 	onMessage(message, parameter);
 }
 
-bool BaseActor::isCollide(const BaseActor& other) const
+bool BaseActor::isCollide(const BaseActor* other) const
 {
 	// Õ“Ë}Œ`‚ª‹ó‚È‚çÕ“Ë”»’è‚Ís‚È‚í‚È‚¢
-	if (!m_shape || !other.m_shape)
+	if (!m_shape || !other->m_shape)
 	{
 		return false;
 	}
-	return m_shape->intersects(*other.m_shape);
+	return m_shape->intersects(*other->m_shape);
 }
 
 void BaseActor::onUpdate()
@@ -156,17 +156,17 @@ void BaseActor::onDraw(Renderer& render) const
 	eachChildren([&] (const BaseActor& actor) { actor.draw(render); });
 }
 
-void BaseActor::onCollide(BaseActor& actor)
+void BaseActor::onCollide(BaseActor* actor)
 {
 	if (isCollide(actor))
 	{
-		onMessage("Hit", (void*)&actor);
-		actor.onMessage("Hit", (void*)&actor);
+		onMessage("onCollide", (void*)actor);
+		actor->onMessage("onCollide", (void*)this);
 	}
 	eachChildren([&] (BaseActor& child) { child.collide(actor); });
 }
 
-void BaseActor::onMessage(const String& message, const void* parameter)
+void BaseActor::onMessage(const String& message, void* parameter)
 {
 	eachChildren([&] (BaseActor& actor) { actor.sendMessage(message, parameter); });
 }

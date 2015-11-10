@@ -12,7 +12,7 @@ public:
 private:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
-	virtual void onMessage(const String& message, const void* parameter)override;
+	virtual void onMessage(const String& message, void* parameter)override;
 
 private:
 	float m_flameSpeed;

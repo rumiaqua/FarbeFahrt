@@ -10,5 +10,5 @@ public:
 
 private:
 	void onUpdate() override;
-	void onCollide(BaseActor& actor) override;
+	void onCollide(BaseActor* actor) override;
 };

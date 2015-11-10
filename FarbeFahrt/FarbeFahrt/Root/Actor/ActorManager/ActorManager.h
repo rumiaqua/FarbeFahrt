@@ -5,6 +5,8 @@
 
 #include <unordered_map>
 
+class Field;
+
 class ActorManager
 {
 public:
@@ -20,6 +22,8 @@ public:
 	void addActor(ActorTag tag, const Actor& actor);
 
 	Actor findActor(const String& name) const;
+
+	void collideField(BaseActor* field);
 
 private:
 
