@@ -7,7 +7,7 @@
 #include "Utility/Renderer.h"
 #include "Utility/Loader.h"
 
-# include "Scene/SceneManager.h"
+#include "Scene/SceneManager.h"
 
 class MyGame
 {

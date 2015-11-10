@@ -16,6 +16,7 @@
 
 GameMain::GameMain()
 {
+
 }
 void GameMain::loadContents(Loader& loader)
 {
@@ -56,6 +57,8 @@ void GameMain::update()
 	{
 		m_manager->pushScene(Scene::drawGameTitle, 60.0f);
 	}
+
+	Debug::Println("%d",world->getFlag());
 }
 void GameMain::draw(Renderer& render)
 {

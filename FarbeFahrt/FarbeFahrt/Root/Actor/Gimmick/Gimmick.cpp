@@ -44,6 +44,8 @@ void Gimmick::onMessage(const String & message, const void * parameter)
 	// Debug::Println();
 	if (message == "HitGimmick")
 	{
+		m_world->setFlag(2);
+		Debug::Println("hoge");
 		kill();
 	}
 }

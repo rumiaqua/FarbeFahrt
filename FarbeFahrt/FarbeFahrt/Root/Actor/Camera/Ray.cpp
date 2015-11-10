@@ -17,7 +17,9 @@ void Ray::onUpdate()
 void Ray::onCollide(BaseActor& actor)
 {
 	kill();
-	actor.sendMessage("HitGimmick",nullptr);
+	Debug::Println(actor.getName().toNarrow());
+	actor.sendMessage("HitGimmick", nullptr);
+
 }
 
 

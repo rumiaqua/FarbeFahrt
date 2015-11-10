@@ -61,3 +61,18 @@ StageData World::getData() const
 
 	return data;
 }
+
+void World::initFlag()
+{
+	m_storymanager.initialize();
+}
+
+int World::getFlag()
+{
+	return m_storymanager.getFlag();
+}
+
+void World::setFlag(int flag)
+{
+	m_storymanager.setFlag(flag);
+}

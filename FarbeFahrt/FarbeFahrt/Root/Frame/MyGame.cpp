@@ -9,6 +9,7 @@
 # include "Scene/StageScene.h"
 
 #include "Utility/SE.h"
+
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
 //シーンの追加、最初のシーン設定
@@ -24,7 +25,7 @@ MyGame::MyGame()
 	m_sceneManager.addScene<StageScene>(Scene::Stage);
 
 	// 最初のシーンはゲームメイン
-	m_sceneManager.pushScene(Scene::Stage);
+	m_sceneManager.pushScene(Scene::drawGameMain);
 	/*m_sceneManager.pushScene(Scene::Stage);
 	m_sceneManager.pushScene(Scene::Editor);*/
 }
