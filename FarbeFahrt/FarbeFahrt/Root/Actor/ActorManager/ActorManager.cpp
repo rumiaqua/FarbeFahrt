@@ -42,8 +42,14 @@ void ActorManager::update()
 		[&] (BaseActor& actor) { players.collide(&actor); });
 	gimmicks.eachChildren(
 		[&](BaseActor& actor) { colliders.collide(&actor); });
-	players.eachChildren(
-		[&](BaseActor& actor) { goal.collide(&actor); });
+
+	auto& player = findActor("Player");
+	if (!player)
+	{
+		return;
+	}
+
+	goal.collide(&*player);
 }
 void ActorManager::draw(Renderer& render)const
 {
