@@ -16,6 +16,7 @@ void ActorManager::initialize()
 	m_actors[ActorTag::Effect] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Gimmick] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Collider] = std::make_shared<BaseActor>();
+	m_actors[ActorTag::Goal] = std::make_shared<BaseActor>();
 	m_root.removeChildren();
 	m_root.addChild(m_actors[ActorTag::Player]);
 	m_root.addChild(m_actors[ActorTag::Enemy]);
@@ -24,6 +25,7 @@ void ActorManager::initialize()
 	m_root.addChild(m_actors[ActorTag::Effect]);
 	m_root.addChild(m_actors[ActorTag::Gimmick]);
 	m_root.addChild(m_actors[ActorTag::Collider]);
+	m_root.addChild(m_actors[ActorTag::Goal]);
 }
 void ActorManager::update()
 {
@@ -34,11 +36,20 @@ void ActorManager::update()
 	BaseActor& players = *m_actors[ActorTag::Player];
 	BaseActor& colliders = *m_actors[ActorTag::Collider];
 	BaseActor& gimmicks = *m_actors[ActorTag::Gimmick];
+	BaseActor& goal = *m_actors[ActorTag::Goal];
 
 	enemys.eachChildren(
 		[&] (BaseActor& actor) { players.collide(&actor); });
 	gimmicks.eachChildren(
 		[&](BaseActor& actor) { colliders.collide(&actor); });
+
+	auto& player = findActor("Player");
+	if (!player)
+	{
+		return;
+	}
+
+	goal.collide(&*player);
 }
 void ActorManager::draw(Renderer& render)const
 {

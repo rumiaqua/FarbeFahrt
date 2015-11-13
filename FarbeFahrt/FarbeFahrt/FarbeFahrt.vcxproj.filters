@@ -171,6 +171,9 @@
     <ClCompile Include="Root\Stage\Stage.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Actor\Goal\Goal.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\ActorManager\ActorManager.h">

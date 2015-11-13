@@ -7,5 +7,6 @@ enum class ActorTag
 	Item,
 	Effect,
 	Gimmick,
-	Collider
+	Collider,
+	Goal
 };

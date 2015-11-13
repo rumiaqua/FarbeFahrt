@@ -9,6 +9,6 @@ public:
 	Ray(IWorld& world, const Vector3& begin,const Vector3& end);
 
 private:
-	void onUpdate() override;
+	virtual void onUpdate() override;
 	void onCollide(BaseActor* actor) override;
 };

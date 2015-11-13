@@ -25,6 +25,7 @@
     <ClCompile Include="Root\Actor\Camera\Ray.cpp" />
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
+    <ClCompile Include="Root\Actor\Goal\Goal.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\SkinObject.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
@@ -74,6 +75,7 @@
   <ItemGroup>
     <ClInclude Include="Root\Actor\Camera\Ray.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
+    <ClInclude Include="Root\Actor\Goal\Goal.h" />
     <ClInclude Include="Root\Actor\SkinObject.h" />
     <ClInclude Include="Root\Actor\StaicObject.h" />
     <ClInclude Include="Root\Collision\ModelCollider.h" />
