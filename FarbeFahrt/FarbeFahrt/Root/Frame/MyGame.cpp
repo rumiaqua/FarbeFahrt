@@ -11,6 +11,8 @@
 #include "Utility\HandleList.h"
 #include "Utility/SE.h"
 
+# include "Experimental/FlagManager.h"
+
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
 //シーンの追加、最初のシーン設定
@@ -26,7 +28,7 @@ MyGame::MyGame()
 	m_sceneManager.addScene<StageScene>(Scene::Stage);
 
 	// 最初のシーンはゲームメイン
-	m_sceneManager.pushScene(Scene::drawGameMain);
+	m_sceneManager.pushScene(Scene::Stage);
 	/*m_sceneManager.pushScene(Scene::Stage);
 	m_sceneManager.pushScene(Scene::Editor);*/
 }
@@ -41,14 +43,16 @@ void MyGame::run()
 	// シーンに変更があった時
 	if (m_sceneManager.hasChanged())
 	{
+		//前のシーンのデータ削除
+		loader.cleanUp();
 		// スタック操作
 		m_sceneManager.resolve(loader);
 		loader.load();
 	}
+
 	// ロード中なら何もしない
 	if (loader.isLoad())
 	{
-
 		return;
 	}
 

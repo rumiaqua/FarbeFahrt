@@ -6,6 +6,7 @@
 # include "Actor/Camera/Camera.h"
 # include "Actor/SkyDome/Skydome.h"
 # include "Actor/Field/Field.h"
+# include "Actor/Gimmick/Gimmick.h"
 
 # include "IStageBuilder.h"
 # include "ScriptStageBuilder.h"
@@ -28,11 +29,20 @@ void StageFactory::Apply(World& world) const
 	
 	for (auto&& object : m_data.objectList)
 	{
-		// –¢ŽÀ‘•
+		if (object.name == "Gimmick")
+		{
+			world.addActor(ActorTag::Gimmick, std::make_shared<Gimmick>(
+				world, object.resource, object.position, 1, 1.0f, 300.0f));
+		}
 	}
 }
 
 const std::unordered_map<String, String>& StageFactory::Resources() const
 {
 	return m_data.resourceList;
+}
+
+const StageData& StageFactory::Data() const
+{
+	return m_data;
 }

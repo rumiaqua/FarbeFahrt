@@ -25,7 +25,6 @@
     <ClCompile Include="Root\Actor\Camera\Ray.cpp" />
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
-    <ClCompile Include="Root\Actor\Goal\Goal.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\SkinObject.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
@@ -37,6 +36,7 @@
     <ClCompile Include="Root\Collision\ModelCollider.cpp" />
     <ClCompile Include="Root\Collision\Sphere.cpp" />
     <ClCompile Include="Root\Collision\Triangle.cpp" />
+    <ClCompile Include="Root\Experimental\FlagManager.cpp" />
     <ClCompile Include="Root\Frame\BaseScene.cpp" />
     <ClCompile Include="Root\Frame\MyGame.cpp" />
     <ClCompile Include="Root\Frame\WinMain.cpp" />
@@ -46,6 +46,7 @@
     <ClCompile Include="Root\Scene\GameTitle.cpp" />
     <ClCompile Include="Root\Scene\SceneManager.cpp" />
     <ClCompile Include="Root\Scene\StageScene.cpp" />
+    <ClCompile Include="Root\Stage\Stage.cpp" />
     <ClCompile Include="Root\Utility\Debug.cpp" />
     <ClCompile Include="Root\Utility\FreeCamera.cpp" />
     <ClCompile Include="Root\Utility\HandleList.cpp" />
@@ -61,8 +62,8 @@
     <ClCompile Include="Root\Utility\Renderer.cpp" />
     <ClCompile Include="Root\Utility\SE.cpp" />
     <ClCompile Include="Root\Utility\SingletonFinalizer.cpp" />
-    <ClCompile Include="Root\Utility\StageData.cpp" />
-    <ClCompile Include="Root\Utility\StageFactory.cpp" />
+    <ClCompile Include="Root\Stage\StageData.cpp" />
+    <ClCompile Include="Root\Stage\StageFactory.cpp" />
     <ClCompile Include="Root\Utility\StoryManager\StoryManager.cpp" />
     <ClCompile Include="Root\Utility\String.cpp" />
     <ClCompile Include="Root\Utility\Vector2.cpp" />
@@ -73,7 +74,6 @@
   <ItemGroup>
     <ClInclude Include="Root\Actor\Camera\Ray.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
-    <ClInclude Include="Root\Actor\Goal\Goal.h" />
     <ClInclude Include="Root\Actor\SkinObject.h" />
     <ClInclude Include="Root\Actor\StaicObject.h" />
     <ClInclude Include="Root\Collision\ModelCollider.h" />
@@ -96,22 +96,27 @@
     <ClInclude Include="Root\Collision\Line.h" />
     <ClInclude Include="Root\Collision\Sphere.h" />
     <ClInclude Include="Root\Collision\Triangle.h" />
+    <ClInclude Include="Root\Experimental\FlagManager.h" />
     <ClInclude Include="Root\Frame\BaseScene.h" />
     <ClInclude Include="Root\Frame\MyGame.h" />
     <ClInclude Include="Root\IWorld.h" />
     <ClInclude Include="Root\Scene\Editor.h" />
     <ClInclude Include="Root\Scene\GameMain.h" />
+    <ClInclude Include="Root\Experimental\GameMainFrame.h" />
     <ClInclude Include="Root\Scene\GameMenu.h" />
     <ClInclude Include="Root\Scene\GameTitle.h" />
     <ClInclude Include="Root\Scene\ISceneMediator.h" />
     <ClInclude Include="Root\Scene\SceneManager.h" />
     <ClInclude Include="Root\Scene\StageScene.h" />
+    <ClInclude Include="Root\Stage\IStageMediator.h" />
+    <ClInclude Include="Root\Stage\Stage.h" />
+    <ClInclude Include="Root\Stage\StageManager.h" />
     <ClInclude Include="Root\Utility\Debug.h" />
     <ClInclude Include="Root\Utility\Def.h" />
     <ClInclude Include="Root\Utility\FreeCamera.h" />
     <ClInclude Include="Root\Utility\HandleList.h" />
     <ClInclude Include="Root\Utility\Input.h" />
-    <ClInclude Include="Root\Utility\IStageBuilder.h" />
+    <ClInclude Include="Root\Stage\IStageBuilder.h" />
     <ClInclude Include="Root\Utility\Loader.h" />
     <ClInclude Include="Root\Utility\Math.h" />
     <ClInclude Include="Root\Utility\Matrix.h" />
@@ -124,11 +129,11 @@
     <ClInclude Include="Root\Utility\Point4.h" />
     <ClInclude Include="Root\Utility\Pose.h" />
     <ClInclude Include="Root\Utility\Renderer.h" />
-    <ClInclude Include="Root\Utility\ScriptStageBuilder.h" />
+    <ClInclude Include="Root\Stage\ScriptStageBuilder.h" />
     <ClInclude Include="Root\Utility\SE.h" />
     <ClInclude Include="Root\Utility\SingletonFinalizer.h" />
-    <ClInclude Include="Root\Utility\StageData.h" />
-    <ClInclude Include="Root\Utility\StageFactory.h" />
+    <ClInclude Include="Root\Stage\StageData.h" />
+    <ClInclude Include="Root\Stage\StageFactory.h" />
     <ClInclude Include="Root\Utility\StoryManager\StoryManager.h" />
     <ClInclude Include="Root\Utility\String.h" />
     <ClInclude Include="Root\Utility\ValueType.h" />

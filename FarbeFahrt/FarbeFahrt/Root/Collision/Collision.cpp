@@ -24,10 +24,9 @@ bool Collision::intersects(const Sphere& s1, const Sphere& s2)
 
 bool Collision::intersects(const Sphere& s, const Capsule& c)
 {
-	int result = HitCheck_Sphere_Capsule(
+	return HitCheck_Sphere_Capsule(
 		s.origin + s.center, s.radius,
-		c.origin + c.begin, c.origin + c.end, c.radius);
-	return result != 0;
+		c.origin + c.begin, c.origin + c.end, c.radius) != 0;
 }
 
 bool Collision::intersects(const Sphere& s, const Line& l)
@@ -151,15 +150,23 @@ bool Collision::intersects(const ModelCollider& model1, const Sphere& sphere2)
 
 bool Collision::intersects(const ModelCollider& model1, const Capsule& capsule2)
 {
-	int handle = Singleton<HandleList>::Instance().getHandle(model1.name);
-	MV1SetupCollInfo(handle);
-	MV1_COLL_RESULT_POLY_DIM poly = MV1CollCheck_Capsule(
-		handle, -1, capsule2.origin + capsule2.begin, capsule2.origin + capsule2.end, capsule2.radius);
-	bool result = poly.HitNum != 0;
-	MV1CollResultPolyDimTerminate(poly);
-	MV1TerminateCollInfo(handle);
+	// ó·äOëŒèà
+	try
+	{
+		int handle = Singleton<HandleList>::Instance().getHandle(model1.name);
+		MV1SetupCollInfo(handle);
+		MV1_COLL_RESULT_POLY_DIM poly = MV1CollCheck_Capsule(
+			handle, -1, capsule2.origin + capsule2.begin, capsule2.origin + capsule2.end, capsule2.radius);
+		bool result = poly.HitNum != 0;
+		MV1CollResultPolyDimTerminate(poly);
+		MV1TerminateCollInfo(handle);
 
-	return result;
+		return result;
+	}
+	catch (...)
+	{
+		return false;
+	}
 }
 
 bool Collision::intersects(const ModelCollider& model1, const Line& line2)

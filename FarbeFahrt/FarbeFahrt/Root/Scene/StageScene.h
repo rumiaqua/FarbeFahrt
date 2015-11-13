@@ -3,7 +3,7 @@
 
 # include "World.h"
 
-# include "Utility/StageFactory.h"
+# include "Stage/StageFactory.h"
 
 class StageScene : public BaseScene
 {
@@ -16,6 +16,7 @@ public:
 	void cleanUp() override;
 	bool isSwallow() const override;
 private:
-	std::shared_ptr<World>world;
+	std::shared_ptr<World> world;
 	StageFactory m_factory;
+	String m_stageName;
 };

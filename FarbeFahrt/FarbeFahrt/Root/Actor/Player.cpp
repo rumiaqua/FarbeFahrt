@@ -4,12 +4,12 @@
 #include "Utility/Math.h"
 #include "Utility/Debug.h"
 #include "Utility/Vector3.h"
+#include "Utility/Debug.h"
+#include "Utility/MemoryCast.h"
 
 # include "Collision/ModelCollider.h"
 
-#include "Utility/Debug.h"
-
-#include "Utility/MemoryCast.h"
+# include "Experimental/FlagManager.h"
 
 Player::Player(IWorld& world, const Vector3& position)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI),
@@ -99,6 +99,11 @@ void Player::playerInput()
 		m_pose.position.y = 100;
 		m_pose.position.z = 0;
 	}
+
+	if (Input::IsClicked(KEY_INPUT_2))
+	{
+		FlagManager::Set(Flag::NextStage, true);
+	}
 }
 void Player::onDraw(Renderer& render)const
 {
@@ -120,10 +125,4 @@ void Player::onMessage(const String& message, void* parameter)
 		m_pose.position = *pos;
 		Debug::Println("‚ä‚©‚Ì‚È‚©‚É‚¢‚é");
 	}
-	if (message == "Goal")
-	{
-		m_world->setFlag(1);
-	}
-
-	BaseActor::onMessage(message,parameter);
 }

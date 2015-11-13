@@ -95,8 +95,6 @@ public:
 
 	bool isCollide(const BaseActor* other) const;
 
-	IShape* const getShape() const;
-
 protected:
 
 	/// <summary>XV</summary>
