@@ -12,7 +12,7 @@ GameTitle::GameTitle()
 }
 void GameTitle::loadContents(Loader& loader)
 {
-	loader.loadContent("Player", "Model/MMD–‚“±o’íVer1.1/ƒKƒuƒŠƒGƒ‰.pmx");
+	loader.loadContent("Player", "Model/MMD–‚“±o’íVer1.1/ƒ~ƒnƒCƒ‹.pmx");
 	loader.loadContent("sky", "Model/skydome/’‹‚ÌŒ.x");
 	loader.loadContent("field", "Model/terrain/terrain.mqo");
 	loader.loadContent("bang", "SE/test.wav");
