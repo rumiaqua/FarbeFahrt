@@ -41,11 +41,9 @@ void Gimmick::onDraw(Renderer & render) const
 
 void Gimmick::onMessage(const String & message, void* parameter)
 {
-	// Debug::Println();
 	if (message == "HitGimmick")
 	{
 		m_world->setFlag(2);
-		Debug::Println("hoge");
 		kill();
 	}
 	BaseActor::onMessage(message, parameter);
