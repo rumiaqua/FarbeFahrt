@@ -18,7 +18,6 @@ void Ray::onCollide(BaseActor* actor)
 {
 	kill();
 	actor->sendMessage("HitGimmick",nullptr);
-	// actor->onMessage("HitGimmick", nullptr);
 }
 
 

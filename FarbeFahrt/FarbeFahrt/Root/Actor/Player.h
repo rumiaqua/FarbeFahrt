@@ -16,7 +16,7 @@ public:
 	Player(IWorld& world, const Vector3& position);
 private:
 	virtual void onUpdate()override;
-	virtual void onDraw(Renderer& render)const override;
+	virtual void onDraw(Renderer& render)const override;	
 	virtual void onMessage(const String& message, void* parameter) override;
 private:
 	void playerInput();//“ü—ÍŒni‚½‚¾‚ÌŠÖ”•ª‚¯j

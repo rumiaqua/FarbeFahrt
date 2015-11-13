@@ -7,6 +7,7 @@
 #include "Actor/StaicObject.h"
 #include "Actor/SkinObject.h"
 #include "Actor/Gimmick/Gimmick.h"
+#include "Actor/Goal/Goal.h"
 
 #include "Utility/Debug.h"
 #include "Utility/Loader.h"
@@ -37,7 +38,7 @@ void GameMain::initialize()
 	world->addSkydome(std::make_shared<Skydome>(*world, "sky"));
 
 	//world->addActor(ActorTag::Enemy, std::make_shared<StaticObject>(*world,"book", Vector3(0,0,-30)));
-	world->addActor(ActorTag::Gimmick, std::make_shared<Gimmick>(*world, "test", Vector3(0, 0, 50), 1, 1.0f, 300.0f));
+	world->addActor(ActorTag::Goal, std::make_shared<Goal>(*world, "test", Vector3(0, -80, 150)));
 
 	Debug::SetClear(true);
 	Debug::ChangeFontSize(16);

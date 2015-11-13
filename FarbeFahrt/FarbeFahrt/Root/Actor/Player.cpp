@@ -120,4 +120,10 @@ void Player::onMessage(const String& message, void* parameter)
 		m_pose.position = *pos;
 		Debug::Println("‚ä‚©‚Ì‚È‚©‚É‚¢‚é");
 	}
+	if (message == "Goal")
+	{
+		m_world->setFlag(1);
+	}
+
+	BaseActor::onMessage(message,parameter);
 }
