@@ -61,6 +61,10 @@ void StageScene::update()
 	{
 		m_manager->changeScene(Scene::drawGameTitle);
 	}
+	if (Input::IsClicked(KEY_INPUT_3))
+	{
+		world->apply(m_nextStageData);
+	}
 
 	if (Input::IsClicked(KEY_INPUT_R))
 	{

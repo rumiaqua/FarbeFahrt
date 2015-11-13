@@ -3,7 +3,7 @@ enum class ActorTag
 {
 	Player,
 	Enemy,
-	NPC,
+	Object,
 	Item,
 	Effect,
 	Gimmick,

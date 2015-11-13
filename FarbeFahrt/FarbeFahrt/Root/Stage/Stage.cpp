@@ -7,6 +7,7 @@
 # include "Actor/ActorManager/ActorManager.h"
 # include "Actor/Player.h"
 # include "Actor/Gimmick/Gimmick.h"
+# include "Actor/SkinObject.h"
 
 # include "World.h"
 
@@ -20,14 +21,22 @@ Stage::Stage(World* world)
 
 }
 
-void Stage::apply(const StageData& data)
+void Stage::apply(const StageData& data, bool isClear)
 {
 	// フィールドの初期化
 	m_field = std::make_shared<Field>(*m_world, data.fieldName, data.fieldScale);
 
 	// プレイヤー位置の初期化
-	m_actorManager.addActor(ActorTag::Player, std::make_shared<Player>(
-		*m_world, data.playerPosition));
+	// もしプレイヤーが存在するならば座標だけ変更する
+	if (auto player = m_actorManager.findActor("Player"))
+	{
+		player->getPosition() = data.playerPosition;
+	}
+	else
+	{
+		m_world->addActor(ActorTag::Player, std::make_shared<Player>(
+			*m_world, data.playerPosition));
+	}
 
 	// その他オブジェクトの初期化
 	for (auto&& object : data.objectList)
@@ -35,8 +44,22 @@ void Stage::apply(const StageData& data)
 		// 未実装
 		if (object.name == "Gimmick")
 		{
+			auto parameter = String::Split(object.parameter, '/');
+			int animNo = String::ToValue<int>(parameter[0]);
+			float animSpeed = String::ToValue<float>(parameter[1]);
+			float maxFrame = String::ToValue<float>(parameter[2]);
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Gimmick>(
-				*m_world, object.resource, object.position, 1, 1.0f, 300.0f));
+				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame));
+		}
+		if (object.name == "SkinObject")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			int animNo = String::ToValue<int>(parameter[0]);
+			float animSpeed = String::ToValue<float>(parameter[1]);
+			float maxFrame = String::ToValue<float>(parameter[2]);
+			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
+				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame));
+			// int anmNo, float flameSpeed,float maxFlame
 		}
 	}
 }

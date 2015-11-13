@@ -13,7 +13,7 @@ public:
 
 public:
 
-	void apply(const StageData& data);
+	void apply(const StageData& data, bool isClear = true);
 
 	void update();
 

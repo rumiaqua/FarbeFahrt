@@ -17,8 +17,6 @@ public:
 
 	void Load(const String& filename);
 
-	void Apply(World& world) const;
-
 	const std::unordered_map<String, String>& Resources() const;
 
 	const StageData& Data() const;
