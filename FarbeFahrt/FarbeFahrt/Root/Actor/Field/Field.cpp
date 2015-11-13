@@ -9,7 +9,7 @@
 # include "Utility/Debug.h"
 
 Field::Field(IWorld& world, const String& name, float scale)
-	:BaseActor(world, name, Vector3(0.0f, -90.0f, 0.0f), Matrix::Rotation(Vector3::Up(), Math::PI),
+	:BaseActor(world, name, Vector3(0.0f, -90.0f, 0.0f), Matrix::identity(),
 		std::make_unique<ModelCollider>(name)), m_scale(scale)
 {
 }
