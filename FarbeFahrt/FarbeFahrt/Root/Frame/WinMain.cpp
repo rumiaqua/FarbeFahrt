@@ -25,6 +25,7 @@ void init()
 		isFullScreen = false;
 	}
 
+	SetOutApplicationLogValidFlag(FALSE);
 	ChangeWindowMode(!isFullScreen);
 	SetUseDirect3D9Ex(TRUE);
 	MV1SetUseOrigShader(TRUE);

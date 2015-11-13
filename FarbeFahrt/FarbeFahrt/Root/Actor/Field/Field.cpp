@@ -33,7 +33,6 @@ void Field::onMessage(const String& message, void* parameter)
 		BaseActor* actor = static_cast<BaseActor*>(parameter);
 		if (isCollide(actor))
 		{
-			// actor->onMessage("HitGround", (void*)this);
 			const Vector3& pos = actor->getPosition();
 			Debug::Println(pos.ToString());
 			String& name = static_cast<ModelCollider*>(m_shape.get())->name;
@@ -42,7 +41,7 @@ void Field::onMessage(const String& message, void* parameter)
 			Vector3 start = pos + Vector3::Up() * 50.0f;
 			Vector3 end = pos + Vector3::Down() * 1.0f;
 
-			MV1SetupCollInfo(handle, -1);
+			MV1RefreshCollInfo(handle);
 			MV1_COLL_RESULT_POLY dim = MV1CollCheck_Line(handle, -1, start, end);
 			if (dim.HitFlag == TRUE)
 			{
@@ -53,7 +52,6 @@ void Field::onMessage(const String& message, void* parameter)
 
 				actor->sendMessage("HitGround", (void*)&fixPos);
 			}
-			MV1TerminateCollInfo(handle, -1);
 		}
 	}
 

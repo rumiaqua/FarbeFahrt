@@ -30,7 +30,7 @@ Loader::Loader()
 	static const loadFunc bindLoadSoundMem = std::bind(LoadSoundMem, _1, 3, -1);
 	static const deleteFunc bindDeleteGraph = std::bind(DeleteGraph, _1, 0);
 	static const deleteFunc bindDeleteSoundMem = std::bind(DeleteSoundMem, _1, 0);
-	
+	static const deleteFunc bindDeleteModel = [] (int handle) { MV1TerminateCollInfo(handle); return MV1DeleteModel(handle); };
 
 	//Ç…ÇÊÇËägí£éqÇ∆enumÇ∆ä÷êîÇä»íPÇ…Ç‹Ç∆ÇﬂÇÈÇ±Ç∆Ç™Ç≈Ç´ÇÈ
 	emplaceFunc("x", ContentTag::Model, MV1LoadModel);
@@ -45,7 +45,7 @@ Loader::Loader()
 	emplaceFunc("vso", ContentTag::VertexShader, LoadVertexShader);
 	emplaceFunc("pso", ContentTag::PixelShader, LoadPixelShader);
 	
-	emplaceDeleteFunc(ContentTag::Model, MV1DeleteModel);
+	emplaceDeleteFunc(ContentTag::Model, bindDeleteModel);
 	emplaceDeleteFunc(ContentTag::Texture, bindDeleteGraph);
 	emplaceDeleteFunc(ContentTag::BGM, bindDeleteSoundMem);
 	emplaceDeleteFunc(ContentTag::SE, bindDeleteSoundMem);
@@ -105,7 +105,7 @@ void Loader::load()
 		}
 
 		data.second.handle = m_LoadFunc[GetExtension(data.second.filename)].loadFunc( ("Resources/" + data.second.filename).c_str());
-
+		MV1SetupCollInfo(data.second.handle);
 	}
 	SetUseASyncLoadFlag(FALSE);
 }
@@ -187,4 +187,8 @@ void Loader::cleanUp()
 }
 Loader::~Loader()
 {
+	for (auto&& data : m_ContentsList)
+	{
+		m_deleteFunc[data.second.tag](data.second.handle);
+	}
 }
