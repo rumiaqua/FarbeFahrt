@@ -14,10 +14,15 @@ void Ray::onUpdate()
 	BaseActor::onUpdate();
 }
 
-void Ray::onCollide(BaseActor* actor)
+void Ray::onMessage(const String & message, void* parameter)
 {
-	kill();
-	actor->sendMessage("HitGimmick",nullptr);
+	auto gimmick = static_cast<BaseActor*>(parameter);
+	if (message == "onCollide")
+	{
+		gimmick->sendMessage("HitGimmick", nullptr);
+	}
+
+	BaseActor::onMessage(message, parameter);
 }
 
 
