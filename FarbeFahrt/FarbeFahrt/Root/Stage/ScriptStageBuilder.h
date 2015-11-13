@@ -58,10 +58,20 @@ public:
 
 			if (split[0] == "o")
 			{
-				data.objectList.emplace_back(split[1], split[2], Vector3(
+				if (split.size() < 8)
+				{
+					split.emplace_back("");
+				}
+
+				data.objectList.emplace_back(
+					split[1],
+					split[2],
+					Vector3(
 						String::ToValue<float>(split[3]),
 						String::ToValue<float>(split[4]),
-						String::ToValue<float>(split[5])), nullptr);
+						String::ToValue<float>(split[5])),
+					split[6],
+					split[7]);
 			}
 		}
 		return data;

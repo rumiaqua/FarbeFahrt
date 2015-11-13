@@ -11,7 +11,7 @@ void ActorManager::initialize()
 {
 	m_actors[ActorTag::Player] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Enemy] = std::make_shared<BaseActor>();
-	m_actors[ActorTag::NPC] = std::make_shared<BaseActor>();
+	m_actors[ActorTag::Object] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Item] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Effect] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Gimmick] = std::make_shared<BaseActor>();
@@ -20,7 +20,7 @@ void ActorManager::initialize()
 	m_root.removeChildren();
 	m_root.addChild(m_actors[ActorTag::Player]);
 	m_root.addChild(m_actors[ActorTag::Enemy]);
-	m_root.addChild(m_actors[ActorTag::NPC]);
+	m_root.addChild(m_actors[ActorTag::Object]);
 	m_root.addChild(m_actors[ActorTag::Item]);
 	m_root.addChild(m_actors[ActorTag::Effect]);
 	m_root.addChild(m_actors[ActorTag::Gimmick]);

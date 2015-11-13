@@ -14,8 +14,9 @@ struct StageData
 		String name;
 		String resource;
 		Vector3 position;
-		IShape* shape;
-		Object(const String& name, const String& resource, const Vector3& position, IShape* shape);
+		String shape;
+		String parameter;
+		Object(const String& name, const String& resource, const Vector3& position, const String& shape, const String& parameter);
 	};
 
 	using ResourceList = std::unordered_map<String, String>;

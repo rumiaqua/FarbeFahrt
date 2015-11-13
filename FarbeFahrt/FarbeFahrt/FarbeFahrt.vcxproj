@@ -163,6 +163,7 @@
     <Image Include="Resources\Texture\NowLoading\ロード画面　改定 真ん中.png" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Resources\Stage\Mori.txt" />
     <Text Include="Resources\Stage\Sougen.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
