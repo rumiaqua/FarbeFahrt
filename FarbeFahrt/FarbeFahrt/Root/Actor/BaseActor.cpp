@@ -139,7 +139,12 @@ bool BaseActor::isCollide(const BaseActor* other) const
 	{
 		return false;
 	}
-	return m_shape->intersects(*other->m_shape);
+	return getShape()->intersects(*other->getShape());
+}
+
+IShape* const BaseActor::getShape() const
+{
+	return m_shape->transform(getWorldPose());
 }
 
 void BaseActor::onUpdate()
