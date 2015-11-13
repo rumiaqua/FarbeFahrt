@@ -12,7 +12,6 @@
 # include "Actor/SkyDome/Skydome.h"
 
 StageScene::StageScene()
-	: m_stageName("Resources/Stage/Sougen.txt")
 {
 
 }
@@ -20,15 +19,27 @@ StageScene::StageScene()
 void StageScene::loadContents(Loader& loader)
 {
 	// 名前
-	m_factory.Load(m_stageName);
-
+	m_factory.Load("Resources/Stage/Sougen.txt");
 	// ステージスクリプトから必要なリソースリストを取得して読み込む
 	for (auto&& resource : m_factory.Resources())
 	{
 		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
 	}
+	// 適用
+	m_currentStageData = m_factory.Data();
 
-	world->apply(m_factory.Data());
+	// 名前
+	m_factory.Load("Resources/Stage/Mori.txt");
+	// ステージスクリプトから必要なリソースリストを取得して読み込む
+	for (auto&& resource : m_factory.Resources())
+	{
+		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+	}
+	// 適用
+	m_nextStageData = m_factory.Data();
+
+	// ワールドに適用
+	world->apply(m_currentStageData);
 }
 
 void StageScene::initialize()

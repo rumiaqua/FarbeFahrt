@@ -18,5 +18,7 @@ public:
 private:
 	std::shared_ptr<World> world;
 	StageFactory m_factory;
-	String m_stageName;
+
+	StageData m_currentStageData;
+	StageData m_nextStageData;
 };
