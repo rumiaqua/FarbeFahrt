@@ -3,6 +3,7 @@ r,Player,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 r,sky,Model/skydome/昼の月.x
 r,field,Model/terrain/terrain.mqo
 # r,field,Model/森/森.mqo
+r,test,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 
 # プレイヤーの位置
 p,0,0,100
@@ -20,3 +21,4 @@ s,sky
 
 # その他配置されたオブジェクトの情報
 # クラス名,リソース名,座標
+o,Gimmick,test,0,-50,50

@@ -11,6 +11,8 @@
 #include "Utility\HandleList.h"
 #include "Utility/SE.h"
 
+# include "Experimental/FlagManager.h"
+
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
 //シーンの追加、最初のシーン設定
@@ -45,10 +47,10 @@ void MyGame::run()
 		m_sceneManager.resolve(loader);
 		loader.load();
 	}
+
 	// ロード中なら何もしない
 	if (loader.isLoad())
 	{
-
 		return;
 	}
 

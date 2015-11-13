@@ -2,29 +2,39 @@
 
 # include "Utility/Loader.h"
 # include "Utility/Input.h"
-# include "Utility/ScriptStageBuilder.h"
 # include "Utility/Debug.h"
+
+# include "Stage/ScriptStageBuilder.h"
 
 # include "ISceneMediator.h"
 
+# include "Actor/Camera/Camera.h"
+# include "Actor/SkyDome/Skydome.h"
+
 StageScene::StageScene()
+	: m_stageName("Resources/Stage/Sougen.txt")
 {
-	m_factory.Load("Resources/Stage/Sougen.txt");
+
 }
 
 void StageScene::loadContents(Loader& loader)
 {
-	auto& panda = m_factory.Resources();
-	for (auto&& resource : panda)
+	// 名前
+	m_factory.Load(m_stageName);
+
+	// ステージスクリプトから必要なリソースリストを取得して読み込む
+	for (auto&& resource : m_factory.Resources())
 	{
 		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
 	}
+
+	world->apply(m_factory.Data());
 }
 
 void StageScene::initialize()
 {
 	world = std::make_shared<World>();
-	m_factory.Apply(*world);
+
 	Debug::SetClear(true);
 }
 
@@ -36,13 +46,6 @@ void StageScene::update()
 	{
 		m_manager->pushScene(Scene::Editor);
 	}
-
-	// Save Action
-	/*if (Input::isClicked(KEY_INPUT_1))
-	{
-		ScriptStageBuilder builder;
-		builder.save("Resources/Stage/Sougen1.txt", world->getData());
-	}*/
 }
 
 void StageScene::draw(Renderer& render)

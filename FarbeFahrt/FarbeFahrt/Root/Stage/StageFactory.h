@@ -1,8 +1,9 @@
 # pragma once
 
 # include "StageData.h"
-# include "Vector3.h"
-# include "String.h"
+
+# include "Utility/Vector3.h"
+# include "Utility/String.h"
 
 # include <vector>
 # include <unordered_map>
@@ -19,6 +20,8 @@ public:
 	void Apply(World& world) const;
 
 	const std::unordered_map<String, String>& Resources() const;
+
+	const StageData& Data() const;
 
 private:
 

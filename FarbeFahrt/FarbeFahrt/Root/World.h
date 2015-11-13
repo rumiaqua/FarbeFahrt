@@ -4,7 +4,9 @@
 #include "Actor/ActorManager/ActorManager.h"
 #include "Utility/StoryManager/StoryManager.h"
 
-#include "Utility/StageData.h"
+#include "Stage/StageData.h"
+
+# include "Stage/Stage.h"
 
 #include <string>
 class World : public IWorld
@@ -25,11 +27,11 @@ public:
 	virtual void initFlag();
 	virtual int getFlag();
 	virtual void setFlag(int flag);
-private:
-	ActorManager m_actors;
-	StoryManager m_storymanager;
-	Actor m_camera;
-	Actor m_sky;
-	Actor m_field;
+	void apply(const StageData& data);
 
+private:
+	StoryManager m_storymanager;
+	Actor m_skydome;
+	Actor m_camera;
+	Stage m_stage;
 };

@@ -1,7 +1,7 @@
 # pragma once
 
-# include "String.h"
-# include "Vector3.h"
+# include "Utility/String.h"
+# include "Utility/Vector3.h"
 
 # include <unordered_map>
 
