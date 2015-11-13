@@ -68,7 +68,10 @@ bool Collision::intersects(const Capsule& c, const Triangle& t)
 
 bool Collision::intersects(const Line& l, const Sphere& s)
 {
-	return intersects(s, l);
+	int result = HitCheck_Line_Sphere(
+		l.origin + l.begin, l.origin + l.end,
+		s.origin + s.center, s.radius);
+	return result != 0;
 }
 
 bool Collision::intersects(const Line& l, const Capsule& c)

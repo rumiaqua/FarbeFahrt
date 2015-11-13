@@ -10,5 +10,5 @@ public:
 
 private:
 	virtual void onUpdate() override;
-	void onCollide(BaseActor* actor) override;
+	virtual void onMessage(const String& message, void* parameter) override;
 };
