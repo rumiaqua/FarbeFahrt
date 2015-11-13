@@ -61,6 +61,11 @@ void StageScene::update()
 	{
 		m_manager->changeScene(Scene::drawGameTitle);
 	}
+
+	if (Input::IsClicked(KEY_INPUT_R))
+	{
+		world->actorSet("test");
+	}
 }
 
 void StageScene::draw(Renderer& render)

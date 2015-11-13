@@ -15,4 +15,5 @@ public:
 	virtual void initFlag() = 0;
 	virtual int getFlag() = 0;
 	virtual void setFlag(int flag) = 0;
+	virtual void actorSet(const std::string& actorName) = 0;
 };

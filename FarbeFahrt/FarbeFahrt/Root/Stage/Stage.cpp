@@ -10,6 +10,8 @@
 
 # include "World.h"
 
+#include "Utility/Debug.h"
+
 Stage::Stage(World* world)
 	: m_world(world)
 	, m_field()
@@ -47,6 +49,8 @@ void Stage::update()
 
 	// フィールドとアクターの衝突処理
 	m_actorManager.collideField(m_field.get());
+
+	Debug::Println("%d",m_world->getFlag());
 }
 
 void Stage::draw(Renderer& renderer) const

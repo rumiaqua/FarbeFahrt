@@ -14,6 +14,8 @@ class Camera :
 {
 public:
 	explicit Camera(IWorld& world);
+	void actorSet(const std::string& actorName);
+
 private:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
@@ -22,15 +24,14 @@ private:
 	void fadeInCamera();
 	void fadeOutCamera();
 	void defaultCamera();
-	void fadeInFixCamera();
+	void fadeInFixedCamera();
 	void lockCamera();
 	void initCamera();
 	void cameraSet();
 	void toPlayerCamera();
 	void toBookCamera();
-	void toFixCamera();
-	void playerCheck();
-	void actorCheck(const std::string& actorName);
+	void toFixedCamera();
+	virtual void onMessage(const String& message, void* parameter) override;
 	
 private:	
 	float m_t = 0.0f;

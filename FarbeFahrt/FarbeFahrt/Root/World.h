@@ -7,6 +7,7 @@
 #include "Stage/StageData.h"
 
 # include "Stage/Stage.h"
+# include "Actor/Camera/Camera.h"
 
 #include <string>
 class World : public IWorld
@@ -28,6 +29,7 @@ public:
 	virtual int getFlag();
 	virtual void setFlag(int flag);
 	void apply(const StageData& data);
+	virtual void actorSet(const std::string& actorName);
 
 private:
 	StoryManager m_storymanager;

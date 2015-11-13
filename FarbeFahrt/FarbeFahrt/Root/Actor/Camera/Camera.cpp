@@ -37,8 +37,7 @@ BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
 }
 void Camera::onUpdate()
 {
-	playerCheck();
-	if (m_actor == nullptr)return;
+	if (m_actor == nullptr)actorSet("Player");
 
 	cameraInput();
 	cameraSet();
@@ -74,7 +73,7 @@ void Camera::chaseCamera()
 
 	//移行できるカメラ
 	toBookCamera();
-	toFixCamera();
+	toFixedCamera();
 }
 
 void Camera::fadeInCamera()
@@ -97,9 +96,9 @@ void Camera::fadeOutCamera()
 	m_cameraState.cameraMode = CameraMode::Default;
 }
 
-void Camera::fadeInFixCamera()
+void Camera::fadeInFixedCamera()
 {
-	actorCheck(m_actor->getName().toNarrow());
+	actorSet(m_actor->getName().toNarrow());
 	if (m_actor == nullptr)return;
 
 	m_cameraMatrix.currentPos = getPosition();
@@ -113,7 +112,7 @@ void Camera::fadeInFixCamera()
 
 void Camera::lockCamera()
 {
-	actorCheck(m_actor->getName().toNarrow());
+	actorSet(m_actor->getName().toNarrow());
 	if (m_actor == nullptr)return;
 
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
@@ -152,7 +151,7 @@ void Camera::defaultCamera()
 		{
 		//移行できるカメラ
 		toPlayerCamera();
-		toFixCamera();
+		toFixedCamera();
 	}
 }
 }
@@ -175,7 +174,7 @@ void Camera::cameraSet()
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeIn, [this]() { this->fadeInCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeOut, [this]() { this->fadeOutCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Default, [this]() { this->defaultCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeInFix, [this]() { this->fadeInFixCamera(); }));
+	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeInFixed, [this]() { this->fadeInFixedCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::LockAt, [this]() { this->lockCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Init, [this]() { this->initCamera(); }));
 
@@ -209,20 +208,26 @@ void Camera::toPlayerCamera()
 }
 
 //キー：Cでカメラ固定回転
-void Camera::toFixCamera()
+void Camera::toFixedCamera()
 {
 	if (Input::IsClicked(KEY_INPUT_C))
 	{
-		m_cameraState.cameraMode = CameraMode::FadeInFix;
+		m_cameraState.cameraMode = CameraMode::FadeInFixed;
 	}
 }
 
-void Camera::playerCheck()
-{
-	actorCheck("Player");
-}
-
-void Camera::actorCheck(const std::string& actorName)
+void Camera::actorSet(const std::string& actorName)
 {
 	m_actor = m_world->findActor(actorName);
+}
+
+void Camera::onMessage(const String& message, void* parameter)
+{
+	if (message == "actorSet")
+	{
+		actorSet(*(std::string*)parameter);
+		m_cameraState.cameraMode = CameraMode::FadeIn;
+	}
+
+	BaseActor::onMessage(message, parameter);
 }

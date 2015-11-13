@@ -1,7 +1,6 @@
 #include "World.h"
 
 # include "Actor/SkyDome/Skydome.h"
-# include "Actor/Camera/Camera.h"
 
 World::World()
 	: m_stage(this)
@@ -95,3 +94,9 @@ void World::apply(const StageData& data)
 {
 	m_stage.apply(data);
 }
+
+void World::actorSet(const std::string& actorName)
+{
+	m_camera->sendMessage("actorSet",(void*)&actorName);
+}
+
