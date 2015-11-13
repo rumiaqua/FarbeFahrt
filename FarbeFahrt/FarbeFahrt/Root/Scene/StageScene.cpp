@@ -39,7 +39,7 @@ void StageScene::loadContents(Loader& loader)
 	m_nextStageData = m_factory.Data();
 
 	// ワールドに適用
-	world->apply(m_currentStageData);
+	world->apply(m_currentStageData, false);
 }
 
 void StageScene::initialize()
@@ -63,7 +63,7 @@ void StageScene::update()
 	}
 	if (Input::IsClicked(KEY_INPUT_3))
 	{
-		world->apply(m_nextStageData);
+		world->apply(m_nextStageData, true);
 	}
 
 	if (Input::IsClicked(KEY_INPUT_R))

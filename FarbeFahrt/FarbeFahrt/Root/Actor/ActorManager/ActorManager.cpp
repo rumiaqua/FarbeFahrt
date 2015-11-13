@@ -17,6 +17,7 @@ void ActorManager::initialize()
 	m_actors[ActorTag::Gimmick] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Collider] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Goal] = std::make_shared<BaseActor>();
+	m_root.eachChildren([] (BaseActor& actor) { actor.kill(); });
 	m_root.removeChildren();
 	m_root.addChild(m_actors[ActorTag::Player]);
 	m_root.addChild(m_actors[ActorTag::Enemy]);
