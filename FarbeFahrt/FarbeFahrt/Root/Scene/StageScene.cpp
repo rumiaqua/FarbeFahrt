@@ -46,6 +46,10 @@ void StageScene::update()
 	{
 		m_manager->pushScene(Scene::Editor);
 	}
+	if (Input::IsClicked(KEY_INPUT_SPACE))
+	{
+		m_manager->changeScene(Scene::drawGameTitle);
+	}
 }
 
 void StageScene::draw(Renderer& render)

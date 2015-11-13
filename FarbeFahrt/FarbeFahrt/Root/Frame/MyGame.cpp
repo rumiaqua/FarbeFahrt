@@ -43,6 +43,8 @@ void MyGame::run()
 	// シーンに変更があった時
 	if (m_sceneManager.hasChanged())
 	{
+		//前のシーンのデータ削除
+		loader.cleanUp();
 		// スタック操作
 		m_sceneManager.resolve(loader);
 		loader.load();

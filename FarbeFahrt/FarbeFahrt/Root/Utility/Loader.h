@@ -11,7 +11,9 @@ enum class ContentTag
 	Model = 0,
 	Texture,
 	BGM,
-	SE
+	SE,
+	VertexShader,
+	PixelShader
 };
 struct ContentDataAndTag
 {
@@ -31,11 +33,11 @@ struct ContentDataAndTag
 struct FuncAndTag
 {
 	ContentTag tag;
-	std::function<int(const char*)> func;
-	FuncAndTag(ContentTag tag, std::function<int(const char*)> func)
+	std::function<int(const char*)> loadFunc;
+	FuncAndTag(ContentTag tag, std::function<int(const char*)> loadFunc)
 	{
 		this->tag = tag;
-		this->func = func;
+		this->loadFunc = loadFunc;
 	}
 	FuncAndTag(){}
 };
@@ -53,7 +55,7 @@ public:
 	bool onCompleted();
 private:
 	void ErrLog(int ContentHandle, const std::string& filename);
-	void deleteModel();//別スレッドだよ
+	void deleteContents();//別スレッドだよ
 	ContentMap getContentList(const ContentTag& tag) const;
 public:
 	ContentMap getModelList() const;//renderで使う
@@ -62,8 +64,9 @@ public:
 	ContentMap getSEList() const;//ただしおめーはダメだ
 	//セーブデータとかできたら増えるかも
 private:
-	ContentMapPlusTag m_ContentList;
-	ContentMapPlusTag m_oldContentList;
+	ContentMapPlusTag m_ContentsList;
+	ContentMapPlusTag m_oldContentsList;
 	std::unordered_map<std::string, FuncAndTag> m_LoadFunc;
+	std::unordered_map < ContentTag, std::function<int(int)> >m_deleteFunc;
 	bool isLoadCompleted;
 };
