@@ -110,7 +110,7 @@ void Player::onDraw(Renderer& render)const
 
 void Player::onMessage(const String& message, void* parameter)
 {
-
+	
 	if (message == "onCollide")
 	{
 		// Debug::Println("‚È‚É‚©‚É‚ ‚½‚Á‚Ä‚é‚æ");
