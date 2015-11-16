@@ -12,10 +12,10 @@ class StoryManager
 {
 public:
 	StoryManager();
-	void initialize();
-	bool getFlag(int flag);
-	void setFlag(int flag);
-	void reset(int flag);
+	static void initialize();
+	static bool get(int flag);
+	static void set(int flag);
+	static void reset(int flag);
 private:
 	int m_flag;
 };

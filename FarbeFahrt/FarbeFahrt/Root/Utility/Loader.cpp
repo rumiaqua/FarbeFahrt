@@ -4,6 +4,7 @@
 #include <iostream>
 #include <thread>
 Loader::Loader()
+	: m_onCompleted(true)
 {
 	m_ContentsList.clear();
 	//std::stringと、enumとconst char*を引数にとりintを返す関数の構造体
@@ -95,7 +96,7 @@ void Loader::deleteContents()
 }
 void Loader::load()
 {
-	isLoadCompleted = false;
+	m_onCompleted = false;
 	SetUseASyncLoadFlag(TRUE);
 	for (auto& data : m_ContentsList)
 	{
@@ -119,15 +120,14 @@ bool Loader::isLoad() const
 }
 bool Loader::onCompleted()
 {
-	// ロードが終了しているかどうか
-	bool current = isLoadCompleted;
-
-	// 非同期読込数が0かどうか
-	bool async = GetASyncLoadNum() == 0;
-
-	// ロードが終了している　もしくは　非同期読込数が0でない場合
-	return isLoadCompleted = !current && async;
+	if (!m_onCompleted)
+	{
+		m_onCompleted = true;
+		return true;
+	}
+	return false;
 }
+
 void Loader::loadContent(const std::string& name, const std::string& filename)
 {
 	bool use = true;

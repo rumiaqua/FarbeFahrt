@@ -4,7 +4,7 @@
 # include "Utility/Input.h"
 # include "Utility/Debug.h"
 
-# include "Stage/ScriptStageBuilder.h"
+# include "Stage/ScriptStageDataBuilder.h"
 
 # include "ISceneMediator.h"
 
@@ -75,16 +75,21 @@ void StageScene::update()
 		m_manager->changeScene(Scene::drawGameTitle);
 	}
 
-	if (world->getFlag(BitFlag::GOAL))
+	if (StoryManager::get(BitFlag::GOAL))
 	{
-		world->apply(world->getFlag(BitFlag::GIMMICK) ? m_nextStageData1 : m_nextStageData2, true);
-		world->initFlag();
+		world->apply(StoryManager::get(BitFlag::GIMMICK) ? m_nextStageData1 : m_nextStageData2, true);
+		StoryManager::initialize();
 	}
 }
 
 void StageScene::draw(Renderer& render)
 {
 	world->draw(render);
+}
+
+void StageScene::post()
+{
+
 }
 
 void StageScene::cleanUp()

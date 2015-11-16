@@ -10,17 +10,19 @@ public:
 
 	Editor();
 	
-	void loadContents(Loader& loader)override;
+	virtual void loadContents(Loader& loader)override;
 	
-	void initialize()override;
+	virtual void initialize()override;
 	
-	void update()override;
+	virtual void update()override;
 	
-	void draw(Renderer& render)override;
-	
-	void cleanUp() override;
+	virtual void draw(Renderer& render)override;
 
-	bool isSwallow() const override;
+	virtual void post() override;
+	
+	virtual void cleanUp() override;
+
+	virtual bool isSwallow() const override;
 
 private:
 
