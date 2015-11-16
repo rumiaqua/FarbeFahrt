@@ -15,6 +15,8 @@
 
 #include "Utility/Debug.h"
 
+# include "Actor/Goal/Goal.h"
+
 Stage::Stage(World* world)
 	: m_world(world)
 	, m_field()
@@ -27,6 +29,12 @@ void Stage::apply(const StageData& data, bool isClear)
 {
 	// フィールドの初期化
 	m_field = std::make_shared<Field>(*m_world, data.fieldName, data.fieldScale);
+
+	// アクターの初期化
+	if (isClear)
+	{
+		clearActor();
+	}
 
 	// プレイヤー位置の初期化
 	// もしプレイヤーが存在するならば座標だけ変更する
@@ -74,6 +82,9 @@ void Stage::apply(const StageData& data, bool isClear)
 				*m_world, object.resource, object.position));
 		}
 	}
+
+	m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
+		*m_world, "test", Vector3(100, -80, -30)));
 }
 
 void Stage::update()
@@ -111,4 +122,9 @@ Actor Stage::findActor(const std::string& name) const
 Actor Stage::findField() const
 {
 	return m_field;
+}
+
+void Stage::clearActor()
+{
+	m_actorManager.initialize();
 }

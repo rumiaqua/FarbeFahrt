@@ -104,7 +104,6 @@
     <ClInclude Include="Root\IWorld.h" />
     <ClInclude Include="Root\Scene\Editor.h" />
     <ClInclude Include="Root\Scene\GameMain.h" />
-    <ClInclude Include="Root\Experimental\GameMainFrame.h" />
     <ClInclude Include="Root\Scene\GameMenu.h" />
     <ClInclude Include="Root\Scene\GameTitle.h" />
     <ClInclude Include="Root\Scene\ISceneMediator.h" />
@@ -164,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Stage\Mori.txt" />
+    <Text Include="Resources\Stage\Mori2.txt" />
     <Text Include="Resources\Stage\Sougen.txt" />
     <Text Include="Resources\Stage\TestMap.txt" />
   </ItemGroup>
@@ -190,13 +190,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>

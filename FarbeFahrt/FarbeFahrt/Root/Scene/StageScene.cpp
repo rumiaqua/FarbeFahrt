@@ -12,6 +12,9 @@
 # include "Actor/SkyDome/Skydome.h"
 #include "Utility/StoryManager/StoryManager.h"
 
+# include "Utility/SingletonFinalizer.h"
+# include "Experimental\FlagManager.h"
+
 StageScene::StageScene()
 {
 
@@ -37,10 +40,20 @@ void StageScene::loadContents(Loader& loader)
 		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
 	}
 	// 適用
-	m_nextStageData = m_factory.Data();
+	m_nextStageData1 = m_factory.Data();
+
+	// 名前
+	m_factory.Load("Resources/Stage/Mori2.txt");
+	// ステージスクリプトから必要なリソースリストを取得して読み込む
+	for (auto&& resource : m_factory.Resources())
+	{
+		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+	}
+	// 適用
+	m_nextStageData2 = m_factory.Data();
 
 	// ワールドに適用
-	world->apply(m_currentStageData);
+	world->apply(m_currentStageData, false);
 }
 
 void StageScene::initialize()
@@ -70,7 +83,8 @@ void StageScene::update()
 
 	if (Input::IsClicked(KEY_INPUT_R))
 	{
-		world->actorSet("test");
+		world->apply(instance.Test(Flag::Gimmick) ? m_nextStageData1 : m_nextStageData2, true);
+		instance.Set(false);
 	}
 }
 

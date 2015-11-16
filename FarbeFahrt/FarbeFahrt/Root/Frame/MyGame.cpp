@@ -44,10 +44,15 @@ void MyGame::run()
 	if (m_sceneManager.hasChanged())
 	{
 		//前のシーンのデータ削除
-		loader.cleanUp();
+		// loader.cleanUp();
 		// スタック操作
 		m_sceneManager.resolve(loader);
+
+		// ロード
 		loader.load();
+
+		// 全モデルのアニメーションを初期化する
+		render.refreshAnimParam();
 	}
 
 	// ロード中なら何もしない

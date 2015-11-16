@@ -52,7 +52,8 @@ public:
 	void drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const;
 	void drawSkinModel(const std::string& name, const Vector3& position, const Matrix& rotation, int animNumber, float frame);//アニメーション付き
 	void setScale(const std::string& name, const Vector3& scale);
-
+	void refreshAnimParam(const std::string& name);
+	void refreshAnimParam();
 	//2D系関数
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
 public:

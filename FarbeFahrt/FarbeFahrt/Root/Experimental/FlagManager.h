@@ -6,6 +6,7 @@ enum Flag
 {
 	None,
 	NextStage,
+	Gimmick,
 	AllFlag,
 };
 
@@ -18,6 +19,8 @@ public:
 public:
 
 	static void Set(const Flag& flag, bool value);
+
+	static void Set(bool value);
 
 	static bool Test(const Flag& flag);
 

@@ -4,6 +4,9 @@
 
 #include "Utility/Debug.h"
 
+# include "Utility/SingletonFinalizer.h"
+# include "Experimental\FlagManager.h"
+
 namespace
 {
 	float flame = 0.0f;

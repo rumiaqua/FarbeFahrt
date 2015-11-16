@@ -9,6 +9,7 @@
 
 # include "Collision/ModelCollider.h"
 
+# include "Utility/SingletonFinalizer.h"
 # include "Experimental/FlagManager.h"
 #include "Utility/StoryManager/StoryManager.h"
 

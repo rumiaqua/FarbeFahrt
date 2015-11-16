@@ -423,6 +423,6 @@
   <ItemGroup>
     <Text Include="Resources\Stage\Sougen.txt" />
     <Text Include="Resources\Stage\Mori.txt" />
-    <Text Include="Resources\Stage\TestMap.txt" />
+    <Text Include="Resources\Stage\Mori2.txt" />
   </ItemGroup>
 </Project>

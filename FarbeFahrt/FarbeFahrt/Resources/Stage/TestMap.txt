@@ -5,9 +5,10 @@ r,sky,Model/skydome/昼の月.x
 # r,field,Model/森/森.mqo
 r,field,Model/terrain/平原地面.pmx
 r,test,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
+r,bridge,Model/平原/橋.pmx
 
 # プレイヤーの位置
-p,0,0,100
+p,-100,-85,-30
 
 # カメラの情報
 # 座標を指定する？
@@ -22,9 +23,7 @@ s,sky
 
 # その他配置されたオブジェクトの情報
 # クラス名,リソース名,座標
-o,Gimmick,test,0,-50,50,null,1/1.0f/300.0f
-o,SkinObject,test,0,100,100,Sphere,1/1.0f/300.0f
-
-# NextScene
-n,Stage/Mori.txt
-n,Stage/Mori2.txt
+o,Gimmick,test,0,-50,30,null,1/1.0f/300.0f
+# o,SkinObject,test,0,100,100,Sphere,1/1.0f/300.0f
+o,StaticObject,bridge,-50,-80,50,null
+o,Goal,test,100,-70,-30,null
