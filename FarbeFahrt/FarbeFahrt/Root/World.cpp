@@ -8,6 +8,7 @@ World::World()
 	// スカイドームの初期化
 	m_skydome = std::make_shared<Skydome>(*this, "sky");
 
+	// カメラの初期化
 	m_camera = std::make_shared<Camera>(*this);
 }
 void World::update()
@@ -73,21 +74,6 @@ StageData World::getData() const
 	StageData data;
 
 	return data;
-}
-
-void World::initFlag()
-{
-	m_storymanager.initialize();
-}
-
-bool World::getFlag(int flag)
-{
-	return m_storymanager.getFlag(flag);
-}
-
-void World::setFlag(int flag)
-{
-	m_storymanager.setFlag(flag);
 }
 
 void World::apply(const StageData& data, bool isClear)

@@ -2,11 +2,10 @@
 
 #include "BaseScene.h"
 
-#include "Scene/GameTitle.h"
-#include "Scene/GameMenu.h"
-#include "Scene/GameMain.h"
 # include "Scene/Editor.h"
 # include "Scene/StageScene.h"
+# include "Scene/GrayBox.h"
+
 #include "Utility/SingletonFinalizer.h"
 #include "Utility/HandleList.h"
 #include "Utility/SE.h"
@@ -19,16 +18,16 @@ MyGame::MyGame()
 	:m_breakflag(false),
 	initFlag(true)
 {
-	m_sceneManager.addScene<GameTitle>(Scene::drawGameTitle);
-	m_sceneManager.addScene<GameMenu>(Scene::drawGameMenu);
-	m_sceneManager.addScene<GameMain>(Scene::drawGameMain);
 	m_sceneManager.addScene<Editor>(Scene::Editor);
 	m_sceneManager.addScene<StageScene>(Scene::Stage);
+	m_sceneManager.addScene<GrayBox>(Scene::GrayBox);
 
 	// 最初のシーンはゲームメイン
-	m_sceneManager.pushScene(Scene::Stage);
-	/*m_sceneManager.pushScene(Scene::Stage);
-	m_sceneManager.pushScene(Scene::Editor);*/
+	m_sceneManager.pushScene(Scene::GrayBox);
+
+	// 必ず読むリソース
+	// とりあえずここにおいておく
+	loader.loadContent("sky", "Model/skydome/昼の月.x");
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
@@ -50,7 +49,7 @@ void MyGame::run()
 		loader.load();
 
 		// 全モデルのアニメーションを初期化する
-		render.refreshAnimParam();
+		// render.refreshAnimParam();
 	}
 
 	// ロード中なら何もしない
@@ -75,4 +74,7 @@ void MyGame::run()
 	ClearDrawScreen();
 	m_sceneManager.draw(render);
 	ScreenFlip();
+
+	// 事後処理
+	m_sceneManager.post();
 }

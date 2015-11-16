@@ -68,5 +68,6 @@ private:
 	ContentMapPlusTag m_oldContentsList;
 	std::unordered_map<std::string, FuncAndTag> m_LoadFunc;
 	std::unordered_map < ContentTag, std::function<int(int)> >m_deleteFunc;
-	bool isLoadCompleted;
+
+	bool m_onCompleted;
 };

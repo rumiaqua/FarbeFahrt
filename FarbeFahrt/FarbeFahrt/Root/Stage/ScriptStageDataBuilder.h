@@ -1,10 +1,10 @@
 # pragma once
 
-# include "IStageBuilder.h"
+# include "IStageDataBuilder.h"
 
 # include <fstream>
 
-class ScriptStageBuilder final : public IStageBuilder
+class ScriptStageDataBuilder final : public IStageDataBuilder
 {
 public:
 
@@ -57,7 +57,7 @@ public:
 			// スカイドーム名　未使用
 			if (split[0] == "s")
 			{
-				data.skyName = split[1];
+				// data.skyName = split[1];
 			}
 
 			// オブジェクト配置
@@ -79,8 +79,99 @@ public:
 					split[6],
 					split[7]);
 			}
+
+			// 次のステージ
+			if (split[0] == "n")
+			{
+				data.nextStage.first = split[1];
+				data.nextStage.second = split[2];
+			}
 		}
 		return data;
+	}
+
+	StageData& open(const String& filename, StageData& output) const override
+	{
+		output.resourceList.clear();
+		output.objectList.clear();
+
+		std::ifstream stream(filename.toNarrow());
+
+		std::string buffer;
+		while (std::getline(stream, buffer))
+		{
+			// コメント行
+			if (buffer[0] == '#')
+			{
+				continue;
+			}
+
+			std::vector<String> split = String::Split(buffer, ',');
+
+			if (split.empty())
+			{
+				continue;
+			}
+
+			// 使用リソース
+			if (split[0] == "r")
+			{
+				String& s1 = split[1];
+				String& s2 = split[2];
+				output.resourceList.insert(std::make_pair(s1, s2));
+			}
+
+			// プレイヤー座標
+			if (split[0] == "p")
+			{
+				output.playerPosition = Vector3(
+					String::ToValue<float>(split[1]),
+					String::ToValue<float>(split[2]),
+					String::ToValue<float>(split[3]));
+			}
+
+			// フィールド名
+			if (split[0] == "f")
+			{
+				output.fieldName = split[1];
+				output.fieldScale = String::ToValue<float>(split[2]);
+			}
+
+			// スカイドーム名　未使用
+			if (split[0] == "s")
+			{
+				// data.skyName = split[1];
+			}
+
+			// オブジェクト配置
+			if (split[0] == "o")
+			{
+				// パラメータがなければ空のパラメータをダミーとして挿入する
+				if (split.size() < 8)
+				{
+					split.emplace_back("");
+				}
+
+				output.objectList.emplace_back(
+					split[1],
+					split[2],
+					Vector3(
+						String::ToValue<float>(split[3]),
+						String::ToValue<float>(split[4]),
+						String::ToValue<float>(split[5])),
+					split[6],
+					split[7]);
+			}
+
+			// 次のステージ
+			if (split[0] == "n")
+			{
+				output.nextStage.first = split[1];
+				output.nextStage.second = split[2];
+			}
+		}
+
+		return output;
 	}
 
 	// 未完成ゆえ使用しないこと！

@@ -41,12 +41,11 @@
     <ClCompile Include="Root\Frame\MyGame.cpp" />
     <ClCompile Include="Root\Frame\WinMain.cpp" />
     <ClCompile Include="Root\Scene\Editor.cpp" />
-    <ClCompile Include="Root\Scene\GameMain.cpp" />
-    <ClCompile Include="Root\Scene\GameMenu.cpp" />
-    <ClCompile Include="Root\Scene\GameTitle.cpp" />
+    <ClCompile Include="Root\Scene\GrayBox.cpp" />
     <ClCompile Include="Root\Scene\SceneManager.cpp" />
     <ClCompile Include="Root\Scene\StageScene.cpp" />
     <ClCompile Include="Root\Stage\Stage.cpp" />
+    <ClCompile Include="Root\Stage\StageManager.cpp" />
     <ClCompile Include="Root\Utility\Debug.cpp" />
     <ClCompile Include="Root\Utility\FreeCamera.cpp" />
     <ClCompile Include="Root\Utility\HandleList.cpp" />
@@ -101,20 +100,19 @@
     <ClInclude Include="Root\Frame\MyGame.h" />
     <ClInclude Include="Root\IWorld.h" />
     <ClInclude Include="Root\Scene\Editor.h" />
-    <ClInclude Include="Root\Scene\GameMain.h" />
-    <ClInclude Include="Root\Scene\GameMenu.h" />
-    <ClInclude Include="Root\Scene\GameTitle.h" />
+    <ClInclude Include="Root\Scene\GrayBox.h" />
     <ClInclude Include="Root\Scene\ISceneMediator.h" />
     <ClInclude Include="Root\Scene\SceneManager.h" />
     <ClInclude Include="Root\Scene\StageScene.h" />
     <ClInclude Include="Root\Stage\IStageMediator.h" />
     <ClInclude Include="Root\Stage\Stage.h" />
+    <ClInclude Include="Root\Stage\StageManager.h" />
     <ClInclude Include="Root\Utility\Debug.h" />
     <ClInclude Include="Root\Utility\Def.h" />
     <ClInclude Include="Root\Utility\FreeCamera.h" />
     <ClInclude Include="Root\Utility\HandleList.h" />
     <ClInclude Include="Root\Utility\Input.h" />
-    <ClInclude Include="Root\Stage\IStageBuilder.h" />
+    <ClInclude Include="Root\Stage\IStageDataBuilder.h" />
     <ClInclude Include="Root\Utility\Loader.h" />
     <ClInclude Include="Root\Utility\Math.h" />
     <ClInclude Include="Root\Utility\Matrix.h" />
@@ -127,7 +125,7 @@
     <ClInclude Include="Root\Utility\Point4.h" />
     <ClInclude Include="Root\Utility\Pose.h" />
     <ClInclude Include="Root\Utility\Renderer.h" />
-    <ClInclude Include="Root\Stage\ScriptStageBuilder.h" />
+    <ClInclude Include="Root\Stage\ScriptStageDataBuilder.h" />
     <ClInclude Include="Root\Utility\SE.h" />
     <ClInclude Include="Root\Utility\SingletonFinalizer.h" />
     <ClInclude Include="Root\Stage\StageData.h" />
@@ -160,6 +158,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Stage\GrayBox\1-1.txt" />
+    <Text Include="Resources\Stage\GrayBox\2-1.txt" />
+    <Text Include="Resources\Stage\GrayBox\2-2.txt" />
     <Text Include="Resources\Stage\Mori.txt" />
     <Text Include="Resources\Stage\Mori2.txt" />
     <Text Include="Resources\Stage\Sougen.txt" />

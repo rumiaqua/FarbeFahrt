@@ -43,7 +43,7 @@ void Gimmick::onMessage(const String & message, void* parameter)
 {
 	if (message == "HitGimmick")
 	{
-		m_world->setFlag(BitFlag::GIMMICK);
+		StoryManager::set(BitFlag::GIMMICK);
 		kill();
 	}
 	BaseActor::onMessage(message, parameter);

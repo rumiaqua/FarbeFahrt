@@ -2,14 +2,18 @@
 
 # include "World.h"
 
-# include "IStageBuilder.h"
-# include "ScriptStageBuilder.h"
+# include "ScriptStageDataBuilder.h"
 
 void StageFactory::Load(const String& filename)
 {
-	ScriptStageBuilder builder;
+	ScriptStageDataBuilder builder;
 
-	m_data = builder.open(filename);
+	builder.open(filename, m_data);
+}
+
+void StageFactory::Load(const String& filename, StageData& output)
+{
+	ScriptStageDataBuilder().open(filename, output);
 }
 
 const std::unordered_map<String, String>& StageFactory::Resources() const

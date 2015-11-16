@@ -123,7 +123,7 @@ void Player::onMessage(const String& message, void* parameter)
 	}
 	if (message == "Goal")
 	{
-		m_world->setFlag(BitFlag::GOAL);
+		StoryManager::set(BitFlag::GOAL);
 	}
 
 	BaseActor::onMessage(message,parameter);

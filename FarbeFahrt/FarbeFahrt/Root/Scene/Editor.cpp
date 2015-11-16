@@ -86,6 +86,11 @@ void Editor::draw(Renderer& render)
 	m_camera.apply();
 }
 
+void Editor::post()
+{
+
+}
+
 void Editor::cleanUp()
 {
 

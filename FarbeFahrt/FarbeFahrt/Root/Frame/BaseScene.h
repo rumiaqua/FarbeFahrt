@@ -16,6 +16,7 @@ enum class Scene{
 	drawGameMain,
 	Editor,
 	Stage,
+	GrayBox,
 };
 class BaseScene
 {
@@ -27,6 +28,7 @@ public:
 	virtual void initialize() = 0;
 	virtual void update() = 0;
 	virtual void draw(Renderer& render) = 0;
+	virtual void post() = 0;
 	virtual void cleanUp() = 0;
 	virtual bool isSwallow() const = 0;
 	virtual ~BaseScene();
