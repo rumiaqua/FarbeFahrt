@@ -410,5 +410,6 @@
     <Text Include="Resources\Stage\GrayBox\1-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-2.txt" />
+    <Text Include="Resources\Stage\ScriptFormatSample.txt" />
   </ItemGroup>
 </Project>
