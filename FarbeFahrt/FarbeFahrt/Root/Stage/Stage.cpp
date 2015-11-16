@@ -80,9 +80,6 @@ void Stage::apply(const StageData& data, bool isClear)
 				*m_world, object.resource, object.position));
 		}
 	}
-
-	m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
-		*m_world, "test", Vector3(100, -80, -30)));
 }
 
 void Stage::update()

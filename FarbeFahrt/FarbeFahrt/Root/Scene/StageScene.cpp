@@ -78,7 +78,7 @@ void StageScene::update()
 	if (world->getFlag(BitFlag::GOAL))
 	{
 		world->apply(world->getFlag(BitFlag::GIMMICK) ? m_nextStageData1 : m_nextStageData2, true);
-		world->setFlag(BitFlag::NONE);
+		world->initFlag();
 	}
 }
 

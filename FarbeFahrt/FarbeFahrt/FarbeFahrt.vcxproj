@@ -109,7 +109,6 @@
     <ClInclude Include="Root\Scene\StageScene.h" />
     <ClInclude Include="Root\Stage\IStageMediator.h" />
     <ClInclude Include="Root\Stage\Stage.h" />
-    <ClInclude Include="Root\Stage\StageManager.h" />
     <ClInclude Include="Root\Utility\Debug.h" />
     <ClInclude Include="Root\Utility\Def.h" />
     <ClInclude Include="Root\Utility\FreeCamera.h" />
@@ -160,6 +159,7 @@
     <Image Include="Resources\Texture\NowLoading\ロード画面　改定 真ん中.png" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Resources\Stage\GrayBox\1-1.txt" />
     <Text Include="Resources\Stage\Mori.txt" />
     <Text Include="Resources\Stage\Mori2.txt" />
     <Text Include="Resources\Stage\Sougen.txt" />
