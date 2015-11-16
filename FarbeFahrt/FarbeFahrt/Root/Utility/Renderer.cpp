@@ -2,6 +2,7 @@
 #include <algorithm>
 Renderer::Renderer()
 {
+	MV1SetSemiTransDrawMode(DX_SEMITRANSDRAWMODE_NOT_SEMITRANS_ONLY);
 }
 
 Renderer::~Renderer()

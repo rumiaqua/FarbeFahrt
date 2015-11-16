@@ -23,13 +23,13 @@ Player::Player(IWorld& world, const Vector3& position)
 	m_moveSpeed = 1.5f;
 	m_state = PlayerState::standing;
 	m_moveFlag = false;
-	m_flame = 0;
+	m_frame = 0;
 }
 void Player::onUpdate()
 {
 	playerInput();
 	
-	++m_flame;
+	++m_frame;
 
 	BaseActor::onUpdate();
 }
@@ -103,7 +103,7 @@ void Player::playerInput()
 void Player::onDraw(Renderer& render)const
 {
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
-	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_flame);
+	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame);
 
 	BaseActor::onDraw(render);
 }

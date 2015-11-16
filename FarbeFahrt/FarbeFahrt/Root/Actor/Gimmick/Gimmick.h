@@ -8,15 +8,18 @@ class Gimmick :
 	public BaseActor
 {
 public:
-	Gimmick(IWorld& world, const String& modelName, const Vector3& position, int anmNo, float flameSpeed, float maxFlame);
-	void flameReset();
+	Gimmick(IWorld& world, const String& modelName, const Vector3& position, int anmNo, float frameSpeed, float maxframe);
+	void frameReset();
 private:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
 	virtual void onMessage(const String& message, void* parameter)override;
-
 private:
-	float m_flameSpeed;
-	float m_maxFlame;
+	//責任者　なりたん
+	void animation();//クリックされたらアニメーション
+private:
+	float m_frameSpeed;
+	float m_maxframe;
 	int m_anmNo;
+	bool isAnimate;
 };

@@ -67,7 +67,7 @@ void Stage::apply(const StageData& data, bool isClear)
 			float maxFrame = String::ToValue<float>(parameter[2]);
 			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
 				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame));
-			// int anmNo, float flameSpeed,float maxFlame
+			// int anmNo, float frameSpeed,float maxframe
 		}
 		if (object.name == "StaticObject")
 		{
