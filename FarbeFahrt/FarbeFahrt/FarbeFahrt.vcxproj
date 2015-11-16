@@ -104,7 +104,6 @@
     <ClInclude Include="Root\IWorld.h" />
     <ClInclude Include="Root\Scene\Editor.h" />
     <ClInclude Include="Root\Scene\GameMain.h" />
-    <ClInclude Include="Root\Experimental\GameMainFrame.h" />
     <ClInclude Include="Root\Scene\GameMenu.h" />
     <ClInclude Include="Root\Scene\GameTitle.h" />
     <ClInclude Include="Root\Scene\ISceneMediator.h" />
