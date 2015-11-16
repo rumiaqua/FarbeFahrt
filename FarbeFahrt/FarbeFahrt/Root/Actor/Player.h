@@ -25,4 +25,6 @@ private:
 	float m_moveSpeed;
 	bool m_moveFlag;
 	float m_frame;
+
+	bool m_canControl;
 };

@@ -31,6 +31,7 @@ void Goal::onMessage(const String & message, void* parameter)
 		//4.プレイヤーの位置をセット
 		//5.カメラを近づける
 		m_world->findCamera()->sendMessage("nextStage",nullptr);
+		player->sendMessage("StopControl", nullptr);
 	}
 	BaseActor::onMessage(message, parameter);
 }

@@ -19,6 +19,7 @@ Player::Player(IWorld& world, const Vector3& position)
 		// std::make_unique<Line>(Vector3(10, 0, 0), Vector3(-10, 0, 0))
 		// std::make_unique<ModelCollider>("Player")
 		)
+	, m_canControl(true)
 {
 	m_moveSpeed = 1.5f;
 	m_state = PlayerState::standing;
@@ -27,9 +28,12 @@ Player::Player(IWorld& world, const Vector3& position)
 }
 void Player::onUpdate()
 {
-	playerInput();
-	
-	++m_frame;
+	if (m_canControl)
+	{
+		playerInput();
+
+		++m_frame;
+	}
 
 	BaseActor::onUpdate();
 }
@@ -124,6 +128,10 @@ void Player::onMessage(const String& message, void* parameter)
 	if (message == "Goal")
 	{
 		StoryManager::set(BitFlag::GOAL);
+	}
+	if (message == "StopControl")
+	{
+		m_canControl = false;
 	}
 
 	BaseActor::onMessage(message,parameter);
