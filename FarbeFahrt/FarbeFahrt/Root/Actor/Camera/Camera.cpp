@@ -231,6 +231,11 @@ void Camera::onMessage(const String& message, void* parameter)
 		actorSet(*(std::string*)parameter);
 		m_cameraState.cameraMode = CameraMode::FadeIn;
 	}
-
+	//ê”îCé“Å@Ç»ÇËÇΩÇÒ
+	if (message == "nextStage")
+	{
+		m_t = 0;
+		m_cameraState.cameraMode = CameraMode::FadeOut;
+	}
 	BaseActor::onMessage(message, parameter);
 }
