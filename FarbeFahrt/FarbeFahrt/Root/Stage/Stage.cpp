@@ -11,6 +11,7 @@
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
 # include "Actor/PlayerSpawner.h"
+# include "Actor/Page.h"
 
 # include "World.h"
 
@@ -87,10 +88,13 @@ void Stage::apply(const StageData& data, bool isClear)
 			auto parameter = String::Split(object.parameter, '/');
 			String backgroundName = parameter[0];
 			String groundName = parameter[1];
-			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
+			bool isOpen = String::ToValue<int>(parameter[2]) == 1;
+			m_world->addActor(ActorTag::Object, std::make_shared<Page>(
+				*m_world, object.name, object.position, backgroundName, groundName, isOpen));
+			/*m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
 				*m_world, backgroundName, object.position, 0, 0.1f, 589.0f));
 			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
-				*m_world, groundName, object.position, 0, 0.1f, 589.0f));
+				*m_world, groundName, object.position, 0, 0.1f, 589.0f));*/
 		}
 	}
 }
