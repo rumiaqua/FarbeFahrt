@@ -26,7 +26,7 @@ public:
 	virtual Actor findField() const override;
 	StageData getData() const;
 	virtual void initFlag();
-	virtual int getFlag();
+	virtual bool getFlag(int flag);
 	virtual void setFlag(int flag);
 	void apply(const StageData& data);
 	virtual void actorSet(const std::string& actorName);

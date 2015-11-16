@@ -10,6 +10,7 @@
 
 # include "Actor/Camera/Camera.h"
 # include "Actor/SkyDome/Skydome.h"
+#include "Utility/StoryManager/StoryManager.h"
 
 StageScene::StageScene()
 {
@@ -19,7 +20,7 @@ StageScene::StageScene()
 void StageScene::loadContents(Loader& loader)
 {
 	// 名前
-	m_factory.Load("Resources/Stage/Sougen.txt");
+	m_factory.Load("Resources/Stage/TestMap.txt");
 	// ステージスクリプトから必要なリソースリストを取得して読み込む
 	for (auto&& resource : m_factory.Resources())
 	{
@@ -61,9 +62,10 @@ void StageScene::update()
 	{
 		m_manager->changeScene(Scene::drawGameTitle);
 	}
-	if (Input::IsClicked(KEY_INPUT_3))
+	if (world->getFlag(BitFlag::GOAL))
 	{
 		world->apply(m_nextStageData);
+		world->initFlag();
 	}
 
 	if (Input::IsClicked(KEY_INPUT_R))

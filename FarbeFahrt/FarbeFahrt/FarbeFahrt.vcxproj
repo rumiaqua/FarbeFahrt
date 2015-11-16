@@ -29,7 +29,7 @@
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\SkinObject.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
-    <ClCompile Include="Root\Actor\StaicObject.cpp" />
+    <ClCompile Include="Root\Actor\StaticObject.cpp" />
     <ClCompile Include="Root\Collision\Capsule.cpp" />
     <ClCompile Include="Root\Collision\Collision.cpp" />
     <ClCompile Include="Root\Collision\IShape.cpp" />
@@ -77,7 +77,7 @@
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Actor\Goal\Goal.h" />
     <ClInclude Include="Root\Actor\SkinObject.h" />
-    <ClInclude Include="Root\Actor\StaicObject.h" />
+    <ClInclude Include="Root\Actor\StaticObject.h" />
     <ClInclude Include="Root\Collision\ModelCollider.h" />
     <ClInclude Include="Root\Actor\Actor.h" />
     <ClInclude Include="Root\Actor\ActorManager\ActorManager.h" />
@@ -165,6 +165,7 @@
   <ItemGroup>
     <Text Include="Resources\Stage\Mori.txt" />
     <Text Include="Resources\Stage\Sougen.txt" />
+    <Text Include="Resources\Stage\TestMap.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}</ProjectGuid>

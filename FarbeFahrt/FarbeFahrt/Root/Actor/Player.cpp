@@ -10,6 +10,7 @@
 # include "Collision/ModelCollider.h"
 
 # include "Experimental/FlagManager.h"
+#include "Utility/StoryManager/StoryManager.h"
 
 Player::Player(IWorld& world, const Vector3& position)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI),
@@ -115,6 +116,7 @@ void Player::onDraw(Renderer& render)const
 
 void Player::onMessage(const String& message, void* parameter)
 {
+
 	if (message == "onCollide")
 	{
 		// Debug::Println("‚È‚É‚©‚É‚ ‚½‚Á‚Ä‚é‚æ");
@@ -127,7 +129,7 @@ void Player::onMessage(const String& message, void* parameter)
 	}
 	if (message == "Goal")
 	{
-		m_world->setFlag(1);
+		m_world->setFlag(BitFlag::GOAL);
 	}
 
 	BaseActor::onMessage(message,parameter);

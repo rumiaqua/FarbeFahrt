@@ -8,6 +8,8 @@
 # include "Actor/Player.h"
 # include "Actor/Gimmick/Gimmick.h"
 # include "Actor/SkinObject.h"
+# include "Actor/StaticObject.h"
+# include "Actor/Goal/Goal.h"
 
 # include "World.h"
 
@@ -61,6 +63,16 @@ void Stage::apply(const StageData& data, bool isClear)
 				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame));
 			// int anmNo, float flameSpeed,float maxFlame
 		}
+		if (object.name == "StaticObject")
+		{
+			m_world->addActor(ActorTag::Object, std::make_shared<StaticObject>(
+				*m_world, object.resource, object.position));
+		}
+		if (object.name == "Goal")
+		{
+			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
+				*m_world, object.resource, object.position));
+		}
 	}
 }
 
@@ -73,7 +85,7 @@ void Stage::update()
 	// フィールドとアクターの衝突処理
 	m_actorManager.collideField(m_field.get());
 
-	Debug::Println("%d",m_world->getFlag());
+//	Debug::Println("%d",m_world->getFlag());
 }
 
 void Stage::draw(Renderer& renderer) const

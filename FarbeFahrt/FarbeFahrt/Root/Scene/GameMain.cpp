@@ -4,7 +4,7 @@
 #include "Actor/Camera/Camera.h"
 #include "Actor/SkyDome/Skydome.h"
 #include "Actor/Field/Field.h"
-#include "Actor/StaicObject.h"
+#include "Actor/StaticObject.h"
 #include "Actor/SkinObject.h"
 #include "Actor/Gimmick/Gimmick.h"
 #include "Actor/Goal/Goal.h"
@@ -59,7 +59,7 @@ void GameMain::update()
 		m_manager->pushScene(Scene::drawGameTitle, 60.0f);
 	}
 
-	Debug::Println("%d",world->getFlag());
+//	Debug::Println("%d",world->getFlag());
 }
 void GameMain::draw(Renderer& render)
 {

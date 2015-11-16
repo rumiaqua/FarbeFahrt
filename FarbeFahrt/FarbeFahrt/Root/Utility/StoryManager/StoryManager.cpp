@@ -7,15 +7,20 @@ StoryManager::StoryManager()
 
 void StoryManager::initialize()
 {
-	m_flag = 0;
+	m_flag = NONE;
 }
 
-int StoryManager::getFlag()
+bool StoryManager::getFlag(int flag)
 {
-	return m_flag;
+	return (m_flag & flag) == flag;
 }
 
 void StoryManager::setFlag(int flag)
 {
-	m_flag = flag;
+	m_flag |= flag;
+}
+
+void StoryManager::reset(int flag)
+{
+	m_flag &= !flag;
 }
