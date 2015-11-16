@@ -29,6 +29,8 @@ void GameTitle::update(){
 }
 void GameTitle::draw(Renderer& render)
 {
+	NoUse(render);
+
 	Debug::Println("‚½‚¢‚Æ‚é‚ª‚ß‚ñ‚¾‚æ");
 }
 void GameTitle::cleanUp(){

@@ -1,4 +1,5 @@
 #include "Player.h"
+
 #include "Utility/Input.h"
 #include "Utility/SE.h"
 #include "Utility/Math.h"
@@ -6,12 +7,9 @@
 #include "Utility/Vector3.h"
 #include "Utility/Debug.h"
 #include "Utility/MemoryCast.h"
+#include "Utility/StoryManager/StoryManager.h"
 
 # include "Collision/ModelCollider.h"
-
-# include "Utility/SingletonFinalizer.h"
-# include "Experimental/FlagManager.h"
-#include "Utility/StoryManager/StoryManager.h"
 
 Player::Player(IWorld& world, const Vector3& position)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI),
@@ -77,7 +75,7 @@ void Player::playerInput()
 
 		Vector3 direction = Vector3::Normalize(moveVec);
 		float angle = Vector3::Angle(Vector3::Forward(), direction);
-		float sign = Math::Sign(Vector3::Cross(Vector3::Forward(), direction).y);
+		float sign = (float)Math::Sign(Vector3::Cross(Vector3::Forward(), direction).y);
 
 		m_pose.rotation = Matrix::Rotation(Vector3::Up(), angle * sign + Math::PI);
 
@@ -100,11 +98,6 @@ void Player::playerInput()
 		m_pose.position.x = 0;
 		m_pose.position.y = 100;
 		m_pose.position.z = 0;
-	}
-
-	if (Input::IsClicked(KEY_INPUT_2))
-	{
-		FlagManager::Set(Flag::NextStage, true);
 	}
 }
 void Player::onDraw(Renderer& render)const

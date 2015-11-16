@@ -46,11 +46,11 @@ void ActorManager::update()
 	gimmicks.eachChildren(
 		[&] (BaseActor& actor) { colliders.collide(&actor); });
 
-	if (auto& player = findActor("Player"))
+	if (auto&& player = findActor("Player"))
 	{
 		goal.collide(&*player);
+		objects.collide(&*player);
 	}
-	objects.collide(&*player);
 
 	// íœˆ—
 	m_root.removeChildren();

@@ -99,7 +99,7 @@ public:
 	/// <summary>任意軸で回転する</summary>
 	/// <param name="axis">回転軸</param>
 	/// <param name="angle">回転量</param>
-	Vector3& rotate(const Vector3& axis, float angle);
+	Vector3& rotate(const Vector3& axis, double angle);
 
 	/// <summary>ベクトルに射影する</summary>
 	/// <param name="v">対象のベクトル</param>
@@ -138,7 +138,7 @@ public:
 	/// <param name="point">任意点</param>
 	/// <param name="axis">回転軸</param>
 	/// <param name="angle">回転量</param>
-	static Vector3 Rotate(const Vector3& point, const Vector3& axis, float angle);
+	static Vector3 Rotate(const Vector3& point, const Vector3& axis, double angle);
 
 	/// <summary>投影したベクトルを返す</summary>
 	/// <param name="v">ベクトル</param>

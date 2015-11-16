@@ -57,8 +57,6 @@ void Camera::cameraInput()
 	{
 		Vector3 begin = Mouse::ScreenPointToWorld(0.0f);
 		Vector3 end = Mouse::ScreenPointToWorld(1.0f);
-		float nearc = GetCameraNear();
-		float farc = GetCameraFar();
 		m_world->addActor(ActorTag::Collider,std::make_shared<Ray>(*m_world, begin, end));
 
 		Debug::Println("{%f,%f,%f}", begin.x,begin.y,begin.z);

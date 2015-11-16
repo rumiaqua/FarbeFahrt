@@ -62,7 +62,7 @@ std::string GetExtension(const std::string& filename)
 		ext = filename.substr(pos1 + 1, filename.size() - pos1);
 		auto itr = ext.begin();
 		while (itr != ext.end()){
-			*itr = tolower(*itr);
+			*itr = (char)tolower(*itr);
 			itr++;
 		}
 		itr = ext.end() - 1;

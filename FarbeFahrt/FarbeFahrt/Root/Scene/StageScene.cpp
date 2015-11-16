@@ -13,7 +13,6 @@
 #include "Utility/StoryManager/StoryManager.h"
 
 # include "Utility/SingletonFinalizer.h"
-# include "Experimental\FlagManager.h"
 
 StageScene::StageScene()
 {
@@ -75,16 +74,11 @@ void StageScene::update()
 	{
 		m_manager->changeScene(Scene::drawGameTitle);
 	}
+
 	if (world->getFlag(BitFlag::GOAL))
 	{
-		world->apply(m_nextStageData);
-		world->initFlag();
-	}
-
-	if (Input::IsClicked(KEY_INPUT_R))
-	{
-		world->apply(instance.Test(Flag::Gimmick) ? m_nextStageData1 : m_nextStageData2, true);
-		instance.Set(false);
+		world->apply(world->getFlag(BitFlag::GIMMICK) ? m_nextStageData1 : m_nextStageData2, true);
+		world->setFlag(BitFlag::NONE);
 	}
 }
 

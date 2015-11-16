@@ -63,7 +63,6 @@ void SE::ChangeFrequency(const std::string& name, int frequency)
 //SE‚Ì‰Šú‰»(ƒƒ‚ƒŠ“à‚©‚ç‘Síœ)
 void SE::Init()
 {
-	SE& se = instance();
 	InitSoundMem();
 }
 

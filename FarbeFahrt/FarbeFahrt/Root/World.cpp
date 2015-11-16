@@ -52,6 +52,7 @@ void World::addSkydome(const Actor& sky)
 }
 void World::addField(const Actor& field)
 {
+	NoUse(field);
 	// m_field = field;
 }
 Actor World::findActor(const std::string& name) const

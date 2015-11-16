@@ -1,6 +1,10 @@
 #pragma once
 #include <string>
 #include <unordered_map>
+
+// •Ï”‚ğg—p‚µ‚È‚¢‚±‚Æ‚ğ–¾¦‚·‚é
+# define NoUse(Variable) ((void)Variable)
+
 //‰ğ‘œ“x‚ğæ“¾‚·‚é
 #define nScreenSizeX GetSystemMetrics(SM_CXSCREEN)
 #define nScreenSizeY GetSystemMetrics(SM_CYSCREEN)

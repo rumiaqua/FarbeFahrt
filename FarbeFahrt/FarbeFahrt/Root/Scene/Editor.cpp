@@ -5,6 +5,7 @@
 # include "Utility/MemoryCast.h"
 # include "Utility/Input.h"
 # include "Utility/Math.h"
+# include "Utility/Def.h"
 
 # include "ISceneMediator.h"
 
@@ -18,7 +19,7 @@ Editor::Editor()
 
 void Editor::loadContents(Loader& loader)
 {
-
+	NoUse(loader);
 }
 
 void Editor::initialize()
@@ -68,6 +69,8 @@ void Editor::update()
 
 void Editor::draw(Renderer& render)
 {
+	NoUse(render);
+
 	Debug::Println("Editor Mode.");
 	Debug::Println("Translate");
 	Debug::Println("A:Left D:Right E:Up X:Down W:Forward S:Backward");
@@ -136,6 +139,8 @@ void Editor::move(float speed, const Vector3& right, const Vector3& up, const Ve
 
 void Editor::rotate(double angle, const Vector3& X, const Vector3& Y, const Vector3& Z)
 {
+	NoUse(Z);
+
 	if (Input::IsPressed(KEY_INPUT_UP))
 	{
 		m_camera.rotate(X, angle);

@@ -7,11 +7,9 @@
 #include "Scene/GameMain.h"
 # include "Scene/Editor.h"
 # include "Scene/StageScene.h"
-#include "Utility\SingletonFinalizer.h"
-#include "Utility\HandleList.h"
+#include "Utility/SingletonFinalizer.h"
+#include "Utility/HandleList.h"
 #include "Utility/SE.h"
-
-# include "Experimental/FlagManager.h"
 
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ

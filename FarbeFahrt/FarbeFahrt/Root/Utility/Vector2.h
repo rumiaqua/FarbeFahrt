@@ -85,7 +85,7 @@ public:
 	/// <summary>任意軸で回転する</summary>
 	/// <param name="origin">中心点</param>
 	/// <param name="angle">回転量</param>
-	Vector2& rotate(const Vector2& origin, float angle);
+	Vector2& rotate(const Vector2& origin, double angle);
 
 	/// <summary>ベクトルに射影する</summary>
 	/// <param name="v">対象のベクトル</param>
@@ -124,7 +124,7 @@ public:
 	/// <param name="point">任意点</param>
 	/// <param name="origin">中心点</param>
 	/// <param name="angle">回転量</param>
-	static Vector2 Rotate(const Vector2& point, const Vector2& origin, float angle);
+	static Vector2 Rotate(const Vector2& point, const Vector2& origin, double angle);
 
 	/// <summary>投影したベクトルを返す</summary>
 	/// <param name="v">ベクトル</param>

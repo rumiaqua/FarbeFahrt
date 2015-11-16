@@ -37,7 +37,6 @@
     <ClCompile Include="Root\Collision\ModelCollider.cpp" />
     <ClCompile Include="Root\Collision\Sphere.cpp" />
     <ClCompile Include="Root\Collision\Triangle.cpp" />
-    <ClCompile Include="Root\Experimental\FlagManager.cpp" />
     <ClCompile Include="Root\Frame\BaseScene.cpp" />
     <ClCompile Include="Root\Frame\MyGame.cpp" />
     <ClCompile Include="Root\Frame\WinMain.cpp" />
@@ -98,7 +97,6 @@
     <ClInclude Include="Root\Collision\Line.h" />
     <ClInclude Include="Root\Collision\Sphere.h" />
     <ClInclude Include="Root\Collision\Triangle.h" />
-    <ClInclude Include="Root\Experimental\FlagManager.h" />
     <ClInclude Include="Root\Frame\BaseScene.h" />
     <ClInclude Include="Root\Frame\MyGame.h" />
     <ClInclude Include="Root\IWorld.h" />
@@ -234,7 +232,7 @@
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
@@ -266,7 +264,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>

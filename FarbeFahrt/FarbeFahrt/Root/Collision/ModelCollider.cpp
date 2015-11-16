@@ -41,11 +41,12 @@ bool ModelCollider::intersects(const Triangle& shape) const
 bool ModelCollider::intersects(const ModelCollider& shape) const
 {
 	// ƒ‚ƒfƒ‹‚Æƒ‚ƒfƒ‹‚ÌÕ“Ë”»’è‚Í‚µ‚È‚¢•ûŒü«‚Å
+	NoUse(shape);
 	return false;
 }
 
 void ModelCollider::draw() const
 {
 	MV1DrawModelDebug(Singleton<HandleList>::Instance().getHandle(name),
-		-1, FALSE, 0.0f, TRUE, FALSE);
+		(unsigned int)-1, FALSE, 0.0f, TRUE, FALSE);
 }

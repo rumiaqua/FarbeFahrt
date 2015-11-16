@@ -82,11 +82,7 @@ public:
 	/// <summary>‰ñ“]‚·‚é</summary>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
-	Matrix& rotate(const Vector3& axis, float angle);
-
-	/// <summary>‰ñ“]‚·‚é</summary>
-	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	Matrix& rotate(const Vector4& rotation);
+	Matrix& rotate(const Vector3& axis, double angle);
 
 	/// <summary>Šg‘åk¬‚·‚é</summary>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
@@ -97,13 +93,7 @@ public:
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	Matrix& transform(const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
-
-	/// <summary>ƒAƒtƒBƒ“•ÏŠ·‚·‚é</summary>
-	/// <param name="translation">•½sˆÚ“®—Ê</param>
-	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	/// <param name="scaling">Šg‘åk¬—¦</param>
-	Matrix& transform(const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
+	Matrix& transform(const Vector3& translation, const Vector3& axis, double angle, const Vector3& scaling);
 
 	/// <summary>“]’us—ñ‚É‚·‚é</summary>
 	Matrix& transpose();
@@ -120,11 +110,7 @@ public:
 	/// <summary>‰ñ“]‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
-	Matrix rotated(const Vector3& axis, float angle) const;
-
-	/// <summary>‰ñ“]‚µ‚½s—ñ‚ğ•Ô‚·</summary>
-	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	Matrix rotated(const Vector4& rotation) const;
+	Matrix rotated(const Vector3& axis, double angle) const;
 
 	/// <summary>Šg‘åk¬‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
@@ -135,13 +121,7 @@ public:
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	Matrix transformed(const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling) const;
-
-	/// <summary>ƒAƒtƒBƒ“•ÏŠ·‚µ‚½s—ñ‚ğ•Ô‚·</summary>
-	/// <param name="translation">•½sˆÚ“®—Ê</param>
-	/// <param name="rotation">²‚Æ‰ñ“]—Ê</param>
-	/// <param name="scaling">Šg‘åk¬—¦</param>
-	Matrix transformed(const Vector3& translation, const Vector4& rotation, const Vector3& scaling) const;
+	Matrix transformed(const Vector3& translation, const Vector3& axis, double angle, const Vector3& scaling) const;
 
 	/// <summary>“]’us—ñ‚ğ•Ô‚·</summary>
 	Matrix transposed() const;
@@ -186,11 +166,7 @@ public:
 	/// <summary>‰ñ“]s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
-	static Matrix Rotation(const Vector3& axis, float angle);
-
-	/// <summary>‰ñ“]s—ñ‚ğ•Ô‚·</summary>
-	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	static Matrix Rotation(const Vector4& rotation);
+	static Matrix Rotation(const Vector3& axis, double angle);
 
 	/// <summary>Šg‘åk¬s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
@@ -201,13 +177,7 @@ public:
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix Transformation(const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
-
-	/// <summary>ƒAƒtƒBƒ“•ÏŠ·s—ñ‚ğ•Ô‚·</summary>
-	/// <param name="translation">•½sˆÚ“®—Ê</param>
-	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix Transformation(const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
+	static Matrix Transformation(const Vector3& translation, const Vector3& axis, double angle, const Vector3& scaling);
 
 public:
 
@@ -218,11 +188,7 @@ public:
 	/// <summary>‰ñ“]‚·‚é</summary>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
-	static Matrix& Rotate(Matrix& matrix, const Vector3& axis, float angle);
-
-	/// <summary>‰ñ“]‚·‚é</summary>
-	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	static Matrix& Rotate(Matrix& matrix, const Vector4& rotation);
+	static Matrix& Rotate(Matrix& matrix, const Vector3& axis, double angle);
 
 	/// <summary>Šg‘åk¬‚·‚é</summary>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
@@ -233,13 +199,7 @@ public:
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix& Transform(Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
-
-	/// <summary>ƒAƒtƒBƒ“•ÏŠ·‚·‚é</summary>
-	/// <param name="translation">•½sˆÚ“®—Ê</param>
-	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix& Transform(Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
+	static Matrix& Transform(Matrix& matrix, const Vector3& translation, const Vector3& axis, double angle, const Vector3& scaling);
 
 	/// <summary>“]’us—ñ‚É‚·‚é</summary>
 	static Matrix& Transpose(Matrix& matrix);
@@ -256,11 +216,7 @@ public:
 	/// <summary>‰ñ“]‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
-	static Matrix Rotated(const Matrix& matrix, const Vector3& axis, float angle);
-
-	/// <summary>‰ñ“]‚µ‚½s—ñ‚ğ•Ô‚·</summary>
-	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	static Matrix Rotated(const Matrix& matrix, const Vector4& rotation);
+	static Matrix Rotated(const Matrix& matrix, const Vector3& axis, double angle);
 
 	/// <summary>Šg‘åk¬‚µ‚½s—ñ‚ğ•Ô‚·</summary>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
@@ -271,13 +227,7 @@ public:
 	/// <param name="axis">‰ñ“]²</param>
 	/// <param name="angle">‰ñ“]—Ê</param>
 	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix Transformed(const Matrix& matrix, const Vector3& translation, const Vector3& axis, float angle, const Vector3& scaling);
-
-	/// <summary>ƒAƒtƒBƒ“•ÏŠ·‚µ‚½s—ñ‚ğ•Ô‚·</summary>
-	/// <param name="translation">•½sˆÚ“®—Ê</param>
-	/// <param name="rotation">‰ñ“]²‚Æ‰ñ“]—Ê</param>
-	/// <param name="scaling">Šg‘åk¬—¦</param>
-	static Matrix Transformed(const Matrix& matrix, const Vector3& translation, const Vector4& rotation, const Vector3& scaling);
+	static Matrix Transformed(const Matrix& matrix, const Vector3& translation, const Vector3& axis, double angle, const Vector3& scaling);
 
 	/// <summary>“]’us—ñ‚ğ•Ô‚·</summary>
 	static Matrix Transposed(const Matrix& matrix);
@@ -303,7 +253,7 @@ public:
 
 	static Matrix LookAt(const Vector3& position, const Vector3& target, const Vector3& up);
 
-	static Matrix Perspective(float fov, float aspect, float nearclip, float farclip);
+	static Matrix Perspective(double fov, float aspect, float nearclip, float farclip);
 
 	static Matrix Viewport(int width, int height);
 

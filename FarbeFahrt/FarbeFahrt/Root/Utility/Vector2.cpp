@@ -121,7 +121,7 @@ Vector2& Vector2::normalize()
 	return *this;
 }
 
-Vector2& Vector2::rotate(const Vector2& origin, float angle)
+Vector2& Vector2::rotate(const Vector2& origin, double angle)
 {
 	*this = Rotate(*this, origin, angle);
 	return *this;
@@ -174,7 +174,7 @@ Vector2 Vector2::Nornalize(const Vector2& v)
 	return v / static_cast<float>(Math::Sqrt(lengthSq));
 }
 
-Vector2 Vector2::Rotate(const Vector2& point, const Vector2& origin, float angle)
+Vector2 Vector2::Rotate(const Vector2& point, const Vector2& origin, double angle)
 {
 	return origin + (point - origin) * Vector2(
 			static_cast<float>(Math::Cos(angle)),

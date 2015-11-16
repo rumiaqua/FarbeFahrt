@@ -157,7 +157,7 @@ Vector3& Vector3::normalize()
 	return *this;
 }
 
-Vector3& Vector3::rotate(const Vector3& axis, float angle)
+Vector3& Vector3::rotate(const Vector3& axis, double angle)
 {
 	*this = Rotate(*this, axis, angle);
 	return *this;
@@ -213,7 +213,7 @@ Vector3 Vector3::Normalize(const Vector3& v)
 	return v / static_cast<float>(Math::Sqrt(lengthSq));
 }
 
-Vector3 Vector3::Rotate(const Vector3& point, const Vector3& axis, float angle)
+Vector3 Vector3::Rotate(const Vector3& point, const Vector3& axis, double angle)
 {
 	Vector3 v = Dot(point, axis) * Normalize(axis);
 	return
