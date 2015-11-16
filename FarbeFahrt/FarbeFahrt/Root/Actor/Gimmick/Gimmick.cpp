@@ -39,7 +39,6 @@ void Gimmick::animation()
 		else
 		{
 			isAnimate = false;
-			sendMessage("fuckMe", nullptr);
 		}
 	}
 }
@@ -63,11 +62,19 @@ void Gimmick::onMessage(const String & message, void* parameter)
 	if (message == "HitGimmick")
 	{
 		StoryManager::set(BitFlag::GIMMICK);
+		
+	}
+	if (message == "startAnimation")
+	{
 		isAnimate = true;
 	}
-	if (message == "fuckMe")
+	if (message == "stopAnimation")
 	{
-		//kill();
+		isAnimate = false;
+	}
+	if (message == "resetAnimation")
+	{
+		frame = 0.0f;
 	}
 	BaseActor::onMessage(message, parameter);
 }

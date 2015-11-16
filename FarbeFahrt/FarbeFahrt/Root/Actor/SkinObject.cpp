@@ -53,5 +53,17 @@ void SkinObject::onMessage(const String & message, void* parameter)
 {
 	if (message == "Rotation")
 		Matrix::Rotate(getRotation(), Vector3::Up(), *(const float*)parameter);
+	if (message == "startAnimation")
+	{
+		isAnimate = true;
+	}
+	if (message == "stopAnimation")
+	{
+		isAnimate = false;
+	}
+	if (message == "resetAnimation")
+	{
+		frame = 0.0f;
+	}
 	BaseActor::onMessage(message, parameter);
 }
