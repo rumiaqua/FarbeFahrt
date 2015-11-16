@@ -32,12 +32,13 @@ BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
 
 	m_cameraState.chaseFlag = ChaseFlag::Void;
 	m_cameraState.cameraMode = CameraMode::Init;
-
-	m_actor = nullptr;
 }
 void Camera::onUpdate()
 {
-	if (m_actor == nullptr)actorSet("Player");
+	if (m_actor.expired())
+	{
+		actorSet("Player");
+	}
 
 	cameraInput();
 	cameraSet();
@@ -66,10 +67,11 @@ void Camera::cameraInput()
 
 void Camera::chaseCamera()
 {
+	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
-	m_cameraMatrix.targetPos = m_actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+	m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 
 	//移行できるカメラ
 	toBookCamera();
@@ -78,11 +80,12 @@ void Camera::chaseCamera()
 
 void Camera::fadeInCamera()
 {
+	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
 	m_t = 0;
-	m_cameraMatrix.targetPos = m_actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+	m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 	m_cameraState.chaseFlag = ChaseFlag::Move;
 	m_cameraState.cameraMode = CameraMode::Default;
 }
@@ -98,25 +101,21 @@ void Camera::fadeOutCamera()
 
 void Camera::fadeInFixedCamera()
 {
-	actorSet(m_actor->getName().toNarrow());
-	if (m_actor == nullptr)return;
-
+	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
 	m_cameraMatrix.targetPos = getPosition();
 	m_t = 0;
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 	m_cameraState.chaseFlag = ChaseFlag::Stay;
 	m_cameraState.cameraMode = CameraMode::Default;
 }
 
 void Camera::lockCamera()
 {
-	actorSet(m_actor->getName().toNarrow());
-	if (m_actor == nullptr)return;
-
+	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 
 	//移行できるカメラ
 	toBookCamera();
@@ -125,10 +124,11 @@ void Camera::lockCamera()
 
 void Camera::defaultCamera()
 {
+	Actor actor = m_actor.lock();
 	if (m_cameraState.chaseFlag == ChaseFlag::Move)
 	{
-		m_cameraMatrix.targetPos = m_actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
-		m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+		m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+		m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 		if (m_t >= 1)
 		{
 			m_cameraState.chaseFlag = ChaseFlag::Void;
@@ -138,7 +138,7 @@ void Camera::defaultCamera()
 	else if (m_cameraState.chaseFlag == ChaseFlag::Stay)
 	{
 		m_cameraMatrix.targetPos = getPosition();
-		m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+		m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 		if (m_t >= 1)
 		{
 			m_cameraState.chaseFlag = ChaseFlag::Void;
@@ -158,8 +158,9 @@ void Camera::defaultCamera()
 
 void Camera::initCamera()
 {
-	m_cameraMatrix.targetPos = m_actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
-	m_cameraMatrix.targetRot = m_actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
+	Actor actor = m_actor.lock();
+	m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
+	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 	getPosition() = m_cameraMatrix.targetPos;
 
 	SetCameraPositionAndTarget_UpVecY(getPosition(), m_cameraMatrix.targetRot);

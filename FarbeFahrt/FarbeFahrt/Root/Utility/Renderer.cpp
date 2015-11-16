@@ -41,12 +41,19 @@ void Renderer::drawNormalModel(const std::string& name, const Vector3& position,
 }
 void Renderer::refreshAnimParam(const std::string& name)
 {
-	auto& modeldata = m_modelData[name];
+	auto& modeldata = m_modelData.at(name);
 	modeldata.playAnim1 = -1;
 	modeldata.playAnim2 = -1;
 	modeldata.animPlayCount1 = 0.0f;
 	modeldata.animPlayCount2 = 0.0f;
 
+}
+void Renderer::refreshAnimParam()
+{
+	for (auto&& model : m_modelData)
+	{
+		refreshAnimParam(model.first);
+	}
 }
 void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 	const Matrix& rotation, int animNumber, float frame)
