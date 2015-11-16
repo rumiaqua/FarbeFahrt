@@ -62,7 +62,7 @@ void Gimmick::onMessage(const String & message, void* parameter)
 	if (message == "HitGimmick")
 	{
 		StoryManager::set(BitFlag::GIMMICK);
-		
+		isAnimate = true;
 	}
 	if (message == "startAnimation")
 	{
