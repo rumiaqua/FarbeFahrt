@@ -20,5 +20,6 @@ private:
 	StageFactory m_factory;
 
 	StageData m_currentStageData;
-	StageData m_nextStageData;
+	StageData m_nextStageData1;
+	StageData m_nextStageData2;
 };

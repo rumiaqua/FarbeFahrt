@@ -177,7 +177,6 @@ ContentMap Loader::getSEList() const
 }
 void Loader::cleanUp()
 {
-	return;
 	m_oldContentsList = m_ContentsList;
 	for (auto &data : m_ContentsList)
 	{

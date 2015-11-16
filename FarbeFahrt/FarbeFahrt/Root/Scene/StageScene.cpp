@@ -11,6 +11,9 @@
 # include "Actor/Camera/Camera.h"
 # include "Actor/SkyDome/Skydome.h"
 
+# include "Utility/SingletonFinalizer.h"
+# include "Experimental\FlagManager.h"
+
 StageScene::StageScene()
 {
 
@@ -36,10 +39,20 @@ void StageScene::loadContents(Loader& loader)
 		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
 	}
 	// 適用
-	m_nextStageData = m_factory.Data();
+	m_nextStageData1 = m_factory.Data();
+
+	// 名前
+	m_factory.Load("Resources/Stage/Mori2.txt");
+	// ステージスクリプトから必要なリソースリストを取得して読み込む
+	for (auto&& resource : m_factory.Resources())
+	{
+		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+	}
+	// 適用
+	m_nextStageData2 = m_factory.Data();
 
 	// ワールドに適用
-	world->apply(m_currentStageData);
+	world->apply(m_currentStageData, false);
 }
 
 void StageScene::initialize()
@@ -57,18 +70,11 @@ void StageScene::update()
 	{
 		m_manager->pushScene(Scene::Editor);
 	}
-	//if (Input::IsClicked(KEY_INPUT_SPACE))
-	//{
-	//	m_manager->changeScene(Scene::drawGameTitle);
-	//}
-	if (Input::IsClicked(KEY_INPUT_3))
+	auto& instance = Singleton<FlagManager>::Instance();
+	if (instance.Test(Flag::NextStage))
 	{
-		world->apply(m_nextStageData);
-	}
-
-	if (Input::IsClicked(KEY_INPUT_R))
-	{
-		world->actorSet("test");
+		world->apply(instance.Test(Flag::Gimmick) ? m_nextStageData1 : m_nextStageData2, true);
+		instance.Set(false);
 	}
 }
 

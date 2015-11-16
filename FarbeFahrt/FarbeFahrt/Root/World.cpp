@@ -40,7 +40,6 @@ void World::draw(Renderer& render)const
 }
 void World::addActor(ActorTag tag, const Actor& actor)
 {
-	// m_actors.addActor(tag, actor);
 	m_stage.addActor(tag, actor);
 }
 void World::addCamera(const Actor& camera)
@@ -90,9 +89,9 @@ void World::setFlag(int flag)
 	m_storymanager.setFlag(flag);
 }
 
-void World::apply(const StageData& data)
+void World::apply(const StageData& data, bool isClear)
 {
-	m_stage.apply(data);
+	m_stage.apply(data, isClear);
 }
 
 void World::actorSet(const std::string& actorName)
@@ -100,3 +99,8 @@ void World::actorSet(const std::string& actorName)
 	m_camera->sendMessage("actorSet",(void*)&actorName);
 }
 
+
+void World::clearActor()
+{
+	m_stage.clearActor();
+}

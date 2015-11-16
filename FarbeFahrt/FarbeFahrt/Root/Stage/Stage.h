@@ -25,6 +25,8 @@ public:
 
 	Actor findField() const;
 
+	void clearActor();
+
 private:
 
 	World* m_world;

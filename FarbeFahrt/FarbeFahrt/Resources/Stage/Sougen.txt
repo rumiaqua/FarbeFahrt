@@ -24,3 +24,7 @@ s,sky
 # クラス名,リソース名,座標
 o,Gimmick,test,0,-50,50,null,1/1.0f/300.0f
 o,SkinObject,test,0,100,100,Sphere,1/1.0f/300.0f
+
+# NextScene
+n,Stage/Mori.txt
+n,Stage/Mori2.txt

@@ -38,5 +38,5 @@ private:
 
 	CameraState m_cameraState;
 	CameraMatrix m_cameraMatrix;
-	std::shared_ptr<BaseActor> m_actor;
+	std::weak_ptr<BaseActor> m_actor;
 };

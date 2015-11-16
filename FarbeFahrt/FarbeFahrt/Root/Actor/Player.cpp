@@ -9,6 +9,7 @@
 
 # include "Collision/ModelCollider.h"
 
+# include "Utility/SingletonFinalizer.h"
 # include "Experimental/FlagManager.h"
 
 Player::Player(IWorld& world, const Vector3& position)
@@ -127,7 +128,8 @@ void Player::onMessage(const String& message, void* parameter)
 	}
 	if (message == "Goal")
 	{
-		m_world->setFlag(1);
+		// m_world->setFlag(1);
+		Singleton<FlagManager>::Instance().Set(Flag::NextStage, true);
 	}
 
 	BaseActor::onMessage(message,parameter);

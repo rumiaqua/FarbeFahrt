@@ -1,6 +1,5 @@
 # 使用するリソースリスト
-r,sky,Model/skydome/昼の月.x
-r,field2,Model/terrain/terrain.mqo
+r,field3,Model/terrain/平原地面.pmx
 
 # プレイヤーの位置
 p,0,100,0
@@ -10,8 +9,7 @@ p,0,100,0
 
 # フィールドの情報
 # field
-f,field2,5
+f,field3,3
 
 # その他配置されたオブジェクトの情報
 # クラス名,リソース名,座標
-o,SkinObject,test,0,0,0,Sphere,0/1.0f/300.0f

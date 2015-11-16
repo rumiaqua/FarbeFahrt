@@ -28,8 +28,9 @@ public:
 	virtual void initFlag();
 	virtual int getFlag();
 	virtual void setFlag(int flag);
-	void apply(const StageData& data);
+	void apply(const StageData& data, bool isClear);
 	virtual void actorSet(const std::string& actorName);
+	void clearActor();
 
 private:
 	StoryManager m_storymanager;

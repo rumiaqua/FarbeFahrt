@@ -4,6 +4,9 @@
 
 #include "Utility/Debug.h"
 
+# include "Utility/SingletonFinalizer.h"
+# include "Experimental\FlagManager.h"
+
 namespace
 {
 	float flame = 0.0f;
@@ -43,7 +46,8 @@ void Gimmick::onMessage(const String & message, void* parameter)
 {
 	if (message == "HitGimmick")
 	{
-		m_world->setFlag(2);
+		// m_world->setFlag(2);
+		Singleton<FlagManager>::Instance().Set(Flag::Gimmick, true);
 		kill();
 	}
 	BaseActor::onMessage(message, parameter);
