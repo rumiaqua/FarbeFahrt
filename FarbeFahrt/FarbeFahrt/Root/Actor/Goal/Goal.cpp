@@ -32,6 +32,7 @@ void Goal::onMessage(const String & message, void* parameter)
 		//5.ƒJƒƒ‰‚ð‹ß‚Ã‚¯‚é
 		m_world->findCamera()->sendMessage("nextStage",nullptr);
 		player->sendMessage("StopControl", nullptr);
+		kill();
 	}
 	BaseActor::onMessage(message, parameter);
 }
