@@ -26,7 +26,6 @@ void SkinObject::frameReset()
 
 void SkinObject::onUpdate()
 {
-	// m_maxframe = MV1GetFrameNum(Singleton<HandleList>::Instance().getHandle(m_name));
 	if (isAnimate)
 	{
 		if (frame <= m_maxframe * m_frameSpeed)
