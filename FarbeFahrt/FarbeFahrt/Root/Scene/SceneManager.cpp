@@ -43,7 +43,7 @@ void SceneManager::resolve(Loader& loader)
 	m_ops.clear();
 }
 
-void SceneManager::post()
+void SceneManager::post() const
 {
 	for (auto it = m_stack.rbegin(); it != m_stack.rend(); ++it)
 	{

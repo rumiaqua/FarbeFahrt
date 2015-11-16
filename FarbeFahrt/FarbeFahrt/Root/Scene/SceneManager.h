@@ -67,7 +67,7 @@ public:
 	void resolve(Loader& loader);
 
 	/// <summary>–Œãˆ—</summary>
-	void post();
+	void post() const;
 
 	/// <summary>ƒV[ƒ“‚Ì•ÏX‚ª‚ ‚Á‚½‚©‚Ç‚¤‚©</summary>
 	bool hasChanged() const;
