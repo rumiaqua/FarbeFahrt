@@ -15,8 +15,6 @@
 
 #include "Utility/Debug.h"
 
-# include "Actor/Goal/Goal.h"
-
 Stage::Stage(World* world)
 	: m_world(world)
 	, m_field()
