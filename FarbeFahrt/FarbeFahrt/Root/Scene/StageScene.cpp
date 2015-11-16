@@ -10,6 +10,7 @@
 
 # include "Actor/Camera/Camera.h"
 # include "Actor/SkyDome/Skydome.h"
+#include "Utility/StoryManager/StoryManager.h"
 
 # include "Utility/SingletonFinalizer.h"
 # include "Experimental\FlagManager.h"
@@ -22,7 +23,7 @@ StageScene::StageScene()
 void StageScene::loadContents(Loader& loader)
 {
 	// 名前
-	m_factory.Load("Resources/Stage/Sougen.txt");
+	m_factory.Load("Resources/Stage/TestMap.txt");
 	// ステージスクリプトから必要なリソースリストを取得して読み込む
 	for (auto&& resource : m_factory.Resources())
 	{
@@ -70,8 +71,17 @@ void StageScene::update()
 	{
 		m_manager->pushScene(Scene::Editor);
 	}
-	auto& instance = Singleton<FlagManager>::Instance();
-	if (instance.Test(Flag::NextStage))
+	if (Input::IsClicked(KEY_INPUT_SPACE))
+	{
+		m_manager->changeScene(Scene::drawGameTitle);
+	}
+	if (world->getFlag(BitFlag::GOAL))
+	{
+		world->apply(m_nextStageData);
+		world->initFlag();
+	}
+
+	if (Input::IsClicked(KEY_INPUT_R))
 	{
 		world->apply(instance.Test(Flag::Gimmick) ? m_nextStageData1 : m_nextStageData2, true);
 		instance.Set(false);

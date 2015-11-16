@@ -2,6 +2,7 @@
 #include "Actor/BaseActor.h"
 #include "Collision/Capsule.h"
 #include "Utility/String.h"
+#include "Utility/StoryManager/StoryManager.h"
 
 class Gimmick :
 	public BaseActor

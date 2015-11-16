@@ -39,6 +39,8 @@ void ActorManager::update()
 	BaseActor& colliders = *m_actors[ActorTag::Collider];
 	BaseActor& gimmicks = *m_actors[ActorTag::Gimmick];
 	BaseActor& goal = *m_actors[ActorTag::Goal];
+	BaseActor& objects = *m_actors[ActorTag::Object];
+
 	enemys.eachChildren(
 		[&] (BaseActor& actor) { players.collide(&actor); });
 	gimmicks.eachChildren(
@@ -48,6 +50,7 @@ void ActorManager::update()
 	{
 		goal.collide(&*player);
 	}
+	objects.collide(&*player);
 
 	// íœˆ—
 	m_root.removeChildren();

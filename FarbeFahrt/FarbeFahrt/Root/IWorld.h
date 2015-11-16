@@ -13,7 +13,7 @@ public:
 	virtual Actor findCamera() const = 0;
 	virtual Actor findField() const = 0;
 	virtual void initFlag() = 0;
-	virtual int getFlag() = 0;
+	virtual bool getFlag(int flag) = 0;
 	virtual void setFlag(int flag) = 0;
 	virtual void actorSet(const std::string& actorName) = 0;
 };

@@ -79,9 +79,9 @@ void World::initFlag()
 	m_storymanager.initialize();
 }
 
-int World::getFlag()
+bool World::getFlag(int flag)
 {
-	return m_storymanager.getFlag();
+	return m_storymanager.getFlag(flag);
 }
 
 void World::setFlag(int flag)

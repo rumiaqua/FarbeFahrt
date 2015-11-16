@@ -46,8 +46,7 @@ void Gimmick::onMessage(const String & message, void* parameter)
 {
 	if (message == "HitGimmick")
 	{
-		// m_world->setFlag(2);
-		Singleton<FlagManager>::Instance().Set(Flag::Gimmick, true);
+		m_world->setFlag(BitFlag::GIMMICK);
 		kill();
 	}
 	BaseActor::onMessage(message, parameter);
