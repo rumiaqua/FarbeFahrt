@@ -2,7 +2,7 @@
 # プレイヤー
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 # フィールド
-r,field,Model/terrain/平原地面.pmx
+r,field,Stage/平原/平原地面/平原.pmx
 # ギミック
 r,test,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 # ゴール
