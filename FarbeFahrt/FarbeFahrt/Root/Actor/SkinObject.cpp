@@ -9,7 +9,7 @@ namespace
 }
 
 SkinObject::SkinObject(IWorld & world, const String& modelName, const Vector3 & position, int anmNo, float flameSpeed,float maxFlame) :
-	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI), nullptr)
+	BaseActor(world, modelName, position, Matrix::identity(), nullptr)
 {
 	m_name = modelName;
 	m_flameSpeed = flameSpeed;
@@ -33,7 +33,10 @@ void SkinObject::onUpdate()
 
 void SkinObject::onDraw(Renderer & render) const
 {
-	render.drawSkinModel(m_name.toNarrow(), getPosition(), getRotation(), m_anmNo, flame);
+	auto worldPose = getWorldPose();
+	Vector3 position = Matrix::Translation(worldPose);
+	Matrix rotate = Matrix::Rotation(worldPose);
+	render.drawSkinModel(m_name.toNarrow(), position, rotate, m_anmNo, flame);
 
 	BaseActor::onDraw(render);
 }

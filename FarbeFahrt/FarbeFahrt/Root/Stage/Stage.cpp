@@ -10,6 +10,7 @@
 # include "Actor/SkinObject.h"
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
+# include "Actor/PlayerSpawner.h"
 
 # include "World.h"
 
@@ -42,8 +43,10 @@ void Stage::apply(const StageData& data, bool isClear)
 	}
 	else
 	{
-		m_world->addActor(ActorTag::Player, std::make_shared<Player>(
-			*m_world, data.playerPosition));
+		// m_world->addActor(ActorTag::Player, std::make_shared<Player>(
+			// *m_world, data.playerPosition));
+		m_world->addActor(ActorTag::Player, std::make_shared<PlayerSpawner>(
+			*m_world, "PlayerSpawner", data.playerPosition));
 	}
 
 	// その他オブジェクトの初期化
@@ -78,6 +81,16 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
+		}
+		if (object.name == "Page")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			String backgroundName = parameter[0];
+			String groundName = parameter[1];
+			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
+				*m_world, backgroundName, object.position, 0, 0.1f, 589.0f));
+			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
+				*m_world, groundName, object.position, 0, 0.1f, 589.0f));
 		}
 	}
 }

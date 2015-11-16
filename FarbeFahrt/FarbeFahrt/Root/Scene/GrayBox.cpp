@@ -15,7 +15,8 @@
 # include "Utility/SingletonFinalizer.h"
 
 GrayBox::GrayBox()
-	: m_stageManager("Resources/Stage/GrayBox/1-1.txt")
+	// : m_stageManager("Resources/Stage/GrayBox/1-1.txt")
+	: m_stageManager("Resources/Stage/ScriptFormatSample.txt")
 {
 
 }

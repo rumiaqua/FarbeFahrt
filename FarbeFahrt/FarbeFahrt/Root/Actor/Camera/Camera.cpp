@@ -177,6 +177,10 @@ void Camera::cameraSet()
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::LockAt, [this]() { this->lockCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Init, [this]() { this->initCamera(); }));
 
+	if (m_actor.expired())
+	{
+		return;
+	}
 	funcs.at(m_cameraState.cameraMode)();
 
 	m_t += 1 / (60.0f * SECOND);

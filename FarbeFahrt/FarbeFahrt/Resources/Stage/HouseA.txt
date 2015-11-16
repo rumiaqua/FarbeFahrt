@@ -5,6 +5,10 @@ r,gimmick,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,field,Model/terrain/平原地面.pmx
 r,goal,Model/平原/くさ.pmx
+r,moriBackground,Stage/森/森背景/森背景.pmx
+r,moriGround,Stage/森/森地面/森地面.pmx
+r,heigenGround,Stage/平原/平原地面/平原.pmx
+r,heigenBackground,Stage/平原/平原背景/平原背景.pmx
 
 # プレイヤーの位置
 # フォーマット	：p, [x座標], [y座標], [z座標]
@@ -33,8 +37,11 @@ f,field,3
 o,Gimmick,gimmick, 0, -50, 50, null, 1/1.0f/300.0f
 o,Goal,goal, 100, -60, 50, null
 
+# o,Page,moriPage,0,0,0,null,moriBackground/moriGround
+o,Page,moriPage,0,0,0,null,heigenBackground/heigenGround
+
 # 次のステージ
 # フォーマット	：n, [ギミックが動作した場合のステージ], [動作しない場合のステージ]
 # ステージ		：カレントディレクトリはProjectのディレクトリなので
 #				　Resources/を含めてください
-n,Resources/Stage/HouseA.txt,Resources/Stage/ScriptFormatSample.txt
+n,Resources/Stage/ScriptFormatSample.txt,Resources/Stage/ScriptFormatSample.txt
