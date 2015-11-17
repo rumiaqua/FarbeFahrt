@@ -2,75 +2,45 @@
 #include "Utility/Math.h"
 
 #include "Utility/Input.h"
-#include "Utility\SingletonFinalizer.h"
-#include "Utility\HandleList.h"
 
-namespace
+namespace 
 {
-	float frame = 0.0f;
+	float flame = 0.0f;
 }
 
-SkinObject::SkinObject(IWorld& world, const String& modelName, const Vector3& position, int anmNo, float frameSpeed, float maxFrame, float scale, float angle, bool isLoop) :
-	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::ToRadian(angle)), nullptr)
+SkinObject::SkinObject(IWorld & world, const String& modelName, const Vector3 & position, int anmNo, float flameSpeed,float maxFlame) :
+	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI), nullptr)
 {
 	m_name = modelName;
-	m_frameSpeed = frameSpeed;
-	m_maxframe = maxFrame;
+	m_flameSpeed = flameSpeed;
+	m_maxFlame = maxFlame;
 	m_anmNo = anmNo;
-	m_scale = scale;
-	m_isLoop = isLoop;
 }
 
-void SkinObject::frameReset()
+void SkinObject::flameReset()
 {
-	frame = 0;
+	flame = 0;
 }
 
 void SkinObject::onUpdate()
 {
-	if (isAnimate)
+	if(flame <= m_maxFlame * m_flameSpeed)
 	{
-		if (frame <= m_maxframe * m_frameSpeed)
-		{
-			frame += m_frameSpeed;
-		}
-		else
-		{
-			frame = fmodf(frame, m_maxframe);
-		}
+		flame += m_flameSpeed;
 	}
-
 	BaseActor::onUpdate();
 }
 
 void SkinObject::onDraw(Renderer & render) const
 {
-	auto worldPose = getWorldPose();
-	Vector3 position = Matrix::Translation(worldPose);
-	Matrix rotate = Matrix::Rotation(worldPose);
-	render.setScale(m_name.toNarrow(), Vector3(m_scale, m_scale, m_scale));
-	render.drawSkinModel(m_name.toNarrow(), position, rotate, m_anmNo, frame);
+	render.drawSkinModel(m_name.toNarrow(), getPosition(), getRotation(), m_anmNo, flame);
 
 	BaseActor::onDraw(render);
 }
 
 void SkinObject::onMessage(const String & message, void* parameter)
 {
-	if (message == "Rotation")
-	{
-		Matrix::Rotate(getRotation(), Vector3::Up(), *(const float*)parameter);
-	}
-	if (message == "startAnimation")
-	{
-		isAnimate = true;
-	}
-	if (message == "stopAnimation")
-	{
-		isAnimate = false;
-	}
-	if (message == "resetAnimation")
-	{
-		frame = 0.0f;
-	}
+	/*if (message == "Rotation")
+		Matrix::Rotate(getRotation(), Vector3::Up(), *(const float*)parameter);*/
 	BaseActor::onMessage(message, parameter);
 }

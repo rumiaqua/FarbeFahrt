@@ -10,8 +10,6 @@
 # include "Actor/SkinObject.h"
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
-# include "Actor/PlayerSpawner.h"
-# include "Actor/Page.h"
 
 # include "World.h"
 
@@ -44,10 +42,8 @@ void Stage::apply(const StageData& data, bool isClear)
 	}
 	else
 	{
-		// m_world->addActor(ActorTag::Player, std::make_shared<Player>(
-			// *m_world, data.playerPosition));
-		m_world->addActor(ActorTag::Player, std::make_shared<PlayerSpawner>(
-			*m_world, "PlayerSpawner", data.playerPosition));
+		m_world->addActor(ActorTag::Player, std::make_shared<Player>(
+			*m_world, data.playerPosition));
 	}
 
 	// その他オブジェクトの初期化
@@ -69,12 +65,9 @@ void Stage::apply(const StageData& data, bool isClear)
 			int animNo = String::ToValue<int>(parameter[0]);
 			float animSpeed = String::ToValue<float>(parameter[1]);
 			float maxFrame = String::ToValue<float>(parameter[2]);
-			float scale = String::ToValue<float>(parameter[3]);
-			float angle = String::ToValue<float>(parameter[4]);
-			bool isLoop = String::ToValue<int>(parameter[5]) == 1;
 			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
-				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame, scale, angle, isLoop));
-			// int anmNo, float frameSpeed,float maxframe
+				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame));
+			// int anmNo, float flameSpeed,float maxFlame
 		}
 		if (object.name == "StaticObject")
 		{
@@ -85,21 +78,6 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
-		}
-		if (object.name == "Page")
-		{
-			auto parameter = String::Split(object.parameter, '/');
-			String backgroundName = parameter[0];
-			String groundName = parameter[1];
-			bool isOpen = String::ToValue<int>(parameter[2]) == 1;
-			float scale = String::ToValue<float>(parameter[3]);
-			float angle = String::ToValue<float>(parameter[4]);
-			m_world->addActor(ActorTag::Object, std::make_shared<Page>(
-				*m_world, object.name, object.position, backgroundName, groundName, isOpen, scale, angle));
-			/*m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
-				*m_world, backgroundName, object.position, 0, 0.1f, 589.0f));
-			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
-				*m_world, groundName, object.position, 0, 0.1f, 589.0f));*/
 		}
 	}
 }
