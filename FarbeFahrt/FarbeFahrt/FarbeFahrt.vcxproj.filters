@@ -168,6 +168,12 @@
     <ClCompile Include="Root\Scene\GrayBox.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Actor\Page.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Actor\PlayerSpawner.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\ActorManager\ActorManager.h">
@@ -371,6 +377,12 @@
     <ClInclude Include="Root\Scene\GrayBox.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Actor\Page.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Actor\PlayerSpawner.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Model\本2\book.pmx" />
@@ -411,5 +423,6 @@
     <Text Include="Resources\Stage\GrayBox\2-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-2.txt" />
     <Text Include="Resources\Stage\ScriptFormatSample.txt" />
+    <Text Include="Resources\Stage\HouseA.txt" />
   </ItemGroup>
 </Project>

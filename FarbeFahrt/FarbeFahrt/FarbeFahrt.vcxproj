@@ -71,7 +71,6 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Root\Actor\Book.h" />
     <ClInclude Include="Root\Actor\Camera\Ray.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Actor\Goal\Goal.h" />
