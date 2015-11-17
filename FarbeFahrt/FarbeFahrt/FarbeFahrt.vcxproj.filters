@@ -42,15 +42,6 @@
     <ClCompile Include="Root\Frame\WinMain.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Scene\GameMain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\GameMenu.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\GameTitle.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Utility\Input.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -171,6 +162,18 @@
     <ClCompile Include="Root\Actor\StaticObject.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Stage\StageManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\GrayBox.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Actor\Page.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Actor\PlayerSpawner.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\ActorManager\ActorManager.h">
@@ -204,15 +207,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Frame\MyGame.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\GameMain.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\GameMenu.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\GameTitle.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Utility\Def.h">
@@ -353,12 +347,6 @@
     <ClInclude Include="Root\Utility\StoryManager\StoryManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Stage\IStageBuilder.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Stage\ScriptStageBuilder.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Root\Stage\StageData.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -375,6 +363,24 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Actor\StaticObject.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Stage\IStageDataBuilder.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Stage\ScriptStageDataBuilder.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Stage\StageManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\GrayBox.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Actor\Page.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Actor\PlayerSpawner.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -414,5 +420,9 @@
     <Text Include="Resources\Stage\Mori2.txt" />
     <Text Include="Resources\Stage\TestMap.txt" />
     <Text Include="Resources\Stage\GrayBox\1-1.txt" />
+    <Text Include="Resources\Stage\GrayBox\2-1.txt" />
+    <Text Include="Resources\Stage\GrayBox\2-2.txt" />
+    <Text Include="Resources\Stage\ScriptFormatSample.txt" />
+    <Text Include="Resources\Stage\HouseA.txt" />
   </ItemGroup>
 </Project>

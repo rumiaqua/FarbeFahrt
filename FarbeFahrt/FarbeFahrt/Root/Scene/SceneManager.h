@@ -66,6 +66,9 @@ public:
 	/// <param name="loader">Loaderオブジェクト</param>
 	void resolve(Loader& loader);
 
+	/// <summary>事後処理</summary>
+	void post() const;
+
 	/// <summary>シーンの変更があったかどうか</summary>
 	bool hasChanged() const;
 

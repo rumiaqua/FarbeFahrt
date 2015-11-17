@@ -1,14 +1,15 @@
-#pragma once
+# pragma once
 # include "Frame/BaseScene.h"
 
 # include "World.h"
 
 # include "Stage/StageFactory.h"
+# include "Stage/StageManager.h"
 
-class StageScene : public BaseScene
+class GrayBox : public BaseScene
 {
 public:
-	StageScene();
+	GrayBox();
 	virtual void loadContents(Loader& loader)override;
 	virtual void initialize()override;
 	virtual void update()override;
@@ -17,10 +18,7 @@ public:
 	virtual void cleanUp() override;
 	virtual bool isSwallow() const override;
 private:
-	std::shared_ptr<World> world;
-	StageFactory m_factory;
-
-	StageData m_currentStageData;
-	StageData m_nextStageData1;
-	StageData m_nextStageData2;
+	Loader* m_loader;
+	std::shared_ptr<World> m_world;
+	StageManager m_stageManager;
 };

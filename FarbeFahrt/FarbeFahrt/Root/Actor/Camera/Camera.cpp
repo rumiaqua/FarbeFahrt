@@ -177,6 +177,10 @@ void Camera::cameraSet()
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::LockAt, [this]() { this->lockCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Init, [this]() { this->initCamera(); }));
 
+	if (m_actor.expired())
+	{
+		return;
+	}
 	funcs.at(m_cameraState.cameraMode)();
 
 	m_t += 1 / (60.0f * SECOND);
@@ -227,6 +231,11 @@ void Camera::onMessage(const String& message, void* parameter)
 		actorSet(*(std::string*)parameter);
 		m_cameraState.cameraMode = CameraMode::FadeIn;
 	}
-
+	//ê”îCé“Å@Ç»ÇËÇΩÇÒ
+	if (message == "nextStage")
+	{
+		m_t = 0;
+		m_cameraState.cameraMode = CameraMode::FadeOut;
+	}
 	BaseActor::onMessage(message, parameter);
 }

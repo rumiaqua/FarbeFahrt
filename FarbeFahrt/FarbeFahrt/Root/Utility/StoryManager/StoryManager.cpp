@@ -1,26 +1,29 @@
-#include "StoryManager.h"
+# include "StoryManager.h"
+
+# include "Utility/SingletonFinalizer.h"
 
 StoryManager::StoryManager()
+	: m_flag(NONE)
 {
-	initialize();
+
 }
 
 void StoryManager::initialize()
 {
-	m_flag = NONE;
+	Singleton<StoryManager>::Instance().m_flag = NONE;
 }
 
-bool StoryManager::getFlag(int flag)
+bool StoryManager::get(int flag)
 {
-	return (m_flag & flag) == flag;
+	return (Singleton<StoryManager>::Instance().m_flag & flag) == flag;
 }
 
-void StoryManager::setFlag(int flag)
+void StoryManager::set(int flag)
 {
-	m_flag |= flag;
+	Singleton<StoryManager>::Instance().m_flag |= flag;
 }
 
 void StoryManager::reset(int flag)
 {
-	m_flag &= !flag;
+	Singleton<StoryManager>::Instance().m_flag &= !flag;
 }

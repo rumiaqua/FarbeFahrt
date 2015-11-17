@@ -43,6 +43,18 @@ void SceneManager::resolve(Loader& loader)
 	m_ops.clear();
 }
 
+void SceneManager::post() const
+{
+	for (auto it = m_stack.rbegin(); it != m_stack.rend(); ++it)
+	{
+		(*it)->post();
+		if ((*it)->isSwallow())
+		{
+			return;
+		}
+	}
+}
+
 bool SceneManager::hasChanged() const
 {
 	return !m_ops.empty();

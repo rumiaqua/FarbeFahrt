@@ -21,11 +21,12 @@ struct StageData
 
 	using ResourceList = std::unordered_map<String, String>;
 	using ObjectList = std::vector<Object>;
+	using NextStage = std::pair<String, String>;
 
 	ResourceList resourceList;
 	Vector3 playerPosition;
 	String fieldName;
 	float fieldScale;
-	String skyName;
 	ObjectList objectList;
+	NextStage nextStage;
 };

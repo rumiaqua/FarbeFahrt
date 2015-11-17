@@ -19,17 +19,21 @@ Player::Player(IWorld& world, const Vector3& position)
 		// std::make_unique<Line>(Vector3(10, 0, 0), Vector3(-10, 0, 0))
 		// std::make_unique<ModelCollider>("Player")
 		)
+	, m_canControl(true)
 {
 	m_moveSpeed = 1.5f;
 	m_state = PlayerState::standing;
 	m_moveFlag = false;
-	m_flame = 0;
+	m_frame = 0;
 }
 void Player::onUpdate()
 {
-	playerInput();
-	
-	++m_flame;
+	if (m_canControl)
+	{
+		playerInput();
+
+		++m_frame;
+	}
 
 	BaseActor::onUpdate();
 }
@@ -103,14 +107,14 @@ void Player::playerInput()
 void Player::onDraw(Renderer& render)const
 {
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
-	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_flame);
+	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame);
 
 	BaseActor::onDraw(render);
 }
 
 void Player::onMessage(const String& message, void* parameter)
 {
-
+	
 	if (message == "onCollide")
 	{
 		// Debug::Println("‚È‚É‚©‚É‚ ‚½‚Á‚Ä‚é‚æ");
@@ -123,7 +127,11 @@ void Player::onMessage(const String& message, void* parameter)
 	}
 	if (message == "Goal")
 	{
-		m_world->setFlag(BitFlag::GOAL);
+		StoryManager::set(BitFlag::GOAL);
+	}
+	if (message == "StopControl")
+	{
+		m_canControl = false;
 	}
 
 	BaseActor::onMessage(message,parameter);

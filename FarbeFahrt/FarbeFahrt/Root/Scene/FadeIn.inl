@@ -11,17 +11,17 @@ public:
 
 	}
 
-	void loadContents(Loader& loader) override
+	virtual void loadContents(Loader& loader) override
 	{
 		loader.loadContent("curtain", "Texture/curtain.png");
 	}
 
-	void initialize() override
+	virtual void initialize() override
 	{
 
 	}
 
-	void update() override
+	virtual void update() override
 	{
 		m_currentCount = m_currentCount - 1;
 
@@ -33,7 +33,7 @@ public:
 		m_manager->popScene();
 	}
 
-	void draw(Renderer& renderer) override
+	virtual void draw(Renderer& renderer) override
 	{
 		int alpha = (int)(m_currentCount / m_fadeCount * 255);
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
@@ -41,12 +41,17 @@ public:
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
 
-	void cleanUp() override
+	virtual void post() override
 	{
 
 	}
 
-	bool isSwallow() const override
+	virtual void cleanUp() override
+	{
+
+	}
+
+	virtual bool isSwallow() const override
 	{
 		return m_isSwallow;
 	}

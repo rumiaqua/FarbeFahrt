@@ -24,5 +24,7 @@ private:
 	PlayerState m_state;
 	float m_moveSpeed;
 	bool m_moveFlag;
-	float m_flame;
+	float m_frame;
+
+	bool m_canControl;
 };

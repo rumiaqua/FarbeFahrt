@@ -12,8 +12,5 @@ public:
 	virtual Actor findActor(const std::string& name) const = 0;
 	virtual Actor findCamera() const = 0;
 	virtual Actor findField() const = 0;
-	virtual void initFlag() = 0;
-	virtual bool getFlag(int flag) = 0;
-	virtual void setFlag(int flag) = 0;
 	virtual void actorSet(const std::string& actorName) = 0;
 };

@@ -1,15 +1,16 @@
 #pragma once
 #include "IWorld.h"
 
-#include "Actor/ActorManager/ActorManager.h"
-#include "Utility/StoryManager/StoryManager.h"
-
-#include "Stage/StageData.h"
-
-# include "Stage/Stage.h"
+# include "Actor/ActorManager/ActorManager.h"
 # include "Actor/Camera/Camera.h"
 
-#include <string>
+# include "Utility/StoryManager/StoryManager.h"
+
+# include "Stage/StageData.h"
+# include "Stage/Stage.h"
+
+# include <string>
+
 class World : public IWorld
 {
 public:
@@ -25,15 +26,11 @@ public:
 	virtual Actor findCamera() const override;
 	virtual Actor findField() const override;
 	StageData getData() const;
-	virtual void initFlag();
-	virtual bool getFlag(int flag);
-	virtual void setFlag(int flag);
 	void apply(const StageData& data, bool isClear);
 	virtual void actorSet(const std::string& actorName);
 	void clearActor();
 
 private:
-	StoryManager m_storymanager;
 	Actor m_skydome;
 	Actor m_camera;
 	Stage m_stage;

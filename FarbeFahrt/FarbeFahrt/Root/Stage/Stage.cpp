@@ -10,6 +10,8 @@
 # include "Actor/SkinObject.h"
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
+# include "Actor/PlayerSpawner.h"
+# include "Actor/Page.h"
 
 # include "World.h"
 
@@ -42,8 +44,10 @@ void Stage::apply(const StageData& data, bool isClear)
 	}
 	else
 	{
-		m_world->addActor(ActorTag::Player, std::make_shared<Player>(
-			*m_world, data.playerPosition));
+		// m_world->addActor(ActorTag::Player, std::make_shared<Player>(
+			// *m_world, data.playerPosition));
+		m_world->addActor(ActorTag::Player, std::make_shared<PlayerSpawner>(
+			*m_world, "PlayerSpawner", data.playerPosition));
 	}
 
 	// その他オブジェクトの初期化
@@ -67,7 +71,7 @@ void Stage::apply(const StageData& data, bool isClear)
 			float maxFrame = String::ToValue<float>(parameter[2]);
 			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
 				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame));
-			// int anmNo, float flameSpeed,float maxFlame
+			// int anmNo, float frameSpeed,float maxframe
 		}
 		if (object.name == "StaticObject")
 		{
@@ -78,6 +82,19 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
+		}
+		if (object.name == "Page")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			String backgroundName = parameter[0];
+			String groundName = parameter[1];
+			bool isOpen = String::ToValue<int>(parameter[2]) == 1;
+			m_world->addActor(ActorTag::Object, std::make_shared<Page>(
+				*m_world, object.name, object.position, backgroundName, groundName, isOpen));
+			/*m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
+				*m_world, backgroundName, object.position, 0, 0.1f, 589.0f));
+			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
+				*m_world, groundName, object.position, 0, 0.1f, 589.0f));*/
 		}
 	}
 }
@@ -90,8 +107,6 @@ void Stage::update()
 
 	// フィールドとアクターの衝突処理
 	m_actorManager.collideField(m_field.get());
-
-//	Debug::Println("%d",m_world->getFlag());
 }
 
 void Stage::draw(Renderer& renderer) const

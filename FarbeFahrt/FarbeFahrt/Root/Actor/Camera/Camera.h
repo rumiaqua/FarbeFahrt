@@ -35,7 +35,7 @@ private:
 	
 private:	
 	float m_t = 0.0f;
-
+	bool isMove = false;
 	CameraState m_cameraState;
 	CameraMatrix m_cameraMatrix;
 	std::weak_ptr<BaseActor> m_actor;

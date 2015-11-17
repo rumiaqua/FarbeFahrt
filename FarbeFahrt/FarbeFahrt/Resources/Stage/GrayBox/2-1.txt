@@ -2,7 +2,7 @@
 # プレイヤー
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 # フィールド
-r,field,Stage/平原/平原地面/平原.pmx
+r,field2,Model/terrain/terrain.mqo
 # ギミック
 r,test,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 # ゴール
@@ -12,8 +12,7 @@ r,hoge,Model/平原/くさ.pmx
 p,0,0,100
 
 # フィールドの情報
-# field
-f,field,3
+f,field2,2
 
 # その他配置されたオブジェクトの情報
 # ギミック
@@ -21,7 +20,7 @@ o,Gimmick,test,0,-50,50,null,1/1.0f/300.0f
 # アニメーションオブジェクト
 # o,SkinObject,test,0,100,100,Sphere,1/1.0f/300.0f
 # ゴール
-o,Goal,hoge,100,-60,50,null
+o,Goal,hoge,100,-100,100,null
 
 # 次のステージ
-n,Resources/Stage/GrayBox/2-1.txt,Resources/Stage/GrayBox/2-2.txt
+n,Resources/Stage/GrayBox/1-1.txt,Resources/Stage/GrayBox/2-2.txt
