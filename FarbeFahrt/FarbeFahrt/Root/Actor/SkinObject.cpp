@@ -10,13 +10,15 @@ namespace
 	float frame = 0.0f;
 }
 
-SkinObject::SkinObject(IWorld & world, const String& modelName, const Vector3 & position, int anmNo, float frameSpeed, float maxFrame) :
-	BaseActor(world, modelName, position, Matrix::identity(), nullptr)
+SkinObject::SkinObject(IWorld& world, const String& modelName, const Vector3& position, int anmNo, float frameSpeed, float maxFrame, float scale, float angle, bool isLoop) :
+	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::ToRadian(angle)), nullptr)
 {
 	m_name = modelName;
 	m_frameSpeed = frameSpeed;
 	m_maxframe = maxFrame;
 	m_anmNo = anmNo;
+	m_scale = scale;
+	m_isLoop = isLoop;
 }
 
 void SkinObject::frameReset()
@@ -46,6 +48,7 @@ void SkinObject::onDraw(Renderer & render) const
 	auto worldPose = getWorldPose();
 	Vector3 position = Matrix::Translation(worldPose);
 	Matrix rotate = Matrix::Rotation(worldPose);
+	render.setScale(m_name.toNarrow(), Vector3(m_scale, m_scale, m_scale));
 	render.drawSkinModel(m_name.toNarrow(), position, rotate, m_anmNo, frame);
 
 	BaseActor::onDraw(render);
@@ -54,7 +57,9 @@ void SkinObject::onDraw(Renderer & render) const
 void SkinObject::onMessage(const String & message, void* parameter)
 {
 	if (message == "Rotation")
+	{
 		Matrix::Rotate(getRotation(), Vector3::Up(), *(const float*)parameter);
+	}
 	if (message == "startAnimation")
 	{
 		isAnimate = true;

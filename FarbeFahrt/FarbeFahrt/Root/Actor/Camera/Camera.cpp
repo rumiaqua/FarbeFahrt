@@ -2,14 +2,14 @@
 #include <memory>
 #include "Utility/Math.h"
 #include "Utility/Mouse.h"
-#include "Ray.h"
-
 # include "Utility/Vector3.h"
 # include "Utility/MemoryCast.h"
 #include "Utility/MemoryCast.h"
 #include "Utility/String.h"
-
 #include "Utility/Debug.h"
+# include "Utility/StoryManager/StoryManager.h"
+
+#include "Ray.h"
 
 namespace
 {
@@ -20,6 +20,7 @@ namespace
 
 Camera::Camera(IWorld& world) :
 BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
+, m_onCompleted(false)
 {
 	SetCameraNearFar(1.0f, 12000.0f);
 	SetCursorPos(nScreenCenterX, nScreenCenterY);
@@ -185,6 +186,12 @@ void Camera::cameraSet()
 
 	m_t += 1 / (60.0f * SECOND);
 	m_t = m_t > 1.0f ? 1.0f : m_t;
+
+	if (m_onCompleted && m_t == 1.0f)
+	{
+		StoryManager::set(BitFlag::GOAL);
+	}
+
 	getPosition() = Vector3::Lerp(m_cameraMatrix.currentPos, m_cameraMatrix.targetPos, static_cast<float>(Math::Sin(Math::HALF_PI * m_t)));
 	Vector3 focus = Vector3::Lerp(m_cameraMatrix.currentRot, m_cameraMatrix.targetRot, static_cast<float>(Math::Sin(Math::HALF_PI * m_t)));
 
@@ -236,6 +243,7 @@ void Camera::onMessage(const String& message, void* parameter)
 	{
 		m_t = 0;
 		m_cameraState.cameraMode = CameraMode::FadeOut;
+		m_onCompleted = true;
 	}
 	BaseActor::onMessage(message, parameter);
 }

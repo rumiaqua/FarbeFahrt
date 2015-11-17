@@ -39,4 +39,5 @@ private:
 	CameraState m_cameraState;
 	CameraMatrix m_cameraMatrix;
 	std::weak_ptr<BaseActor> m_actor;
+	bool m_onCompleted;
 };

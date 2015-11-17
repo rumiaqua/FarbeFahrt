@@ -7,5 +7,5 @@ class Page : public BaseActor
 public:
 
 	Page(IWorld& world, const String& name, const Vector3& position,
-		const String& backgroundName, const String& groundName, bool isOpen);
+		const String& backgroundName, const String& groundName, bool isOpen, float scale, float angle);
 };

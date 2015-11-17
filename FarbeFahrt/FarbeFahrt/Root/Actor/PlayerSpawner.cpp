@@ -10,7 +10,7 @@ PlayerSpawner::PlayerSpawner(IWorld& world, const String& name, const Vector3& p
 
 void PlayerSpawner::onUpdate()
 {
-	if (Input::IsClicked(KEY_INPUT_0))
+	//if (Input::IsClicked(KEY_INPUT_0))
 	{
 		onMessage("PlayerSpawn", nullptr);
 	}
