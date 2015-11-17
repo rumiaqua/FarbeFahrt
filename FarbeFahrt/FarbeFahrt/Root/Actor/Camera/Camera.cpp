@@ -19,8 +19,8 @@ namespace
 }
 
 Camera::Camera(IWorld& world) :
-BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
-, m_onCompleted(false)
+	BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
+	, m_onCompleted(false)
 {
 	SetCameraNearFar(1.0f, 12000.0f);
 	SetCursorPos(nScreenCenterX, nScreenCenterY);
@@ -41,6 +41,8 @@ void Camera::onUpdate()
 		actorSet("Player");
 	}
 
+	Debug::Println("%f", m_t);
+
 	cameraInput();
 	cameraSet();
 
@@ -58,9 +60,9 @@ void Camera::cameraInput()
 	{
 		Vector3 begin = Mouse::ScreenPointToWorld(0.0f);
 		Vector3 end = Mouse::ScreenPointToWorld(1.0f);
-		m_world->addActor(ActorTag::Collider,std::make_shared<Ray>(*m_world, begin, end));
+		m_world->addActor(ActorTag::Collider, std::make_shared<Ray>(*m_world, begin, end));
 
-		Debug::Println("{%f,%f,%f}", begin.x,begin.y,begin.z);
+		Debug::Println("{%f,%f,%f}", begin.x, begin.y, begin.z);
 	}
 }
 
@@ -72,9 +74,9 @@ void Camera::chaseCamera()
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
 	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 
-	//移行できるカメラ
-	toBookCamera();
-	toFixedCamera();
+	////移行できるカメラ
+	//toBookCamera();
+	//toFixedCamera();
 }
 
 void Camera::fadeInCamera()
@@ -116,9 +118,9 @@ void Camera::lockCamera()
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
 	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 
-	//移行できるカメラ
-	toBookCamera();
-	toPlayerCamera();
+	////移行できるカメラ
+	//toBookCamera();
+	//toPlayerCamera();
 }
 
 void Camera::defaultCamera()
@@ -144,15 +146,15 @@ void Camera::defaultCamera()
 			m_cameraState.cameraMode = CameraMode::LockAt;
 		}
 	}
-	else
-	{
-		if (m_t >= 1)
-		{
-		//移行できるカメラ
-		toPlayerCamera();
-		toFixedCamera();
-	}
-}
+	//else
+	//{
+	//	if (m_t >= 1)
+	//	{
+	//		//移行できるカメラ
+	//		toPlayerCamera();
+	//		toFixedCamera();
+	//	}
+	//}
 }
 
 void Camera::initCamera()
@@ -189,6 +191,7 @@ void Camera::cameraSet()
 
 	if (m_onCompleted && m_t == 1.0f)
 	{
+		m_onCompleted = false;
 		StoryManager::set(BitFlag::GOAL);
 	}
 
@@ -198,29 +201,26 @@ void Camera::cameraSet()
 	SetCameraPositionAndTarget_UpVecY(getPosition(), focus);
 }
 
-//キー：Zで本視点
 void Camera::toBookCamera()
 {
-	if (Input::IsClicked(KEY_INPUT_Z))
+	if (m_cameraState.cameraMode == CameraMode::LockAt || m_cameraState.cameraMode == CameraMode::Chase)
 	{
 		m_t = 0;
 		m_cameraState.cameraMode = CameraMode::FadeOut;
 	}
 }
 
-//キー：Xでプレイヤー視点
 void Camera::toPlayerCamera()
 {
-	if (Input::IsClicked(KEY_INPUT_X))
+	if (m_cameraState.cameraMode == CameraMode::LockAt || m_cameraState.cameraMode == CameraMode::FadeOut)
 	{
 		m_cameraState.cameraMode = CameraMode::FadeIn;
 	}
 }
 
-//キー：Cでカメラ固定回転
 void Camera::toFixedCamera()
 {
-	if (Input::IsClicked(KEY_INPUT_C))
+	if (m_cameraState.cameraMode == CameraMode::Chase || m_cameraState.cameraMode == CameraMode::FadeOut)
 	{
 		m_cameraState.cameraMode = CameraMode::FadeInFixed;
 	}
@@ -245,5 +245,18 @@ void Camera::onMessage(const String& message, void* parameter)
 		m_cameraState.cameraMode = CameraMode::FadeOut;
 		m_onCompleted = true;
 	}
+
+	if (message == "complete")
+	{
+		m_onCompleted = true;
+	}
+
+	if (m_t >= 1 )
+	{
+		if (message == "toBookCamera")		toBookCamera();
+		if (message == "toPlayerCamera")	toPlayerCamera();
+		if (message == "toFixedCamera")		toFixedCamera();
+	}
+
 	BaseActor::onMessage(message, parameter);
 }

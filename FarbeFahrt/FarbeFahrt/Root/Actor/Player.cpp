@@ -125,10 +125,6 @@ void Player::onMessage(const String& message, void* parameter)
 		m_pose.position = *pos;
 		Debug::Println("‚ä‚©‚Ì‚È‚©‚É‚¢‚é");
 	}
-	if (message == "Goal")
-	{
-		StoryManager::set(BitFlag::GOAL);
-	}
 	if (message == "StopControl")
 	{
 		m_canControl = false;

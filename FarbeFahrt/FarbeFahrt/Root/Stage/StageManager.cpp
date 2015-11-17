@@ -20,10 +20,10 @@ bool StageManager::isNext() const
 }
 
 void StageManager::next(World* const world)
-{
-	
+{	
 	m_current = nextStage();
 	apply(world);
+	world->findCamera()->sendMessage("toPlayerCamera",nullptr);
 	StoryManager::initialize();
 }
 
