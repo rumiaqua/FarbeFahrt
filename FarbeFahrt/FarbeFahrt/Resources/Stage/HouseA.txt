@@ -38,8 +38,8 @@ f,field,3
 o,Gimmick,gimmick, 0, -50, 50, null, 1/1.0f/300.0f
 o,Goal,goal, 100, -60, 50, null
 
-o,Page,moriPage,0,-50,0,null,moriBackground/moriGround,1
-o,Page,moriPage,0,-50,0,null,heigenBackground/heigenGround,0
+o,Page,moriPage,0,-50,0,null,moriBackground/moriGround/1
+o,Page,moriPage,0,-50,0,null,heigenBackground/heigenGround/0
 
 # 次のステージ
 # フォーマット	：n, [ギミックが動作した場合のステージ], [動作しない場合のステージ]
