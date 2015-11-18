@@ -23,7 +23,7 @@ void StageManager::next(World* const world)
 {	
 	m_current = nextStage();
 	apply(world);
-	world->findCamera()->sendMessage("toPlayerCamera",nullptr);
+	world->findCamera()->sendMessage("toPlayerCamera", nullptr);
 	StoryManager::initialize();
 }
 

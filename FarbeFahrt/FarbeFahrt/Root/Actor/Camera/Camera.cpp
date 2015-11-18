@@ -212,7 +212,7 @@ void Camera::toBookCamera()
 
 void Camera::toPlayerCamera()
 {
-	if (m_cameraState.cameraMode == CameraMode::LockAt || m_cameraState.cameraMode == CameraMode::FadeOut)
+	if (m_cameraState.cameraMode == CameraMode::LockAt || m_cameraState.cameraMode == CameraMode::Default)
 	{
 		m_cameraState.cameraMode = CameraMode::FadeIn;
 	}
@@ -220,7 +220,7 @@ void Camera::toPlayerCamera()
 
 void Camera::toFixedCamera()
 {
-	if (m_cameraState.cameraMode == CameraMode::Chase || m_cameraState.cameraMode == CameraMode::FadeOut)
+	if (m_cameraState.cameraMode == CameraMode::Chase || m_cameraState.cameraMode == CameraMode::Default)
 	{
 		m_cameraState.cameraMode = CameraMode::FadeInFixed;
 	}
