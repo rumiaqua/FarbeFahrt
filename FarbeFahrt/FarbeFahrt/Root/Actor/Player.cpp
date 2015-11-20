@@ -9,7 +9,14 @@
 #include "Utility/MemoryCast.h"
 #include "Utility/StoryManager/StoryManager.h"
 
+#include "Utility/String.h"
+
 # include "Collision/ModelCollider.h"
+
+namespace
+{
+	constexpr float OBSTACLE_DISTANCE = 5.0f;
+}
 
 Player::Player(IWorld& world, const Vector3& position)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI),
@@ -106,17 +113,36 @@ void Player::onDraw(Renderer& render)const
 {
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
 	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame);
-
 	BaseActor::onDraw(render);
 }
 
 void Player::onMessage(const String& message, void* parameter)
-{
-	
-	if (message == "onCollide")
+{	
+	if (message == "HitObstacle")
 	{
-		// Debug::Println("‚È‚É‚©‚É‚ ‚½‚Á‚Ä‚é‚æ");
+		BaseActor* actor = static_cast<BaseActor*>(parameter);
+		if (isCollide(actor))
+		{
+			float D = static_cast<Capsule*>(m_shape.get())->radius + static_cast<Capsule* const>(actor->getShape())->radius + OBSTACLE_DISTANCE;
+			Vector3 ownPos = m_pose.position;
+			Vector3 otherPos = actor->getPosition();
+			Vector3 direction = Vector3::Normalize(ownPos - otherPos);
+			Vector3 normalize = Vector3::Normalize(direction * Vector3(1, 0, 1));
+			otherPos.y = ownPos.y;
+			Vector3 movement = normalize * D;			
+
+			Debug::Println(String::Create("myName:", m_name.toNarrow()));
+			Debug::Println(String::Create("Name:", actor->getName()));
+			Debug::Println(String::Create("direction:",direction.ToString()));
+
+			Debug::Println(String::Create("normalize:", normalize.ToString()));
+			Debug::Println(String::Create("movement:", movement.ToString()));
+			getPosition() = otherPos + movement;
+
+			//m_pose.position.y += 2.0f;
+		}
 	}
+
 	if (message == "HitGround")
 	{
 		Vector3* pos = static_cast<Vector3*>(parameter);

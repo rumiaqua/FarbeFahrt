@@ -16,11 +16,11 @@ f,field2,0,0,0,2
 
 # その他配置されたオブジェクトの情報
 # ギミック
-o,Gimmick,test,0,-50,50,null,1/1.0f/300.0f
+o,Gimmick,test,0,20,50,null,1/1.0f/300.0f
 # アニメーションオブジェクト
 # o,SkinObject,test,0,100,100,Sphere,1/1.0f/300.0f
 # ゴール
-o,Goal,hoge,100,-100,100,null
+o,Goal,hoge,100,-10,100,null
 
 # 次のステージ
 n,Resources/Stage/GrayBox/2-2.txt,Resources/Stage/HouseA.txt

@@ -72,6 +72,7 @@ void Editor::draw(Renderer& render)
 	NoUse(render);
 
 	Debug::Println("Editor Mode.");
+	Debug::Println(Vector3(GetCameraPosition()).ToString());
 	Debug::Println("Translate");
 	Debug::Println("A:Left D:Right E:Up X:Down W:Forward S:Backward");
 	Debug::Println("Rotate");

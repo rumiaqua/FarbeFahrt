@@ -111,7 +111,9 @@ void Stage::update()
 	m_actorManager.update();
 
 	// フィールドとアクターの衝突処理
-	m_actorManager.collideField();
+	m_actorManager.collidePlayer(ActorTag::Field);
+	m_actorManager.collidePlayer(ActorTag::Gimmick);
+	m_actorManager.collidePlayer(ActorTag::Object);
 }
 
 void Stage::draw(Renderer& renderer) const

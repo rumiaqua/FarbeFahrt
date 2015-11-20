@@ -71,10 +71,10 @@ Actor ActorManager::findActor(const std::string& name) const
 	return m_root.find(name);
 }
 
-void ActorManager::collideField()
+void ActorManager::collidePlayer(ActorTag tag)
 {
 	// field->collide(m_actors.at(ActorTag::Player).get());
-	m_actors.at(ActorTag::Field)->eachChildren([=] (BaseActor& actor)
+	m_actors.at(tag)->eachChildren([=] (BaseActor& actor)
 	{
 		m_actors.at(ActorTag::Player)->collide(&actor);
 	});

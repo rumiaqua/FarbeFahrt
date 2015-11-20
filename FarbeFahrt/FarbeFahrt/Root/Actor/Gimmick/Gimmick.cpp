@@ -4,7 +4,7 @@
 
 #include "Utility/Debug.h"
 #include "Utility/SingletonFinalizer.h"
-#include "Utility\HandleList.h"
+#include "Utility/HandleList.h"
 
 namespace
 {
@@ -77,5 +77,12 @@ void Gimmick::onMessage(const String & message, void* parameter)
 	{
 		frame = 0.0f;
 	}
+
+	if (message == "onCollide")
+	{
+		BaseActor* actor = static_cast<BaseActor*>(parameter);
+		actor->sendMessage("HitObstacle",(void*)this);
+	}
+
 	BaseActor::onMessage(message, parameter);
 }

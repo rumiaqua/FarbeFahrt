@@ -23,7 +23,7 @@ public:
 
 	Actor findActor(const std::string& name) const;
 
-	void collideField();
+	void collidePlayer(ActorTag tag);
 
 private:
 
