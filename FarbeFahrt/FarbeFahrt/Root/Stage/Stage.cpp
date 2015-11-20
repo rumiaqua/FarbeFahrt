@@ -48,7 +48,7 @@ void Stage::apply(const StageData& data, bool isClear)
 	else
 	{
 		m_world->addActor(ActorTag::Player, std::make_shared<PlayerSpawner>(
-			*m_world, "PlayerSpawner", data.playerPosition));
+			*m_world, data.playerPosition));
 	}
 
 	// その他オブジェクトの初期化

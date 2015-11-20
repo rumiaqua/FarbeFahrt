@@ -2,26 +2,30 @@
 # include "Utility/Input.h"
 # include "Player.h"
 
-PlayerSpawner::PlayerSpawner(IWorld& world, const String& name, const Vector3& position)
-	: BaseActor(world, name, position, Matrix::identity(), nullptr)
+PlayerSpawner::PlayerSpawner(IWorld& world, const Vector3& position)
+	: BaseActor(world, "PlayerSpawner", position, Matrix::identity(), nullptr)
+	, m_isActive(true)
 {
 
 }
 
 void PlayerSpawner::onUpdate()
 {
-	//if (Input::IsClicked(KEY_INPUT_0))
+	if (!m_isActive)
 	{
-		onMessage("PlayerSpawn", nullptr);
+		return;
 	}
+
+	// ƒeƒXƒg
+	onMessage("PlayerSpawn", nullptr);
 }
 
-void PlayerSpawner::onMessage(const String& message, void * parameter)
+void PlayerSpawner::onMessage(const String& message, void* parameter)
 {
-	if (message == "PlayerSpawn")
+	if (m_isActive && message == "PlayerSpawn")
 	{
 		m_world->addActor(ActorTag::Player, std::make_shared<Player>(*m_world, getPosition()));
-		kill();
+		m_isActive = false;
 	}
 
 	BaseActor::onMessage(message, parameter);
