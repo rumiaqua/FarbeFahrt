@@ -126,3 +126,7 @@ void Renderer::drawTexture(const std::string& name, int x, int y,int cx,int cy, 
 	DrawRotaGraph3(x, y,cx, cy, width, height,
 		(double)angle, m_textureData.at(name), FALSE, FALSE);
 }
+void Renderer::drawTexture(const std::string& name, int x, int y)
+{
+	DrawGraph(x, y, m_textureData.at(name),TRUE);
+}

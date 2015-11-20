@@ -8,6 +8,7 @@
 #include "Utility/Loader.h"
 
 #include "Scene/SceneManager.h"
+#include "Utility\NowLoading.h"
 
 class MyGame
 {
@@ -20,5 +21,5 @@ private:
 	bool m_breakflag;
 	bool initFlag;
 	SceneManager m_sceneManager;
-	
+	NowLoading m_nowLoading;
 };

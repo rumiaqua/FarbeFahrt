@@ -174,6 +174,9 @@
     <ClCompile Include="Root\Actor\PlayerSpawner.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Utility\NowLoading.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\ActorManager\ActorManager.h">
@@ -383,6 +386,9 @@
     <ClInclude Include="Root\Actor\PlayerSpawner.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Utility\NowLoading.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Model\本2\book.pmx" />
@@ -402,15 +408,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\curtain.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 真ん中.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 上.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 下.png">
       <Filter>リソース ファイル</Filter>
     </Image>
   </ItemGroup>

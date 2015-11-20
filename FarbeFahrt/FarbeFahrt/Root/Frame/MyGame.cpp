@@ -55,6 +55,7 @@ void MyGame::run()
 	// ƒ[ƒh’†‚È‚ç‰½‚à‚µ‚È‚¢
 	if (loader.isLoad())
 	{
+		m_nowLoading.draw();
 		return;
 	}
 

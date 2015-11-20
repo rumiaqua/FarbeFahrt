@@ -56,6 +56,7 @@ public:
 	void refreshAnimParam();
 	//2DŒnŠÖ”
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
+	void drawTexture(const std::string& name, int x, int y);
 public:
 	// -----------------------------------------------------------
 	// ƒvƒŠƒ~ƒeƒBƒuŒ^•`‰æ

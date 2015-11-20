@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
     <ClCompile Include="Root\Actor\Camera\Camera.cpp" />
@@ -73,6 +74,7 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Actor\Camera\Ray.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Actor\Goal\Goal.h" />
@@ -156,9 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\curtain.png" />
-    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 上.png" />
-    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 下.png" />
-    <Image Include="Resources\Texture\NowLoading\ロード画面　改定 真ん中.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Stage\GrayBox\1-1.txt" />
