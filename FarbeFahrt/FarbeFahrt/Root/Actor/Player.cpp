@@ -92,10 +92,8 @@ void Player::playerInput()
 
 	m_pose.position.y -= 2.0f;
 
-	//if (getPosition().y < -100.0f)
-	//{
-	//	getPosition().y = -100.0f;
-	//}
+	m_pose.position.x = (float)Math::Clamp(m_pose.position.x,-145.0f,145.0f);
+	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -110.0f, 110.0f);
 
 	if (Input::IsClicked(KEY_INPUT_1))
 	{
@@ -124,10 +122,6 @@ void Player::onMessage(const String& message, void* parameter)
 		Vector3* pos = static_cast<Vector3*>(parameter);
 		m_pose.position = *pos;
 		Debug::Println("‚ä‚©‚Ì‚È‚©‚É‚¢‚é");
-	}
-	if (message == "Goal")
-	{
-		StoryManager::set(BitFlag::GOAL);
 	}
 	if (message == "StopControl")
 	{

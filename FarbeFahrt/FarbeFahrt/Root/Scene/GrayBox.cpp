@@ -59,6 +59,7 @@ void GrayBox::post()
 	if (m_stageManager.isNext())
 	{
 		m_stageManager.next(m_world.get());
+
 		for (auto&& resource : m_stageManager.current().resourceList)
 		{
 			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
