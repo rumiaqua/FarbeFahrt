@@ -23,14 +23,15 @@ void Goal::onMessage(const String & message, void* parameter)
 	auto player = static_cast<BaseActor*>(parameter);
 	if (message == "onCollide" && player->getName() == "Player")
 	{
-		//player->sendMessage("Goal",nullptr);
+		m_world->findCamera()->sendMessage("complete", nullptr);
+		m_world->findCamera()->sendMessage("toBookCamera", nullptr);
 		//責任者なりたん
 		//1.カメラを引く
 		//2.プレイヤーにはしばらく引っ込んでもらう
 		//3.ページをめくる
 		//4.プレイヤーの位置をセット
 		//5.カメラを近づける
-		m_world->findCamera()->sendMessage("nextStage",nullptr);
+		// m_world->findCamera()->sendMessage("nextStage",nullptr);
 		player->sendMessage("StopControl", nullptr);
 		kill();
 	}
