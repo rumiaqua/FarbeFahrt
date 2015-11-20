@@ -19,7 +19,6 @@
 
 Stage::Stage(World* world)
 	: m_world(world)
-	, m_field()
 	, m_actorManager()
 {
 
@@ -27,13 +26,17 @@ Stage::Stage(World* world)
 
 void Stage::apply(const StageData& data, bool isClear)
 {
-	// フィールドの初期化
-	m_field = std::make_shared<Field>(*m_world, data.fieldName, data.fieldScale);
-
 	// アクターの初期化
 	if (isClear)
 	{
 		clearActor();
+	}
+
+	// フィールドの初期化
+	for (auto&& field : data.fieldList)
+	{
+		m_actorManager.addActor(ActorTag::Field, std::make_shared<Field>(
+			*m_world, field.name, field.position, field.scale));
 	}
 
 	// プレイヤー位置の初期化
@@ -44,8 +47,6 @@ void Stage::apply(const StageData& data, bool isClear)
 	}
 	else
 	{
-		// m_world->addActor(ActorTag::Player, std::make_shared<Player>(
-			// *m_world, data.playerPosition));
 		m_world->addActor(ActorTag::Player, std::make_shared<PlayerSpawner>(
 			*m_world, "PlayerSpawner", data.playerPosition));
 	}
@@ -69,8 +70,11 @@ void Stage::apply(const StageData& data, bool isClear)
 			int animNo = String::ToValue<int>(parameter[0]);
 			float animSpeed = String::ToValue<float>(parameter[1]);
 			float maxFrame = String::ToValue<float>(parameter[2]);
+			float scale = String::ToValue<float>(parameter[3]);
+			float angle = String::ToValue<float>(parameter[4]);
+			bool isLoop = String::ToValue<int>(parameter[5]) == 1;
 			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
-				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame));
+				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame, scale, angle, isLoop));
 			// int anmNo, float frameSpeed,float maxframe
 		}
 		if (object.name == "StaticObject")
@@ -89,8 +93,10 @@ void Stage::apply(const StageData& data, bool isClear)
 			String backgroundName = parameter[0];
 			String groundName = parameter[1];
 			bool isOpen = String::ToValue<int>(parameter[2]) == 1;
+			float scale = String::ToValue<float>(parameter[3]);
+			float angle = String::ToValue<float>(parameter[4]);
 			m_world->addActor(ActorTag::Object, std::make_shared<Page>(
-				*m_world, object.name, object.position, backgroundName, groundName, isOpen));
+				*m_world, object.name, object.position, backgroundName, groundName, isOpen, scale, angle));
 			/*m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
 				*m_world, backgroundName, object.position, 0, 0.1f, 589.0f));
 			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
@@ -102,20 +108,15 @@ void Stage::apply(const StageData& data, bool isClear)
 void Stage::update()
 {
 	// 更新処理
-	m_field->update();
 	m_actorManager.update();
 
 	// フィールドとアクターの衝突処理
-	m_actorManager.collideField(m_field.get());
+	m_actorManager.collideField();
 }
 
 void Stage::draw(Renderer& renderer) const
 {
 	// 描画処理
-	if (m_field)
-	{
-		m_field->draw(renderer);
-	}
 	m_actorManager.draw(renderer);
 }
 
@@ -127,11 +128,6 @@ void Stage::addActor(const ActorTag& tag, const Actor& actor)
 Actor Stage::findActor(const std::string& name) const
 {
 	return m_actorManager.findActor(name);
-}
-
-Actor Stage::findField() const
-{
-	return m_field;
 }
 
 void Stage::clearActor()

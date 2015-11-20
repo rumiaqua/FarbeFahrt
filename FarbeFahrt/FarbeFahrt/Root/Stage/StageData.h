@@ -9,6 +9,14 @@ class IShape;
 
 struct StageData
 {
+	struct FieldObj
+	{
+		String name;
+		Vector3 position;
+		float scale;
+		FieldObj(const String& name, const Vector3& position, float scale);
+	};
+
 	struct Object
 	{
 		String name;
@@ -20,13 +28,13 @@ struct StageData
 	};
 
 	using ResourceList = std::unordered_map<String, String>;
+	using FieldList = std::vector<FieldObj>;
 	using ObjectList = std::vector<Object>;
 	using NextStage = std::pair<String, String>;
 
 	ResourceList resourceList;
 	Vector3 playerPosition;
-	String fieldName;
-	float fieldScale;
+	FieldList fieldList;
 	ObjectList objectList;
 	NextStage nextStage;
 };

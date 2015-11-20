@@ -9,10 +9,10 @@ r,test,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 r,hoge,Model/平原/くさ.pmx
 
 # プレイヤーの位置
-p,0,0,100
+p,0,0,40
 
 # フィールドの情報
-f,field2,2
+f,field2,0,0,0,2
 
 # その他配置されたオブジェクトの情報
 # ギミック
@@ -23,4 +23,4 @@ o,Gimmick,test,0,-50,50,null,1/1.0f/300.0f
 o,Goal,hoge,100,-100,100,null
 
 # 次のステージ
-n,Resources/Stage/GrayBox/1-1.txt,Resources/Stage/GrayBox/2-2.txt
+n,Resources/Stage/GrayBox/2-2.txt,Resources/Stage/HouseA.txt

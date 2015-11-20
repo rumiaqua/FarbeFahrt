@@ -5,7 +5,7 @@ class Field :
 	public BaseActor
 {
 public:
-	explicit Field(IWorld& world, const String& name, float scale);
+	explicit Field(IWorld& world, const String& name, const Vector3& position, float scale);
 public:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;

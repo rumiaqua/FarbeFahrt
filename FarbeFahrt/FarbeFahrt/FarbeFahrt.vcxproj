@@ -46,7 +46,6 @@
     <ClCompile Include="Root\Scene\Editor.cpp" />
     <ClCompile Include="Root\Scene\GrayBox.cpp" />
     <ClCompile Include="Root\Scene\SceneManager.cpp" />
-    <ClCompile Include="Root\Scene\StageScene.cpp" />
     <ClCompile Include="Root\Stage\Stage.cpp" />
     <ClCompile Include="Root\Stage\StageManager.cpp" />
     <ClCompile Include="Root\Utility\Debug.cpp" />
@@ -75,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Utility\NowLoading.h" />
+    <ClInclude Include="Root\Actor\Book.h" />
     <ClInclude Include="Root\Actor\Camera\Ray.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Actor\Goal\Goal.h" />
@@ -109,7 +109,6 @@
     <ClInclude Include="Root\Scene\GrayBox.h" />
     <ClInclude Include="Root\Scene\ISceneMediator.h" />
     <ClInclude Include="Root\Scene\SceneManager.h" />
-    <ClInclude Include="Root\Scene\StageScene.h" />
     <ClInclude Include="Root\Stage\IStageMediator.h" />
     <ClInclude Include="Root\Stage\Stage.h" />
     <ClInclude Include="Root\Stage\StageManager.h" />
@@ -163,7 +162,6 @@
     <Text Include="Resources\Stage\GrayBox\1-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-2.txt" />
-    <Text Include="Resources\Stage\HouseA.txt" />
     <Text Include="Resources\Stage\Mori.txt" />
     <Text Include="Resources\Stage\Mori2.txt" />
     <Text Include="Resources\Stage\ScriptFormatSample.txt" />

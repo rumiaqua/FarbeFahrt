@@ -11,11 +11,7 @@ class Renderer;
 
 enum class Scene{
 	NullScene = 1,
-	drawGameTitle,
-	drawGameMenu,
-	drawGameMain,
 	Editor,
-	Stage,
 	GrayBox,
 };
 class BaseScene

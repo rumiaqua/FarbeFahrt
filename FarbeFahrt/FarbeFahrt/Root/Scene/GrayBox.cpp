@@ -15,9 +15,7 @@
 # include "Utility/SingletonFinalizer.h"
 
 GrayBox::GrayBox()
-	// : m_stageManager("Resources/Stage/GrayBox/1-1.txt")
-	// : m_stageManager("Resources/Stage/ScriptFormatSample.txt")
-	: m_stageManager("Resources/Stage/HouseA.txt")
+	: m_stageManager("Resources/Stage/GrayBox/1-1.txt")
 {
 
 }
@@ -61,6 +59,7 @@ void GrayBox::post()
 	if (m_stageManager.isNext())
 	{
 		m_stageManager.next(m_world.get());
+
 		for (auto&& resource : m_stageManager.current().resourceList)
 		{
 			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());

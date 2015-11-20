@@ -24,7 +24,6 @@ public:
 
 	virtual Actor findActor(const std::string& name) const override;
 	virtual Actor findCamera() const override;
-	virtual Actor findField() const override;
 	StageData getData() const;
 	void apply(const StageData& data, bool isClear);
 	virtual void actorSet(const std::string& actorName);

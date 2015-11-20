@@ -3,30 +3,32 @@
 # ディレクトリ	：カレントディレクトリはResourcesです
 r,gimmick,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
-r,field,Model/terrain/平原地面.pmx
+# r,field,Model/terrain/平原地面.pmx
+r,field,Stage/森/森地面/森地面.pmx
 r,goal,Model/平原/くさ.pmx
 r,moriBackground,Stage/森/森背景/森背景.pmx
 r,moriGround,Stage/森/森地面/森地面.pmx
 r,heigenGround,Stage/平原/平原地面/平原.pmx
 r,heigenBackground,Stage/平原/平原背景/平原背景.pmx
+r,book,Model/本/新本.pmx
 
 # プレイヤーの位置
 # フォーマット	：p, [x座標], [y座標], [z座標]
 # 座標			：float型に解釈されるので 1 1.0 1.0f の３つは全て合法です
-p,0,0,100
+p,0,0,-50
 
 # フィールドの情報
 # フォーマット	：f, [リソース名], [サイズ]
 # リソース名	：上で登録したリソース名を使用します
 # サイズ		：int型に解釈されるので整数にしてください
-f,field,3
+f,heigenBackground,3
+f,heigenGround,3
 
 # オブジェクトの配置
 # フォーマット	：o, [クラス分類], [リソース名], [x座標], [y座標], [z座標], [形状]
 # または
 # フォーマット	：o, [クラス分類], [リソース名], [x座標], [y座標], [z座標], [形状], [param1]/[param2]...
-# クラス分類	：現在 Gimmick, 
-, StaticObject, Goalの４つがあります
+# クラス分類	：現在 Gimmick, SkinObject, StaticObject, Goalの４つがあります
 # リソース名	：上で登録したリソース名を使用します
 # 座標			：float型に解釈されるので 1 1.0 1.0f の３つは全て合法です
 # 形状			：現在使用していません
@@ -36,13 +38,14 @@ f,field,3
 # StaticObjectはパラメータを受け取ります
 # Goalはパラメータを受け取りません
 o,Gimmick,gimmick, 0, -50, 50, null, 1/1.0f/300.0f
-o,Goal,goal, 100, -60, 50, null
+o,Goal,goal, 100, -65, 50, null
 
-o,Page,moriPage,0,-50,0,null,moriBackground/moriGround/1
-o,Page,moriPage,0,-50,0,null,heigenBackground/heigenGround/0
+#o,Page,heigenPage,80,-50,0,null,heigenBackground/heigenGround/0/3/0.0f
+#o,SkinObject,book,80,-51,0,null,0/1.0f/60.0f/3/3.0f/0
+#o,Page,moriPage,80,-50,0,null,moriBackground/moriGround/1/3/0.0f
 
 # 次のステージ
 # フォーマット	：n, [ギミックが動作した場合のステージ], [動作しない場合のステージ]
 # ステージ		：カレントディレクトリはProjectのディレクトリなので
 #				　Resources/を含めてください
-n,Resources/Stage/ScriptFormatSample.txt,Resources/Stage/ScriptFormatSample.txt
+n,Resources/Stage/GrayBox/2-1.txt,Resources/Stage/GrayBox/2-2.txt
