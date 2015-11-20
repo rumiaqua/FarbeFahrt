@@ -92,10 +92,8 @@ void Player::playerInput()
 
 	m_pose.position.y -= 2.0f;
 
-	//if (getPosition().y < -100.0f)
-	//{
-	//	getPosition().y = -100.0f;
-	//}
+	m_pose.position.x = Math::Clamp(m_pose.position.x,-145.0f,145.0f);
+	m_pose.position.z = Math::Clamp(m_pose.position.z, -110.0f, 110.0f);
 
 	if (Input::IsClicked(KEY_INPUT_1))
 	{
