@@ -51,4 +51,6 @@ private:
 	Vector3 m_position;
 
 	Vector3 m_direction;
+
+	Vector3 m_up;
 };

@@ -26,7 +26,9 @@
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
     <ClCompile Include="Root\Actor\Goal\Goal.cpp" />
+    <ClCompile Include="Root\Actor\Page.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
+    <ClCompile Include="Root\Actor\PlayerSpawner.cpp" />
     <ClCompile Include="Root\Actor\SkinObject.cpp" />
     <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp" />
     <ClCompile Include="Root\Actor\StaticObject.cpp" />
@@ -43,7 +45,6 @@
     <ClCompile Include="Root\Scene\Editor.cpp" />
     <ClCompile Include="Root\Scene\GrayBox.cpp" />
     <ClCompile Include="Root\Scene\SceneManager.cpp" />
-    <ClCompile Include="Root\Scene\StageScene.cpp" />
     <ClCompile Include="Root\Stage\Stage.cpp" />
     <ClCompile Include="Root\Stage\StageManager.cpp" />
     <ClCompile Include="Root\Utility\Debug.cpp" />
@@ -74,6 +75,8 @@
     <ClInclude Include="Root\Actor\Camera\Ray.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Actor\Goal\Goal.h" />
+    <ClInclude Include="Root\Actor\Page.h" />
+    <ClInclude Include="Root\Actor\PlayerSpawner.h" />
     <ClInclude Include="Root\Actor\SkinObject.h" />
     <ClInclude Include="Root\Actor\StaticObject.h" />
     <ClInclude Include="Root\Collision\ModelCollider.h" />
@@ -103,7 +106,6 @@
     <ClInclude Include="Root\Scene\GrayBox.h" />
     <ClInclude Include="Root\Scene\ISceneMediator.h" />
     <ClInclude Include="Root\Scene\SceneManager.h" />
-    <ClInclude Include="Root\Scene\StageScene.h" />
     <ClInclude Include="Root\Stage\IStageMediator.h" />
     <ClInclude Include="Root\Stage\Stage.h" />
     <ClInclude Include="Root\Stage\StageManager.h" />

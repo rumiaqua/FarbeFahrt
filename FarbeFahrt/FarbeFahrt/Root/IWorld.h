@@ -11,6 +11,5 @@ public:
 	virtual void addActor(ActorTag tag, const Actor& actor) = 0;
 	virtual Actor findActor(const std::string& name) const = 0;
 	virtual Actor findCamera() const = 0;
-	virtual Actor findField() const = 0;
 	virtual void actorSet(const std::string& actorName) = 0;
 };

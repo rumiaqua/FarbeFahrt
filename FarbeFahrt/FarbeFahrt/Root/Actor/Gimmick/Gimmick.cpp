@@ -29,7 +29,7 @@ void Gimmick::frameReset()
 //ê”îCé“Å@Ç»ÇËÇΩÇÒ
 void Gimmick::animation()
 {
-	m_maxframe = MV1GetFrameNum(Singleton<HandleList>::Instance().getHandle(m_name));
+	m_maxframe = (float)MV1GetFrameNum(Singleton<HandleList>::Instance().getHandle(m_name));
 	if (isAnimate)
 	{
 		if (frame <= m_maxframe * m_frameSpeed)

@@ -23,7 +23,7 @@ public:
 
 	Actor findActor(const std::string& name) const;
 
-	void collideField(BaseActor* field);
+	void collideField();
 
 private:
 

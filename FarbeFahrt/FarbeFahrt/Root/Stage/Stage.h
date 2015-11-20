@@ -33,17 +33,12 @@ public:
 	/// <param name="name">名前</param>
 	Actor findActor(const std::string& name) const;
 
-	/// <summary>フィールドの検索</summary>
-	Actor findField() const;
-
 	/// <summary>アクターのクリア</summary>
 	void clearActor();
 
 private:
 
 	World* m_world;
-
-	Actor m_field;
 
 	ActorManager m_actorManager;
 };

@@ -3,7 +3,6 @@
 #include "BaseScene.h"
 
 # include "Scene/Editor.h"
-# include "Scene/StageScene.h"
 # include "Scene/GrayBox.h"
 
 #include "Utility/SingletonFinalizer.h"
@@ -19,7 +18,6 @@ MyGame::MyGame()
 	initFlag(true)
 {
 	m_sceneManager.addScene<Editor>(Scene::Editor);
-	m_sceneManager.addScene<StageScene>(Scene::Stage);
 	m_sceneManager.addScene<GrayBox>(Scene::GrayBox);
 
 	// 最初のシーンはゲームメイン

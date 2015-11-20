@@ -8,12 +8,17 @@ r,test,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 # ゴール
 r,hoge,Model/平原/くさ.pmx
 
+r,heigenGround,Stage/平原/平原地面/平原.pmx
+r,heigenBackground,Stage/平原/平原背景/平原背景.pmx
+
 # プレイヤーの位置
-p,0,0,100
+p,0,100,100
 
 # フィールドの情報
 # field
-f,field,3
+#f,field,0,0,0,3
+f,heigenGround,0,0,0,3
+f,heigenBackground,0,0,110,3
 
 # その他配置されたオブジェクトの情報
 # ギミック

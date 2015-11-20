@@ -17,6 +17,7 @@ void ActorManager::initialize()
 	m_actors[ActorTag::Gimmick] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Collider] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Goal] = std::make_shared<BaseActor>();
+	m_actors[ActorTag::Field] = std::make_shared<BaseActor>();
 	m_root.eachChildren([] (BaseActor& actor) { actor.kill(); });
 	m_root.removeChildren();
 	m_root.addChild(m_actors[ActorTag::Player]);
@@ -27,6 +28,7 @@ void ActorManager::initialize()
 	m_root.addChild(m_actors[ActorTag::Gimmick]);
 	m_root.addChild(m_actors[ActorTag::Collider]);
 	m_root.addChild(m_actors[ActorTag::Goal]);
+	m_root.addChild(m_actors[ActorTag::Field]);
 }
 void ActorManager::update()
 {
@@ -69,8 +71,12 @@ Actor ActorManager::findActor(const std::string& name) const
 	return m_root.find(name);
 }
 
-void ActorManager::collideField(BaseActor* field)
+void ActorManager::collideField()
 {
 	// field->collide(m_actors.at(ActorTag::Player).get());
-	m_actors.at(ActorTag::Player)->collide(field);
+	m_actors.at(ActorTag::Field)->eachChildren([=] (BaseActor& actor)
+	{
+		m_actors.at(ActorTag::Player)->collide(&actor);
+	});
+	// m_actors.at(ActorTag::Player)->collide(field);
 }

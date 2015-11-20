@@ -64,10 +64,6 @@ Actor World::findCamera() const
 {
 	return m_camera;
 }
-Actor World::findField() const
-{
-	return m_stage.findField();
-}
 
 StageData World::getData() const
 {
