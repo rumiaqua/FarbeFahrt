@@ -17,7 +17,7 @@ void PlayerSpawner::onUpdate()
 	}
 
 	// ƒeƒXƒg
-	onMessage("PlayerSpawn", nullptr);
+	// onMessage("PlayerSpawn", nullptr);
 }
 
 void PlayerSpawner::onMessage(const String& message, void* parameter)

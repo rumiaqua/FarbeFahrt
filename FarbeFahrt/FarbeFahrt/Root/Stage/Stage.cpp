@@ -130,6 +130,11 @@ Actor Stage::findActor(const std::string& name) const
 	return m_actorManager.findActor(name);
 }
 
+Actor Stage::findGroup(const ActorTag& tag) const
+{
+	return m_actorManager.findGroup(tag);
+}
+
 void Stage::clearActor()
 {
 	m_actorManager.initialize();

@@ -2,6 +2,8 @@
 
 # include "StageFactory.h"
 
+# include "Actor/Field/Field.h"
+
 # include "World.h"
 
 # include "Utility/SingletonFinalizer.h"
@@ -21,10 +23,31 @@ bool StageManager::isNext() const
 
 void StageManager::next(World* const world)
 {	
-	m_current = nextStage();
-	apply(world);
-	world->findCamera()->sendMessage("toPlayerCamera", nullptr);
-	StoryManager::initialize();
+	// m_current = nextStage();
+	// apply(world);
+	//world->findCamera()->sendMessage("toPlayerCamera", nullptr);
+	// 次ページに移動
+	{
+		// 現在のフィールドに閉じるアニメーションをさせる
+		world->findGroup(ActorTag::Field)->eachChildren(
+			[] (BaseActor& actor)
+		{
+			actor.sendMessage("CloseAnimate", nullptr);
+		});
+
+		// 新たなフィールドを追加する
+		for (auto&& field : nextStage().fieldList)
+		{
+			// 生成
+			Actor actor = std::make_shared<Field>(
+				*world, field.name, field.position, field.scale);
+			// ワールドに追加
+			world->addActor(ActorTag::Field, actor);
+			// 開くアニメーションをさせる
+			actor->sendMessage("OpenAnimate", nullptr);
+		}
+	}
+	StoryManager::reset(BitFlag::GIMMICK | BitFlag::GOAL);
 }
 
 void StageManager::apply(World* const world)
@@ -32,6 +55,7 @@ void StageManager::apply(World* const world)
 	world->apply(m_current, true);
 	StageFactory().Load(m_current.nextStage.first, m_next.first);
 	StageFactory().Load(m_current.nextStage.second, m_next.second);
+	world->findActor("PlayerSpawner")->sendMessage("PlayerSpawn", nullptr);
 }
 
 const StageData& StageManager::current() const

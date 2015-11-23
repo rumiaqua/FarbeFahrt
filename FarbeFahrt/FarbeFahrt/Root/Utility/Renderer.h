@@ -16,6 +16,7 @@
 
 # include "Vector3.h"
 # include "Matrix.h"
+# include "Pose.h"
 
 //描画のためのデータ
 
@@ -54,6 +55,14 @@ public:
 	void setScale(const std::string& name, const Vector3& scale);
 	void refreshAnimParam(const std::string& name);
 	void refreshAnimParam();
+
+	/// <summary>3Dアニメーション描画</summary>
+	/// <param name="name">リソース名</param>
+	/// <param name="pose">姿勢</param>
+	/// <param name="animationNumber">アニメーションNo</param>
+	/// <param name="t">アニメーション比率(0.0~1.0)</param>
+	void drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t);
+
 	//2D系関数
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
 	void drawTexture(const std::string& name, int x, int y);

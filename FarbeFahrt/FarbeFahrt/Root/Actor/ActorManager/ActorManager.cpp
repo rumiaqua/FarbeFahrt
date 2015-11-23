@@ -71,6 +71,11 @@ Actor ActorManager::findActor(const std::string& name) const
 	return m_root.find(name);
 }
 
+Actor ActorManager::findGroup(const ActorTag& tag) const
+{
+	return m_actors.at(tag);
+}
+
 void ActorManager::collideField()
 {
 	// field->collide(m_actors.at(ActorTag::Player).get());

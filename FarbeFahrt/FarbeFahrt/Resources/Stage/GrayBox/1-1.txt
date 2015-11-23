@@ -8,8 +8,11 @@ r,test,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 # ゴール
 r,hoge,Model/平原/くさ.pmx
 
-r,heigenGround,Stage/平原/平原地面/平原.pmx
+r,heigenGround,Stage/平原/平原地面/平原地面.pmx
 r,heigenBackground,Stage/平原/平原背景/平原背景.pmx
+
+r,moriGround,Stage/森/森地面/森地面.pmx
+r,moriBackground,Stage/森/森背景/森背景.pmx
 
 # プレイヤーの位置
 p,0,100,100
@@ -18,15 +21,15 @@ p,0,100,100
 # field
 #f,field,0,0,0,3
 f,heigenGround,0,0,0,3
-f,heigenBackground,0,0,110,3
+f,heigenBackground,0,0,0,3
 
 # その他配置されたオブジェクトの情報
 # ギミック
-o,Gimmick,test,0,-50,50,null,1/1.0f/300.0f
+#o,Gimmick,test,0,-50,50,null,1/1.0f/300.0f
 # アニメーションオブジェクト
 # o,SkinObject,test,0,100,100,Sphere,1/1.0f/300.0f
 # ゴール
-o,Goal,hoge,100,-60,50,null
+#o,Goal,hoge,100,-60,50,null
 
 # 次のステージ
 n,Resources/Stage/GrayBox/2-1.txt,Resources/Stage/GrayBox/2-2.txt

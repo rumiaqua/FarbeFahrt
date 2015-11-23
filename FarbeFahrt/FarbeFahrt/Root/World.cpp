@@ -65,6 +65,11 @@ Actor World::findCamera() const
 	return m_camera;
 }
 
+Actor World::findGroup(const ActorTag& tag) const
+{
+	return m_stage.findGroup(tag);
+}
+
 StageData World::getData() const
 {
 	StageData data;

@@ -23,6 +23,8 @@ public:
 
 	Actor findActor(const std::string& name) const;
 
+	Actor findGroup(const ActorTag& tag) const;
+
 	void collideField();
 
 private:
