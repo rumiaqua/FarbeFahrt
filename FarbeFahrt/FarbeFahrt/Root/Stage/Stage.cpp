@@ -35,8 +35,10 @@ void Stage::apply(const StageData& data, bool isClear)
 	// フィールドの初期化
 	for (auto&& field : data.fieldList)
 	{
-		m_actorManager.addActor(ActorTag::Field, std::make_shared<Field>(
-			*m_world, field.name, field.position, field.scale));
+		auto actor = std::make_shared<Field>(
+			*m_world, field.name, field.position, field.scale);
+		m_actorManager.addActor(ActorTag::Field, actor);
+		actor->sendMessage("OpenAnimate", nullptr);
 	}
 
 	// プレイヤー位置の初期化
@@ -48,7 +50,7 @@ void Stage::apply(const StageData& data, bool isClear)
 	else
 	{
 		m_world->addActor(ActorTag::Player, std::make_shared<PlayerSpawner>(
-			*m_world, "PlayerSpawner", data.playerPosition));
+			*m_world, data.playerPosition));
 	}
 
 	// その他オブジェクトの初期化
@@ -130,6 +132,11 @@ void Stage::addActor(const ActorTag& tag, const Actor& actor)
 Actor Stage::findActor(const std::string& name) const
 {
 	return m_actorManager.findActor(name);
+}
+
+Actor Stage::findGroup(const ActorTag& tag) const
+{
+	return m_actorManager.findGroup(tag);
 }
 
 void Stage::clearActor()

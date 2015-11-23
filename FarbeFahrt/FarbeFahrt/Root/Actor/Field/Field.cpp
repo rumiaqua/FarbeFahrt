@@ -7,21 +7,56 @@
 # include "Utility/HandleList.h"
 
 # include "Utility/Debug.h"
+# include "Utility/StoryManager/StoryManager.h"
+
+namespace
+{
+	constexpr float ANIMATION_FRAME = 600.0f;
+}
 
 Field::Field(IWorld& world, const String& name, const Vector3& position, float scale)
 	:BaseActor(world, name, position, Matrix::identity(),
 		std::make_unique<ModelCollider>(name)), m_scale(scale)
+	, m_elapsedTime(0.0f)
+	, m_animationNumber(0)
+	, m_isAnimating(false)
 {
+
 }
 
 void Field::onUpdate()
 {
+	if (m_isAnimating)
+	{
+		m_elapsedTime += 1.0f;
+		m_isAnimating = m_elapsedTime < ANIMATION_FRAME;
+		m_elapsedTime = Math::Min({ m_elapsedTime, ANIMATION_FRAME });
+
+# define Open 0
+		if (m_animationNumber == Open &&
+			!m_isAnimating)
+		{
+			StoryManager::set(BitFlag::NEXT);
+		}
+# undef Open
+
+# define Close 1
+		if (m_animationNumber == Close &&
+			!m_isAnimating)
+		{
+			kill();
+		}
+# undef Close
+	}
+
 	BaseActor::onUpdate();
 }
 void Field::onDraw(Renderer& render) const
 {
 	render.setScale(m_name.toNarrow(), VGet(m_scale, m_scale, m_scale));
-	render.drawNormalModel(m_name.toNarrow(), getPosition(), getRotation());
+
+	float t = Math::Min({ m_elapsedTime / ANIMATION_FRAME, 0.9999f });
+	render.drawSkinModel(m_name.toNarrow(), m_pose, m_animationNumber, t);
 
 	BaseActor::onDraw(render);
 }
@@ -55,5 +90,31 @@ void Field::onMessage(const String& message, void* parameter)
 		}
 	}
 
+	if (message == "OpenAnimate")
+	{
+		// 開くアニメーション
+		open();
+	}
+
+	if (message == "CloseAnimate")
+	{
+		// 閉じるアニメーション
+		close();
+	}
+
 	BaseActor::onMessage(message, parameter);
+}
+
+void Field::open()
+{
+	m_elapsedTime = 0.0f;
+	m_animationNumber = 0;
+	m_isAnimating = true;
+}
+
+void Field::close()
+{
+	m_elapsedTime = 0.0f;
+	m_animationNumber = 1;
+	m_isAnimating = true;
 }

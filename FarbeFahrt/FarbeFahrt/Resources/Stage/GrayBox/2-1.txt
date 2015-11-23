@@ -8,11 +8,16 @@ r,test,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 # ゴール
 r,hoge,Model/平原/くさ.pmx
 
+r,moriGround,Stage/森/森地面/森地面.pmx
+r,moriBackground,Stage/森/森背景/森背景.pmx
+
 # プレイヤーの位置
 p,0,0,40
 
 # フィールドの情報
-f,field2,0,0,0,2
+# f,field2,0,0,0,2
+f,moriGround,0,0,0,3
+f,moriBackground,0,0,0,3
 
 # その他配置されたオブジェクトの情報
 # ギミック

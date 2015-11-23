@@ -10,8 +10,12 @@ public:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
 	virtual void onMessage(const String& message, void* parameter) override;
-public:
-
+private:
+	void open();
+	void close();
 private:
 	float m_scale;
+	float m_elapsedTime;
+	int m_animationNumber;
+	bool m_isAnimating;
 };

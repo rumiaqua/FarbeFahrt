@@ -34,7 +34,8 @@ void GrayBox::initialize()
 {
 	m_world = std::make_shared<World>();
 
-	m_stageManager.apply(m_world.get());
+	m_stageManager.next(m_world.get());
+	// m_loader->loadContents(m_stageManager.current().resourceList);
 
 	Debug::SetClear(true);
 }

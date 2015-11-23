@@ -33,6 +33,9 @@ public:
 	/// <param name="name">名前</param>
 	Actor findActor(const std::string& name) const;
 
+	/// <summary>グループを返す</summary>
+	Actor findGroup(const ActorTag& tag) const;
+
 	/// <summary>アクターのクリア</summary>
 	void clearActor();
 

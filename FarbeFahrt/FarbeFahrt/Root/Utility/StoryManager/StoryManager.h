@@ -3,9 +3,14 @@
 
 enum BitFlag
 {
+	// フラグが立っていない
 	NONE		= 0b0000,
+	// ギミックが動作している
 	GIMMICK		= 0b0001,
+	// ゴールした
 	GOAL		= 0b0010,
+	// 次のステージに遷移した
+	NEXT        = 0b0100,
 };
 
 class StoryManager

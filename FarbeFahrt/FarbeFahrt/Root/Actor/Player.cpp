@@ -85,9 +85,8 @@ void Player::playerInput()
 		getPosition() += moveVec;
 
 		Vector3 direction = Vector3::Normalize(moveVec);
-		float angle = Vector3::Angle(Vector3::Forward(), direction);
-		float sign = (float)Math::Sign(Vector3::Cross(Vector3::Forward(), direction).y);
-
+		double angle = Vector3::Angle(Vector3::Forward(), direction);
+		double sign = Math::Sign(Vector3::Cross(Vector3::Forward(), direction).y);
 		m_pose.rotation = Matrix::Rotation(Vector3::Up(), angle * sign + Math::PI);
 
 		m_state = PlayerState::walking;
@@ -97,16 +96,16 @@ void Player::playerInput()
 		m_state = PlayerState::standing;
 	}
 
+	// d—Í
 	m_pose.position.y -= 2.0f;
 
+	// ˆÚ“®§ŒÀ
 	m_pose.position.x = (float)Math::Clamp(m_pose.position.x,-145.0f,145.0f);
 	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -110.0f, 110.0f);
 
 	if (Input::IsClicked(KEY_INPUT_1))
 	{
-		m_pose.position.x = 0;
-		m_pose.position.y = 100;
-		m_pose.position.z = 0;
+		m_pose.position = m_world->findActor("PlayerSpawner")->getPosition();
 	}
 }
 void Player::onDraw(Renderer& render)const

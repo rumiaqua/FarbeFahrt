@@ -69,7 +69,7 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 		modelData.animNumber = animNumber;
 		if (modelData.playAnim2 != -1)
 		{
-			MV1DetachAnim(modelData.modelHandle, modelData.playAnim2);
+			int result = MV1DetachAnim(modelData.modelHandle, modelData.playAnim2);
 			modelData.playAnim2 = -1;
 		}
 		modelData.playAnim2 = modelData.playAnim1;
@@ -119,6 +119,68 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 void Renderer::setScale(const std::string& name, const Vector3& scale)
 {
 	MV1SetScale(m_modelData.at(name).modelHandle, scale);
+}
+
+void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t)
+{
+	//見辛いから後々関数分けする予定
+	//サンプル丸パクリスペクト
+	float animTotalTime;
+	auto& modelData = m_modelData.at(name);
+	modelData.isSkinMesh = true;
+	if (animNumber != modelData.animNumber)//アニメーションが切り替わった時
+	{
+		modelData.animNumber = animNumber;
+		if (modelData.playAnim2 != -1)
+		{
+			int result = MV1DetachAnim(modelData.modelHandle, modelData.playAnim2);
+			modelData.playAnim2 = -1;
+		}
+		modelData.playAnim2 = modelData.playAnim1;
+		modelData.animPlayCount2 = modelData.animPlayCount1;
+
+		modelData.playAnim1 = MV1AttachAnim(modelData.modelHandle, modelData.animNumber);
+		modelData.animPlayCount1 = 0.0f;
+		modelData.animBlendRate = modelData.playAnim2 == -1 ? 1.0f : 0.0f;
+
+	}
+
+	float totalTime = MV1GetAttachAnimTotalTime(m_modelData.at(name).modelHandle, modelData.playAnim1);
+	float frame =  totalTime * t;
+
+	if (modelData.animBlendRate < 1.0f)
+	{
+		modelData.animBlendRate += ANIM_BLEND_SPEED;
+		if (modelData.animBlendRate > 1.0f)
+		{
+			modelData.animBlendRate = 1.0f;
+		}
+	}
+	if (modelData.playAnim1 != -1)
+	{
+		animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim1);
+		modelData.animPlayCount1 = frame;
+		if (modelData.animPlayCount1 >= animTotalTime)
+		{
+			modelData.animPlayCount1 = fmod(modelData.animPlayCount1, animTotalTime);
+		}
+		MV1SetAttachAnimTime(modelData.modelHandle, modelData.playAnim1, modelData.animPlayCount1);
+		MV1SetAttachAnimBlendRate(modelData.modelHandle, modelData.playAnim1, modelData.animBlendRate);
+	}
+	if (modelData.playAnim2 != -1)
+	{
+		animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim2);
+		modelData.animPlayCount2 = frame;
+		if (modelData.animPlayCount2 >= animTotalTime)
+		{
+			modelData.animPlayCount2 = fmod(modelData.animPlayCount2, animTotalTime);
+		}
+		MV1SetAttachAnimTime(modelData.modelHandle, modelData.playAnim2, modelData.animPlayCount2);
+		MV1SetAttachAnimBlendRate(modelData.modelHandle, modelData.playAnim2, 1.0f - modelData.animBlendRate);
+	}
+	//現在のアニメーションを再生
+
+	drawNormalModel(name, pose.position, pose.rotation);
 }
 
 void Renderer::drawTexture(const std::string& name, int x, int y,int cx,int cy, float width, float height, float angle) const

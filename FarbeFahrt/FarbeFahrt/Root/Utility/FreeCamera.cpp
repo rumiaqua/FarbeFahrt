@@ -41,7 +41,7 @@ void FreeCamera::lookAt(const Vector3& target)
 void FreeCamera::apply() const
 {
 	Matrix view = Matrix::LookAt(
-			m_position, m_position + m_direction, m_up);
+			m_position, m_position + m_direction, Vector3::Up());
 	SetCameraViewMatrix(view);
 }
 
@@ -52,6 +52,7 @@ Vector3 FreeCamera::right() const
 
 Vector3 FreeCamera::up() const
 {
+	return Vector3::Up();
 	return Vector3::Normalize(m_up);
 }
 
