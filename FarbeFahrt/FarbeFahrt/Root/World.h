@@ -23,6 +23,7 @@ public:
 	virtual void addField(const Actor& firld);
 
 	virtual Actor findActor(const std::string& name) const override;
+	virtual std::vector<Actor> findActors(const std::string& name) const override;
 	virtual Actor findCamera() const override;
 	virtual Actor findGroup(const ActorTag& tag) const override;
 	StageData getData() const;

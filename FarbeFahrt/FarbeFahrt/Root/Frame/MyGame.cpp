@@ -5,6 +5,8 @@
 # include "Scene/Editor.h"
 # include "Scene/GrayBox.h"
 
+# include "Experimental/ObjectViewer.h"
+
 #include "Utility/SingletonFinalizer.h"
 #include "Utility/HandleList.h"
 #include "Utility/SE.h"
@@ -22,8 +24,10 @@ MyGame::MyGame()
 	m_sceneManager.addScene<Editor>(Scene::Editor);
 	m_sceneManager.addScene<GrayBox>(Scene::GrayBox);
 
-	// 最初のシーンはゲームメイン
+	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
+
 	m_sceneManager.pushScene(Scene::GrayBox);
+	// m_sceneManager.pushScene(Scene::ObjectViewer);
 
 	// 必ず読むリソース
 	// とりあえずここにおいておく

@@ -2,6 +2,8 @@
 
 # include "Collision/IShape.h"
 
+# include <iterator>
+
 BaseActor::BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation, const IShapePtr& shape)
 	: m_world(&world)
 	, m_name(name)
@@ -100,6 +102,26 @@ Actor BaseActor::findPred(const std::function<bool(const BaseActor&)>& func) con
 		}
 	}
 	return nullptr;
+}
+std::vector<Actor> BaseActor::finds(const String& name) const
+{
+	// 検索結果
+	std::vector<Actor> result;
+
+	for (auto&& child : m_children)
+	{
+		// 子供の名前が一致したら追加
+		if (child->getName() == name)
+		{
+			result.push_back(child);
+		}
+
+		// 子供の子供から検索
+		std::vector<Actor> childs = child->finds(name);
+		std::copy(childs.begin(), childs.end(), std::back_inserter(result));
+	}
+
+	return result;
 }
 void BaseActor::addChild(const Actor& child)
 {

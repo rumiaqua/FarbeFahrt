@@ -13,6 +13,7 @@ enum class Scene{
 	NullScene = 1,
 	Editor,
 	GrayBox,
+	ObjectViewer,
 };
 class BaseScene
 {

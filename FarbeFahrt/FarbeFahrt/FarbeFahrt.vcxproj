@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Root\Experimental\ObjectViewer.cpp" />
     <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
@@ -73,6 +74,7 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Experimental\ObjectViewer.h" />
     <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Actor\Book.h" />
     <ClInclude Include="Root\Actor\Camera\Ray.h" />

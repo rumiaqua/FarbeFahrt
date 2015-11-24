@@ -33,6 +33,9 @@ Camera::Camera(IWorld& world) :
 
 	m_cameraState.chaseFlag = ChaseFlag::Void;
 	m_cameraState.cameraMode = CameraMode::Init;
+
+	m_t = 1.0f;
+	fadeOutCamera();
 }
 void Camera::onUpdate()
 {
@@ -42,6 +45,8 @@ void Camera::onUpdate()
 	}
 
 	Debug::Println("%f", m_t);
+	Debug::Println(String::Create("CameraMode:", (int)m_cameraState.cameraMode));
+	Debug::Println(String::Create("ChageFlag :", (int)m_cameraState.chaseFlag));
 
 	cameraInput();
 	cameraSet();
@@ -70,7 +75,7 @@ void Camera::chaseCamera()
 {
 	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
-	m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 200.0f, -100.0f);
+	m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
 	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 

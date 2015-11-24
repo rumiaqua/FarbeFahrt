@@ -66,8 +66,11 @@ public:
 	/// <summary>子を検索</summary>
 	Actor find(const String& name) const;
 
-	/// <summary>条件に一致する子を検索するs</summary>
+	/// <summary>条件に一致する子を検索する</summary>
 	Actor findPred(const std::function<bool(const BaseActor&)>& func) const;
+
+	/// <summary>子を検索</summary>
+	std::vector<Actor> finds(const String& name) const;
 
 	/// <summary>子に追加</summary>
 	void addChild(const Actor& child);

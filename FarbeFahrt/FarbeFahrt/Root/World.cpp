@@ -60,6 +60,10 @@ Actor World::findActor(const std::string& name) const
 {
 	return m_stage.findActor(name);
 }
+std::vector<Actor> World::findActors(const std::string& name) const
+{
+	return m_stage.findActors(name);
+}
 Actor World::findCamera() const
 {
 	return m_camera;

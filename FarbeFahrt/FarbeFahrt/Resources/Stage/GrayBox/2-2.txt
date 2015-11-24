@@ -13,7 +13,7 @@ r,moriBackground,Stage/森/森背景/森背景.pmx
 
 
 # プレイヤーの位置
-p,0,0,-50
+p,0,300,0
 
 # フィールドの情報
 # f,field2,10
