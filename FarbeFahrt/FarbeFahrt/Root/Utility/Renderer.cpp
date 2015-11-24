@@ -1,12 +1,37 @@
 #include "Renderer.h"
 #include <algorithm>
+#include "Actor\Camera\Camera.h"
+
 Renderer::Renderer()
 {
-	MV1SetSemiTransDrawMode(DX_SEMITRANSDRAWMODE_NOT_SEMITRANS_ONLY);
+	initDepthBuffer();
+	loadShader();
 }
 
 Renderer::~Renderer()
 {
+}
+void Renderer::initDepthBuffer()
+{
+	MV1SetSemiTransDrawMode(DX_SEMITRANSDRAWMODE_NOT_SEMITRANS_ONLY);
+	SetDrawValidFloatTypeGraphCreateFlag(TRUE);
+	SetCreateDrawValidGraphChannelNum(1);
+
+	m_buffer.depthBuffer = MakeScreen(4096, 4096, FALSE);
+
+	SetDrawValidFloatTypeGraphCreateFlag(FALSE);
+	SetCreateDrawValidGraphChannelNum(4);
+	SetCreateGraphColorBitDepth(32);
+}
+void Renderer::loadShader()
+{
+	m_shaderHandle.depthRecord_normal = LoadVertexShader("Resources/Shader/depthRecord_normal.vso");
+	m_shaderHandle.depthRecord_skin = LoadVertexShader("Resources/Shader/depthRecord_skin.vso");
+	m_shaderHandle.depthRecord_pixel = LoadPixelShader("Resources/Shader/depthRecord_pixel.pso");
+	m_shaderHandle.render_normal = LoadVertexShader("Resources/Shader/render_normal.vso");
+	m_shaderHandle.render_skin = LoadVertexShader("Resources/Shader/render_skin.vso");
+	m_shaderHandle.render_pixel = LoadPixelShader("Resources/Shader/render_pixel.pso");
+
 }
 void Renderer::setModelData(const ContentMap& modelData)
 {
@@ -25,10 +50,74 @@ void Renderer::setTextureData(const ContentMap& textureData)
 		m_textureData.emplace(data.first,data.second.handle);
 	}
 }
-
-void Renderer::draw()const
+void Renderer::drawDepth()
 {
+	Vector3 lightDirection = GetLightDirection();
+	Vector3 lightPosition = {0.0f,50.0f,-150.0f};
+	Vector3 lightTarget = Vector3::Zero();
+	SetDrawScreen(m_buffer.depthBuffer);
+	SetBackgroundColor(255, 255, 255);
+	ClearDrawScreen();
+	SetBackgroundColor(0, 0, 0);
 
+	SetupCamera_Ortho(500.0f);
+	SetCameraNearFar(0.1f, 500.0f);
+	SetCameraPositionAndTarget_UpVecY(lightPosition, lightTarget);
+
+	m_lightCamera.viewMatrix = GetCameraViewMatrix();
+	m_lightCamera.projectionMatrix = GetCameraProjectionMatrix();
+
+	MV1SetUseOrigShader(TRUE);
+	SetUsePixelShader(m_shaderHandle.depthRecord_pixel);
+	for (auto model : m_modelData)
+	{
+		if (model.second.isSkinMesh)//スキンメッシュの影描画用
+		{
+			SetUseVertexShader(m_shaderHandle.depthRecord_skin);
+		}
+		//剛体メッシュの影描画用
+		else
+		{
+			SetUseVertexShader(m_shaderHandle.depthRecord_normal);
+		}
+		MV1DrawModel(model.second.modelHandle);
+	}
+	MV1SetUseOrigShader(FALSE);
+	SetDrawScreen(DX_SCREEN_BACK);
+}
+void Renderer::drawModelWithDepthShadow()
+{
+	SetCameraPositionAndTarget_UpVecY(m_cameraData.pos, m_cameraData.terget);
+	MV1SetUseOrigShader(TRUE);
+	SetUsePixelShader(m_shaderHandle.render_pixel);
+	SetVSConstFMtx(43, m_lightCamera.viewMatrix);
+	SetVSConstFMtx(47, m_lightCamera.projectionMatrix);
+
+	// 影用深度記録画像をテクスチャ１にセット
+	SetUseTextureToShader(1, m_buffer.depthBuffer);
+	for (auto model : m_modelData)
+	{
+		if (model.second.isSkinMesh)//スキンメッシュの影描画用
+		{
+			SetUseVertexShader(m_shaderHandle.render_skin);
+		}
+		//剛体メッシュの影描画用
+		else
+		{
+			SetUseVertexShader(m_shaderHandle.render_normal);
+		}
+		MV1DrawModel(model.second.modelHandle);
+	}
+	MV1SetUseOrigShader(FALSE);
+	SetUseTextureToShader(1, -1);
+	ResetVSConstF(43, 8);
+}
+void Renderer::draw()
+{
+	m_cameraData.pos = GetCameraPosition();
+	m_cameraData.terget = GetCameraTarget();
+	drawDepth();
+	drawModelWithDepthShadow();
 }
 
 void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const
@@ -37,7 +126,7 @@ void Renderer::drawNormalModel(const std::string& name, const Vector3& position,
 	MV1SetPosition(handle, position);
 	MV1SetRotationMatrix(handle, rotation);
 
-	MV1DrawModel(handle);
+	//MV1DrawModel(handle);
 
 }
 void Renderer::refreshAnimParam(const std::string& name)

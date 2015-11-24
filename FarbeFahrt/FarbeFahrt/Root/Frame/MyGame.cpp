@@ -74,8 +74,8 @@ void MyGame::run()
 	// •`‰æ
 	ClearDrawScreen();
 	Debug::Println("%d",GetASyncLoadNum());
-
 	m_sceneManager.draw(render);
+	render.draw();
 	ScreenFlip();
 
 	// –Œãˆ—
