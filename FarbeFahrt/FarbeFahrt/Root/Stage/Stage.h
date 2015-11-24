@@ -33,6 +33,10 @@ public:
 	/// <param name="name">名前</param>
 	Actor findActor(const std::string& name) const;
 
+	/// <summary>アクターの検索</summary>
+	/// <param name="name">名前</param>
+	std::vector<Actor> findActors(const std::string& name) const;
+
 	/// <summary>グループを返す</summary>
 	Actor findGroup(const ActorTag& tag) const;
 

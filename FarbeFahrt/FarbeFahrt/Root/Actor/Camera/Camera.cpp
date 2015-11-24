@@ -70,7 +70,7 @@ void Camera::chaseCamera()
 {
 	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
-	m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 200.0f, -100.0f);
+	m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
 	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
 

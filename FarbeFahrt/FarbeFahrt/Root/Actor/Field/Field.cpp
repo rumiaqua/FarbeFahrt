@@ -36,6 +36,11 @@ void Field::onUpdate()
 		if (m_animationNumber == Open &&
 			!m_isAnimating)
 		{
+			/*for (auto&& spawner : m_world->findActors("PlayerSpawner"))
+			{
+				spawner->sendMessage("PlayerSpawn", nullptr);
+			}*/
+			m_world->findGroup(ActorTag::Player)->eachChildren([] (BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
 			StoryManager::set(BitFlag::NEXT);
 		}
 # undef Open

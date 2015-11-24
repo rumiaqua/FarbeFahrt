@@ -42,12 +42,6 @@ void Stage::apply(const StageData& data, bool isClear)
 	}
 
 	// プレイヤー位置の初期化
-	// もしプレイヤーが存在するならば座標だけ変更する
-	if (auto player = m_actorManager.findActor("Player"))
-	{
-		player->getPosition() = data.playerPosition;
-	}
-	else
 	{
 		m_world->addActor(ActorTag::Player, std::make_shared<PlayerSpawner>(
 			*m_world, data.playerPosition));
@@ -132,6 +126,11 @@ void Stage::addActor(const ActorTag& tag, const Actor& actor)
 Actor Stage::findActor(const std::string& name) const
 {
 	return m_actorManager.findActor(name);
+}
+
+std::vector<Actor> Stage::findActors(const std::string & name) const
+{
+	return m_actorManager.findActors(name);
 }
 
 Actor Stage::findGroup(const ActorTag& tag) const

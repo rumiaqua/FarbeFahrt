@@ -31,6 +31,22 @@ void StageManager::next(World* const world)
 	//world->findCamera()->sendMessage("toPlayerCamera", nullptr);
 	// 次ページに移動
 	{
+		world->findGroup(ActorTag::Object)->eachChildren(
+			[] (BaseActor& actor)
+		{
+			actor.kill();
+		});
+		world->findGroup(ActorTag::Gimmick)->eachChildren(
+			[] (BaseActor& actor)
+		{
+			actor.kill();
+		});
+		world->findGroup(ActorTag::Player)->eachChildren(
+			[] (BaseActor& actor)
+		{
+			actor.kill();
+		});
+
 		// 現在のフィールドに閉じるアニメーションをさせる
 		world->findGroup(ActorTag::Field)->eachChildren(
 			[] (BaseActor& actor)
@@ -53,7 +69,9 @@ void StageManager::next(World* const world)
 	StoryManager::reset(BitFlag::GIMMICK | BitFlag::GOAL);
 	
 	m_current = nextStage();
-	apply(world);
+	world->apply(m_current, false);
+	StageFactory().Load(m_current.nextStage.first, m_next.first);
+	StageFactory().Load(m_current.nextStage.second, m_next.second);
 }
 
 void StageManager::apply(World* const world)
@@ -61,7 +79,7 @@ void StageManager::apply(World* const world)
 	world->apply(m_current, true);
 	StageFactory().Load(m_current.nextStage.first, m_next.first);
 	StageFactory().Load(m_current.nextStage.second, m_next.second);
-	world->findActor("PlayerSpawner")->sendMessage("PlayerSpawn", nullptr);
+	// world->findActor("PlayerSpawner")->sendMessage("PlayerSpawn", nullptr);
 }
 
 const StageData& StageManager::current() const
