@@ -28,10 +28,6 @@ MyGame::MyGame()
 
 	m_sceneManager.pushScene(Scene::GrayBox);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
-
-	// 必ず読むリソース
-	// とりあえずここにおいておく
-	loader.loadContent("sky", "Model/skydome/昼の月.x");
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
