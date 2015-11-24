@@ -11,7 +11,7 @@
 
 namespace
 {
-	constexpr float ANIMATION_FRAME = 600.0f;
+	constexpr float ANIMATION_FRAME = 180.0f;
 }
 
 Field::Field(IWorld& world, const String& name, const Vector3& position, float scale)
@@ -41,6 +41,7 @@ void Field::onUpdate()
 				spawner->sendMessage("PlayerSpawn", nullptr);
 			}*/
 			m_world->findGroup(ActorTag::Player)->eachChildren([] (BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
+			m_world->findCamera()->sendMessage("toPlayerCamera", nullptr);
 			StoryManager::set(BitFlag::NEXT);
 		}
 # undef Open

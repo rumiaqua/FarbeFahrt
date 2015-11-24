@@ -33,6 +33,9 @@ Camera::Camera(IWorld& world) :
 
 	m_cameraState.chaseFlag = ChaseFlag::Void;
 	m_cameraState.cameraMode = CameraMode::Init;
+
+	m_t = 1.0f;
+	fadeOutCamera();
 }
 void Camera::onUpdate()
 {
@@ -42,6 +45,8 @@ void Camera::onUpdate()
 	}
 
 	Debug::Println("%f", m_t);
+	Debug::Println(String::Create("CameraMode:", (int)m_cameraState.cameraMode));
+	Debug::Println(String::Create("ChageFlag :", (int)m_cameraState.chaseFlag));
 
 	cameraInput();
 	cameraSet();
