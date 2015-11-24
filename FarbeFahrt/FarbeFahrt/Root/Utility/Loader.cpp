@@ -3,8 +3,10 @@
 #include "DxLib.h"
 #include <iostream>
 #include <thread>
+
 Loader::Loader()
-	: m_onCompleted(true)
+	: m_onCompleted(true),
+	m_isChangedScene(false)
 {
 	m_ContentsList.clear();
 	//std::stringと、enumとconst char*を引数にとりintを返す関数の構造体
@@ -97,6 +99,7 @@ void Loader::deleteContents()
 void Loader::load()
 {
 	m_onCompleted = false;
+	m_isChangedScene = true;
 	SetUseASyncLoadFlag(TRUE);
 	for (auto& data : m_ContentsList)
 	{
@@ -110,11 +113,31 @@ void Loader::load()
 	}
 	SetUseASyncLoadFlag(FALSE);
 }
+void Loader::loadASync()
+{
+	SetUseASyncLoadFlag(TRUE);
+	for (auto& data : m_ContentsList)
+	{
+		if (m_ContentsList.find(data.first)->second.handle != 0)
+		{
+			continue;
+		}
+
+		data.second.handle = m_LoadFunc[GetExtension(data.second.filename)].loadFunc(("Resources/" + data.second.filename).c_str());
+		MV1SetupCollInfo(data.second.handle);
+	}
+	SetUseASyncLoadFlag(FALSE);
+}
 bool Loader::isLoad() const
 {
+	if (!m_isChangedScene)//シーンが変わってないなら引っ込んでくれ
+	{
+		return false;
+	}
 	int count = std::count_if(m_ContentsList.begin(), m_ContentsList.end(),
 		[&](const std::pair<std::string, ContentDataAndTag>& contentData)
 	{return (CheckHandleASyncLoad(contentData.second.handle) == TRUE); });
+
 	//count > 0 で読み込み中
 	return !!count;
 }
@@ -123,6 +146,7 @@ bool Loader::onCompleted()
 	if (!m_onCompleted)
 	{
 		m_onCompleted = true;
+		m_isChangedScene = false;
 		return true;
 	}
 	return false;

@@ -6,6 +6,7 @@
 #include <string>
 #include <unordered_map>
 #include <functional>
+#include "Utility\String.h"
 enum class ContentTag
 {
 	Model = 0,
@@ -50,6 +51,7 @@ public:
 	void loadContent(const std::string& name, const std::string& filename);
 	void DuplicateContent(const std::string& basename, const std::string& duplicate);
 	void load();
+	void loadASync();
 	void cleanUp();
 	bool isLoad() const;
 	bool onCompleted();
@@ -70,4 +72,5 @@ private:
 	std::unordered_map < ContentTag, std::function<int(int)> >m_deleteFunc;
 
 	bool m_onCompleted;
+	bool m_isChangedScene;
 };

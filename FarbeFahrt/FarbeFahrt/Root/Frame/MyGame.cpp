@@ -11,6 +11,8 @@
 #include "Utility/HandleList.h"
 #include "Utility/SE.h"
 
+#include "Utility\Debug.h"
+
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
 //シーンの追加、最初のシーン設定
@@ -75,6 +77,8 @@ void MyGame::run()
 
 	// 描画
 	ClearDrawScreen();
+	Debug::Println("%d",GetASyncLoadNum());
+
 	m_sceneManager.draw(render);
 	ScreenFlip();
 
