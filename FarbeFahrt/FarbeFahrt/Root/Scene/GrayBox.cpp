@@ -24,6 +24,10 @@ void GrayBox::loadContents(Loader& loader)
 {
 	m_loader = &loader;
 
+	// 必ず読むリソース
+	// とりあえずここにおいておく
+	loader.loadContent("sky", "Model/skydome/昼の月.x");
+
 	for (auto&& resource : m_stageManager.current().resourceList)
 	{
 		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());

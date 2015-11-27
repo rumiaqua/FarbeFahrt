@@ -2,6 +2,8 @@
 
 # include "Frame/BaseScene.h"
 
+# include "Actor/SkinObject.h"
+
 # include "Utility/FreeCamera.h"
 
 # include <vector>
@@ -28,11 +30,35 @@ public:
 
 private:
 
-	
+	void dragAndDrop();
+
+	void animUpdate();
+
+	void drawModel(Renderer& renderer);
+
+	void cameraUpdate();
 
 private:
 
+	void move(float speed, const Vector3& right, const Vector3& up, const Vector3& forward);
+
+	void rotate(double angle, const Vector3& X, const Vector3& Y, const Vector3& Z);
+
+private:
+
+	// ローダー
 	Loader* m_loader;
 
+	// モデル
+	int m_currentModelNum;
+	std::vector<std::string> m_models;
 	std::vector<std::string> m_files;
+	Pose m_pose;
+	int m_animNumber;
+	float m_progress;
+	int m_handle;
+	int m_maxAnimNum;
+
+	// カメラ
+	FreeCamera m_camera;
 };
