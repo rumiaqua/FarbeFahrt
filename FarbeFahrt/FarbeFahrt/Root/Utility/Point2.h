@@ -1,13 +1,14 @@
 # pragma once
 
 # include <DxLib.h>
+# include <string>
 
 // -------------------------------------------------------------------
 // 前置宣言
 // -------------------------------------------------------------------
 class Point3;
 class Vector2;
-class String;
+
 
 /// <summary>二次元点</summary>
 class Point2
@@ -72,7 +73,7 @@ public:
 public:
 
 	/// <summary>文字列に変換して返す</summary>
-	String toString() const;
+	std::string toString() const;
 
 	/// <summary>内積を返す</summary>
 	/// <param name="v">点</param>
@@ -94,7 +95,7 @@ public:
 
 	/// <summary>文字列に変換して返す</summary>
 	/// <param name="v">点</param>
-	static String ToString(const Point2& v);
+	static std::string ToString(const Point2& v);
 
 	/// <summary>内積を返す</summary>
 	/// <param name="v1">点</param>

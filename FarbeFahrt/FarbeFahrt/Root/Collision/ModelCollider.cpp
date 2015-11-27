@@ -7,7 +7,7 @@
 
 # include <DxLib.h>
 
-ModelCollider::ModelCollider(const String& name)
+ModelCollider::ModelCollider(const std::string& name)
 	: name(name)
 {
 

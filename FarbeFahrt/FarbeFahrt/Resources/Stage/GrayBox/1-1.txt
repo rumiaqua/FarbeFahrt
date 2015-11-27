@@ -11,8 +11,8 @@ r,hoge,Model/•½Œ´/‚­‚³.pmx
 r,heigenGround,Stage/•½Œ´/•½Œ´’n–Ê/•½Œ´’n–Ê.pmx
 r,heigenBackground,Stage/•½Œ´/•½Œ´”wŒi/•½Œ´”wŒi.pmx
 
-r,moriGround,Stage/X/X’n–Ê/X’n–Ê.pmx
-r,moriBackground,Stage/X/X”wŒi/X”wŒi.pmx
+# r,moriGround,Stage/X/X’n–Ê/X’n–Ê.pmx
+# r,moriBackground,Stage/X/X”wŒi/X”wŒi.pmx
 
 # ƒvƒŒƒCƒ„[‚ÌˆÊ’u
 p,0,100,0
@@ -29,7 +29,7 @@ o,Gimmick,test,0,-50,50,null,1/1.0f/300.0f
 # ƒAƒjƒ[ƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒg
 # o,SkinObject,test,0,100,100,Sphere,1/1.0f/300.0f
 # ƒS[ƒ‹
-o,Goal,hoge,100,-60,50,null
+o,Goal,hoge,50,30,50,null
 
 # Ÿ‚ÌƒXƒe[ƒW
 n,Resources/Stage/GrayBox/2-1.txt,Resources/Stage/GrayBox/2-2.txt

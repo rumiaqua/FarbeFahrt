@@ -11,26 +11,26 @@ struct StageData
 {
 	struct FieldObj
 	{
-		String name;
+		std::string name;
 		Vector3 position;
 		float scale;
-		FieldObj(const String& name, const Vector3& position, float scale);
+		FieldObj(const std::string& name, const Vector3& position, float scale);
 	};
 
 	struct Object
 	{
-		String name;
-		String resource;
+		std::string name;
+		std::string resource;
 		Vector3 position;
-		String shape;
-		String parameter;
-		Object(const String& name, const String& resource, const Vector3& position, const String& shape, const String& parameter);
+		std::string shape;
+		std::string parameter;
+		Object(const std::string& name, const std::string& resource, const Vector3& position, const std::string& shape, const std::string& parameter);
 	};
 
-	using ResourceList = std::unordered_map<String, String>;
+	using ResourceList = std::unordered_map<std::string, std::string>;
 	using FieldList = std::vector<FieldObj>;
 	using ObjectList = std::vector<Object>;
-	using NextStage = std::pair<String, String>;
+	using NextStage = std::pair<std::string, std::string>;
 
 	ResourceList resourceList;
 	Vector3 playerPosition;

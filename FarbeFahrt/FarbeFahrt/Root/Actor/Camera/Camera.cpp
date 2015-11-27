@@ -237,7 +237,7 @@ void Camera::actorSet(const std::string& actorName)
 	m_actor = m_world->findActor(actorName);
 }
 
-void Camera::onMessage(const String& message, void* parameter)
+void Camera::onMessage(const std::string& message, void* parameter)
 {
 	if (message == "actorSet")
 	{

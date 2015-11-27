@@ -31,9 +31,9 @@ private:
 	void toPlayerCamera();
 	void toBookCamera();
 	void toFixedCamera();
-	virtual void onMessage(const String& message, void* parameter) override;
-	
-private:	
+	virtual void onMessage(const std::string& message, void* parameter) override;
+
+private:
 	float m_t = 0.0f;
 	bool isMove = false;
 	CameraState m_cameraState;

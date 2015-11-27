@@ -20,7 +20,7 @@ void PlayerSpawner::onUpdate()
 	// onMessage("PlayerSpawn", nullptr);
 }
 
-void PlayerSpawner::onMessage(const String& message, void* parameter)
+void PlayerSpawner::onMessage(const std::string& message, void* parameter)
 {
 	if (m_isActive && message == "PlayerSpawn")
 	{

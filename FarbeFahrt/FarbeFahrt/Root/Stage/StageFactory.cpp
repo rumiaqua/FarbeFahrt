@@ -4,19 +4,19 @@
 
 # include "ScriptStageDataBuilder.h"
 
-void StageFactory::Load(const String& filename)
+void StageFactory::Load(const std::string& filename)
 {
 	ScriptStageDataBuilder builder;
 
 	builder.open(filename, m_data);
 }
 
-void StageFactory::Load(const String& filename, StageData& output)
+void StageFactory::Load(const std::string& filename, StageData& output)
 {
 	ScriptStageDataBuilder().open(filename, output);
 }
 
-const std::unordered_map<String, String>& StageFactory::Resources() const
+const std::unordered_map<std::string, std::string>& StageFactory::Resources() const
 {
 	return m_data.resourceList;
 }

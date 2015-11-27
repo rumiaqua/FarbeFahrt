@@ -71,7 +71,7 @@ Point4::operator const int* () const
 	return elm;
 }
 
-String Point4::toString() const
+std::string Point4::toString() const
 {
 	return ToString(*this);
 }
@@ -106,7 +106,7 @@ float Point4::Length(const Point4& v)
 	return static_cast<float>(Math::Sqrt(LengthSquared(v)));
 }
 
-String Point4::ToString(const Point4& v)
+std::string Point4::ToString(const Point4& v)
 {
 	return String::Create("(", v.x, ", ", v.y, ", ", v.z, ", ", v.w, ")");
 }

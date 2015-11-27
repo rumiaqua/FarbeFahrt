@@ -3,7 +3,7 @@ r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
 # フィールドリソース
-r,forestGround.Stage/森/森地面/森地面.pmx
+r,forestGround,Stage/森/森地面/森地面.pmx
 r,forestBackground,Stage/森/森背景/森背景.pmx
 
 # プレイヤーの座標
@@ -17,4 +17,4 @@ f,forestBackground,0,0,0,3
 o.Goal,Goal,100,0,50,null
 
 # 次のステージ
-n,Resource/Stage/DangerSwamp.txt,Resources/Stage/ForestD.txt
+n,Resources/Stage/DangerSwamp.txt,Resources/Stage/ForestD.txt

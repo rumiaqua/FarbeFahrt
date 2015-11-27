@@ -158,7 +158,7 @@ float Matrix::determinant() const
 	return Determinant(*this);
 }
 
-String Matrix::toString() const
+std::string Matrix::toString() const
 {
 	return ToString(*this);
 }
@@ -288,7 +288,7 @@ float Matrix::Determinant(const Matrix& matrix)
 	return (float)det;
 }
 
-String Matrix::ToString(const Matrix& m)
+std::string Matrix::ToString(const Matrix& m)
 {
 	return String::Create(
 		"f[0] : ", memory_cast<Vector4>(m.mat[0])->toString(), "\n",

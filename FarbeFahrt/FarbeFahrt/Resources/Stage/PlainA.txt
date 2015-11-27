@@ -1,6 +1,6 @@
 # 使用するリソース
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
-r,hoge,Model/平原/くさ.pmx
+r,Goal,Model/平原/くさ.pmx
 r,Gimmick,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 
 # フィールドリソース
@@ -15,9 +15,9 @@ f,plainGround,0,0,0,3
 f,plainBackground,0,0,0,3
 
 # ゴール
-o,Goal,hoge,50,30,-50,null
+o,Goal,Goal,50,30,-50,null
 # ギミック
 o,Gimmick,Gimmick,-100,0,50,null,0/1.0f/59.0f
 
 # 次のステージ
-n,Resources/Stage/ForestA.txt,Rsources/Stage/ForestA.txt
+n,Resources/Stage/ForestA.txt,Resources/Stage/ForestA.txt

@@ -14,7 +14,7 @@ void Ray::onUpdate()
 	BaseActor::onUpdate();
 }
 
-void Ray::onMessage(const String & message, void* parameter)
+void Ray::onMessage(const std::string& message, void* parameter)
 {
 	auto gimmick = static_cast<BaseActor*>(parameter);
 	if (message == "onCollide")

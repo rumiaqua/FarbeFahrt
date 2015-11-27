@@ -7,7 +7,7 @@
 // ‘O’uéŒ¾
 // -------------------------------------------------------------------
 class Vector3;
-class String;
+
 
 /// <summary>s—ñ</summary>
 class Matrix
@@ -71,7 +71,7 @@ public:
 	float determinant() const;
 
 	/// <summary>•¶š—ñ‚É•ÏŠ·‚·‚é</summary>
-	String toString() const;
+	std::string toString() const;
 
 public:
 
@@ -155,7 +155,7 @@ public:
 	static float Determinant(const Matrix& m);
 
 	/// <summary>•¶š—ñ‚É•ÏŠ·‚·‚é</summary>
-	static String ToString(const Matrix& m);
+	static std::string ToString(const Matrix& m);
 
 public:
 

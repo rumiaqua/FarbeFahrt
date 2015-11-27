@@ -9,17 +9,17 @@
 # include <unordered_map>
 
 class World;
-class String;
+
 
 class StageFactory
 {
 public:
 
-	void Load(const String& filename);
+	void Load(const std::string& filename);
 
-	void Load(const String& filename, StageData& output);
+	void Load(const std::string& filename, StageData& output);
 
-	const std::unordered_map<String, String>& Resources() const;
+	const std::unordered_map<std::string, std::string>& Resources() const;
 
 	const StageData& Data() const;
 

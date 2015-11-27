@@ -8,7 +8,7 @@ class ModelCollider : public IShape
 {
 public:
 
-	ModelCollider(const String& name);
+	ModelCollider(const std::string& name);
 
 	virtual bool intersects(const IShape& shape) const override;
 
@@ -26,5 +26,5 @@ public:
 
 public:
 
-	String name;
+	std::string name;
 };

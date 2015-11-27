@@ -86,8 +86,8 @@ void Stage::apply(const StageData& data, bool isClear)
 		if (object.name == "Page")
 		{
 			auto parameter = String::Split(object.parameter, '/');
-			String backgroundName = parameter[0];
-			String groundName = parameter[1];
+			std::string backgroundName = parameter[0];
+			std::string groundName = parameter[1];
 			bool isOpen = String::ToValue<int>(parameter[2]) == 1;
 			float scale = String::ToValue<float>(parameter[3]);
 			float angle = String::ToValue<float>(parameter[4]);

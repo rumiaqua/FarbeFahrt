@@ -20,9 +20,9 @@ class BaseActor
 public:
 
 	/// <summary>コンストラクタ</summary>
-	BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation, const IShapePtr& shape);
+	BaseActor(IWorld& world, const std::string& name, const Vector3& position, const Matrix& rotation, const IShapePtr& shape);
 
-	explicit BaseActor(const String& name = "none");
+	explicit BaseActor(const std::string& name = "none");
 
 	/// <summary>仮想デストラクタ</summary>
 	virtual ~BaseActor();
@@ -43,7 +43,7 @@ public:
 	void kill();
 
 	/// <summary>名前を取得する</summary>
-	const String& getName()const;
+	const std::string& getName()const;
 
 	/// <summary>姿勢を返す</summary>
 	Matrix getPose() const;
@@ -64,13 +64,13 @@ public:
 	const Matrix& getRotation() const;
 
 	/// <summary>子を検索</summary>
-	Actor find(const String& name) const;
+	Actor find(const std::string& name) const;
 
 	/// <summary>条件に一致する子を検索する</summary>
 	Actor findPred(const std::function<bool(const BaseActor&)>& func) const;
 
 	/// <summary>子を検索</summary>
-	std::vector<Actor> finds(const String& name) const;
+	std::vector<Actor> finds(const std::string& name) const;
 
 	/// <summary>子に追加</summary>
 	void addChild(const Actor& child);
@@ -88,7 +88,7 @@ public:
 	void removeChildren();
 
 	/// <summary>メッセージを送信する</summary>
-	void sendMessage(const String& message, void* parameter);
+	void sendMessage(const std::string& message, void* parameter);
 
 	/// <summary>コピーコンストラクタを削除</summary>
 	BaseActor(const BaseActor& other) = delete;
@@ -112,7 +112,7 @@ protected:
 	virtual void onCollide(BaseActor* actor);
 public:
 	/// <summary>メッセージを受信</summary>
-	virtual void onMessage(const String& message, void* parameter);
+	virtual void onMessage(const std::string& message, void* parameter);
 
 protected:
 
@@ -120,7 +120,7 @@ protected:
 	IWorld* m_world;
 
 	/// <summary>名前</summary>
-	String m_name;
+	std::string m_name;
 
 	/// <summary>姿勢</summary>
 	Pose m_pose;

@@ -5,11 +5,11 @@ class Field :
 	public BaseActor
 {
 public:
-	explicit Field(IWorld& world, const String& name, const Vector3& position, float scale);
+	explicit Field(IWorld& world, const std::string& name, const Vector3& position, float scale);
 public:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
-	virtual void onMessage(const String& message, void* parameter) override;
+	virtual void onMessage(const std::string& message, void* parameter) override;
 private:
 	void open();
 	void close();

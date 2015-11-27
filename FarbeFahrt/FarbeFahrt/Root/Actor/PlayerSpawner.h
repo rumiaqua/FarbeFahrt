@@ -12,7 +12,7 @@ public:
 
 	virtual void onUpdate() override;
 
-	virtual void onMessage(const String& message, void * parameter) override;
+	virtual void onMessage(const std::string& message, void * parameter) override;
 
 private:
 

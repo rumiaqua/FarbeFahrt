@@ -126,7 +126,7 @@ Vector3::operator const VECTOR&() const
 	return memory_cast<VECTOR>(*this);
 }
 
-String Vector3::ToString() const
+std::string Vector3::ToString() const
 {
 	return toString(*this);
 }
@@ -174,7 +174,7 @@ float Vector3::angle(const Vector3& v) const
 	return Angle(*this, v);
 }
 
-String Vector3::toString(const Vector3& v)
+std::string Vector3::toString(const Vector3& v)
 {
 	return String::Create("(", v.x, ", ", v.y, ", ", v.z, ")");
 }

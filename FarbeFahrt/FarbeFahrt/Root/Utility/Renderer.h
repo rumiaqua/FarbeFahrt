@@ -19,7 +19,29 @@
 # include "Pose.h"
 
 //描画のためのデータ
-
+struct Buffer
+{
+	int depthBuffer;
+};
+struct ShaderHandle
+{
+	int depthRecord_skin;
+	int depthRecord_normal;
+	int depthRecord_pixel;
+	int render_skin;
+	int render_normal;
+	int render_pixel;
+};
+struct LightCamera
+{
+	Matrix viewMatrix;
+	Matrix projectionMatrix;
+};
+struct CameraData
+{
+	Vector3 pos;
+	Vector3 terget;
+};
 struct ModelData{
 	int modelHandle;
 	int animNumber = -1;
@@ -48,7 +70,7 @@ public:
 public://MyGameで実装
 	void setModelData(const ContentMap& modelData);
 	void setTextureData(const ContentMap& textureData);
-	void draw() const;
+	void draw();
 public:
 	void drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const;
 	void drawSkinModel(const std::string& name, const Vector3& position, const Matrix& rotation, int animNumber, float frame);//アニメーション付き
@@ -73,7 +95,15 @@ public:
 
 	void drawPrimitive(const Sphere& sphere) const;
 private:
+	void initDepthBuffer();
+	void loadShader();
+	void drawDepth();
+	void drawModelWithDepthShadow();
+private:
 	std::unordered_map<std::string, ModelData> m_modelData;
 	std::unordered_map<std::string, int> m_textureData;
-
+	Buffer m_buffer;
+	ShaderHandle m_shaderHandle;
+	LightCamera m_lightCamera; 
+	CameraData m_cameraData;
 };

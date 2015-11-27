@@ -41,6 +41,10 @@ void Player::onUpdate()
 
 		++m_frame;
 	}
+	if (m_dead)
+	{
+		m_frame++;
+	}
 
 	BaseActor::onUpdate();
 }
@@ -115,7 +119,7 @@ void Player::onDraw(Renderer& render)const
 	BaseActor::onDraw(render);
 }
 
-void Player::onMessage(const String& message, void* parameter)
+void Player::onMessage(const std::string& message, void* parameter)
 {	
 	if (message == "HitObstacle")
 	{
@@ -130,7 +134,7 @@ void Player::onMessage(const String& message, void* parameter)
 			otherPos.y = ownPos.y;
 			Vector3 movement = normalize * D;			
 
-			Debug::Println(String::Create("myName:", m_name.toNarrow()));
+			Debug::Println(String::Create("myName:", m_name));
 			Debug::Println(String::Create("Name:", actor->getName()));
 			Debug::Println(String::Create("direction:",direction.ToString()));
 

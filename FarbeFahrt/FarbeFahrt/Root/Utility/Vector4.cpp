@@ -72,7 +72,7 @@ Vector4::operator const float* () const
 	return elm;
 }
 
-String Vector4::toString() const
+std::string Vector4::toString() const
 {
 	return ToString(*this);
 }
@@ -142,7 +142,7 @@ Vector4 Vector4::Lerp(const Vector4& start, const Vector4& end, float t)
 	return start + (end - start) * t;
 }
 
-String Vector4::ToString(const Vector4& v)
+std::string Vector4::ToString(const Vector4& v)
 {
 	return String::Create("(", v.x, ", ", v.y, ", ", v.z, ", ", v.w, ")");
 }

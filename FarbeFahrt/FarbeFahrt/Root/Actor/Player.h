@@ -17,7 +17,7 @@ public:
 private:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;	
-	virtual void onMessage(const String& message, void* parameter) override;
+	virtual void onMessage(const std::string& message, void* parameter) override;
 private:
 	void playerInput();//“ü—ÍŒni‚½‚¾‚ÌŠÖ”•ª‚¯j
 private:

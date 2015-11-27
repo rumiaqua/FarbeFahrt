@@ -9,7 +9,7 @@
 # include "Utility/SingletonFinalizer.h"
 # include "Utility/StoryManager/StoryManager.h"
 
-StageManager::StageManager(const String& firstStageName)
+StageManager::StageManager(const std::string& firstStageName)
 	: m_current()
 	, m_next()
 {
@@ -53,18 +53,6 @@ void StageManager::next(World* const world)
 		{
 			actor.sendMessage("CloseAnimate", nullptr);
 		});
-
-		//// 新たなフィールドを追加する
-		//for (auto&& field : nextStage().fieldList)
-		//{
-		//	// 生成
-		//	Actor actor = std::make_shared<Field>(
-		//		*world, field.name, field.position, field.scale);
-		//	// ワールドに追加
-		//	world->addActor(ActorTag::Field, actor);
-		//	// 開くアニメーションをさせる
-		//	actor->sendMessage("OpenAnimate", nullptr);
-		//}
 	}
 	StoryManager::reset(BitFlag::GIMMICK | BitFlag::GOAL);
 	
@@ -79,7 +67,6 @@ void StageManager::apply(World* const world)
 	world->apply(m_current, true);
 	StageFactory().Load(m_current.nextStage.first, m_next.first);
 	StageFactory().Load(m_current.nextStage.second, m_next.second);
-	// world->findActor("PlayerSpawner")->sendMessage("PlayerSpawn", nullptr);
 }
 
 const StageData& StageManager::current() const

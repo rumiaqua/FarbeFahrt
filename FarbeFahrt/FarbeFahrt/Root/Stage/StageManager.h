@@ -14,7 +14,7 @@ private:
 
 public:
 
-	StageManager(const String& firstStageName);
+	StageManager(const std::string& firstStageName);
 
 public:
 

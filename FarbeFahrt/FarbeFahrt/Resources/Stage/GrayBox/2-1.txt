@@ -25,7 +25,7 @@ o,Gimmick,test,0,20,50,null,1/1.0f/300.0f
 # アニメーションオブジェクト
 # o,SkinObject,test,0,100,100,Sphere,1/1.0f/300.0f
 # ゴール
-o,Goal,hoge,100,-10,100,null
+o,Goal,hoge,50,30,-50,null
 
 # 次のステージ
 n,Resources/Stage/GrayBox/2-2.txt,Resources/Stage/HouseA.txt

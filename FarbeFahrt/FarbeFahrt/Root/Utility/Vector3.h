@@ -1,12 +1,14 @@
 # pragma once
+
 #include "Dxlib.h"
+# include <string>
 
 // -------------------------------------------------------------------
 // 前置宣言
 // -------------------------------------------------------------------
 class Vector4;
 class Point3;
-class String;
+
 
 /// <summary>三次元ベクトル</summary>
 class Vector3
@@ -75,7 +77,7 @@ public:
 public:
 
 	/// <summary>文字列に変換して返す</summary>
-	String ToString() const;
+	std::string ToString() const;
 
 	/// <summary>内積を返す</summary>
 	/// <param name="v">ベクトル</param>
@@ -112,7 +114,7 @@ public:
 
 	/// <summary>文字列に変換して返す</summary>
 	/// <param name="v">ベクトル</param>
-	static String toString(const Vector3& v);
+	static std::string toString(const Vector3& v);
 
 	/// <summary>内積を返す</summary>
 	/// <param name="v1">ベクトル</param>

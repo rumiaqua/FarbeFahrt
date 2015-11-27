@@ -76,7 +76,7 @@ void ObjectViewer::post()
 	for (auto&& file : m_files)
 	{
 		auto&& split = String::Split(file, '\\');
-		String directory;
+		std::string directory;
 		for (auto it = split.rbegin(); it != split.rend(); ++it)
 		{
 			if (*it == "Resources")
@@ -89,7 +89,7 @@ void ObjectViewer::post()
 
 		m_models.emplace_back(file);
 
-		m_loader->loadContent(file, directory.toNarrow());
+		m_loader->loadContent(file, directory);
 		m_loader->load();
 
 		m_animNumber = 0;

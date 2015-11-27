@@ -8,20 +8,20 @@ class ScriptStageDataBuilder final : public IStageDataBuilder
 {
 public:
 
-	StageData open(const String& filename) const override
+	StageData open(const std::string& filename) const override
 	{
 		StageData data;
 
 		return open(filename, data);
 	}
 
-	StageData& open(const String& filename, StageData& output) const override
+	StageData& open(const std::string& filename, StageData& output) const override
 	{
 		output.resourceList.clear();
 		output.fieldList.clear();
 		output.objectList.clear();
 
-		std::ifstream stream(filename.toNarrow());
+		std::ifstream stream(filename);
 
 		std::string buffer;
 		while (std::getline(stream, buffer))
@@ -32,7 +32,7 @@ public:
 				continue;
 			}
 
-			std::vector<String> split = String::Split(buffer, ',');
+			std::vector<std::string> split = String::Split(buffer, ',');
 
 			if (split.empty())
 			{
@@ -42,8 +42,8 @@ public:
 			// 使用リソース
 			if (split[0] == "r")
 			{
-				String& s1 = split[1];
-				String& s2 = split[2];
+				std::string& s1 = split[1];
+				std::string& s2 = split[2];
 				output.resourceList.insert(std::make_pair(s1, s2));
 			}
 
@@ -59,7 +59,7 @@ public:
 			// フィールド名
 			if (split[0] == "f")
 			{
-				String name = split[1];
+				std::string name = split[1];
 				Vector3 position = Vector3(
 					String::ToValue<float>(split[2]),
 					String::ToValue<float>(split[3]),
@@ -106,7 +106,7 @@ public:
 	}
 
 	// 未完成ゆえ使用しないこと！
-	void save(const String& filename, const StageData& data) const override
+	void save(const std::string& filename, const StageData& data) const override
 	{
 		return;
 	}

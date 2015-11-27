@@ -1,11 +1,13 @@
 # pragma once
 
+# include <string>
+
 // -------------------------------------------------------------------
 // 前置宣言
 // -------------------------------------------------------------------
 class Vector3;
 class Point2;
-class String;
+
 
 /// <summary>二次元ベクトル</summary>
 class Vector2
@@ -61,7 +63,7 @@ public:
 public:
 
 	/// <summary>文字列に変換して返す</summary>
-	String toString() const;
+	std::string toString() const;
 
 	/// <summary>内積を返す</summary>
 	/// <param name="v">ベクトル</param>
@@ -98,7 +100,7 @@ public:
 
 	/// <summary>文字列に変換して返す</summary>
 	/// <param name="v">ベクトル</param>
-	static String ToString(const Vector2& v);
+	static std::string ToString(const Vector2& v);
 
 	/// <summary>内積を返す</summary>
 	/// <param name="v1">ベクトル</param>

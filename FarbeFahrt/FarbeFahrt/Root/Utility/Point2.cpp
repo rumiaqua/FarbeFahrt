@@ -107,7 +107,7 @@ Point2::operator const POINT& () const
 	return memory_cast<POINT>(*this);
 }
 
-String Point2::toString() const
+std::string Point2::toString() const
 {
 	return ToString(*this);
 }
@@ -132,7 +132,7 @@ float Point2::length() const
 	return Length(*this);
 }
 
-String Point2::ToString(const Point2& v)
+std::string Point2::ToString(const Point2& v)
 {
 	return String::Create("(", v.x, ", ", v.y, ")");
 }

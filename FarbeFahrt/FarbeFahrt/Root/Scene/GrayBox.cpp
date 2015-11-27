@@ -30,7 +30,7 @@ void GrayBox::loadContents(Loader& loader)
 
 	/*for (auto&& resource : m_stageManager.current().resourceList)
 	{
-		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+		loader.loadContent(resource.first, resource.second);
 	}*/
 }
 
@@ -54,6 +54,7 @@ void GrayBox::update()
 	{
 		m_manager->pushScene(Scene::Editor);
 	}
+
 }
 
 void GrayBox::draw(Renderer& render)
@@ -69,7 +70,7 @@ void GrayBox::post()
 
 		for (auto&& resource : m_stageManager.current().resourceList)
 		{
-			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+			m_loader->loadContent(resource.first, resource.second);
 		}
 
 		m_loader->loadASync();
@@ -82,7 +83,7 @@ void GrayBox::post()
 		// 現在のステージのリソースを待機ロード
 		for (auto&& resource : m_stageManager.current().resourceList)
 		{
-			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+			m_loader->loadContent(resource.first, resource.second);
 		}
 		m_loader->load();
 
@@ -90,13 +91,13 @@ void GrayBox::post()
 		const auto& nexts = m_stageManager.nextStages();
 		for (auto&& resource : nexts.first.resourceList)
 		{
-			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+			m_loader->loadContent(resource.first, resource.second);
 		}
 		for (auto&& resource : nexts.second.resourceList)
 		{
-			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+			m_loader->loadContent(resource.first, resource.second);
 		}
-		m_loader->loadASync();
+		m_loader->load();
 	}
 }
 

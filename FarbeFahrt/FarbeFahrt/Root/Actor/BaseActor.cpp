@@ -4,7 +4,7 @@
 
 # include <iterator>
 
-BaseActor::BaseActor(IWorld& world, const String& name, const Vector3& position, const Matrix& rotation, const IShapePtr& shape)
+BaseActor::BaseActor(IWorld& world, const std::string& name, const Vector3& position, const Matrix& rotation, const IShapePtr& shape)
 	: m_world(&world)
 	, m_name(name)
 	, m_pose(position, rotation)
@@ -15,7 +15,7 @@ BaseActor::BaseActor(IWorld& world, const String& name, const Vector3& position,
 
 }
 //デフォルトコンストラクタ
-BaseActor::BaseActor(const String& name)
+BaseActor::BaseActor(const std::string& name)
 	: m_world(nullptr)
 	, m_name(name)
 	, m_pose()
@@ -46,7 +46,7 @@ void BaseActor::kill()
 {
 	m_dead = true;
 }
-const String& BaseActor::getName() const
+const std::string& BaseActor::getName() const
 {
 	return m_name;
 }
@@ -81,7 +81,7 @@ Matrix BaseActor::getWorldPose() const
 
 	return worldPose;
 }
-Actor BaseActor::find(const String& name) const
+Actor BaseActor::find(const std::string& name) const
 {
 	return findPred([&] (const BaseActor& actor) {return actor.getName() == name; });
 }
@@ -103,7 +103,7 @@ Actor BaseActor::findPred(const std::function<bool(const BaseActor&)>& func) con
 	}
 	return nullptr;
 }
-std::vector<Actor> BaseActor::finds(const String& name) const
+std::vector<Actor> BaseActor::finds(const std::string& name) const
 {
 	// 検索結果
 	std::vector<Actor> result;
@@ -149,7 +149,7 @@ void BaseActor::removeChildren()
 	eachChildren([] (BaseActor&actor) {actor.removeChildren(); });
 }
 
-void BaseActor::sendMessage(const String& message, void* parameter)
+void BaseActor::sendMessage(const std::string& message, void* parameter)
 {
 	onMessage(message, parameter);
 }
@@ -193,7 +193,7 @@ void BaseActor::onCollide(BaseActor* actor)
 	eachChildren([&] (BaseActor& child) { child.collide(actor); });
 }
 
-void BaseActor::onMessage(const String& message, void* parameter)
+void BaseActor::onMessage(const std::string& message, void* parameter)
 {
 	eachChildren([&] (BaseActor& actor) { actor.sendMessage(message, parameter); });
 }

@@ -7,7 +7,7 @@ class StaticObject :
 	public BaseActor
 {
 public:
-	StaticObject(IWorld& world,const String& modelName,const Vector3& position);
+	StaticObject(IWorld& world,const std::string& modelName,const Vector3& position);
 private:
 	virtual void onDraw(Renderer& render)const override;
 

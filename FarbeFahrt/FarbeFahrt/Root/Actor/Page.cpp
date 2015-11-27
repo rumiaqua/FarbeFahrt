@@ -4,7 +4,7 @@
 
 # include "Utility/Math.h"
 
-Page::Page(IWorld& world, const String& name, const Vector3& position, const String& backgroundName, const String& groundName, bool isOpen, float scale, float angle)
+Page::Page(IWorld& world, const std::string& name, const Vector3& position, const std::string& backgroundName, const std::string& groundName, bool isOpen, float scale, float angle)
 	: BaseActor(world, name, position, Matrix::Rotation(Vector3::Up(), Math::ToRadian(Math::PI)), nullptr)
 {
 	int animNo = isOpen ? 0 : 1;

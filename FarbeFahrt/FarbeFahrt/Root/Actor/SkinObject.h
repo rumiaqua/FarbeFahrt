@@ -7,12 +7,12 @@ class SkinObject :
 	public BaseActor
 {
 public:
-	SkinObject(IWorld& world, const String& modelName, const Vector3& position, int anmNo,float frameSpeed,float maxframe, float scale, float angle, bool isLoop);
+	SkinObject(IWorld& world, const std::string& modelName, const Vector3& position, int anmNo,float frameSpeed,float maxframe, float scale, float angle, bool isLoop);
 	void frameReset();
 private:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
-	virtual void onMessage(const String& message, void* parameter)override;
+	virtual void onMessage(const std::string& message, void* parameter)override;
 private:
 	void animation();
 private:

@@ -90,7 +90,7 @@ Vector2::operator const float* () const
 	return elm;
 }
 
-String Vector2::toString() const
+std::string Vector2::toString() const
 {
 	return ToString(*this);
 }
@@ -138,7 +138,7 @@ float Vector2::angle(const Vector2& v) const
 	return Angle(*this, v);
 }
 
-String Vector2::ToString(const Vector2& v)
+std::string Vector2::ToString(const Vector2& v)
 {
 	return String::Create("(", v.x, ", ", v.y, ")");
 }

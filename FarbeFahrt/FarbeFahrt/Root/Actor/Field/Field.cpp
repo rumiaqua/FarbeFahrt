@@ -14,7 +14,7 @@ namespace
 	constexpr float ANIMATION_FRAME = 180.0f;
 }
 
-Field::Field(IWorld& world, const String& name, const Vector3& position, float scale)
+Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale)
 	:BaseActor(world, name, position, Matrix::identity(),
 		std::make_unique<ModelCollider>(name)), m_scale(scale)
 	, m_elapsedTime(0.0f)
@@ -59,15 +59,15 @@ void Field::onUpdate()
 }
 void Field::onDraw(Renderer& render) const
 {
-	render.setScale(m_name.toNarrow(), VGet(m_scale, m_scale, m_scale));
+	render.setScale(m_name, VGet(m_scale, m_scale, m_scale));
 
 	float t = Math::Min({ m_elapsedTime / ANIMATION_FRAME, 0.9999f });
-	render.drawSkinModel(m_name.toNarrow(), m_pose, m_animationNumber, t);
+	render.drawSkinModel(m_name, m_pose, m_animationNumber, t);
 
 	BaseActor::onDraw(render);
 }
 
-void Field::onMessage(const String& message, void* parameter)
+void Field::onMessage(const std::string& message, void* parameter)
 {
 	if (message == "onCollide")
 	{
@@ -76,7 +76,7 @@ void Field::onMessage(const String& message, void* parameter)
 		{
 			const Vector3& pos = actor->getPosition();
 			Debug::Println(pos.ToString());
-			String& name = static_cast<ModelCollider*>(m_shape.get())->name;
+			std::string& name = static_cast<ModelCollider*>(m_shape.get())->name;
 			int handle = Singleton<HandleList>::Instance().getHandle(name);
 
 			Vector3 start = pos + Vector3::Up() * 50.0f;
