@@ -15,7 +15,7 @@
 # include "Utility/SingletonFinalizer.h"
 
 GrayBox::GrayBox()
-	: m_stageManager("Resources/Stage/GrayBox/1-1.txt")
+	: m_stageManager("Resources/Stage/PlainA.txt")
 {
 
 }
@@ -28,18 +28,20 @@ void GrayBox::loadContents(Loader& loader)
 	// とりあえずここにおいておく
 	loader.loadContent("sky", "Model/skydome/昼の月.x");
 
-	for (auto&& resource : m_stageManager.current().resourceList)
+	/*for (auto&& resource : m_stageManager.current().resourceList)
 	{
 		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
-	}
+	}*/
 }
 
 void GrayBox::initialize()
 {
 	m_world = std::make_shared<World>();
 
-	m_stageManager.next(m_world.get());
-	// m_loader->loadContents(m_stageManager.current().resourceList);
+	// m_stageManager.next(m_world.get());
+
+	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
+	StoryManager::set(BitFlag::GOAL);
 
 	Debug::SetClear(true);
 }
@@ -61,11 +63,36 @@ void GrayBox::draw(Renderer& render)
 
 void GrayBox::post()
 {
-	if (m_stageManager.isNext())
+	/*if (m_stageManager.isNext())
 	{
 		m_stageManager.next(m_world.get());
 
 		for (auto&& resource : m_stageManager.current().resourceList)
+		{
+			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+		}
+
+		m_loader->loadASync();
+	}*/
+
+	if (m_stageManager.isNext())
+	{
+		m_stageManager.next(m_world.get());
+
+		// 現在のステージのリソースを待機ロード
+		for (auto&& resource : m_stageManager.current().resourceList)
+		{
+			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+		}
+		m_loader->load();
+
+		// 次のシーンのリソースを非待機ロード
+		const auto& nexts = m_stageManager.nextStages();
+		for (auto&& resource : nexts.first.resourceList)
+		{
+			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
+		}
+		for (auto&& resource : nexts.second.resourceList)
 		{
 			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
 		}

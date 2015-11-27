@@ -87,6 +87,11 @@ const StageData& StageManager::current() const
 	return m_current;
 }
 
+const StageManager::Stages& StageManager::nextStages() const
+{
+	return m_next;
+}
+
 bool StageManager::isFirst() const
 {
 	return StoryManager::get(BitFlag::GIMMICK);

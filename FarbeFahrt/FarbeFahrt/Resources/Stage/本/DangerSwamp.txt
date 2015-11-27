@@ -3,17 +3,18 @@ r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
 # フィールドリソース
-r,forestGround.Stage/森/森地面/森地面.pmx
-r,forestBackground,Stage/森/森背景/森背景.pmx
+r,forestGround.Stage/平原/平原地面/平原地面.pmx
+r,plainBackground,Stage/平原/平原背景/平原背景.pmx
 
 # プレイヤーの座標
 p,0,50,0
 
 # フィールド
-f,forestGround,0,0,0,3
-f,forestBackground,0,0,0,3
+f,plainGround,0,0,0,3
+f,plainBackground,0,0,0,3
 
 # ゴール
 o.Goal,Goal,100,0,50,null
 
 # 次のステージ
+n,Resource/Stage/HouseC.txt,Resources/Stage/HouseC.txt

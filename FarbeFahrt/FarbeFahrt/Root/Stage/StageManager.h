@@ -8,6 +8,10 @@ class World;
 
 class StageManager
 {
+private:
+
+	using Stages = std::pair<StageData, StageData>;
+
 public:
 
 	StageManager(const String& firstStageName);
@@ -24,6 +28,8 @@ public:
 
 	const StageData& current() const;
 
+	const Stages& nextStages() const;
+
 private:
 
 	bool isFirst() const;
@@ -31,8 +37,6 @@ private:
 	const StageData& nextStage() const;
 
 private:
-
-	using Stages = std::pair<StageData, StageData>;
 
 	StageData m_current;
 

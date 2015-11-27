@@ -17,3 +17,4 @@ f,forestBackground,0,0,0,3
 o.Goal,Goal,100,0,50,null
 
 # 次のステージ
+n,Resource/Stage/PlainB.txt,Rsources/Stage/PlainB.txt

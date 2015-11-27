@@ -161,14 +161,23 @@
     <Image Include="Resources\Texture\curtain.png" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Resources\Stage\DimForest.txt" />
+    <Text Include="Resources\Stage\ForestA.txt" />
+    <Text Include="Resources\Stage\ForestB.txt" />
     <Text Include="Resources\Stage\GrayBox\1-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-2.txt" />
-    <Text Include="Resources\Stage\Mori.txt" />
-    <Text Include="Resources\Stage\Mori2.txt" />
+    <Text Include="Resources\Stage\HouseD.txt" />
+    <Text Include="Resources\Stage\HouseE.txt" />
+    <Text Include="Resources\Stage\PlainA.txt" />
+    <Text Include="Resources\Stage\Heiles.txt" />
+    <Text Include="Resources\Stage\HouseA.txt" />
+    <Text Include="Resources\Stage\HouseB.txt" />
+    <Text Include="Resources\Stage\Lowles.txt" />
+    <Text Include="Resources\Stage\PlainB.txt" />
     <Text Include="Resources\Stage\ScriptFormatSample.txt" />
-    <Text Include="Resources\Stage\Sougen.txt" />
-    <Text Include="Resources\Stage\TestMap.txt" />
+    <Text Include="Resources\Stage\ForestC.txt" />
+    <Text Include="Resources\Stage\本\DangerSwamp.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1C39BCCD-A56C-4385-9FAE-54BBD692FB72}</ProjectGuid>
