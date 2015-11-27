@@ -100,18 +100,7 @@ void Loader::load()
 {
 	m_onCompleted = false;
 	m_isChangedScene = true;
-	SetUseASyncLoadFlag(TRUE);
-	for (auto& data : m_ContentsList)
-	{
-		if (m_ContentsList.find(data.first)->second.handle != 0)
-		{
-			continue;
-		}
-
-		data.second.handle = m_LoadFunc[GetExtension(data.second.filename)].loadFunc( ("Resources/" + data.second.filename).c_str());
-		MV1SetupCollInfo(data.second.handle);
-	}
-	SetUseASyncLoadFlag(FALSE);
+	loadASync();
 }
 void Loader::loadASync()
 {
