@@ -71,7 +71,7 @@ void GrayBox::post()
 		{
 			m_loader->loadContent(resource.first.toNarrow(), resource.second.toNarrow());
 		}
-		m_loader->loadASync();
+		m_loader->load();
 	}
 }
 
