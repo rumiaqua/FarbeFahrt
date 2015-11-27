@@ -51,13 +51,15 @@ struct ModelData{
 	float animPlayCount2;
 	float animBlendRate = 1.0f;
 	bool isSkinMesh = false;
-	ModelData(int modelHandle, int playAnim1, int playAnim2, float animPlayCount1, float animPlayCount2)
+	bool use = true;
+	ModelData(int modelHandle, int playAnim1, int playAnim2, float animPlayCount1, float animPlayCount2,bool use)
 	{
 		this->modelHandle = modelHandle;
 		this->playAnim1 = playAnim1;
 		this->playAnim2 = playAnim2;
 		this->animPlayCount1 = animPlayCount1;
 		this->animPlayCount2 = animPlayCount2;
+		this->use = use;
 	}
 	ModelData(){}
 };

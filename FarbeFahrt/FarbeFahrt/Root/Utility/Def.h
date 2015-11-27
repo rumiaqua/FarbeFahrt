@@ -17,10 +17,12 @@
 struct ContentData{
 	int handle;
 	std::string filename;
+	bool use;
 	ContentData(int handle,const std::string& filename)
 	{
 		this->handle = handle;
 		this->filename = filename;
+		this->use = true;
 	}
 	ContentData(){}
 };

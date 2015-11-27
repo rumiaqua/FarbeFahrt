@@ -19,15 +19,12 @@ enum class ContentTag
 struct ContentDataAndTag
 {
 	ContentTag tag;
-	int handle;
-	std::string filename;
-	bool use;
-	ContentDataAndTag(ContentTag tag, int handle, const std::string& filename,bool use)
+	ContentData contentData;
+	
+	ContentDataAndTag(ContentTag tag, ContentData contentData)
 	{
 		this->tag = tag;
-		this->handle = handle;
-		this->filename = filename;
-		this->use = use;
+		this->contentData = contentData;
 	}
 	ContentDataAndTag(){}
 };

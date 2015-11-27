@@ -37,9 +37,10 @@ void Renderer::setModelData(const ContentMap& modelData)
 {
 	for (auto &data : modelData)
 	{
+		
 		m_modelData.emplace(std::piecewise_construct,
 			std::forward_as_tuple(data.first),
-			std::forward_as_tuple(data.second.handle, -1, -1, 0.0f, 0.0f));
+			std::forward_as_tuple(data.second.handle, -1, -1, 0.0f, 0.0f,data.second.use));
 	}
 
 }
@@ -52,17 +53,16 @@ void Renderer::setTextureData(const ContentMap& textureData)
 }
 void Renderer::drawDepth()
 {
-	Vector3 lightDirection = GetLightDirection();
-	Vector3 lightPosition = {40.0f,100.0f,-150.0f};
-	Vector3 lightTarget = Vector3::Zero();
+	Vector3 lightPosition = {20.0f,120.0f,-70.0f};
+	Vector3 lightTarget{-30.0f,30.0f,0.0f};
 	SetDrawScreen(m_buffer.depthBuffer);
-
+	//SetDrawScreen(DX_SCREEN_BACK);
 	SetBackgroundColor(255, 255, 255);
 	ClearDrawScreen();
 	SetBackgroundColor(0, 0, 0);
 
-	SetupCamera_Ortho(300.0f);
-	SetCameraNearFar(1.0f, 300.0f);
+	SetupCamera_Ortho(400.0f);
+	SetCameraNearFar(1.0f, 400.0f);
 	SetCameraPositionAndTarget_UpVecY(lightPosition, lightTarget);
 
 	m_lightCamera.viewMatrix = GetCameraViewMatrix();
@@ -72,6 +72,10 @@ void Renderer::drawDepth()
 	SetUsePixelShader(m_shaderHandle.depthRecord_pixel);
 	for (auto model : m_modelData)
 	{
+		if (model.second.use == false)
+		{
+			continue;
+		}
 		if (model.second.isSkinMesh)//スキンメッシュの影描画用
 		{
 			SetUseVertexShader(m_shaderHandle.depthRecord_skin);
@@ -99,6 +103,10 @@ void Renderer::drawModelWithDepthShadow()
 	SetUseTextureToShader(1, m_buffer.depthBuffer);
 	for (auto model : m_modelData)
 	{
+		if (model.second.use == false)
+		{
+			continue;
+		}
 		if (model.second.isSkinMesh)//スキンメッシュの影描画用
 		{
 			SetUseVertexShader(m_shaderHandle.render_skin);
