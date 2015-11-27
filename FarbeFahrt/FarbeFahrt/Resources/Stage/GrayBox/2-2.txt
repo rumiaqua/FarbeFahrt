@@ -2,7 +2,7 @@
 # プレイヤー
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 # フィールド
-r,field2,Model/terrain/terrain.mqo
+# r,field2,Model/terrain/terrain.mqo
 # ギミック
 r,test,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 # ゴール
@@ -27,7 +27,7 @@ o,Gimmick,test,0,-50,50,null,1/1.0f/300.0f
 # アニメーションオブジェクト
 # o,test,0,-220,100,Sphere,1/1.0f/300.0f
 # ゴール
-o,Goal,hoge,100,-220,100,null
+o,Goal,hoge,50,30,-50,null
 
 # 次のステージ
 n,Resources/Stage/GrayBox/2-1.txt,Resources/Stage/GrayBox/1-1.txt

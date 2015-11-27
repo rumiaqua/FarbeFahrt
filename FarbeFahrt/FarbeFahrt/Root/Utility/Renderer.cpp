@@ -53,15 +53,16 @@ void Renderer::setTextureData(const ContentMap& textureData)
 void Renderer::drawDepth()
 {
 	Vector3 lightDirection = GetLightDirection();
-	Vector3 lightPosition = {0.0f,50.0f,-150.0f};
+	Vector3 lightPosition = {40.0f,100.0f,-150.0f};
 	Vector3 lightTarget = Vector3::Zero();
 	SetDrawScreen(m_buffer.depthBuffer);
+
 	SetBackgroundColor(255, 255, 255);
 	ClearDrawScreen();
 	SetBackgroundColor(0, 0, 0);
 
-	SetupCamera_Ortho(500.0f);
-	SetCameraNearFar(0.1f, 500.0f);
+	SetupCamera_Ortho(300.0f);
+	SetCameraNearFar(1.0f, 300.0f);
 	SetCameraPositionAndTarget_UpVecY(lightPosition, lightTarget);
 
 	m_lightCamera.viewMatrix = GetCameraViewMatrix();
@@ -87,6 +88,7 @@ void Renderer::drawDepth()
 }
 void Renderer::drawModelWithDepthShadow()
 {
+	SetCameraNearFar(1.0f, 12000.0f);
 	SetCameraPositionAndTarget_UpVecY(m_cameraData.pos, m_cameraData.terget);
 	MV1SetUseOrigShader(TRUE);
 	SetUsePixelShader(m_shaderHandle.render_pixel);

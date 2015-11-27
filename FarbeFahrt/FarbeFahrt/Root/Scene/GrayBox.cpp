@@ -28,6 +28,7 @@ void GrayBox::loadContents(Loader& loader)
 	{
 		loader.loadContent(resource.first.toNarrow(), resource.second.toNarrow());
 	}
+
 }
 
 void GrayBox::initialize()
@@ -48,6 +49,7 @@ void GrayBox::update()
 	{
 		m_manager->pushScene(Scene::Editor);
 	}
+
 }
 
 void GrayBox::draw(Renderer& render)
