@@ -7,6 +7,8 @@
 # include "Utility/HandleList.h"
 # include "Utility/SingletonFinalizer.h"
 
+# include "Manager/EndManager.h"
+
 # include "Scene/ISceneMediator.h"
 
 End::End()
@@ -20,16 +22,19 @@ void End::loadContents(Loader& loader)
 	{
 		"Texture/end/bad.png",
 		"Texture/end/clear.png",
+		"Texture/end/bad.png",
 		"Texture/end/true.png",
+		"Texture/end/clear.png",
 	};
 
-	int num =
-		StoryManager::get(BitFlag::BADEND) ? 0 :
-		StoryManager::get(BitFlag::CLEAR) ? 1 :
-		2;
+	int num = (int)EndManager::getPattern() - 1;
 
-	// loader.loadContent("end", endResources[num]);
-	loader.loadContent("end", "Texture/end/bad.png");
+	if (num < 0)
+	{
+		num = 0;
+	}
+
+	loader.loadContent("end", endResources[num]);
 }
 
 void End::initialize()
@@ -41,15 +46,13 @@ void End::update()
 {
 	if (Input::IsClicked(KEY_INPUT_RETURN))
 	{
-		m_manager->changeScene(Scene::ObjectViewer);
+		m_manager->changeScene(Scene::GrayBox);
 	}
 }
 
 void End::draw(Renderer& renderer)
 {
-	int handle = Singleton<HandleList>::Instance().getHandle("end");
-	DrawRotaGraph3(0, 0, 0, 0, 1.0, 1.0, 0.0, handle, TRUE);
-	// renderer.drawTexture("end", 0, 0);
+	renderer.drawTexture("end", Renderer::AspectType::Expand);
 }
 
 void End::post()

@@ -196,6 +196,15 @@ ContentMap Loader::getSEList() const
 {
 	return getContentList(ContentTag::SE);
 }
+ContentMap Loader::getContentsList() const
+{
+	ContentMap returnData;
+	for (auto& data : m_ContentsList)
+	{
+		returnData.emplace(std::make_pair(data.first, data.second.contentData));
+	}
+	return returnData;
+}
 void Loader::cleanUp()
 {
 	m_oldContentsList = m_ContentsList;

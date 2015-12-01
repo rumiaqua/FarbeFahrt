@@ -2,6 +2,10 @@
 #include <algorithm>
 #include "Actor\Camera\Camera.h"
 
+# include "Point2.h"
+# include "Vector2.h"
+# include "Math.h"
+
 Renderer::Renderer()
 {
 	initDepthBuffer();
@@ -322,4 +326,42 @@ void Renderer::drawTexture(const std::string& name, int x, int y,int cx,int cy, 
 void Renderer::drawTexture(const std::string& name, int x, int y)
 {
 	DrawGraph(x, y, m_textureData.at(name),TRUE);
+}
+
+void Renderer::drawTexture(const std::string& name, const AspectType& type)
+{
+	int handle = m_textureData.at(name);
+	Point2 textureSize;
+	GetGraphSize(handle, &textureSize.x, &textureSize.y);
+	Point2 windowSize;
+	GetWindowSize(&windowSize.x, &windowSize.y);
+
+	Vector2 ext;
+
+	// âΩÇ‡ÇµÇ»Ç¢
+	if (type != AspectType::None)
+	{
+		ext = Vector2::One();
+	}
+	// âÊñ Ç…çáÇÌÇπÇƒêLèk
+	if (type == AspectType::Fit)
+	{
+		ext = (Vector2)windowSize / (Vector2)textureSize;
+	}
+	// çïë—
+	if (type == AspectType::LetterBox)
+	{
+		ext = (Vector2)windowSize / (Vector2)textureSize;
+		ext.x = ext.y = Math::Min({ ext.x, ext.y });
+	}
+	// ägëÂ
+	if (type == AspectType::Expand)
+	{
+		ext = (Vector2)windowSize / (Vector2)textureSize;
+		ext.x = ext.y = Math::Max({ ext.x, ext.y });
+	}
+
+	Vector2 pos = ((Vector2)windowSize - (Vector2)textureSize * ext) / 2.0f;
+
+	DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
 }

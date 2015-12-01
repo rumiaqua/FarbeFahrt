@@ -14,6 +14,8 @@
 
 # include "Utility/SingletonFinalizer.h"
 
+# include "Manager/EndManager.h"
+
 GrayBox::GrayBox()
 	: m_stageManager("Resources/Stage/PlainA.txt")
 {
@@ -79,13 +81,15 @@ void GrayBox::post()
 //	}
 //# undef NONE
 
-	if (m_stageManager.endNum() != -1)
-	{
-		return;
-	}
-
 	if (m_stageManager.isNext())
 	{
+		if (m_stageManager.endNum() != -1)
+		{
+			EndManager::setPattern(m_stageManager.endNum());
+			m_manager->changeScene(Scene::End);
+			return;
+		}
+
 		m_stageManager.next(m_world.get());
 
 		StoryManager::reset(BitFlag::GIMMICK | BitFlag::GOAL);

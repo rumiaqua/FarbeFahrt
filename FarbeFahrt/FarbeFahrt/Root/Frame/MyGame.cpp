@@ -30,6 +30,7 @@ MyGame::MyGame()
 
 	m_sceneManager.pushScene(Scene::GrayBox);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
+	// m_sceneManager.pushScene(Scene::End);
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
@@ -64,7 +65,9 @@ void MyGame::run()
 	// ロードが終了したら
 	if (loader.onCompleted())
 	{
-		Singleton<HandleList>::Instance().setHandleData(loader.getModelList());
+		// Singleton<HandleList>::Instance().setHandleData(loader.getModelList());
+		// Singleton<HandleList>::Instance().setHandleData(loader.getTextureList());
+		Singleton<HandleList>::Instance().setHandleData(loader.getContentsList());
 		render.setModelData(loader.getModelList());
 		render.setTextureData(loader.getTextureList());
 		SE::SetData(loader.getSEList());

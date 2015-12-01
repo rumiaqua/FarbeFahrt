@@ -90,6 +90,18 @@ public:
 	//2DŒnŠÖ”
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
 	void drawTexture(const std::string& name, int x, int y);
+	enum class AspectType
+	{
+		// ‰½‚à‚µ‚È‚¢
+		None,
+		// ‰æ–Ê‚É‡‚í‚¹‚ÄLk
+		Fit,
+		// •‘Ñ
+		LetterBox,
+		// Šg‘å
+		Expand,
+	};
+	void drawTexture(const std::string& name, const AspectType& type);
 public:
 	// -----------------------------------------------------------
 	// ƒvƒŠƒ~ƒeƒBƒuŒ^•`‰æ
