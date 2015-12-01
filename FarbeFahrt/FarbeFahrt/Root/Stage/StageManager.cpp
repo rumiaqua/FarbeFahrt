@@ -17,11 +17,13 @@ StageManager::StageManager(const std::string& firstStageName)
 	StageFactory().Load(firstStageName, m_next.first);
 	StageFactory().Load(firstStageName, m_next.second);
 	m_current.playerPosition = Vector3::Zero();
+	m_current.endNum = -1;
 }
 
 bool StageManager::isNext() const
 {
-	return StoryManager::get(BitFlag::GOAL);
+	bool next = StoryManager::get(BitFlag::GOAL);
+	return next;
 }
 
 void StageManager::next(World* const world)
@@ -54,7 +56,6 @@ void StageManager::next(World* const world)
 			actor.sendMessage("CloseAnimate", nullptr);
 		});
 	}
-	StoryManager::reset(BitFlag::GIMMICK | BitFlag::GOAL);
 	
 	m_current = nextStage();
 	world->apply(m_current, false);
@@ -69,6 +70,11 @@ void StageManager::apply(World* const world)
 	StageFactory().Load(m_current.nextStage.second, m_next.second);
 }
 
+int StageManager::endNum() const
+{
+	return m_current.endNum;
+}
+
 const StageData& StageManager::current() const
 {
 	return m_current;
@@ -81,7 +87,8 @@ const StageManager::Stages& StageManager::nextStages() const
 
 bool StageManager::isFirst() const
 {
-	return StoryManager::get(BitFlag::GIMMICK);
+	bool first = StoryManager::get(BitFlag::GIMMICK);
+	return first;
 }
 
 const StageData& StageManager::nextStage() const

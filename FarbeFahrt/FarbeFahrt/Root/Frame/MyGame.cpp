@@ -4,6 +4,7 @@
 
 # include "Scene/Editor.h"
 # include "Scene/GrayBox.h"
+# include "Scene/End.h"
 
 # include "Experimental/ObjectViewer.h"
 
@@ -25,6 +26,7 @@ MyGame::MyGame()
 	m_sceneManager.addScene<GrayBox>(Scene::GrayBox);
 
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
+	m_sceneManager.addScene<End>(Scene::End);
 
 	m_sceneManager.pushScene(Scene::GrayBox);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
@@ -73,7 +75,7 @@ void MyGame::run()
 
 	// •`‰æ
 	ClearDrawScreen();
-	Debug::Println("%d",GetASyncLoadNum());
+	Debug::Println("GetASyncLoadNum : %d",GetASyncLoadNum());
 
 	m_sceneManager.draw(render);
 	render.draw();

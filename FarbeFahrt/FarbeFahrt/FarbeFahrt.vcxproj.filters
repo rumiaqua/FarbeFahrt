@@ -177,6 +177,12 @@
     <ClCompile Include="Root\World.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Scene\End.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Experimental\_Camera.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\Enemy.h">
@@ -392,6 +398,12 @@
     <ClInclude Include="Root\World.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Scene\End.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Experimental\_Camera.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Model\本2\book.pmx" />
@@ -432,5 +444,8 @@
     <Text Include="Resources\Stage\HouseD.txt" />
     <Text Include="Resources\Stage\HouseE.txt" />
     <Text Include="Resources\Stage\本\DangerSwamp.txt" />
+    <Text Include="Resources\Stage\DangerSwamp.txt" />
+    <Text Include="Resources\Stage\HouseC.txt" />
+    <Text Include="Resources\Stage\ForestD.txt" />
   </ItemGroup>
 </Project>

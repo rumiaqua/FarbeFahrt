@@ -32,9 +32,11 @@ struct StageData
 	using ObjectList = std::vector<Object>;
 	using NextStage = std::pair<std::string, std::string>;
 
+	std::string filename;
 	ResourceList resourceList;
 	Vector3 playerPosition;
 	FieldList fieldList;
 	ObjectList objectList;
 	NextStage nextStage;
+	int endNum;
 };

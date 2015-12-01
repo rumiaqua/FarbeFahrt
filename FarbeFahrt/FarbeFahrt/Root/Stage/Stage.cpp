@@ -32,6 +32,8 @@ void Stage::apply(const StageData& data, bool isClear)
 		clearActor();
 	}
 
+	m_stageName = data.filename;
+
 	// フィールドの初期化
 	for (auto&& field : data.fieldList)
 	{
@@ -113,9 +115,11 @@ void Stage::update()
 }
 
 void Stage::draw(Renderer& renderer) const
-{
+{	
 	// 描画処理
 	m_actorManager.draw(renderer);
+
+	Debug::Println(m_stageName);
 }
 
 void Stage::addActor(const ActorTag& tag, const Actor& actor)

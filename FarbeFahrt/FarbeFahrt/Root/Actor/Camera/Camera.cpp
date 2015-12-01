@@ -73,6 +73,10 @@ void Camera::cameraInput()
 
 void Camera::chaseCamera()
 {
+	if (m_actor.expired())
+	{
+		return;
+	}
 	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
 	m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
@@ -86,6 +90,10 @@ void Camera::chaseCamera()
 
 void Camera::fadeInCamera()
 {
+	if (m_actor.expired())
+	{
+		return;
+	}
 	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
 	m_t = 0;
@@ -107,6 +115,10 @@ void Camera::fadeOutCamera()
 
 void Camera::fadeInFixedCamera()
 {
+	if (m_actor.expired())
+	{
+		return;
+	}
 	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
 	m_cameraMatrix.targetPos = getPosition();
@@ -119,6 +131,10 @@ void Camera::fadeInFixedCamera()
 
 void Camera::lockCamera()
 {
+	if (m_actor.expired())
+	{
+		return;
+	}
 	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
 	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
@@ -130,6 +146,10 @@ void Camera::lockCamera()
 
 void Camera::defaultCamera()
 {
+	if (m_actor.expired())
+	{
+		return;
+	}
 	Actor actor = m_actor.lock();
 	if (m_cameraState.chaseFlag == ChaseFlag::Move)
 	{
@@ -164,6 +184,10 @@ void Camera::defaultCamera()
 
 void Camera::initCamera()
 {
+	if (m_actor.expired())
+	{
+		return;
+	}
 	Actor actor = m_actor.lock();
 	m_cameraMatrix.targetPos = actor->getPosition() + Vector3(0.0f, 20.0f, -30.0f);
 	m_cameraMatrix.targetRot = actor->getPosition() + Vector3(0.0f, 15.0f, 0.0f);
@@ -184,11 +208,6 @@ void Camera::cameraSet()
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeInFixed, [this]() { this->fadeInFixedCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::LockAt, [this]() { this->lockCamera(); }));
 	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Init, [this]() { this->initCamera(); }));
-
-	if (m_actor.expired())
-	{
-		return;
-	}
 
 	funcs.at(m_cameraState.cameraMode)();
 

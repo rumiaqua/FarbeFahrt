@@ -16,7 +16,7 @@ f,forestBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-50,null
-o,Gimmick,Gimmick,50,30,50,null,0/1.0f/59.0f
+o,Gimmick,Gimmick,-100,0,50,null,0/1.0f/59.0f
 
 # 次のステージ
-n,Resources/Stage/Lowles.txt,Resources/Stage/Heiles.txt
+n,Resources/Stage/HouseC.txt,Resources/Stage/HouseC.txt

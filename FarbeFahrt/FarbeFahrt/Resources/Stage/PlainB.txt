@@ -17,4 +17,4 @@ f,plainBackground,0,0,0,3
 o.Goal,Goal,100,0,50,null
 
 # 次のステージ
-n,Resources/Stage/DimForest.txt,Resources/Stage/ForestB.txt
+n,Resources/Stage/DimForest.txt,Resources/Stage/ForestD.txt

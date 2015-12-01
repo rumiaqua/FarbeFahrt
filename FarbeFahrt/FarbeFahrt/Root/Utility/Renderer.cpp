@@ -50,75 +50,116 @@ void Renderer::setTextureData(const ContentMap& textureData)
 		m_textureData.emplace(data.first,data.second.handle);
 	}
 }
+
+// 深度描画？
 void Renderer::drawDepth()
 {
+	// 光源パラメータ
 	Vector3 lightDirection = GetLightDirection();
 	Vector3 lightPosition = {40.0f,100.0f,-150.0f};
 	Vector3 lightTarget = Vector3::Zero();
+	// 深度バッファに描画ターゲットを設定
 	SetDrawScreen(m_buffer.depthBuffer);
 
+	// 背景を白でクリア
 	SetBackgroundColor(255, 255, 255);
+	// 描画ターゲットをクリア
 	ClearDrawScreen();
+	// 背景色を黒でクリア
 	SetBackgroundColor(0, 0, 0);
 
+	// カメラの透視射影行列を正射影に変更
 	SetupCamera_Ortho(300.0f);
+	// クリップ面の設定
 	SetCameraNearFar(1.0f, 300.0f);
+	// カメラのビュー行列をライトから見た位置に変更
 	SetCameraPositionAndTarget_UpVecY(lightPosition, lightTarget);
 
+	// 現在の設定を保持
 	m_lightCamera.viewMatrix = GetCameraViewMatrix();
 	m_lightCamera.projectionMatrix = GetCameraProjectionMatrix();
 
+	// 自作シェーダーの使用開始
 	MV1SetUseOrigShader(TRUE);
+	// ピクセルシェーダーを指定
 	SetUsePixelShader(m_shaderHandle.depthRecord_pixel);
+	// 全モデルデータの表示
 	for (auto model : m_modelData)
 	{
+		// スキンメッシュであれば
 		if (model.second.isSkinMesh)//スキンメッシュの影描画用
 		{
+			// スキンメッシュ用の頂点シェーダーを使用
 			SetUseVertexShader(m_shaderHandle.depthRecord_skin);
 		}
 		//剛体メッシュの影描画用
+		// そうでなければ
 		else
 		{
+			// 剛体メッシュ用の頂点シェーダーを使用
 			SetUseVertexShader(m_shaderHandle.depthRecord_normal);
 		}
+		// モデルの描画
 		MV1DrawModel(model.second.modelHandle);
 	}
+	// 自作シェーダーの使用終了
 	MV1SetUseOrigShader(FALSE);
+	// 描画ターゲットを背面に変更
 	SetDrawScreen(DX_SCREEN_BACK);
 }
+// モデルを影と一緒に描画
 void Renderer::drawModelWithDepthShadow()
 {
+	// クリップ面の指定
 	SetCameraNearFar(1.0f, 12000.0f);
+	// カメラのビュー行列を保存した行列に変更
 	SetCameraPositionAndTarget_UpVecY(m_cameraData.pos, m_cameraData.terget);
+	// 自作シェーダーの使用開始
 	MV1SetUseOrigShader(TRUE);
+	// ピクセルシェーダーを指定
 	SetUsePixelShader(m_shaderHandle.render_pixel);
+	// ビュー行列をシェーダーにセット
 	SetVSConstFMtx(43, m_lightCamera.viewMatrix);
+	// 透視射影行列をシェーダーにセット
 	SetVSConstFMtx(47, m_lightCamera.projectionMatrix);
 
 	// 影用深度記録画像をテクスチャ１にセット
 	SetUseTextureToShader(1, m_buffer.depthBuffer);
+	// 全モデルデータの描画
 	for (auto model : m_modelData)
 	{
+		// スキンメッシュであれば
 		if (model.second.isSkinMesh)//スキンメッシュの影描画用
 		{
+			// 
+			// スキンメッシュ用の頂点シェーダーを使用
 			SetUseVertexShader(m_shaderHandle.render_skin);
 		}
 		//剛体メッシュの影描画用
+		// そうでなければ
 		else
 		{
+			// 剛体メッシュ用の頂点シェーダーを使用
 			SetUseVertexShader(m_shaderHandle.render_normal);
 		}
+		// モデルの描画
 		MV1DrawModel(model.second.modelHandle);
 	}
+	// 自作シェーダーの使用終了
 	MV1SetUseOrigShader(FALSE);
+	// テクスチャ１を無効にする
 	SetUseTextureToShader(1, -1);
+	// スロット43を初期化？
 	ResetVSConstF(43, 8);
 }
 void Renderer::draw()
 {
+	// 現在の設定を保持
 	m_cameraData.pos = GetCameraPosition();
 	m_cameraData.terget = GetCameraTarget();
+	// 深度の描画
 	drawDepth();
+	// 影の描画
 	drawModelWithDepthShadow();
 }
 

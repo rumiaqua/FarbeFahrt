@@ -50,42 +50,52 @@ void GrayBox::update()
 {
 	m_world->update();
 
-	if (Input::IsClicked(KEY_INPUT_RETURN))
+	/*if (Input::IsClicked(KEY_INPUT_RETURN))
 	{
 		m_manager->pushScene(Scene::Editor);
-	}
+	}*/
 
 }
 
 void GrayBox::draw(Renderer& render)
 {
+	Debug::Println(String::Create("Gimmick : ", StoryManager::get(BitFlag::GIMMICK) ? "true" : "false"));
+	Debug::Println(String::Create("Goal : ", StoryManager::get(BitFlag::GOAL) ? "true" : "false"));
+	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
 	m_world->draw(render);
 }
 
 void GrayBox::post()
 {
-	/*if (m_stageManager.isNext())
+//# define NONE -1
+//	int endNum = m_stageManager.endNum();
+//	if (endNum != NONE)
+//	{
+//		return;
+//		// endNum分だけ左シフトさせる
+//		StoryManager::set(BitFlag::BADEND << endNum);
+//		m_manager->changeScene(Scene::End, true);
+//		return;
+//	}
+//# undef NONE
+
+	if (m_stageManager.endNum() != -1)
 	{
-		m_stageManager.next(m_world.get());
-
-		for (auto&& resource : m_stageManager.current().resourceList)
-		{
-			m_loader->loadContent(resource.first, resource.second);
-		}
-
-		m_loader->loadASync();
-	}*/
+		return;
+	}
 
 	if (m_stageManager.isNext())
 	{
 		m_stageManager.next(m_world.get());
+
+		StoryManager::reset(BitFlag::GIMMICK | BitFlag::GOAL);
 
 		// 現在のステージのリソースを待機ロード
 		for (auto&& resource : m_stageManager.current().resourceList)
 		{
 			m_loader->loadContent(resource.first, resource.second);
 		}
-		m_loader->load();
+		// m_loader->load();
 
 		// 次のシーンのリソースを非待機ロード
 		const auto& nexts = m_stageManager.nextStages();

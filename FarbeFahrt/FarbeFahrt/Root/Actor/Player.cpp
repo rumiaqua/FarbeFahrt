@@ -41,10 +41,6 @@ void Player::onUpdate()
 
 		++m_frame;
 	}
-	if (m_dead)
-	{
-		m_frame++;
-	}
 
 	BaseActor::onUpdate();
 }
@@ -155,7 +151,8 @@ void Player::onMessage(const std::string& message, void* parameter)
 	if (message == "StopControl")
 	{
 		m_canControl = false;
+		// kill();
 	}
 
-	BaseActor::onMessage(message,parameter);
+	BaseActor::onMessage(message, parameter);
 }

@@ -24,6 +24,8 @@ public:
 
 	void apply(World* const world);
 
+	int endNum() const;
+
 public:
 
 	const StageData& current() const;

@@ -48,4 +48,6 @@ private:
 	World* m_world;
 
 	ActorManager m_actorManager;
+
+	std::string m_stageName;
 };

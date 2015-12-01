@@ -14,6 +14,7 @@ enum class Scene{
 	Editor,
 	GrayBox,
 	ObjectViewer,
+	End,
 };
 class BaseScene
 {

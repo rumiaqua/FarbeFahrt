@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Root\Experimental\ObjectViewer.cpp" />
+    <ClCompile Include="Root\Experimental\_Camera.cpp" />
+    <ClCompile Include="Root\Scene\End.cpp" />
     <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
@@ -74,7 +76,9 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Experimental\_Camera.h" />
     <ClInclude Include="Root\Experimental\ObjectViewer.h" />
+    <ClInclude Include="Root\Scene\End.h" />
     <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Actor\Book.h" />
     <ClInclude Include="Root\Actor\Camera\Ray.h" />
@@ -161,12 +165,15 @@
     <Image Include="Resources\Texture\curtain.png" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Resources\Stage\DangerSwamp.txt" />
     <Text Include="Resources\Stage\DimForest.txt" />
     <Text Include="Resources\Stage\ForestA.txt" />
     <Text Include="Resources\Stage\ForestB.txt" />
+    <Text Include="Resources\Stage\ForestD.txt" />
     <Text Include="Resources\Stage\GrayBox\1-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-2.txt" />
+    <Text Include="Resources\Stage\HouseC.txt" />
     <Text Include="Resources\Stage\HouseD.txt" />
     <Text Include="Resources\Stage\HouseE.txt" />
     <Text Include="Resources\Stage\PlainA.txt" />

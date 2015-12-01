@@ -17,10 +17,16 @@ public:
 
 	StageData& open(const std::string& filename, StageData& output) const override
 	{
+		// 初期化
 		output.resourceList.clear();
 		output.fieldList.clear();
 		output.objectList.clear();
 
+		// 初期値を代入
+		output.filename = filename;
+		output.endNum = -1;
+
+		// テキストのロードを開始
 		std::ifstream stream(filename);
 
 		std::string buffer;
@@ -32,8 +38,11 @@ public:
 				continue;
 			}
 
+			// 文字列をカンマ区切りで解析
 			std::vector<std::string> split = String::Split(buffer, ',');
 
+			// 区切った結果空であれば不正なので読み飛ばし
+			// 空であることってあるのか？
 			if (split.empty())
 			{
 				continue;
@@ -83,6 +92,15 @@ public:
 					split.emplace_back("");
 				}
 
+				// オブジェクトリストに
+				// クラス名
+				// リソース名
+				// x座標
+				// y座標
+				// z座標
+				// 衝突図形
+				// パラメータ
+				// で追加する
 				output.objectList.emplace_back(
 					split[1],
 					split[2],
@@ -99,6 +117,13 @@ public:
 			{
 				output.nextStage.first = split[1];
 				output.nextStage.second = split[2];
+			}
+
+			// エンド
+			if (split[0] == "e")
+			{
+				int endNum = String::ToValue<int>(split[1]);
+				output.endNum = endNum;
 			}
 		}
 
