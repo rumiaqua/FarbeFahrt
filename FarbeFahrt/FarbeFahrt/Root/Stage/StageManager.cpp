@@ -61,6 +61,9 @@ void StageManager::next(World* const world)
 	world->apply(m_current, false);
 	StageFactory().Load(m_current.nextStage.first, m_next.first);
 	StageFactory().Load(m_current.nextStage.second, m_next.second);
+
+	StoryManager::reset(BitFlag::GOAL);
+	StoryManager::reset(BitFlag::NEXT);
 }
 
 void StageManager::apply(World* const world)

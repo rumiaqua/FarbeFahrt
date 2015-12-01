@@ -6,6 +6,5 @@ enum class CameraMode
 	FadeOut,
 	Default,
 	FadeInFixed,
-	LockAt,
-	Init
+	LockAt
 };

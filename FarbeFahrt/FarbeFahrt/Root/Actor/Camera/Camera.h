@@ -26,7 +26,6 @@ private:
 	void defaultCamera();
 	void fadeInFixedCamera();
 	void lockCamera();
-	void initCamera();
 	void cameraSet();
 	void toPlayerCamera();
 	void toBookCamera();
