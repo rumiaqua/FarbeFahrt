@@ -87,8 +87,9 @@ void GrayBox::post()
 
 	if (m_stageManager.isNext())
 	{
-		m_stageManager.next(m_world.get());
+		m_loader->cleanUp();
 
+		m_stageManager.next(m_world.get());
 		StoryManager::reset(BitFlag::GIMMICK | BitFlag::GOAL);
 
 		// 現在のステージのリソースを待機ロード

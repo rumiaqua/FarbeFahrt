@@ -101,6 +101,7 @@ void Loader::load()
 }
 void Loader::loadASync()
 {
+
 	for (auto& i : m_oldContentsList)//前回のシーンの古いコンテンツリストを見て回る
 	{
 		auto& j = m_ContentsList.find(i.first);//今のコンテンツリストにあるかどうか調べる
@@ -121,7 +122,6 @@ void Loader::loadASync()
 		MV1SetupCollInfo(data.second.contentData.handle);
 	}
 	SetUseASyncLoadFlag(FALSE);
-	m_oldContentsList = m_ContentsList;
 
 }
 bool Loader::isLoad() const
@@ -197,7 +197,8 @@ ContentMap Loader::getSEList() const
 void Loader::cleanUp()
 {
 	m_oldContentsList = m_ContentsList;
-	m_ContentsList.clear();
+
+	
 }
 Loader::~Loader()
 {
