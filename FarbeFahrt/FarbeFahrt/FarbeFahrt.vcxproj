@@ -182,7 +182,6 @@
     <Text Include="Resources\Stage\HouseB.txt" />
     <Text Include="Resources\Stage\Lowles.txt" />
     <Text Include="Resources\Stage\PlainB.txt" />
-    <Text Include="Resources\Stage\ScriptFormatSample.txt" />
     <Text Include="Resources\Stage\ForestC.txt" />
     <Text Include="Resources\Stage\本\DangerSwamp.txt" />
   </ItemGroup>

@@ -128,7 +128,7 @@ void Player::onMessage(const std::string& message, void* parameter)
 			Vector3 direction = Vector3::Normalize(ownPos - otherPos);
 			Vector3 normalize = Vector3::Normalize(direction * Vector3(1, 0, 1));
 			otherPos.y = ownPos.y;
-			Vector3 movement = normalize * D;			
+			Vector3 movement = normalize * D;
 
 			Debug::Println(String::Create("myName:", m_name));
 			Debug::Println(String::Create("Name:", actor->getName()));
@@ -151,7 +151,7 @@ void Player::onMessage(const std::string& message, void* parameter)
 	if (message == "StopControl")
 	{
 		m_canControl = false;
-		// kill();
+		kill();
 	}
 
 	BaseActor::onMessage(message, parameter);

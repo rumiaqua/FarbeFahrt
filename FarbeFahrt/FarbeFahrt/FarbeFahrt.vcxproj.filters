@@ -430,7 +430,6 @@
     <Text Include="Resources\Stage\GrayBox\1-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-1.txt" />
     <Text Include="Resources\Stage\GrayBox\2-2.txt" />
-    <Text Include="Resources\Stage\ScriptFormatSample.txt" />
     <Text Include="Resources\Stage\ForestA.txt" />
     <Text Include="Resources\Stage\Lowles.txt" />
     <Text Include="Resources\Stage\HouseA.txt" />
