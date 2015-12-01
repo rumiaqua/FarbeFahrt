@@ -103,7 +103,7 @@ void Player::playerInput()
 
 	// à⁄ìÆêßå¿
 	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim, XLim);
-	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, ZLim, ZLim);
+	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -ZLim, ZLim);
 
 	if (Input::IsClicked(KEY_INPUT_1))
 	{
