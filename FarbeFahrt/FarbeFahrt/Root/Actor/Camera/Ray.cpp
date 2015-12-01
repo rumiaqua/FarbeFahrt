@@ -10,7 +10,6 @@ Ray::Ray(IWorld & world, const Vector3 & begin, const Vector3& end)
 
 void Ray::onUpdate()
 {
-	//¶¬ŒãA‚Ü‚¾©“®íœ‚µ‚Ä‚¢‚Ü‚¹‚ñ
 	kill();
 	BaseActor::onUpdate();
 }

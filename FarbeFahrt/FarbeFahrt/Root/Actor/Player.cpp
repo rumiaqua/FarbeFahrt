@@ -16,8 +16,9 @@
 namespace
 {
 	constexpr float OBSTACLE_DISTANCE = 5.0f;
-	const float XLim = 142.0f - 145.0f / 2.0f - 4.0f;
+	const float XLim = 142.0f;
 	const float ZLim = 110.0f;
+	const float correction = 145.0f / 2.0f - 4.0f;
 }
 
 Player::Player(IWorld& world, const Vector3& position)
@@ -102,7 +103,7 @@ void Player::playerInput()
 	m_pose.position.y -= 2.0f;
 
 	// à⁄ìÆêßå¿
-	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim, XLim);
+	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim - correction, XLim - correction);
 	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -ZLim, ZLim);
 
 	if (Input::IsClicked(KEY_INPUT_1))
