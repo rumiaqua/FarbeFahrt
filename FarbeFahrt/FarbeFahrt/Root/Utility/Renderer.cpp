@@ -39,7 +39,7 @@ void Renderer::setModelData(const ContentMap& modelData)
 	{
 		m_modelData.emplace(std::piecewise_construct,
 			std::forward_as_tuple(data.first),
-			std::forward_as_tuple(data.second.handle, -1, -1, 0.0f, 0.0f));
+			std::forward_as_tuple(data.second.handle, -1, -1, 0.0f, 0.0f,data.second.use));
 	}
 
 }
@@ -54,25 +54,18 @@ void Renderer::setTextureData(const ContentMap& textureData)
 // 深度描画？
 void Renderer::drawDepth()
 {
-	// 光源パラメータ
-	Vector3 lightDirection = GetLightDirection();
-	Vector3 lightPosition = {40.0f,100.0f,-150.0f};
-	Vector3 lightTarget = Vector3::Zero();
-	// 深度バッファに描画ターゲットを設定
+	Vector3 lightPosition = {20.0f,120.0f,-70.0f};
+	Vector3 lightTarget{-30.0f,30.0f,0.0f};
 	SetDrawScreen(m_buffer.depthBuffer);
-
-	// 背景を白でクリア
+	//SetDrawScreen(DX_SCREEN_BACK);
 	SetBackgroundColor(255, 255, 255);
 	// 描画ターゲットをクリア
 	ClearDrawScreen();
 	// 背景色を黒でクリア
 	SetBackgroundColor(0, 0, 0);
 
-	// カメラの透視射影行列を正射影に変更
-	SetupCamera_Ortho(300.0f);
-	// クリップ面の設定
-	SetCameraNearFar(1.0f, 300.0f);
-	// カメラのビュー行列をライトから見た位置に変更
+	SetupCamera_Ortho(400.0f);
+	SetCameraNearFar(1.0f, 400.0f);
 	SetCameraPositionAndTarget_UpVecY(lightPosition, lightTarget);
 
 	// 現在の設定を保持
@@ -86,7 +79,10 @@ void Renderer::drawDepth()
 	// 全モデルデータの表示
 	for (auto model : m_modelData)
 	{
-		// スキンメッシュであれば
+		if (model.second.use == false)
+		{
+			continue;
+		}
 		if (model.second.isSkinMesh)//スキンメッシュの影描画用
 		{
 			// スキンメッシュ用の頂点シェーダーを使用
@@ -128,7 +124,10 @@ void Renderer::drawModelWithDepthShadow()
 	// 全モデルデータの描画
 	for (auto model : m_modelData)
 	{
-		// スキンメッシュであれば
+		if (model.second.use == false)
+		{
+			continue;
+		}
 		if (model.second.isSkinMesh)//スキンメッシュの影描画用
 		{
 			// 

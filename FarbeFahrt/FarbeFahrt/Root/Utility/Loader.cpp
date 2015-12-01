@@ -20,7 +20,7 @@ Loader::Loader()
 	std::function<void(const char*, ContentTag, loadFunc)> emplaceFunc =
 		[this](const char* c, ContentTag tag, loadFunc& DXfunc)
 	{
-		this->m_LoadFunc.emplace(std::piecewise_construct, 
+		this->m_LoadFunc.emplace(std::piecewise_construct,
 			std::forward_as_tuple(c), std::forward_as_tuple(tag, DXfunc));
 	};
 
@@ -33,7 +33,7 @@ Loader::Loader()
 	static const loadFunc bindLoadSoundMem = std::bind(LoadSoundMem, _1, 3, -1);
 	static const deleteFunc bindDeleteGraph = std::bind(DeleteGraph, _1, 0);
 	static const deleteFunc bindDeleteSoundMem = std::bind(DeleteSoundMem, _1, 0);
-	static const deleteFunc bindDeleteModel = [] (int handle) { MV1TerminateCollInfo(handle); return MV1DeleteModel(handle); };
+	static const deleteFunc bindDeleteModel = [](int handle) { MV1TerminateCollInfo(handle); return MV1DeleteModel(handle); };
 
 	//により拡張子とenumと関数を簡単にまとめることができる
 	emplaceFunc("x", ContentTag::Model, MV1LoadModel);
@@ -47,7 +47,7 @@ Loader::Loader()
 	emplaceFunc("mp3", ContentTag::BGM, bindLoadSoundMem);
 	emplaceFunc("vso", ContentTag::VertexShader, LoadVertexShader);
 	emplaceFunc("pso", ContentTag::PixelShader, LoadPixelShader);
-	
+
 	emplaceDeleteFunc(ContentTag::Model, bindDeleteModel);
 	emplaceDeleteFunc(ContentTag::Texture, bindDeleteGraph);
 	emplaceDeleteFunc(ContentTag::BGM, bindDeleteSoundMem);
@@ -61,19 +61,19 @@ std::string GetExtension(const std::string& filename)
 {
 	std::string ext;
 	auto pos1 = filename.rfind('.');
-	if (pos1 != std::string::npos){
+	if (pos1 != std::string::npos) {
 		ext = filename.substr(pos1 + 1, filename.size() - pos1);
 		auto itr = ext.begin();
-		while (itr != ext.end()){
+		while (itr != ext.end()) {
 			*itr = (char)tolower(*itr);
 			itr++;
 		}
 		itr = ext.end() - 1;
-		while (itr != ext.begin()){    // パスの最後に\0やスペースがあったときの対策
-			if (*itr == 0 || *itr == 32){
+		while (itr != ext.begin()) {    // パスの最後に\0やスペースがあったときの対策
+			if (*itr == 0 || *itr == 32) {
 				ext.erase(itr--);
 			}
-			else{
+			else {
 				itr--;
 			}
 		}
@@ -92,7 +92,7 @@ void Loader::deleteContents()
 {
 	for (auto& data : m_oldContentsList)
 	{
-		if (!data.second.use)//使われていないモデルを削除
+		if (!data.second.contentData.use)//使われていないモデルを削除
 			m_deleteFunc[data.second.tag];
 	}
 }
@@ -100,20 +100,29 @@ void Loader::load()
 {
 	m_onCompleted = false;
 	m_isChangedScene = true;
+
 	loadASync();
 }
 void Loader::loadASync()
 {
+	for (auto&& i : m_oldContentsList)//前回のシーンの古いコンテンツリストを見て回る
+	{
+		auto&& j = m_ContentsList.find(i.first);//今のコンテンツリストにあるかどうか調べる
+		if (j != m_ContentsList.end())//見つからなかったら
+		{
+			j->second.contentData.use = false;//useフラグをfalseにする
+		}
+	}
 	SetUseASyncLoadFlag(TRUE);
 	for (auto& data : m_ContentsList)
 	{
-		if (m_ContentsList.find(data.first)->second.handle != 0)
+		if (m_ContentsList.find(data.first)->second.contentData.handle != 0)
 		{
 			continue;
 		}
 
-		data.second.handle = m_LoadFunc[GetExtension(data.second.filename)].loadFunc(("Resources/" + data.second.filename).c_str());
-		MV1SetupCollInfo(data.second.handle);
+		data.second.contentData.handle = m_LoadFunc[GetExtension(data.second.contentData.filename)].loadFunc(("Resources/" + data.second.contentData.filename).c_str());
+		MV1SetupCollInfo(data.second.contentData.handle);
 	}
 	SetUseASyncLoadFlag(FALSE);
 }
@@ -125,7 +134,7 @@ bool Loader::isLoad() const
 	}
 	int count = std::count_if(m_ContentsList.begin(), m_ContentsList.end(),
 		[&](const std::pair<std::string, ContentDataAndTag>& contentData)
-	{return (CheckHandleASyncLoad(contentData.second.handle) == TRUE); });
+	{return (CheckHandleASyncLoad(contentData.second.contentData.handle) == TRUE); });
 
 	//count > 0 で読み込み中
 	return !!count;
@@ -143,19 +152,18 @@ bool Loader::onCompleted()
 
 void Loader::loadContent(const std::string& name, const std::string& filename)
 {
-	bool use = true;
 	auto i = m_oldContentsList.find(name);
 	if (i != m_oldContentsList.end())//前回と同じのが見つかったら
 	{
-		use = false;
+		return;
 	}
-	else
-	{
-		m_oldContentsList[name].use = false;
-	}
+	ContentData contentData;
+	contentData.filename = filename;
+	contentData.handle = 0;
+	contentData.use = true;
 	m_ContentsList.emplace(std::piecewise_construct,
 		std::forward_as_tuple(name),
-		std::forward_as_tuple(m_LoadFunc[GetExtension(filename)].tag, 0, filename,use));
+		std::forward_as_tuple(m_LoadFunc[GetExtension(filename)].tag, contentData));
 }
 
 ContentMap Loader::getContentList(const ContentTag& tag) const
@@ -167,7 +175,7 @@ ContentMap Loader::getContentList(const ContentTag& tag) const
 		{
 			returnData.emplace(std::piecewise_construct,
 				std::forward_as_tuple(data.first),
-				std::forward_as_tuple(data.second.handle, data.second.filename));
+				std::forward_as_tuple(data.second.contentData));
 		}
 	}
 	return returnData;
@@ -201,6 +209,6 @@ Loader::~Loader()
 {
 	for (auto&& data : m_ContentsList)
 	{
-		m_deleteFunc[data.second.tag](data.second.handle);
+		m_deleteFunc[data.second.tag](data.second.contentData.handle);
 	}
 }
