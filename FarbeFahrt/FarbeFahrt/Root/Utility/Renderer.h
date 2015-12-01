@@ -17,7 +17,6 @@
 # include "Vector3.h"
 # include "Matrix.h"
 # include "Pose.h"
-
 //描画のためのデータ
 struct Buffer
 {
@@ -42,6 +41,10 @@ struct CameraData
 	Vector3 pos;
 	Vector3 terget;
 };
+struct FontData {
+	int fontHandle;
+	std::string text;
+};
 struct ModelData{
 	int modelHandle;
 	int animNumber = -1;
@@ -63,7 +66,6 @@ struct ModelData{
 	}
 	ModelData(){}
 };
-
 class Renderer
 {
 public:
@@ -90,6 +92,8 @@ public:
 	//2D系関数
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
 	void drawTexture(const std::string& name, int x, int y);
+	//フォント描画系関数
+	void drawFont(const std::string& text);
 public:
 	// -----------------------------------------------------------
 	// プリミティブ型描画
@@ -101,11 +105,14 @@ private:
 	void loadShader();
 	void drawDepth();
 	void drawModelWithDepthShadow();
+	void setFont();
+	void drawFont();
 private:
 	std::unordered_map<std::string, ModelData> m_modelData;
 	std::unordered_map<std::string, int> m_textureData;
 	Buffer m_buffer;
 	ShaderHandle m_shaderHandle;
+	FontData m_fontData;
 	LightCamera m_lightCamera; 
 	CameraData m_cameraData;
 };

@@ -62,6 +62,7 @@ void GrayBox::draw(Renderer& render)
 	Debug::Println(String::Create("Gimmick : ", StoryManager::get(BitFlag::GIMMICK) ? "true" : "false"));
 	Debug::Println(String::Create("Goal : ", StoryManager::get(BitFlag::GOAL) ? "true" : "false"));
 	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
+	render.drawFont("１０分休憩～");
 	m_world->draw(render);
 }
 
@@ -97,7 +98,7 @@ void GrayBox::post()
 		}
 		// m_loader->load();
 
-		// 次のシーンのリソースを非待機ロード
+		// 次のシーンのリソースを待機ロード
 		const auto& nexts = m_stageManager.nextStages();
 		for (auto&& resource : nexts.first.resourceList)
 		{

@@ -45,15 +45,11 @@ Loader::Loader()
 	emplaceFunc("bmp", ContentTag::Texture, bindLoadGraph);
 	emplaceFunc("wav", ContentTag::SE, bindLoadSoundMem);
 	emplaceFunc("mp3", ContentTag::BGM, bindLoadSoundMem);
-	emplaceFunc("vso", ContentTag::VertexShader, LoadVertexShader);
-	emplaceFunc("pso", ContentTag::PixelShader, LoadPixelShader);
 
 	emplaceDeleteFunc(ContentTag::Model, bindDeleteModel);
 	emplaceDeleteFunc(ContentTag::Texture, bindDeleteGraph);
 	emplaceDeleteFunc(ContentTag::BGM, bindDeleteSoundMem);
 	emplaceDeleteFunc(ContentTag::SE, bindDeleteSoundMem);
-	emplaceDeleteFunc(ContentTag::VertexShader, DeleteShader);
-	emplaceDeleteFunc(ContentTag::PixelShader, DeleteShader);
 
 }
 
@@ -105,9 +101,9 @@ void Loader::load()
 }
 void Loader::loadASync()
 {
-	for (auto&& i : m_oldContentsList)//前回のシーンの古いコンテンツリストを見て回る
+	for (auto& i : m_oldContentsList)//前回のシーンの古いコンテンツリストを見て回る
 	{
-		auto&& j = m_ContentsList.find(i.first);//今のコンテンツリストにあるかどうか調べる
+		auto& j = m_ContentsList.find(i.first);//今のコンテンツリストにあるかどうか調べる
 		if (j != m_ContentsList.end())//見つからなかったら
 		{
 			j->second.contentData.use = false;//useフラグをfalseにする
@@ -125,6 +121,8 @@ void Loader::loadASync()
 		MV1SetupCollInfo(data.second.contentData.handle);
 	}
 	SetUseASyncLoadFlag(FALSE);
+	m_oldContentsList = m_ContentsList;
+
 }
 bool Loader::isLoad() const
 {
@@ -199,15 +197,15 @@ ContentMap Loader::getSEList() const
 void Loader::cleanUp()
 {
 	m_oldContentsList = m_ContentsList;
-	for (auto &data : m_ContentsList)
-	{
-		m_deleteFunc[data.second.tag];
-	}
 	m_ContentsList.clear();
 }
 Loader::~Loader()
 {
 	for (auto&& data : m_ContentsList)
+	{
+		m_deleteFunc[data.second.tag](data.second.contentData.handle);
+	}
+	for (auto&& data : m_oldContentsList)
 	{
 		m_deleteFunc[data.second.tag](data.second.contentData.handle);
 	}

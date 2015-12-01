@@ -2,14 +2,31 @@
 #include <algorithm>
 #include "Actor\Camera\Camera.h"
 
+
 Renderer::Renderer()
 {
 	initDepthBuffer();
 	loadShader();
+	setFont();
 }
 
 Renderer::~Renderer()
 {
+}
+void Renderer::setFont()
+{
+	//if (AddFontResourceEx("Resources/Font/えるまー.ttf", FR_PRIVATE, NULL) > 0) {
+	//}
+	//else {
+	//	// フォント読込エラー処理s
+	//	MessageBox(NULL, "フォント読込失敗", "", MB_OK);
+	//}
+	m_fontData.fontHandle = CreateFontToHandle("えるまー", 64, 3,-1,-1,3);
+	ChangeFontType(DX_FONTTYPE_ANTIALIASING_EDGE);
+	
+	ChangeFont("えるまー", DX_CHARSET_DEFAULT);
+
+	SetFontSize(64);
 }
 void Renderer::initDepthBuffer()
 {
@@ -77,7 +94,7 @@ void Renderer::drawDepth()
 	// ピクセルシェーダーを指定
 	SetUsePixelShader(m_shaderHandle.depthRecord_pixel);
 	// 全モデルデータの表示
-	for (auto model : m_modelData)
+	for (auto&& model : m_modelData)
 	{
 		if (model.second.use == false)
 		{
@@ -122,7 +139,7 @@ void Renderer::drawModelWithDepthShadow()
 	// 影用深度記録画像をテクスチャ１にセット
 	SetUseTextureToShader(1, m_buffer.depthBuffer);
 	// 全モデルデータの描画
-	for (auto model : m_modelData)
+	for (auto& model : m_modelData)
 	{
 		if (model.second.use == false)
 		{
@@ -146,6 +163,8 @@ void Renderer::drawModelWithDepthShadow()
 	}
 	// 自作シェーダーの使用終了
 	MV1SetUseOrigShader(FALSE);
+	drawFont();
+
 	// テクスチャ１を無効にする
 	SetUseTextureToShader(1, -1);
 	// スロット43を初期化？
@@ -161,7 +180,13 @@ void Renderer::draw()
 	// 影の描画
 	drawModelWithDepthShadow();
 }
+void Renderer::drawFont()
+{
+	int width = nScreenSizeX / 2.0f;
+	int textSize = m_fontData.text.length();
 
+	DrawStringToHandle(0, 700, m_fontData.text.c_str(), GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));
+}
 void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const
 {
 	const int &handle = m_modelData.at(name).modelHandle;
@@ -322,4 +347,8 @@ void Renderer::drawTexture(const std::string& name, int x, int y,int cx,int cy, 
 void Renderer::drawTexture(const std::string& name, int x, int y)
 {
 	DrawGraph(x, y, m_textureData.at(name),TRUE);
+}
+void Renderer::drawFont(const std::string& text)
+{
+	m_fontData.text = text;
 }
