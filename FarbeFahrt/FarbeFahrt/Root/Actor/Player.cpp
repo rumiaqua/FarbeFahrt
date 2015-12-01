@@ -16,6 +16,8 @@
 namespace
 {
 	constexpr float OBSTACLE_DISTANCE = 5.0f;
+	const float XLim = 142.0f - 145.0f / 2.0f - 4.0f;
+	const float ZLim = 110.0f;
 }
 
 Player::Player(IWorld& world, const Vector3& position)
@@ -100,8 +102,8 @@ void Player::playerInput()
 	m_pose.position.y -= 2.0f;
 
 	// à⁄ìÆêßå¿
-	m_pose.position.x = (float)Math::Clamp(m_pose.position.x,-145.0f,145.0f);
-	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -110.0f, 110.0f);
+	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim, XLim);
+	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, ZLim, ZLim);
 
 	if (Input::IsClicked(KEY_INPUT_1))
 	{
@@ -116,7 +118,7 @@ void Player::onDraw(Renderer& render)const
 }
 
 void Player::onMessage(const std::string& message, void* parameter)
-{	
+{
 	if (message == "HitObstacle")
 	{
 		BaseActor* actor = static_cast<BaseActor*>(parameter);
@@ -132,7 +134,7 @@ void Player::onMessage(const std::string& message, void* parameter)
 
 			Debug::Println(String::Create("myName:", m_name));
 			Debug::Println(String::Create("Name:", actor->getName()));
-			Debug::Println(String::Create("direction:",direction.ToString()));
+			Debug::Println(String::Create("direction:", direction.ToString()));
 
 			Debug::Println(String::Create("normalize:", normalize.ToString()));
 			Debug::Println(String::Create("movement:", movement.ToString()));
