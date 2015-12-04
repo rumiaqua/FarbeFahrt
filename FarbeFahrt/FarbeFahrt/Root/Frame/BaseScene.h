@@ -12,7 +12,7 @@ class Renderer;
 enum class Scene{
 	NullScene = 1,
 	Editor,
-	GrayBox,
+	GameMain,
 	ObjectViewer,
 	End,
 	StaffRoll,
