@@ -32,7 +32,7 @@ void StaffRoll::update()
 {
 	if (m_elapsedTime > m_needTime)
 	{
-		m_manager->changeScene(Scene::GrayBox, 60.0f);
+		m_manager->changeScene(Scene::GameMain, 60.0f);
 	}
 
 	if (Input::IsPressed(KEY_INPUT_SPACE))

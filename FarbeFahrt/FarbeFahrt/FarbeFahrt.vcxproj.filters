@@ -36,9 +36,6 @@
     <ClCompile Include="Root\Actor\Goal\Goal.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Actor\SkyDome\Skydome.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Actor\BaseActor.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -91,9 +88,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Scene\Editor.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\GrayBox.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Scene\SceneManager.cpp">
@@ -189,6 +183,9 @@
     <ClCompile Include="Root\Scene\StaffRoll.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Scene\GameMain.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\Enemy.h">
@@ -228,9 +225,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Actor\Goal\Goal.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Actor\SkyDome\Skydome.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Actor\Actor.h">
@@ -288,9 +282,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Scene\Editor.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\GrayBox.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Scene\ISceneMediator.h">
@@ -416,32 +407,327 @@
     <ClInclude Include="Root\Scene\StaffRoll.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Scene\GameMain.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Model\本2\book.pmx" />
     <None Include="Resources\Model\本2\book001.vmd" />
     <None Include="Resources\Model\本2\book002.vmd" />
     <None Include="Resources\Model\本\本完成(仮).pmx" />
-    <None Include="Resources\Model\平原\針葉樹.pmx" />
-    <None Include="Resources\Model\平原\くさ.pmx" />
-    <None Include="Resources\Model\平原\橋2.pmx" />
-    <None Include="Resources\Model\平原\橋.pmx" />
     <None Include="Root\Scene\FadeIn.inl">
       <Filter>ヘッダー ファイル</Filter>
     </None>
     <None Include="Root\Scene\FadeOut.inl">
       <Filter>ヘッダー ファイル</Filter>
     </None>
+    <None Include="Resources\Stage\本\新本.pmx" />
+    <None Include="Resources\Stage\本\表紙開き59フレーム.vmd" />
+    <None Include="Resources\Stage\本\本ページ開き59フレーム.vmd" />
+    <None Include="Resources\Stage\平原\平原背景\平原背景001.vmd" />
+    <None Include="Resources\Stage\平原\平原背景\平原背景.pmx" />
+    <None Include="Resources\Stage\平原\平原背景\平原背景000.vmd" />
+    <None Include="Resources\Stage\平原\平原地面\平原地面.pmx" />
+    <None Include="Resources\Stage\平原\平原地面\平原地面000.vmd" />
+    <None Include="Resources\Stage\平原\平原地面\平原地面001.vmd" />
+    <None Include="Resources\Stage\平原\橋\ページ開き橋.vmd" />
+    <None Include="Resources\Stage\平原\橋\ページ閉じ橋.vmd" />
+    <None Include="Resources\Stage\平原\橋\橋.pmx" />
+    <None Include="Resources\Stage\森\森地面\森地面.pmx" />
+    <None Include="Resources\Stage\森\森地面\森地面000.vmd" />
+    <None Include="Resources\Stage\森\森地面\森地面001.vmd" />
+    <None Include="Resources\Stage\森\森背景\森背景.pmx" />
+    <None Include="Resources\Stage\森\森背景\森背景000.vmd" />
+    <None Include="Resources\Stage\森\森背景\森背景001.vmd" />
+    <None Include="Resources\Stage\森\森背景\森背景ページ開き.vmd" />
+    <None Include="Resources\Stage\ハイレス\ハイレス背景\ハイレス背景.pmx" />
+    <None Include="Resources\Stage\ハイレス\ハイレス背景\ハイレス背景000.vmd" />
+    <None Include="Resources\Stage\ハイレス\ハイレス背景\ハイレス背景001.vmd" />
+    <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス（テクスチャあり）.mqo" />
+    <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス地面.pmx" />
+    <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス地面000.vmd" />
+    <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス地面001.vmd" />
+    <None Include="Resources\Shader\_Render_pixel.pso" />
+    <None Include="Resources\Shader\Depthrecord_normal.vso" />
+    <None Include="Resources\Shader\Depthrecord_pixel.pso" />
+    <None Include="Resources\Shader\Depthrecord_skin.vso" />
+    <None Include="Resources\Shader\Render_normal.vso" />
+    <None Include="Resources\Shader\Render_pixel.pso" />
+    <None Include="Resources\Shader\Render_skin.vso" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ガブリエラ.pmx" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ガブリエラ000L.vmd" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ガブリエラ001L.vmd" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ミハイル.pmx" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ミハイル000L.vmd" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ミハイル001L.vmd" />
+    <None Include="Resources\Model\本\新本.pmx" />
+    <None Include="Resources\Model\本\新本000.vmd" />
+    <None Include="Resources\Model\本\新本001.vmd" />
+    <None Include="Resources\Model\本2\book000.vmd" />
+    <None Include="Resources\Font\meiryo.ttc" />
+    <None Include="Resources\Font\meiryob.ttc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\curtain.png">
       <Filter>リソース ファイル</Filter>
     </Image>
+    <Image Include="Resources\Texture\StaffRoll.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\bad.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\NowLoading\loading_back.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\NowLoading\loading_1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\NowLoading\loading_2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\NowLoading\loading_3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\end\bad.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\end\clear.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\end\true.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\本\本　背表紙　テクスチャ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\本\本　表紙　仮.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\本\本　裏表紙1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\平原\平原背景\heigen.jpg">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\平原\平原地面\草.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\平原\平原地面\平原マン.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\平原\橋\木2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\平原\橋\断面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\平原\橋\木.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\wood_texture 2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\wood_texture.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\wood_texture3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\いわ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\しげしげ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\しげのぶ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\ね.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\はは.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\森1-1右.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\森1左.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\森小 (1).png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\森小 (2).png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\森明.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\盆栽.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森地面\茂み.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\森\森背景\森背景.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス背景\町背景.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\薬テント.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\c1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\c2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\c3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\c4.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\c5.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\c6.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\c7.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\c8.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\flower.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\h11.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\h12.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\h13.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\h14.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\h15.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\h16.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\h17.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\h18.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\kabe.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\yane.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\yuka.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\yuka2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\てんと.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\テント1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\テント2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\てんと２.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\ベル.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\ポール.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\ヤブレ1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\ヤブレ2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\机.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\木目2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\薬.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\薬1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ハイレス\ハイレス地面\薬2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\bousi.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\bousidansi.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\hada.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\hadadansi.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\huku.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\hukudansi.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\hukusiro.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\kami.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\me.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\s_hada.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\s_huku.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\s_kami.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\t_blue.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\データ外観.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\本\本　背表紙　テクスチャ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\本\本　表紙　仮.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\本\本　裏表紙1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Resources\Stage\GrayBox\1-1.txt" />
-    <Text Include="Resources\Stage\GrayBox\2-1.txt" />
-    <Text Include="Resources\Stage\GrayBox\2-2.txt" />
     <Text Include="Resources\Stage\ForestA.txt" />
     <Text Include="Resources\Stage\Lowles.txt" />
     <Text Include="Resources\Stage\HouseA.txt" />
@@ -458,5 +744,9 @@
     <Text Include="Resources\Stage\DangerSwamp.txt" />
     <Text Include="Resources\Stage\HouseC.txt" />
     <Text Include="Resources\Stage\ForestD.txt" />
+    <Text Include="Resources\Model\MMD魔導姉弟Ver1.1\READ ME.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Font\えるまー.ttf" />
   </ItemGroup>
 </Project>

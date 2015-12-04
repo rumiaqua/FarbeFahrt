@@ -3,7 +3,7 @@
 #include "BaseScene.h"
 
 # include "Scene/Editor.h"
-# include "Scene/GrayBox.h"
+# include "Scene/GameMain.h"
 # include "Scene/End.h"
 # include "Scene/StaffRoll.h"
 
@@ -24,13 +24,13 @@ MyGame::MyGame()
 	initFlag(true)
 {
 	m_sceneManager.addScene<Editor>(Scene::Editor);
-	m_sceneManager.addScene<GrayBox>(Scene::GrayBox);
+	m_sceneManager.addScene<GameMain>(Scene::GameMain);
 
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
 	m_sceneManager.addScene<End>(Scene::End);
 	m_sceneManager.addScene<StaffRoll>(Scene::StaffRoll);
 
-	m_sceneManager.pushScene(Scene::GrayBox);
+	m_sceneManager.pushScene(Scene::GameMain);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
 	// m_sceneManager.pushScene(Scene::End);
 }
