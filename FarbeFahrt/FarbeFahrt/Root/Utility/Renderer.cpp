@@ -6,6 +6,10 @@
 # include "Vector2.h"
 # include "Math.h"
 
+# include "Collision/IShape.h"
+
+# include "Debug.h"
+
 Renderer::Renderer()
 {
 	initDepthBuffer();
@@ -30,6 +34,14 @@ void Renderer::setFont()
 	ChangeFont("Ç¶ÇÈÇ‹Å[", DX_CHARSET_DEFAULT);
 
 	SetFontSize(64);
+}
+void Renderer::drawPrimitive(const IShape& shape) const
+{
+	if (!Debug::IsEnabled())
+	{
+		return;
+	}
+	shape.draw();
 }
 void Renderer::initDepthBuffer()
 {

@@ -1,7 +1,8 @@
 #include "Debug.h"
 
 Debug::Debug()
-	: m_isClear(false)
+	: m_isEnabled(false)
+	, m_isClear(false)
 	, m_fontSize(GetFontSize())
 {
 
@@ -11,6 +12,16 @@ Debug& Debug::Instance()
 {
 	static Debug instance;
 	return instance;
+}
+
+void Debug::SetEnabled(bool isEnabled)
+{
+	Instance().m_isEnabled = isEnabled;
+}
+
+bool Debug::IsEnabled()
+{
+	return Instance().m_isEnabled;
 }
 
 void Debug::Update()
@@ -33,6 +44,10 @@ bool Debug::IsClear()
 
 void Debug::Clear()
 {
+	if (!IsEnabled())
+	{
+		return;
+	}
 	clsDx();
 }
 

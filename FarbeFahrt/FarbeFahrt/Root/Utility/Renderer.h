@@ -93,6 +93,7 @@ public:
 	//2D系関数
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
 	void drawTexture(const std::string& name, int x, int y);
+	// アスペクト比
 	enum class AspectType
 	{
 		// 何もしない
@@ -118,7 +119,7 @@ public:
 	// プリミティブ型描画
 	// -----------------------------------------------------------
 
-	void drawPrimitive(const Sphere& sphere) const;
+	void drawPrimitive(const IShape& shape) const;
 private:
 	void initDepthBuffer();
 	void loadShader();

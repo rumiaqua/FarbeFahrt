@@ -23,6 +23,8 @@ MyGame::MyGame()
 	:m_breakflag(false),
 	initFlag(true)
 {
+	// Debug::SetEnabled(true);
+
 	m_sceneManager.addScene<Editor>(Scene::Editor);
 	m_sceneManager.addScene<GameMain>(Scene::GameMain);
 
