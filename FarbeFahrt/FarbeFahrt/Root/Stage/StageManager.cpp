@@ -9,9 +9,14 @@
 # include "Utility/SingletonFinalizer.h"
 # include "Utility/StoryManager/StoryManager.h"
 
-StageManager::StageManager(const std::string& firstStageName)
+StageManager::StageManager()
 	: m_current()
 	, m_next()
+{
+
+}
+
+void StageManager::initialize(const std::string& firstStageName)
 {
 	// ダミーデータ
 	StageFactory().Load(firstStageName, m_next.first);

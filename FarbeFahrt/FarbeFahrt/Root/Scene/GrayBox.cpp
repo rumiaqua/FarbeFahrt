@@ -14,8 +14,10 @@
 
 # include "Utility/SingletonFinalizer.h"
 
+# include "Manager/EndManager.h"
+
 GrayBox::GrayBox()
-	: m_stageManager("Resources/Stage/PlainA.txt")
+	: m_stageManager()
 {
 
 }
@@ -41,6 +43,7 @@ void GrayBox::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
+	m_stageManager.initialize("Resources/Stage/PlainA.txt");
 	StoryManager::set(BitFlag::GOAL);
 
 	Debug::SetClear(true);
@@ -80,13 +83,15 @@ void GrayBox::post()
 //	}
 //# undef NONE
 
+	if (m_stageManager.isNext())
+	{
 	if (m_stageManager.endNum() != -1)
 	{
+			EndManager::setPattern(m_stageManager.endNum());
+			m_manager->changeScene(Scene::End, 60.0f);
 		return;
 	}
 
-	if (m_stageManager.isNext())
-	{
 		m_loader->cleanUp();
 
 		m_stageManager.next(m_world.get());
