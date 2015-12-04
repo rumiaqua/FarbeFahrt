@@ -19,21 +19,21 @@ Renderer::Renderer()
 
 Renderer::~Renderer()
 {
+	RemoveFontResourceEx("Resources/Font/cinecaption2.28.ttf", FR_PRIVATE, NULL);
 }
 void Renderer::setFont()
 {
-	//if (AddFontResourceEx("Resources/Font/えるまー.ttf", FR_PRIVATE, NULL) > 0) {
-	//}
-	//else {
-	//	// フォント読込エラー処理s
-	//	MessageBox(NULL, "フォント読込失敗", "", MB_OK);
-	//}
-	m_fontData.fontHandle = CreateFontToHandle("えるまー", 64, 3,-1,-1,3);
+	if (AddFontResourceEx("Resources/Font/cinecaption2.28.ttf", FR_PRIVATE, NULL) > 0) {
+	}
+	else {
+		// フォント読込エラー処理s
+		MessageBox(NULL, "フォント読込失敗", "", MB_OK);
+	}
+	m_fontData.fontHandle = CreateFontToHandle("しねきゃぷしょん", fontSize, 3,-1,-1,2);
 	ChangeFontType(DX_FONTTYPE_ANTIALIASING_EDGE);
 	
-	ChangeFont("えるまー", DX_CHARSET_DEFAULT);
+	ChangeFont("しねきゃぷしょん", DX_CHARSET_DEFAULT);
 
-	SetFontSize(64);
 }
 void Renderer::drawPrimitive(const IShape& shape) const
 {
@@ -191,16 +191,16 @@ void Renderer::draw()
 	m_cameraData.pos = GetCameraPosition();
 	m_cameraData.terget = GetCameraTarget();
 	// 深度の描画
-	// drawDepth();
+	drawDepth();
 	// 影の描画
-	// drawModelWithDepthShadow();
+	drawModelWithDepthShadow();
 }
 void Renderer::drawFont()
 {
 	int width = nScreenSizeX / 2.0f;
-	int textSize = m_fontData.text.length();
-
-	DrawStringToHandle(0, 700, m_fontData.text.c_str(), GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));
+	//int textSize = m_fontData.text.length();
+	DrawStringToHandle(0, fontPosY, "薬は町で買うことが出来ます。", GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));
+	DrawStringToHandle(0, fontPosY + fontSize, "町は森を抜けた先。エミルはひとまず森を目指します。", GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));
 }
 void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const
 {
@@ -410,7 +410,7 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 
 	DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
 }
-void Renderer::drawFont(const std::string& text)
+void Renderer::drawFont(const std::vector<std::string>& text)
 {
 	m_fontData.text = text;
 }
