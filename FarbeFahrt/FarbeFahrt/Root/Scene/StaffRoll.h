@@ -2,12 +2,12 @@
 
 # include "Frame/BaseScene.h"
 
-/// <summary>エンドシーン</summary>
-class End final : public BaseScene
+/// <summary>スタッフロールシーン</summary>
+class StaffRoll final : public BaseScene
 {
 public:
 
-	End();
+	StaffRoll();
 
 	virtual void loadContents(Loader& loader) override;
 
@@ -22,4 +22,10 @@ public:
 	virtual void cleanUp() override;
 
 	virtual bool isSwallow() const override;
+
+private:
+
+	float m_elapsedTime;
+
+	const float m_needTime;
 };

@@ -61,6 +61,7 @@ public:
 	ContentMap getTextureList() const;//こっちもrenderで使う
 	ContentMap getBGMList() const;//ただしおめーはダメだ
 	ContentMap getSEList() const;//ただしおめーはダメだ
+	ContentMap getContentsList() const; // ぜんぶとるよ
 	//セーブデータとかできたら増えるかも
 private:
 	ContentMapPlusTag m_ContentsList;

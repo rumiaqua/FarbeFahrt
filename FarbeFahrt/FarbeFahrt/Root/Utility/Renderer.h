@@ -14,6 +14,7 @@
 #include "Collision/Line.h"
 #include "Collision/Triangle.h"
 
+# include "Vector2.h"
 # include "Vector3.h"
 # include "Matrix.h"
 # include "Pose.h"
@@ -92,8 +93,26 @@ public:
 	//2D系関数
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
 	void drawTexture(const std::string& name, int x, int y);
+	enum class AspectType
+	{
+		// 何もしない
+		None,
+		// 画面に合わせて伸縮
+		Fit,
+		// 黒帯
+		LetterBox,
+		// 拡大
+		Expand,
+	};
+	void drawTexture(const std::string& name, const AspectType& type);
+	void drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center);
 	//フォント描画系関数
-	void drawFont(const std::vector<std::string>& text);
+	void drawFont(const std::string& text);
+
+	// テクスチャ系ユーティリティ あとで移動させます
+	Point2 getTextureSize(const std::string& name);
+	Point2 getWindowSize();
+	Vector2 getCorrectionSize(const std::string& name, const AspectType& type);
 public:
 	// -----------------------------------------------------------
 	// プリミティブ型描画

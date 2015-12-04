@@ -14,9 +14,11 @@ private:
 
 public:
 
-	StageManager(const std::string& firstStageName);
+	StageManager();
 
 public:
+
+	void initialize(const std::string& firstStageName);
 
 	bool isNext() const;
 

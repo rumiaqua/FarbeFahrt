@@ -5,6 +5,7 @@
 # include "Scene/Editor.h"
 # include "Scene/GrayBox.h"
 # include "Scene/End.h"
+# include "Scene/StaffRoll.h"
 
 # include "Experimental/ObjectViewer.h"
 
@@ -27,9 +28,11 @@ MyGame::MyGame()
 
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
 	m_sceneManager.addScene<End>(Scene::End);
+	m_sceneManager.addScene<StaffRoll>(Scene::StaffRoll);
 
 	m_sceneManager.pushScene(Scene::GrayBox);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
+	// m_sceneManager.pushScene(Scene::End);
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
@@ -64,7 +67,9 @@ void MyGame::run()
 	// ロードが終了したら
 	if (loader.onCompleted())
 	{
-		Singleton<HandleList>::Instance().setHandleData(loader.getModelList());
+		// Singleton<HandleList>::Instance().setHandleData(loader.getModelList());
+		// Singleton<HandleList>::Instance().setHandleData(loader.getTextureList());
+		Singleton<HandleList>::Instance().setHandleData(loader.getContentsList());
 		render.setModelData(loader.getModelList());
 		render.setTextureData(loader.getTextureList());
 		SE::SetData(loader.getSEList());

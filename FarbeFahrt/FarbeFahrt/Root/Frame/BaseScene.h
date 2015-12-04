@@ -15,6 +15,7 @@ enum class Scene{
 	GrayBox,
 	ObjectViewer,
 	End,
+	StaffRoll,
 };
 class BaseScene
 {

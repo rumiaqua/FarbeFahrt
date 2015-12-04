@@ -2,6 +2,9 @@
 #include <algorithm>
 #include "Actor\Camera\Camera.h"
 
+# include "Point2.h"
+# include "Vector2.h"
+# include "Math.h"
 
 Renderer::Renderer()
 {
@@ -26,7 +29,7 @@ void Renderer::setFont()
 	ChangeFontType(DX_FONTTYPE_ANTIALIASING_EDGE);
 	
 	ChangeFont("ÇµÇÀÇ´Ç·Ç’ÇµÇÂÇÒ", DX_CHARSET_DEFAULT);
-	
+
 }
 void Renderer::initDepthBuffer()
 {
@@ -176,9 +179,9 @@ void Renderer::draw()
 	m_cameraData.pos = GetCameraPosition();
 	m_cameraData.terget = GetCameraTarget();
 	// ê[ìxÇÃï`âÊ
-	drawDepth();
+	// drawDepth();
 	// âeÇÃï`âÊ
-	drawModelWithDepthShadow();
+	// drawModelWithDepthShadow();
 }
 void Renderer::drawFont()
 {
@@ -193,7 +196,7 @@ void Renderer::drawNormalModel(const std::string& name, const Vector3& position,
 	MV1SetPosition(handle, position);
 	MV1SetRotationMatrix(handle, rotation);
 
-	//MV1DrawModel(handle);
+	MV1DrawModel(handle);
 
 }
 void Renderer::refreshAnimParam(const std::string& name)
@@ -348,7 +351,100 @@ void Renderer::drawTexture(const std::string& name, int x, int y)
 {
 	DrawGraph(x, y, m_textureData.at(name),TRUE);
 }
-void Renderer::drawFont(const std::vector<std::string>& text)
+
+void Renderer::drawTexture(const std::string& name, const AspectType& type)
+{
+	Point2 size;
+	GetWindowSize(&size.x, &size.y);
+
+	drawTexture(name, type, (Vector2)size / 2.0f, { 0.5f, 0.5f });
+}
+void Renderer::drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center)
+{
+	int handle = m_textureData.at(name);
+	Point2 size;
+	GetGraphSize(handle, &size.x, &size.y);
+	Vector2 textureSize = (Vector2)size;
+	GetWindowSize(&size.x, &size.y);
+	Vector2 windowSize = (Vector2)size;
+
+	Vector2 ext;
+
+	// âΩÇ‡ÇµÇ»Ç¢
+	if (type != AspectType::None)
+	{
+		ext = Vector2::One();
+	}
+	// âÊñ Ç…çáÇÌÇπÇƒêLèk
+	if (type == AspectType::Fit)
+	{
+		ext = windowSize / textureSize;
+	}
+	// çïë—
+	if (type == AspectType::LetterBox)
+	{
+		ext = windowSize / textureSize;
+		ext.x = ext.y = Math::Min({ ext.x, ext.y });
+	}
+	// ägëÂ
+	if (type == AspectType::Expand)
+	{
+		ext = windowSize / textureSize;
+		ext.x = ext.y = Math::Max({ ext.x, ext.y });
+	}
+
+	Vector2 pos = (windowSize - textureSize * ext) * center + position;
+
+	DrawRotaGraph3F(pos.x, pos.y, center.x * textureSize.x, center.y * textureSize.y, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
+}
+void Renderer::drawFont(const std::string& text)
 {
 	m_fontData.text = text;
+}
+
+Point2 Renderer::getTextureSize(const std::string& name)
+{
+	Point2 size;
+	GetGraphSize(m_textureData.at(name), &size.x, &size.y);
+	return size;
+}
+
+Point2 Renderer::getWindowSize()
+{
+	Point2 size;
+	GetWindowSize(&size.x, &size.y);
+	return size;
+}
+
+Vector2 Renderer::getCorrectionSize(const std::string& name, const AspectType& type)
+{
+	Vector2 textureSize(getTextureSize(name));
+	Vector2 windowSize(getWindowSize());
+
+	Vector2 ext;
+
+	// âΩÇ‡ÇµÇ»Ç¢
+	if (type != AspectType::None)
+	{
+		ext = Vector2::One();
+	}
+	// âÊñ Ç…çáÇÌÇπÇƒêLèk
+	if (type == AspectType::Fit)
+	{
+		ext = windowSize / textureSize;
+	}
+	// çïë—
+	if (type == AspectType::LetterBox)
+	{
+		ext = windowSize / textureSize;
+		ext.x = ext.y = Math::Min({ ext.x, ext.y });
+	}
+	// ägëÂ
+	if (type == AspectType::Expand)
+	{
+		ext = windowSize / textureSize;
+		ext.x = ext.y = Math::Max({ ext.x, ext.y });
+	}
+
+	return textureSize * ext;
 }
