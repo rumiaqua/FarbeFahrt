@@ -18,6 +18,10 @@
 # include "Vector3.h"
 # include "Matrix.h"
 # include "Pose.h"
+
+constexpr int fontSize = 32;
+constexpr int fontPosY = 680;
+
 //描画のためのデータ
 struct Buffer
 {
@@ -107,7 +111,7 @@ public:
 	void drawTexture(const std::string& name, const AspectType& type);
 	void drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center);
 	//フォント描画系関数
-	void drawFont(const std::string& text);
+	void drawFont(const std::vector<std::string>& text);
 
 	// テクスチャ系ユーティリティ あとで移動させます
 	Point2 getTextureSize(const std::string& name);
