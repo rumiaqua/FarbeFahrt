@@ -371,7 +371,7 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 	Vector2 ext;
 
 	// ‰½‚à‚µ‚È‚¢
-	if (type != AspectType::None)
+	if (type == AspectType::None)
 	{
 		ext = Vector2::One();
 	}
@@ -393,9 +393,10 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 		ext.x = ext.y = Math::Max({ ext.x, ext.y });
 	}
 
-	Vector2 pos = (windowSize - textureSize * ext) * center + position;
+	Vector2 correctionSize = textureSize * ext;
+	Vector2 pos = (windowSize - correctionSize) * center + position;// +correctionSize * center;
 
-	DrawRotaGraph3F(pos.x, pos.y, center.x * textureSize.x, center.y * textureSize.y, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
+	DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
 }
 void Renderer::drawFont(const std::vector<std::string>& text)
 {

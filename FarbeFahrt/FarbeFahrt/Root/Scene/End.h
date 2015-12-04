@@ -22,4 +22,8 @@ public:
 	virtual void cleanUp() override;
 
 	virtual bool isSwallow() const override;
+
+private:
+
+	int m_endNum;
 };
