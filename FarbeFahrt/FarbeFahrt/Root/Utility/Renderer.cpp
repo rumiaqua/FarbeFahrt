@@ -12,21 +12,21 @@ Renderer::Renderer()
 
 Renderer::~Renderer()
 {
+	RemoveFontResourceEx("Resources/Font/cinecaption2.28.ttf", FR_PRIVATE, NULL);
 }
 void Renderer::setFont()
 {
-	//if (AddFontResourceEx("Resources/Font/えるまー.ttf", FR_PRIVATE, NULL) > 0) {
-	//}
-	//else {
-	//	// フォント読込エラー処理s
-	//	MessageBox(NULL, "フォント読込失敗", "", MB_OK);
-	//}
-	m_fontData.fontHandle = CreateFontToHandle("えるまー", 64, 3,-1,-1,3);
+	if (AddFontResourceEx("Resources/Font/cinecaption2.28.ttf", FR_PRIVATE, NULL) > 0) {
+	}
+	else {
+		// フォント読込エラー処理s
+		MessageBox(NULL, "フォント読込失敗", "", MB_OK);
+	}
+	m_fontData.fontHandle = CreateFontToHandle("しねきゃぷしょん", 32, 3,-1,-1,3);
 	ChangeFontType(DX_FONTTYPE_ANTIALIASING_EDGE);
 	
-	ChangeFont("えるまー", DX_CHARSET_DEFAULT);
-
-	SetFontSize(64);
+	ChangeFont("しねきゃぷしょん", DX_CHARSET_DEFAULT);
+	
 }
 void Renderer::initDepthBuffer()
 {
@@ -348,7 +348,7 @@ void Renderer::drawTexture(const std::string& name, int x, int y)
 {
 	DrawGraph(x, y, m_textureData.at(name),TRUE);
 }
-void Renderer::drawFont(const std::string& text)
+void Renderer::drawFont(const std::vector<std::string>& text)
 {
 	m_fontData.text = text;
 }

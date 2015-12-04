@@ -43,7 +43,7 @@ struct CameraData
 };
 struct FontData {
 	int fontHandle;
-	std::string text;
+	std::vector<std::string> text;
 };
 struct ModelData{
 	int modelHandle;
@@ -93,7 +93,7 @@ public:
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
 	void drawTexture(const std::string& name, int x, int y);
 	//フォント描画系関数
-	void drawFont(const std::string& text);
+	void drawFont(const std::vector<std::string>& text);
 public:
 	// -----------------------------------------------------------
 	// プリミティブ型描画

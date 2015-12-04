@@ -62,7 +62,7 @@ void GrayBox::draw(Renderer& render)
 	Debug::Println(String::Create("Gimmick : ", StoryManager::get(BitFlag::GIMMICK) ? "true" : "false"));
 	Debug::Println(String::Create("Goal : ", StoryManager::get(BitFlag::GOAL) ? "true" : "false"));
 	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
-	render.drawFont("‚P‚O•ª‹xŒe`");
+	render.drawFont("Windows ‚ÅƒRƒ“ƒsƒ…[ƒ^‚Ì¢ŠE‚ªL‚ª‚è‚Ü‚·B");
 	m_world->draw(render);
 }
 
