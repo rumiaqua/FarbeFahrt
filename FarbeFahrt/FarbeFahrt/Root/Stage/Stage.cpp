@@ -2,7 +2,6 @@
 
 
 # include "Actor/Actor.h"
-# include "Actor/SkyDome/Skydome.h"
 # include "Actor/Field/Field.h"
 # include "Actor/ActorManager/ActorManager.h"
 # include "Actor/Player.h"
@@ -84,21 +83,6 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
-		}
-		if (object.name == "Page")
-		{
-			auto parameter = String::Split(object.parameter, '/');
-			std::string backgroundName = parameter[0];
-			std::string groundName = parameter[1];
-			bool isOpen = String::ToValue<int>(parameter[2]) == 1;
-			float scale = String::ToValue<float>(parameter[3]);
-			float angle = String::ToValue<float>(parameter[4]);
-			m_world->addActor(ActorTag::Object, std::make_shared<Page>(
-				*m_world, object.name, object.position, backgroundName, groundName, isOpen, scale, angle));
-			/*m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
-				*m_world, backgroundName, object.position, 0, 0.1f, 589.0f));
-			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
-				*m_world, groundName, object.position, 0, 0.1f, 589.0f));*/
 		}
 	}
 }

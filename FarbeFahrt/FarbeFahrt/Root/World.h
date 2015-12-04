@@ -18,9 +18,7 @@ public:
 	void update();
 	void draw(Renderer& render)const;
 	virtual void addCamera(const Actor& camera);
-	virtual void addSkydome(const Actor& sky);
 	virtual void addActor(ActorTag tag, const Actor& actor);
-	virtual void addField(const Actor& firld);
 
 	virtual Actor findActor(const std::string& name) const override;
 	virtual std::vector<Actor> findActors(const std::string& name) const override;

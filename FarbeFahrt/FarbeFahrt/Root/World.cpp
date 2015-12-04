@@ -1,23 +1,13 @@
 #include "World.h"
 
-# include "Actor/SkyDome/Skydome.h"
-
 World::World()
 	: m_stage(this)
 {
-	// スカイドームの初期化
-	m_skydome = std::make_shared<Skydome>(*this, "sky");
-
 	// カメラの初期化
 	m_camera = std::make_shared<Camera>(*this);
 }
 void World::update()
 {
-	if (m_skydome)
-	{
-		m_skydome->update();
-	}
-
 	m_stage.update();
 
 	if (m_camera)
@@ -27,11 +17,6 @@ void World::update()
 }
 void World::draw(Renderer& render)const
 {
-	if (m_skydome)
-	{
-		m_skydome->draw(render);
-	}
-
 	m_stage.draw(render);
 
 	if (m_camera)
@@ -46,15 +31,6 @@ void World::addActor(ActorTag tag, const Actor& actor)
 void World::addCamera(const Actor& camera)
 {
 	m_camera = camera;
-}
-void World::addSkydome(const Actor& sky)
-{
-	m_skydome = sky;
-}
-void World::addField(const Actor& field)
-{
-	NoUse(field);
-	// m_field = field;
 }
 Actor World::findActor(const std::string& name) const
 {

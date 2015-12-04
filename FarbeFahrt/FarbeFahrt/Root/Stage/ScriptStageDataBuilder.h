@@ -77,12 +77,6 @@ public:
 				output.fieldList.emplace_back(name, position, scale);
 			}
 
-			// スカイドーム名　未使用
-			if (split[0] == "s")
-			{
-				// data.skyName = split[1];
-			}
-
 			// オブジェクト配置
 			if (split[0] == "o")
 			{
