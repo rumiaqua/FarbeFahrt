@@ -1,7 +1,8 @@
 # 使用するリソース
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
-r,Gimmick,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
+r,flower1G,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
+r,flower1,Model/本/新本.pmx
 
 # フィールドリソース
 r,forestGround,Stage/森/森地面/森地面.pmx
@@ -16,7 +17,9 @@ f,forestBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-50,null
-o,Gimmick,Gimmick,50,30,50,null,0/1.0f/59.0f
+o,Gimmick,flower1G,0,50,-50,null,1/1.0f/590.0f/5.0f
+o,SkinObject,flower1,-50,30,-20,null,1/1.0f/59.0f/1.0f/0.0f/0/30.0f
 
 # 次のステージ
-n,Resources/Stage/Lowles.txt,Resources/Stage/Heiles.txt
+#n,Resources/Stage/Lowles.txt,Resources/Stage/Heiles.txt
+n,Resources/Stage/ForestA.txt,Resources/Stage/ForestA.txt

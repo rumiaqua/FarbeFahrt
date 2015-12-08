@@ -11,8 +11,8 @@ namespace
 	float frame = 0.0f;
 }
 
-Gimmick::Gimmick(IWorld & world, const std::string& modelName, const Vector3 & position, int anmNo, float frameSpeed, float maxframe) :
-	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI), std::make_unique<Sphere>(Vector3::Zero(), 5.0f))
+Gimmick::Gimmick(IWorld & world, const std::string& modelName, const Vector3 & position, int anmNo, float frameSpeed, float maxframe, float radius) :
+	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI), std::make_unique<Sphere>(Vector3::Zero(), radius))
 {
 	m_name = modelName;
 	m_frameSpeed = frameSpeed;
@@ -46,7 +46,7 @@ void Gimmick::animation()
 void Gimmick::onUpdate()
 {
 	animation();
-	
+
 	BaseActor::onUpdate();
 }
 
@@ -59,12 +59,26 @@ void Gimmick::onDraw(Renderer & render) const
 
 void Gimmick::onMessage(const std::string& message, void* parameter)
 {
-	if (message == "HitGimmick")
+	bool flag = false;
+	auto gimmickObj = m_world->findActor(m_name.substr(0, m_name.length() - 1));
+	auto camera = m_world->findCamera();
+	if (gimmickObj == nullptr || camera == nullptr) return;
+
+	if (!flag && message == "OnGimmick")
 	{
-		StoryManager::set(BitFlag::GIMMICK);
-		kill();
+		m_world->actorSet(gimmickObj->getName());
+		gimmickObj->sendMessage(m_name, (bool*)flag);
 		isAnimate = true;
+		flag = true;
 	}
+	else if (flag && message == "OffGimmick")
+	{
+		m_world->actorSet(gimmickObj->getName());
+		gimmickObj->sendMessage(m_name, (bool*)flag);
+		isAnimate = true;
+		flag = false;
+	}
+
 	if (message == "startAnimation")
 	{
 		isAnimate = true;
@@ -81,7 +95,7 @@ void Gimmick::onMessage(const std::string& message, void* parameter)
 	if (message == "onCollide")
 	{
 		BaseActor* actor = static_cast<BaseActor*>(parameter);
-		actor->sendMessage("HitObstacle",(void*)this);
+		actor->sendMessage("HitObstacle", (void*)this);
 	}
 
 	BaseActor::onMessage(message, parameter);

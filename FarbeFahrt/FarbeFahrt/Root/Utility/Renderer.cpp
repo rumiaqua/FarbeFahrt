@@ -157,9 +157,9 @@ void Renderer::draw()
 	m_cameraData.pos = GetCameraPosition();
 	m_cameraData.terget = GetCameraTarget();
 	// ê[ìxÇÃï`âÊ
-	drawDepth();
+	//drawDepth();
 	// âeÇÃï`âÊ
-	drawModelWithDepthShadow();
+	//drawModelWithDepthShadow();
 }
 
 void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const
@@ -168,7 +168,7 @@ void Renderer::drawNormalModel(const std::string& name, const Vector3& position,
 	MV1SetPosition(handle, position);
 	MV1SetRotationMatrix(handle, rotation);
 
-	//MV1DrawModel(handle);
+	MV1DrawModel(handle);
 
 }
 void Renderer::refreshAnimParam(const std::string& name)

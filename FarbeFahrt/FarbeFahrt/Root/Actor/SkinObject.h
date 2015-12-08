@@ -2,12 +2,15 @@
 #include "BaseActor.h"
 #include "Collision/Capsule.h"
 #include "Utility/String.h"
+#include "Utility/StoryManager/StoryManager.h"
+
+#include "Camera/Camera.h"
 
 class SkinObject :
 	public BaseActor
 {
 public:
-	SkinObject(IWorld& world, const std::string& modelName, const Vector3& position, int anmNo,float frameSpeed,float maxframe, float scale, float angle, bool isLoop);
+	SkinObject(IWorld& world, const std::string& modelName, const Vector3& position, int anmNo,float frameSpeed,float maxframe, float scale, float angle, bool isLoop,float radius);
 	void frameReset();
 private:
 	virtual void onUpdate()override;
@@ -22,4 +25,5 @@ private:
 	bool isAnimate;
 	float m_scale;
 	bool m_isLoop;
+	int m_point;
 };
