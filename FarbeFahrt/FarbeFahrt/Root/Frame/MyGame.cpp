@@ -3,8 +3,9 @@
 #include "BaseScene.h"
 
 # include "Scene/Editor.h"
-# include "Scene/GrayBox.h"
+# include "Scene/GameMain.h"
 # include "Scene/End.h"
+# include "Scene/StaffRoll.h"
 
 # include "Experimental/ObjectViewer.h"
 
@@ -22,14 +23,18 @@ MyGame::MyGame()
 	:m_breakflag(false),
 	initFlag(true)
 {
+	// Debug::SetEnabled(true);
+
 	m_sceneManager.addScene<Editor>(Scene::Editor);
-	m_sceneManager.addScene<GrayBox>(Scene::GrayBox);
+	m_sceneManager.addScene<GameMain>(Scene::GameMain);
 
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
 	m_sceneManager.addScene<End>(Scene::End);
+	m_sceneManager.addScene<StaffRoll>(Scene::StaffRoll);
 
-	m_sceneManager.pushScene(Scene::GrayBox);
+	m_sceneManager.pushScene(Scene::GameMain);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
+	// m_sceneManager.pushScene(Scene::End);
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
@@ -43,8 +48,8 @@ void MyGame::run()
 	if (m_sceneManager.hasChanged())
 	{
 		//前のシーンのデータ削除
-		// loader.cleanUp();
-		// スタック操作
+		 
+		// スタック操作d
 		m_sceneManager.resolve(loader);
 
 		// ロード
@@ -64,7 +69,9 @@ void MyGame::run()
 	// ロードが終了したら
 	if (loader.onCompleted())
 	{
-		Singleton<HandleList>::Instance().setHandleData(loader.getModelList());
+		// Singleton<HandleList>::Instance().setHandleData(loader.getModelList());
+		// Singleton<HandleList>::Instance().setHandleData(loader.getTextureList());
+		Singleton<HandleList>::Instance().setHandleData(loader.getContentsList());
 		render.setModelData(loader.getModelList());
 		render.setTextureData(loader.getTextureList());
 		SE::SetData(loader.getSEList());

@@ -23,10 +23,20 @@ private:
 
 public:
 
+	/// <summary>デバッグ機能を有効にする</summary>
+	static void SetEnabled(bool isEnabled);
+
+	/// <summary>デバッグが有効かどうかを返す</summary>
+	static bool IsEnabled();
+
 	/// <summary>画面にデバッグ表示する</summary>
 	template <typename ...Args>
 	static void Print(const std::string& format, Args&& ...args)
 	{
+		if (!IsEnabled())
+		{
+			return;
+		}
 		printfDx(format.c_str(), std::forward<Args>(args)...);
 	}
 
@@ -34,6 +44,10 @@ public:
 	template <typename ...Args>
 	static void Println(const std::string& format, Args&& ...args)
 	{
+		if (!IsEnabled())
+		{
+			return;
+		}
 		Print(format.c_str(), std::forward<Args>(args)...);
 		printfDx("\n");
 	}
@@ -57,6 +71,8 @@ public:
 	static void ChangeFontSize(int fontSize);
 
 private:
+
+	bool m_isEnabled;
 
 	bool m_isClear;
 

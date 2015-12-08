@@ -2,7 +2,7 @@
 
 # include "Frame/BaseScene.h"
 
-/// <summary>フェードアウト専用シーン</summary>
+/// <summary>エンドシーン</summary>
 class End final : public BaseScene
 {
 public:
@@ -22,4 +22,8 @@ public:
 	virtual void cleanUp() override;
 
 	virtual bool isSwallow() const override;
+
+private:
+
+	int m_endNum;
 };

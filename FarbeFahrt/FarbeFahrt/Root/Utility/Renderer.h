@@ -14,9 +14,13 @@
 #include "Collision/Line.h"
 #include "Collision/Triangle.h"
 
+# include "Vector2.h"
 # include "Vector3.h"
 # include "Matrix.h"
 # include "Pose.h"
+
+constexpr int fontSize = 32;
+constexpr int fontPosY = 680;
 
 //描画のためのデータ
 struct Buffer
@@ -42,6 +46,10 @@ struct CameraData
 	Vector3 pos;
 	Vector3 terget;
 };
+struct FontData {
+	int fontHandle;
+	std::vector<std::string> text;
+};
 struct ModelData{
 	int modelHandle;
 	int animNumber = -1;
@@ -63,7 +71,6 @@ struct ModelData{
 	}
 	ModelData(){}
 };
-
 class Renderer
 {
 public:
@@ -90,22 +97,46 @@ public:
 	//2D系関数
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
 	void drawTexture(const std::string& name, int x, int y);
+	// アスペクト比
+	enum class AspectType
+	{
+		// 何もしない
+		None,
+		// 画面に合わせて伸縮
+		Fit,
+		// 黒帯
+		LetterBox,
+		// 拡大
+		Expand,
+	};
+	void drawTexture(const std::string& name, const AspectType& type);
+	void drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center);
+	//フォント描画系関数
+	void drawFont(const std::vector<std::string>& text);
+
+	// テクスチャ系ユーティリティ あとで移動させます
+	Point2 getTextureSize(const std::string& name);
+	Point2 getWindowSize();
+	Vector2 getCorrectionSize(const std::string& name, const AspectType& type);
 public:
 	// -----------------------------------------------------------
 	// プリミティブ型描画
 	// -----------------------------------------------------------
 
-	void drawPrimitive(const Sphere& sphere) const;
+	void drawPrimitive(const IShape& shape) const;
 private:
 	void initDepthBuffer();
 	void loadShader();
 	void drawDepth();
 	void drawModelWithDepthShadow();
+	void setFont();
+	void drawFont();
 private:
 	std::unordered_map<std::string, ModelData> m_modelData;
 	std::unordered_map<std::string, int> m_textureData;
 	Buffer m_buffer;
 	ShaderHandle m_shaderHandle;
+	FontData m_fontData;
 	LightCamera m_lightCamera; 
 	CameraData m_cameraData;
 };

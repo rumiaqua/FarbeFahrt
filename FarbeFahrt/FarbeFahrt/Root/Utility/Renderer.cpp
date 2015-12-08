@@ -2,14 +2,46 @@
 #include <algorithm>
 #include "Actor\Camera\Camera.h"
 
+# include "Point2.h"
+# include "Vector2.h"
+# include "Math.h"
+
+# include "Collision/IShape.h"
+
+# include "Debug.h"
+
 Renderer::Renderer()
 {
 	initDepthBuffer();
 	loadShader();
+	setFont();
 }
 
 Renderer::~Renderer()
 {
+	RemoveFontResourceEx("Resources/Font/cinecaption2.28.ttf", FR_PRIVATE, NULL);
+}
+void Renderer::setFont()
+{
+	if (AddFontResourceEx("Resources/Font/cinecaption2.28.ttf", FR_PRIVATE, NULL) > 0) {
+	}
+	else {
+		// フォント読込エラー処理s
+		MessageBox(NULL, "フォント読込失敗", "", MB_OK);
+	}
+	m_fontData.fontHandle = CreateFontToHandle("しねきゃぷしょん", fontSize, 3,-1,-1,2);
+	ChangeFontType(DX_FONTTYPE_ANTIALIASING_EDGE);
+	
+	ChangeFont("しねきゃぷしょん", DX_CHARSET_DEFAULT);
+
+}
+void Renderer::drawPrimitive(const IShape& shape) const
+{
+	if (!Debug::IsEnabled())
+	{
+		return;
+	}
+	shape.draw();
 }
 void Renderer::initDepthBuffer()
 {
@@ -77,7 +109,7 @@ void Renderer::drawDepth()
 	// ピクセルシェーダーを指定
 	SetUsePixelShader(m_shaderHandle.depthRecord_pixel);
 	// 全モデルデータの表示
-	for (auto model : m_modelData)
+	for (auto&& model : m_modelData)
 	{
 		if (model.second.use == false)
 		{
@@ -122,7 +154,7 @@ void Renderer::drawModelWithDepthShadow()
 	// 影用深度記録画像をテクスチャ１にセット
 	SetUseTextureToShader(1, m_buffer.depthBuffer);
 	// 全モデルデータの描画
-	for (auto model : m_modelData)
+	for (auto& model : m_modelData)
 	{
 		if (model.second.use == false)
 		{
@@ -146,6 +178,8 @@ void Renderer::drawModelWithDepthShadow()
 	}
 	// 自作シェーダーの使用終了
 	MV1SetUseOrigShader(FALSE);
+	drawFont();
+
 	// テクスチャ１を無効にする
 	SetUseTextureToShader(1, -1);
 	// スロット43を初期化？
@@ -161,7 +195,13 @@ void Renderer::draw()
 	// 影の描画
 	//drawModelWithDepthShadow();
 }
-
+void Renderer::drawFont()
+{
+	int width = nScreenSizeX / 2.0f;
+	//int textSize = m_fontData.text.length();
+	DrawStringToHandle(0, fontPosY, "薬は町で買うことが出来ます。", GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));
+	DrawStringToHandle(0, fontPosY + fontSize, "町は森を抜けた先。エミルはひとまず森を目指します。", GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));
+}
 void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const
 {
 	const int &handle = m_modelData.at(name).modelHandle;
@@ -322,4 +362,102 @@ void Renderer::drawTexture(const std::string& name, int x, int y,int cx,int cy, 
 void Renderer::drawTexture(const std::string& name, int x, int y)
 {
 	DrawGraph(x, y, m_textureData.at(name),TRUE);
+}
+
+void Renderer::drawTexture(const std::string& name, const AspectType& type)
+{
+	Point2 size;
+	GetWindowSize(&size.x, &size.y);
+
+	drawTexture(name, type, (Vector2)size / 2.0f, { 0.5f, 0.5f });
+}
+void Renderer::drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center)
+{
+	int handle = m_textureData.at(name);
+	Point2 size;
+	GetGraphSize(handle, &size.x, &size.y);
+	Vector2 textureSize = (Vector2)size;
+	GetWindowSize(&size.x, &size.y);
+	Vector2 windowSize = (Vector2)size;
+
+	Vector2 ext;
+
+	// 何もしない
+	if (type == AspectType::None)
+	{
+		ext = Vector2::One();
+	}
+	// 画面に合わせて伸縮
+	if (type == AspectType::Fit)
+	{
+		ext = windowSize / textureSize;
+	}
+	// 黒帯
+	if (type == AspectType::LetterBox)
+	{
+		ext = windowSize / textureSize;
+		ext.x = ext.y = Math::Min({ ext.x, ext.y });
+	}
+	// 拡大
+	if (type == AspectType::Expand)
+	{
+		ext = windowSize / textureSize;
+		ext.x = ext.y = Math::Max({ ext.x, ext.y });
+	}
+
+	Vector2 correctionSize = textureSize * ext;
+	Vector2 pos = (windowSize - correctionSize) * center + position;// +correctionSize * center;
+
+	DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
+}
+void Renderer::drawFont(const std::vector<std::string>& text)
+{
+	m_fontData.text = text;
+}
+
+Point2 Renderer::getTextureSize(const std::string& name)
+{
+	Point2 size;
+	GetGraphSize(m_textureData.at(name), &size.x, &size.y);
+	return size;
+}
+
+Point2 Renderer::getWindowSize()
+{
+	Point2 size;
+	GetWindowSize(&size.x, &size.y);
+	return size;
+}
+
+Vector2 Renderer::getCorrectionSize(const std::string& name, const AspectType& type)
+{
+	Vector2 textureSize(getTextureSize(name));
+	Vector2 windowSize(getWindowSize());
+
+	Vector2 ext;
+
+	// 何もしない
+	if (type != AspectType::None)
+	{
+		ext = Vector2::One();
+	}
+	// 画面に合わせて伸縮
+	if (type == AspectType::Fit)
+	{
+		ext = windowSize / textureSize;
+	}
+	// 黒帯
+	if (type == AspectType::LetterBox)
+	{
+		ext = windowSize / textureSize;
+		ext.x = ext.y = Math::Min({ ext.x, ext.y });
+	}
+	// 拡大
+	if (type == AspectType::Expand)
+	{
+		ext = windowSize / textureSize;
+		ext.x = ext.y = Math::Max({ ext.x, ext.y });
+	}
+
+	return textureSize * ext;
 }

@@ -7,9 +7,12 @@
 # include "Utility/HandleList.h"
 # include "Utility/SingletonFinalizer.h"
 
+# include "Manager/EndManager.h"
+
 # include "Scene/ISceneMediator.h"
 
 End::End()
+	: m_endNum()
 {
 
 }
@@ -20,16 +23,23 @@ void End::loadContents(Loader& loader)
 	{
 		"Texture/end/bad.png",
 		"Texture/end/clear.png",
+		"Texture/end/bad.png",
 		"Texture/end/true.png",
+		"Texture/end/clear.png",
 	};
 
-	int num =
-		StoryManager::get(BitFlag::BADEND) ? 0 :
-		StoryManager::get(BitFlag::CLEAR) ? 1 :
-		2;
+	loader.loadContent("bad", "Texture/end/bad.png");
+	loader.loadContent("clear", "Texture/end/clear.png");
+	loader.loadContent("true", "Texture/end/true.png");
 
-	// loader.loadContent("end", endResources[num]);
-	loader.loadContent("end", "Texture/end/bad.png");
+	int num = (int)EndManager::getPattern() - 1;
+	
+	if (num < 0)
+	{
+		num = 0;
+	}
+
+	m_endNum = num;
 }
 
 void End::initialize()
@@ -41,15 +51,21 @@ void End::update()
 {
 	if (Input::IsClicked(KEY_INPUT_RETURN))
 	{
-		m_manager->changeScene(Scene::ObjectViewer);
+		m_manager->changeScene(Scene::StaffRoll, 60.0f);
 	}
 }
 
 void End::draw(Renderer& renderer)
 {
-	int handle = Singleton<HandleList>::Instance().getHandle("end");
-	DrawRotaGraph3(0, 0, 0, 0, 1.0, 1.0, 0.0, handle, TRUE);
-	// renderer.drawTexture("end", 0, 0);
+	static const std::string endResourceNames[] =
+	{
+		"bad",
+		"clear",
+		"bad",
+		"true",
+		"clear",
+	};
+	renderer.drawTexture(endResourceNames[m_endNum], Renderer::AspectType::LetterBox, Vector2(0, 0), Vector2(0.5f, 0.5f));
 }
 
 void End::post()

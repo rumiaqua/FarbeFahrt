@@ -178,8 +178,9 @@ void BaseActor::onDraw(Renderer& render) const
 {
 	if (m_shape)
 	{
-		m_shape->transform(getWorldPose())->draw();
+		render.drawPrimitive(*m_shape->transform(getWorldPose()));
 	}
+	
 	eachChildren([&] (const BaseActor& actor) { actor.draw(render); });
 }
 

@@ -2,7 +2,6 @@
 
 
 # include "Actor/Actor.h"
-# include "Actor/SkyDome/Skydome.h"
 # include "Actor/Field/Field.h"
 # include "Actor/ActorManager/ActorManager.h"
 # include "Actor/Player.h"

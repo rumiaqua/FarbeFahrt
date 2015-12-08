@@ -1,7 +1,6 @@
 # 使用するリソース
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
-r,Gimmick,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 
 # フィールドリソース
 r,plainGround,Stage/平原/平原地面/平原地面.pmx

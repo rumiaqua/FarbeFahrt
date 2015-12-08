@@ -15,13 +15,14 @@
 namespace
 {
 	// ‰½•b‚©‚¯‚Ä‘JˆÚ‚·‚é‚©
-	static const float SECOND = 1.5f;
-	using Func = std::function<void()>;
+	static const float SECOND = 1.0f;
+	using Func = std::function<void(Camera* const)>;
 }
 
 Camera::Camera(IWorld& world) :
 	BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
 	, m_onCompleted(false)
+	, m_actor()
 {
 	SetCameraNearFar(1.0f, 12000.0f);
 	SetCursorPos(nScreenCenterX, nScreenCenterY);
@@ -185,15 +186,17 @@ void Camera::defaultCamera()
 
 void Camera::cameraSet()
 {
-	std::unordered_map<CameraMode, Func> funcs;
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Chase, [this]() { this->chaseCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeIn, [this]() { this->fadeInCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeOut, [this]() { this->fadeOutCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::Default, [this]() { this->defaultCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::FadeInFixed, [this]() { this->fadeInFixedCamera(); }));
-	funcs.insert(std::make_pair<CameraMode, Func>(CameraMode::LockAt, [this]() { this->lockCamera(); }));
+	static const std::unordered_map<CameraMode, Func> funcs
+	{
+		{ CameraMode::Chase, [] (Camera* const camera) { camera->chaseCamera(); } },
+		{ CameraMode::FadeIn, [] (Camera* const camera) { camera->fadeInCamera(); } },
+		{ CameraMode::FadeOut, [] (Camera* const camera) { camera->fadeOutCamera(); } },
+		{ CameraMode::Default, [] (Camera* const camera) { camera->defaultCamera(); } },
+		{ CameraMode::FadeInFixed, [] (Camera* const camera) { camera->fadeInFixedCamera(); } },
+		{ CameraMode::LockAt, [] (Camera* const camera) { camera->lockCamera(); } },
+	};
 
-	funcs.at(m_cameraState.cameraMode)();
+	funcs.at(m_cameraState.cameraMode)(this);
 
 	m_progress += 1 / (60.0f * SECOND);
 	m_progress = m_progress > 1.0f ? 1.0f : m_progress;
