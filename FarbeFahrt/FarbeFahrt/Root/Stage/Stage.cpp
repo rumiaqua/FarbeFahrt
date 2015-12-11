@@ -53,6 +53,7 @@ void Stage::apply(const StageData& data, bool isClear)
 		// 未実装
 		if (object.name == "Gimmick")
 		{
+			//次回、コライダーの判定をずらす処理を書く
 			auto parameter = String::Split(object.parameter, '/');
 			int animNo = String::ToValue<int>(parameter[0]);
 			float animSpeed = String::ToValue<float>(parameter[1]);

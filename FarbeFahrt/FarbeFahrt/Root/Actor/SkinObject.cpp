@@ -13,7 +13,7 @@ namespace
 }
 
 SkinObject::SkinObject(IWorld& world, const std::string& modelName, const Vector3& position, int anmNo, float frameSpeed, float maxFrame, float scale, float angle, bool isLoop, float radius) :
-	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::ToRadian(angle)), std::make_unique<Sphere>(Vector3::Zero(), radius))
+	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI + Math::ToRadian(angle)), std::make_unique<Sphere>(Vector3::Zero(), radius))
 {
 	m_name = modelName;
 	m_frameSpeed = frameSpeed;
@@ -23,6 +23,8 @@ SkinObject::SkinObject(IWorld& world, const std::string& modelName, const Vector
 	m_isLoop = isLoop;
 	m_point = 0;
 	isAnimate = false;
+
+	drawFlag = false;
 }
 
 void SkinObject::frameReset()
@@ -52,12 +54,6 @@ void SkinObject::onUpdate()
 		}
 	}
 
-	//Œ»ÝpointŠÖŒW‚È‚­ƒMƒ~ƒbƒN‚ªtrue‚É‚È‚é
-	if (m_point >= 1)
-	{
-		StoryManager::set(BitFlag::GIMMICK);
-	}
-
 	Debug::Println("point:%f", m_point);
 
 	BaseActor::onUpdate();
@@ -65,11 +61,14 @@ void SkinObject::onUpdate()
 
 void SkinObject::onDraw(Renderer & render) const
 {
-	auto worldPose = getWorldPose();
-	Vector3 position = Matrix::Translation(worldPose);
-	Matrix rotate = Matrix::Rotation(worldPose);
-	render.setScale(m_name, Vector3(m_scale, m_scale, m_scale));
-	render.drawSkinModel(m_name, position, rotate, m_anmNo, frame);
+	if (drawFlag)
+	{
+		auto worldPose = getWorldPose();
+		Vector3 position = Matrix::Translation(worldPose);
+		Matrix rotate = Matrix::Rotation(worldPose);
+		render.setScale(m_name, Vector3(m_scale, m_scale, m_scale));
+		render.drawSkinModel(m_name, position, rotate, m_anmNo, frame);
+	}
 
 	BaseActor::onDraw(render);
 }
@@ -92,19 +91,22 @@ void SkinObject::onMessage(const std::string& message, void* parameter)
 	{
 		frame = 0.0f;
 	}
-		
+
 	if (message == String::Create(m_name, "G"))
 	{
 		if (!(bool*)parameter)
 		{
-			m_point++;
+			drawFlag = true;
+			GimmickManager::add(1);
 			frameReset();
 			isAnimate = true;
 		}
 		else
 		{
-			m_point >= 0 ? m_point-- : 0;
-			isAnimate = false;
+			drawFlag = false;
+			GimmickManager::sub(1);
+			frameReset();
+			isAnimate = true;
 		}
 	}
 	BaseActor::onMessage(message, parameter);

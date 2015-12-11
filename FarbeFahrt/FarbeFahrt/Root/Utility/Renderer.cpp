@@ -197,7 +197,7 @@ void Renderer::draw()
 }
 void Renderer::drawFont()
 {
-	int width = nScreenSizeX / 2.0f;
+	int width = (int)(nScreenSizeX / 2.0f);
 	//int textSize = m_fontData.text.length();
 	DrawStringToHandle(0, fontPosY, "薬は町で買うことが出来ます。", GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));
 	DrawStringToHandle(0, fontPosY + fontSize, "町は森を抜けた先。エミルはひとまず森を目指します。", GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));

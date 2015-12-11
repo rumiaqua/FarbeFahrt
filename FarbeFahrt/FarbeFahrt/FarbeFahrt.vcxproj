@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Root\Actor\Gimmick\GimmickManager.cpp" />
     <ClCompile Include="Root\Experimental\ObjectViewer.cpp" />
     <ClCompile Include="Root\Experimental\_Camera.cpp" />
-    <ClCompile Include="Root\Scene\End.cpp" />
     <ClCompile Include="Root\Manager\EndManager.cpp" />
+    <ClCompile Include="Root\Scene\Editor.cpp" />
+    <ClCompile Include="Root\Scene\End.cpp" />
+    <ClCompile Include="Root\Scene\SceneManager.cpp" />
     <ClCompile Include="Root\Scene\StaffRoll.cpp" />
     <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
@@ -46,9 +49,7 @@
     <ClCompile Include="Root\Frame\BaseScene.cpp" />
     <ClCompile Include="Root\Frame\MyGame.cpp" />
     <ClCompile Include="Root\Frame\WinMain.cpp" />
-    <ClCompile Include="Root\Scene\Editor.cpp" />
     <ClCompile Include="Root\Scene\GameMain.cpp" />
-    <ClCompile Include="Root\Scene\SceneManager.cpp" />
     <ClCompile Include="Root\Stage\Stage.cpp" />
     <ClCompile Include="Root\Stage\StageManager.cpp" />
     <ClCompile Include="Root\Utility\Debug.cpp" />
@@ -76,10 +77,15 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Actor\Gimmick\GimmickManager.h" />
     <ClInclude Include="Root\Experimental\_Camera.h" />
     <ClInclude Include="Root\Experimental\ObjectViewer.h" />
-    <ClInclude Include="Root\Scene\End.h" />
     <ClInclude Include="Root\Manager\EndManager.h" />
+    <ClInclude Include="Root\Scene\Editor.h" />
+    <ClInclude Include="Root\Scene\End.h" />
+    <ClInclude Include="Root\Scene\GameMain.h" />
+    <ClInclude Include="Root\Scene\ISceneMediator.h" />
+    <ClInclude Include="Root\Scene\SceneManager.h" />
     <ClInclude Include="Root\Scene\StaffRoll.h" />
     <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Actor\Book.h" />
@@ -111,10 +117,6 @@
     <ClInclude Include="Root\Frame\BaseScene.h" />
     <ClInclude Include="Root\Frame\MyGame.h" />
     <ClInclude Include="Root\IWorld.h" />
-    <ClInclude Include="Root\Scene\Editor.h" />
-    <ClInclude Include="Root\Scene\GameMain.h" />
-    <ClInclude Include="Root\Scene\ISceneMediator.h" />
-    <ClInclude Include="Root\Scene\SceneManager.h" />
     <ClInclude Include="Root\Stage\IStageMediator.h" />
     <ClInclude Include="Root\Stage\Stage.h" />
     <ClInclude Include="Root\Stage\StageManager.h" />

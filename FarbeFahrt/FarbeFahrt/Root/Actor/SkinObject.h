@@ -2,7 +2,7 @@
 #include "BaseActor.h"
 #include "Collision/Capsule.h"
 #include "Utility/String.h"
-#include "Utility/StoryManager/StoryManager.h"
+#include "Actor/Gimmick/GimmickManager.h"
 
 #include "Camera/Camera.h"
 
@@ -26,4 +26,6 @@ private:
 	float m_scale;
 	bool m_isLoop;
 	int m_point;
+
+	bool drawFlag;
 };

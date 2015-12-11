@@ -84,12 +84,6 @@
     <ClCompile Include="Root\Frame\WinMain.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Scene\Editor.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\SceneManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Stage\Stage.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -168,19 +162,28 @@
     <ClCompile Include="Root\World.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Scene\End.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Experimental\_Camera.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Manager\EndManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Scene\GameMain.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\Editor.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\End.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\SceneManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="Root\Scene\StaffRoll.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Scene\GameMain.cpp">
+    <ClCompile Include="Root\Actor\Gimmick\GimmickManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -273,15 +276,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Frame\MyGame.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\Editor.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\ISceneMediator.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\SceneManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Stage\IStageDataBuilder.h">
@@ -389,19 +383,31 @@
     <ClInclude Include="Root\World.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Scene\End.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Root\Experimental\_Camera.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Manager\EndManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Scene\StaffRoll.h">
+    <ClInclude Include="Root\Scene\Editor.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\End.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Scene\GameMain.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\ISceneMediator.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\SceneManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\StaffRoll.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Actor\Gimmick\GimmickManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -410,12 +416,6 @@
     <None Include="Resources\Model\本2\book001.vmd" />
     <None Include="Resources\Model\本2\book002.vmd" />
     <None Include="Resources\Model\本\本完成(仮).pmx" />
-    <None Include="Root\Scene\FadeIn.inl">
-      <Filter>ヘッダー ファイル</Filter>
-    </None>
-    <None Include="Root\Scene\FadeOut.inl">
-      <Filter>ヘッダー ファイル</Filter>
-    </None>
     <None Include="Resources\Stage\本\新本.pmx" />
     <None Include="Resources\Stage\本\表紙開き59フレーム.vmd" />
     <None Include="Resources\Stage\本\本ページ開き59フレーム.vmd" />
@@ -461,6 +461,12 @@
     <None Include="Resources\Model\本2\book000.vmd" />
     <None Include="Resources\Font\meiryo.ttc" />
     <None Include="Resources\Font\meiryob.ttc" />
+    <None Include="Root\Scene\FadeIn.inl">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
+    <None Include="Root\Scene\FadeOut.inl">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\curtain.png">
