@@ -15,7 +15,6 @@ f,forestBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
-o,Gimmick,Gimmick,50,30,50,null,0/1.0f/59.0f
 
 # 次のステージ
 e,1

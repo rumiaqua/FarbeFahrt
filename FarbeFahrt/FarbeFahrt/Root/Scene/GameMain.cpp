@@ -69,26 +69,26 @@ void GameMain::draw(Renderer& render)
 
 void GameMain::post()
 {
-//# define NONE -1
-//	int endNum = m_stageManager.endNum();
-//	if (endNum != NONE)
-//	{
-//		return;
-//		// endNum分だけ左シフトさせる
-//		StoryManager::set(BitFlag::BADEND << endNum);
-//		m_manager->changeScene(Scene::End, true);
-//		return;
-//	}
-//# undef NONE
+	//# define NONE -1
+	//	int endNum = m_stageManager.endNum();
+	//	if (endNum != NONE)
+	//	{
+	//		return;
+	//		// endNum分だけ左シフトさせる
+	//		StoryManager::set(BitFlag::BADEND << endNum);
+	//		m_manager->changeScene(Scene::End, true);
+	//		return;
+	//	}
+	//# undef NONE
 
 	if (m_stageManager.isNext())
 	{
-	if (m_stageManager.endNum() != -1)
-	{
+		if (m_stageManager.endNum() != -1)
+		{
 			EndManager::setPattern(m_stageManager.endNum());
 			m_manager->changeScene(Scene::End, 60.0f);
-		return;
-	}
+			return;
+		}
 
 		m_loader->cleanUp();
 

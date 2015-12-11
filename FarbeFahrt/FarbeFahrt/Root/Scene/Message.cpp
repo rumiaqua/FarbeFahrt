@@ -5,7 +5,8 @@
 # include "Utility/Input.h"
 # include "Utility/Debug.h"
 
-# include "Scene/GameMain.h"
+# include "GameMain.h"
+# include "ISceneMediator.h"
 
 # include "Manager/MessageManager.h"
 

@@ -21,9 +21,6 @@
     <ClCompile Include="Root\Experimental\_Camera.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Experimental\_Camera.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Manager\EndManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -99,22 +96,10 @@
     <ClCompile Include="Root\Manager\EndManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Manager\MessageManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\Editor.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Scene\End.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Scene\GameMain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\Message.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\SceneManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Scene\StaffRoll.cpp">
@@ -198,6 +183,18 @@
     <ClCompile Include="Root\World.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Manager\MessageManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\Editor.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\Message.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\SceneManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\Enemy.h">
@@ -207,9 +204,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Actor\Player.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Experimental\_Camera.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Experimental\_Camera.h">
@@ -302,25 +296,7 @@
     <ClInclude Include="Root\Manager\EndManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Manager\MessageManager.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\Editor.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Root\Scene\End.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\GameMain.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\ISceneMediator.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\Message.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\SceneManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Scene\StaffRoll.h">
@@ -431,6 +407,24 @@
     <ClInclude Include="Root\World.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Manager\MessageManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\Editor.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\GameMain.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\ISceneMediator.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\Message.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\SceneManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Font\meiryo.ttc" />
@@ -471,6 +465,23 @@
     <None Include="Resources\Shader\Render_normal.vso" />
     <None Include="Resources\Shader\Render_pixel.pso" />
     <None Include="Resources\Shader\Render_skin.vso" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ガブリエラ.pmx" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ガブリエラ000L.vmd" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ガブリエラ001L.vmd" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ミハイル.pmx" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ミハイル000L.vmd" />
+    <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ミハイル001L.vmd" />
+    <None Include="Resources\Model\本2\book.pmx" />
+    <None Include="Resources\Model\本2\book000.vmd" />
+    <None Include="Resources\Model\本2\book001.vmd" />
+    <None Include="Resources\Model\本2\book002.vmd" />
+    <None Include="Resources\Model\本\新本.pmx" />
+    <None Include="Resources\Model\本\新本000.vmd" />
+    <None Include="Resources\Model\本\新本001.vmd" />
+    <None Include="Resources\Model\本\本完成(仮).pmx" />
+    <None Include="Resources\Stage\本\新本.pmx" />
+    <None Include="Resources\Stage\本\本ページ開き59フレーム.vmd" />
+    <None Include="Resources\Stage\本\表紙開き59フレーム.vmd" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Font\えるまー.ttf" />
@@ -689,6 +700,50 @@
     <Image Include="Resources\Stage\平原\平原背景\heigen.jpg">
       <Filter>リソース ファイル</Filter>
     </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\bousi.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\bousidansi.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\hada.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\hadadansi.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\huku.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\hukudansi.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\hukusiro.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\kami.tga" />
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\me.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\s_hada.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\s_huku.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\s_kami.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\t_blue.bmp">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\データ外観.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\本\本　背表紙　テクスチャ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\本\本　表紙　仮.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\本\本　裏表紙1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\本\本　背表紙　テクスチャ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\本\本　表紙　仮.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\本\本　裏表紙1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Stage\DangerSwamp.txt" />
@@ -706,5 +761,7 @@
     <Text Include="Resources\Stage\Lowles.txt" />
     <Text Include="Resources\Stage\PlainA.txt" />
     <Text Include="Resources\Stage\PlainB.txt" />
+    <Text Include="Resources\Model\MMD魔導姉弟Ver1.1\READ ME.txt" />
+    <Text Include="Resources\Stage\本\DangerSwamp.txt" />
   </ItemGroup>
 </Project>

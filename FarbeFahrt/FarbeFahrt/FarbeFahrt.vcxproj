@@ -21,9 +21,12 @@
   <ItemGroup>
     <ClCompile Include="Root\Actor\Gimmick\GimmickManager.cpp" />
     <ClCompile Include="Root\Experimental\ObjectViewer.cpp" />
-    <ClCompile Include="Root\Experimental\_Camera.cpp" />
+    <ClCompile Include="Root\Manager\MessageManager.cpp" />
+    <ClCompile Include="Root\Scene\Editor.cpp" />
     <ClCompile Include="Root\Scene\End.cpp" />
     <ClCompile Include="Root\Manager\EndManager.cpp" />
+    <ClCompile Include="Root\Scene\Message.cpp" />
+    <ClCompile Include="Root\Scene\SceneManager.cpp" />
     <ClCompile Include="Root\Scene\StaffRoll.cpp" />
     <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
@@ -75,10 +78,15 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Root\Experimental\_Camera.h" />
     <ClInclude Include="Root\Experimental\ObjectViewer.h" />
+    <ClInclude Include="Root\Manager\MessageManager.h" />
+    <ClInclude Include="Root\Scene\Editor.h" />
     <ClInclude Include="Root\Scene\End.h" />
     <ClInclude Include="Root\Manager\EndManager.h" />
+    <ClInclude Include="Root\Scene\GameMain.h" />
+    <ClInclude Include="Root\Scene\ISceneMediator.h" />
+    <ClInclude Include="Root\Scene\Message.h" />
+    <ClInclude Include="Root\Scene\SceneManager.h" />
     <ClInclude Include="Root\Scene\StaffRoll.h" />
     <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Actor\Book.h" />
