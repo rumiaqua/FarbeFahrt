@@ -19,7 +19,7 @@ void Ray::onMessage(const std::string& message, void* parameter)
 	auto gimmick = static_cast<BaseActor*>(parameter);
 	if (message == "onCollide")
 	{
-		gimmick->sendMessage("HitGimmick", nullptr);
+		gimmick->sendMessage("OnGimmick", nullptr);
 	}
 
 	BaseActor::onMessage(message, parameter);

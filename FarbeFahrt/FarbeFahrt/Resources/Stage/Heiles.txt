@@ -7,14 +7,14 @@ r,heilesGround,Stage/ハイレス/ハイレス地面/ハイレス地面.pmx
 r,heilesBackground,Stage/ハイレス/ハイレス背景/ハイレス背景.pmx
 
 # プレイヤーの座標
-p,0,50,0
+p,-180,50,-80
 
 # フィールド
 f,heilesGround,0,0,0,3
 f,heilesBackground,0,0,0,3
 
 # ゴール
-o,Goal,Goal,50,30,-50,null
+o,Goal,Goal,50,30,-80,null
 
 
 # 次のステージ

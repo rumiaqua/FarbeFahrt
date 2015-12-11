@@ -10,7 +10,6 @@
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
 # include "Actor/PlayerSpawner.h"
-# include "Actor/Page.h"
 
 # include "World.h"
 
@@ -56,12 +55,14 @@ void Stage::apply(const StageData& data, bool isClear)
 		// 未実装
 		if (object.name == "Gimmick")
 		{
+			//次回、コライダーの判定をずらす処理を書く
 			auto parameter = String::Split(object.parameter, '/');
 			int animNo = String::ToValue<int>(parameter[0]);
 			float animSpeed = String::ToValue<float>(parameter[1]);
 			float maxFrame = String::ToValue<float>(parameter[2]);
+			float radius = String::ToValue<float>(parameter[3]);
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Gimmick>(
-				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame));
+				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame,radius));
 		}
 		if (object.name == "SkinObject")
 		{
@@ -72,8 +73,9 @@ void Stage::apply(const StageData& data, bool isClear)
 			float scale = String::ToValue<float>(parameter[3]);
 			float angle = String::ToValue<float>(parameter[4]);
 			bool isLoop = String::ToValue<int>(parameter[5]) == 1;
+			float radius = String::ToValue<float>(parameter[6]);
 			m_world->addActor(ActorTag::Object, std::make_shared<SkinObject>(
-				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame, scale, angle, isLoop));
+				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame, scale, angle, isLoop, radius));
 			// int anmNo, float frameSpeed,float maxframe
 		}
 		if (object.name == "StaticObject")

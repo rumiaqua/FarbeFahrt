@@ -8,6 +8,7 @@
 
 # include "Utility/SingletonFinalizer.h"
 # include "Utility/StoryManager/StoryManager.h"
+#include "Actor/Gimmick/GimmickManager.h"
 
 StageManager::StageManager()
 	: m_current()
@@ -69,6 +70,7 @@ void StageManager::next(World* const world)
 
 	StoryManager::reset(BitFlag::GOAL);
 	StoryManager::reset(BitFlag::NEXT);
+	GimmickManager::reset();
 }
 
 void StageManager::apply(World* const world)

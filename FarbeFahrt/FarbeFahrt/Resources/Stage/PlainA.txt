@@ -7,15 +7,14 @@ r,plainGround,Stage/平原/平原地面/平原地面.pmx
 r,plainBackground,Stage/平原/平原背景/平原背景.pmx
 
 # プレイヤーの座標
-p,0,50,0
+p,-180,50,-80
 
 # フィールド
 f,plainGround,0,0,0,3
 f,plainBackground,0,0,0,3
 
 # ゴール
-o,Goal,Goal,50,30,-50,null
-
+o,Goal,Goal,50,30,-80,null
 
 # 次のステージ
 n,Resources/Stage/ForestA.txt,Resources/Stage/ForestA.txt

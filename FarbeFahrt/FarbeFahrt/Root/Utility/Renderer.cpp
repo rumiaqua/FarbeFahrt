@@ -190,8 +190,9 @@ void Renderer::draw()
 	m_cameraData.pos = GetCameraPosition();
 	m_cameraData.terget = GetCameraTarget();
 	// [“x‚Ì•`‰æ
-	drawDepth();
+	//drawDepth();
 	// ‰e‚Ì•`‰æ
+	//drawModelWithDepthShadow();
 	drawModelWithDepthShadow();
 	// ƒtƒHƒ“ƒg‚Ì•`‰æ
 	drawFont();

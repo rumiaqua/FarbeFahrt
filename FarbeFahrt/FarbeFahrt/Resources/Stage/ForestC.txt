@@ -7,14 +7,14 @@ r,forestGround,Stage/森/森地面/森地面.pmx
 r,forestBackground,Stage/森/森背景/森背景.pmx
 
 # プレイヤーの座標
-p,0,50,0
+p,-180,50,-80
 
 # フィールド
 f,forestGround,0,0,0,3
 f,forestBackground,0,0,0,3
 
 # ゴール
-o,Goal,Goal,50,30,-50,null
+o,Goal,Goal,50,30,-80,null
 
 # 次のステージ
 n,Resources/Stage/HouseB.txt,Resources/Stage/HouseB.txt

@@ -24,7 +24,7 @@ namespace
 }
 
 Player::Player(IWorld& world, const Vector3& position)
-	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI),
+	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI / 2),
 		// std::make_unique<Sphere>(Vector3::Zero(), 10.0f)
 		// std::make_unique<Triangle>(Vector3::Zero(), Vector3(-10, -20, 0), Vector3(10, -20, 0)))
 		std::make_unique<Capsule>(Vector3(0, 0, 0), Vector3(0, 10, 0), 5.0f)
@@ -91,7 +91,7 @@ void Player::playerInput()
 	}
 
 	// ˆÚ“®—Ê‚ª0‚Å‚È‚¯‚ê‚ÎˆÚ“®ˆ—‚Æƒ‚ƒfƒ‹‘€ì
-	if (moveVec.lengthSquared() != 0.0f)
+	if (moveVec.lengthSquared() != 0.0f && m_canControl)
 	{
 		// •½sˆÚ“®
 		getPosition() += moveVec;
@@ -162,8 +162,19 @@ void Player::onMessage(const std::string& message, void* parameter)
 	}
 	if (message == "StopControl")
 	{
+		if ((bool*)parameter)
+		{
 		m_canControl = false;
 		kill();
+	}
+		else
+		{
+			m_canControl = false;
+		}
+	}
+	if (message == "StartControl")
+	{
+		m_canControl = true;
 	}
 
 	BaseActor::onMessage(message, parameter);
