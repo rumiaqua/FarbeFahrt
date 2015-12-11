@@ -20,9 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Root\Experimental\ObjectViewer.cpp" />
-    <ClCompile Include="Root\Experimental\_Camera.cpp" />
+    <ClCompile Include="Root\Manager\MessageManager.cpp" />
     <ClCompile Include="Root\Scene\End.cpp" />
     <ClCompile Include="Root\Manager\EndManager.cpp" />
+    <ClCompile Include="Root\Scene\Message.cpp" />
     <ClCompile Include="Root\Scene\StaffRoll.cpp" />
     <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
@@ -77,10 +78,12 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Root\Experimental\_Camera.h" />
     <ClInclude Include="Root\Experimental\ObjectViewer.h" />
+    <ClInclude Include="Root\Manager\MessageManager.h" />
+    <ClInclude Include="Root\Message\MessageData.h" />
     <ClInclude Include="Root\Scene\End.h" />
     <ClInclude Include="Root\Manager\EndManager.h" />
+    <ClInclude Include="Root\Scene\Message.h" />
     <ClInclude Include="Root\Scene\StaffRoll.h" />
     <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Actor\Book.h" />

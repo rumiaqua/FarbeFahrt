@@ -19,3 +19,9 @@ o,Goal,Goal,50,30,-50,null
 
 # 次のステージ
 n,Resources/Stage/PlainB.txt,Resources/Stage/PlainB.txt
+
+# 開始時のテキスト
+t,森を抜けた先にあったのはハイレスという町です。
+t,薬はどこで買えるのだろう、
+t,
+t,エミルは薬屋を探します。

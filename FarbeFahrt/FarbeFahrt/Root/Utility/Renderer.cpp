@@ -178,7 +178,6 @@ void Renderer::drawModelWithDepthShadow()
 	}
 	// 自作シェーダーの使用終了
 	MV1SetUseOrigShader(FALSE);
-	drawFont();
 
 	// テクスチャ１を無効にする
 	SetUseTextureToShader(1, -1);
@@ -194,13 +193,67 @@ void Renderer::draw()
 	drawDepth();
 	// 影の描画
 	drawModelWithDepthShadow();
+	// フォントの描画
+	drawFont();
 }
 void Renderer::drawFont()
 {
-	int width = nScreenSizeX / 2.0f;
-	//int textSize = m_fontData.text.length();
-	DrawStringToHandle(0, fontPosY, "薬は町で買うことが出来ます。", GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));
-	DrawStringToHandle(0, fontPosY + fontSize, "町は森を抜けた先。エミルはひとまず森を目指します。", GetColor(255, 255, 255), m_fontData.fontHandle,GetColor(0,0,0));
+	// フォントハンドル
+	int handle = m_fontData.fontHandle;
+	// 文字色
+	unsigned int color = GetColor(255, 255, 255);
+	// 縁色
+	int edge = GetColor(0, 0, 0);
+
+	// 画面幅
+	int windowWidth = getWindowSize().x;
+	// 画面高さ
+	int windowHeight = getWindowSize().y;
+
+	for (auto&& data : m_fontData.buffer)
+	{
+		// テキストの長さ
+		std::string::size_type size = data.length;
+		// テキストの横幅
+		int textWidth = GetDrawStringWidthToHandle(data.text.c_str(), data.text.length(), handle);
+		// テキストの縦幅
+		int textHeight = fontSize + 6;
+
+		// x座標
+		int x;
+		switch (data.widthPlacement)
+		{
+		case WidthPlacement::Left:
+			x = 0;
+			break;
+		case WidthPlacement::Right:
+			x = windowWidth - textWidth;
+			break;
+		case WidthPlacement::Center:
+			x = (windowWidth - textWidth) / 2.0f;
+			break;
+		}
+
+		// y座標
+		int y;
+		switch (data.heightPlacement)
+		{
+		case HeightPlacement::Top:
+			y = 0;
+			break;
+		case HeightPlacement::Bottom:
+			y = windowHeight - textHeight;
+			break;
+		case HeightPlacement::Center:
+			y = (windowHeight - textHeight) / 2.0f;
+			break;
+		}
+
+		// 描画
+		std::string renderingText = String::ToNarrow(String::ToWide(data.text).substr(0, data.length));
+		DrawStringToHandle(x + data.x, y + data.y, renderingText.c_str(), color, handle, edge);
+	}
+	m_fontData.buffer.clear();
 }
 void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const
 {
@@ -410,9 +463,40 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 
 	DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
 }
-void Renderer::drawFont(const std::vector<std::string>& text)
+void Renderer::drawFont(const std::string& text)
 {
-	m_fontData.text = text;
+	m_fontData.buffer.emplace_back(
+		text,
+		String::ToWide(text).length(),
+		0, WidthPlacement::Left,
+		0, HeightPlacement::Top);
+}
+
+void Renderer::drawFont(const std::string& text, int x, int y)
+{
+	m_fontData.buffer.emplace_back(
+		text,
+		String::ToWide(text).length(),
+		x, WidthPlacement::Left,
+		y, HeightPlacement::Top);
+}
+
+void Renderer::drawFontCenter(const std::string& text, int y)
+{
+	m_fontData.buffer.emplace_back(
+		text,
+		String::ToWide(text).length(),
+		0, WidthPlacement::Center,
+		y, HeightPlacement::Top);
+}
+
+void Renderer::drawFont(const std::string& text, int length, int x, const WidthPlacement& width, int y, const HeightPlacement& height)
+{
+	m_fontData.buffer.emplace_back(
+		text,
+		length,
+		x, width,
+		y, height);
 }
 
 Point2 Renderer::getTextureSize(const std::string& name)

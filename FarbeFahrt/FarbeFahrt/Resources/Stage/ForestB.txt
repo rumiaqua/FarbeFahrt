@@ -19,3 +19,7 @@ o,Gimmick,Gimmick,50,30,50,null,0/1.0f/59.0f
 
 # 次のステージ
 n,Resources/Stage/HouseA.txt,Resources/Stage/HouseB.txt
+
+# 開始時のテキスト
+t,再び森に入ったエミルは湖へ向かいます。
+t,この森には危ない段差があるので、エミルは慎重に進みます。

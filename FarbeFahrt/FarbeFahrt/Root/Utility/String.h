@@ -44,4 +44,8 @@ namespace String
 		stream >> value;
 		return value;
 	}
+
+	std::wstring ToWide(std::string const& narrow);
+
+	std::string ToNarrow(std::wstring const& wide);
 }

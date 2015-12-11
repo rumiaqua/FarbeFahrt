@@ -21,6 +21,7 @@ public:
 		output.resourceList.clear();
 		output.fieldList.clear();
 		output.objectList.clear();
+		output.message.clear();
 
 		// 初期値を代入
 		output.filename = filename;
@@ -118,6 +119,12 @@ public:
 			{
 				int endNum = String::ToValue<int>(split[1]);
 				output.endNum = endNum;
+			}
+
+			// メッセージ
+			if (split[0] == "t")
+			{
+				output.message.push_back(split[1]);
 			}
 		}
 

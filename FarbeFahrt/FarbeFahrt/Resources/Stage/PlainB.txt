@@ -18,3 +18,7 @@ o,Goal,Goal,50,30,-50,null
 
 # 次のステージ
 n,Resources/Stage/DimForest.txt,Resources/Stage/ForestD.txt
+
+# 開始時のテキスト
+t,薬を買うことが出来たエミルは、湖への道にある平原にきました。
+t,雲のない平原を太陽の光が射しています。

@@ -19,3 +19,7 @@ o,Goal,Goal,50,30,-50,null
 
 # 次のステージ
 n,Resources/Stage/ForestA.txt,Resources/Stage/ForestA.txt
+
+# 開始時のテキスト
+t,薬は町で買うことが出来ます。
+t,町は森を抜けた先。エミルはひとまず森を目指します。

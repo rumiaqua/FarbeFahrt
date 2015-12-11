@@ -6,6 +6,7 @@
 # include "Scene/GameMain.h"
 # include "Scene/End.h"
 # include "Scene/StaffRoll.h"
+# include "Scene/Message.h"
 
 # include "Experimental/ObjectViewer.h"
 
@@ -31,8 +32,10 @@ MyGame::MyGame()
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
 	m_sceneManager.addScene<End>(Scene::End);
 	m_sceneManager.addScene<StaffRoll>(Scene::StaffRoll);
+	m_sceneManager.addScene<Message>(Scene::Message);
 
 	m_sceneManager.pushScene(Scene::GameMain);
+	// m_sceneManager.pushScene(Scene::Message);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
 	// m_sceneManager.pushScene(Scene::End);
 }

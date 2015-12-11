@@ -18,3 +18,9 @@ o,Goal,Goal,50,30,-50,null
 
 # 次のステージ
 n,Resources/Stage/HouseC.txt,Resources/Stage/HouseC.txt
+
+# 開始時のテキスト
+t,沼に来てしまったエミルは、釣り場にある船を借り
+t,対岸に渡ることにしました。
+t,
+t,ですが沼に居る魚が邪魔をして進むことが出来ません。

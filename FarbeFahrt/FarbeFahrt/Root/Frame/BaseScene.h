@@ -16,6 +16,7 @@ enum class Scene{
 	ObjectViewer,
 	End,
 	StaffRoll,
+	Message,
 };
 class BaseScene
 {

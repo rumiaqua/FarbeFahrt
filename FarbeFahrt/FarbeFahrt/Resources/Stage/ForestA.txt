@@ -20,3 +20,9 @@ o,Gimmick,Gimmick,50,30,50,null,0/1.0f/59.0f
 
 # 次のステージ
 n,Resources/Stage/Lowles.txt,Resources/Stage/Heiles.txt
+
+# 開始時のテキスト
+t,森は殺風景です。普段なら綺麗な花が咲いているのに、
+t,不思議に思いながら進んでいきます。
+t,
+t,この森を抜ければ町です。

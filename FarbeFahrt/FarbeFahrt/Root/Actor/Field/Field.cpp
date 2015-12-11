@@ -9,6 +9,8 @@
 # include "Utility/Debug.h"
 # include "Utility/StoryManager/StoryManager.h"
 
+# include "Manager/MessageManager.h"
+
 namespace
 {
 	constexpr float ANIMATION_FRAME = 180.0f;
@@ -43,6 +45,7 @@ void Field::onUpdate()
 			m_world->findGroup(ActorTag::Player)->eachChildren([] (BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
 			m_world->findCamera()->sendMessage("toPlayerCamera", nullptr);
 			StoryManager::set(BitFlag::NEXT);
+			MessageManager::SetShow(true);
 		}
 # undef Open
 

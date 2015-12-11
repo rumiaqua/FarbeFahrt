@@ -46,10 +46,68 @@ struct CameraData
 	Vector3 pos;
 	Vector3 terget;
 };
-struct FontData {
-	int fontHandle;
-	std::vector<std::string> text;
+
+// 横の配置
+enum class WidthPlacement
+{
+	Left,
+	Right,
+	Center,
 };
+
+// 縦の配置
+enum class HeightPlacement
+{
+	Top,
+	Bottom,
+	Center,
+};
+
+// フォントの描画データ
+struct FontRenderingData
+{
+	// テキスト
+	std::string text;
+
+	// テキストの文字数
+	int length;
+
+	// 横の配置
+	WidthPlacement widthPlacement;
+
+	// x座標
+	int x;
+
+	// 縦の配置
+	HeightPlacement heightPlacement;
+
+	// y座標
+	int y;
+
+	FontRenderingData(
+		const std::string& text,
+		int length,
+		int x,
+		const WidthPlacement width,
+		int y,
+		const HeightPlacement height)
+		: text(text)
+		, length(length)
+		, x(x)
+		, widthPlacement(width)
+		, y(y)
+		, heightPlacement(height)
+	{
+
+	}
+};
+
+struct FontData
+{
+	int fontHandle;
+	std::vector<FontRenderingData> buffer;
+};
+
 struct ModelData{
 	int modelHandle;
 	int animNumber = -1;
@@ -112,7 +170,10 @@ public:
 	void drawTexture(const std::string& name, const AspectType& type);
 	void drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center);
 	//フォント描画系関数
-	void drawFont(const std::vector<std::string>& text);
+	void drawFont(const std::string& text);
+	void drawFont(const std::string& text, int x, int y);
+	void drawFontCenter(const std::string& text, int y);
+	void drawFont(const std::string& text, int length, int x, const WidthPlacement& width, int y, const HeightPlacement& height);
 
 	// テクスチャ系ユーティリティ あとで移動させます
 	Point2 getTextureSize(const std::string& name);

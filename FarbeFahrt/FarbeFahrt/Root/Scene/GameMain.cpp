@@ -14,6 +14,7 @@
 # include "Utility/SingletonFinalizer.h"
 
 # include "Manager/EndManager.h"
+# include "Manager/MessageManager.h"
 
 GameMain::GameMain()
 	: m_stageManager()
@@ -51,11 +52,6 @@ void GameMain::update()
 {
 	m_world->update();
 
-	if (Input::IsClicked(KEY_INPUT_RETURN))
-	{
-
-	}
-
 	/*if (Input::IsClicked(KEY_INPUT_RETURN))
 	{
 		m_manager->pushScene(Scene::Editor);
@@ -68,32 +64,31 @@ void GameMain::draw(Renderer& render)
 	Debug::Println(String::Create("Gimmick : ", StoryManager::get(BitFlag::GIMMICK) ? "true" : "false"));
 	Debug::Println(String::Create("Goal : ", StoryManager::get(BitFlag::GOAL) ? "true" : "false"));
 	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
-	render.drawFont("Windows でコンピュータの世界が広がります。");
 	m_world->draw(render);
 }
 
 void GameMain::post()
 {
-//# define NONE -1
-//	int endNum = m_stageManager.endNum();
-//	if (endNum != NONE)
-//	{
-//		return;
-//		// endNum分だけ左シフトさせる
-//		StoryManager::set(BitFlag::BADEND << endNum);
-//		m_manager->changeScene(Scene::End, true);
-//		return;
-//	}
-//# undef NONE
+	//# define NONE -1
+	//	int endNum = m_stageManager.endNum();
+	//	if (endNum != NONE)
+	//	{
+	//		return;
+	//		// endNum分だけ左シフトさせる
+	//		StoryManager::set(BitFlag::BADEND << endNum);
+	//		m_manager->changeScene(Scene::End, true);
+	//		return;
+	//	}
+	//# undef NONE
 
 	if (m_stageManager.isNext())
 	{
-	if (m_stageManager.endNum() != -1)
-	{
+		if (m_stageManager.endNum() != -1)
+		{
 			EndManager::setPattern(m_stageManager.endNum());
 			m_manager->changeScene(Scene::End, 60.0f);
-		return;
-	}
+			return;
+		}
 
 		m_loader->cleanUp();
 
@@ -118,6 +113,12 @@ void GameMain::post()
 			m_loader->loadContent(resource.first, resource.second);
 		}
 		m_loader->load();
+	}
+
+	// メッセージ処理が可能であればメッセージ処理を行なう
+	if (MessageManager::CanShow())
+	{
+		m_manager->pushScene(Scene::Message);
 	}
 }
 

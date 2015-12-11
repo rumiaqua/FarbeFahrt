@@ -11,6 +11,8 @@
 
 #include "Utility/String.h"
 
+# include "Manager/MessageManager.h"
+
 # include "Collision/ModelCollider.h"
 
 namespace
@@ -38,6 +40,13 @@ Player::Player(IWorld& world, const Vector3& position)
 }
 void Player::onUpdate()
 {
+	if (Input::IsClicked(KEY_INPUT_0))
+	{
+		MessageManager::Add("いえーい　エミルだよー");
+		MessageManager::Add("アデーレ姉さんまだ生きてるかなぁ");
+		MessageManager::SetShow(true);
+	}
+
 	if (m_canControl)
 	{
 		playerInput();

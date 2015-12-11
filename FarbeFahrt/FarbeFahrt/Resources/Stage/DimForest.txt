@@ -20,3 +20,7 @@ o,Gimmick,Gimmick,50,30,50,null,0/1.0f/59.0f
 
 # 次のステージ
 n,Resources/Stage/DangerSwamp.txt,Resources/Stage/ForestD.txt
+
+# 開始時のテキスト
+t,薄暗い森は光があまり射さず薄気味悪い森です。
+t,奥には蜂の巣が見えます。慎重に進んで行きましょう。

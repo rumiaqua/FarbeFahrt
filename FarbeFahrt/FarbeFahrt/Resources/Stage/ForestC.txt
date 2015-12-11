@@ -18,3 +18,7 @@ o,Goal,Goal,50,30,-50,null
 
 # 次のステージ
 n,Resources/Stage/HouseB.txt,Resources/Stage/HouseB.txt
+
+# 開始時のテキスト
+t,森でエミルは木の上に生えている薬草を見つけました！
+t,この薬草があればアデーレを救うことができるかもしれません。

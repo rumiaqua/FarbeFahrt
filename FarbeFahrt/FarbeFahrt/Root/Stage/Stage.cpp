@@ -14,6 +14,8 @@
 
 # include "World.h"
 
+# include "Manager/MessageManager.h"
+
 #include "Utility/Debug.h"
 
 Stage::Stage(World* world)
@@ -84,6 +86,12 @@ void Stage::apply(const StageData& data, bool isClear)
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
 		}
+	}
+
+	// 開始時のメッセージ処理
+	for (auto&& message : data.message)
+	{
+		MessageManager::Add(message);
 	}
 }
 
