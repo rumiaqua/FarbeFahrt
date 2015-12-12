@@ -17,8 +17,7 @@ f,plainBackground,0,0,0,3
 o,Goal,Goal,50,30,-80,null
 
 # 次のステージ
-n,Resources/Stage/DimForest.txt,Resources/Stage/ForestD.txt
+n,ForestA,ForestA
 
 # 開始時のテキスト
-t,薬を買うことが出来たエミルは、湖への道にある平原にきました。
-t,雲のない平原を太陽の光が射しています。
+t,PlainA

@@ -15,6 +15,8 @@
 
 # include "Manager/MessageManager.h"
 
+# include "Message/MessageOperation.h"
+
 #include "Utility/Debug.h"
 
 Stage::Stage(World* world)
@@ -91,10 +93,16 @@ void Stage::apply(const StageData& data, bool isClear)
 	}
 
 	// 開始時のメッセージ処理
-	for (auto&& message : data.message)
+	/*for (auto&& message : data.message)
 	{
 		MessageManager::Add(message);
+	}*/
+	MessageData messageData;
+	for (auto&& message : data.message)
+	{
+		messageData.add("t", message);
 	}
+	MessageManager::Add(messageData);
 }
 
 void Stage::update()

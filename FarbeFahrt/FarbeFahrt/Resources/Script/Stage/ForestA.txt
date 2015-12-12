@@ -38,10 +38,7 @@ o,Gimmick,nuts2G,-230,25,-10,null,1/1.0f/590.0f/5.0f
 o,SkinObject,nuts2,-120,50,-30,null,1/1.0f/59.0f/7.0f/0.0f/0/8.0f
 
 # 次のステージ
-n,Resources/Stage/Lowles.txt,Resources/Stage/Heiles.txt
+n,Lowles,Heiles
 
 # 開始時のテキスト
-t,森は殺風景です。普段なら綺麗な花が咲いているのに、
-t,不思議に思いながら進んでいきます。
-t,
-t,この森を抜ければ町です。
+t,ForestA

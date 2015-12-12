@@ -1,6 +1,7 @@
 # 使用するリソース
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
+r,Gimmick,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 
 # フィールドリソース
 r,forestGround,Stage/森/森地面/森地面.pmx
@@ -15,12 +16,10 @@ f,forestBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
+o,Gimmick,Gimmick,-100,0,50,null,0/1.0f/59.0f/5.0f
 
 # 次のステージ
-n,Resources/Stage/HouseC.txt,Resources/Stage/HouseC.txt
+n,HouseD,HouseE
 
 # 開始時のテキスト
-t,沼に来てしまったエミルは、釣り場にある船を借り
-t,対岸に渡ることにしました。
-t,
-t,ですが沼に居る魚が邪魔をして進むことが出来ません。
+t,ForestD

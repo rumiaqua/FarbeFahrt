@@ -1,6 +1,7 @@
 # 使用するリソース
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
+r,Gimmick,Model/MMD魔導姉弟Ver1.1/ガブリエラ.pmx
 
 # フィールドリソース
 r,forestGround,Stage/森/森地面/森地面.pmx
@@ -15,10 +16,10 @@ f,forestBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
+o,Gimmick,Gimmick,50,30,50,null,0/1.0f/59.0f
 
 # 次のステージ
-n,Resources/Stage/HouseB.txt,Resources/Stage/HouseB.txt
+n,ForestB,ForestC
 
 # 開始時のテキスト
-t,森でエミルは木の上に生えている薬草を見つけました！
-t,この薬草があればアデーレを救うことができるかもしれません。
+t,Lowles

@@ -17,8 +17,7 @@ f,plainBackground,0,0,0,3
 o,Goal,Goal,50,30,-80,null
 
 # 次のステージ
-n,Resources/Stage/ForestA.txt,Resources/Stage/ForestA.txt
+n,DimForest,ForestD
 
 # 開始時のテキスト
-t,薬は町で買うことが出来ます。
-t,町は森を抜けた先。エミルはひとまず森を目指します。
+t,PlainB

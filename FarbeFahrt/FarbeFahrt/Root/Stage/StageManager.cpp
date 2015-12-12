@@ -3,12 +3,14 @@
 # include "StageFactory.h"
 
 # include "Actor/Field/Field.h"
+# include "Actor/Gimmick/GimmickManager.h"
 
 # include "World.h"
 
 # include "Utility/SingletonFinalizer.h"
 # include "Utility/StoryManager/StoryManager.h"
-#include "Actor/Gimmick/GimmickManager.h"
+
+# include <fstream>
 
 StageManager::StageManager()
 	: m_current()
@@ -17,8 +19,32 @@ StageManager::StageManager()
 
 }
 
-void StageManager::initialize(const std::string& firstStageName)
+void StageManager::initialize(const std::string& indexFilename, const std::string& firstStageName)
 {
+	std::fstream stream { indexFilename };
+
+	std::string currentDirectory = "";
+	std::string buffer;
+
+	while (!stream.eof())
+	{
+		stream >> buffer;
+		auto split = String::Split(buffer, ',');
+
+		// カレントディレクトリの変更
+		if (split[0] == "c")
+		{
+			currentDirectory = split[1];
+			continue;
+		}
+
+		// ステージデータの読込
+		if (split[0] == "t")
+		{
+			
+		}
+	}
+
 	// ダミーデータ
 	StageFactory().Load(firstStageName, m_next.first);
 	StageFactory().Load(firstStageName, m_next.second);
