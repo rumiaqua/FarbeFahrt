@@ -21,4 +21,5 @@ private:
 	float m_maxframe;
 	int m_anmNo;
 	bool isAnimate;
+	bool m_flag;
 };

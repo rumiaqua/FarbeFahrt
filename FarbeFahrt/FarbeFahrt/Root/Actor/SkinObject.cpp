@@ -49,6 +49,7 @@ void SkinObject::onUpdate()
 		}
 		else
 		{
+			player->sendMessage("StartControl",nullptr);
 			m_world->actorSet(player->getName());
 			isAnimate = false;
 		}

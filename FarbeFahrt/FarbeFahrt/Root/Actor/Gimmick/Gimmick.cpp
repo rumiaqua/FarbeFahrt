@@ -9,7 +9,6 @@
 namespace
 {
 	float frame = 0.0f;
-	bool flag = false;
 }
 
 Gimmick::Gimmick(IWorld & world, const std::string& modelName, const Vector3 & position, int anmNo, float frameSpeed, float maxframe, float radius) :
@@ -20,6 +19,7 @@ Gimmick::Gimmick(IWorld & world, const std::string& modelName, const Vector3 & p
 	m_maxframe = maxframe;
 	m_anmNo = anmNo;
 	isAnimate = false;
+	m_flag = false;
 }
 
 void Gimmick::frameReset()
@@ -55,6 +55,8 @@ void Gimmick::onDraw(Renderer & render) const
 {
 	render.drawSkinModel(m_name, getPosition(), getRotation(), m_anmNo, frame);
 
+	Debug::Println("gimmickFlag:%d",m_flag);
+
 	BaseActor::onDraw(render);
 }
 
@@ -71,15 +73,15 @@ void Gimmick::onMessage(const std::string& message, void* parameter)
 	{
 		m_world->actorSet(gimmickObj->getName());
 		isAnimate = true;
-		if (!flag)
+		if (!m_flag)
 		{
-			gimmickObj->sendMessage(m_name, (bool*)flag);
-			flag = true;
+			gimmickObj->sendMessage(m_name, (bool*)m_flag);
+			m_flag = true;
 		}
 		else
 		{
-			gimmickObj->sendMessage(m_name, (bool*)flag);
-			flag = false;
+			gimmickObj->sendMessage(m_name, (bool*)m_flag);
+			m_flag = false;
 		}
 	}	
 

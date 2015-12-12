@@ -78,6 +78,7 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Actor\Gimmick\GimmickManager.h" />
     <ClInclude Include="Root\Experimental\ObjectViewer.h" />
     <ClInclude Include="Root\Manager\MessageManager.h" />
     <ClInclude Include="Root\Scene\Editor.h" />

@@ -41,4 +41,5 @@ struct StageData
 	NextStage nextStage;
 	int endNum;
 	Messages message;
+	int gimmickPoint;
 };

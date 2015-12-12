@@ -26,6 +26,7 @@ public:
 		// 初期値を代入
 		output.filename = filename;
 		output.endNum = -1;
+		//output.gimmickPoint = 0;
 
 		// テキストのロードを開始
 		std::ifstream stream(filename);
@@ -125,6 +126,13 @@ public:
 			if (split[0] == "t")
 			{
 				output.message.push_back(split[1]);
+			}
+
+			// 次のステージへのスイッチの起動変数
+			if (split[0] == "g")
+			{
+				int gimmickPoint = String::ToValue<int>(split[1]);
+				output.gimmickPoint = gimmickPoint;
 			}
 		}
 

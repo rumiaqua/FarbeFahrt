@@ -26,3 +26,8 @@ void GimmickManager::reset()
 {
 	Singleton<GimmickManager>::Instance().m_point = 0;
 }
+
+bool GimmickManager::isPoint(unsigned int point)
+{
+	return point <= Singleton<GimmickManager>::Instance().m_point;
+}

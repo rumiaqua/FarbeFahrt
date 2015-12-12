@@ -98,7 +98,7 @@ const StageManager::Stages& StageManager::nextStages() const
 bool StageManager::isFirst() const
 {
 	bool first = StoryManager::get(BitFlag::GIMMICK);
-	return first;
+	return !first;
 }
 
 const StageData& StageManager::nextStage() const

@@ -1,6 +1,5 @@
 #include "Stage.h"
 
-
 # include "Actor/Actor.h"
 # include "Actor/Field/Field.h"
 # include "Actor/ActorManager/ActorManager.h"
@@ -10,6 +9,7 @@
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
 # include "Actor/PlayerSpawner.h"
+# include "Actor//Gimmick/GimmickManager.h"
 
 # include "World.h"
 
@@ -87,8 +87,10 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
-		}
-	}
+		}		
+	}	
+
+	m_point = data.gimmickPoint;
 
 	// 開始時のメッセージ処理
 	for (auto&& message : data.message)
@@ -99,6 +101,11 @@ void Stage::apply(const StageData& data, bool isClear)
 
 void Stage::update()
 {
+	if (GimmickManager::isPoint(m_point))
+	{
+		StoryManager::set(BitFlag::GIMMICK);
+	}
+
 	// 更新処理
 	m_actorManager.update();
 
@@ -112,6 +119,8 @@ void Stage::draw(Renderer& renderer) const
 {	
 	// 描画処理
 	m_actorManager.draw(renderer);
+
+	Debug::Println("nextPoint:%d",m_point);
 
 	Debug::Println(m_stageName);
 }

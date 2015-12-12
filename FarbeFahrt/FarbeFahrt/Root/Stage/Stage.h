@@ -50,4 +50,6 @@ private:
 	ActorManager m_actorManager;
 
 	std::string m_stageName;
+
+	int m_point;
 };

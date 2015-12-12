@@ -40,7 +40,10 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
+	//m_stageManager.initialize("Resources/Stage/PlainA.txt");
+
 	m_stageManager.initialize("Resources/Stage/PlainA.txt");
+
 	StoryManager::set(BitFlag::GOAL);
 
 	Debug::SetEnabled(true);
