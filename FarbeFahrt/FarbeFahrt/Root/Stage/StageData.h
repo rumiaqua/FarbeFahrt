@@ -31,7 +31,6 @@ struct StageData
 	using FieldList = std::vector<FieldObj>;
 	using ObjectList = std::vector<Object>;
 	using NextStage = std::pair<std::string, std::string>;
-	using Messages = std::vector<std::string>;
 
 	std::string filename;
 	ResourceList resourceList;
@@ -39,7 +38,7 @@ struct StageData
 	FieldList fieldList;
 	ObjectList objectList;
 	NextStage nextStage;
-	int endNum;
-	Messages message;
+	std::string endName;
+	std::string message;
 	int gimmickPoint;
 };

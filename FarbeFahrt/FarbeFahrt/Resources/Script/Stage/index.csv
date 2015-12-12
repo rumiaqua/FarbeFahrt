@@ -1,0 +1,47 @@
+# カレントディレクトリ,,
+c,Resources/Script/Stage/,
+,,
+# 平原A,,
+s,PlainA,PlainA.txt
+,,
+# 平原B,,
+s,PlainB,PlainB.txt
+,,
+# 森A,,
+s,ForestA,ForestA.txt
+,,
+# 森B,,
+s,ForestB,ForestB.txt
+,,
+# 森C,,
+s,ForestC,ForestC.txt
+,,
+# 森D,,
+s,ForestD,ForestD.txt
+,,
+# 薄暗い森,,
+s,DimForest,DimForest.txt
+,,
+# 危ない沼,,
+s,DangerSwamp,DangerSwamp.txt
+,,
+# ハイレス,,
+s,Heiles,Heiles.txt
+,,
+# ローレス,,
+s,Lowles,Lowles.txt
+,,
+# 家A,,
+s,HouseA,HouseA.txt
+,,
+# 家B,,
+s,HouseB,HouseB.txt
+,,
+# 家C,,
+s,HouseC,HouseC.txt
+,,
+# 家D,,
+s,HouseD,HouseD.txt
+,,
+# 家E,,
+s,HouseE,HouseE.txt

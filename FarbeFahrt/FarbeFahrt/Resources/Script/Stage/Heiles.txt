@@ -2,9 +2,6 @@
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
-r,tentG,Model/Gimmick/bookmark.mqo
-r,tent,Model/Gimmick/Lowles/tent.mqo
-
 # フィールドリソース
 r,heilesGround,Stage/ハイレス/ハイレス地面/ハイレス地面.pmx
 r,heilesBackground,Stage/ハイレス/ハイレス背景/ハイレス背景.pmx
@@ -19,18 +16,9 @@ f,heilesBackground,0,0,0,3
 # ゴール
 o,Goal,Goal,50,30,-80,null
 
-# ギミック
-o,Gimmick,tentG,90,25,-50,null,1/1.0f/590.0f/5.0f
-o,SkinObject,tent,-61,8,40,null,1/1.0f/59.0f/3.0f/0.0f/0/8.0f
-
-# ギミック起動変数
-g,1
 
 # 次のステージ
-n,Resources/Stage/ForestB.txt,Resources/Stage/ForestC.txt
+n,PlainB,PlainB
 
 # 開始時のテキスト
-t,森を抜けた先にあったのはローレスという町です。
-t,薬草はどこで買えるのだろう、
-t,
-t,エミルは薬屋を探します。
+t,Heiles

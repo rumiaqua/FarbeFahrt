@@ -4,7 +4,7 @@
 
 # include "Utility/Loader.h"
 # include "Utility/Renderer.h"
-# include "Utility/Input.h"
+# include "Utility/Mouse.h"
 
 # include "Utility/HandleList.h"
 # include "Utility/SingletonFinalizer.h"
@@ -30,12 +30,13 @@ void StaffRoll::initialize()
 
 void StaffRoll::update()
 {
-	if (m_elapsedTime > m_needTime)
+	if (m_elapsedTime > m_needTime ||
+		Mouse::IsClicked(MOUSE_INPUT_2))
 	{
 		m_manager->changeScene(Scene::GameMain, 60.0f);
 	}
 
-	if (Input::IsPressed(KEY_INPUT_SPACE))
+	if (Mouse::IsPressed(MOUSE_INPUT_1))
 	{
 		m_elapsedTime += 9.0f;
 	}

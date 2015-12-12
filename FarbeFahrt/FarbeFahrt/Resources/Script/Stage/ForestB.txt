@@ -17,8 +17,7 @@ f,forestBackground,0,0,0,3
 o,Goal,Goal,50,30,-80,null
 
 # 次のステージ
-n,Resources/Stage/HouseA.txt,Resources/Stage/HouseB.txt
+n,HouseA,HouseB
 
 # 開始時のテキスト
-t,再び森に入ったエミルは湖へ向かいます。
-t,この森には危ない段差があるので、エミルは慎重に進みます。
+t,ForestB

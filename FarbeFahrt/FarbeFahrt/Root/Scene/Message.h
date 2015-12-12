@@ -3,6 +3,8 @@
 # include "Frame/BaseScene.h"
 # include <vector>
 
+struct MessageData;
+
 /// <summary>メッセージシーン</summary>
 class Message final : public BaseScene
 {
@@ -27,12 +29,18 @@ public:
 private:
 
 	unsigned int getLengthMessage() const;
+	void processMessage();
+	void renderMessage(Renderer& renderer) const;
 
 private:
 
-	std::vector<std::string> m_message;
+	MessageData* m_message;
+	std::vector<std::string> m_textStack;
 
 	float m_elapsedTime;
-
 	float m_characterPerFrame;
+
+	bool m_isStoped;
+
+	std::string m_textureName;
 };

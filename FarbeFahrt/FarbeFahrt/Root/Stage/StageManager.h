@@ -4,6 +4,8 @@
 
 # include "Utility/String.h"
 
+# include <unordered_map>
+
 class World;
 
 class StageManager
@@ -18,7 +20,7 @@ public:
 
 public:
 
-	void initialize(const std::string& firstStageName);
+	void initialize(const std::string& indexFilename, const std::string& firstStageName);
 
 	bool isNext() const;
 
@@ -26,7 +28,7 @@ public:
 
 	void apply(World* const world);
 
-	int endNum() const;
+	std::string endName() const;
 
 public:
 
@@ -41,6 +43,8 @@ private:
 	const StageData& nextStage() const;
 
 private:
+
+	std::unordered_map<std::string, StageData> m_stageDatas;
 
 	StageData m_current;
 
