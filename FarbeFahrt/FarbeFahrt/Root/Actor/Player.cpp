@@ -25,11 +25,7 @@ namespace
 
 Player::Player(IWorld& world, const Vector3& position)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI / 2),
-		// std::make_unique<Sphere>(Vector3::Zero(), 10.0f)
-		// std::make_unique<Triangle>(Vector3::Zero(), Vector3(-10, -20, 0), Vector3(10, -20, 0)))
 		std::make_unique<Capsule>(Vector3(0, 0, 0), Vector3(0, 10, 0), 5.0f)
-		// std::make_unique<Line>(Vector3(10, 0, 0), Vector3(-10, 0, 0))
-		// std::make_unique<ModelCollider>("Player")
 		)
 	, m_canControl(true)
 {
@@ -40,13 +36,6 @@ Player::Player(IWorld& world, const Vector3& position)
 }
 void Player::onUpdate()
 {
-	if (Input::IsClicked(KEY_INPUT_0))
-	{
-		MessageData messageData;
-		messageData.add("t", "エミル「アデーレ姉さんまだ生きてるかなぁ...」");
-		MessageManager::SetShow(true);
-	}
-
 	if (m_canControl)
 	{
 		playerInput();

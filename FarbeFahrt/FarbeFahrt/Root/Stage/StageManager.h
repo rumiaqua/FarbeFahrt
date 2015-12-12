@@ -28,7 +28,7 @@ public:
 
 	void apply(World* const world);
 
-	int endNum() const;
+	std::string endName() const;
 
 public:
 

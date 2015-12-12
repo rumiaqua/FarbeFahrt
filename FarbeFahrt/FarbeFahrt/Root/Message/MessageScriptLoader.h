@@ -4,7 +4,6 @@
 
 # include <fstream>
 
-class MessageData;
 # include "MessageData.h"
 
 class MessageScriptLoader
@@ -21,10 +20,8 @@ public:
 		std::fstream stream { filename };
 		std::string buffer;
 
-		while (!stream.eof())
+		while (std::getline(stream, buffer))
 		{
-			stream >> buffer;
-
 			auto split = String::Split(buffer, ',');
 			if (split.size() < 2)
 			{

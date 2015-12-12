@@ -4,6 +4,8 @@
 # include "Utility/String.h"
 # include "Utility/Input.h"
 # include "Utility/Debug.h"
+# include "Utility/Loader.h"
+# include "Utility/Mouse.h"
 
 # include "GameMain.h"
 # include "ISceneMediator.h"
@@ -19,13 +21,14 @@ Message::Message()
 	, m_textStack()
 	, m_elapsedTime(0.0f)
 	, m_characterPerFrame(1.0f)
+	, m_isStoped(false)
 {
 	
 }
 
 void Message::loadContents(Loader& loader)
 {
-
+	loader.loadContent("TrueEnd", "Texture/end/true.png");
 }
 
 void Message::initialize()
@@ -46,6 +49,19 @@ void Message::update()
 	// メッセージデータの処理
 	processMessage();
 
+	if (!m_textureName.empty())
+	{
+		if (Mouse::IsClicked(MOUSE_INPUT_1))
+		{
+			m_isStoped = false;
+			m_textureName = "";
+		}
+		if (m_isStoped)
+		{
+			return;
+		}
+	}
+
 	++m_elapsedTime;
 	float totalTime = getLengthMessage() * m_characterPerFrame;
 	if (m_elapsedTime > totalTime)
@@ -53,7 +69,7 @@ void Message::update()
 		m_elapsedTime = totalTime;
 	}
 
-	if (Input::IsClicked(KEY_INPUT_RETURN))
+	if (Mouse::IsClicked(MOUSE_INPUT_1))
 	{
 		if (m_elapsedTime < totalTime)
 		{
@@ -61,14 +77,83 @@ void Message::update()
 			return;
 		}
 
-		if (m_message->empty())
+		m_isStoped = false;
+		if (!m_message->empty())
 		{
-			m_manager->popScene();
+			m_elapsedTime = 0.0f;
+			m_textStack.clear();
+			processMessage();
+			return;
 		}
+		
+		m_manager->popScene();
 	}
 }
 
 void Message::draw(Renderer& renderer)
+{
+	if (m_textureName.empty())
+	{
+		renderMessage(renderer);
+		return;
+	}
+	renderer.drawTexture("TrueEnd", Renderer::AspectType::LetterBox);
+}
+
+void Message::post()
+{
+
+}
+
+void Message::cleanUp()
+{
+
+}
+
+bool Message::isSwallow() const
+{
+	return true;
+}
+
+unsigned int Message::getLengthMessage() const
+{
+	int length = 0;
+	for (auto&& text : m_textStack)
+	{
+		length += String::ToWide(text).length();
+	}
+	return length;
+}
+
+void Message::processMessage()
+{
+	while (!m_message->empty() && !m_isStoped)
+	{
+		auto&& op = m_message->pop();
+		// テキスト追加
+		if (op.operation == "t")
+		{
+			m_textStack.push_back(op.message);
+		}
+
+		// 画像表示
+		if (op.operation == "g")
+		{
+			m_textureName = op.message;
+			m_isStoped = true;
+			return;
+		}
+
+		// 一度止める
+		if (op.operation == "s")
+		{
+			m_isStoped = true;
+			return;
+		}
+	}
+}
+
+void Message::renderMessage(Renderer& renderer) const
 {
 	int remain = m_elapsedTime / m_characterPerFrame;
 
@@ -101,56 +186,6 @@ void Message::draw(Renderer& renderer)
 		{
 			renderer.drawFont(*it, length, 0, WidthPlacement::Center, y, HeightPlacement::Top);
 			remain -= length;
-		}
-	}
-}
-
-void Message::post()
-{
-
-}
-
-void Message::cleanUp()
-{
-
-}
-
-bool Message::isSwallow() const
-{
-	return true;
-}
-
-unsigned int Message::getLengthMessage() const
-{
-	int length = 0;
-	for (auto&& text : m_textStack)
-	{
-		length += String::ToWide(text).length();
-	}
-	return length;
-}
-
-void Message::processMessage()
-{
-	while (!m_message->empty())
-	{
-		auto&& op = m_message->pop();
-		// テキスト追加
-		if (op.operation == "t")
-		{
-			m_textStack.push_back(op.message);
-		}
-
-		// 画像表示　未実装
-		if (op.operation == "g")
-		{
-
-		}
-
-		// 一度止める　未実装
-		if (op.operation == "s")
-		{
-
 		}
 	}
 }

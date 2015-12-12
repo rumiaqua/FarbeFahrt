@@ -26,9 +26,9 @@ void StageManager::initialize(const std::string& indexFilename, const std::strin
 	std::string currentDirectory = "";
 	std::string buffer;
 
-	while (!stream.eof())
+	// ステージ一覧をロード
+	while (std::getline(stream, buffer))
 	{
-		stream >> buffer;
 		auto split = String::Split(buffer, ',');
 
 		// カレントディレクトリの変更
@@ -39,17 +39,16 @@ void StageManager::initialize(const std::string& indexFilename, const std::strin
 		}
 
 		// ステージデータの読込
-		if (split[0] == "t")
+		if (split[0] == "s")
 		{
-			
+			StageFactory().Load(currentDirectory + split[2], m_stageDatas[split[1]]);
 		}
 	}
 
-	// ダミーデータ
-	StageFactory().Load(firstStageName, m_next.first);
-	StageFactory().Load(firstStageName, m_next.second);
+	// 最初のステージ
+	m_next.first = m_next.second = m_stageDatas.at(firstStageName);
 	m_current.playerPosition = Vector3::Zero();
-	m_current.endNum = -1;
+	m_current.endName = "";
 }
 
 bool StageManager::isNext() const
@@ -91,8 +90,11 @@ void StageManager::next(World* const world)
 	
 	m_current = nextStage();
 	world->apply(m_current, false);
-	StageFactory().Load(m_current.nextStage.first, m_next.first);
-	StageFactory().Load(m_current.nextStage.second, m_next.second);
+	if (m_current.endName.empty())
+	{
+		m_next.first = m_stageDatas.at(m_current.nextStage.first);
+		m_next.second = m_stageDatas.at(m_current.nextStage.second);
+	}
 
 	StoryManager::reset(BitFlag::GOAL);
 	StoryManager::reset(BitFlag::NEXT);
@@ -102,13 +104,13 @@ void StageManager::next(World* const world)
 void StageManager::apply(World* const world)
 {
 	world->apply(m_current, true);
-	StageFactory().Load(m_current.nextStage.first, m_next.first);
-	StageFactory().Load(m_current.nextStage.second, m_next.second);
+	m_next.first = m_stageDatas.at(m_current.nextStage.first);
+	m_next.second = m_stageDatas.at(m_current.nextStage.second);
 }
 
-int StageManager::endNum() const
+std::string StageManager::endName() const
 {
-	return m_current.endNum;
+	return m_current.endName;
 }
 
 const StageData& StageManager::current() const

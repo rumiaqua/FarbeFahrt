@@ -26,10 +26,8 @@ void MessageManager::Initialize(const std::string& indexFilename)
 	std::string currentDirectory = "";
 	std::string buffer;
 
-	while (!stream.eof())
+	while (std::getline(stream, buffer))
 	{
-		stream >> buffer;
-
 		auto split = String::Split(buffer, ',');
 
 		// カレントディレクトリの設定
@@ -43,7 +41,7 @@ void MessageManager::Initialize(const std::string& indexFilename)
 		if (split[0] == "t")
 		{
 			// split[1] という名前で split[2] のファイルを読み込む
-			loader.load(currentDirectory + split[2], instance.m_messageDatas.at(split[1]));
+			loader.load(currentDirectory + split[2], instance.m_messageDatas[split[1]]);
 		}
 	}
 }
@@ -62,7 +60,7 @@ MessageData& MessageManager::Get()
 bool MessageManager::CanShow()
 {
 	MessageManager& instance = Singleton<MessageManager>::Instance();
-	return instance.m_canShow;
+	return instance.m_canShow && !instance.m_data.operationQueue.empty();
 }
 
 void MessageManager::SetShow(bool canShow)

@@ -1,14 +1,6 @@
 # pragma once
 
-enum class EndPattern
-{
-	None,
-	BadEnd1,
-	Clear1,
-	BadEnd2,
-	TrueEnd,
-	Clear2,
-};
+# include <string>
 
 class EndManager
 {
@@ -22,12 +14,11 @@ private:
 
 public:
 
-	static void setPattern(const EndPattern& pattern);
-	static void setPattern(int patternNum);
-	static EndPattern getPattern();
+	static void Set(const std::string& name);
+	static std::string Get();
 	static bool isEnd();
 
 private:
 
-	EndPattern m_pattern;
+	std::string m_name;
 };

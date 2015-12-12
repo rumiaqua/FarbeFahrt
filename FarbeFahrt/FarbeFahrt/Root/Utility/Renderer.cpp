@@ -193,7 +193,7 @@ void Renderer::draw()
 	//drawDepth();
 	// ‰e‚Ì•`‰æ
 	//drawModelWithDepthShadow();
-	drawModelWithDepthShadow();
+	// drawModelWithDepthShadow();
 	// ƒtƒHƒ“ƒg‚Ì•`‰æ
 	drawFont();
 }
@@ -420,10 +420,7 @@ void Renderer::drawTexture(const std::string& name, int x, int y)
 
 void Renderer::drawTexture(const std::string& name, const AspectType& type)
 {
-	Point2 size;
-	GetWindowSize(&size.x, &size.y);
-
-	drawTexture(name, type, (Vector2)size / 2.0f, { 0.5f, 0.5f });
+	drawTexture(name, type, Vector2::Zero(), { 0.5f, 0.5f });
 }
 void Renderer::drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center)
 {
@@ -460,7 +457,7 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 	}
 
 	Vector2 correctionSize = textureSize * ext;
-	Vector2 pos = (windowSize - correctionSize) * center + position;// +correctionSize * center;
+	Vector2 pos = (windowSize - correctionSize) * center + position;
 
 	DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
 }

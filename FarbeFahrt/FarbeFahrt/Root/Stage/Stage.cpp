@@ -93,16 +93,10 @@ void Stage::apply(const StageData& data, bool isClear)
 	}
 
 	// 開始時のメッセージ処理
-	/*for (auto&& message : data.message)
+	if (data.message != "")
 	{
-		MessageManager::Add(message);
-	}*/
-	MessageData messageData;
-	for (auto&& message : data.message)
-	{
-		messageData.add("t", message);
+		MessageManager::Add(data.message);
 	}
-	MessageManager::Add(messageData);
 }
 
 void Stage::update()

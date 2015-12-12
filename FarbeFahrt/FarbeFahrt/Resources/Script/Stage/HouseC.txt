@@ -18,4 +18,4 @@ f,forestBackground,0,0,0,3
 o,Goal,Goal,50,30,-80,null
 
 # 次のステージ
-e,2
+e,Ending3

@@ -29,8 +29,8 @@ public:
 private:
 
 	unsigned int getLengthMessage() const;
-
 	void processMessage();
+	void renderMessage(Renderer& renderer) const;
 
 private:
 
@@ -39,4 +39,8 @@ private:
 
 	float m_elapsedTime;
 	float m_characterPerFrame;
+
+	bool m_isStoped;
+
+	std::string m_textureName;
 };
