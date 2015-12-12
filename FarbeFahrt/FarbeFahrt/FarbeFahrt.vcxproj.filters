@@ -496,6 +496,8 @@
     <None Include="Resources\Stage\本\表紙開き59フレーム.vmd" />
     <None Include="Resources\Script\Message\index.csv" />
     <None Include="Resources\Script\Stage\index.csv" />
+    <None Include="Resources\Stage\House\家地面\HouseGround.pmx" />
+    <None Include="Resources\Stage\House\家地面\HouseGround000.vmd" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Font\えるまー.ttf" />
@@ -756,6 +758,66 @@
       <Filter>リソース ファイル</Filter>
     </Image>
     <Image Include="Resources\Stage\本\本　裏表紙1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\屋根.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\屋根2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\湖.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\湖水.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\湖地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\窓.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\窓2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家地面\Textures\壁.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\屋根.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\屋根2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\湖.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\湖水.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\湖地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\窓.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\窓2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\House\家背景\Textures\壁.png">
       <Filter>リソース ファイル</Filter>
     </Image>
   </ItemGroup>
