@@ -3,8 +3,9 @@
 # include "Utility/SingletonFinalizer.h"
 
 EndManager::EndManager()
+	: m_name()
 {
-	m_pattern = EndPattern::None;
+	
 }
 
 EndManager& EndManager::instance()
@@ -13,22 +14,17 @@ EndManager& EndManager::instance()
 	return instance;
 }
 
-void EndManager::setPattern(const EndPattern& pattern)
+void EndManager::Set(const std::string& name)
 {
-	instance().m_pattern = pattern;
+	instance().m_name = name;
 }
 
-void EndManager::setPattern(int patternNum)
+std::string EndManager::Get()
 {
-	instance().m_pattern = (EndPattern)(patternNum + 1);
-}
-
-EndPattern EndManager::getPattern()
-{
-	return instance().m_pattern;
+	return instance().m_name;
 }
 
 bool EndManager::isEnd()
 {
-	return instance().m_pattern != EndPattern::None;
+	return !instance().m_name.empty();
 }

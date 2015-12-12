@@ -8,6 +8,7 @@
 # include "Utility/SingletonFinalizer.h"
 
 # include "Manager/EndManager.h"
+# include "Manager/MessageManager.h"
 
 # include "Scene/ISceneMediator.h"
 
@@ -19,53 +20,25 @@ End::End()
 
 void End::loadContents(Loader& loader)
 {
-	std::string endResources[] =
-	{
-		"Texture/end/bad.png",
-		"Texture/end/clear.png",
-		"Texture/end/bad.png",
-		"Texture/end/true.png",
-		"Texture/end/clear.png",
-	};
 
-	loader.loadContent("bad", "Texture/end/bad.png");
-	loader.loadContent("clear", "Texture/end/clear.png");
-	loader.loadContent("true", "Texture/end/true.png");
-
-	int num = (int)EndManager::getPattern() - 1;
-	
-	if (num < 0)
-	{
-		num = 0;
-	}
-
-	m_endNum = num;
 }
 
 void End::initialize()
 {
-
+	std::string end = EndManager::Get();
+	MessageManager::Add(end);
+	MessageManager::SetShow(true);
+	m_manager->pushScene(Scene::Message);
 }
 
 void End::update()
 {
-	if (Input::IsClicked(KEY_INPUT_RETURN))
-	{
-		m_manager->changeScene(Scene::StaffRoll, 60.0f);
-	}
+	m_manager->changeScene(Scene::StaffRoll, 60.0f);
 }
 
 void End::draw(Renderer& renderer)
 {
-	static const std::string endResourceNames[] =
-	{
-		"bad",
-		"clear",
-		"bad",
-		"true",
-		"clear",
-	};
-	renderer.drawTexture(endResourceNames[m_endNum], Renderer::AspectType::LetterBox, Vector2(0, 0), Vector2(0.5f, 0.5f));
+
 }
 
 void End::post()

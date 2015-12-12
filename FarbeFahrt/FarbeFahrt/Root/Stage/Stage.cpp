@@ -15,6 +15,8 @@
 
 # include "Manager/MessageManager.h"
 
+# include "Message/MessageOperation.h"
+
 #include "Utility/Debug.h"
 
 Stage::Stage(World* world)
@@ -93,9 +95,9 @@ void Stage::apply(const StageData& data, bool isClear)
 	m_point = data.gimmickPoint;
 
 	// 開始時のメッセージ処理
-	for (auto&& message : data.message)
+	if (data.message != "")
 	{
-		MessageManager::Add(message);
+		MessageManager::Add(data.message);
 	}
 }
 

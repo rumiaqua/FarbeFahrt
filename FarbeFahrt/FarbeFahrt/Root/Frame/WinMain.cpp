@@ -29,6 +29,7 @@ void init()
 	ChangeWindowMode(!isFullScreen);
 	SetUseDirect3D9Ex(TRUE);
 	MV1SetUseOrigShader(TRUE);
+	SetAlwaysRunFlag(TRUE);
 	SetFullSceneAntiAliasingMode(4, 4);//‚¿‚å‚Á‚Æ‚«‚ê‚¢‚É‚È‚éI
 	// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‚Ì‰Šú‰»
 }

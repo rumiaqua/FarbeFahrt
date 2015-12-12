@@ -1,6 +1,8 @@
 # pragma once
 
-# include <vector>
+# include "Message/MessageData.h"
+
+# include <unordered_map>
 
 class MessageManager
 {
@@ -10,14 +12,15 @@ public:
 
 public:
 
-	static void Add(const std::string& text);
-	static std::vector<std::string> Get();
-	static void Clear();
+	static void Initialize(const std::string& indexFilename);
+	static void Add(const std::string& name);
+	static MessageData& Get();
 	static bool CanShow();
 	static void SetShow(bool canShow);
 
 private:
 
-	std::vector<std::string> m_text;
+	std::unordered_map<std::string, MessageData> m_messageDatas;
+	MessageData m_data;
 	bool m_canShow;
 };

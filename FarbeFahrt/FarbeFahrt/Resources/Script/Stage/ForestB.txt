@@ -27,8 +27,7 @@ o,SkinObject,book,-50,25,-42,null,1/1.0f/59.0f/0.5f/0/0/8.0f
 g,1
 
 # 次のステージ
-n,Resources/Stage/HouseA.txt,Resources/Stage/HouseB.txt
+n,HouseA,HouseB
 
 # 開始時のテキスト
-t,再び森に入ったエミルは湖へ向かいます。
-t,この森には危ない段差があるので、エミルは慎重に進みます。
+t,ForestB
