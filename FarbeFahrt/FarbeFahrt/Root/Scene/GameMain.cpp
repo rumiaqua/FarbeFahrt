@@ -42,7 +42,7 @@ void GameMain::initialize()
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
 	//m_stageManager.initialize("Resources/Stage/PlainA.txt");
 
-	m_stageManager.initialize("Resources/Stage/PlainA.txt");
+	m_stageManager.initialize("Resources/Stage/Lowles.txt");
 
 	StoryManager::set(BitFlag::GOAL);
 
