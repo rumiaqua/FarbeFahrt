@@ -425,6 +425,9 @@
     <ClInclude Include="Root\Scene\SceneManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Actor\Gimmick\GimmickManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
     <ClInclude Include="Root\Message\MessageData.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -432,9 +435,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Message\MessageScriptLoader.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Actor\Gimmick\GimmickManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -787,9 +787,9 @@
     <Text Include="Resources\Script\Message\Stage\Opening.txt" />
     <Text Include="Resources\Script\Message\Stage\PlainA.txt" />
     <Text Include="Resources\Script\Message\Stage\PlainB.txt" />
+    <Text Include="Resources\Script\Stage\ForestA.txt" />
     <Text Include="Resources\Script\Stage\DangerSwamp.txt" />
     <Text Include="Resources\Script\Stage\DimForest.txt" />
-    <Text Include="Resources\Script\Stage\ForestA.txt" />
     <Text Include="Resources\Script\Stage\ForestB.txt" />
     <Text Include="Resources\Script\Stage\ForestC.txt" />
     <Text Include="Resources\Script\Stage\ForestD.txt" />

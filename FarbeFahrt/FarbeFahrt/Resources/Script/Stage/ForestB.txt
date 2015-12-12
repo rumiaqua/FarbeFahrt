@@ -2,6 +2,9 @@
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
+r,bookG,Model/Gimmick/bookmark.mqo
+r,book,Model/本/新本.pmx
+
 # フィールドリソース
 r,forestGround,Stage/平原/平原地面/平原地面.pmx
 r,forestBackground,Stage/平原/平原背景/平原背景.pmx
@@ -15,6 +18,13 @@ f,forestBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
+
+# ギミック
+o,Gimmick,bookG,90,25,-50,null,1/1.0f/590.0f/5.0f
+o,SkinObject,book,-50,25,-42,null,1/1.0f/59.0f/0.5f/0/0/8.0f
+
+# ギミック起動変数
+g,1
 
 # 次のステージ
 n,HouseA,HouseB
