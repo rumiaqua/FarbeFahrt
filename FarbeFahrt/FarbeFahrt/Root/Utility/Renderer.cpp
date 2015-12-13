@@ -87,17 +87,16 @@ void Renderer::setTextureData(const ContentMap& textureData)
 void Renderer::drawDepth()
 {
 	Vector3 lightPosition = { 20.0f,120.0f,-70.0f };
-	Vector3 lightTarget{ -30.0f,30.0f,0.0f };
+	Vector3 lightTarget{ -45.0f,-30.0f,0.0f };
 	SetDrawScreen(m_buffer.depthBuffer);
-	//SetDrawScreen(DX_SCREEN_BACK);
 	SetBackgroundColor(255, 255, 255);
 	// 描画ターゲットをクリア
 	ClearDrawScreen();
 	// 背景色を黒でクリア
 	SetBackgroundColor(0, 0, 0);
 
-	SetupCamera_Ortho(400.0f);
-	SetCameraNearFar(1.0f, 400.0f);
+	SetupCamera_Ortho(500.0f);
+	SetCameraNearFar(1.0f, 500.0f);
 	SetCameraPositionAndTarget_UpVecY(lightPosition, lightTarget);
 
 	// 現在の設定を保持
@@ -139,7 +138,7 @@ void Renderer::drawDepth()
 void Renderer::drawModelWithDepthShadow()
 {
 	// クリップ面の指定
-	SetCameraNearFar(1.0f, 12000.0f);
+	SetCameraNearFar(1.0f, 600.0f);
 	// カメラのビュー行列を保存した行列に変更
 	SetCameraPositionAndTarget_UpVecY(m_cameraData.pos, m_cameraData.terget);
 	// 自作シェーダーの使用開始
@@ -179,7 +178,6 @@ void Renderer::drawModelWithDepthShadow()
 	}
 	// 自作シェーダーの使用終了
 	MV1SetUseOrigShader(FALSE);
-
 	// テクスチャ１を無効にする
 	SetUseTextureToShader(1, -1);
 	// スロット43を初期化？
@@ -291,63 +289,54 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 	float animTotalTime;
 	auto& modelData = m_modelData.at(name);
 	modelData.isSkinMesh = true;
-	if (!isBlend)
+
+	if (animNumber != modelData.animNumber)//アニメーションが切り替わった時
 	{
-		int handle = modelData.modelHandle;
-		int AttachIndex = MV1AttachAnim(handle, animNumber, -1, FALSE);
-		float max = MV1GetAttachAnimTotalTime(handle, AttachIndex);
-		MV1SetAttachAnimTime(handle, AttachIndex, fmodf(frame,max));
-	}
-	else
-	{
-		if (animNumber != modelData.animNumber)//アニメーションが切り替わった時
-		{
-			modelData.animNumber = animNumber;
-			if (modelData.playAnim2 != -1)
-			{
-				int result = MV1DetachAnim(modelData.modelHandle, modelData.playAnim2);
-				modelData.playAnim2 = -1;
-			}
-			modelData.playAnim2 = modelData.playAnim1;
-			modelData.animPlayCount2 = modelData.animPlayCount1;
-
-			modelData.playAnim1 = MV1AttachAnim(modelData.modelHandle, modelData.animNumber);
-			modelData.animPlayCount1 = 0.0f;
-			modelData.animBlendRate = modelData.playAnim2 == -1 ? 1.0f : 0.0f;
-
-		}
-
-		if (modelData.animBlendRate < 1.0f)
-		{
-			modelData.animBlendRate += ANIM_BLEND_SPEED;
-			if (modelData.animBlendRate > 1.0f)
-			{
-				modelData.animBlendRate = 1.0f;
-			}
-		}
-
-		if (modelData.playAnim1 != -1)
-		{
-			animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim1);
-			modelData.animPlayCount1 = frame;
-			if (modelData.animPlayCount1 >= animTotalTime)
-			{
-				modelData.animPlayCount1 = fmod(modelData.animPlayCount1, animTotalTime);
-			}
-			MV1SetAttachAnimTime(modelData.modelHandle, modelData.playAnim1, modelData.animPlayCount1);
-			MV1SetAttachAnimBlendRate(modelData.modelHandle, modelData.playAnim1, modelData.animBlendRate);
-		}
+		modelData.animNumber = animNumber;
 		if (modelData.playAnim2 != -1)
 		{
-			animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim2);
-			modelData.animPlayCount2 = frame;
-			if (modelData.animPlayCount2 >= animTotalTime)
-			{
-				modelData.animPlayCount2 = fmod(modelData.animPlayCount2, animTotalTime);
-			}
-			MV1SetAttachAnimTime(modelData.modelHandle, modelData.playAnim2, modelData.animPlayCount2);
-			MV1SetAttachAnimBlendRate(modelData.modelHandle, modelData.playAnim2, 1.0f - modelData.animBlendRate);
+			int result = MV1DetachAnim(modelData.modelHandle, modelData.playAnim2);
+			modelData.playAnim2 = -1;
 		}
+		modelData.playAnim2 = modelData.playAnim1;
+		modelData.animPlayCount2 = modelData.animPlayCount1;
+
+		modelData.playAnim1 = MV1AttachAnim(modelData.modelHandle, modelData.animNumber);
+		modelData.animPlayCount1 = 0.0f;
+		modelData.animBlendRate = modelData.playAnim2 == -1 ? 1.0f : 0.0f;
+
+	}
+
+	if (modelData.animBlendRate < 1.0f)
+	{
+		modelData.animBlendRate += ANIM_BLEND_SPEED;
+		if (modelData.animBlendRate > 1.0f)
+		{
+			modelData.animBlendRate = 1.0f;
+		}
+	}
+
+	if (modelData.playAnim1 != -1)
+	{
+		animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim1);
+		modelData.animPlayCount1 = frame;
+		if (modelData.animPlayCount1 >= animTotalTime)
+		{
+			modelData.animPlayCount1 = fmod(modelData.animPlayCount1, animTotalTime);
+		}
+		MV1SetAttachAnimTime(modelData.modelHandle, modelData.playAnim1, modelData.animPlayCount1);
+		MV1SetAttachAnimBlendRate(modelData.modelHandle, modelData.playAnim1, modelData.animBlendRate);
+	}
+	if (modelData.playAnim2 != -1)
+	{
+		animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim2);
+		modelData.animPlayCount2 = frame;
+		if (modelData.animPlayCount2 >= animTotalTime)
+		{
+			modelData.animPlayCount2 = fmod(modelData.animPlayCount2, animTotalTime);
+		}
+		MV1SetAttachAnimTime(modelData.modelHandle, modelData.playAnim2, modelData.animPlayCount2);
+		MV1SetAttachAnimBlendRate(modelData.modelHandle, modelData.playAnim2, 1.0f - modelData.animBlendRate);
 	}
 
 
