@@ -13,6 +13,8 @@
 # include "Manager/EndManager.h"
 # include "Manager/MessageManager.h"
 # include "Actor/Field/Field.h"
+# include "Actor/StaticObject.h"
+# include "Utility/Math.h"
 
 
 GameMain::GameMain()
@@ -34,6 +36,7 @@ void GameMain::loadContents(Loader& loader)
 	}*/
 
 	loader.loadContent("book", "Model/本/新本.pmx");
+	loader.loadContent("desk", "Model/机/つくえ.mqo");
 }
 
 void GameMain::initialize()
@@ -43,6 +46,10 @@ void GameMain::initialize()
 	// 本
 	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
 		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f));
+	// 机
+	m_world->addActor(ActorTag::Effect, std::make_shared<StaticObject>(
+		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
+
 
 	// m_stageManager.next(m_world.get());
 

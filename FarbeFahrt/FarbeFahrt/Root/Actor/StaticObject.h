@@ -8,9 +8,10 @@ class StaticObject :
 {
 public:
 	StaticObject(IWorld& world,const std::string& modelName,const Vector3& position);
+	StaticObject(IWorld& world, const std::string& modelName, const Vector3& position, float angle, float scale);
 private:
 	virtual void onDraw(Renderer& render)const override;
 
 private:
-	Capsule m_capsule;
+	float m_scale;
 };
