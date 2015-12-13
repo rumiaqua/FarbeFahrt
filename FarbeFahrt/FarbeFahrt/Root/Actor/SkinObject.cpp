@@ -68,7 +68,7 @@ void SkinObject::onDraw(Renderer & render) const
 		Vector3 position = Matrix::Translation(worldPose);
 		Matrix rotate = Matrix::Rotation(worldPose);
 		render.setScale(m_name, Vector3(m_scale, m_scale, m_scale));
-		render.drawSkinModel(m_name, position, rotate, m_anmNo, frame);
+		render.drawSkinModel(m_name, position, rotate, m_anmNo, frame,false);
 	}
 
 	BaseActor::onDraw(render);

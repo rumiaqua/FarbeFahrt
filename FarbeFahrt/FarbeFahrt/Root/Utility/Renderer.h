@@ -117,15 +117,14 @@ struct ModelData{
 	float animPlayCount2;
 	float animBlendRate = 1.0f;
 	bool isSkinMesh = false;
-	bool use = true;
-	ModelData(int modelHandle, int playAnim1, int playAnim2, float animPlayCount1, float animPlayCount2,bool use)
+	bool Use = false;
+	ModelData(int modelHandle, int playAnim1, int playAnim2, float animPlayCount1, float animPlayCount2)
 	{
 		this->modelHandle = modelHandle;
 		this->playAnim1 = playAnim1;
 		this->playAnim2 = playAnim2;
 		this->animPlayCount1 = animPlayCount1;
 		this->animPlayCount2 = animPlayCount2;
-		this->use = use;
 	}
 	ModelData(){}
 };
@@ -139,8 +138,8 @@ public://MyGameで実装
 	void setTextureData(const ContentMap& textureData);
 	void draw();
 public:
-	void drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const;
-	void drawSkinModel(const std::string& name, const Vector3& position, const Matrix& rotation, int animNumber, float frame);//アニメーション付き
+	void drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation);
+	void drawSkinModel(const std::string& name, const Vector3& position, const Matrix& rotation, int animNumber, float frame, bool isBlend);//アニメーション付き
 	void setScale(const std::string& name, const Vector3& scale);
 	void refreshAnimParam(const std::string& name);
 	void refreshAnimParam();
@@ -188,12 +187,15 @@ public:
 private:
 	void initDepthBuffer();
 	void loadShader();
+	void setDrawList(const std::string& name, int handle);
 	void drawDepth();
 	void drawModelWithDepthShadow();
+
 	void setFont();
 	void drawFont();
 private:
 	std::unordered_map<std::string, ModelData> m_modelData;
+	std::vector<std::pair<std::string, int>>drawList;
 	std::unordered_map<std::string, int> m_textureData;
 	Buffer m_buffer;
 	ShaderHandle m_shaderHandle;

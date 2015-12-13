@@ -112,7 +112,7 @@ void Player::playerInput()
 void Player::onDraw(Renderer& render)const
 {
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
-	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame);
+	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame,true);
 	BaseActor::onDraw(render);
 }
 

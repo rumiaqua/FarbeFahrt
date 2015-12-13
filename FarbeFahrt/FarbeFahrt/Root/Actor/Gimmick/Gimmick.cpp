@@ -53,7 +53,7 @@ void Gimmick::onUpdate()
 
 void Gimmick::onDraw(Renderer & render) const
 {
-	render.drawSkinModel(m_name, getPosition(), getRotation(), m_anmNo, frame);
+	render.drawSkinModel(m_name, getPosition(), getRotation(), m_anmNo, frame,false);
 
 	Debug::Println("gimmickFlag:%d",m_flag);
 
