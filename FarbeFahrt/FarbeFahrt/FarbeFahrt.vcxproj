@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Root\Utility\BGM.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\GimmickManager.cpp" />
     <ClCompile Include="Root\Experimental\ObjectViewer.cpp" />
     <ClCompile Include="Root\Manager\MessageManager.cpp" />
@@ -80,6 +81,7 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Utility\BGM.h" />
     <ClInclude Include="Root\Actor\Gimmick\GimmickManager.h" />
     <ClInclude Include="Root\Experimental\ObjectViewer.h" />
     <ClInclude Include="Root\Manager\MessageManager.h" />

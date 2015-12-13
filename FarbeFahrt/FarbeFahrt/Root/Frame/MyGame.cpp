@@ -13,7 +13,7 @@
 #include "Utility/SingletonFinalizer.h"
 #include "Utility/HandleList.h"
 #include "Utility/SE.h"
-
+#include "Utility/BGM.h"
 #include "Utility\Debug.h"
 
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
@@ -64,8 +64,10 @@ void MyGame::run()
 	{
 		//前のシーンのデータ削除
 		 
-		// スタック操作d
+		// スタック操作
 		m_sceneManager.resolve(loader);
+		loader.loadContent("test1", "Sound/BGM/bad_end.mp3");
+		loader.loadContent("test2", "Sound/BGM/end2.mp3");
 
 		// ロード
 		loader.load();
@@ -90,6 +92,7 @@ void MyGame::run()
 		render.setModelData(loader.getModelList());
 		render.setTextureData(loader.getTextureList());
 		SE::SetData(loader.getSEList());
+		BGM::set(loader.getBGMList());
 	}
 
 	// 更新
@@ -98,6 +101,14 @@ void MyGame::run()
 	// 描画
 	ClearDrawScreen();
 	Debug::Println("GetASyncLoadNum : %d",GetASyncLoadNum());
+	if (Input::IsPressed(KEY_INPUT_B))
+	{
+		BGM::play("test1");
+	}
+	if (Input::IsPressed(KEY_INPUT_G))
+	{
+		BGM::play("test2");
+	}
 
 	m_sceneManager.draw(render);
 	render.draw();
