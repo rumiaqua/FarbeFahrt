@@ -2,6 +2,13 @@
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
+r,rock1G,Model/Gimmick/bookmark.mqo
+r,rock1,Model/Gimmick/ForestA/flower.mqo
+r,rock2G,Model/Gimmick/bookmark.mqo
+r,rock2,Model/Gimmick/ForestA/flower.mqo
+r,rock3G,Model/Gimmick/bookmark.mqo
+r,rock3,Model/Gimmick/ForestA/flower.mqo
+
 # フィールドリソース
 r,forestGround,Stage/森/森地面/森地面.pmx
 r,forestBackground,Stage/森/森背景/森背景.pmx
@@ -15,6 +22,17 @@ f,forestBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
+
+# ギミック
+o,Gimmick,rock1G,90,25,-50,null,1/1.0f/590.0f/5.0f
+o,SkinObject,rock1,-120,25,-50,null,1/1.0f/59.0f/8.0f/10.0f/0/8.0f
+o,Gimmick,rock2G,90,25,-10,null,1/1.0f/590.0f/5.0f
+o,SkinObject,rock2,-60,25,-50,null,1/1.0f/59.0f/8.0f/10.0f/0/8.0f
+o,Gimmick,rock3G,-230,25,-50,null,1/1.0f/590.0f/5.0f
+o,SkinObject,rock3,0,25,-50,null,1/1.0f/59.0f/8.0f/10.0f/0/8.0f
+
+# ギミック起動変数
+g,0
 
 # 次のステージ
 n,HouseC,HouseC
