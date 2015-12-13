@@ -49,7 +49,7 @@ void Renderer::initDepthBuffer()
 	SetDrawValidFloatTypeGraphCreateFlag(TRUE);
 	SetCreateDrawValidGraphChannelNum(1);
 
-	m_buffer.depthBuffer = MakeScreen(4096, 4096, FALSE);
+	m_buffer.depthBuffer = MakeScreen(2048, 2048, FALSE);
 
 	SetDrawValidFloatTypeGraphCreateFlag(FALSE);
 	SetCreateDrawValidGraphChannelNum(4);
