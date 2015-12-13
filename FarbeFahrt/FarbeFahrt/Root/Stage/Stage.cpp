@@ -107,6 +107,10 @@ void Stage::update()
 	{
 		StoryManager::set(BitFlag::GIMMICK);
 	}
+	else
+	{
+		StoryManager::reset(BitFlag::GIMMICK);
+	}
 
 	// XVˆ—
 	m_actorManager.update();
@@ -123,6 +127,7 @@ void Stage::draw(Renderer& renderer) const
 	m_actorManager.draw(renderer);
 
 	Debug::Println("nextPoint:%d",m_point);
+	Debug::Println(String::Create("isPoint : ", GimmickManager::isPoint(m_point) ? "true" : "false"));
 
 	Debug::Println(m_stageName);
 }
