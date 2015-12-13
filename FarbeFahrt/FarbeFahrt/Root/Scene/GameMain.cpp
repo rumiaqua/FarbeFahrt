@@ -12,6 +12,7 @@
 # include "Utility/SingletonFinalizer.h"
 # include "Manager/EndManager.h"
 # include "Manager/MessageManager.h"
+# include "Actor/Field/Field.h"
 
 
 GameMain::GameMain()
@@ -31,11 +32,17 @@ void GameMain::loadContents(Loader& loader)
 	{
 		loader.loadContent(resource.first, resource.second);
 	}*/
+
+	loader.loadContent("book", "Model/本/新本.pmx");
 }
 
 void GameMain::initialize()
 {
 	m_world = std::make_shared<World>();
+
+	// 本
+	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
+		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f));
 
 	// m_stageManager.next(m_world.get());
 
@@ -44,8 +51,7 @@ void GameMain::initialize()
 	MessageManager::Initialize("Resources/Script/Message/index.csv");
 	StoryManager::set(BitFlag::GOAL);
 
-	Debug::SetEnabled(true);
-	Debug::SetClear(true);
+	m_world->findActor("book")->sendMessage("OpenAnimate", nullptr);
 }
 
 void GameMain::update()
@@ -84,10 +90,18 @@ void GameMain::post()
 
 	if (m_stageManager.isNext())
 	{
+		if (EndManager::CanEnd())
+		{
+			m_manager->changeScene(Scene::End, 60.0f);
+			EndManager::SetEnd(false);
+			return;
+		}
+
 		if (!m_stageManager.endName().empty())
 		{
 			EndManager::Set(m_stageManager.endName());
-			m_manager->changeScene(Scene::End, 60.0f);
+			m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
+			m_world->findActor("book")->sendMessage("ReverseOpenAnimate", nullptr);
 			return;
 		}
 

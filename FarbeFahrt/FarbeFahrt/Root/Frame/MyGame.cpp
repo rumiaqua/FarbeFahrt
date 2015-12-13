@@ -38,6 +38,9 @@ MyGame::MyGame()
 	// m_sceneManager.pushScene(Scene::Message);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
 	// m_sceneManager.pushScene(Scene::End);
+
+	Debug::SetEnabled(true);
+	Debug::SetClear(true);
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
@@ -47,6 +50,15 @@ MyGame::MyGame()
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 void MyGame::run()
 {
+	if (Input::IsClicked(KEY_INPUT_F12))
+	{
+		Debug::SetEnabled(!Debug::IsEnabled());
+	}
+	if (Input::IsClicked(KEY_INPUT_F11))
+	{
+		Debug::SetClear(!Debug::IsClear());
+	}
+
 	// シーンに変更があった時
 	if (m_sceneManager.hasChanged())
 	{

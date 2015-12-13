@@ -10,6 +10,7 @@
 # include "Utility/StoryManager/StoryManager.h"
 
 # include "Manager/MessageManager.h"
+# include "Manager/EndManager.h"
 
 namespace
 {
@@ -22,6 +23,7 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	, m_elapsedTime(0.0f)
 	, m_animationNumber(0)
 	, m_isAnimating(false)
+	, m_isReversed(false)
 {
 
 }
@@ -30,9 +32,24 @@ void Field::onUpdate()
 {
 	if (m_isAnimating)
 	{
-		m_elapsedTime += 1.0f;
-		m_isAnimating = m_elapsedTime < ANIMATION_FRAME;
-		m_elapsedTime = Math::Min({ m_elapsedTime, ANIMATION_FRAME });
+		if (m_isReversed)
+		{
+			m_elapsedTime -= 1.0f;
+			m_isAnimating = m_elapsedTime > 0.0f;
+			m_elapsedTime = Math::Max({ m_elapsedTime, 0.0f });
+		}
+		else
+		{
+			m_elapsedTime += 1.0f;
+			m_isAnimating = m_elapsedTime < ANIMATION_FRAME;
+			m_elapsedTime = Math::Min({ m_elapsedTime, ANIMATION_FRAME });
+		}
+
+		if (!m_isAnimating &&
+			m_isReversed)
+		{
+			EndManager::SetEnd(true);
+		}
 
 # define Open 0
 		if (m_animationNumber == Open &&
@@ -111,6 +128,12 @@ void Field::onMessage(const std::string& message, void* parameter)
 		close();
 	}
 
+	if (message == "ReverseOpenAnimate" && !m_isAnimating)
+	{
+		// 開くアニメーション逆再生
+		reverseOpen();
+	}
+
 	BaseActor::onMessage(message, parameter);
 }
 
@@ -119,6 +142,7 @@ void Field::open()
 	m_elapsedTime = 0.0f;
 	m_animationNumber = 0;
 	m_isAnimating = true;
+	m_isReversed = false;
 }
 
 void Field::close()
@@ -126,4 +150,13 @@ void Field::close()
 	m_elapsedTime = 0.0f;
 	m_animationNumber = 1;
 	m_isAnimating = true;
+	m_isReversed = false;
+}
+
+void Field::reverseOpen()
+{
+	m_elapsedTime = ANIMATION_FRAME;
+	m_animationNumber = 0;
+	m_isAnimating = true;
+	m_isReversed = true;
 }
