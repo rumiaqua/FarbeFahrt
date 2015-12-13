@@ -4,6 +4,7 @@
 
 EndManager::EndManager()
 	: m_name()
+	, m_canEnd(false)
 {
 	
 }
@@ -27,4 +28,14 @@ std::string EndManager::Get()
 bool EndManager::isEnd()
 {
 	return !instance().m_name.empty();
+}
+
+void EndManager::SetEnd(bool canEnd)
+{
+	instance().m_canEnd = canEnd;
+}
+
+bool EndManager::CanEnd()
+{
+	return instance().m_canEnd;
 }

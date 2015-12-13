@@ -13,9 +13,11 @@ public:
 private:
 	void open();
 	void close();
+	void reverseOpen();
 private:
 	float m_scale;
 	float m_elapsedTime;
 	int m_animationNumber;
 	bool m_isAnimating;
+	bool m_isReversed;
 };
