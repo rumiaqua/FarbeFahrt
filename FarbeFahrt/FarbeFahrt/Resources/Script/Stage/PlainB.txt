@@ -23,6 +23,9 @@ o,Goal,Goal,50,30,-80,null
 o,Gimmick,sunG,90,20,-50,null,1/1.0f/590.0f/5.0f
 o,SkinObject,sun,-50,25,-42,null,1/1.0f/59.0f/0.5f/0/0/8.0f
 
+# ギミック起動変数
+g,1
+
 # 次のステージ
 n,DimForest,ForestD
 
