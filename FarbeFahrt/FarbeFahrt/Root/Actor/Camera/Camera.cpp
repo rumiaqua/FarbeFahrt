@@ -225,6 +225,10 @@ void Camera::toPlayerCamera()
 	{
 		m_cameraState.cameraMode = CameraMode::FadeIn;
 		actorSet("Player");
+		if (m_actor.expired())
+		{
+			return;
+		}
 		m_actor.lock()->sendMessage("StartControl", nullptr);
 	}
 }

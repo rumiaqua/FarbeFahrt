@@ -39,9 +39,6 @@ void Message::initialize()
 	MessageManager::SetShow(false);
 
 	m_textStack.clear();
-
-	Debug::SetEnabled(true);
-	Debug::SetClear(true);
 }
 
 void Message::update()
