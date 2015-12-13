@@ -537,8 +537,6 @@
     <None Include="Resources\Stage\ローレス\地面\ローレス開き地面.vmd" />
     <None Include="Resources\Stage\ローレス\地面\ローレス閉じ地面.vmd" />
     <None Include="Resources\Stage\ローレス\テント\ローレステント.vmd" />
-    <None Include="Resources\Stage\ハイレス\ハイレス1127.pmx" />
-    <None Include="Resources\Stage\ハイレス\町背景1126.pmx" />
     <None Include="Resources\Stage\ハイレス\背景\ハイレス背景ページ開き1127.vmd" />
     <None Include="Resources\Stage\ハイレス\背景\ハイレス背景ページ閉じ1127.vmd" />
     <None Include="Resources\Stage\ハイレス\ベル\ベル.vmd" />

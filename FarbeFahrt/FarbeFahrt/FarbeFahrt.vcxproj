@@ -187,7 +187,6 @@
     <None Include="Resources\Stage\House\家地面\HouseGround.pmx" />
     <None Include="Resources\Stage\House\家地面\HouseGround000.vmd" />
     <None Include="Resources\Stage\ハイレス\Textures\ハイレス（テクスチャあり）.mqo" />
-    <None Include="Resources\Stage\ハイレス\ハイレス1127.pmx" />
     <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス地面.pmx" />
     <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス地面000.vmd" />
     <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス地面001.vmd" />
@@ -196,7 +195,6 @@
     <None Include="Resources\Stage\ハイレス\ハイレス背景\ハイレス背景000.vmd" />
     <None Include="Resources\Stage\ハイレス\ハイレス背景\ハイレス背景001.vmd" />
     <None Include="Resources\Stage\ハイレス\ベル\ベル.vmd" />
-    <None Include="Resources\Stage\ハイレス\町背景1126.pmx" />
     <None Include="Resources\Stage\ハイレス\背景\ハイレス背景ページ閉じ1127.vmd" />
     <None Include="Resources\Stage\ハイレス\背景\ハイレス背景ページ開き1127.vmd" />
     <None Include="Resources\Stage\ローレス\テント\ローレステント.vmd" />
