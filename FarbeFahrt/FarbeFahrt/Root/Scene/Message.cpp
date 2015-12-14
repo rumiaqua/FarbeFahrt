@@ -6,6 +6,7 @@
 # include "Utility/Debug.h"
 # include "Utility/Loader.h"
 # include "Utility/Mouse.h"
+# include "Utility/Math.h"
 
 # include "GameMain.h"
 # include "ISceneMediator.h"
@@ -22,6 +23,8 @@ Message::Message()
 	, m_elapsedTime(0.0f)
 	, m_characterPerFrame(1.0f)
 	, m_isStoped(false)
+	, m_textureFadeFrame(30.0f)
+	, m_isFade(false)
 {
 	
 }
@@ -49,6 +52,17 @@ void Message::update()
 	processMessage();
 
 	++m_elapsedTime;
+
+	if (m_isFade)
+	{
+		m_isFade = m_elapsedTime < m_textureFadeFrame;
+		m_elapsedTime = Math::Min({ m_elapsedTime, m_textureFadeFrame });
+		if (m_isFade)
+		{
+			return;
+		}
+	}
+
 	float totalTime = getLengthMessage() * m_characterPerFrame;
 	if (m_elapsedTime > totalTime)
 	{
@@ -72,7 +86,7 @@ void Message::update()
 			return;
 		}
 		
-		m_manager->popScene();
+		m_manager->popScene(60.0f);
 	}
 }
 
@@ -80,7 +94,10 @@ void Message::draw(Renderer& renderer)
 {
 	if (!m_textureName.empty())
 	{
+		int t = !m_isFade ? 255 : m_elapsedTime / m_textureFadeFrame * 255;
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, t);
 		renderer.drawTexture(m_textureName, Renderer::AspectType::LetterBox);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, -1);
 	}
 	renderMessage(renderer);
 }
@@ -124,6 +141,8 @@ void Message::processMessage()
 		// ‰æ‘œ•\Ž¦
 		if (op.operation == "g")
 		{
+			m_elapsedTime = 0;
+			m_isFade = true;
 			m_textureName = op.message;
 		}
 

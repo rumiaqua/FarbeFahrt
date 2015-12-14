@@ -46,6 +46,7 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("TrueEnd", "Texture/end/true.png");
 	loader.loadContent("Message", "Texture/end/message.png");
 	loader.loadContent("Clear", "Texture/end/clear.png");
+	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 }
 
 void GameMain::initialize()
@@ -67,7 +68,7 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
-	m_stageManager.initialize("Resources/Script/Stage/index.csv", "PlainA");
+	m_stageManager.initialize("Resources/Script/Stage/index.csv", "HouseD");
 	StoryManager::set(BitFlag::GOAL);
 
 	EndManager::Clear();

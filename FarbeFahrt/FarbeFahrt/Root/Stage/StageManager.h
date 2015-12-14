@@ -3,6 +3,7 @@
 # include "StageData.h"
 
 # include "Utility/String.h"
+# include "Utility/Optional.h"
 
 # include <unordered_map>
 

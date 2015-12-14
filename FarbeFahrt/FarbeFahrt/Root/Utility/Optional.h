@@ -86,7 +86,7 @@ public:
 
 		if (own && other)
 		{
-			own = other;
+			*own = *other;
 		}
 		else if (!own && other)
 		{
