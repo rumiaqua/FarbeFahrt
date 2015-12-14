@@ -2,11 +2,13 @@
 
 #include "BaseScene.h"
 
+# include "Scene/Scene.h"
 # include "Scene/Editor.h"
 # include "Scene/GameMain.h"
 # include "Scene/End.h"
 # include "Scene/StaffRoll.h"
 # include "Scene/Message.h"
+# include "Scene/Opening.h"
 
 # include "Experimental/ObjectViewer.h"
 
@@ -15,6 +17,8 @@
 #include "Utility/SE.h"
 #include "Utility/BGM.h"
 #include "Utility\Debug.h"
+
+# include "Manager/MessageManager.h"
 
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
@@ -28,19 +32,26 @@ MyGame::MyGame()
 
 	m_sceneManager.addScene<Editor>(Scene::Editor);
 	m_sceneManager.addScene<GameMain>(Scene::GameMain);
-
+	m_sceneManager.addScene<Opening>(Scene::Opening);
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
 	m_sceneManager.addScene<End>(Scene::End);
 	m_sceneManager.addScene<StaffRoll>(Scene::StaffRoll);
 	m_sceneManager.addScene<Message>(Scene::Message);
 
-	m_sceneManager.pushScene(Scene::GameMain);
+	m_sceneManager.pushScene(Scene::Opening);
 	// m_sceneManager.pushScene(Scene::Message);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
 	// m_sceneManager.pushScene(Scene::End);
 
 	Debug::SetEnabled(true);
 	Debug::SetClear(true);
+
+	MessageManager::Initialize("Resources/Script/Message/index.csv");
+
+	loader.loadContent("test1", "Sound/BGM/bad_end.mp3");
+	loader.loadContent("test2", "Sound/BGM/end2.mp3");
+
+	loader.loadContent("TrueEnd", "Texture/end/true.png");
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
@@ -66,8 +77,6 @@ void MyGame::run()
 		 
 		// スタック操作
 		m_sceneManager.resolve(loader);
-		loader.loadContent("test1", "Sound/BGM/bad_end.mp3");
-		loader.loadContent("test2", "Sound/BGM/end2.mp3");
 
 		// ロード
 		loader.load();

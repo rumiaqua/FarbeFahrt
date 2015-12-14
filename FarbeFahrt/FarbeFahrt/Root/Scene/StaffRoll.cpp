@@ -11,6 +11,8 @@
 
 # include "Utility/Point2.h"
 
+# include "Scene.h"
+
 StaffRoll::StaffRoll()
 	: m_elapsedTime(0.0f)
 	, m_needTime(30.0f * 60.0f)

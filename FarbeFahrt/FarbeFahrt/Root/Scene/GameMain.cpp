@@ -16,11 +16,12 @@
 # include "Actor/StaticObject.h"
 # include "Utility/Math.h"
 
+# include "Scene.h"
 
 GameMain::GameMain()
 	: m_stageManager()
 {
-	StoryManager::initialize();
+
 }
 
 void GameMain::loadContents(Loader& loader)
@@ -41,6 +42,8 @@ void GameMain::loadContents(Loader& loader)
 
 void GameMain::initialize()
 {
+	StoryManager::initialize();
+
 	m_world = std::make_shared<World>();
 
 	// 本
@@ -55,7 +58,6 @@ void GameMain::initialize()
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
 	m_stageManager.initialize("Resources/Script/Stage/index.csv", "PlainA");
-	MessageManager::Initialize("Resources/Script/Message/index.csv");
 	StoryManager::set(BitFlag::GOAL);
 
 	m_world->findActor("book")->sendMessage("OpenAnimate", nullptr);

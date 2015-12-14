@@ -12,6 +12,8 @@
 
 # include "Scene/ISceneMediator.h"
 
+# include "Scene.h"
+
 End::End()
 	: m_endNum()
 {
