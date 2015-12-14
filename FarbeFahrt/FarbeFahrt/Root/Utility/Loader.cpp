@@ -110,12 +110,6 @@ void Loader::loadASync()
 			j->second.contentData.use = false;//useƒtƒ‰ƒO‚ðfalse‚É‚·‚é
 		}
 	}
-	if (std::all_of(m_ContentsList.begin(), m_ContentsList.end(), [] (const std::pair<std::string, ContentDataAndTag>& data)
-		{ return data.second.contentData.handle != 0; }))
-	{
-		m_onCompleted = true;
-		return;
-	}
 
 	SetUseASyncLoadFlag(TRUE);
 	for (auto& data : m_ContentsList)
