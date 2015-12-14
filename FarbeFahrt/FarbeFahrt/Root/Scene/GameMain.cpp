@@ -40,7 +40,7 @@ void GameMain::loadContents(Loader& loader)
 		loader.loadContent(resource.first, resource.second);
 	}*/
 
-	loader.loadContent("book", "Model/本/新本.pmx");
+	loader.loadContent("BaseBook", "Model/本/新本.pmx");
 	loader.loadContent("desk", "Model/机/つくえ.mqo");
 
 	loader.loadContent("TrueEnd", "Texture/end/true.png");
@@ -59,7 +59,7 @@ void GameMain::initialize()
 	/*m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
 		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f));*/
 	m_world->addActor(ActorTag::Effect, std::make_shared<AnimateActor>(
-		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f));
+		*m_world, "BaseBook", Vector3(0.0f, -5.0f, 0.0f), 3.0f));
 	// 机
 	m_world->addActor(ActorTag::Effect, std::make_shared<StaticObject>(
 		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
@@ -76,7 +76,7 @@ void GameMain::initialize()
 	AnimateActor::AnimationInfo info;
 	info.animationNumber = 0;
 	info.animationTime = 180.0f;
-	m_world->findActor("book")->sendMessage("Animate", &info);
+	m_world->findActor("BaseBook")->sendMessage("Animate", &info);
 }
 
 void GameMain::update()
@@ -133,7 +133,7 @@ void GameMain::post()
 				info.animationNumber = 0;
 				info.animationTime = 180.0f;
 				info.isReversed = true;
-				m_world->findActor("book")->sendMessage("Animate", &info);
+				m_world->findActor("BaseBook")->sendMessage("Animate", &info);
 			}
 			return;
 		}
