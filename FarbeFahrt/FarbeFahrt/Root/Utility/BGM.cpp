@@ -32,6 +32,7 @@ void BGM::play(const std::string& name)
 	{
 		StopSoundMem(bgm.oldBGMhandle);
 		PlaySoundMem(bgm.playBGMhandle, DX_PLAYTYPE_BACK);
+		SetVolumeSound(128);
 		bgm.oldBGMhandle = bgm.playBGMhandle;
 	}
 }

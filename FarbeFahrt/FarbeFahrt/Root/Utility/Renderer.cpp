@@ -29,7 +29,7 @@ void Renderer::setFont()
 		// フォント読込エラー処理s
 		MessageBox(NULL, "フォント読込失敗", "", MB_OK);
 	}
-	m_fontData.fontHandle = CreateFontToHandle("しねきゃぷしょん", fontSize, 3, -1, -1, 2);
+	m_fontData.fontHandle = CreateFontToHandle("しねきゃぷしょん", fontSize, 3, DX_FONTTYPE_ANTIALIASING_EDGE, -1, 2);
 	ChangeFontType(DX_FONTTYPE_ANTIALIASING_EDGE);
 
 	ChangeFont("しねきゃぷしょん", DX_CHARSET_DEFAULT);
