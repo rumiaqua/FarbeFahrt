@@ -43,6 +43,8 @@ private:
 	bool m_isStoped;
 
 	std::string m_textureName;
+	float m_elapsedFadeTime;
 	float m_textureFadeFrame;
+	float m_deltaFade;
 	bool m_isFade;
 };

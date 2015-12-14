@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Root\Actor\AnimateActor.cpp" />
+    <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
     <ClCompile Include="Root\Scene\Opening.cpp" />
     <ClCompile Include="Root\Scene\Title.cpp" />
     <ClCompile Include="Root\Utility\BGM.cpp" />
@@ -85,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\AnimateActor.h" />
+    <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Scene\Opening.h" />
     <ClInclude Include="Root\Scene\Scene.h" />
     <ClInclude Include="Root\Scene\Title.h" />

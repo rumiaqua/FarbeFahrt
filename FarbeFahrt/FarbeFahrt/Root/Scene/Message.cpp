@@ -23,15 +23,17 @@ Message::Message()
 	, m_elapsedTime(0.0f)
 	, m_characterPerFrame(1.0f)
 	, m_isStoped(false)
+	, m_elapsedFadeTime(0.0f)
 	, m_textureFadeFrame(30.0f)
+	, m_deltaFade(1.0f)
 	, m_isFade(false)
 {
-	
+
 }
 
 void Message::loadContents(Loader& loader)
 {
-	
+
 }
 
 void Message::initialize()
@@ -51,17 +53,18 @@ void Message::update()
 	// メッセージデータの処理
 	processMessage();
 
-	++m_elapsedTime;
-
 	if (m_isFade)
 	{
-		m_isFade = m_elapsedTime < m_textureFadeFrame;
-		m_elapsedTime = Math::Min({ m_elapsedTime, m_textureFadeFrame });
+		m_elapsedFadeTime += m_deltaFade;
+		m_isFade = m_elapsedFadeTime < m_textureFadeFrame;
+		m_elapsedFadeTime = Math::Min({ m_elapsedFadeTime, m_textureFadeFrame });
 		if (m_isFade)
 		{
 			return;
 		}
 	}
+
+	++m_elapsedTime;
 
 	float totalTime = getLengthMessage() * m_characterPerFrame;
 	if (m_elapsedTime > totalTime)
@@ -85,8 +88,22 @@ void Message::update()
 			processMessage();
 			return;
 		}
-		
-		m_manager->popScene(60.0f);
+
+		/*if (m_elapsedFadeTime > 0.0f)
+		{
+			m_deltaFade = -1.0f;
+			m_isFade = true;
+			return;
+		}
+		m_elapsedFadeTime = 0.0f;*/
+
+		if (m_elapsedFadeTime > 0.0f)
+		{
+			m_manager->popScene(30.0f);
+			return;
+		}
+
+		m_manager->popScene();
 	}
 }
 
@@ -94,7 +111,7 @@ void Message::draw(Renderer& renderer)
 {
 	if (!m_textureName.empty())
 	{
-		int t = !m_isFade ? 255 : m_elapsedTime / m_textureFadeFrame * 255;
+		int t = m_elapsedFadeTime / m_textureFadeFrame * 255;
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, t);
 		renderer.drawTexture(m_textureName, Renderer::AspectType::LetterBox);
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, -1);
@@ -142,6 +159,7 @@ void Message::processMessage()
 		if (op.operation == "g")
 		{
 			m_elapsedTime = 0;
+			m_elapsedFadeTime = 0.0f;
 			m_isFade = true;
 			m_textureName = op.message;
 		}

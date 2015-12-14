@@ -28,25 +28,6 @@ void Opening::loadContents(Loader& loader)
 {
 	loader.loadContent("book", "Model/–{/V–{.pmx");
 	loader.loadContent("desk", "Model/Š÷/‚Â‚­‚¦.mqo");
-
-	loader.loadContent("Player", "Model/MMD–‚“±o’íVer1.1/ƒ~ƒnƒCƒ‹.pmx");
-	loader.loadContent("Goal", "Model/•½Œ´/‚­‚³.pmx");
-
-	loader.loadContent("plainGround", "Stage/•½Œ´/•½Œ´’n–Ê/•½Œ´’n–Ê.pmx");
-	loader.loadContent("plainBackground", "Stage/•½Œ´/•½Œ´”wŒi/•½Œ´”wŒi.pmx");
-
-	loader.loadContent("flower1G", "Model/Gimmick/bookmark.mqo");
-	loader.loadContent("flower1", "Model/Gimmick/ForestA/flower.mqo");
-	loader.loadContent("flower2G", "Model/Gimmick/bookmark.mqo");
-	loader.loadContent("flower2", "Model/Gimmick/ForestA/flower.mqo");
-
-	loader.loadContent("nuts1G", "Model/Gimmick/bookmark.mqo");
-	loader.loadContent("nuts1", "Model/Gimmick/ForestA/nuts1.mqo");
-	loader.loadContent("nuts2G", "Model/Gimmick/bookmark.mqo");
-	loader.loadContent("nuts2", "Model/Gimmick/ForestA/nuts2.mqo");
-
-	loader.loadContent("forestGround", "Stage/X/X’n–Ê/X’n–Ê.pmx");
-	loader.loadContent("forestBackground", "Stage/X/X”wŒi/X”wŒi.pmx");
 }
 
 void Opening::initialize()
