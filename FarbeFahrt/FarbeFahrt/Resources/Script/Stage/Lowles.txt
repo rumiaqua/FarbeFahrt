@@ -6,15 +6,15 @@ r,tentG,Model/Gimmick/bookmark.mqo
 r,tent,Model/Gimmick/Lowles/tent.mqo
 
 # フィールドリソース
-r,heilesGround,Stage/ハイレス/ハイレス地面/ハイレス地面.pmx
-r,heilesBackground,Stage/ハイレス/ハイレス背景/ハイレス背景.pmx
+r,lowlesGround,Stage/ローレス/ローレス地面/ローレス地面.pmx
+r,lowlesBackground,Stage/ローレス/ローレス背景/ローレス背景.pmx
 
 # プレイヤーの座標
 p,-180,50,-80
 
 # フィールド
-f,heilesGround,0,0,0,3
-f,heilesBackground,0,0,0,3
+f,lowlesGround,0,0,0,3
+f,lowlesBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-80,null

@@ -126,8 +126,8 @@ void GameMain::post()
 		{
 			if (!EndManager::isEnd())
 			{
-				EndManager::Set(m_stageManager.endName());
-				m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
+			EndManager::Set(m_stageManager.endName());
+			m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
 
 				AnimateActor::AnimationInfo info;
 				info.animationNumber = 0;

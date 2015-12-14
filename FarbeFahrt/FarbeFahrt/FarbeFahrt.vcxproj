@@ -24,6 +24,7 @@
     <ClCompile Include="Root\Scene\Title.cpp" />
     <ClCompile Include="Root\Utility\BGM.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\GimmickManager.cpp" />
+    <ClCompile Include="Root\Actor\Gimmick\TouchGimmick.cpp" />
     <ClCompile Include="Root\Experimental\ObjectViewer.cpp" />
     <ClCompile Include="Root\Manager\MessageManager.cpp" />
     <ClCompile Include="Root\Message\MessageData.cpp" />
@@ -40,7 +41,6 @@
     <ClCompile Include="Root\Actor\Camera\Camera.cpp" />
     <ClCompile Include="Root\Actor\Camera\Ray.cpp" />
     <ClCompile Include="Root\Actor\Field\Field.cpp" />
-    <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
     <ClCompile Include="Root\Actor\Goal\Goal.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Actor\PlayerSpawner.cpp" />
@@ -90,6 +90,7 @@
     <ClInclude Include="Root\Scene\Title.h" />
     <ClInclude Include="Root\Utility\BGM.h" />
     <ClInclude Include="Root\Actor\Gimmick\GimmickManager.h" />
+    <ClInclude Include="Root\Actor\Gimmick\TouchGimmick.h" />
     <ClInclude Include="Root\Experimental\ObjectViewer.h" />
     <ClInclude Include="Root\Manager\MessageManager.h" />
     <ClInclude Include="Root\Message\MessageData.h" />
@@ -106,7 +107,6 @@
     <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Actor\Book.h" />
     <ClInclude Include="Root\Actor\Camera\Ray.h" />
-    <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Actor\Goal\Goal.h" />
     <ClInclude Include="Root\Actor\PlayerSpawner.h" />
     <ClInclude Include="Root\Actor\SkinObject.h" />
