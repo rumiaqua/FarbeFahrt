@@ -3,11 +3,11 @@
 #include "Collision/Capsule.h"
 #include "Utility/String.h"
 
-class Gimmick :
+class CommandGimmick :
 	public BaseActor
 {
 public:
-	Gimmick(IWorld& world, const std::string& modelName, const Vector3& position, int anmNo, float frameSpeed, float maxframe, float radius);
+	CommandGimmick(IWorld& world, const std::string& modelName, const Vector3& position, int anmNo, float frameSpeed, float maxframe, float radius);
 	void frameReset();
 private:
 	virtual void onUpdate()override;

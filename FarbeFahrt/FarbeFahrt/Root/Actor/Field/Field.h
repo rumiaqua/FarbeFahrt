@@ -14,6 +14,7 @@ private:
 	void open();
 	void close();
 	void reverseOpen();
+	void openShop();
 private:
 	float m_scale;
 	float m_elapsedTime;

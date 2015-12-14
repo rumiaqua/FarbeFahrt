@@ -10,6 +10,7 @@ public:
 	TouchGimmick(IWorld& world, const std::string& modelName, const Vector3& position, float radius);
 private:
 	virtual void onUpdate()override;
+	virtual void onDraw(Renderer& render)const override;
 	virtual void onMessage(const std::string& message, void* parameter)override;
 private:
 	bool m_flag;
