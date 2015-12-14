@@ -68,7 +68,7 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
-	m_stageManager.initialize("Resources/Script/Stage/index.csv", "HouseE");
+	m_stageManager.initialize("Resources/Script/Stage/index.csv", "PlainA");
 	StoryManager::set(BitFlag::GOAL);
 
 	EndManager::Clear();
@@ -122,12 +122,12 @@ void GameMain::post()
 			return;
 		}
 
-		if (!m_stageManager.endName().empty())
+		if (m_stageManager.isEnd())
 		{
 			if (!EndManager::isEnd())
 			{
-			EndManager::Set(m_stageManager.endName());
-			m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
+				EndManager::Set(m_stageManager.endName());
+				m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
 
 				AnimateActor::AnimationInfo info;
 				info.animationNumber = 0;

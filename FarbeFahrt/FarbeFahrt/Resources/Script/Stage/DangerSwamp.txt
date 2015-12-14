@@ -32,10 +32,11 @@ o,Gimmick,rock3G,-230,25,-50,null,1/1.0f/590.0f/5.0f
 o,SkinObject,rock3,0,25,-50,null,1/1.0f/59.0f/8.0f/10.0f/0/8.0f
 
 # ギミック起動変数
-g,0
+g,1
 
 # 次のステージ
-n,HouseC,HouseC
+n,,HouseC
+e,Ending3,show
 
 # 開始時のテキスト
 t,DangerSwamp
