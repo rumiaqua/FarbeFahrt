@@ -5,6 +5,8 @@
 # include "Actor/ActorManager/ActorManager.h"
 # include "Actor/Player.h"
 # include "Actor/Gimmick/Gimmick.h"
+# include "Actor/Gimmick/TouchGimmick.h"
+# include "Actor/Gimmick/CommandGimmick.h"
 # include "Actor/SkinObject.h"
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
@@ -57,7 +59,6 @@ void Stage::apply(const StageData& data, bool isClear)
 		// 未実装
 		if (object.name == "Gimmick")
 		{
-			//次回、コライダーの判定をずらす処理を書く
 			auto parameter = String::Split(object.parameter, '/');
 			int animNo = String::ToValue<int>(parameter[0]);
 			float animSpeed = String::ToValue<float>(parameter[1]);
@@ -65,6 +66,23 @@ void Stage::apply(const StageData& data, bool isClear)
 			float radius = String::ToValue<float>(parameter[3]);
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Gimmick>(
 				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame,radius));
+		}
+		if (object.name == "TouchGimmick")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			float radius = String::ToValue<float>(parameter[0]);
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<TouchGimmick>(
+				*m_world, object.resource, object.position, radius));
+		}
+		if (object.name == "CommandGimmick")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			int animNo = String::ToValue<int>(parameter[0]);
+			float animSpeed = String::ToValue<float>(parameter[1]);
+			float maxFrame = String::ToValue<float>(parameter[2]);
+			float radius = String::ToValue<float>(parameter[3]);
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<CommandGimmick>(
+				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame, radius));
 		}
 		if (object.name == "SkinObject")
 		{
@@ -93,6 +111,11 @@ void Stage::apply(const StageData& data, bool isClear)
 	}	
 
 	m_point = data.gimmickPoint;
+
+	if (StoryManager::get(BitFlag::GIMMICK))
+	{
+
+	}
 
 	// 開始時のメッセージ処理
 	if (data.message != "")

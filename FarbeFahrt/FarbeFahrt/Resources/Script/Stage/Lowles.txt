@@ -5,6 +5,8 @@ r,Goal,Model/平原/くさ.pmx
 r,tentG,Model/Gimmick/bookmark.mqo
 r,tent,Model/Gimmick/Lowles/tent.mqo
 
+r,testG,Model/Gimmick/bookmark.mqo
+
 # フィールドリソース
 r,lowlesGround,Stage/ローレス/ローレス地面/ローレス地面.pmx
 r,lowlesBackground,Stage/ローレス/ローレス背景/ローレス背景.pmx
@@ -20,8 +22,10 @@ f,lowlesBackground,0,0,0,3
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
-o,Gimmick,tentG,90,25,-50,null,1/1.0f/590.0f/5.0f
-o,SkinObject,tent,-61,8,40,null,1/1.0f/59.0f/3.0f/0.0f/0/8.0f
+o,TouchGimmick,tentG,-63,8,40,null,10.0f
+o,SkinObject,tent,-61,80,40,null,1/1.0f/59.0f/3.0f/0.0f/0/8.0f
+
+o,CommandGimmick,testG,90,25,-50,null,1/1.0f/590.0f/5.0f
 
 # ギミック起動変数
 g,1
