@@ -29,9 +29,9 @@ void Renderer::setFont()
 		// フォント読込エラー処理s
 		MessageBox(NULL, "フォント読込失敗", "", MB_OK);
 	}
-	m_fontData.fontHandle = CreateFontToHandle("しねきゃぷしょん", fontSize, 3,-1,-1,2);
+	m_fontData.fontHandle = CreateFontToHandle("しねきゃぷしょん", fontSize, 3, DX_FONTTYPE_ANTIALIASING_EDGE, -1, 2);
 	ChangeFontType(DX_FONTTYPE_ANTIALIASING_EDGE);
-	
+
 	ChangeFont("しねきゃぷしょん", DX_CHARSET_DEFAULT);
 
 }
@@ -49,7 +49,7 @@ void Renderer::initDepthBuffer()
 	SetDrawValidFloatTypeGraphCreateFlag(TRUE);
 	SetCreateDrawValidGraphChannelNum(1);
 
-	m_buffer.depthBuffer = MakeScreen(4096, 4096, FALSE);
+	m_buffer.depthBuffer = MakeScreen(2048, 2048, FALSE);
 
 	SetDrawValidFloatTypeGraphCreateFlag(FALSE);
 	SetCreateDrawValidGraphChannelNum(4);
@@ -71,7 +71,7 @@ void Renderer::setModelData(const ContentMap& modelData)
 	{
 		m_modelData.emplace(std::piecewise_construct,
 			std::forward_as_tuple(data.first),
-			std::forward_as_tuple(data.second.handle, -1, -1, 0.0f, 0.0f,data.second.use));
+			std::forward_as_tuple(data.second.handle, -1, -1, 0.0f, 0.0f));
 	}
 
 }
@@ -79,25 +79,24 @@ void Renderer::setTextureData(const ContentMap& textureData)
 {
 	for (auto &data : textureData)
 	{
-		m_textureData.emplace(data.first,data.second.handle);
+		m_textureData.emplace(data.first, data.second.handle);
 	}
 }
 
 // 深度描画？
 void Renderer::drawDepth()
 {
-	Vector3 lightPosition = {20.0f,120.0f,-70.0f};
-	Vector3 lightTarget{-30.0f,30.0f,0.0f};
+	Vector3 lightPosition = { 20.0f,120.0f,-70.0f };
+	Vector3 lightTarget{ -45.0f,-30.0f,0.0f };
 	SetDrawScreen(m_buffer.depthBuffer);
-	//SetDrawScreen(DX_SCREEN_BACK);
 	SetBackgroundColor(255, 255, 255);
 	// 描画ターゲットをクリア
 	ClearDrawScreen();
 	// 背景色を黒でクリア
 	SetBackgroundColor(0, 0, 0);
 
-	SetupCamera_Ortho(400.0f);
-	SetCameraNearFar(1.0f, 400.0f);
+	SetupCamera_Ortho(500.0f);
+	SetCameraNearFar(1.0f, 500.0f);
 	SetCameraPositionAndTarget_UpVecY(lightPosition, lightTarget);
 
 	// 現在の設定を保持
@@ -111,7 +110,7 @@ void Renderer::drawDepth()
 	// 全モデルデータの表示
 	for (auto&& model : m_modelData)
 	{
-		if (model.second.use == false)
+		if (model.second.Use == false)
 		{
 			continue;
 		}
@@ -139,7 +138,7 @@ void Renderer::drawDepth()
 void Renderer::drawModelWithDepthShadow()
 {
 	// クリップ面の指定
-	SetCameraNearFar(1.0f, 12000.0f);
+	SetCameraNearFar(1.0f, 600.0f);
 	// カメラのビュー行列を保存した行列に変更
 	SetCameraPositionAndTarget_UpVecY(m_cameraData.pos, m_cameraData.terget);
 	// 自作シェーダーの使用開始
@@ -156,7 +155,7 @@ void Renderer::drawModelWithDepthShadow()
 	// 全モデルデータの描画
 	for (auto& model : m_modelData)
 	{
-		if (model.second.use == false)
+		if (model.second.Use == false)
 		{
 			continue;
 		}
@@ -175,14 +174,18 @@ void Renderer::drawModelWithDepthShadow()
 		}
 		// モデルの描画
 		MV1DrawModel(model.second.modelHandle);
+		model.second.Use = false;
 	}
 	// 自作シェーダーの使用終了
 	MV1SetUseOrigShader(FALSE);
-
 	// テクスチャ１を無効にする
 	SetUseTextureToShader(1, -1);
 	// スロット43を初期化？
 	ResetVSConstF(43, 8);
+}
+void Renderer::setDrawList(const std::string& name, int handle)
+{
+	drawList.push_back(std::make_pair(name, handle));
 }
 void Renderer::draw()
 {
@@ -190,10 +193,9 @@ void Renderer::draw()
 	m_cameraData.pos = GetCameraPosition();
 	m_cameraData.terget = GetCameraTarget();
 	// 深度の描画
-	//drawDepth();
+	drawDepth();
 	// 影の描画
-	//drawModelWithDepthShadow();
-	// drawModelWithDepthShadow();
+	drawModelWithDepthShadow();
 	// フォントの描画
 	drawFont();
 }
@@ -256,14 +258,12 @@ void Renderer::drawFont()
 	}
 	m_fontData.buffer.clear();
 }
-void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)const
+void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)
 {
 	const int &handle = m_modelData.at(name).modelHandle;
 	MV1SetPosition(handle, position);
 	MV1SetRotationMatrix(handle, rotation);
-
-	MV1DrawModel(handle);
-
+	m_modelData.at(name).Use = true;
 }
 void Renderer::refreshAnimParam(const std::string& name)
 {
@@ -282,13 +282,14 @@ void Renderer::refreshAnimParam()
 	}
 }
 void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
-	const Matrix& rotation, int animNumber, float frame)
+	const Matrix& rotation, int animNumber, float frame, bool isBlend)
 {
 	//見辛いから後々関数分けする予定
 	//サンプル丸パクリスペクト
 	float animTotalTime;
 	auto& modelData = m_modelData.at(name);
 	modelData.isSkinMesh = true;
+
 	if (animNumber != modelData.animNumber)//アニメーションが切り替わった時
 	{
 		modelData.animNumber = animNumber;
@@ -314,9 +315,10 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 			modelData.animBlendRate = 1.0f;
 		}
 	}
+
 	if (modelData.playAnim1 != -1)
 	{
-		animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim1); 
+		animTotalTime = MV1GetAttachAnimTotalTime(modelData.modelHandle, modelData.playAnim1);
 		modelData.animPlayCount1 = frame;
 		if (modelData.animPlayCount1 >= animTotalTime)
 		{
@@ -336,6 +338,8 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 		MV1SetAttachAnimTime(modelData.modelHandle, modelData.playAnim2, modelData.animPlayCount2);
 		MV1SetAttachAnimBlendRate(modelData.modelHandle, modelData.playAnim2, 1.0f - modelData.animBlendRate);
 	}
+
+
 	//現在のアニメーションを再生
 
 	drawNormalModel(name, position, rotation);
@@ -371,7 +375,7 @@ void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int anim
 	}
 
 	float totalTime = MV1GetAttachAnimTotalTime(m_modelData.at(name).modelHandle, modelData.playAnim1);
-	float frame =  totalTime * t;
+	float frame = totalTime * t;
 
 	if (modelData.animBlendRate < 1.0f)
 	{
@@ -408,14 +412,14 @@ void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int anim
 	drawNormalModel(name, pose.position, pose.rotation);
 }
 
-void Renderer::drawTexture(const std::string& name, int x, int y,int cx,int cy, float width, float height, float angle) const
+void Renderer::drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const
 {
-	DrawRotaGraph3(x, y,cx, cy, width, height,
+	DrawRotaGraph3(x, y, cx, cy, width, height,
 		(double)angle, m_textureData.at(name), FALSE, FALSE);
 }
 void Renderer::drawTexture(const std::string& name, int x, int y)
 {
-	DrawGraph(x, y, m_textureData.at(name),TRUE);
+	DrawGraph(x, y, m_textureData.at(name), TRUE);
 }
 
 void Renderer::drawTexture(const std::string& name, const AspectType& type)

@@ -2,19 +2,24 @@
 
 #include "BaseScene.h"
 
+# include "Scene/Scene.h"
 # include "Scene/Editor.h"
 # include "Scene/GameMain.h"
 # include "Scene/End.h"
 # include "Scene/StaffRoll.h"
 # include "Scene/Message.h"
+# include "Scene/Opening.h"
+# include "Scene/Title.h"
 
 # include "Experimental/ObjectViewer.h"
 
 #include "Utility/SingletonFinalizer.h"
 #include "Utility/HandleList.h"
 #include "Utility/SE.h"
-
+#include "Utility/BGM.h"
 #include "Utility\Debug.h"
+
+# include "Manager/MessageManager.h"
 
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
@@ -28,19 +33,25 @@ MyGame::MyGame()
 
 	m_sceneManager.addScene<Editor>(Scene::Editor);
 	m_sceneManager.addScene<GameMain>(Scene::GameMain);
-
+	m_sceneManager.addScene<Opening>(Scene::Opening);
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
 	m_sceneManager.addScene<End>(Scene::End);
 	m_sceneManager.addScene<StaffRoll>(Scene::StaffRoll);
 	m_sceneManager.addScene<Message>(Scene::Message);
+	m_sceneManager.addScene<Title>(Scene::Title);
 
-	m_sceneManager.pushScene(Scene::GameMain);
+	m_sceneManager.pushScene(Scene::Title);
 	// m_sceneManager.pushScene(Scene::Message);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
 	// m_sceneManager.pushScene(Scene::End);
 
 	Debug::SetEnabled(true);
 	Debug::SetClear(true);
+
+	MessageManager::Initialize("Resources/Script/Message/index.csv");
+
+	loader.loadContent("test1", "Sound/BGM/bad_end.mp3");
+	loader.loadContent("test2", "Sound/BGM/end2.mp3");
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
@@ -64,7 +75,7 @@ void MyGame::run()
 	{
 		//前のシーンのデータ削除
 		 
-		// スタック操作d
+		// スタック操作
 		m_sceneManager.resolve(loader);
 
 		// ロード
@@ -90,6 +101,7 @@ void MyGame::run()
 		render.setModelData(loader.getModelList());
 		render.setTextureData(loader.getTextureList());
 		SE::SetData(loader.getSEList());
+		BGM::set(loader.getBGMList());
 	}
 
 	// 更新
@@ -98,6 +110,15 @@ void MyGame::run()
 	// 描画
 	ClearDrawScreen();
 	Debug::Println("GetASyncLoadNum : %d",GetASyncLoadNum());
+	Debug::Println("CanShow : %s", MessageManager::CanShow() ? "true" : "false");
+	if (Input::IsPressed(KEY_INPUT_B))
+	{
+		BGM::play("test1");
+	}
+	if (Input::IsPressed(KEY_INPUT_G))
+	{
+		BGM::play("test2");
+	}
 
 	m_sceneManager.draw(render);
 	render.draw();

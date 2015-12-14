@@ -53,7 +53,14 @@ void Gimmick::onUpdate()
 
 void Gimmick::onDraw(Renderer & render) const
 {
-	render.drawSkinModel(m_name, getPosition(), getRotation(), m_anmNo, frame);
+	if (MV1GetAnimNum(Singleton<HandleList>::Instance().getHandle(m_name)) > 0)
+	{
+		render.drawSkinModel(m_name, getPosition(), getRotation(), m_anmNo, frame, false);
+	}
+	else
+	{
+		render.drawNormalModel(m_name, getPosition(), getRotation());
+	}
 
 	Debug::Println("gimmickFlag:%d",m_flag);
 

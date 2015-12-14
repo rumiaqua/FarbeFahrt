@@ -25,6 +25,11 @@ std::string EndManager::Get()
 	return instance().m_name;
 }
 
+void EndManager::Clear()
+{
+	instance().m_name.clear();
+}
+
 bool EndManager::isEnd()
 {
 	return !instance().m_name.empty();
@@ -38,4 +43,14 @@ void EndManager::SetEnd(bool canEnd)
 bool EndManager::CanEnd()
 {
 	return instance().m_canEnd;
+}
+
+void EndManager::SetShowStaffRoll(bool showStaffRoll)
+{
+	instance().m_isShowStaffRoll = showStaffRoll;
+}
+
+bool EndManager::IsShowStaffRoll()
+{
+	return instance().m_isShowStaffRoll;
 }

@@ -9,15 +9,6 @@ class SceneManager;
 class Loader;
 class Renderer;
 
-enum class Scene{
-	NullScene = 1,
-	Editor,
-	GameMain,
-	ObjectViewer,
-	End,
-	StaffRoll,
-	Message,
-};
 class BaseScene
 {
 public:

@@ -11,6 +11,8 @@
 
 # include "Utility/Point2.h"
 
+# include "Scene.h"
+
 StaffRoll::StaffRoll()
 	: m_elapsedTime(0.0f)
 	, m_needTime(30.0f * 60.0f)
@@ -33,7 +35,7 @@ void StaffRoll::update()
 	if (m_elapsedTime > m_needTime ||
 		Mouse::IsClicked(MOUSE_INPUT_2))
 	{
-		m_manager->changeScene(Scene::GameMain, 60.0f);
+		m_manager->changeScene(Scene::Title, 60.0f);
 	}
 
 	if (Mouse::IsPressed(MOUSE_INPUT_1))

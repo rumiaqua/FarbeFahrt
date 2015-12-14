@@ -65,5 +65,10 @@ bool MessageManager::CanShow()
 
 void MessageManager::SetShow(bool canShow)
 {
-	Singleton<MessageManager>::Instance().m_canShow = canShow;
+	auto& m_canShow = Singleton<MessageManager>::Instance().m_canShow;
+	if (m_canShow && canShow)
+	{
+		return;
+	}
+	m_canShow = canShow;
 }

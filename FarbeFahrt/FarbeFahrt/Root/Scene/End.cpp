@@ -12,6 +12,8 @@
 
 # include "Scene/ISceneMediator.h"
 
+# include "Scene.h"
+
 End::End()
 	: m_endNum()
 {
@@ -33,7 +35,7 @@ void End::initialize()
 
 void End::update()
 {
-	m_manager->changeScene(Scene::StaffRoll, 60.0f);
+	m_manager->changeScene(EndManager::IsShowStaffRoll() ? Scene::StaffRoll : Scene::Title, 60.0f);
 }
 
 void End::draw(Renderer& renderer)

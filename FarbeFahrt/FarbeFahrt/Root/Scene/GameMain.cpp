@@ -3,24 +3,29 @@
 # include "Utility/Loader.h"
 # include "Utility/Input.h"
 # include "Utility/Debug.h"
-
-# include "Stage/ScriptStageDataBuilder.h"
-# include "ISceneMediator.h"
-# include "Actor/Camera/Camera.h"
-#include "Utility/StoryManager/StoryManager.h"
-#include "Actor/Gimmick/GimmickManager.h"
+# include "Utility/StoryManager/StoryManager.h"
 # include "Utility/SingletonFinalizer.h"
-# include "Manager/EndManager.h"
-# include "Manager/MessageManager.h"
-# include "Actor/Field/Field.h"
-# include "Actor/StaticObject.h"
 # include "Utility/Math.h"
 
+# include "Stage/ScriptStageDataBuilder.h"
+
+# include "ISceneMediator.h"
+
+# include "Actor/Camera/Camera.h"
+# include "Actor/Gimmick/GimmickManager.h"
+# include "Actor/Field/Field.h"
+# include "Actor/StaticObject.h"
+# include "Actor/AnimateActor.h"
+
+# include "Manager/EndManager.h"
+# include "Manager/MessageManager.h"
+
+# include "Scene.h"
 
 GameMain::GameMain()
 	: m_stageManager()
 {
-	StoryManager::initialize();
+
 }
 
 void GameMain::loadContents(Loader& loader)
@@ -37,14 +42,22 @@ void GameMain::loadContents(Loader& loader)
 
 	loader.loadContent("book", "Model/本/新本.pmx");
 	loader.loadContent("desk", "Model/机/つくえ.mqo");
+
+	loader.loadContent("TrueEnd", "Texture/end/true.png");
+	loader.loadContent("Message", "Texture/end/message.png");
+	loader.loadContent("Clear", "Texture/end/clear.png");
 }
 
 void GameMain::initialize()
 {
+	StoryManager::initialize();
+
 	m_world = std::make_shared<World>();
 
 	// 本
-	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
+	/*m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
+		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f));*/
+	m_world->addActor(ActorTag::Effect, std::make_shared<AnimateActor>(
 		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f));
 	// 机
 	m_world->addActor(ActorTag::Effect, std::make_shared<StaticObject>(
@@ -54,11 +67,15 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
-	m_stageManager.initialize("Resources/Script/Stage/index.csv", "Lowles");
-	MessageManager::Initialize("Resources/Script/Message/index.csv");
+	m_stageManager.initialize("Resources/Script/Stage/index.csv", "PlainA");
 	StoryManager::set(BitFlag::GOAL);
 
-	m_world->findActor("book")->sendMessage("OpenAnimate", nullptr);
+	EndManager::Clear();
+
+	AnimateActor::AnimationInfo info;
+	info.animationNumber = 0;
+	info.animationTime = 180.0f;
+	m_world->findActor("book")->sendMessage("Animate", &info);
 }
 
 void GameMain::update()
@@ -106,9 +123,17 @@ void GameMain::post()
 
 		if (!m_stageManager.endName().empty())
 		{
+			if (!EndManager::isEnd())
+			{
 			EndManager::Set(m_stageManager.endName());
 			m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
-			m_world->findActor("book")->sendMessage("ReverseOpenAnimate", nullptr);
+
+				AnimateActor::AnimationInfo info;
+				info.animationNumber = 0;
+				info.animationTime = 180.0f;
+				info.isReversed = true;
+				m_world->findActor("book")->sendMessage("Animate", &info);
+			}
 			return;
 		}
 

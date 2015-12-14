@@ -110,6 +110,7 @@ void Loader::loadASync()
 			j->second.contentData.use = false;//useƒtƒ‰ƒO‚ðfalse‚É‚·‚é
 		}
 	}
+
 	SetUseASyncLoadFlag(TRUE);
 	for (auto& data : m_ContentsList)
 	{

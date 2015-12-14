@@ -118,7 +118,9 @@ public:
 			if (split[0] == "e")
 			{
 				std::string endName = split[1];
+				std::string showStaffRoll = split[2];
 				output.endName = endName;
+				output.showStaffRoll = showStaffRoll == "show" ? true : false;
 			}
 
 			// メッセージ
