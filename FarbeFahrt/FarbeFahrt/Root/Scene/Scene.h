@@ -9,4 +9,5 @@ enum class Scene {
 	StaffRoll,
 	Message,
 	Opening,
+	Title,
 };

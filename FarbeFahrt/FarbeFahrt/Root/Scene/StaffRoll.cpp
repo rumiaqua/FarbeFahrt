@@ -35,7 +35,7 @@ void StaffRoll::update()
 	if (m_elapsedTime > m_needTime ||
 		Mouse::IsClicked(MOUSE_INPUT_2))
 	{
-		m_manager->changeScene(Scene::GameMain, 60.0f);
+		m_manager->changeScene(Scene::Title, 60.0f);
 	}
 
 	if (Mouse::IsPressed(MOUSE_INPUT_1))

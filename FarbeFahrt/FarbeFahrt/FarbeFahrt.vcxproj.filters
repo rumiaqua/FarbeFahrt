@@ -204,6 +204,9 @@
     <ClCompile Include="Root\Scene\Opening.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Scene\Title.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\Enemy.h">
@@ -450,6 +453,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Scene\Scene.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\Title.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1371,6 +1377,9 @@
       <Filter>リソース ファイル</Filter>
     </Image>
     <Image Include="Resources\Stage\ハイレス\Textures\薬テント.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\title.png">
       <Filter>リソース ファイル</Filter>
     </Image>
   </ItemGroup>
