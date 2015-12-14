@@ -6,15 +6,15 @@ r,bookG,Model/Gimmick/bookmark.mqo
 r,book,Model/本/新本.pmx
 
 # フィールドリソース
-r,forestGround,Stage/平原/平原地面/平原地面.pmx
-r,forestBackground,Stage/平原/平原背景/平原背景.pmx
+r,forestBGround,Stage/森B/地面/森B地面.pmx
+r,forestBBackground,Stage/森B/背景/森B背景.pmx
 
 # プレイヤーの座標
 p,-180,50,-80
 
 # フィールド
-f,forestGround,0,0,0,3
-f,forestBackground,0,0,0,3
+f,forestBGround,0,0,0,3
+f,forestBBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-80,null

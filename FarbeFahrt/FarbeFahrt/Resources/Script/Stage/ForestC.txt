@@ -6,8 +6,8 @@ r,bookG,Model/Gimmick/bookmark.mqo
 r,book,Model/–{/V–{.pmx
 
 # ƒtƒB[ƒ‹ƒhƒŠƒ\[ƒX
-r,forestGround,Stage/X/X’n–Ê/X’n–Ê.pmx
-r,forestBackground,Stage/X/X”wŒi/X”wŒi.pmx
+r,forestGround,Stage/XC/XC’n–Ê/XC’n–Ê.pmx
+r,forestBackground,Stage/XC/XC”wŒi/XC”wŒi.pmx
 
 # ƒvƒŒƒCƒ„[‚ÌÀ•W
 p,-180,50,-80

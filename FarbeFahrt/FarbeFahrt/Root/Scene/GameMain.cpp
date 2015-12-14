@@ -54,7 +54,7 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
-	m_stageManager.initialize("Resources/Script/Stage/index.csv", "DangerSwamp");
+	m_stageManager.initialize("Resources/Script/Stage/index.csv", "Lowles");
 	MessageManager::Initialize("Resources/Script/Message/index.csv");
 	StoryManager::set(BitFlag::GOAL);
 
