@@ -31,6 +31,8 @@ public:
 
 	std::string endName() const;
 
+	bool isEnd() const;
+
 public:
 
 	const StageData& current() const;

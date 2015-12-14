@@ -122,7 +122,7 @@ void GameMain::post()
 			return;
 		}
 
-		if (!m_stageManager.endName().empty())
+		if (m_stageManager.isEnd())
 		{
 			if (!EndManager::isEnd())
 			{

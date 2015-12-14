@@ -93,15 +93,9 @@ void StageManager::next(World* const world)
 	
 	m_current = nextStage();
 	world->apply(m_current, false);
-	if (m_current.endName.empty())
-	{
-		m_next.first = m_stageDatas.at(m_current.nextStage.first);
-		m_next.second = m_stageDatas.at(m_current.nextStage.second);
-	}
-	else
-	{
-		EndManager::SetShowStaffRoll(m_current.showStaffRoll);
-	}
+	m_next.first = m_current.nextStage.first != "" ? m_stageDatas.at(m_current.nextStage.first) : StageData();
+	m_next.second = m_current.nextStage.second != "" ? m_stageDatas.at(m_current.nextStage.second) : StageData();
+	EndManager::SetShowStaffRoll(m_current.showStaffRoll);
 
 	StoryManager::reset(BitFlag::GOAL);
 	StoryManager::reset(BitFlag::NEXT);
@@ -118,6 +112,13 @@ void StageManager::apply(World* const world)
 std::string StageManager::endName() const
 {
 	return m_current.endName;
+}
+
+bool StageManager::isEnd() const
+{
+	std::string endname = m_current.endName;
+	std::string filename = nextStage().filename;
+	return !endname.empty() && filename.empty();
 }
 
 const StageData& StageManager::current() const

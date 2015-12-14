@@ -580,6 +580,12 @@
     <None Include="Resources\Stage\ハイレス\背景\ハイレス背景ページ閉じ1127.vmd" />
     <None Include="Resources\Stage\ハイレス\ベル\ベル.vmd" />
     <None Include="Resources\Stage\ハイレス\Textures\ハイレス（テクスチャあり）.mqo" />
+    <None Include="Resources\Stage\ローレス\ローレス地面\ローレス地面.pmx" />
+    <None Include="Resources\Stage\ローレス\ローレス地面\ローレス地面000.vmd" />
+    <None Include="Resources\Stage\ローレス\ローレス地面\ローレス地面001.vmd" />
+    <None Include="Resources\Stage\ローレス\ローレス背景\ローレス背景.pmx" />
+    <None Include="Resources\Stage\ローレス\ローレス背景\ローレス背景000.vmd" />
+    <None Include="Resources\Stage\ローレス\ローレス背景\ローレス背景001.vmd" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Font\えるまー.ttf" />
@@ -1398,6 +1404,354 @@
       <Filter>リソース ファイル</Filter>
     </Image>
     <Image Include="Resources\Texture\title.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\c1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\c2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\c3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\c4.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\c5.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\c6.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\c7.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\c8.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\cc1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\cc2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\cc3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\cc4.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\cc5.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\cc6.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\cc7.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\cc8.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\flower.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\h11.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\h12.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\h13.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\h14.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\h15.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\h16.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\h17.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\h18.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\hh11.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\hh12.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\hh13.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\hh14.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\hh15.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\hh16.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\hh17.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\hh18.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\kabe.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\yane.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\yuka.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\yuka2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\てんと.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\テント1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\テント2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\てんと２.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\ベル.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\ポール.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\ヤブレ1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\ヤブレ１逆.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\ヤブレ2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\机.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\町背景.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\透過.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\木目2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\薬.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\薬1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\薬2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\薬テント.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス地面\Textures\薬テント２.jpg">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\c1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\c2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\c3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\c4.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\c5.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\c6.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\c7.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\c8.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\cc1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\cc2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\cc3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\cc4.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\cc5.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\cc6.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\cc7.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\cc8.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\flower.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\h11.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\h12.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\h13.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\h14.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\h15.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\h16.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\h17.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\h18.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\hh11.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\hh12.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\hh13.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\hh14.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\hh15.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\hh16.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\hh17.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\hh18.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\kabe.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\yane.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\yuka.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\yuka2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\てんと.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\テント1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\テント2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\てんと２.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\ベル.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\ポール.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\ヤブレ1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\ヤブレ１逆.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\ヤブレ2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\机.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\透過.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\木目2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\薬.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\薬1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\薬2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\薬テント.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\Textures\薬テント２.jpg">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ローレス\ローレス背景\町背景.png">
       <Filter>リソース ファイル</Filter>
     </Image>
   </ItemGroup>

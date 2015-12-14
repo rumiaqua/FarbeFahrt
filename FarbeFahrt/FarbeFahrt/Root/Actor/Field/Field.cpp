@@ -134,6 +134,14 @@ void Field::onMessage(const std::string& message, void* parameter)
 		reverseOpen();
 	}
 
+	if (message == "Animate")
+	{
+		m_elapsedTime = 0.0f;
+		m_animationNumber = *(int*)parameter;
+		m_isAnimating = true;
+		m_isReversed = false;
+	}
+
 	if (message == "OpenShop")
 	{
 		// 開くアニメーション逆再生
