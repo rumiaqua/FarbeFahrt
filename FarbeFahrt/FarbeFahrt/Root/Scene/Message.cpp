@@ -28,7 +28,7 @@ Message::Message()
 
 void Message::loadContents(Loader& loader)
 {
-	loader.loadContent("TrueEnd", "Texture/end/true.png");
+	
 }
 
 void Message::initialize()

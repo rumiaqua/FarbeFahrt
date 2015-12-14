@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Root\Scene\Opening.cpp" />
+    <ClCompile Include="Root\Scene\Title.cpp" />
     <ClCompile Include="Root\Utility\BGM.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\GimmickManager.cpp" />
     <ClCompile Include="Root\Experimental\ObjectViewer.cpp" />
@@ -81,6 +83,9 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Scene\Opening.h" />
+    <ClInclude Include="Root\Scene\Scene.h" />
+    <ClInclude Include="Root\Scene\Title.h" />
     <ClInclude Include="Root\Utility\BGM.h" />
     <ClInclude Include="Root\Actor\Gimmick\GimmickManager.h" />
     <ClInclude Include="Root\Experimental\ObjectViewer.h" />
@@ -537,6 +542,7 @@
     <Image Include="Resources\Texture\NowLoading\loading_3.png" />
     <Image Include="Resources\Texture\NowLoading\loading_back.png" />
     <Image Include="Resources\Texture\StaffRoll.png" />
+    <Image Include="Resources\Texture\title.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Model\MMD魔導姉弟Ver1.1\READ ME.txt" />

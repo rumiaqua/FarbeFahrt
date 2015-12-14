@@ -49,6 +49,7 @@ void StageManager::initialize(const std::string& indexFilename, const std::strin
 	m_next.first = m_next.second = m_stageDatas.at(firstStageName);
 	m_current.playerPosition = Vector3::Zero();
 	m_current.endName = "";
+	m_current.message = "Opening";
 }
 
 bool StageManager::isNext() const
