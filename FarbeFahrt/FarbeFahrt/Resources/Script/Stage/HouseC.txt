@@ -17,4 +17,4 @@ f,houseGround,0,0,0,3
 o,Goal,Goal,-80,30,-25,null
 
 # 次のステージ
-e,Ending3
+e,Ending4,hidden

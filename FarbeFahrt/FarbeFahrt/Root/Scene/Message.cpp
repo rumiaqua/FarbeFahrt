@@ -35,6 +35,8 @@ void Message::initialize()
 {
 	m_elapsedTime = 0.0f;
 
+	m_textureName = "";
+
 	m_message = &MessageManager::Get();
 	MessageManager::SetShow(false);
 
@@ -45,19 +47,6 @@ void Message::update()
 {
 	// メッセージデータの処理
 	processMessage();
-
-	if (!m_textureName.empty())
-	{
-		if (Mouse::IsClicked(MOUSE_INPUT_1))
-		{
-			m_isStoped = false;
-			m_textureName = "";
-		}
-		if (m_isStoped)
-		{
-			return;
-		}
-	}
 
 	++m_elapsedTime;
 	float totalTime = getLengthMessage() * m_characterPerFrame;
@@ -89,12 +78,11 @@ void Message::update()
 
 void Message::draw(Renderer& renderer)
 {
-	if (m_textureName.empty())
+	if (!m_textureName.empty())
 	{
-		renderMessage(renderer);
-		return;
+		renderer.drawTexture(m_textureName, Renderer::AspectType::LetterBox);
 	}
-	renderer.drawTexture("TrueEnd", Renderer::AspectType::LetterBox);
+	renderMessage(renderer);
 }
 
 void Message::post()
@@ -137,8 +125,6 @@ void Message::processMessage()
 		if (op.operation == "g")
 		{
 			m_textureName = op.message;
-			m_isStoped = true;
-			return;
 		}
 
 		// 一度止める

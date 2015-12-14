@@ -39,6 +39,7 @@ struct StageData
 	ObjectList objectList;
 	NextStage nextStage;
 	std::string endName;
+	bool showStaffRoll;
 	std::string message;
 	int gimmickPoint;
 };

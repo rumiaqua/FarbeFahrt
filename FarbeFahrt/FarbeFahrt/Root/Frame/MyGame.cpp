@@ -52,8 +52,6 @@ MyGame::MyGame()
 
 	loader.loadContent("test1", "Sound/BGM/bad_end.mp3");
 	loader.loadContent("test2", "Sound/BGM/end2.mp3");
-
-	loader.loadContent("TrueEnd", "Texture/end/true.png");
 }
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //アクセス:public
@@ -112,6 +110,7 @@ void MyGame::run()
 	// 描画
 	ClearDrawScreen();
 	Debug::Println("GetASyncLoadNum : %d",GetASyncLoadNum());
+	Debug::Println("CanShow : %s", MessageManager::CanShow() ? "true" : "false");
 	if (Input::IsPressed(KEY_INPUT_B))
 	{
 		BGM::play("test1");

@@ -10,6 +10,8 @@
 # include "Utility/SingletonFinalizer.h"
 # include "Utility/StoryManager/StoryManager.h"
 
+# include "Manager/EndManager.h"
+
 # include <fstream>
 
 StageManager::StageManager()
@@ -95,6 +97,10 @@ void StageManager::next(World* const world)
 	{
 		m_next.first = m_stageDatas.at(m_current.nextStage.first);
 		m_next.second = m_stageDatas.at(m_current.nextStage.second);
+	}
+	else
+	{
+		EndManager::SetShowStaffRoll(m_current.showStaffRoll);
 	}
 
 	StoryManager::reset(BitFlag::GOAL);
