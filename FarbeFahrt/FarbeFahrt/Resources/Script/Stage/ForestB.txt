@@ -2,8 +2,11 @@
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
-r,bookG,Model/Gimmick/bookmark.mqo
-r,book,Model/本/新本.pmx
+r,nutsG,Model/Gimmick/bookmark.mqo
+r,nuts,Stage/森B/木の実2.mqo
+
+r,birdG,Model/Gimmick/bookmark.mqo
+r,bird,Stage/森B/鳥/鳥.pmx
 
 # フィールドリソース
 r,forestBGround,Stage/森B/地面/森B地面.pmx
@@ -20,11 +23,14 @@ f,forestBBackground,0,0,0,3
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
-o,Gimmick,bookG,90,25,-50,null,1/1.0f/590.0f/5.0f
-o,SkinObject,book,-50,25,-42,null,1/1.0f/59.0f/0.5f/0/0/8.0f
+o,Gimmick,nutsG,90,25,-50,null,1/1.0f/590.0f/5.0f
+o,SkinObject,nuts,-100,100,-50,null,1/1.0f/59.0f/4.0f/10.0f/0/8.0f
+
+o,Gimmick,birdG,90,25,-100,null,1/1.0f/590.0f/5.0f
+o,SkinObject,bird,-100,-50,0,null,0/1.0f/59.0f/4.0f/10.0f/0/8.0f
 
 # ギミック起動変数
-g,1
+g,2
 
 # 次のステージ
 n,HouseA,HouseB

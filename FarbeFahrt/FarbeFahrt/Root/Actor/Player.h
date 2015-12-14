@@ -19,7 +19,9 @@ private:
 	virtual void onDraw(Renderer& render)const override;	
 	virtual void onMessage(const std::string& message, void* parameter) override;
 private:
-	void playerInput();//入力系（ただの関数分け）
+	Vector3 playerInput();//入力系（ただの関数分け）
+	void animate(const Vector3& moveVec);
+	void fallDown();
 private:
 	PlayerState m_state;
 	float m_moveSpeed;
@@ -27,4 +29,6 @@ private:
 	float m_frame;
 
 	bool m_canControl;
+	bool m_isFallDown;
+	float m_previousFrame;
 };

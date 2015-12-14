@@ -8,6 +8,8 @@
 #include "Utility/Debug.h"
 #include "Utility/MemoryCast.h"
 #include "Utility/StoryManager/StoryManager.h"
+# include "Utility/HandleList.h"
+# include "Utility/SingletonFinalizer.h"
 
 #include "Utility/String.h"
 
@@ -28,6 +30,7 @@ Player::Player(IWorld& world, const Vector3& position)
 		std::make_unique<Capsule>(Vector3(0, 0, 0), Vector3(0, 10, 0), 5.0f)
 		)
 	, m_canControl(true)
+	, m_isFallDown(false)
 {
 	m_moveSpeed = 1.5f;
 	m_state = PlayerState::standing;
@@ -36,17 +39,47 @@ Player::Player(IWorld& world, const Vector3& position)
 }
 void Player::onUpdate()
 {
+	Vector3 moveVec;
+
+	++m_frame;
+
 	if (m_canControl)
 	{
-		playerInput();
-
-		++m_frame;
+		moveVec = playerInput();
 	}
+
+	if (Input::IsClicked(KEY_INPUT_SPACE))
+	{
+		int i = 2;
+		if (auto p = m_world->findActor("forestBGround"))
+		{
+			p->sendMessage("Animate", &i);
+		}
+	}
+
+	if (m_isFallDown)
+	{
+		if (auto handle = Singleton<HandleList>::Instance().getHandle("Player"))
+		{
+			float current = MV1GetAttachAnimTime(handle, 0);
+			float total = MV1GetAnimTotalTime(handle, 0);
+			if (current < m_previousFrame ||
+				current > total)
+			{
+				m_frame = 0;
+				m_canControl = true;
+				m_isFallDown = false;
+			}
+			m_previousFrame = current;
+		}
+	}
+
+	animate(moveVec);
 
 	BaseActor::onUpdate();
 }
 
-void Player::playerInput()
+Vector3 Player::playerInput()
 {
 	// 移動量
 	Vector3 moveVec;
@@ -79,6 +112,22 @@ void Player::playerInput()
 		moveVec -= frontVec * m_moveSpeed;
 	}
 
+	// 重力
+	m_pose.position.y -= 2.0f;
+
+	// 移動制限
+	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim - correction, XLim - correction);
+	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -ZLim, ZLim);
+
+	if (Input::IsClicked(KEY_INPUT_1))
+	{
+		m_pose.position = m_world->findActor("PlayerSpawner")->getPosition();
+	}
+
+	return moveVec;
+}
+void Player::animate(const Vector3& moveVec)
+{
 	// 移動量が0でなければ移動処理とモデル操作
 	if (moveVec.lengthSquared() != 0.0f && m_canControl)
 	{
@@ -97,22 +146,27 @@ void Player::playerInput()
 		m_state = PlayerState::standing;
 	}
 
-	// 重力
-	m_pose.position.y -= 2.0f;
-
-	// 移動制限
-	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim - correction, XLim - correction);
-	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -ZLim, ZLim);
-
-	if (Input::IsClicked(KEY_INPUT_1))
+	if (m_isFallDown)
 	{
-		m_pose.position = m_world->findActor("PlayerSpawner")->getPosition();
+		m_state = PlayerState::Bwalking;
 	}
 }
+
+void Player::fallDown()
+{
+	m_frame = 0.0f;
+	MV1SetAttachAnimTime(Singleton<HandleList>::Instance().getHandle("Player"), 0, 0.0f);
+	m_previousFrame = 0.0f;
+	m_isFallDown = true;
+	m_canControl = false;
+}
+
 void Player::onDraw(Renderer& render)const
 {
+	Debug::Println(String::Create("Elapsed Time : ", MV1GetAttachAnimTime(Singleton<HandleList>::Instance().getHandle("Player"), 0)));
+	// m_previousFrame
 	//ここで描画方法変えられますよ
-	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame,true);
+	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame, true);
 	BaseActor::onDraw(render);
 }
 
@@ -153,9 +207,9 @@ void Player::onMessage(const std::string& message, void* parameter)
 	{
 		if ((bool*)parameter)
 		{
-		m_canControl = false;
-		kill();
-	}
+			m_canControl = false;
+			kill();
+		}
 		else
 		{
 			m_canControl = false;
@@ -164,6 +218,11 @@ void Player::onMessage(const std::string& message, void* parameter)
 	if (message == "StartControl")
 	{
 		m_canControl = true;
+	}
+
+	if (message == "FallDown")
+	{
+		fallDown();
 	}
 
 	BaseActor::onMessage(message, parameter);
