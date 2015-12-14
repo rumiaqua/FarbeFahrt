@@ -41,7 +41,7 @@ o,SkinObject,nuts2,-120,50,-30,null,1/1.0f/59.0f/7.0f/0.0f/0/8.0f
 g,4
 
 # 次のステージ
-n,Lowles,Heiles
+n,Heiles,Lowles
 
 # 開始時のテキスト
 t,ForestA
