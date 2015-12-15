@@ -99,7 +99,7 @@ void Field::onMessage(const std::string& message, void* parameter)
 			std::string& name = static_cast<ModelCollider*>(m_shape.get())->name;
 			int handle = Singleton<HandleList>::Instance().getHandle(name);
 
-			Vector3 start = pos + Vector3::Up() * 50.0f;
+			Vector3 start = pos + Vector3::Up() * 5.0f;
 			Vector3 end = pos + Vector3::Down() * 1.0f;
 
 			MV1RefreshCollInfo(handle);

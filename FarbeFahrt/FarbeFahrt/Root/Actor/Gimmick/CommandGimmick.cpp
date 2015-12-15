@@ -47,10 +47,6 @@ void CommandGimmick::animation()
 void CommandGimmick::onUpdate()
 {
 	animation();
-	if (m_flag/* && m_name == "testG"*/)
-	{
-		m_world->findGroup(ActorTag::Field)->sendMessage("OpenShop", nullptr);
-	}
 
 	BaseActor::onUpdate();
 }
@@ -90,11 +86,8 @@ void CommandGimmick::onMessage(const std::string& message, void* parameter)
 	{
 		if (!m_flag)
 		{
+			m_world->findGroup(ActorTag::Field)->sendMessage("OpenShop", nullptr);
 			m_flag = true;
-		}
-		else
-		{
-			m_flag = false;
 		}
 	}
 
