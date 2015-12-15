@@ -88,6 +88,11 @@ void GameMain::update()
 		BGM::play(m_stageManager.bgmName());
 	}
 
+	if (Input::IsClicked(KEY_INPUT_F11))
+	{
+		m_manager->changeScene(Scene::Title, 30.0f);
+	}
+
 	m_world->update();
 
 	/*if (Input::IsClicked(KEY_INPUT_RETURN))

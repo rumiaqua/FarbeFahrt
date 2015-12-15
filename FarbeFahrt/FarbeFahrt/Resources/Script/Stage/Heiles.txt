@@ -32,4 +32,4 @@ n,PlainB,PlainB
 t,Heiles
 
 # BGM
-bgm,HouseBGM
+bgm,TownBGM
