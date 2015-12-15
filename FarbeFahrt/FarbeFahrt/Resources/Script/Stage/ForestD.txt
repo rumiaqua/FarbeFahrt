@@ -5,16 +5,16 @@ r,Goal,Model/平原/くさ.pmx
 r,fallenTreeG,Model/Gimmick/circle.mqo
 r,fallenTree,Model/本/新本.pmx
 
-# フィールドリソース
-r,forestGround,Stage/森/森地面/森地面.pmx
-r,forestBackground,Stage/森/森背景/森背景.pmx
+# フィールドBB VBBBBリソース
+r,forestDGround,Stage/森/森地面/森地面.pmx
+r,forestDBackground,Stage/森/森背景/森背景.pmx
 
 # プレイヤーの座標
 p,-180,50,-80
 
 # フィールド
-f,forestGround,0,0,0,3
-f,forestBackground,0,0,0,3
+f,forestDGround,0,0,0,3
+f,forestDBackground,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-80,null

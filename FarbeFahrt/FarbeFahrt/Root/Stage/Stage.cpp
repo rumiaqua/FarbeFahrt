@@ -20,7 +20,7 @@
 # include "Message/MessageOperation.h"
 
 #include "Utility/Debug.h"
-
+#include "Utility/BGM.h"
 Stage::Stage(World* world)
 	: m_world(world)
 	, m_actorManager()
