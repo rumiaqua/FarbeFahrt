@@ -41,7 +41,7 @@ void Renderer::drawPrimitive(const IShape& shape) const
 	{
 		return;
 	}
-	shape.draw();
+	m_primitives.push_back([&shape] () { shape.draw(); });
 }
 void Renderer::initDepthBuffer()
 {
@@ -196,6 +196,14 @@ void Renderer::draw()
 	drawDepth();
 	// 影の描画
 	drawModelWithDepthShadow();
+
+	// プリミティブの描画
+	for (auto&& func : m_primitives)
+	{
+		func();
+	}
+	m_primitives.clear();
+
 	// フォントの描画
 	drawFont();
 }

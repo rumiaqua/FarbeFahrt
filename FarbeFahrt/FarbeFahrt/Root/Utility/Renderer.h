@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include <atomic>
+#include <functional>
 #include "DxLib.h"
 #include "Utility/Def.h"
 
@@ -128,6 +129,10 @@ struct ModelData{
 	}
 	ModelData(){}
 };
+
+using PrimitiveRenderFunc = std::function<void()>;
+using RenderingList = std::list<PrimitiveRenderFunc>;
+
 class Renderer
 {
 public:
@@ -202,4 +207,5 @@ private:
 	FontData m_fontData;
 	LightCamera m_lightCamera; 
 	CameraData m_cameraData;
+	mutable RenderingList m_primitives;
 };
