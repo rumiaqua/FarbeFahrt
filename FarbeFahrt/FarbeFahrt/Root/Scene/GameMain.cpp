@@ -20,6 +20,8 @@
 # include "Manager/EndManager.h"
 # include "Manager/MessageManager.h"
 
+# include "Utility/BGM.h"
+
 # include "Scene.h"
 
 GameMain::GameMain()
@@ -81,6 +83,11 @@ void GameMain::initialize()
 
 void GameMain::update()
 {
+	if (m_stageManager.bgmName() != "")
+	{
+		BGM::play(m_stageManager.bgmName());
+	}
+
 	m_world->update();
 
 	/*if (Input::IsClicked(KEY_INPUT_RETURN))

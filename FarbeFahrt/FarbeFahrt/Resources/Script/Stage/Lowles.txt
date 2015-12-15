@@ -11,6 +11,8 @@ r,testG,Model/Gimmick/bookmark.mqo
 r,lowlesGround,Stage/ローレス/ローレス地面/ローレス地面.pmx
 r,lowlesBackground,Stage/ローレス/ローレス背景/ローレス背景.pmx
 
+r,TownBGM,Sound/BGM/Town.mp3
+
 # プレイヤーの座標
 p,-180,50,-80
 
@@ -35,3 +37,6 @@ n,ForestB,ForestC
 
 # 開始時のテキスト
 t,Lowles
+
+# BGM
+bgm,TownBGM

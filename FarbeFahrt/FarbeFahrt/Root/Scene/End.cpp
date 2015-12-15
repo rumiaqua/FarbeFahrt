@@ -22,7 +22,8 @@ End::End()
 
 void End::loadContents(Loader& loader)
 {
-
+	loader.loadContent("BadEndBGM", "Sound/BGM/bad_end.mp3");
+	loader.loadContent("ClearBGM", "Sound/BGM/end2.mp3");
 }
 
 void End::initialize()

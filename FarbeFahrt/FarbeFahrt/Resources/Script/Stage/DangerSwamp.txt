@@ -13,6 +13,8 @@ r,rock3,Model/Gimmick/ForestA/flower.mqo
 r,forestGround,Stage/森/森地面/森地面.pmx
 r,forestBackground,Stage/森/森背景/森背景.pmx
 
+r,DangerSwampBGM,Sound/BGM/danger_swamp.mp3
+
 # プレイヤーの座標
 p,-180,50,-80
 
@@ -40,3 +42,6 @@ e,Ending3,show
 
 # 開始時のテキスト
 t,DangerSwamp
+
+# BGM
+bgm,DangerSwampBGM

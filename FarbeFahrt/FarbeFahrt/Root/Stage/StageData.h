@@ -42,4 +42,5 @@ struct StageData
 	bool showStaffRoll;
 	std::string message;
 	int gimmickPoint;
+	std::string bgmName;
 };

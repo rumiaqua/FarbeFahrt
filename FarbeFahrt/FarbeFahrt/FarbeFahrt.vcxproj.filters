@@ -586,6 +586,7 @@
     <None Include="Resources\Stage\ローレス\ローレス背景\ローレス背景.pmx" />
     <None Include="Resources\Stage\ローレス\ローレス背景\ローレス背景000.vmd" />
     <None Include="Resources\Stage\ローレス\ローレス背景\ローレス背景001.vmd" />
+    <None Include="Resources\Stage\ローレス\ローレス地面\ローレス地面002.vmd" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Font\えるまー.ttf" />

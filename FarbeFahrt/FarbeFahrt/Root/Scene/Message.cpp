@@ -7,6 +7,7 @@
 # include "Utility/Loader.h"
 # include "Utility/Mouse.h"
 # include "Utility/Math.h"
+# include "Utility/BGM.h"
 
 # include "GameMain.h"
 # include "ISceneMediator.h"
@@ -169,6 +170,12 @@ void Message::processMessage()
 		{
 			m_isStoped = true;
 			return;
+		}
+
+		// BGMçƒê∂
+		if (op.operation == "bgm")
+		{
+			BGM::play(op.message);
 		}
 	}
 }

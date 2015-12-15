@@ -12,6 +12,8 @@ r,bird,Stage/森B/鳥/鳥.pmx
 r,forestBGround,Stage/森B/地面/森B地面.pmx
 r,forestBBackground,Stage/森B/背景/森B背景.pmx
 
+r,ForestBGM,Sound/BGM/forest.mp3
+
 # プレイヤーの座標
 p,-180,50,-80
 
@@ -37,3 +39,6 @@ n,HouseA,HouseB
 
 # 開始時のテキスト
 t,ForestB
+
+# BGM
+bgm,ForestBGM

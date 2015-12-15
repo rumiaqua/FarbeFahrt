@@ -9,6 +9,8 @@ r,fallenTree,Model/本/新本.pmx
 r,forestDGround,Stage/森/森地面/森地面.pmx
 r,forestDBackground,Stage/森/森背景/森背景.pmx
 
+r,ForestBGM,Sound/BGM/forest.mp3
+
 # プレイヤーの座標
 p,-180,50,-80
 
@@ -31,3 +33,6 @@ n,HouseD,HouseE
 
 # 開始時のテキスト
 t,ForestD
+
+# BGM
+bgm,ForestBGM

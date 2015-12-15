@@ -4,6 +4,7 @@
 # include "Utility/Input.h"
 # include "Utility/Mouse.h"
 # include "Utility/Renderer.h"
+# include "Utility/BGM.h"
 
 # include "ISceneMediator.h"
 # include "Scene.h"
@@ -16,15 +17,18 @@ Title::Title()
 void Title::loadContents(Loader& loader)
 {
 	loader.loadContent("Title", "Texture/title.png");
+	loader.loadContent("TitleBGM", "Sound/BGM/Title.mp3");
 }
 
 void Title::initialize()
 {
-
+	
 }
 
 void Title::update()
 {
+	BGM::play("TitleBGM");
+	
 	if (Input::IsClicked(KEY_INPUT_RETURN) ||
 		Mouse::IsClicked(MOUSE_INPUT_1))
 	{
