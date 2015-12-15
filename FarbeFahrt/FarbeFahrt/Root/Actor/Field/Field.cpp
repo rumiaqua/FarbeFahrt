@@ -145,7 +145,8 @@ void Field::onMessage(const std::string& message, void* parameter)
 	if (message == "OpenShop")
 	{
 		// 開くアニメーション逆再生
-		// openShop();
+		if (m_name == "lowlesGround")
+			openShop();
 	}
 
 	BaseActor::onMessage(message, parameter);
