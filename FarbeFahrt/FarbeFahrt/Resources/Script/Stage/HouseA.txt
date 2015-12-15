@@ -6,6 +6,8 @@ r,Goal,Model/平原/くさ.pmx
 r,houseGround,Stage/House/家地面/HouseGround.pmx
 #r,houseBackGround,Stage/House/家背景/HouseBackGround.pmx
 
+r,HouseBGM,Sound/BGM/house.mp3
+
 # プレイヤーの座標
 p,-180,50,-80
 
@@ -18,3 +20,6 @@ o,Goal,Goal,-80,30,-25,null
 
 # 次のステージ
 e,Ending1,show
+
+# BGM
+bgm,HouseBGM

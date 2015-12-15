@@ -9,6 +9,8 @@ r,sun,Model/本/新本.pmx
 r,plainGround,Stage/平原/平原地面/平原地面.pmx
 r,plainBackground,Stage/平原/平原背景/平原背景.pmx
 
+r,PlainBGM,Sound/BGM/plain.mp3
+
 # プレイヤーの座標
 p,-180,50,-80
 
@@ -31,3 +33,6 @@ n,DimForest,ForestD
 
 # 開始時のテキスト
 t,PlainB
+
+# BGM
+bgm,PlainBGM

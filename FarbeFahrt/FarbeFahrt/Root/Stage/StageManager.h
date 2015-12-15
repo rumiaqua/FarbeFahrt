@@ -39,6 +39,8 @@ public:
 
 	const Stages& nextStages() const;
 
+	const std::string& bgmName() const;
+
 private:
 
 	bool isFirst() const;

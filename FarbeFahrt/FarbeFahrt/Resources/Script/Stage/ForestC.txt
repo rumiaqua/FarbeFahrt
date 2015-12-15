@@ -9,6 +9,8 @@ r,bookC,Model/本/新本.pmx
 r,forestCGround,Stage/森C/森C地面/森C地面.pmx
 r,forestCBackground,Stage/森C/森C背景/森C背景.pmx
 
+r,ForestBGM,Sound/BGM/forest.mp3
+
 # プレイヤーの座標
 p,-180,50,-80
 
@@ -31,3 +33,6 @@ n,HouseB,HouseB
 
 # 開始時のテキスト
 t,ForestC
+
+# BGM
+bgm,ForestBGM

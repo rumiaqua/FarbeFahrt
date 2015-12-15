@@ -16,6 +16,8 @@ r,nuts2,Model/Gimmick/ForestA/nuts2.mqo
 r,forestGround,Stage/X/X’n–Ê/X’n–Ê.pmx
 r,forestBackground,Stage/X/X”wŒi/X”wŒi.pmx
 
+r,ForestBGM,Sound/BGM/forest.mp3
+
 # ƒvƒŒƒCƒ„[‚ÌÀ•W
 p,-180,50,-80
 
@@ -45,3 +47,6 @@ n,Heiles,Lowles
 
 # ŠJn‚ÌƒeƒLƒXƒg
 t,ForestA
+
+# BGM
+bgm,ForestBGM

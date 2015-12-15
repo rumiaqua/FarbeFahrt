@@ -26,6 +26,7 @@ public:
 		// 初期値を代入
 		output.filename = filename;
 		output.endName.clear();
+		output.bgmName = "";
 
 		// テキストのロードを開始
 		std::ifstream stream(filename);
@@ -134,6 +135,12 @@ public:
 			{
 				int gimmickPoint = String::ToValue<int>(split[1]);
 				output.gimmickPoint = gimmickPoint;
+			}
+
+			// BGM
+			if (split[0] == "bgm")
+			{
+				output.bgmName = split[1];
 			}
 		}
 

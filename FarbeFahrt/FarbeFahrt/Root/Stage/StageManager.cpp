@@ -9,6 +9,7 @@
 
 # include "Utility/SingletonFinalizer.h"
 # include "Utility/StoryManager/StoryManager.h"
+# include "Utility/BGM.h"
 
 # include "Manager/EndManager.h"
 
@@ -129,6 +130,11 @@ const StageData& StageManager::current() const
 const StageManager::Stages& StageManager::nextStages() const
 {
 	return m_next;
+}
+
+const std::string& StageManager::bgmName() const
+{
+	return m_current.bgmName;
 }
 
 bool StageManager::isFirst() const
