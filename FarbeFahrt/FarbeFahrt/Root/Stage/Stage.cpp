@@ -111,11 +111,7 @@ void Stage::apply(const StageData& data, bool isClear)
 	}	
 
 	m_point = data.gimmickPoint;
-
-	if (StoryManager::get(BitFlag::GIMMICK))
-	{
-
-	}
+	GimmickManager::setMax(data.gimmickPoint);
 
 	// 開始時のメッセージ処理
 	if (data.message != "")

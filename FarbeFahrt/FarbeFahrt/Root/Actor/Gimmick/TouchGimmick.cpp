@@ -6,6 +6,8 @@
 #include "Utility/SingletonFinalizer.h"
 #include "Utility/HandleList.h"
 #include "Utility/StoryManager/StoryManager.h"
+#include "Actor/Gimmick/GimmickManager.h"
+#include "Stage/Stage.h"
 
 TouchGimmick::TouchGimmick(IWorld & world, const std::string& modelName, const Vector3 & position,float radius) :
 	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI / 2), std::make_unique<Sphere>(Vector3::Zero(), radius))
@@ -39,8 +41,7 @@ void TouchGimmick::onMessage(const std::string& message, void* parameter)
 	BaseActor* actor = static_cast<BaseActor*>(parameter);
 	if (message == "onCollide" && actor->getName() == "Player")
 	{
-		//m_world->actorSet(gimmickObj->getName());
-		if (!m_flag)
+		if (!m_flag && GimmickManager::isPoint(GimmickManager::getMax()))
 		{
 			m_flag = true;
 		}

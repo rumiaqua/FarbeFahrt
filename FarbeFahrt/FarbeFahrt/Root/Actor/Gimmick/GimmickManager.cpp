@@ -31,3 +31,13 @@ bool GimmickManager::isPoint(unsigned int point)
 {
 	return point <= Singleton<GimmickManager>::Instance().m_point;
 }
+
+void GimmickManager::setMax(unsigned int point)
+{
+	Singleton<GimmickManager>::Instance().m_maxPoint = point;
+}
+
+int GimmickManager::getMax()
+{
+	return Singleton<GimmickManager>::Instance().m_maxPoint;
+}

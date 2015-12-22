@@ -5,6 +5,7 @@
 #include "Utility/Debug.h"
 #include "Utility/SingletonFinalizer.h"
 #include "Utility/HandleList.h"
+#include "Actor/Gimmick/GimmickManager.h"
 
 namespace
 {
@@ -87,6 +88,7 @@ void CommandGimmick::onMessage(const std::string& message, void* parameter)
 		if (!m_flag)
 		{
 			m_world->findGroup(ActorTag::Field)->sendMessage("OpenShop", nullptr);
+			GimmickManager::add(1);
 			m_flag = true;
 		}
 	}

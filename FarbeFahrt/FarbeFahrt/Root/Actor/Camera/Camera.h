@@ -36,6 +36,7 @@ private:
 	void toPlayerCamera();
 	void toBookCamera();
 	void toFixedCamera();
+	Vector3 accessCorrection(Vector3 pos);
 	virtual void onMessage(const std::string& message, void* parameter) override;
 
 private:
@@ -44,5 +45,6 @@ private:
 	CameraState m_cameraState;
 	CameraMatrix m_cameraMatrix;
 	std::weak_ptr<BaseActor> m_actor;
-	bool m_onCompleted;
+	bool m_onCompleted; 
+	float m_actorRadius;
 };

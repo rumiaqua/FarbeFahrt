@@ -5,7 +5,6 @@
 
 Mouse::Mouse()
 {
-
 }
 
 Mouse& Mouse::Instance()
@@ -61,6 +60,12 @@ int Mouse::ScrollValue()
 {
 	Mouse& ins = Instance();
 	return ins.m_scrollValue;
+}
+
+Vector3 Mouse::PositionValue()
+{
+	Mouse& ins = Instance();
+	return Vector3::Zero();
 }
 
 Vector3 Mouse::ScreenPointToWorld(float z)

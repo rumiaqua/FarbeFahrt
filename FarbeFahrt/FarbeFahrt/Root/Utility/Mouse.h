@@ -4,6 +4,7 @@
 
 # include "Point2.h"
 # include "Vector3.h"
+#include "Utility/Def.h"
 
 /// <summary>マウスクラス</summary>
 class Mouse
@@ -47,6 +48,9 @@ public:
 	/// <summary>ホイールの変化量を返す</summary>
 	static int ScrollValue();
 
+	/// <summary>マウス座標の変化量を返す</summary>
+	static Vector3 PositionValue();
+
 	static Vector3 ScreenPointToWorld(float z);
 
 private:
@@ -58,4 +62,6 @@ private:
 	int m_previousBuffer;
 
 	int m_currentBuffer;
+
+	Vector3 m_initPosition;
 };

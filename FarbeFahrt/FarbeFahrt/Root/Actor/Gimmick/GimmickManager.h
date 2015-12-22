@@ -9,6 +9,9 @@ public:
 	static void sub(unsigned int point);
 	static void reset();
 	static bool isPoint(unsigned int point);
+	static void setMax(unsigned int point);
+	static int getMax();
 private:
 	unsigned int m_point;
+	unsigned int m_maxPoint;
 };
