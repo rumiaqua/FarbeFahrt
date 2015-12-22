@@ -60,12 +60,7 @@ void Camera::onUpdate()
 
 	if (m_progress >= 1)
 	{
-		//cameraInput();
-	}
-
-	if (Mouse::IsPressed(MOUSE_INPUT_2))
-	{
-		cameraMove();
+		cameraInput();
 	}
 	cameraSet();
 
@@ -74,7 +69,6 @@ void Camera::onUpdate()
 
 void Camera::onDraw(Renderer& render)const
 {
-	Debug::Println("pitch:%f",m_pitch);
 	BaseActor::onDraw(render);
 }
 
