@@ -91,6 +91,7 @@
     <ClInclude Include="Root\Actor\AnimateActor.h" />
     <ClInclude Include="Root\Actor\Gimmick\CommandGimmick.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
+    <ClInclude Include="Root\Actor\Herb.h" />
     <ClInclude Include="Root\Experimental\OneShotLauncher.h" />
     <ClInclude Include="Root\Experimental\OneShotStage.h" />
     <ClInclude Include="Root\Scene\Opening.h" />

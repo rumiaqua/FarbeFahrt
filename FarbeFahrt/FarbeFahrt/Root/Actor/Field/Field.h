@@ -21,4 +21,5 @@ private:
 	int m_animationNumber;
 	bool m_isAnimating;
 	bool m_isReversed;
+	bool m_isBackground;
 };

@@ -24,8 +24,9 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	, m_animationNumber(0)
 	, m_isAnimating(false)
 	, m_isReversed(false)
+	, m_isBackground(false)
 {
-
+	m_isBackground = name.length() > 7 && name.at(name.length() - 7) == 'k';
 }
 
 void Field::onUpdate()
@@ -94,6 +95,12 @@ void Field::onMessage(const std::string& message, void* parameter)
 		BaseActor* actor = static_cast<BaseActor*>(parameter);
 		if (isCollide(actor))
 		{
+			if (m_isBackground)
+			{
+				actor->sendMessage("HitBackground", nullptr);
+				return BaseActor::onMessage(message, parameter);
+			}
+
 			const Vector3& pos = actor->getPosition();
 			Debug::Println(pos.ToString());
 			std::string& name = static_cast<ModelCollider*>(m_shape.get())->name;

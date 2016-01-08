@@ -125,6 +125,8 @@ protected:
 	/// <summary>p¨</summary>
 	Pose m_pose;
 
+	Pose m_previousPose;
+
 	/// <summary>€–S‚µ‚Ä‚¢‚é‚©</summary>
 	bool m_dead;
 

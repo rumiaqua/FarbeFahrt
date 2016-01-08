@@ -28,6 +28,7 @@ BaseActor::BaseActor(const std::string& name)
 
 void BaseActor::update()
 {
+	m_previousPose = m_pose;
 	onUpdate();
 }
 void BaseActor::draw(Renderer& render)const
