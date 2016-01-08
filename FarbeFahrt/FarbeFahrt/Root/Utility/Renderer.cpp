@@ -289,15 +289,17 @@ void Renderer::refreshAnimParam()
 		refreshAnimParam(model.first);
 	}
 }
+
 void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 	const Matrix& rotation, int animNumber, float frame, bool isBlend)
 {
 	//見辛いから後々関数分けする予定
 	//サンプル丸パクリスペクト
-	float animTotalTime;
+	
 	auto& modelData = m_modelData.at(name);
 	modelData.isSkinMesh = true;
 
+	float animTotalTime;
 	if (animNumber != modelData.animNumber)//アニメーションが切り替わった時
 	{
 		modelData.animNumber = animNumber;
@@ -315,14 +317,23 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 
 	}
 
-	if (modelData.animBlendRate < 1.0f)
+	if (isBlend)
 	{
-		modelData.animBlendRate += ANIM_BLEND_SPEED;
-		if (modelData.animBlendRate > 1.0f)
+		if (modelData.animBlendRate < 1.0f)
 		{
-			modelData.animBlendRate = 1.0f;
+			modelData.animBlendRate += ANIM_BLEND_SPEED;
+			if (modelData.animBlendRate > 1.0f)
+			{
+				modelData.animBlendRate = 1.0f;
+			}
 		}
 	}
+	else
+	{
+		modelData.animBlendRate = 1.0f;
+	}
+
+	
 
 	if (modelData.playAnim1 != -1)
 	{
@@ -347,7 +358,6 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 		MV1SetAttachAnimBlendRate(modelData.modelHandle, modelData.playAnim2, 1.0f - modelData.animBlendRate);
 	}
 
-
 	//現在のアニメーションを再生
 
 	drawNormalModel(name, position, rotation);
@@ -358,7 +368,7 @@ void Renderer::setScale(const std::string& name, const Vector3& scale)
 	MV1SetScale(m_modelData.at(name).modelHandle, scale);
 }
 
-void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t)
+void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t, bool isBlend)
 {
 	//見辛いから後々関数分けする予定
 	//サンプル丸パクリスペクト
@@ -385,13 +395,20 @@ void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int anim
 	float totalTime = MV1GetAttachAnimTotalTime(m_modelData.at(name).modelHandle, modelData.playAnim1);
 	float frame = totalTime * t;
 
-	if (modelData.animBlendRate < 1.0f)
+	if (isBlend)
 	{
-		modelData.animBlendRate += ANIM_BLEND_SPEED;
-		if (modelData.animBlendRate > 1.0f)
+		if (modelData.animBlendRate < 1.0f)
 		{
-			modelData.animBlendRate = 1.0f;
+			modelData.animBlendRate += ANIM_BLEND_SPEED;
+			if (modelData.animBlendRate > 1.0f)
+			{
+				modelData.animBlendRate = 1.0f;
+			}
 		}
+	}
+	else
+	{
+		modelData.animBlendRate = 1.0f;
 	}
 	if (modelData.playAnim1 != -1)
 	{

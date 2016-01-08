@@ -154,7 +154,7 @@ public:
 	/// <param name="pose">姿勢</param>
 	/// <param name="animationNumber">アニメーションNo</param>
 	/// <param name="t">アニメーション比率(0.0~1.0)</param>
-	void drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t);
+	void drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t, bool isBlend);
 
 	//2D系関数
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
@@ -195,7 +195,6 @@ private:
 	void setDrawList(const std::string& name, int handle);
 	void drawDepth();
 	void drawModelWithDepthShadow();
-
 	void setFont();
 	void drawFont();
 private:
