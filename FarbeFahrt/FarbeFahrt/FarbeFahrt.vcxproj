@@ -22,6 +22,7 @@
     <ClCompile Include="Root\Actor\AnimateActor.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\CommandGimmick.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
+    <ClCompile Include="Root\Actor\Herb.cpp" />
     <ClCompile Include="Root\Experimental\OneShotLauncher.cpp" />
     <ClCompile Include="Root\Experimental\OneShotStage.cpp" />
     <ClCompile Include="Root\Scene\Opening.cpp" />

@@ -11,7 +11,8 @@
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
 # include "Actor/PlayerSpawner.h"
-# include "Actor//Gimmick/GimmickManager.h"
+# include "Actor/Gimmick/GimmickManager.h"
+# include "Actor/Herb.h"
 
 # include "World.h"
 
@@ -107,7 +108,12 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
-		}		
+		}
+		if (object.name == "Herb")
+		{
+			m_world->addActor(ActorTag::Object, std::make_shared<Herb>(
+				*m_world, object.position));
+		}
 	}
 
 	m_point = data.gimmickPoint;
