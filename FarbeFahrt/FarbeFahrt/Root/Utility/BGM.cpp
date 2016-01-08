@@ -28,13 +28,10 @@ void BGM::play(const std::string& name)
 	{
 		return;
 	}
-	else
-	{
-		StopSoundMem(bgm.oldBGMhandle);
-		PlaySoundMem(bgm.playBGMhandle, DX_PLAYTYPE_BACK);
-		SetVolumeSound(128);
-		bgm.oldBGMhandle = bgm.playBGMhandle;
-	}
+	StopSoundMem(bgm.oldBGMhandle);
+	PlaySoundMem(bgm.playBGMhandle, DX_PLAYTYPE_BACK);
+	SetVolumeSound(128);
+	bgm.oldBGMhandle = bgm.playBGMhandle;
 }
 void BGM::stop()
 {
