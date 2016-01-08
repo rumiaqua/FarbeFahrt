@@ -108,7 +108,7 @@ void Stage::apply(const StageData& data, bool isClear)
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
 		}		
-	}	
+	}
 
 	m_point = data.gimmickPoint;
 	GimmickManager::setMax(data.gimmickPoint);
