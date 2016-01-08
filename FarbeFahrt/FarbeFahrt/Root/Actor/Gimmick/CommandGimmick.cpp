@@ -12,13 +12,14 @@ namespace
 	float frame = 0.0f;
 }
 
-CommandGimmick::CommandGimmick(IWorld & world, const std::string& modelName, const Vector3 & position, int anmNo, float frameSpeed, float maxframe, float radius) :
+CommandGimmick::CommandGimmick(IWorld & world, const std::string& modelName, const Vector3 & position, int anmNo, float frameSpeed, float maxframe, float radius,int commandNo) :
 	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI / 2), std::make_unique<Sphere>(Vector3::Zero(), radius))
 {
 	m_name = modelName;
 	m_frameSpeed = frameSpeed;
 	m_maxframe = maxframe;
 	m_anmNo = anmNo;
+	m_commandNo = commandNo;
 	isAnimate = false;
 	m_flag = false;
 }
@@ -87,7 +88,7 @@ void CommandGimmick::onMessage(const std::string& message, void* parameter)
 	{
 		if (!m_flag)
 		{
-			m_world->findGroup(ActorTag::Field)->sendMessage("OpenShop", nullptr);
+			m_world->findGroup(ActorTag::Field)->sendMessage("WorkGimmick", (int*)m_commandNo);
 			GimmickManager::add(1);
 			m_flag = true;
 		}

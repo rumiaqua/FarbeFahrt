@@ -7,7 +7,7 @@ class CommandGimmick :
 	public BaseActor
 {
 public:
-	CommandGimmick(IWorld& world, const std::string& modelName, const Vector3& position, int anmNo, float frameSpeed, float maxframe, float radius);
+	CommandGimmick(IWorld& world, const std::string& modelName, const Vector3& position, int anmNo, float frameSpeed, float maxframe, float radius,int commandNo);
 	void frameReset();
 private:
 	virtual void onUpdate()override;
@@ -22,4 +22,5 @@ private:
 	int m_anmNo;
 	bool isAnimate;
 	bool m_flag;
+	int m_commandNo;
 };

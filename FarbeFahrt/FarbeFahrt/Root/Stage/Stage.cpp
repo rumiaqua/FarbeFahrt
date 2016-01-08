@@ -65,7 +65,7 @@ void Stage::apply(const StageData& data, bool isClear)
 			float maxFrame = String::ToValue<float>(parameter[2]);
 			float radius = String::ToValue<float>(parameter[3]);
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Gimmick>(
-				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame,radius));
+				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame, radius));
 		}
 		if (object.name == "TouchGimmick")
 		{
@@ -81,8 +81,9 @@ void Stage::apply(const StageData& data, bool isClear)
 			float animSpeed = String::ToValue<float>(parameter[1]);
 			float maxFrame = String::ToValue<float>(parameter[2]);
 			float radius = String::ToValue<float>(parameter[3]);
+			int commandNo = String::ToValue<int>(parameter[4]);
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<CommandGimmick>(
-				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame, radius));
+				*m_world, object.resource, object.position, animNo, animSpeed, maxFrame, radius, commandNo));
 		}
 		if (object.name == "SkinObject")
 		{
@@ -107,8 +108,8 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
-		}		
-	}	
+		}
+	}
 
 	m_point = data.gimmickPoint;
 	GimmickManager::setMax(data.gimmickPoint);
@@ -141,11 +142,11 @@ void Stage::update()
 }
 
 void Stage::draw(Renderer& renderer) const
-{	
+{
 	// ï`âÊèàóù
 	m_actorManager.draw(renderer);
 
-	Debug::Println("nextPoint:%d",m_point);
+	Debug::Println("nextPoint:%d", m_point);
 	Debug::Println(String::Create("isPoint : ", GimmickManager::isPoint(m_point) ? "true" : "false"));
 
 	Debug::Println(m_stageName);

@@ -62,12 +62,6 @@ int Mouse::ScrollValue()
 	return ins.m_scrollValue;
 }
 
-Vector3 Mouse::PositionValue()
-{
-	Mouse& ins = Instance();
-	return Vector3::Zero();
-}
-
 Vector3 Mouse::ScreenPointToWorld(float z)
 {
 	Matrix view = GetCameraViewMatrix();
