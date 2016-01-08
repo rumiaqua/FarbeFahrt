@@ -82,7 +82,7 @@ void Field::onDraw(Renderer& render) const
 	render.setScale(m_name, VGet(m_scale, m_scale, m_scale));
 
 	float t = Math::Min({ m_elapsedTime / ANIMATION_FRAME, 0.99999f });
-	render.drawSkinModel(m_name, m_pose, m_animationNumber, t);
+	render.drawSkinModel(m_name, m_pose, m_animationNumber, t,false);
 
 	BaseActor::onDraw(render);
 }

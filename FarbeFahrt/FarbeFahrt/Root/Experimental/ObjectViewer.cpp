@@ -185,7 +185,7 @@ void ObjectViewer::drawModel(Renderer& renderer)
 	}
 	auto& name = m_models.at(m_currentModelNum);
 	renderer.setScale(name, Vector3::One());
-	renderer.drawSkinModel(name, m_pose, m_animNumber, m_progress);
+	renderer.drawSkinModel(name, m_pose, m_animNumber, m_progress,false);
 }
 
 void ObjectViewer::cameraUpdate()
