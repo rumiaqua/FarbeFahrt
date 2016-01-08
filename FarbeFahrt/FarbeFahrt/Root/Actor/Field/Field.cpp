@@ -25,7 +25,6 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	, m_isAnimating(false)
 	, m_isReversed(false)
 {
-
 }
 
 void Field::onUpdate()
@@ -59,7 +58,7 @@ void Field::onUpdate()
 			{
 				spawner->sendMessage("PlayerSpawn", nullptr);
 			}*/
-			m_world->findGroup(ActorTag::Player)->eachChildren([] (BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
+			m_world->findGroup(ActorTag::Player)->eachChildren([](BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
 			m_world->findCamera()->sendMessage("toPlayerCamera", nullptr);
 			StoryManager::set(BitFlag::NEXT);
 			MessageManager::SetShow(true);
@@ -83,6 +82,7 @@ void Field::onDraw(Renderer& render) const
 
 	float t = Math::Min({ m_elapsedTime / ANIMATION_FRAME, 0.99999f });
 	render.drawSkinModel(m_name, m_pose, m_animationNumber, t);
+	Debug::Println("command:%d",m_previousAnimNo);
 
 	BaseActor::onDraw(render);
 }
@@ -142,11 +142,10 @@ void Field::onMessage(const std::string& message, void* parameter)
 		m_isReversed = false;
 	}
 
-	if (message == "OpenShop")
+	if (message == "WorkGimmick" && isGround())
 	{
-		// 開くアニメーション逆再生
-		if (m_name == "lowlesGround")
-			openShop();
+		m_previousAnimNo = (int)parameter;
+		workGimmick((int)parameter);
 	}
 
 	BaseActor::onMessage(message, parameter);
@@ -176,10 +175,15 @@ void Field::reverseOpen()
 	m_isReversed = true;
 }
 
-void Field::openShop()
+void Field::workGimmick(int commandNo)
 {
 	m_elapsedTime = 0.0f;
-	m_animationNumber = 2;
+	m_animationNumber = commandNo;
 	m_isReversed = false;
 	m_isAnimating = true;
+}
+
+bool Field::isGround()
+{
+	return !(m_name.at(m_name.length() - 7) == 'k');
 }

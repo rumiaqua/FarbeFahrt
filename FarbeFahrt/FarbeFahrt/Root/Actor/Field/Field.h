@@ -14,11 +14,13 @@ private:
 	void open();
 	void close();
 	void reverseOpen();
-	void openShop();
+	void workGimmick(int commandNo);
+	bool isGround();
 private:
 	float m_scale;
 	float m_elapsedTime;
 	int m_animationNumber;
 	bool m_isAnimating;
 	bool m_isReversed;
+	int m_previousAnimNo;
 };

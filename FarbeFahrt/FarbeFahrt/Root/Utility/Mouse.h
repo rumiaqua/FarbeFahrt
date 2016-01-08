@@ -48,9 +48,6 @@ public:
 	/// <summary>ホイールの変化量を返す</summary>
 	static int ScrollValue();
 
-	/// <summary>マウス座標の変化量を返す</summary>
-	static Vector3 PositionValue();
-
 	static Vector3 ScreenPointToWorld(float z);
 
 private:
