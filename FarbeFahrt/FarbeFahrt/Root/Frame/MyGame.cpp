@@ -109,6 +109,11 @@ void MyGame::run()
 		BGM::set(loader.getBGMList());
 	}
 
+	if (Input::IsClicked(KEY_INPUT_F10))
+	{
+		m_sceneManager.changeScene(Scene::Title);
+	}
+
 	// XV
 	m_sceneManager.update();
 

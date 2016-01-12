@@ -24,8 +24,8 @@ o,Goal,Goal,50,30,-80,null
 # ギミック
 #o,CommandGimmick,birdG,90,25,-50,null,1/1.0f/590.0f/5.0f/4
 #o,CommandGimmick,flowerG,-230,25,-50,null,1/1.0f/590.0f/5.0f/6
-o,Bookmark,birdG,90,25,-50,null,Bird
-o,Bookmark,flowerG,-230,25,-50,null,Flower
+o,Bookmark,birdG,90,25,-50,null,Bird/true
+o,Bookmark,flowerG,-230,25,-50,null,Flower/true
 
 # ギミック起動変数
 g,2

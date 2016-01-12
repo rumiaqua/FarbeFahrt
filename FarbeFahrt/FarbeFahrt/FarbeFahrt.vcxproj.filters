@@ -222,9 +222,6 @@
     <ClCompile Include="Root\Experimental\OneShotLauncher.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Actor\Herb.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Experimental\AnimationTransitionMachine.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -232,6 +229,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Experimental\Bookmark.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Actor\Instant.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -500,9 +500,6 @@
     <ClInclude Include="Root\Experimental\OneShotLauncher.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Actor\Herb.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Root\Experimental\AnimationTransitionMachine.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -513,6 +510,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Experimental\Bookmark.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Actor\Instant.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1845,6 +1845,8 @@
     <Text Include="Resources\Script\Animation\ForestA.txt" />
     <Text Include="Resources\Script\Animation\ForestBGround.txt" />
     <Text Include="Resources\Script\Animation\ForestBBack.txt" />
+    <Text Include="Resources\Script\Animation\Lowles.txt" />
+    <Text Include="Resources\Script\Animation\Default.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />
