@@ -12,12 +12,14 @@
 # include "Manager/MessageManager.h"
 # include "Manager/EndManager.h"
 
+# include "Experimental/AnimateState.h"
+
 namespace
 {
-	constexpr float ANIMATION_FRAME = 180.0f;
+constexpr float ANIMATION_FRAME = 180.0f;
 }
 
-Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale)
+Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition)
 	:BaseActor(world, name, position, Matrix::identity(),
 		std::make_unique<ModelCollider>(name)), m_scale(scale)
 	, m_elapsedTime(0.0f)
@@ -25,6 +27,7 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	, m_isAnimating(false)
 	, m_isReversed(false)
 	, m_isBackground(false)
+	, m_machine(transition)
 {
 	m_isBackground = name.length() > 7 && name.at(name.length() - 7) == 'k';
 }
@@ -143,15 +146,20 @@ void Field::onMessage(const std::string& message, void* parameter)
 
 	if (message == "Animate")
 	{
+		const AnimateState& state = *(AnimateState*)parameter;
+		animateProcess(state);
+	}
+
+	/*if (message == "Animate")
+	{
 		m_elapsedTime = 0.0f;
 		m_animationNumber = *(int*)parameter;
 		m_isAnimating = true;
 		m_isReversed = false;
-	}
+	}*/
 
 	if (message == "OpenShop")
 	{
-		// 開くアニメーション逆再生
 		if (m_name == "lowlesGround")
 			openShop();
 	}
@@ -188,5 +196,15 @@ void Field::openShop()
 	m_elapsedTime = 0.0f;
 	m_animationNumber = 2;
 	m_isReversed = false;
+	m_isAnimating = true;
+}
+
+void Field::animateProcess(const AnimateState& state)
+{
+	int next = m_machine.next(state.name, m_animationNumber);
+
+	m_elapsedTime = state.isReversed ? ANIMATION_FRAME : 0;
+	m_animationNumber = next;
+	m_isReversed = state.isReversed;
 	m_isAnimating = true;
 }

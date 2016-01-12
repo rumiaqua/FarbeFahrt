@@ -225,6 +225,12 @@
     <ClCompile Include="Root\Actor\Herb.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Experimental\AnimationTransitionMachine.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Experimental\AnimateState.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\Enemy.h">
@@ -492,6 +498,15 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Actor\Herb.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Experimental\AnimationTransitionMachine.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Experimental\AnimateState.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Experimental\ExperimentalBookmark.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1819,6 +1834,11 @@
     <Text Include="Resources\Script\Stage\PlainB.txt" />
     <Text Include="Resources\Stage\森B\鳥\鳥について.txt" />
     <Text Include="Resources\Stage\森B\地面\モーションについて.txt" />
+    <Text Include="Resources\Script\Animation\Book.txt" />
+    <Text Include="Resources\Script\Animation\PlainA.txt" />
+    <Text Include="Resources\Script\Animation\ForestA.txt" />
+    <Text Include="Resources\Script\Animation\ForestBGround.txt" />
+    <Text Include="Resources\Script\Animation\ForestBBack.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />

@@ -22,6 +22,9 @@
 
 #include "Utility/Debug.h"
 #include "Utility/BGM.h"
+
+# include "Experimental/AnimateState.h"
+
 Stage::Stage(World* world)
 	: m_world(world)
 	, m_actorManager()
@@ -43,9 +46,11 @@ void Stage::apply(const StageData& data, bool isClear)
 	for (auto&& field : data.fieldList)
 	{
 		auto actor = std::make_shared<Field>(
-			*m_world, field.name, field.position, field.scale);
+			*m_world, field.name, field.position, field.scale, field.transition);
 		m_actorManager.addActor(ActorTag::Field, actor);
-		actor->sendMessage("OpenAnimate", nullptr);
+		// actor->sendMessage("OpenAnimate", nullptr);
+		AnimateState state { "Open", false };
+		actor->sendMessage("Animate", &state);
 	}
 
 	// プレイヤー位置の初期化

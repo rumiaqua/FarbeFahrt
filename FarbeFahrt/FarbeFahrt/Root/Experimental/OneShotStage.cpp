@@ -16,6 +16,7 @@
 
 # include "Actor/AnimateActor.h"
 # include "Actor/StaticObject.h"
+# include "Actor/Field/Field.h"
 
 std::string OneShotStage::m_name;
 
@@ -28,7 +29,7 @@ OneShotStage::OneShotStage()
 
 void OneShotStage::loadContents(Loader& loader)
 {
-	loader.loadContent("BaseBook", "Model/本/新本.pmx");
+	// loader.loadContent("BaseBook", "Model/本/新本.pmx");
 	loader.loadContent("desk", "Model/机/つくえ.mqo");
 	loader.loadContent("Message", "Texture/end/message.png");
 
@@ -48,8 +49,10 @@ void OneShotStage::initialize()
 	m_world = std::make_shared<World>();
 
 	// 本
-	m_world->addActor(ActorTag::Effect, std::make_shared<AnimateActor>(
-		*m_world, "BaseBook", Vector3(0.0f, -5.0f, 0.0f), 3.0f));
+	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
+		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Book.txt"));
+	/*m_world->addActor(ActorTag::Effect, std::make_shared<AnimateActor>(
+		*m_world, "BaseBook", Vector3(0.0f, -5.0f, 0.0f), 3.0f));*/
 	// 机
 	m_world->addActor(ActorTag::Effect, std::make_shared<StaticObject>(
 		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));

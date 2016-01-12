@@ -76,7 +76,12 @@ public:
 					String::ToValue<float>(split[3]),
 					String::ToValue<float>(split[4]));
 				float scale = String::ToValue<float>(split[5]);
-				output.fieldList.emplace_back(name, position, scale);
+				std::string transition = "";
+				if (split.size() > 6)
+				{
+					transition = split[6];
+				}
+				output.fieldList.emplace_back(name, position, scale, transition);
 			}
 
 			// オブジェクト配置

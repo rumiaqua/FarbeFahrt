@@ -18,8 +18,8 @@ r,ForestBGM,Sound/BGM/forest.mp3
 p,-180,50,-80
 
 # フィールド
-f,forestBGround,0,0,0,3
-f,forestBBackground,0,0,0,3
+f,forestBGround,0,0,0,3,Resources/Script/Animation/ForestBBack.txt
+f,forestBBackground,0,0,0,3,Resources/Script/Animation/ForestBGround.txt
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
