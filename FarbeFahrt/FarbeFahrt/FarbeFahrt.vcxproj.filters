@@ -1845,6 +1845,8 @@
     <Text Include="Resources\Script\Animation\ForestA.txt" />
     <Text Include="Resources\Script\Animation\ForestBGround.txt" />
     <Text Include="Resources\Script\Animation\ForestBBack.txt" />
+    <Text Include="Resources\Script\Animation\ForestDBack.txt" />
+    <Text Include="Resources\Script\Animation\ForestDGround.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />

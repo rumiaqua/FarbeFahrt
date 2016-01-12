@@ -83,7 +83,7 @@ void Renderer::setTextureData(const ContentMap& textureData)
 	}
 }
 
-// ê[ìxï`âÊÅH
+// ê[ìxï`âÊ
 void Renderer::drawDepth()
 {
 	Vector3 lightPosition = { 20.0f,120.0f,-70.0f };
@@ -183,10 +183,11 @@ void Renderer::drawModelWithDepthShadow()
 	// ÉXÉçÉbÉg43Çèâä˙âªÅH
 	ResetVSConstF(43, 8);
 }
-void Renderer::setDrawList(const std::string& name, int handle)
+void Renderer::setDrawList(const TextureData& textureData)
 {
-	drawList.push_back(std::make_pair(name, handle));
+	m_drawList.emplace_back(textureData);
 }
+
 void Renderer::draw()
 {
 	// åªç›ÇÃê›íËÇï€éù
@@ -203,7 +204,24 @@ void Renderer::draw()
 		func();
 	}
 	m_primitives.clear();
-
+	
+	//2ÇcÇÃï`âÊ
+	for (auto& texture : m_drawList)
+	{
+		if (texture.alpha != 255)
+		{
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, texture.alpha);
+			DrawRotaGraph3(texture.x, texture.y, texture.cx, texture.cy, texture.extRateX, texture.extRateY,
+				texture.angle, texture.handle, TRUE, FALSE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		}
+		else
+		{
+			DrawRotaGraph3(texture.x, texture.y, texture.cx, texture.cy, texture.extRateX, texture.extRateY,
+				texture.angle, texture.handle, TRUE, FALSE);
+		}
+	}
+	m_drawList.clear();
 	// ÉtÉHÉìÉgÇÃï`âÊ
 	drawFont();
 }
@@ -437,14 +455,15 @@ void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int anim
 	drawNormalModel(name, pose.position, pose.rotation);
 }
 
-void Renderer::drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const
+void Renderer::drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle, int alpha)
 {
-	DrawRotaGraph3(x, y, cx, cy, width, height,
-		(double)angle, m_textureData.at(name), FALSE, FALSE);
+	TextureData texture{ m_textureData.at(name) ,x,y,cx,cy,width,height,angle,alpha};
+	setDrawList(texture);
 }
 void Renderer::drawTexture(const std::string& name, int x, int y)
 {
-	DrawGraph(x, y, m_textureData.at(name), TRUE);
+	//DrawGraph(x, y, m_textureData.at(name), TRUE);
+	drawTexture(name, x, y, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f);
 }
 
 void Renderer::drawTexture(const std::string& name, const AspectType& type)
@@ -488,7 +507,8 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 	Vector2 correctionSize = textureSize * ext;
 	Vector2 pos = (windowSize - correctionSize) * center + position;
 
-	DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
+	/*DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);*/
+	drawTexture(name, pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0f);
 }
 void Renderer::drawFont(const std::string& text)
 {
