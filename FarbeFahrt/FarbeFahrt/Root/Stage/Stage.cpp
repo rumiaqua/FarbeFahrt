@@ -11,7 +11,8 @@
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
 # include "Actor/PlayerSpawner.h"
-# include "Actor//Gimmick/GimmickManager.h"
+# include "Actor/Gimmick/GimmickManager.h"
+# include "Actor/Herb.h"
 
 # include "World.h"
 
@@ -21,6 +22,10 @@
 
 #include "Utility/Debug.h"
 #include "Utility/BGM.h"
+
+# include "Experimental/AnimateState.h"
+# include "Experimental/Bookmark.h"
+
 Stage::Stage(World* world)
 	: m_world(world)
 	, m_actorManager()
@@ -42,9 +47,11 @@ void Stage::apply(const StageData& data, bool isClear)
 	for (auto&& field : data.fieldList)
 	{
 		auto actor = std::make_shared<Field>(
-			*m_world, field.name, field.position, field.scale);
+			*m_world, field.name, field.position, field.scale, field.transition);
 		m_actorManager.addActor(ActorTag::Field, actor);
-		actor->sendMessage("OpenAnimate", nullptr);
+		// actor->sendMessage("OpenAnimate", nullptr);
+		AnimateState state { "Open", false };
+		actor->sendMessage("Animate", &state);
 	}
 
 	// プレイヤー位置の初期化
@@ -108,8 +115,20 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
+		}		
+		if (object.name == "Herb")
+		{
+			m_world->addActor(ActorTag::Object, std::make_shared<Herb>(
+				*m_world, object.position));
 		}
-	}
+		if (object.name == "Bookmark")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			std::string& animateName = parameter[0];
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
+				*m_world, object.name, object.position, animateName));
+		}
+	}	
 
 	m_point = data.gimmickPoint;
 	GimmickManager::setMax(data.gimmickPoint);
@@ -142,7 +161,7 @@ void Stage::update()
 }
 
 void Stage::draw(Renderer& renderer) const
-{
+{	
 	// 描画処理
 	m_actorManager.draw(renderer);
 

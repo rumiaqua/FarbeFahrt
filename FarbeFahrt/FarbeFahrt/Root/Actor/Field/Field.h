@@ -1,11 +1,15 @@
 #pragma once
 #include "Actor/BaseActor.h"
 #include "Utility/Def.h"
+#include "Experimental/AnimationTransitionMachine.h"
+
+struct AnimateState;
+
 class Field :
 	public BaseActor
 {
 public:
-	explicit Field(IWorld& world, const std::string& name, const Vector3& position, float scale);
+	explicit Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition);
 public:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
@@ -16,6 +20,7 @@ private:
 	void reverseOpen();
 	void workGimmick(int commandNo);
 	bool isGround();
+	void animateProcess(const AnimateState& state);
 private:
 	float m_scale;
 	float m_elapsedTime;
@@ -23,4 +28,6 @@ private:
 	bool m_isAnimating;
 	bool m_isReversed;
 	int m_previousAnimNo;
+	bool m_isBackground;
+	AnimationTransitionMachine m_machine;
 };

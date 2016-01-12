@@ -12,19 +12,24 @@
 # include "Manager/MessageManager.h"
 # include "Manager/EndManager.h"
 
+# include "Experimental/AnimateState.h"
+
 namespace
 {
 	constexpr float ANIMATION_FRAME = 180.0f;
 }
 
-Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale)
+Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition)
 	:BaseActor(world, name, position, Matrix::identity(),
 		std::make_unique<ModelCollider>(name)), m_scale(scale)
 	, m_elapsedTime(0.0f)
 	, m_animationNumber(0)
 	, m_isAnimating(false)
 	, m_isReversed(false)
+	, m_isBackground(false)
+	, m_machine(transition)
 {
+
 }
 
 void Field::onUpdate()
@@ -58,7 +63,7 @@ void Field::onUpdate()
 			{
 				spawner->sendMessage("PlayerSpawn", nullptr);
 			}*/
-			m_world->findGroup(ActorTag::Player)->eachChildren([](BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
+			m_world->findGroup(ActorTag::Player)->eachChildren([] (BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
 			m_world->findCamera()->sendMessage("toPlayerCamera", nullptr);
 			StoryManager::set(BitFlag::NEXT);
 			MessageManager::SetShow(true);
@@ -94,6 +99,12 @@ void Field::onMessage(const std::string& message, void* parameter)
 		BaseActor* actor = static_cast<BaseActor*>(parameter);
 		if (isCollide(actor))
 		{
+			if (m_isBackground)
+			{
+				actor->sendMessage("HitBackground", nullptr);
+				return BaseActor::onMessage(message, parameter);
+			}
+
 			const Vector3& pos = actor->getPosition();
 			Debug::Println(pos.ToString());
 			std::string& name = static_cast<ModelCollider*>(m_shape.get())->name;
@@ -136,11 +147,17 @@ void Field::onMessage(const std::string& message, void* parameter)
 
 	if (message == "Animate")
 	{
+		const AnimateState& state = *(AnimateState*)parameter;
+		animateProcess(state);
+	}
+
+	/*if (message == "Animate")
+	{
 		m_elapsedTime = 0.0f;
 		m_animationNumber = *(int*)parameter;
 		m_isAnimating = true;
 		m_isReversed = false;
-	}
+	}*/
 
 	if (message == "WorkGimmick" && isGround())
 	{
@@ -180,6 +197,21 @@ void Field::workGimmick(int commandNo)
 	m_elapsedTime = 0.0f;
 	m_animationNumber = commandNo;
 	m_isReversed = false;
+	m_isAnimating = true;
+}
+
+void Field::animateProcess(const AnimateState& state)
+{
+	Optional<int> next = m_machine.next(state.name, m_animationNumber);
+
+	if (!next)
+	{
+		return;
+	}
+
+	m_elapsedTime = state.isReversed ? ANIMATION_FRAME : 0;
+	m_animationNumber = next.ref();
+	m_isReversed = state.isReversed;
 	m_isAnimating = true;
 }
 

@@ -6,6 +6,8 @@
 # include "Utility/Renderer.h"
 # include "Utility/BGM.h"
 
+# include "Experimental/OneShotStage.h"
+
 # include "ISceneMediator.h"
 # include "Scene.h"
 
@@ -33,6 +35,11 @@ void Title::update()
 		Mouse::IsClicked(MOUSE_INPUT_1))
 	{
 		m_manager->changeScene(Scene::Opening, 30.0f);
+	}
+
+	if (Input::IsClicked(KEY_INPUT_F1))
+	{
+		m_manager->changeScene(Scene::OneShotLauncher, 30.0f);
 	}
 }
 

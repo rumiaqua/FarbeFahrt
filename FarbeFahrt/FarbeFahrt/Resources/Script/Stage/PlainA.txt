@@ -12,8 +12,8 @@ r,PlainBGM,Sound/BGM/plain.mp3
 p,-180,50,-80
 
 # フィールド
-f,plainGround,0,0,0,3
-f,plainBackground,0,0,0,3
+f,plainGround,0,0,0,3,Resources/Script/Animation/PlainA.txt
+f,plainBackground,0,0,0,3,Resources/Script/Animation/PlainA.txt
 
 # ゴール
 o,Goal,Goal,50,30,-80,null

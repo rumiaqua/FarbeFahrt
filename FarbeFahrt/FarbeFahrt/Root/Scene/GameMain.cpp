@@ -24,6 +24,8 @@
 
 # include "Scene.h"
 
+# include "Experimental/AnimateState.h"
+
 GameMain::GameMain()
 	: m_stageManager()
 {
@@ -42,7 +44,7 @@ void GameMain::loadContents(Loader& loader)
 		loader.loadContent(resource.first, resource.second);
 	}*/
 
-	loader.loadContent("BaseBook", "Model/本/新本.pmx");
+	// loader.loadContent("BaseBook", "Model/本/新本.pmx");
 	loader.loadContent("desk", "Model/机/つくえ.mqo");
 
 	loader.loadContent("TrueEnd", "Texture/end/true.png");
@@ -58,10 +60,10 @@ void GameMain::initialize()
 	m_world = std::make_shared<World>();
 
 	// 本
-	/*m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
-		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f));*/
-	m_world->addActor(ActorTag::Effect, std::make_shared<AnimateActor>(
-		*m_world, "BaseBook", Vector3(0.0f, -5.0f, 0.0f), 3.0f));
+	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
+		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Book.txt"));
+	/*m_world->addActor(ActorTag::Effect, std::make_shared<AnimateActor>(
+		*m_world, "BaseBook", Vector3(0.0f, -5.0f, 0.0f), 3.0f));*/
 	// 机
 	m_world->addActor(ActorTag::Effect, std::make_shared<StaticObject>(
 		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
@@ -75,10 +77,13 @@ void GameMain::initialize()
 
 	EndManager::Clear();
 
-	AnimateActor::AnimationInfo info;
+	/*AnimateActor::AnimationInfo info;
 	info.animationNumber = 0;
 	info.animationTime = 180.0f;
-	m_world->findActor("BaseBook")->sendMessage("Animate", &info);
+	m_world->findActor("BaseBook")->sendMessage("Animate", &info);*/
+	AnimateState state { "Open", false };
+	m_world->findActor("book")->sendMessage("Animate", &state);
+
 }
 
 void GameMain::update()
@@ -86,11 +91,6 @@ void GameMain::update()
 	if (m_stageManager.bgmName() != "")
 	{
 		BGM::play(m_stageManager.bgmName());
-	}
-
-	if (Input::IsClicked(KEY_INPUT_F11))
-	{
-		m_manager->changeScene(Scene::Title, 30.0f);
 	}
 
 	m_world->update();
@@ -138,14 +138,16 @@ void GameMain::post()
 		{
 			if (!EndManager::isEnd())
 			{
-			EndManager::Set(m_stageManager.endName());
-			m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
+				EndManager::Set(m_stageManager.endName());
+				m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
 
-				AnimateActor::AnimationInfo info;
+				/*AnimateActor::AnimationInfo info;
 				info.animationNumber = 0;
 				info.animationTime = 180.0f;
 				info.isReversed = true;
-				m_world->findActor("BaseBook")->sendMessage("Animate", &info);
+				m_world->findActor("BaseBook")->sendMessage("Animate", &info);*/
+
+				// m_world->findActor("BaseBook")->sendMessage("Animate", )
 			}
 			return;
 		}

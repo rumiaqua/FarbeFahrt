@@ -15,15 +15,17 @@ r,ForestBGM,Sound/BGM/forest.mp3
 p,-180,50,-80
 
 # フィールド
-f,forestBGround,0,0,0,3
-f,forestBBackground,0,0,0,3
+f,forestBGround,0,0,0,3,Resources/Script/Animation/ForestBGround.txt
+f,forestBBackground,0,0,0,3,Resources/Script/Animation/ForestBBack.txt
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
-o,CommandGimmick,birdG,90,25,-50,null,1/1.0f/590.0f/5.0f/4
-o,CommandGimmick,flowerG,-230,25,-50,null,1/1.0f/590.0f/5.0f/6
+#o,CommandGimmick,birdG,90,25,-50,null,1/1.0f/590.0f/5.0f/4
+#o,CommandGimmick,flowerG,-230,25,-50,null,1/1.0f/590.0f/5.0f/6
+o,Bookmark,birdG,90,25,-50,null,Bird
+o,Bookmark,flowerG,-230,25,-50,null,Flower
 
 # ギミック起動変数
 g,2

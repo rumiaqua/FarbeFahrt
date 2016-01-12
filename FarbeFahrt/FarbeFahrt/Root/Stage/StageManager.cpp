@@ -13,6 +13,8 @@
 
 # include "Manager/EndManager.h"
 
+# include "Experimental/AnimateState.h"
+
 # include <fstream>
 
 StageManager::StageManager()
@@ -85,10 +87,16 @@ void StageManager::next(World* const world)
 		});
 
 		// 現在のフィールドに閉じるアニメーションをさせる
-		world->findGroup(ActorTag::Field)->eachChildren(
+		/*world->findGroup(ActorTag::Field)->eachChildren(
 			[] (BaseActor& actor)
 		{
 			actor.sendMessage("CloseAnimate", nullptr);
+		});*/
+		world->findGroup(ActorTag::Field)->eachChildren(
+			[] (BaseActor& actor)
+		{
+			AnimateState state { "Close", false };
+			actor.sendMessage("Animate", &state);
 		});
 	}
 	

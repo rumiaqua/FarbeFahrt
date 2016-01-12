@@ -3,6 +3,8 @@
 # include "Utility/String.h"
 # include "Utility/Vector3.h"
 
+# include "Experimental/AnimationTransitionMachine.h"
+
 # include <unordered_map>
 
 class IShape;
@@ -14,7 +16,8 @@ struct StageData
 		std::string name;
 		Vector3 position;
 		float scale;
-		FieldObj(const std::string& name, const Vector3& position, float scale);
+		std::string transition;
+		FieldObj(const std::string& name, const Vector3& position, float scale, const std::string& transition);
 	};
 
 	struct Object
