@@ -12,7 +12,7 @@
 # include "Actor/Goal/Goal.h"
 # include "Actor/PlayerSpawner.h"
 # include "Actor/Gimmick/GimmickManager.h"
-# include "Actor/Herb.h"
+# include "Actor/Instant.h"
 
 # include "World.h"
 
@@ -116,19 +116,20 @@ void Stage::apply(const StageData& data, bool isClear)
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
 		}		
-		if (object.name == "Herb")
+		if (object.name == "Instant")
 		{
-			m_world->addActor(ActorTag::Object, std::make_shared<Herb>(
-				*m_world, object.position));
+			m_world->addActor(ActorTag::Object, std::make_shared<Instant>(
+				*m_world, object.name, object.position));
 		}
 		if (object.name == "Bookmark")
 		{
 			auto parameter = String::Split(object.parameter, '/');
 			std::string& animateName = parameter[0];
+			bool once = String::ToValue<bool>(parameter[1]);
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
-				*m_world, object.name, object.position, animateName));
+				*m_world, object.name, object.position, animateName, once));
 		}
-	}	
+	}
 
 	m_point = data.gimmickPoint;
 	GimmickManager::setMax(data.gimmickPoint);

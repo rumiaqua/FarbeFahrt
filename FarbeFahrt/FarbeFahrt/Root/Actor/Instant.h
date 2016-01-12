@@ -2,11 +2,11 @@
 
 # include "Actor/BaseActor.h"
 
-class Herb : public BaseActor
+class Instant : public BaseActor
 {
 public:
 
-	Herb(IWorld& world, const Vector3& position);
+	Instant(IWorld& world, const std::string& name, const Vector3& position);
 
 private:
 

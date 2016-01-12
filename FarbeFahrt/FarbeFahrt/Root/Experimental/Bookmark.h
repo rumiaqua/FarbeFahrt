@@ -8,7 +8,7 @@ class Bookmark : public BaseActor
 {
 public:
 
-	Bookmark(IWorld& world, const std::string& modelName, const Vector3& position, const std::string& animateName);
+	Bookmark(IWorld& world, const std::string& modelName, const Vector3& position, const std::string& animateName, bool once);
 
 private:
 

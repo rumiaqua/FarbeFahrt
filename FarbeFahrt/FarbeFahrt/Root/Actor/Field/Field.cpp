@@ -87,7 +87,7 @@ void Field::onDraw(Renderer& render) const
 
 	float t = Math::Min({ m_elapsedTime / ANIMATION_FRAME, 0.99999f });
 	render.drawSkinModel(m_name, m_pose, m_animationNumber, t,false);
-	Debug::Println("command:%d",m_previousAnimNo);
+	// Debug::Println("command:%d",m_previousAnimNo);
 
 	BaseActor::onDraw(render);
 }
@@ -161,8 +161,8 @@ void Field::onMessage(const std::string& message, void* parameter)
 
 	if (message == "WorkGimmick" && isGround())
 	{
-		m_previousAnimNo = (int)parameter;
-		workGimmick((int)parameter);
+		m_previousAnimNo = *(int*)parameter;
+		workGimmick(*(int*)parameter);
 	}
 
 	BaseActor::onMessage(message, parameter);

@@ -72,7 +72,7 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
-	m_stageManager.initialize("Resources/Script/Stage/index.csv", "ForestB");
+	m_stageManager.initialize("Resources/Script/Stage/index.csv", "Lowles");
 	StoryManager::set(BitFlag::GOAL);
 
 	EndManager::Clear();
