@@ -14,6 +14,10 @@
 //Playerクラス
 #define ANIM_BLEND_SPEED 0.1f
 //Playerクラスここまで
+
+//BGMクラス
+#define BGM_MAX_VOLUME 128
+//BGMクラスここまで
 struct ContentData{
 	int handle;
 	std::string filename;
