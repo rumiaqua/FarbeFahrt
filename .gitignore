@@ -199,3 +199,6 @@ FakesAssemblies/
 Log.txt
 FarbeFahrt/FarbeFahrt/Log.txt
 *.opendb
+*.exe
+*.db
+*.zip
