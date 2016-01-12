@@ -208,8 +208,18 @@ void Renderer::draw()
 	//2‚c‚Ì•`‰æ
 	for (auto& texture : m_drawList)
 	{
-		DrawRotaGraph3(texture.x, texture.y, texture.cx, texture.cy, texture.extRateX, texture.extRateY,
-			texture.angle, texture.handle, TRUE, FALSE);
+		if (texture.alpha != 255)
+		{
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, texture.alpha);
+			DrawRotaGraph3(texture.x, texture.y, texture.cx, texture.cy, texture.extRateX, texture.extRateY,
+				texture.angle, texture.handle, TRUE, FALSE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		}
+		else
+		{
+			DrawRotaGraph3(texture.x, texture.y, texture.cx, texture.cy, texture.extRateX, texture.extRateY,
+				texture.angle, texture.handle, TRUE, FALSE);
+		}
 	}
 	m_drawList.clear();
 	// ƒtƒHƒ“ƒg‚Ì•`‰æ
@@ -445,10 +455,9 @@ void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int anim
 	drawNormalModel(name, pose.position, pose.rotation);
 }
 
-void Renderer::drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) 
+void Renderer::drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle, int alpha)
 {
-	
-	TextureData texture{ m_textureData.at(name) ,x,y,cx,cy,width,height,angle };
+	TextureData texture{ m_textureData.at(name) ,x,y,cx,cy,width,height,angle,alpha};
 	setDrawList(texture);
 }
 void Renderer::drawTexture(const std::string& name, int x, int y)

@@ -46,7 +46,7 @@ struct TextureData {
 	double extRateX;
 	double extRateY;
 	double angle;
-
+	int alpha;
 };
 struct LightCamera
 {
@@ -168,7 +168,7 @@ public:
 	void drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t, bool isBlend);
 
 	//2D系関数
-	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle);
+	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle, int alpha = 255);
 	void drawTexture(const std::string& name, int x, int y);
 	// アスペクト比
 	enum class AspectType
