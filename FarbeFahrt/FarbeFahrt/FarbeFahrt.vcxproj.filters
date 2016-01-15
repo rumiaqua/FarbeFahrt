@@ -213,25 +213,25 @@
     <ClCompile Include="Root\Actor\Instant.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Experimental\Collision\Capsule.cpp">
+    <ClCompile Include="Root\Collision\Capsule.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Experimental\Collision\Collision.cpp">
+    <ClCompile Include="Root\Collision\Collision.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Experimental\Collision\IShape.cpp">
+    <ClCompile Include="Root\Collision\IShape.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Experimental\Collision\Line.cpp">
+    <ClCompile Include="Root\Collision\Line.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Experimental\Collision\ModelCollider.cpp">
+    <ClCompile Include="Root\Collision\ModelCollider.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Experimental\Collision\Sphere.cpp">
+    <ClCompile Include="Root\Collision\Sphere.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Experimental\Collision\Triangle.cpp">
+    <ClCompile Include="Root\Collision\Triangle.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -494,25 +494,25 @@
     <ClInclude Include="Root\Actor\Instant.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Experimental\Collision\Capsule.h">
+    <ClInclude Include="Root\Collision\Capsule.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Experimental\Collision\Collision.h">
+    <ClInclude Include="Root\Collision\Collision.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Experimental\Collision\IShape.h">
+    <ClInclude Include="Root\Collision\IShape.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Experimental\Collision\Line.h">
+    <ClInclude Include="Root\Collision\Line.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Experimental\Collision\ModelCollider.h">
+    <ClInclude Include="Root\Collision\ModelCollider.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Experimental\Collision\Sphere.h">
+    <ClInclude Include="Root\Collision\Sphere.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Experimental\Collision\Triangle.h">
+    <ClInclude Include="Root\Collision\Triangle.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
