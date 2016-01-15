@@ -3,8 +3,8 @@ r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
 # フィールドリソース
-r,houseGround,Stage/House/家地面/HouseGround.pmx
-#r,houseBackGround,Stage/House/家背景/HouseBackGround.pmx
+r,houseBackGround,Stage/House/BackGround/HouseBackGround.pmx
+r,BadEndHouseGround,Stage/House/BadEndGround/BadEndHouseGround.pmx
 
 r,HouseBGM,Sound/BGM/house.mp3
 
@@ -12,8 +12,8 @@ r,HouseBGM,Sound/BGM/house.mp3
 p,-180,50,-80
 
 # フィールド
-f,houseGround,0,0,0,3
-#f,houseBackground,0,0,0,3
+f,BadEndHouseGround,0,0,0,3
+f,houseBackGround,0,0,0,3
 
 # ゴール
 o,Goal,Goal,-80,30,-25,null

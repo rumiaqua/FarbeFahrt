@@ -66,7 +66,7 @@ MyGame::MyGame()
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 void MyGame::run()
 {
-	if (Input::IsClicked(KEY_INPUT_F12))
+	if (Input::IsClicked(KEY_INPUT_F10))
 	{
 		Debug::SetEnabled(!Debug::IsEnabled());
 	}
@@ -109,7 +109,7 @@ void MyGame::run()
 		BGM::set(loader.getBGMList());
 	}
 
-	if (Input::IsClicked(KEY_INPUT_F10))
+	if (Input::IsClicked(KEY_INPUT_F9))
 	{
 		m_sceneManager.changeScene(Scene::Title);
 	}

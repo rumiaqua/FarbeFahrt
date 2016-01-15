@@ -125,7 +125,7 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			auto parameter = String::Split(object.parameter, '/');
 			std::string& animateName = parameter[0];
-			bool once = String::ToValue<bool>(parameter[1]);
+			bool once = parameter[1] == "true";
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
 				*m_world, object.name, object.position, animateName, once));
 		}

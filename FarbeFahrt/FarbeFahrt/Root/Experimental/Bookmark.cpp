@@ -13,7 +13,7 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 		position,
 		Matrix::Rotation(Vector3::Up(),
 		Math::HALF_PI),
-		std::make_unique<Sphere>(Vector3::Zero(), 3.0f))
+		std::make_unique<Sphere>(Vector3::Zero(), 15.0f))
 	, m_once(once)
 	, m_animateName(animateName)
 {

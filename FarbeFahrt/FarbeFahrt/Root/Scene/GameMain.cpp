@@ -72,7 +72,7 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
-	m_stageManager.initialize("Resources/Script/Stage/index.csv", "Lowles");
+	m_stageManager.initialize("Resources/Script/Stage/index.csv", "DimForest");
 	StoryManager::set(BitFlag::GOAL);
 
 	EndManager::Clear();
@@ -147,7 +147,8 @@ void GameMain::post()
 				info.isReversed = true;
 				m_world->findActor("BaseBook")->sendMessage("Animate", &info);*/
 
-				// m_world->findActor("BaseBook")->sendMessage("Animate", )
+				AnimateState state { "Open", true };
+				m_world->findActor("book")->sendMessage("Animate", &state);
 			}
 			return;
 		}

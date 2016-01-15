@@ -29,7 +29,7 @@ Camera::Camera(IWorld& world) :
 	, m_actor()
 {
 	SetCameraNearFar(1.0f, 12000.0f);
-	SetCursorPos(nScreenCenterX, nScreenCenterY);
+	// SetCursorPos(nScreenCenterX, nScreenCenterY);
 
 	m_cameraMatrix.targetPos = outPos;
 	m_cameraMatrix.currentPos = m_cameraMatrix.targetPos;

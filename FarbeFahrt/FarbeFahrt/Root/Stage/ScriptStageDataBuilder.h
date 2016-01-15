@@ -76,7 +76,7 @@ public:
 					String::ToValue<float>(split[3]),
 					String::ToValue<float>(split[4]));
 				float scale = String::ToValue<float>(split[5]);
-				std::string transition = "";
+				std::string transition = "Resources/Script/Animation/Default.txt";
 				if (split.size() > 6)
 				{
 					transition = split[6];
