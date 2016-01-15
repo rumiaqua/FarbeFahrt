@@ -37,6 +37,17 @@ struct ShaderHandle
 	int render_normal;
 	int render_pixel;
 };
+struct TextureData {
+	int handle;
+	int x;
+	int y;
+	int cx;
+	int cy;
+	double extRateX;
+	double extRateY;
+	double angle;
+	int alpha;
+};
 struct LightCamera
 {
 	Matrix viewMatrix;
@@ -154,10 +165,10 @@ public:
 	/// <param name="pose">姿勢</param>
 	/// <param name="animationNumber">アニメーションNo</param>
 	/// <param name="t">アニメーション比率(0.0~1.0)</param>
-	void drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t);
+	void drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t, bool isBlend);
 
 	//2D系関数
-	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const;
+	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle, int alpha = 255);
 	void drawTexture(const std::string& name, int x, int y);
 	// アスペクト比
 	enum class AspectType
@@ -192,15 +203,14 @@ public:
 private:
 	void initDepthBuffer();
 	void loadShader();
-	void setDrawList(const std::string& name, int handle);
+	void setDrawList(const TextureData& textureData);
 	void drawDepth();
 	void drawModelWithDepthShadow();
-
 	void setFont();
 	void drawFont();
 private:
 	std::unordered_map<std::string, ModelData> m_modelData;
-	std::vector<std::pair<std::string, int>>drawList;
+	std::vector<TextureData>m_drawList;
 	std::unordered_map<std::string, int> m_textureData;
 	Buffer m_buffer;
 	ShaderHandle m_shaderHandle;

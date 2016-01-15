@@ -47,9 +47,7 @@ public:
 	virtual void draw(Renderer& renderer) override
 	{
 		int alpha = (int)(m_currentCount / m_fadeCount * 255);
-		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 255 - alpha);
-		renderer.drawTexture("curtain", 0, 0, 0, 0, 100, 100, 0.0f);
-		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		renderer.drawTexture("curtain", 0, 0, 0, 0, 100, 100, 0.0f, 255 - alpha);
 	}
 
 	virtual void post() override

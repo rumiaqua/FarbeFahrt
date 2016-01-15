@@ -75,7 +75,7 @@ void AnimateActor::onDraw(Renderer& renderer) const
 		t = 1.0f - t;
 	}
 
-	renderer.drawSkinModel(m_name, m_pose, m_animationNumber, t);
+	renderer.drawSkinModel(m_name, m_pose, m_animationNumber, t,false);
 
 	BaseActor::onDraw(renderer);
 

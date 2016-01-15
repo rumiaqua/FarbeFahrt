@@ -1,9 +1,12 @@
 #include "BGM.h"
-
+#include <chrono>
+#include <thread>
 
 
 BGM::BGM()
 {
+	m_playBGMvolume = 0;
+	m_oldBGMvolume = 0;
 }
 
 BGM::~BGM()
@@ -17,27 +20,53 @@ BGM& BGM::instance()
 void BGM::set(const ContentMap& contentMap)
 {
 	BGM& bgm = instance();
-	bgm.BGMList = contentMap;
+	bgm.m_BGMList = contentMap;
 }
 void BGM::play(const std::string& name)
 {
 	BGM& bgm = instance();
 
-	bgm.playBGMhandle = bgm.BGMList.at(name).handle;
-	if (bgm.playBGMhandle == bgm.oldBGMhandle)
+	bgm.m_playBGMhandle = bgm.m_BGMList.at(name).handle;
+	if (bgm.m_playBGMhandle == bgm.m_oldBGMhandle)
 	{
 		return;
 	}
-	else
+	std::thread fadeOut(fadeOut);
+	std::thread fadeIn(fadeIn);
+	fadeOut.detach();
+	fadeIn.detach();
+	PlaySoundMem(bgm.m_playBGMhandle, DX_PLAYTYPE_LOOP);
+	bgm.m_oldBGMhandle = bgm.m_playBGMhandle;
+}
+void BGM::fadeOut()
+{
+	BGM& bgm = instance();
+	int handle = bgm.m_oldBGMhandle;
+	int volume = BGM_MAX_VOLUME;
+	while (volume >= 0)
 	{
-		StopSoundMem(bgm.oldBGMhandle);
-		PlaySoundMem(bgm.playBGMhandle, DX_PLAYTYPE_BACK);
-		SetVolumeSound(128);
-		bgm.oldBGMhandle = bgm.playBGMhandle;
+		std::this_thread::sleep_for(std::chrono::milliseconds(50));
+		--volume;
+		ChangeVolumeSoundMem(volume, handle);
 	}
+	volume = 0;
+		StopSoundMem(handle);
+}
+void BGM::fadeIn()
+{
+	BGM& bgm = instance();
+	int handle = bgm.m_playBGMhandle;
+	int volume = 0;
+	while (volume <= BGM_MAX_VOLUME)
+	{
+		std::this_thread::sleep_for(std::chrono::milliseconds(50));
+		++volume;
+		ChangeVolumeSoundMem(volume, handle);
+	}
+	volume = BGM_MAX_VOLUME;
 }
 void BGM::stop()
 {
 	BGM& bgm = instance();
-	StopSoundMem(bgm.playBGMhandle);
+	StopSoundMem(bgm.m_playBGMhandle);
 }

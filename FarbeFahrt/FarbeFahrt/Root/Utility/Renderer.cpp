@@ -83,7 +83,7 @@ void Renderer::setTextureData(const ContentMap& textureData)
 	}
 }
 
-// 深度描画？
+// 深度描画
 void Renderer::drawDepth()
 {
 	Vector3 lightPosition = { 20.0f,120.0f,-70.0f };
@@ -183,10 +183,11 @@ void Renderer::drawModelWithDepthShadow()
 	// スロット43を初期化？
 	ResetVSConstF(43, 8);
 }
-void Renderer::setDrawList(const std::string& name, int handle)
+void Renderer::setDrawList(const TextureData& textureData)
 {
-	drawList.push_back(std::make_pair(name, handle));
+	m_drawList.emplace_back(textureData);
 }
+
 void Renderer::draw()
 {
 	// 現在の設定を保持
@@ -203,7 +204,24 @@ void Renderer::draw()
 		func();
 	}
 	m_primitives.clear();
-
+	
+	//2Ｄの描画
+	for (auto& texture : m_drawList)
+	{
+		if (texture.alpha != 255)
+		{
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, texture.alpha);
+			DrawRotaGraph3(texture.x, texture.y, texture.cx, texture.cy, texture.extRateX, texture.extRateY,
+				texture.angle, texture.handle, TRUE, FALSE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		}
+		else
+		{
+			DrawRotaGraph3(texture.x, texture.y, texture.cx, texture.cy, texture.extRateX, texture.extRateY,
+				texture.angle, texture.handle, TRUE, FALSE);
+		}
+	}
+	m_drawList.clear();
 	// フォントの描画
 	drawFont();
 }
@@ -289,15 +307,17 @@ void Renderer::refreshAnimParam()
 		refreshAnimParam(model.first);
 	}
 }
+
 void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 	const Matrix& rotation, int animNumber, float frame, bool isBlend)
 {
 	//見辛いから後々関数分けする予定
 	//サンプル丸パクリスペクト
-	float animTotalTime;
+	
 	auto& modelData = m_modelData.at(name);
 	modelData.isSkinMesh = true;
 
+	float animTotalTime;
 	if (animNumber != modelData.animNumber)//アニメーションが切り替わった時
 	{
 		modelData.animNumber = animNumber;
@@ -315,14 +335,23 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 
 	}
 
-	if (modelData.animBlendRate < 1.0f)
+	if (isBlend)
 	{
-		modelData.animBlendRate += ANIM_BLEND_SPEED;
-		if (modelData.animBlendRate > 1.0f)
+		if (modelData.animBlendRate < 1.0f)
 		{
-			modelData.animBlendRate = 1.0f;
+			modelData.animBlendRate += ANIM_BLEND_SPEED;
+			if (modelData.animBlendRate > 1.0f)
+			{
+				modelData.animBlendRate = 1.0f;
+			}
 		}
 	}
+	else
+	{
+		modelData.animBlendRate = 1.0f;
+	}
+
+	
 
 	if (modelData.playAnim1 != -1)
 	{
@@ -347,7 +376,6 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 		MV1SetAttachAnimBlendRate(modelData.modelHandle, modelData.playAnim2, 1.0f - modelData.animBlendRate);
 	}
 
-
 	//現在のアニメーションを再生
 
 	drawNormalModel(name, position, rotation);
@@ -358,7 +386,7 @@ void Renderer::setScale(const std::string& name, const Vector3& scale)
 	MV1SetScale(m_modelData.at(name).modelHandle, scale);
 }
 
-void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t)
+void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t, bool isBlend)
 {
 	//見辛いから後々関数分けする予定
 	//サンプル丸パクリスペクト
@@ -385,13 +413,20 @@ void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int anim
 	float totalTime = MV1GetAttachAnimTotalTime(m_modelData.at(name).modelHandle, modelData.playAnim1);
 	float frame = totalTime * t;
 
-	if (modelData.animBlendRate < 1.0f)
+	if (isBlend)
 	{
-		modelData.animBlendRate += ANIM_BLEND_SPEED;
-		if (modelData.animBlendRate > 1.0f)
+		if (modelData.animBlendRate < 1.0f)
 		{
-			modelData.animBlendRate = 1.0f;
+			modelData.animBlendRate += ANIM_BLEND_SPEED;
+			if (modelData.animBlendRate > 1.0f)
+			{
+				modelData.animBlendRate = 1.0f;
+			}
 		}
+	}
+	else
+	{
+		modelData.animBlendRate = 1.0f;
 	}
 	if (modelData.playAnim1 != -1)
 	{
@@ -420,14 +455,15 @@ void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int anim
 	drawNormalModel(name, pose.position, pose.rotation);
 }
 
-void Renderer::drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle) const
+void Renderer::drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle, int alpha)
 {
-	DrawRotaGraph3(x, y, cx, cy, width, height,
-		(double)angle, m_textureData.at(name), FALSE, FALSE);
+	TextureData texture{ m_textureData.at(name) ,x,y,cx,cy,width,height,angle,alpha};
+	setDrawList(texture);
 }
 void Renderer::drawTexture(const std::string& name, int x, int y)
 {
-	DrawGraph(x, y, m_textureData.at(name), TRUE);
+	//DrawGraph(x, y, m_textureData.at(name), TRUE);
+	drawTexture(name, x, y, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f);
 }
 
 void Renderer::drawTexture(const std::string& name, const AspectType& type)
@@ -471,7 +507,8 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 	Vector2 correctionSize = textureSize * ext;
 	Vector2 pos = (windowSize - correctionSize) * center + position;
 
-	DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);
+	/*DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);*/
+	drawTexture(name, pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0f);
 }
 void Renderer::drawFont(const std::string& text)
 {

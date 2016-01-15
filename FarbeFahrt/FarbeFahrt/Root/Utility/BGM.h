@@ -14,8 +14,13 @@ public:
 	static void play(const std::string& name);
 	static void stop();
 private:
-	ContentMap BGMList;
-	int playBGMhandle;//Œ»İÄ¶’†‚ÌBGM
-	int oldBGMhandle;
+	static void fadeOut();
+	static void fadeIn();
+private:
+	ContentMap m_BGMList;
+	int m_playBGMhandle;//Œ»İÄ¶’†‚ÌBGM
+	int m_oldBGMhandle;
+	int m_playBGMvolume;
+	int m_oldBGMvolume;
 };
 
