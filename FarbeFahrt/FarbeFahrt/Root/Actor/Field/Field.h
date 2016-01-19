@@ -15,9 +15,6 @@ public:
 	virtual void onDraw(Renderer& render)const override;
 	virtual void onMessage(const std::string& message, void* parameter) override;
 private:
-	void open();
-	void close();
-	void reverseOpen();
 	void workGimmick(int commandNo);
 	bool isGround();
 	void animateProcess(const AnimateState& state);

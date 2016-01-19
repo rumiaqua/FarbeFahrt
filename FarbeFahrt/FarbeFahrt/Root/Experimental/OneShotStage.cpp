@@ -12,6 +12,8 @@
 # include "Scene/ISceneMediator.h"
 # include "Scene/Scene.h"
 
+# include "Experimental/AnimateState.h"
+
 # include "Stage/ScriptStageDataBuilder.h"
 
 # include "Actor/AnimateActor.h"
@@ -88,12 +90,13 @@ void OneShotStage::post()
 		if (!EndManager::isEnd())
 		{
 			EndManager::Set("Ending1");
-			m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
+			AnimateState state { "Open", true };
+			m_world->findGroup(ActorTag::Field)->sendMessage("Animate", &state);
 			AnimateActor::AnimationInfo info;
 			info.animationNumber = 0;
 			info.animationTime = 180.0f;
 			info.isReversed = true;
-			m_world->findActor("BaseBook")->sendMessage("Animate", &info);
+			m_world->findActor("BaseBook")->sendMessage("Animate", &state);
 			return;
 		}
 	}

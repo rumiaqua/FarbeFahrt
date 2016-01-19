@@ -2,13 +2,11 @@
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
-r,testG,Model/Gimmick/bookmark.mqo
-
-r.herb,Model/Gimmick/bookmark.mqo
+r,tentG,Model/Gimmick/bookmark.mqo
+r,herbG,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
-r,lowlesGround,Stage/ローレス/ローレス地面/ローレス地面.pmx
-r,lowlesBackground,Stage/ローレス/ローレス背景/ローレス背景.pmx
+r,lowlesGround,Stage/Lowles/Ground/LowlesGround.pmx
 
 r,TownBGM,Sound/BGM/Town.mp3
 
@@ -17,15 +15,15 @@ p,-180,50,-80
 
 # フィールド
 f,lowlesGround,0,0,0,3,Resources/Script/Animation/Lowles.txt
-f,lowlesBackground,0,0,0,3,Resources/Script/Animation/Default.txt
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
-o,Bookmark,testG,90,25,-50,null,Shop/true
+o,Bookmark,tentG,90,25,-50,null,Tent/true
+o,Bookmark,herbG,90,25,50,null,Herb/true
 
-o,Instant,herb,-61,20,40,null
+o,Instant,herb,-70,30,20,null
 
 # ギミック起動変数
 g,1

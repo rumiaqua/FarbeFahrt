@@ -59,10 +59,6 @@ void Field::onUpdate()
 		if (m_current == "Open" &&
 			!m_isAnimating)
 		{
-			/*for (auto&& spawner : m_world->findActors("PlayerSpawner"))
-			{
-				spawner->sendMessage("PlayerSpawn", nullptr);
-			}*/
 			m_world->findGroup(ActorTag::Player)->eachChildren([] (BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
 			m_world->findCamera()->sendMessage("toPlayerCamera", nullptr);
 			StoryManager::set(BitFlag::NEXT);
@@ -84,7 +80,6 @@ void Field::onDraw(Renderer& render) const
 
 	float t = Math::Min({ m_elapsedTime / ANIMATION_FRAME, 0.99999f });
 	render.drawSkinModel(m_name, m_pose, m_animationNumber, t,false);
-	// Debug::Println("command:%d",m_previousAnimNo);
 
 	BaseActor::onDraw(render);
 }
@@ -124,37 +119,11 @@ void Field::onMessage(const std::string& message, void* parameter)
 		}
 	}
 
-	if (message == "OpenAnimate")
-	{
-		// 開くアニメーション
-		open();
-	}
-
-	if (message == "CloseAnimate")
-	{
-		// 閉じるアニメーション
-		close();
-	}
-
-	if (message == "ReverseOpenAnimate" && !m_isAnimating)
-	{
-		// 開くアニメーション逆再生
-		reverseOpen();
-	}
-
 	if (message == "Animate")
 	{
 		const AnimateState& state = *(AnimateState*)parameter;
 		animateProcess(state);
 	}
-
-	/*if (message == "Animate")
-	{
-		m_elapsedTime = 0.0f;
-		m_animationNumber = *(int*)parameter;
-		m_isAnimating = true;
-		m_isReversed = false;
-	}*/
 
 	if (message == "WorkGimmick" && isGround())
 	{
@@ -163,30 +132,6 @@ void Field::onMessage(const std::string& message, void* parameter)
 	}
 
 	BaseActor::onMessage(message, parameter);
-}
-
-void Field::open()
-{
-	m_elapsedTime = 0.0f;
-	m_animationNumber = 0;
-	m_isAnimating = true;
-	m_isReversed = false;
-}
-
-void Field::close()
-{
-	m_elapsedTime = 0.0f;
-	m_animationNumber = 1;
-	m_isAnimating = true;
-	m_isReversed = false;
-}
-
-void Field::reverseOpen()
-{
-	m_elapsedTime = ANIMATION_FRAME;
-	m_animationNumber = 0;
-	m_isAnimating = true;
-	m_isReversed = true;
 }
 
 void Field::workGimmick(int commandNo)

@@ -14,8 +14,8 @@ r,ForestBGM,Sound/BGM/forest.mp3
 p,-180,50,-80
 
 # フィールド
-f,forestCGround,0,0,0,3,Resources/Script/Animation/ForestB.txt
-f,forestCBackGround,0,0,0,3
+f,forestCGround,0,0,0,3,Resources/Script/Animation/ForestC.txt
+f,forestCBackGround,0,0,0,3,Resources/Script/Animation/Default.txt
 
 # ギミック
 #o,Gimmick,bookCG,90,25,-50,null,1/1.0f/590.0f/5.0f

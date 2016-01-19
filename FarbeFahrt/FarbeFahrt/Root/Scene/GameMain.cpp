@@ -38,13 +38,6 @@ void GameMain::loadContents(Loader& loader)
 
 	// 必ず読むリソース
 	// とりあえずここにおいておく
-
-	/*for (auto&& resource : m_stageManager.current().resourceList)
-	{
-		loader.loadContent(resource.first, resource.second);
-	}*/
-
-	// loader.loadContent("BaseBook", "Model/本/新本.pmx");
 	loader.loadContent("desk", "Model/机/つくえ.mqo");
 
 	loader.loadContent("TrueEnd", "Texture/end/true.png");
@@ -62,8 +55,6 @@ void GameMain::initialize()
 	// 本
 	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
 		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Book.txt"));
-	/*m_world->addActor(ActorTag::Effect, std::make_shared<AnimateActor>(
-		*m_world, "BaseBook", Vector3(0.0f, -5.0f, 0.0f), 3.0f));*/
 	// 机
 	m_world->addActor(ActorTag::Effect, std::make_shared<StaticObject>(
 		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
@@ -72,17 +63,16 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
-	m_stageManager.initialize("Resources/Script/Stage/index.csv", "DimForest");
+	m_stageManager.initialize("Resources/Script/Stage/index.csv", "Lowles");
 	StoryManager::set(BitFlag::GOAL);
 
 	EndManager::Clear();
 
-	/*AnimateActor::AnimationInfo info;
-	info.animationNumber = 0;
-	info.animationTime = 180.0f;
-	m_world->findActor("BaseBook")->sendMessage("Animate", &info);*/
 	AnimateState state { "Open", false };
-	m_world->findActor("book")->sendMessage("Animate", &state);
+	if (auto book = m_world->findActor("book"))
+	{
+		book->sendMessage("Animate", &state);
+	}
 
 }
 
@@ -94,12 +84,6 @@ void GameMain::update()
 	}
 
 	m_world->update();
-
-	/*if (Input::IsClicked(KEY_INPUT_RETURN))
-	{
-		m_manager->pushScene(Scene::Editor);
-	}*/
-
 }
 
 void GameMain::draw(Renderer& render)
@@ -113,18 +97,6 @@ void GameMain::draw(Renderer& render)
 
 void GameMain::post()
 {
-	//# define NONE -1
-	//	int endNum = m_stageManager.endNum();
-	//	if (endNum != NONE)
-	//	{
-	//		return;
-	//		// endNum分だけ左シフトさせる
-	//		StoryManager::set(BitFlag::BADEND << endNum);
-	//		m_manager->changeScene(Scene::End, true);
-	//		return;
-	//	}
-	//# undef NONE
-
 	if (m_stageManager.isNext())
 	{
 		if (EndManager::CanEnd())
@@ -139,16 +111,13 @@ void GameMain::post()
 			if (!EndManager::isEnd())
 			{
 				EndManager::Set(m_stageManager.endName());
-				m_world->findGroup(ActorTag::Field)->sendMessage("ReverseOpenAnimate", nullptr);
-
-				/*AnimateActor::AnimationInfo info;
-				info.animationNumber = 0;
-				info.animationTime = 180.0f;
-				info.isReversed = true;
-				m_world->findActor("BaseBook")->sendMessage("Animate", &info);*/
-
 				AnimateState state { "Open", true };
-				m_world->findActor("book")->sendMessage("Animate", &state);
+				m_world->findGroup(ActorTag::Field)->sendMessage("Animate", &state);
+
+				if (auto book = m_world->findActor("book"))
+				{
+					book->sendMessage("Animate", &state);
+				}
 			}
 			return;
 		}

@@ -3,7 +3,7 @@
 # include "Gimmick/GimmickManager.h"
 
 Instant::Instant(IWorld& world, const std::string& name, const Vector3& position)
-	: BaseActor(world, name, position, Matrix::identity(), std::make_shared<Sphere>(Vector3::Zero(), 30.0f))
+	: BaseActor(world, name, position, Matrix::identity(), std::make_shared<Sphere>(Vector3::Zero(), 10.0f))
 	, m_gravity(0.0f)
 {
 
