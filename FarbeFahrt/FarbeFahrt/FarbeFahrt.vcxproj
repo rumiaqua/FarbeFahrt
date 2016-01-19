@@ -698,6 +698,7 @@
     <Text Include="Resources\Script\Animation\ForestD.txt" />
     <Text Include="Resources\Script\Animation\Lowles.txt" />
     <Text Include="Resources\Script\Animation\PlainA.txt" />
+    <Text Include="Resources\Script\Animation\PlainB.txt" />
     <Text Include="Resources\Script\Message\End\Ending1BadEnd.txt" />
     <Text Include="Resources\Script\Message\End\Ending2Clear.txt" />
     <Text Include="Resources\Script\Message\End\Ending3BadEnd.txt" />

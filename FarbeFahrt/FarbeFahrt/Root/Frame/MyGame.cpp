@@ -44,10 +44,10 @@ MyGame::MyGame()
 	m_sceneManager.addScene<OneShotStage>(Scene::OneShotStage);
 	m_sceneManager.addScene<OneShotLauncher>(Scene::OneShotLauncher);
 
-	m_sceneManager.pushScene(Scene::Title);
+	// m_sceneManager.pushScene(Scene::Title);
 	// m_sceneManager.pushScene(Scene::OneShotStage);
 	// m_sceneManager.pushScene(Scene::Message);
-	// m_sceneManager.pushScene(Scene::ObjectViewer);
+	m_sceneManager.pushScene(Scene::ObjectViewer);
 	// m_sceneManager.pushScene(Scene::End);
 
 	Debug::SetEnabled(true);

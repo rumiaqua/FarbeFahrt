@@ -34,14 +34,14 @@ void ObjectViewer::initialize()
 {
 	Debug::SetClear(true);
 
-	/*Matrix view = Matrix::LookAt({ 0.0f, 100.0f, -100.0f }, Vector3::Zero(), Vector3::Up());
+	Matrix view = Matrix::LookAt({ 0.0f, 100.0f, -100.0f }, Vector3::Zero(), Vector3::Up());
 	SetCameraViewMatrix(view);
 	SetupCamera_ProjectionMatrix(Matrix::Perspective(45.0, 1.33334f, 0.1f, 1000.0f));
 
 	view.inverse();
 
 	m_camera.setPosition(Matrix::Translation(view));
-	m_camera.setDirection(Vector3(Matrix::Forward(view)));*/
+	m_camera.setDirection(Vector3(Matrix::Forward(view)));
 
 	SetDragFileValidFlag(TRUE);
 }
@@ -65,7 +65,7 @@ void ObjectViewer::draw(Renderer& render)
 	Debug::Println(String::Create("Progress : ", m_progress));
 
 	// カメラ適用
-	// m_camera.apply();
+	m_camera.apply();
 
 	// モデル描画
 	drawModel(render);

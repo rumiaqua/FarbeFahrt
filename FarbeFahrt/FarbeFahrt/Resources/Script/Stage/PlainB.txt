@@ -4,24 +4,23 @@ r,Goal,Model/平原/くさ.pmx
 
 # フィールドリソース
 r,plainBGround,Stage/PlainB/Ground/PlainBGround.pmx
-r,plainBBackGround,Stage/PlainB/BackGround/PlainBBackGround.pmx
-
 r,PlainBGM,Sound/BGM/plain.mp3
 
 # プレイヤーの座標
 p,-180,50,-80
 
 # フィールド
-f,plainBGround,0,0,0,3
-f,plainBBackGround,0,0,0,3
+f,plainBGround,0,0,0,3,Resources/Script/Animation/PlainB.txt
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
+o,Bookmark,birdG,90,25,-50,null,LeftRabbit/false
+o,Bookmark,birdG,90,-25,-50,null,RightRabbit/false
 
 # ギミック起動変数
-g,1
+g,2
 
 # 次のステージ
 n,DimForest,ForestD
