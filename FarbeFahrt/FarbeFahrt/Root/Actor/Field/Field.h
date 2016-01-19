@@ -30,4 +30,5 @@ private:
 	int m_previousAnimNo;
 	bool m_isBackground;
 	AnimationTransitionMachine m_machine;
+	std::string m_current;
 };

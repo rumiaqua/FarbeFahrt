@@ -28,6 +28,7 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	, m_isReversed(false)
 	, m_isBackground(false)
 	, m_machine(transition)
+	, m_current()
 {
 
 }
@@ -55,8 +56,7 @@ void Field::onUpdate()
 			EndManager::SetEnd(true);
 		}
 
-# define Open 0
-		if (m_animationNumber == Open &&
+		if (m_current == "Open" &&
 			!m_isAnimating)
 		{
 			/*for (auto&& spawner : m_world->findActors("PlayerSpawner"))
@@ -68,15 +68,12 @@ void Field::onUpdate()
 			StoryManager::set(BitFlag::NEXT);
 			MessageManager::SetShow(true);
 		}
-# undef Open
 
-# define Close 1
-		if (m_animationNumber == Close &&
+		if (m_current == "Close" &&
 			!m_isAnimating)
 		{
 			kill();
 		}
-# undef Close
 	}
 
 	BaseActor::onUpdate();
@@ -209,6 +206,7 @@ void Field::animateProcess(const AnimateState& state)
 		return;
 	}
 
+	m_current = state.name;
 	m_elapsedTime = state.isReversed ? ANIMATION_FRAME : 0;
 	m_animationNumber = next.ref();
 	m_isReversed = state.isReversed;
