@@ -1,9 +1,0 @@
-# Identifier,Current,Next
-Bird,000,004
-Bird,006,007
-Flower,000,006
-Flower,004,005
-Close,004,003
-Close,005,001
-Close,006,002
-Close,007,001
