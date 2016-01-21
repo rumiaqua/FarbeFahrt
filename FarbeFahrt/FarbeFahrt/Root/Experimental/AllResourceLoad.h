@@ -3,10 +3,10 @@
 # include "Frame/BaseScene.h"
 # include "World.h"
 
-class OneShotLauncher : public BaseScene
+class AllResourceLoad : public BaseScene
 {
 public:
-	OneShotLauncher();
+	AllResourceLoad();
 	virtual void loadContents(Loader& loader)override;
 	virtual void initialize()override;
 	virtual void update()override;
@@ -14,6 +14,4 @@ public:
 	virtual void post() override;
 	virtual void cleanUp() override;
 	virtual bool isSwallow() const override;
-private:
-	void clickToStage(int key, const std::string& name);
 };

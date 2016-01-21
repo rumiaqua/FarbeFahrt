@@ -145,6 +145,11 @@ const std::string& StageManager::bgmName() const
 	return m_current.bgmName;
 }
 
+const std::unordered_map<std::string, StageData>& StageManager::allStageData() const
+{
+	return m_stageDatas;
+}
+
 bool StageManager::isFirst() const
 {
 	bool first = StoryManager::get(BitFlag::GIMMICK);

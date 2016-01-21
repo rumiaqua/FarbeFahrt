@@ -12,8 +12,7 @@
 # include "Scene/Title.h"
 
 # include "Experimental/ObjectViewer.h"
-# include "Experimental/OneShotStage.h"
-# include "Experimental/OneShotLauncher.h"
+# include "Experimental/AllResourceLoad.h"
 
 #include "Utility/SingletonFinalizer.h"
 #include "Utility/HandleList.h"
@@ -41,13 +40,12 @@ MyGame::MyGame()
 	m_sceneManager.addScene<StaffRoll>(Scene::StaffRoll);
 	m_sceneManager.addScene<Message>(Scene::Message);
 	m_sceneManager.addScene<Title>(Scene::Title);
-	m_sceneManager.addScene<OneShotStage>(Scene::OneShotStage);
-	m_sceneManager.addScene<OneShotLauncher>(Scene::OneShotLauncher);
+	m_sceneManager.addScene<AllResourceLoad>(Scene::AllResourceLoad);
 
-	// m_sceneManager.pushScene(Scene::Title);
+	m_sceneManager.pushScene(Scene::Title);
 	// m_sceneManager.pushScene(Scene::OneShotStage);
 	// m_sceneManager.pushScene(Scene::Message);
-	m_sceneManager.pushScene(Scene::ObjectViewer);
+	// m_sceneManager.pushScene(Scene::ObjectViewer);
 	// m_sceneManager.pushScene(Scene::End);
 
 	Debug::SetEnabled(true);

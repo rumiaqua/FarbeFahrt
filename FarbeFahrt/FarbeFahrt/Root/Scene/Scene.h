@@ -10,6 +10,5 @@ enum class Scene {
 	Message,
 	Opening,
 	Title,
-	OneShotStage,
-	OneShotLauncher,
+	AllResourceLoad,
 };

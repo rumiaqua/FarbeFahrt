@@ -174,7 +174,7 @@ void ObjectViewer::animUpdate()
 	// ‘O‚Ìƒ‚ƒfƒ‹
 	if (Input::IsClicked(KEY_INPUT_6))
 	{
-		m_currentModelNum = (--m_currentModelNum += m_models.size()) % m_models.size();
+		m_currentModelNum = (--m_currentModelNum += (int)m_models.size()) % (int)m_models.size();
 		setMaxAnimNum();
 	}
 }

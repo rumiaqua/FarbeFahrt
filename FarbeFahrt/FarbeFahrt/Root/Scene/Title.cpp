@@ -6,8 +6,6 @@
 # include "Utility/Renderer.h"
 # include "Utility/BGM.h"
 
-# include "Experimental/OneShotStage.h"
-
 # include "ISceneMediator.h"
 # include "Scene.h"
 
@@ -39,7 +37,7 @@ void Title::update()
 
 	if (Input::IsClicked(KEY_INPUT_F1))
 	{
-		m_manager->changeScene(Scene::OneShotLauncher, 30.0f);
+		m_manager->changeScene(Scene::AllResourceLoad);
 	}
 }
 

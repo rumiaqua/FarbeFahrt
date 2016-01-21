@@ -131,9 +131,9 @@ bool Loader::isLoad() const
 	{
 		return false;
 	}
-	int count = std::count_if(m_ContentsList.begin(), m_ContentsList.end(),
+	int count = (int)std::count_if(m_ContentsList.begin(), m_ContentsList.end(),
 		[&](const std::pair<std::string, ContentDataAndTag>& contentData)
-	{return (CheckHandleASyncLoad(contentData.second.contentData.handle) == TRUE); });
+	{ return (CheckHandleASyncLoad(contentData.second.contentData.handle) == TRUE); });
 
 	//count > 0 ‚Å“Ç‚İ‚İ’†
 	return !!count;

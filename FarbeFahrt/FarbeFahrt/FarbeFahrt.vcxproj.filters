@@ -195,12 +195,6 @@
     <ClCompile Include="Root\Actor\Gimmick\CommandGimmick.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Experimental\OneShotStage.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Experimental\OneShotLauncher.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Root\Experimental\AnimationTransitionMachine.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -232,6 +226,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Collision\Triangle.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Experimental\AllResourceLoad.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -473,12 +470,6 @@
     <ClInclude Include="Root\Actor\Gimmick\CommandGimmick.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Experimental\OneShotStage.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Experimental\OneShotLauncher.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Root\Experimental\AnimationTransitionMachine.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -513,6 +504,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Collision\Triangle.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Experimental\AllResourceLoad.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

@@ -244,7 +244,7 @@ void Renderer::drawFont()
 		// テキストの長さ
 		std::string::size_type size = data.length;
 		// テキストの横幅
-		int textWidth = GetDrawStringWidthToHandle(data.text.c_str(), data.text.length(), handle);
+		int textWidth = GetDrawStringWidthToHandle(data.text.c_str(), (int)data.text.length(), handle);
 		// テキストの縦幅
 		int textHeight = fontSize + 6;
 
@@ -259,7 +259,7 @@ void Renderer::drawFont()
 			x = windowWidth - textWidth;
 			break;
 		case WidthPlacement::Center:
-			x = (windowWidth - textWidth) / 2.0f;
+			x = (int)((windowWidth - textWidth) / 2.0f);
 			break;
 		}
 
@@ -274,7 +274,7 @@ void Renderer::drawFont()
 			y = windowHeight - textHeight;
 			break;
 		case HeightPlacement::Center:
-			y = (windowHeight - textHeight) / 2.0f;
+			y = (int)((windowHeight - textHeight) / 2.0f);
 			break;
 		}
 
@@ -463,7 +463,7 @@ void Renderer::drawTexture(const std::string& name, int x, int y, int cx, int cy
 void Renderer::drawTexture(const std::string& name, int x, int y)
 {
 	//DrawGraph(x, y, m_textureData.at(name), TRUE);
-	drawTexture(name, x, y, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f);
+	drawTexture(name, x, y, 0, 0, 1.0f, 1.0f, 0.0f);
 }
 
 void Renderer::drawTexture(const std::string& name, const AspectType& type)
@@ -508,13 +508,13 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 	Vector2 pos = (windowSize - correctionSize) * center + position;
 
 	/*DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);*/
-	drawTexture(name, pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0f);
+	drawTexture(name, (int)pos.x, (int)pos.y, 0, 0, ext.x, ext.y, 0.0f);
 }
 void Renderer::drawFont(const std::string& text)
 {
 	m_fontData.buffer.emplace_back(
 		text,
-		String::ToWide(text).length(),
+		(int)String::ToWide(text).length(),
 		0, WidthPlacement::Left,
 		0, HeightPlacement::Top);
 }
@@ -523,7 +523,7 @@ void Renderer::drawFont(const std::string& text, int x, int y)
 {
 	m_fontData.buffer.emplace_back(
 		text,
-		String::ToWide(text).length(),
+		(int)String::ToWide(text).length(),
 		x, WidthPlacement::Left,
 		y, HeightPlacement::Top);
 }
@@ -532,7 +532,7 @@ void Renderer::drawFontCenter(const std::string& text, int y)
 {
 	m_fontData.buffer.emplace_back(
 		text,
-		String::ToWide(text).length(),
+		(int)String::ToWide(text).length(),
 		0, WidthPlacement::Center,
 		y, HeightPlacement::Top);
 }
