@@ -10,6 +10,7 @@ public:
 
 private:
 
+	virtual void onDraw(Renderer& renderer) const override;
 	virtual void onMessage(const std::string& message, void* parameter) override;
 
 private:

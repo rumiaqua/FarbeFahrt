@@ -121,7 +121,7 @@ void Stage::apply(const StageData& data, bool isClear)
 		if (object.name == "Instant")
 		{
 			m_world->addActor(ActorTag::Object, std::make_shared<Instant>(
-				*m_world, object.resource, object.position));
+				*m_world, object.resource, object.position, String::Split(object.parameter, '/')));
 		}
 		if (object.name == "Bookmark")
 		{

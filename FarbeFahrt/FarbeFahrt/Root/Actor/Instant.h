@@ -6,7 +6,7 @@ class Instant : public BaseActor
 {
 public:
 
-	Instant(IWorld& world, const std::string& name, const Vector3& position);
+	Instant(IWorld& world, const std::string& name, const Vector3& position, const std::vector<std::string>& parameters);
 
 private:
 
@@ -20,4 +20,5 @@ public:
 private:
 
 	bool m_isGravity;
+	bool m_isActive;
 };

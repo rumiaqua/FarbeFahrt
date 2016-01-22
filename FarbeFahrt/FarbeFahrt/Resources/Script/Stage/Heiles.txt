@@ -1,7 +1,7 @@
 # 使用するリソース
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
-
+r,herb,Model/Herb/Herb.pmx
 
 # フィールドリソース
 r,Tent,Model/Gimmick/Bookmark.mqo
@@ -22,9 +22,12 @@ f,heilesGround,0,0,0,3,Resources/Script/Animation/Heiles.txt
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
+o,Instant,herb,-94.5,50,5.5,null,IsKinematic/NonActivate
 o,Bookmark,Tent,90,25,-50,null,Tent/true
 o,Bookmark,Market,90,25,0,null,Market/true
 o,Bookmark,Bell,90,25,50,null,Bell/false
+o,ActionBookmark,Bell,90,25,50,null,herb/Activate
+o,ActionBookmark,Bell,90,25,50,null,herb/Fall
 
 g,1
 

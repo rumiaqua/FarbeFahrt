@@ -24,7 +24,7 @@ f,forestCBackGround,0,0,0,3,Resources/Script/Animation/Default.txt
 #o,SkinObject,bookC,-50,25,-42,null,1/1.0f/59.0f/0.5f/0/0/8.0f
 o,Bookmark,IvyG,90,25,-50,null,Ivy/true
 o,ActionBookmark,herbG,90,25,50,null,herb/Fall
-o,Instant,herb,-111,60,17,null
+o,Instant,herb,-111,60,17,null,IsKinematic
 
 # ギミック起動変数
 g,1
