@@ -1,6 +1,7 @@
 # 使用するリソース
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
+r,Ship,Model/Ship/Ship.mqo
 
 # フィールドリソース
 r,DangerSwampGround,Stage/DangerSwamp/Ground/DangerSwampGround.pmx
@@ -19,7 +20,8 @@ f,DangerSwampBackGround,0,0,0,3
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
-o,Bookmark,fishG,90,25,-50,null,Fish/false
+#o,Bookmark,fishG,90,25,-50,null,Fish/false
+o,Boat,Ship,90,25,-50,null
 
 # ギミック起動変数
 g,1

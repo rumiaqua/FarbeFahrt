@@ -13,6 +13,7 @@
 # include "Actor/PlayerSpawner.h"
 # include "Actor/Gimmick/GimmickManager.h"
 # include "Actor/Instant.h"
+# include "Actor/Boat.h"
 
 # include "World.h"
 
@@ -119,7 +120,7 @@ void Stage::apply(const StageData& data, bool isClear)
 		if (object.name == "Instant")
 		{
 			m_world->addActor(ActorTag::Object, std::make_shared<Instant>(
-				*m_world, object.name, object.position));
+				*m_world, object.resource, object.position));
 		}
 		if (object.name == "Bookmark")
 		{
@@ -127,7 +128,12 @@ void Stage::apply(const StageData& data, bool isClear)
 			std::string& animateName = parameter[0];
 			bool once = parameter[1] == "true";
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
-				*m_world, object.name, object.position, animateName, once));
+				*m_world, object.resource, object.position, animateName, once));
+		}
+		if (object.name == "Boat")
+		{
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<Boat>(
+				*m_world, object.resource, object.position));
 		}
 	}
 
