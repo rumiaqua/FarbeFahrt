@@ -2,12 +2,10 @@
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
-# r,fallenTreeG,Model/Gimmick/circle.mqo
-# r,fallenTree,Model/本/新本.pmx
 
-# フィールドBB VBBBBリソース
-# r,forestDGround,Stage/森/森地面/森地面.pmx
-# r,forestDBackground,Stage/森/森背景/森背景.pmx
+r,leftSheep,Model/Gimmick/bookmark.mqo
+r,rightSheep,Model/Gimmick/bookmark.mqo
+
 r,forestDGround,Stage/ForestD/Ground/ForestDGround.pmx
 r,forestDBackGround,Stage/ForestD/BackGround/ForestDBackGround.pmx
 
@@ -24,10 +22,8 @@ f,forestDBackGround,0,0,0,3
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
-#o,Gimmick,fallenTreeG,90,20,-50,null,1/1.0f/590.0f/5.0f
-#o,SkinObject,fallenTree,-50,25,-42,null,1/1.0f/59.0f/0.5f/0/0/8.0f
-o,Bookmark,leftG,-230,25,-50,null,LeftSheep/false
-o,Bookmark,rightG,-230,25,-100,null,RightSheep/false
+o,Bookmark,leftSheep,-230,25,-50,null,LeftSheep/false
+o,Bookmark,rightSheep,-230,25,-100,null,RightSheep/false
 
 # ギミック起動変数
 g,2

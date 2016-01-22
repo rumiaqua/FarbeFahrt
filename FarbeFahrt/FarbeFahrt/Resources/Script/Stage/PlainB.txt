@@ -3,6 +3,9 @@ r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
 # フィールドリソース
+r,LeftRabbit,Model/Gimmick/Bookmark.mqo
+r,RightRabbit,Model/Gimmick/Bookmark.mqo
+
 r,plainBGround,Stage/PlainB/Ground/PlainBGround.pmx
 r,PlainBGM,Sound/BGM/plain.mp3
 
@@ -16,8 +19,8 @@ f,plainBGround,0,0,0,3,Resources/Script/Animation/PlainB.txt
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
-o,Bookmark,birdG,90,25,-50,null,LeftRabbit/false
-o,Bookmark,birdG,90,-25,-50,null,RightRabbit/false
+o,Bookmark,LeftRabbit,90,25,-50,null,LeftRabbit/false
+o,Bookmark,RightRabbit,90,-25,-50,null,RightRabbit/false
 
 # ギミック起動変数
 g,2

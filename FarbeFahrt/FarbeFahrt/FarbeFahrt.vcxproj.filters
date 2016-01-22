@@ -1857,6 +1857,7 @@
     <Text Include="Resources\Script\Animation\DimForest.txt" />
     <Text Include="Resources\Script\Animation\DangerSwamp.txt" />
     <Text Include="Resources\Script\Animation\PlainB.txt" />
+    <Text Include="Resources\Script\Animation\Heiles.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />

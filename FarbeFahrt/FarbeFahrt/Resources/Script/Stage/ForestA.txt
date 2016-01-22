@@ -13,8 +13,7 @@ r,nuts2G,Model/Gimmick/bookmark.mqo
 r,nuts2,Model/Gimmick/ForestA/nuts2.mqo
 
 # ƒtƒB[ƒ‹ƒhƒŠƒ\[ƒX
-r,forestGround,Stage/X/X’n–Ê/X’n–Ê.pmx
-r,forestBackground,Stage/X/X”wŒi/X”wŒi.pmx
+r,forestGround,Stage/ForestA/Ground/ForestAGround.pmx
 
 r,ForestBGM,Sound/BGM/forest.mp3
 
@@ -23,7 +22,6 @@ p,-180,50,-80
 
 # ƒtƒB[ƒ‹ƒh
 f,forestGround,0,0,0,3,Resources/Script/Animation/ForestA.txt
-f,forestBackground,0,0,0,3,Resources/Script/Animation/ForestA.txt
 
 # ƒS[ƒ‹
 o,Goal,Goal,50,30,-80,null

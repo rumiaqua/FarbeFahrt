@@ -22,7 +22,7 @@ o,Goal,Goal,73.5,23.0,-33.5,null
 o,Goal,Goal,69.0,22.5,44.5,null
 
 # ÉMÉ~ÉbÉN
-o,Bookmark,fishG,90,25,-50,null,Fish/false
+o,Bookmark,fishG,90,25,-50,null,Fish/true
 o,ActionBookmark,boatG,90,25,-50,null,Ship/Activate
 o,Boat,Ship,-180,25,0,null
 

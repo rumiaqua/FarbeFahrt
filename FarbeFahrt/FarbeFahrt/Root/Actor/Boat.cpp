@@ -1,5 +1,5 @@
 # include "Boat.h"
-
+# include "Gimmick\GimmickManager.h"
 # include "Utility/Renderer.h"
 
 Boat::Boat(IWorld& world, const std::string& name, const Vector3& position)
@@ -59,6 +59,7 @@ void Boat::onMessage(const std::string& message, void* parameter)
 		{
 			if (this->isCollide(player.get()))
 			{
+				GimmickManager::add(1);
 				m_player = player;
 				m_player.lock()->sendMessage("StopControl", &isKill);
 				m_relative = player->getPosition() - getPosition();
