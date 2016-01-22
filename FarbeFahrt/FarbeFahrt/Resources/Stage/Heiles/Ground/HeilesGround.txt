@@ -22,5 +22,7 @@ HeilesGround008.vmd
 テントON・マーケットONで閉じる
 
 HeilesGround009.vmd
-鈴がなる
+テントOFFで鈴がなる
 
+HeilesGround010.vmd
+テントONで鈴がなる
