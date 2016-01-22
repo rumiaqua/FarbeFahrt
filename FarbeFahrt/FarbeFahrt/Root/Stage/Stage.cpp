@@ -119,7 +119,7 @@ void Stage::apply(const StageData& data, bool isClear)
 		if (object.name == "Instant")
 		{
 			m_world->addActor(ActorTag::Object, std::make_shared<Instant>(
-				*m_world, object.name, object.position));
+				*m_world, object.resource, object.position));
 		}
 		if (object.name == "Bookmark")
 		{
@@ -127,7 +127,7 @@ void Stage::apply(const StageData& data, bool isClear)
 			std::string& animateName = parameter[0];
 			bool once = parameter[1] == "true";
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
-				*m_world, object.name, object.position, animateName, once));
+				*m_world, object.resource, object.position, animateName, once));
 		}
 	}
 
@@ -159,6 +159,8 @@ void Stage::update()
 	m_actorManager.collidePlayer(ActorTag::Field);
 	m_actorManager.collidePlayer(ActorTag::Gimmick);
 	m_actorManager.collidePlayer(ActorTag::Object);
+	m_actorManager.findGroup(ActorTag::Field)
+		->eachChildren([&] (BaseActor& actor) { m_actorManager.findGroup(ActorTag::Object)->collide(&actor); });
 }
 
 void Stage::draw(Renderer& renderer) const

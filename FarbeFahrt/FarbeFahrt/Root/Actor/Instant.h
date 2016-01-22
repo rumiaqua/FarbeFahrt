@@ -10,7 +10,8 @@ public:
 
 private:
 
-	virtual void onUpdate();
+	virtual void onUpdate() override;
+	virtual void onDraw(Renderer& renderer) const override;
 
 public:
 
@@ -18,5 +19,5 @@ public:
 
 private:
 
-	float m_gravity;
+	bool m_isGravity;
 };
