@@ -13,6 +13,7 @@
 # include "Actor/PlayerSpawner.h"
 # include "Actor/Gimmick/GimmickManager.h"
 # include "Actor/Instant.h"
+# include "Actor/Boat.h"
 
 # include "World.h"
 
@@ -25,6 +26,7 @@
 
 # include "Experimental/AnimateState.h"
 # include "Experimental/Bookmark.h"
+# include "Experimental/ActionBookmark.h"
 
 Stage::Stage(World* world)
 	: m_world(world)
@@ -128,6 +130,19 @@ void Stage::apply(const StageData& data, bool isClear)
 			bool once = parameter[1] == "true";
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
 				*m_world, object.resource, object.position, animateName, once));
+		}
+		if (object.name == "Boat")
+		{
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<Boat>(
+				*m_world, object.resource, object.position));
+		}
+		if (object.name == "ActionBookmark")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			std::string& targetName = parameter[0];
+			std::string& actionName = parameter[1];
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<ActionBookmark>(
+				*m_world, object.resource, object.position, targetName, actionName));
 		}
 	}
 

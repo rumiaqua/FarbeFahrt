@@ -209,7 +209,7 @@ void Player::onMessage(const std::string& message, void* parameter)
 	}
 	if (message == "StopControl")
 	{
-		if ((bool*)parameter)
+		if (*(bool*)parameter)
 		{
 			m_canControl = false;
 			
@@ -228,6 +228,16 @@ void Player::onMessage(const std::string& message, void* parameter)
 	if (message == "FallDown")
 	{
 		fallDown();
+	}
+	if (message == "Translate")
+	{
+		Vector3* translate = static_cast<Vector3*>(parameter);
+		m_pose.position += *translate;
+	}
+	if (message == "SetPosition")
+	{
+		Vector3* position = static_cast<Vector3*>(parameter);
+		m_pose.position = *position;
 	}
 
 	BaseActor::onMessage(message, parameter);

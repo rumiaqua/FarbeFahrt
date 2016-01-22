@@ -3,6 +3,7 @@
 # include "Actor/Gimmick/GimmickManager.h"
 
 # include "Utility/Math.h"
+# include "Utility/Renderer.h"
 
 # include "Experimental/AnimateState.h"
 
@@ -18,6 +19,12 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 	, m_animateName(animateName)
 {
 	
+}
+
+void Bookmark::onDraw(Renderer& renderer) const
+{
+	renderer.drawNormalModel(m_name, m_pose.position, m_pose.rotation);
+	return BaseActor::onDraw(renderer);
 }
 
 void Bookmark::onMessage(const std::string& message, void* parameter)

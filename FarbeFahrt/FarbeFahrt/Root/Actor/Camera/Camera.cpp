@@ -224,7 +224,8 @@ void Camera::toBookCamera()
 		m_progress = 0;
 		m_cameraState.cameraMode = CameraMode::FadeOut;
 		actorSet("Player");
-		m_actor.lock()->sendMessage("StopControl", (bool*)false);
+		bool isKill = false;
+		m_actor.lock()->sendMessage("StopControl", &isKill);
 	}
 }
 

@@ -5,7 +5,7 @@
 
 Instant::Instant(IWorld& world, const std::string& name, const Vector3& position)
 	: BaseActor(world, name, position, Matrix::identity(), std::make_shared<Sphere>(Vector3::Zero(), 3.0f))
-	, m_isGravity(true)
+	, m_isGravity(false)
 {
 
 }
