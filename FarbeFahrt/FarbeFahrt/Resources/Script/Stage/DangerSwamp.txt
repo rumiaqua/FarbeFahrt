@@ -1,11 +1,13 @@
 # 使用するリソース
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
-r,Ship,Model/Ship/Ship.mqo
+r,Ship,Model/船/Ship2.mqo
+r,fishG,Model/Gimmick/bookmark.mqo
+r,boatG,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
 r,DangerSwampGround,Stage/DangerSwamp/Ground/DangerSwampGround.pmx
-r,DangerSwampBackGround,Stage/DangerSwamp/BackGround/DangetSwampBackGround.pmx
+#r,DangerSwampBackGround,Stage/DangerSwamp/BackGround/DangetSwampBackGround.pmx
 
 r,DangerSwampBGM,Sound/BGM/danger_swamp.mp3
 
@@ -14,14 +16,15 @@ p,-180,50,-80
 
 # フィールド
 f,DangerSwampGround,0,0,0,3,Resources/Script/Animation/DangerSwamp.txt
-f,DangerSwampBackGround,0,0,0,3
 
 # ゴール
-o,Goal,Goal,50,30,-80,null
+o,Goal,Goal,73.5,23.0,-33.5,null
+o,Goal,Goal,69.0,22.5,44.5,null
 
 # ギミック
-#o,Bookmark,fishG,90,25,-50,null,Fish/false
-o,Boat,Ship,90,25,-50,null
+o,Bookmark,fishG,90,25,-50,null,Fish/false
+o,ActionBookmark,boatG,90,25,-50,null,Ship/Activate
+o,Boat,Ship,-180,25,0,null
 
 # ギミック起動変数
 g,1

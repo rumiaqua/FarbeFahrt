@@ -20,4 +20,7 @@ public:
 private:
 
 	bool m_isActive;
+	std::weak_ptr<BaseActor> m_player;
+	Vector3 m_relative;
+	float m_delay;
 };

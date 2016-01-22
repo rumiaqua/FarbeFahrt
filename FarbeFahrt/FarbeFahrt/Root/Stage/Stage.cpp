@@ -26,6 +26,7 @@
 
 # include "Experimental/AnimateState.h"
 # include "Experimental/Bookmark.h"
+# include "Experimental/ActionBookmark.h"
 
 Stage::Stage(World* world)
 	: m_world(world)
@@ -134,6 +135,14 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Boat>(
 				*m_world, object.resource, object.position));
+		}
+		if (object.name == "ActionBookmark")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			std::string& targetName = parameter[0];
+			std::string& actionName = parameter[1];
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<ActionBookmark>(
+				*m_world, object.resource, object.position, targetName, actionName));
 		}
 	}
 
