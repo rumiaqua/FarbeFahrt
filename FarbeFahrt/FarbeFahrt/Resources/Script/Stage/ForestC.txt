@@ -3,7 +3,7 @@ r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
 r,IvyG,Model/Gimmick/bookmark.mqo
-r,herb,Model/Herb/Herb.mqo
+r,herb,Model/Herb/Herb.pmx
 
 # フィールドリソース
 r,forestCGround,Stage/ForestC/Ground/ForestCGround.pmx
