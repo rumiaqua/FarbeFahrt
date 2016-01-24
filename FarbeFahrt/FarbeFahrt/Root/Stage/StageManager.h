@@ -41,6 +41,8 @@ public:
 
 	const std::string& bgmName() const;
 
+	const std::unordered_map<std::string, StageData>& allStageData() const;
+
 private:
 
 	bool isFirst() const;

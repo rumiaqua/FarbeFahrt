@@ -22,7 +22,7 @@ namespace
 	constexpr float OBSTACLE_DISTANCE = 5.0f;
 	const float XLim = 142.0f;
 	const float ZLim = 110.0f;
-	const float correction = 145.0f / 2.0f - 4.0f;
+	const float Correction = 145.0f / 2.0f - 4.0f;
 }
 
 Player::Player(IWorld& world, const Vector3& position)
@@ -112,11 +112,10 @@ Vector3 Player::playerInput()
 		moveVec -= frontVec * m_moveSpeed;
 	}
 
-	// èdóÕ
 	m_pose.position.y -= 2.0f;
 
 	// à⁄ìÆêßå¿
-	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim - correction, XLim - correction);
+	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim - Correction, XLim - Correction);
 	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -ZLim, ZLim);
 
 	if (Input::IsClicked(KEY_INPUT_1))
@@ -163,7 +162,7 @@ void Player::fallDown()
 
 void Player::onDraw(Renderer& render)const
 {
-	Debug::Println(String::Create("Elapsed Time : ", MV1GetAttachAnimTime(Singleton<HandleList>::Instance().getHandle("Player"), 0)));
+	// Debug::Println(String::Create("Elapsed Time : ", MV1GetAttachAnimTime(Singleton<HandleList>::Instance().getHandle("Player"), 0)));
 	// m_previousFrame
 	//Ç±Ç±Ç≈ï`âÊï˚ñ@ïœÇ¶ÇÁÇÍÇ‹Ç∑ÇÊ
 	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame, true);
@@ -185,29 +184,35 @@ void Player::onMessage(const std::string& message, void* parameter)
 			otherPos.y = ownPos.y;
 			Vector3 movement = normalize * D;
 
-			Debug::Println(String::Create("myName:", m_name));
+			/*Debug::Println(String::Create("myName:", m_name));
 			Debug::Println(String::Create("Name:", actor->getName()));
 			Debug::Println(String::Create("direction:", direction.ToString()));
 
 			Debug::Println(String::Create("normalize:", normalize.ToString()));
-			Debug::Println(String::Create("movement:", movement.ToString()));
+			Debug::Println(String::Create("movement:", movement.ToString()));*/
 			getPosition() = otherPos + movement;
 
-			//m_pose.position.y += 2.0f;
+			m_pose.position.y += 2.0f;
 		}
+	}
+
+	if (message == "HitBackground")
+	{
+		m_pose = m_previousPose;
 	}
 
 	if (message == "HitGround")
 	{
 		Vector3* pos = static_cast<Vector3*>(parameter);
 		m_pose.position = *pos;
-		Debug::Println("Ç‰Ç©ÇÃÇ»Ç©Ç…Ç¢ÇÈ");
+		// Debug::Println("Ç‰Ç©ÇÃÇ»Ç©Ç…Ç¢ÇÈ");
 	}
 	if (message == "StopControl")
 	{
-		if ((bool*)parameter)
+		if (*(bool*)parameter)
 		{
 			m_canControl = false;
+			
 			kill();
 		}
 		else
@@ -223,6 +228,16 @@ void Player::onMessage(const std::string& message, void* parameter)
 	if (message == "FallDown")
 	{
 		fallDown();
+	}
+	if (message == "Translate")
+	{
+		Vector3* translate = static_cast<Vector3*>(parameter);
+		m_pose.position += *translate;
+	}
+	if (message == "SetPosition")
+	{
+		Vector3* position = static_cast<Vector3*>(parameter);
+		m_pose.position = *position;
 	}
 
 	BaseActor::onMessage(message, parameter);

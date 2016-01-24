@@ -38,6 +38,10 @@ private:
 
 	void cameraUpdate();
 
+	void setMaxAnimNum();
+
+	void setCameraData();
+
 private:
 
 	void move(float speed, const Vector3& right, const Vector3& up, const Vector3& forward);
@@ -61,4 +65,8 @@ private:
 
 	// ƒJƒƒ‰
 	FreeCamera m_camera;
+
+	// ƒJƒƒ‰î•ñ
+	Vector3 m_position;
+	Vector3 m_target;
 };

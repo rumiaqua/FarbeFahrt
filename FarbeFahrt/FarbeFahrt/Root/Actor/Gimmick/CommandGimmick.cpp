@@ -88,7 +88,7 @@ void CommandGimmick::onMessage(const std::string& message, void* parameter)
 	{
 		if (!m_flag)
 		{
-			m_world->findGroup(ActorTag::Field)->sendMessage("WorkGimmick", (int*)m_commandNo);
+			m_world->findGroup(ActorTag::Field)->sendMessage("WorkGimmick", (int*)&m_commandNo);
 			GimmickManager::add(1);
 			m_flag = true;
 		}

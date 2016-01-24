@@ -10,4 +10,5 @@ enum class Scene {
 	Message,
 	Opening,
 	Title,
+	AllResourceLoad,
 };

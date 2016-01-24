@@ -73,7 +73,8 @@ void Message::update()
 		m_elapsedTime = totalTime;
 	}
 
-	if (Mouse::IsClicked(MOUSE_INPUT_1))
+	if (Input::IsClicked(KEY_INPUT_RETURN) ||
+		Mouse::IsClicked(MOUSE_INPUT_1))
 	{
 		if (m_elapsedTime < totalTime)
 		{
@@ -112,7 +113,7 @@ void Message::draw(Renderer& renderer)
 {
 	if (!m_textureName.empty())
 	{
-		int t = m_elapsedFadeTime / m_textureFadeFrame * 255;
+		int t = (int)(m_elapsedFadeTime / m_textureFadeFrame * 255);
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, t);
 		renderer.drawTexture(m_textureName, Renderer::AspectType::LetterBox);
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, -1);
@@ -140,7 +141,7 @@ unsigned int Message::getLengthMessage() const
 	int length = 0;
 	for (auto&& text : m_textStack)
 	{
-		length += String::ToWide(text).length();
+		length += (int)String::ToWide(text).length();
 	}
 	return length;
 }
@@ -182,22 +183,22 @@ void Message::processMessage()
 
 void Message::renderMessage(Renderer& renderer) const
 {
-	int remain = m_elapsedTime / m_characterPerFrame;
+	int remain = (int)(m_elapsedTime / m_characterPerFrame);
 
-	int numMessage = m_textStack.size();
+	int numMessage = (int)m_textStack.size();
 
 	int startHeight = 300;
 
 	int fontSize = 32 + 6;
 
-	Debug::Println(String::Create("remain : ", remain));
-	Debug::Println(String::Create("elapsedTime : ", m_elapsedTime));
+	/*Debug::Println(String::Create("remain : ", remain));
+	Debug::Println(String::Create("elapsedTime : ", m_elapsedTime));*/
 
 	for (auto it = m_textStack.begin(); it != m_textStack.end(); ++it)
 	{
 		std::wstring wide = String::ToWide(*it);
-		int length = wide.length();
-		auto index = it - m_textStack.begin();
+		int length = (int)wide.length();
+		int index = (int)(it - m_textStack.begin());
 
 		int y = startHeight + fontSize * index;
 

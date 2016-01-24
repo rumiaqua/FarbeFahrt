@@ -3,7 +3,6 @@
 #include "BaseScene.h"
 
 # include "Scene/Scene.h"
-# include "Scene/Editor.h"
 # include "Scene/GameMain.h"
 # include "Scene/End.h"
 # include "Scene/StaffRoll.h"
@@ -12,6 +11,7 @@
 # include "Scene/Title.h"
 
 # include "Experimental/ObjectViewer.h"
+# include "Experimental/AllResourceLoad.h"
 
 #include "Utility/SingletonFinalizer.h"
 #include "Utility/HandleList.h"
@@ -31,7 +31,6 @@ MyGame::MyGame()
 {
 	// Debug::SetEnabled(true);
 
-	m_sceneManager.addScene<Editor>(Scene::Editor);
 	m_sceneManager.addScene<GameMain>(Scene::GameMain);
 	m_sceneManager.addScene<Opening>(Scene::Opening);
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
@@ -39,8 +38,10 @@ MyGame::MyGame()
 	m_sceneManager.addScene<StaffRoll>(Scene::StaffRoll);
 	m_sceneManager.addScene<Message>(Scene::Message);
 	m_sceneManager.addScene<Title>(Scene::Title);
+	m_sceneManager.addScene<AllResourceLoad>(Scene::AllResourceLoad);
 
 	m_sceneManager.pushScene(Scene::Title);
+	// m_sceneManager.pushScene(Scene::OneShotStage);
 	// m_sceneManager.pushScene(Scene::Message);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
 	// m_sceneManager.pushScene(Scene::End);
@@ -61,15 +62,6 @@ MyGame::MyGame()
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 void MyGame::run()
 {
-	if (Input::IsClicked(KEY_INPUT_F12))
-	{
-		Debug::SetEnabled(!Debug::IsEnabled());
-	}
-	if (Input::IsClicked(KEY_INPUT_F11))
-	{
-		Debug::SetClear(!Debug::IsClear());
-	}
-
 	// シーンに変更があった時
 	if (m_sceneManager.hasChanged())
 	{
@@ -104,21 +96,22 @@ void MyGame::run()
 		BGM::set(loader.getBGMList());
 	}
 
+	if (Input::IsClicked(KEY_INPUT_F1))
+	{
+		Debug::SetEnabled(!Debug::IsEnabled());
+	}
+	if (Input::IsClicked(KEY_INPUT_F2))
+	{
+		m_sceneManager.changeScene(Scene::Title);
+	}
+
 	// 更新
 	m_sceneManager.update();
 
 	// 描画
 	ClearDrawScreen();
-	Debug::Println("GetASyncLoadNum : %d",GetASyncLoadNum());
-	Debug::Println("CanShow : %s", MessageManager::CanShow() ? "true" : "false");
-	if (Input::IsPressed(KEY_INPUT_B))
-	{
-		BGM::play("test1");
-	}
-	if (Input::IsPressed(KEY_INPUT_G))
-	{
-		BGM::play("test2");
-	}
+	/*Debug::Println("GetASyncLoadNum : %d",GetASyncLoadNum());
+	Debug::Println("CanShow : %s", MessageManager::CanShow() ? "true" : "false");*/
 
 	m_sceneManager.draw(render);
 	render.draw();

@@ -12,19 +12,25 @@
 # include "Manager/MessageManager.h"
 # include "Manager/EndManager.h"
 
+# include "Experimental/AnimateState.h"
+
 namespace
 {
 	constexpr float ANIMATION_FRAME = 180.0f;
 }
 
-Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale)
+Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition)
 	:BaseActor(world, name, position, Matrix::identity(),
 		std::make_unique<ModelCollider>(name)), m_scale(scale)
 	, m_elapsedTime(0.0f)
 	, m_animationNumber(0)
 	, m_isAnimating(false)
 	, m_isReversed(false)
+	, m_isBackground(false)
+	, m_machine(transition)
+	, m_current()
 {
+
 }
 
 void Field::onUpdate()
@@ -50,28 +56,20 @@ void Field::onUpdate()
 			EndManager::SetEnd(true);
 		}
 
-# define Open 0
-		if (m_animationNumber == Open &&
+		if (m_current == "Open" &&
 			!m_isAnimating)
 		{
-			/*for (auto&& spawner : m_world->findActors("PlayerSpawner"))
-			{
-				spawner->sendMessage("PlayerSpawn", nullptr);
-			}*/
-			m_world->findGroup(ActorTag::Player)->eachChildren([](BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
+			m_world->findGroup(ActorTag::Player)->eachChildren([] (BaseActor& actor) { actor.sendMessage("PlayerSpawn", nullptr); });
 			m_world->findCamera()->sendMessage("toPlayerCamera", nullptr);
 			StoryManager::set(BitFlag::NEXT);
 			MessageManager::SetShow(true);
 		}
-# undef Open
 
-# define Close 1
-		if (m_animationNumber == Close &&
+		if (m_current == "Close" &&
 			!m_isAnimating)
 		{
 			kill();
 		}
-# undef Close
 	}
 
 	BaseActor::onUpdate();
@@ -82,7 +80,6 @@ void Field::onDraw(Renderer& render) const
 
 	float t = Math::Min({ m_elapsedTime / ANIMATION_FRAME, 0.99999f });
 	render.drawSkinModel(m_name, m_pose, m_animationNumber, t,false);
-	Debug::Println("command:%d",m_previousAnimNo);
 
 	BaseActor::onDraw(render);
 }
@@ -94,8 +91,13 @@ void Field::onMessage(const std::string& message, void* parameter)
 		BaseActor* actor = static_cast<BaseActor*>(parameter);
 		if (isCollide(actor))
 		{
+			if (m_isBackground)
+			{
+				actor->sendMessage("HitBackground", nullptr);
+				return BaseActor::onMessage(message, parameter);
+			}
+
 			const Vector3& pos = actor->getPosition();
-			Debug::Println(pos.ToString());
 			std::string& name = static_cast<ModelCollider*>(m_shape.get())->name;
 			int handle = Singleton<HandleList>::Instance().getHandle(name);
 
@@ -116,63 +118,19 @@ void Field::onMessage(const std::string& message, void* parameter)
 		}
 	}
 
-	if (message == "OpenAnimate")
-	{
-		// 開くアニメーション
-		open();
-	}
-
-	if (message == "CloseAnimate")
-	{
-		// 閉じるアニメーション
-		close();
-	}
-
-	if (message == "ReverseOpenAnimate" && !m_isAnimating)
-	{
-		// 開くアニメーション逆再生
-		reverseOpen();
-	}
-
 	if (message == "Animate")
 	{
-		m_elapsedTime = 0.0f;
-		m_animationNumber = *(int*)parameter;
-		m_isAnimating = true;
-		m_isReversed = false;
+		const AnimateState& state = *(AnimateState*)parameter;
+		animateProcess(state);
 	}
 
 	if (message == "WorkGimmick" && isGround())
 	{
-		m_previousAnimNo = (int)parameter;
-		workGimmick((int)parameter);
+		m_previousAnimNo = *(int*)parameter;
+		workGimmick(*(int*)parameter);
 	}
 
 	BaseActor::onMessage(message, parameter);
-}
-
-void Field::open()
-{
-	m_elapsedTime = 0.0f;
-	m_animationNumber = 0;
-	m_isAnimating = true;
-	m_isReversed = false;
-}
-
-void Field::close()
-{
-	m_elapsedTime = 0.0f;
-	m_animationNumber = 1;
-	m_isAnimating = true;
-	m_isReversed = false;
-}
-
-void Field::reverseOpen()
-{
-	m_elapsedTime = ANIMATION_FRAME;
-	m_animationNumber = 0;
-	m_isAnimating = true;
-	m_isReversed = true;
 }
 
 void Field::workGimmick(int commandNo)
@@ -180,6 +138,22 @@ void Field::workGimmick(int commandNo)
 	m_elapsedTime = 0.0f;
 	m_animationNumber = commandNo;
 	m_isReversed = false;
+	m_isAnimating = true;
+}
+
+void Field::animateProcess(const AnimateState& state)
+{
+	Optional<int> next = m_machine.next(state.name, m_animationNumber);
+
+	if (!next)
+	{
+		return;
+	}
+
+	m_current = state.name;
+	m_elapsedTime = state.isReversed ? ANIMATION_FRAME : 0;
+	m_animationNumber = next.ref();
+	m_isReversed = state.isReversed;
 	m_isAnimating = true;
 }
 

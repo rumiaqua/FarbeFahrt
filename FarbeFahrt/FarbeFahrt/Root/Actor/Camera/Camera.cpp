@@ -29,7 +29,7 @@ Camera::Camera(IWorld& world) :
 	, m_actor()
 {
 	SetCameraNearFar(1.0f, 12000.0f);
-	SetCursorPos(nScreenCenterX, nScreenCenterY);
+	// SetCursorPos(nScreenCenterX, nScreenCenterY);
 
 	m_cameraMatrix.targetPos = outPos;
 	m_cameraMatrix.currentPos = m_cameraMatrix.targetPos;
@@ -54,9 +54,9 @@ void Camera::onUpdate()
 		m_actorRadius = static_cast<Sphere*>(m_actor.lock()->getShape())->radius;
 	}
 
-	Debug::Println("%f", m_progress);
-	Debug::Println(String::Create("CameraMode:", (int)m_cameraState.cameraMode));
-	Debug::Println(String::Create("ChageFlag :", (int)m_cameraState.chaseFlag));
+	//Debug::Println("%f", m_progress);
+	//Debug::Println(String::Create("CameraMode:", (int)m_cameraState.cameraMode));
+	//Debug::Println(String::Create("ChageFlag :", (int)m_cameraState.chaseFlag));
 
 	if (m_progress >= 1)
 	{
@@ -224,7 +224,8 @@ void Camera::toBookCamera()
 		m_progress = 0;
 		m_cameraState.cameraMode = CameraMode::FadeOut;
 		actorSet("Player");
-		m_actor.lock()->sendMessage("StopControl", (bool*)false);
+		bool isKill = false;
+		m_actor.lock()->sendMessage("StopControl", &isKill);
 	}
 }
 

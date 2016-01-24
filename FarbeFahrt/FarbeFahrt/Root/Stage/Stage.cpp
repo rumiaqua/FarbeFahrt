@@ -11,7 +11,9 @@
 # include "Actor/StaticObject.h"
 # include "Actor/Goal/Goal.h"
 # include "Actor/PlayerSpawner.h"
-# include "Actor//Gimmick/GimmickManager.h"
+# include "Actor/Gimmick/GimmickManager.h"
+# include "Actor/Instant.h"
+# include "Actor/Boat.h"
 
 # include "World.h"
 
@@ -21,6 +23,11 @@
 
 #include "Utility/Debug.h"
 #include "Utility/BGM.h"
+
+# include "Experimental/AnimateState.h"
+# include "Experimental/Bookmark.h"
+# include "Experimental/ActionBookmark.h"
+
 Stage::Stage(World* world)
 	: m_world(world)
 	, m_actorManager()
@@ -42,9 +49,11 @@ void Stage::apply(const StageData& data, bool isClear)
 	for (auto&& field : data.fieldList)
 	{
 		auto actor = std::make_shared<Field>(
-			*m_world, field.name, field.position, field.scale);
+			*m_world, field.name, field.position, field.scale, field.transition);
 		m_actorManager.addActor(ActorTag::Field, actor);
-		actor->sendMessage("OpenAnimate", nullptr);
+		// actor->sendMessage("OpenAnimate", nullptr);
+		AnimateState state { "Open", false };
+		actor->sendMessage("Animate", &state);
 	}
 
 	// プレイヤー位置の初期化
@@ -108,6 +117,32 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
+		}		
+		if (object.name == "Instant")
+		{
+			m_world->addActor(ActorTag::Object, std::make_shared<Instant>(
+				*m_world, object.resource, object.position, String::Split(object.parameter, '/')));
+		}
+		if (object.name == "Bookmark")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			std::string& animateName = parameter[0];
+			bool once = parameter[1] == "true";
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
+				*m_world, object.resource, object.position, animateName, once));
+		}
+		if (object.name == "Boat")
+		{
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<Boat>(
+				*m_world, object.resource, object.position));
+		}
+		if (object.name == "ActionBookmark")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			std::string& targetName = parameter[0];
+			std::string& actionName = parameter[1];
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<ActionBookmark>(
+				*m_world, object.resource, object.position, targetName, actionName));
 		}
 	}
 
@@ -139,15 +174,17 @@ void Stage::update()
 	m_actorManager.collidePlayer(ActorTag::Field);
 	m_actorManager.collidePlayer(ActorTag::Gimmick);
 	m_actorManager.collidePlayer(ActorTag::Object);
+	m_actorManager.findGroup(ActorTag::Field)
+		->eachChildren([&] (BaseActor& actor) { m_actorManager.findGroup(ActorTag::Object)->collide(&actor); });
 }
 
 void Stage::draw(Renderer& renderer) const
-{
+{	
 	// 描画処理
 	m_actorManager.draw(renderer);
 
-	Debug::Println("nextPoint:%d", m_point);
-	Debug::Println(String::Create("isPoint : ", GimmickManager::isPoint(m_point) ? "true" : "false"));
+	/*Debug::Println("nextPoint:%d", m_point);
+	Debug::Println(String::Create("isPoint : ", GimmickManager::isPoint(m_point) ? "true" : "false"));*/
 
 	Debug::Println(m_stageName);
 }

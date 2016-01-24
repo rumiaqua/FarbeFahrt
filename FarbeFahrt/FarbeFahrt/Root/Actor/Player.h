@@ -31,4 +31,6 @@ private:
 	bool m_canControl;
 	bool m_isFallDown;
 	float m_previousFrame;
+
+	Vector3 m_previousPosition;
 };

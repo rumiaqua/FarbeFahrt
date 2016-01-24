@@ -141,34 +141,41 @@ void ObjectViewer::animUpdate()
 		m_maxAnimNum = MV1GetAnimNum(m_handle);
 	}
 
+	// タイマー進める
 	if (Input::IsPressed(KEY_INPUT_1))
 	{
 		m_progress += 0.01f;
 		m_progress = Math::Min({ m_progress, 0.9999f });
 	}
+	// タイマー戻す
 	if (Input::IsPressed(KEY_INPUT_2))
 	{
 		m_progress -= 0.01f;
 		m_progress = Math::Max({ m_progress, 0.0f });
 	}
+	// 次のアニメーション
 	if (Input::IsClicked(KEY_INPUT_3))
 	{
-		m_animNumber = Math::Min({ m_animNumber + 1, m_maxAnimNum - 1 });
+		++m_animNumber %= m_maxAnimNum;
 		m_progress = 0.0f;
 	}
+	// 前のアニメーション
 	if (Input::IsClicked(KEY_INPUT_4))
 	{
-		m_animNumber = Math::Max({ m_animNumber - 1, 0 });
+		m_animNumber = (--m_animNumber += m_maxAnimNum) % m_models.size();
 		m_progress = 0.0f;
 	}
-
+	// 次のモデル
 	if (Input::IsClicked(KEY_INPUT_5))
 	{
 		++m_currentModelNum %= m_models.size();
+		setMaxAnimNum();
 	}
+	// 前のモデル
 	if (Input::IsClicked(KEY_INPUT_6))
 	{
-		(--m_currentModelNum += m_models.size()) %= m_models.size();
+		m_currentModelNum = (--m_currentModelNum += (int)m_models.size()) % (int)m_models.size();
+		setMaxAnimNum();
 	}
 }
 
@@ -202,6 +209,17 @@ void ObjectViewer::cameraUpdate()
 	// 回転処理
 	const double ANGLE = Math::ToRadian(1.0);
 	rotate(ANGLE, right, up, forward);
+}
+
+void ObjectViewer::setMaxAnimNum()
+{
+	int handle = Singleton<HandleList>::Instance().getHandle(m_models.at(m_currentModelNum));
+	m_maxAnimNum = MV1GetAnimNum(handle);
+}
+
+void ObjectViewer::setCameraData()
+{
+	
 }
 
 void ObjectViewer::move(float speed, const Vector3& right, const Vector3& up, const Vector3& forward)

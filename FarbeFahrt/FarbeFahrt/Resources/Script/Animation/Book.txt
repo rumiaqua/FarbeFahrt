@@ -1,0 +1,3 @@
+# Identifier,Current,Next
+Open,-1,000
+Close,-1,001
