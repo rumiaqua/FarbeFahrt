@@ -2,12 +2,13 @@
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
 
-r,bookCG,Model/Gimmick/bookmark.mqo
-r,bookC,Model/本/新本.pmx
+r,IvyG,Model/Gimmick/bookmark.mqo
+r,herbG,Model/Gimmick/bookmark.mqo
+r,herb,Model/Herb/Herb.pmx
 
 # フィールドリソース
-r,forestCGround,Stage/森C/森C地面/森C地面.pmx
-r,forestCBackground,Stage/森C/森C背景/森C背景.pmx
+r,forestCGround,Stage/ForestC/Ground/ForestCGround.pmx
+r,forestCBackGround,Stage/ForestC/BackGround/ForestCBackGround.pmx
 
 r,ForestBGM,Sound/BGM/forest.mp3
 
@@ -15,12 +16,15 @@ r,ForestBGM,Sound/BGM/forest.mp3
 p,-180,50,-80
 
 # フィールド
-f,forestCGround,0,0,0,3
-f,forestCBackground,0,0,0,3
+f,forestCGround,0,0,0,3,Resources/Script/Animation/ForestC.txt
+f,forestCBackGround,0,0,0,3,Resources/Script/Animation/Default.txt
 
 # ギミック
-o,Gimmick,bookCG,90,25,-50,null,1/1.0f/590.0f/5.0f
-o,SkinObject,bookC,-50,25,-42,null,1/1.0f/59.0f/0.5f/0/0/8.0f
+#o,Gimmick,bookCG,90,25,-50,null,1/1.0f/590.0f/5.0f
+#o,SkinObject,bookC,-50,25,-42,null,1/1.0f/59.0f/0.5f/0/0/8.0f
+o,Bookmark,IvyG,90,25,-50,null,Ivy/true
+o,ActionBookmark,herbG,90,25,50,null,herb/Fall
+o,Instant,herb,-111,60,17,null,IsKinematic
 
 # ギミック起動変数
 g,1

@@ -1,13 +1,14 @@
 # 使用するリソース
 r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
 r,Goal,Model/平原/くさ.pmx
-
-r,tentG,Model/Gimmick/bookmark.mqo
-r,tent,Model/Gimmick/Lowles/tent.mqo
+r,herb,Model/Herb/Herb.pmx
 
 # フィールドリソース
-r,heilesGround,Stage/ハイレス/ハイレス地面/ハイレス地面.pmx
-r,heilesBackground,Stage/ハイレス/ハイレス背景/ハイレス背景.pmx
+r,Tent,Model/Gimmick/Bookmark.mqo
+r,Market,Model/Gimmick/Bookmark.mqo
+r,Bell,Model/Gimmick/Bookmark.mqo
+
+r,heilesGround,Stage/Heiles/Ground/HeilesGround.pmx
 
 r,TownBGM,Sound/BGM/Town.mp3
 
@@ -15,15 +16,20 @@ r,TownBGM,Sound/BGM/Town.mp3
 p,-180,50,-80
 
 # フィールド
-f,heilesGround,0,0,0,3
-f,heilesBackground,0,0,0,3
+f,heilesGround,0,0,0,3,Resources/Script/Animation/Heiles.txt
 
 # ゴール
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
-o,Gimmick,tentG,90,25,-50,null,1/1.0f/590.0f/5.0f
-o,SkinObject,tent,-61,8,40,null,1/1.0f/59.0f/3.0f/0.0f/0/8.0f
+o,Instant,herb,-94.5,50,5.5,null,IsKinematic/NonActivate
+o,Bookmark,Tent,90,25,-50,null,Tent/true
+o,Bookmark,Market,90,25,0,null,Market/true
+o,Bookmark,Bell,90,25,50,null,Bell/false
+o,ActionBookmark,Bell,90,25,50,null,herb/Activate
+o,ActionBookmark,Bell,90,25,50,null,herb/Fall
+
+g,1
 
 # 次のステージ
 n,PlainB,PlainB

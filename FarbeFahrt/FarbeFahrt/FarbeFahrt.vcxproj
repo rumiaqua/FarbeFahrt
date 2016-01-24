@@ -20,8 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Root\Actor\AnimateActor.cpp" />
+    <ClCompile Include="Root\Actor\Boat.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\CommandGimmick.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
+    <ClCompile Include="Root\Actor\Instant.cpp" />
+    <ClCompile Include="Root\Experimental\ActionBookmark.cpp" />
+    <ClCompile Include="Root\Experimental\AnimateState.cpp" />
+    <ClCompile Include="Root\Experimental\AnimationTransitionMachine.cpp" />
+    <ClCompile Include="Root\Experimental\Bookmark.cpp" />
+    <ClCompile Include="Root\Experimental\AllResourceLoad.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
     <ClCompile Include="Root\Scene\Opening.cpp" />
     <ClCompile Include="Root\Scene\Title.cpp" />
@@ -32,7 +39,6 @@
     <ClCompile Include="Root\Manager\MessageManager.cpp" />
     <ClCompile Include="Root\Message\MessageData.cpp" />
     <ClCompile Include="Root\Message\MessageOperation.cpp" />
-    <ClCompile Include="Root\Scene\Editor.cpp" />
     <ClCompile Include="Root\Scene\End.cpp" />
     <ClCompile Include="Root\Manager\EndManager.cpp" />
     <ClCompile Include="Root\Scene\Message.cpp" />
@@ -87,8 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\AnimateActor.h" />
+    <ClInclude Include="Root\Actor\Boat.h" />
     <ClInclude Include="Root\Actor\Gimmick\CommandGimmick.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
+    <ClInclude Include="Root\Actor\Instant.h" />
+    <ClInclude Include="Root\Experimental\ActionBookmark.h" />
+    <ClInclude Include="Root\Experimental\AnimateState.h" />
+    <ClInclude Include="Root\Experimental\AnimationTransitionMachine.h" />
+    <ClInclude Include="Root\Experimental\Bookmark.h" />
+    <ClInclude Include="Root\Experimental\ExperimentalBookmark.h" />
+    <ClInclude Include="Root\Experimental\AllResourceLoad.h" />
     <ClInclude Include="Root\Scene\Opening.h" />
     <ClInclude Include="Root\Scene\Scene.h" />
     <ClInclude Include="Root\Scene\Title.h" />
@@ -100,7 +114,6 @@
     <ClInclude Include="Root\Message\MessageData.h" />
     <ClInclude Include="Root\Message\MessageOperation.h" />
     <ClInclude Include="Root\Message\MessageScriptLoader.h" />
-    <ClInclude Include="Root\Scene\Editor.h" />
     <ClInclude Include="Root\Scene\End.h" />
     <ClInclude Include="Root\Manager\EndManager.h" />
     <ClInclude Include="Root\Scene\GameMain.h" />
@@ -675,6 +688,18 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Model\MMD魔導姉弟Ver1.1\READ ME.txt" />
+    <Text Include="Resources\Script\Animation\Book.txt" />
+    <Text Include="Resources\Script\Animation\DangerSwamp.txt" />
+    <Text Include="Resources\Script\Animation\Default.txt" />
+    <Text Include="Resources\Script\Animation\DimForest.txt" />
+    <Text Include="Resources\Script\Animation\ForestA.txt" />
+    <Text Include="Resources\Script\Animation\ForestB.txt" />
+    <Text Include="Resources\Script\Animation\ForestC.txt" />
+    <Text Include="Resources\Script\Animation\ForestD.txt" />
+    <Text Include="Resources\Script\Animation\Heiles.txt" />
+    <Text Include="Resources\Script\Animation\Lowles.txt" />
+    <Text Include="Resources\Script\Animation\PlainA.txt" />
+    <Text Include="Resources\Script\Animation\PlainB.txt" />
     <Text Include="Resources\Script\Message\End\Ending1BadEnd.txt" />
     <Text Include="Resources\Script\Message\End\Ending2Clear.txt" />
     <Text Include="Resources\Script\Message\End\Ending3BadEnd.txt" />
