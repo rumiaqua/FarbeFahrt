@@ -2,13 +2,11 @@
 
 # include "IShape.h"
 
-# include "Utility/String.h"
-
-class ModelCollider : public IShape
+class Empty : public IShape
 {
 public:
 
-	ModelCollider(const std::string& name);
+	Empty();
 
 	virtual bool intersects(const IShape& shape) const override;
 	virtual bool intersects(const Sphere& shape) const override;
@@ -20,7 +18,4 @@ public:
 
 	virtual void draw() const override;
 
-public:
-
-	std::string name;
 };

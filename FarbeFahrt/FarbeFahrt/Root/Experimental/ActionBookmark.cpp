@@ -2,6 +2,8 @@
 # include "Utility/Renderer.h"
 # include "Utility/Math.h"
 
+# include "Collision/Empty.h"
+
 ActionBookmark::ActionBookmark(IWorld& world, const std::string& modelName, const Vector3& position, const std::string& targetName, const std::string& actionName)
 	: BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(),
 		Math::HALF_PI), std::make_shared<Sphere>(Vector3::Zero(), 15.0f))
@@ -26,6 +28,7 @@ void ActionBookmark::onMessage(const std::string& message, void* parameter)
 		{
 			m_once = true;
 			m_world->findActor(m_targetName)->sendMessage(m_actionName, nullptr);
+			m_shape = std::make_unique<Empty>();
 		}
 	}
 

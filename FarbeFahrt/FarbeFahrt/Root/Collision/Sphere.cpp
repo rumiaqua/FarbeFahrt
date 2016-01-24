@@ -43,6 +43,11 @@ bool Sphere::intersects(const ModelCollider& shape) const
 	return Collision::intersects(shape, *this);
 }
 
+bool Sphere::intersects(const Empty& shape) const
+{
+	return false;
+}
+
 void Sphere::draw() const
 {
 	DrawSphere3D(
