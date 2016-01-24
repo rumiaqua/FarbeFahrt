@@ -7,7 +7,6 @@ r,boatG,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
 r,DangerSwampGround,Stage/DangerSwamp/Ground/DangerSwampGround.pmx
-#r,DangerSwampBackGround,Stage/DangerSwamp/BackGround/DangetSwampBackGround.pmx
 
 r,DangerSwampBGM,Sound/BGM/danger_swamp.mp3
 

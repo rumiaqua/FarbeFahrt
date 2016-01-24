@@ -7,7 +7,6 @@ r,leftSheep,Model/Gimmick/bookmark.mqo
 r,rightSheep,Model/Gimmick/bookmark.mqo
 
 r,forestDGround,Stage/ForestD/Ground/ForestDGround.pmx
-r,forestDBackGround,Stage/ForestD/BackGround/ForestDBackGround.pmx
 
 r,ForestBGM,Sound/BGM/forest.mp3
 
@@ -16,10 +15,9 @@ p,-180,50,-80
 
 # フィールド
 f,forestDGround,0,0,0,3,Resources/Script/Animation/ForestD.txt
-f,forestDBackGround,0,0,0,3
 
 # ゴール
-o,Goal,Goal,50,30,-80,null
+o,Goal,Goal,50,30,-80,null,1
 
 # ギミック
 o,Bookmark,leftSheep,-230,25,-50,null,LeftSheep/false

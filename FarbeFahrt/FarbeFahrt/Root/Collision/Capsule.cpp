@@ -44,6 +44,11 @@ bool Capsule::intersects(const ModelCollider& shape) const
 	return Collision::intersects(shape, *this);
 }
 
+bool Capsule::intersects(const Empty& shape) const
+{
+	return false;
+}
+
 void Capsule::draw() const
 {
 	DrawCapsule3D(
