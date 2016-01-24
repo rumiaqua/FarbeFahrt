@@ -20,7 +20,7 @@ o,Goal,Goal,50,30,-80,null
 
 # ギミック
 o,Bookmark,LeftRabbit,90,25,-50,null,LeftRabbit/false
-o,Bookmark,RightRabbit,90,-25,-50,null,RightRabbit/false
+o,Bookmark,RightRabbit,90,25,0,null,RightRabbit/false
 
 # ギミック起動変数
 g,2
