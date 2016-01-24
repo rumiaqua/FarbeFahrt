@@ -34,11 +34,6 @@ void Title::update()
 	{
 		m_manager->changeScene(Scene::Opening, 30.0f);
 	}
-
-	if (Input::IsClicked(KEY_INPUT_F1))
-	{
-		m_manager->changeScene(Scene::AllResourceLoad);
-	}
 }
 
 void Title::draw(Renderer& render)

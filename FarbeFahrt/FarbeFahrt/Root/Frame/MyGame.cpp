@@ -19,6 +19,8 @@
 #include "Utility/BGM.h"
 #include "Utility\Debug.h"
 
+# include "Manager/EndManager.h"
+
 # include "Manager/MessageManager.h"
 
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
@@ -66,7 +68,7 @@ void MyGame::run()
 	if (m_sceneManager.hasChanged())
 	{
 		//前のシーンのデータ削除
-		 
+
 		// スタック操作
 		m_sceneManager.resolve(loader);
 
@@ -98,12 +100,20 @@ void MyGame::run()
 
 	if (Input::IsClicked(KEY_INPUT_F1))
 	{
-		Debug::SetEnabled(!Debug::IsEnabled());
+		m_sceneManager.changeScene(Scene::AllResourceLoad);
 	}
 	if (Input::IsClicked(KEY_INPUT_F2))
 	{
+		Debug::SetEnabled(!Debug::IsEnabled());
+	}
+	if (Input::IsClicked(KEY_INPUT_F3))
+	{
 		m_sceneManager.changeScene(Scene::Title);
 	}
+	Debug::Println("DebugMode");
+	Debug::Println("F1 : AllResourceLoad");
+	Debug::Println("F2 : Debug Toggle");
+	Debug::Println("F3 : Goto Title");
 
 	// 更新
 	m_sceneManager.update();
