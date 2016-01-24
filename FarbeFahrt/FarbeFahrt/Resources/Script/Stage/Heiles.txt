@@ -19,7 +19,7 @@ p,-180,50,-80
 f,heilesGround,0,0,0,3,Resources/Script/Animation/Heiles.txt
 
 # ゴール
-o,Goal,Goal,50,30,-80,null
+o,Goal,Goal,50,30,-80,null,1
 
 # ギミック
 o,Instant,herb,-94.5,50,5.5,null,IsKinematic/NonActivate

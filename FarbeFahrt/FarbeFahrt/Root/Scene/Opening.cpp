@@ -38,7 +38,7 @@ void Opening::initialize()
 
 	// –{
 	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
-		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Book.txt"));
+		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Default.txt"));
 	// Š÷
 	m_world->addActor(ActorTag::Effect, std::make_shared<StaticObject>(
 		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));

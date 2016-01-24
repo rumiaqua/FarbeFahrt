@@ -21,7 +21,7 @@ r,ForestBGM,Sound/BGM/forest.mp3
 p,-180,50,-80
 
 # フィールド
-f,forestGround,0,0,0,3,Resources/Script/Animation/ForestA.txt
+f,forestGround,0,0,0,3
 
 # ゴール
 o,Goal,Goal,50,30,-80,null

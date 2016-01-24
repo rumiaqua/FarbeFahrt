@@ -1846,9 +1846,6 @@
     <Text Include="Resources\Script\Stage\PlainB.txt" />
     <Text Include="Resources\Stage\森B\鳥\鳥について.txt" />
     <Text Include="Resources\Stage\森B\地面\モーションについて.txt" />
-    <Text Include="Resources\Script\Animation\Book.txt" />
-    <Text Include="Resources\Script\Animation\PlainA.txt" />
-    <Text Include="Resources\Script\Animation\ForestA.txt" />
     <Text Include="Resources\Script\Animation\Default.txt" />
     <Text Include="Resources\Script\Animation\Lowles.txt" />
     <Text Include="Resources\Script\Animation\ForestC.txt" />
