@@ -98,7 +98,6 @@ void Field::onMessage(const std::string& message, void* parameter)
 			}
 
 			const Vector3& pos = actor->getPosition();
-			Debug::Println(pos.ToString());
 			std::string& name = static_cast<ModelCollider*>(m_shape.get())->name;
 			int handle = Singleton<HandleList>::Instance().getHandle(name);
 

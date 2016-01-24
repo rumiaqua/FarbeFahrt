@@ -39,7 +39,6 @@
     <ClCompile Include="Root\Manager\MessageManager.cpp" />
     <ClCompile Include="Root\Message\MessageData.cpp" />
     <ClCompile Include="Root\Message\MessageOperation.cpp" />
-    <ClCompile Include="Root\Scene\Editor.cpp" />
     <ClCompile Include="Root\Scene\End.cpp" />
     <ClCompile Include="Root\Manager\EndManager.cpp" />
     <ClCompile Include="Root\Scene\Message.cpp" />
@@ -115,7 +114,6 @@
     <ClInclude Include="Root\Message\MessageData.h" />
     <ClInclude Include="Root\Message\MessageOperation.h" />
     <ClInclude Include="Root\Message\MessageScriptLoader.h" />
-    <ClInclude Include="Root\Scene\Editor.h" />
     <ClInclude Include="Root\Scene\End.h" />
     <ClInclude Include="Root\Manager\EndManager.h" />
     <ClInclude Include="Root\Scene\GameMain.h" />

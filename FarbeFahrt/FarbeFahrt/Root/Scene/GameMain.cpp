@@ -88,10 +88,10 @@ void GameMain::update()
 
 void GameMain::draw(Renderer& render)
 {
-	Debug::Println(String::Create("Gimmick : ", StoryManager::get(BitFlag::GIMMICK) ? "true" : "false"));
+	/*Debug::Println(String::Create("Gimmick : ", StoryManager::get(BitFlag::GIMMICK) ? "true" : "false"));
 	Debug::Println(String::Create("Goal : ", StoryManager::get(BitFlag::GOAL) ? "true" : "false"));
 	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
-	Debug::Println("point:%d", GimmickManager::get());
+	Debug::Println("point:%d", GimmickManager::get());*/
 	m_world->draw(render);
 }
 

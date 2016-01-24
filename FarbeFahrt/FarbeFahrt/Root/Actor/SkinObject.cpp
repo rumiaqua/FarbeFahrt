@@ -55,7 +55,7 @@ void SkinObject::onUpdate()
 		}
 	}
 
-	Debug::Println("point:%f", m_point);
+	// Debug::Println("point:%f", m_point);
 
 	BaseActor::onUpdate();
 }

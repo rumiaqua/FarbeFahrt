@@ -3,7 +3,6 @@
 #include "BaseScene.h"
 
 # include "Scene/Scene.h"
-# include "Scene/Editor.h"
 # include "Scene/GameMain.h"
 # include "Scene/End.h"
 # include "Scene/StaffRoll.h"
@@ -32,7 +31,6 @@ MyGame::MyGame()
 {
 	// Debug::SetEnabled(true);
 
-	m_sceneManager.addScene<Editor>(Scene::Editor);
 	m_sceneManager.addScene<GameMain>(Scene::GameMain);
 	m_sceneManager.addScene<Opening>(Scene::Opening);
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
@@ -64,15 +62,6 @@ MyGame::MyGame()
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 void MyGame::run()
 {
-	if (Input::IsClicked(KEY_INPUT_F10))
-	{
-		Debug::SetEnabled(!Debug::IsEnabled());
-	}
-	if (Input::IsClicked(KEY_INPUT_F11))
-	{
-		Debug::SetClear(!Debug::IsClear());
-	}
-
 	// シーンに変更があった時
 	if (m_sceneManager.hasChanged())
 	{
@@ -107,7 +96,11 @@ void MyGame::run()
 		BGM::set(loader.getBGMList());
 	}
 
-	if (Input::IsClicked(KEY_INPUT_F9))
+	if (Input::IsClicked(KEY_INPUT_F1))
+	{
+		Debug::SetEnabled(!Debug::IsEnabled());
+	}
+	if (Input::IsClicked(KEY_INPUT_F2))
 	{
 		m_sceneManager.changeScene(Scene::Title);
 	}
@@ -117,16 +110,8 @@ void MyGame::run()
 
 	// 描画
 	ClearDrawScreen();
-	Debug::Println("GetASyncLoadNum : %d",GetASyncLoadNum());
-	Debug::Println("CanShow : %s", MessageManager::CanShow() ? "true" : "false");
-	if (Input::IsPressed(KEY_INPUT_B))
-	{
-		BGM::play("test1");
-	}
-	if (Input::IsPressed(KEY_INPUT_G))
-	{
-		BGM::play("test2");
-	}
+	/*Debug::Println("GetASyncLoadNum : %d",GetASyncLoadNum());
+	Debug::Println("CanShow : %s", MessageManager::CanShow() ? "true" : "false");*/
 
 	m_sceneManager.draw(render);
 	render.draw();

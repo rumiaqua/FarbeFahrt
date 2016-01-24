@@ -183,8 +183,8 @@ void Stage::draw(Renderer& renderer) const
 	// •`‰æˆ—
 	m_actorManager.draw(renderer);
 
-	Debug::Println("nextPoint:%d", m_point);
-	Debug::Println(String::Create("isPoint : ", GimmickManager::isPoint(m_point) ? "true" : "false"));
+	/*Debug::Println("nextPoint:%d", m_point);
+	Debug::Println(String::Create("isPoint : ", GimmickManager::isPoint(m_point) ? "true" : "false"));*/
 
 	Debug::Println(m_stageName);
 }

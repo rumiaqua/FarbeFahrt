@@ -54,9 +54,9 @@ void Camera::onUpdate()
 		m_actorRadius = static_cast<Sphere*>(m_actor.lock()->getShape())->radius;
 	}
 
-	Debug::Println("%f", m_progress);
-	Debug::Println(String::Create("CameraMode:", (int)m_cameraState.cameraMode));
-	Debug::Println(String::Create("ChageFlag :", (int)m_cameraState.chaseFlag));
+	//Debug::Println("%f", m_progress);
+	//Debug::Println(String::Create("CameraMode:", (int)m_cameraState.cameraMode));
+	//Debug::Println(String::Create("ChageFlag :", (int)m_cameraState.chaseFlag));
 
 	if (m_progress >= 1)
 	{

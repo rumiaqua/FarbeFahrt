@@ -191,8 +191,8 @@ void Message::renderMessage(Renderer& renderer) const
 
 	int fontSize = 32 + 6;
 
-	Debug::Println(String::Create("remain : ", remain));
-	Debug::Println(String::Create("elapsedTime : ", m_elapsedTime));
+	/*Debug::Println(String::Create("remain : ", remain));
+	Debug::Println(String::Create("elapsedTime : ", m_elapsedTime));*/
 
 	for (auto it = m_textStack.begin(); it != m_textStack.end(); ++it)
 	{

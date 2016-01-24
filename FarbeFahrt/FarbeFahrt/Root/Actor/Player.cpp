@@ -162,7 +162,7 @@ void Player::fallDown()
 
 void Player::onDraw(Renderer& render)const
 {
-	Debug::Println(String::Create("Elapsed Time : ", MV1GetAttachAnimTime(Singleton<HandleList>::Instance().getHandle("Player"), 0)));
+	// Debug::Println(String::Create("Elapsed Time : ", MV1GetAttachAnimTime(Singleton<HandleList>::Instance().getHandle("Player"), 0)));
 	// m_previousFrame
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
 	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame, true);
@@ -184,12 +184,12 @@ void Player::onMessage(const std::string& message, void* parameter)
 			otherPos.y = ownPos.y;
 			Vector3 movement = normalize * D;
 
-			Debug::Println(String::Create("myName:", m_name));
+			/*Debug::Println(String::Create("myName:", m_name));
 			Debug::Println(String::Create("Name:", actor->getName()));
 			Debug::Println(String::Create("direction:", direction.ToString()));
 
 			Debug::Println(String::Create("normalize:", normalize.ToString()));
-			Debug::Println(String::Create("movement:", movement.ToString()));
+			Debug::Println(String::Create("movement:", movement.ToString()));*/
 			getPosition() = otherPos + movement;
 
 			m_pose.position.y += 2.0f;
@@ -205,7 +205,7 @@ void Player::onMessage(const std::string& message, void* parameter)
 	{
 		Vector3* pos = static_cast<Vector3*>(parameter);
 		m_pose.position = *pos;
-		Debug::Println("‚ä‚©‚Ì‚È‚©‚É‚¢‚é");
+		// Debug::Println("‚ä‚©‚Ì‚È‚©‚É‚¢‚é");
 	}
 	if (message == "StopControl")
 	{
