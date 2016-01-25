@@ -6,7 +6,7 @@ r,birdG,Model/Gimmick/bookmark.mqo
 r,flowerG,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
-r,forestGround,Stage/DimForest/Ground/DimForestGround.pmx
+r,dimforestGround,Stage/DimForest/Ground/DimForestGround.pmx
 
 r,ForestBGM,Sound/BGM/forest.mp3
 
@@ -14,7 +14,7 @@ r,ForestBGM,Sound/BGM/forest.mp3
 p,-180,50,-80
 
 # フィールド
-f,forestGround,0,0,0,3,Resources/Script/Animation/DimForest.txt
+f,dimforestGround,0,0,0,3,Resources/Script/Animation/DimForest.txt
 
 # ゴール
 o,Goal,Goal,50,30,-80,null,1

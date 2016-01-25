@@ -100,7 +100,7 @@ void MyGame::run()
 
 	if (Input::IsClicked(KEY_INPUT_F1))
 	{
-		m_sceneManager.changeScene(Scene::AllResourceLoad);
+		m_sceneManager.pushScene(Scene::AllResourceLoad);
 	}
 	if (Input::IsClicked(KEY_INPUT_F2))
 	{

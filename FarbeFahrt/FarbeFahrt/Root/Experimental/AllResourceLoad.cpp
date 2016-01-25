@@ -39,7 +39,7 @@ void AllResourceLoad::initialize()
 
 void AllResourceLoad::update()
 {
-	m_manager->changeScene(Scene::Title);
+	m_manager->popScene();
 }
 
 void AllResourceLoad::draw(Renderer & render)
