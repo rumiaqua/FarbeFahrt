@@ -14,7 +14,8 @@ public:
 	static void play(const std::string& name);
 	static void stop();
 private:
-	static void fade();
+	static void fadeOut();
+	static void fadeIn();
 private:
 	ContentMap m_BGMList;
 	int m_playBGMhandle;//Œ»İÄ¶’†‚ÌBGM
