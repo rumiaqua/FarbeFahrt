@@ -31,39 +31,26 @@ void BGM::play(const std::string& name)
 	{
 		return;
 	}
-	std::thread fadeOut(fadeOut);
-	std::thread fadeIn(fadeIn);
-	fadeOut.detach();
-	fadeIn.detach();
+	std::thread fade(fade);
+	fade.detach();
 	PlaySoundMem(bgm.m_playBGMhandle, DX_PLAYTYPE_LOOP);
 	bgm.m_oldBGMhandle = bgm.m_playBGMhandle;
 }
-void BGM::fadeOut()
+void BGM::fade()
 {
 	BGM& bgm = instance();
-	int handle = bgm.m_oldBGMhandle;
-	int volume = BGM_MAX_VOLUME;
-	while (volume >= 0)
+	int oldhandle = bgm.m_oldBGMhandle;
+	int playhandle = bgm.m_playBGMhandle;
+	int oldvolume = BGM_MAX_VOLUME;
+	while (oldvolume >= 0)
 	{
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
-		--volume;
-		ChangeVolumeSoundMem(volume, handle);
+		--oldvolume;
+		ChangeVolumeSoundMem(oldvolume, oldhandle);
+		ChangeVolumeSoundMem(BGM_MAX_VOLUME-oldvolume, playhandle);
 	}
-	volume = 0;
-		StopSoundMem(handle);
-}
-void BGM::fadeIn()
-{
-	BGM& bgm = instance();
-	int handle = bgm.m_playBGMhandle;
-	int volume = 0;
-	while (volume <= BGM_MAX_VOLUME)
-	{
-		std::this_thread::sleep_for(std::chrono::milliseconds(50));
-		++volume;
-		ChangeVolumeSoundMem(volume, handle);
-	}
-	volume = BGM_MAX_VOLUME;
+	oldvolume = 0;
+		StopSoundMem(oldhandle);
 }
 void BGM::stop()
 {
