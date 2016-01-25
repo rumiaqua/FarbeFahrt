@@ -23,9 +23,9 @@ o,Goal,Goal,50,30,-80,null,1
 
 # ÉMÉ~ÉbÉN
 o,Instant,herb,-94.5,50,5.5,null,IsKinematic/NonActivate
-o,Bookmark,Tent,90,25,-50,null,Tent/true
-o,Bookmark,Market,90,25,0,null,Market/true
-o,Bookmark,Bell,90,25,50,null,Bell/false
+o,Bookmark,Tent,90,25,-50,null,Tent/false
+o,Bookmark,Market,90,25,0,null,Market/false
+o,Bookmark,Bell,90,25,50,null,Bell/true
 o,ActionBookmark,Bell,90,25,50,null,herb/Activate
 o,ActionBookmark,Bell,90,25,50,null,herb/Fall
 

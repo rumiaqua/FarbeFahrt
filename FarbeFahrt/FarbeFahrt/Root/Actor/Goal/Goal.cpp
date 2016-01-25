@@ -24,7 +24,8 @@ void Goal::onMessage(const std::string& message, void* parameter)
 {
 	auto player = static_cast<BaseActor*>(parameter);
 
-	if (GimmickManager::get() >= m_threthold &&
+	int gimmick = GimmickManager::get();
+	if (gimmick >= m_threthold &&
 		message == "onCollide" &&
 		player->getName() == "Player")
 	{

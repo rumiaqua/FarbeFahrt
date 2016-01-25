@@ -20,8 +20,8 @@ f,dimforestGround,0,0,0,3,Resources/Script/Animation/DimForest.txt
 o,Goal,Goal,50,30,-80,null,1
 
 # ギミック
-o,Bookmark,birdG,90,25,-50,null,Owl/false
-o,Bookmark,flowerG,-230,25,-50,null,Leave/true
+o,Bookmark,birdG,90,25,-50,null,Owl/true
+o,Bookmark,flowerG,-230,25,-50,null,Leave/false
 
 # ギミック起動変数
 g,1

@@ -9,7 +9,7 @@
 
 # include "Experimental/AnimateState.h"
 
-Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& position, const std::string& animateName, bool once)
+Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& position, const std::string& animateName, bool isAddPoint)
 	: BaseActor(
 		world,
 		modelName,
@@ -17,7 +17,7 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 		Matrix::Rotation(Vector3::Up(),
 		Math::HALF_PI),
 		std::make_unique<Sphere>(Vector3::Zero(), 15.0f))
-	, m_once(once)
+	, m_isAddPoint(isAddPoint)
 	, m_animateName(animateName)
 {
 
@@ -33,8 +33,11 @@ void Bookmark::onMessage(const std::string& message, void* parameter)
 {
 	if (message == "OnGimmick")
 	{
-		GimmickManager::add(1);
-		m_once = true;
+		if (m_isAddPoint)
+		{
+			GimmickManager::add(1);
+			m_isAddPoint = false;
+		}
 		AnimateState state { m_animateName, false };
 		m_world->findGroup(ActorTag::Field)
 			->sendMessage("Animate", &state);

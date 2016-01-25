@@ -18,7 +18,7 @@ p,-180,50,-80
 f,forestCGround,0,0,0,3,Resources/Script/Animation/ForestC.txt
 
 # ÉMÉ~ÉbÉN
-o,Bookmark,IvyG,90,25,-50,null,Ivy/true
+o,Bookmark,IvyG,90,25,-50,null,Ivy/false
 o,ActionBookmark,herbG,90,25,50,null,herb/Fall
 o,Instant,herb,-111,60,17,null,IsKinematic
 

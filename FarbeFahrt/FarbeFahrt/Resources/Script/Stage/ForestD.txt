@@ -20,8 +20,8 @@ f,forestDGround,0,0,0,3,Resources/Script/Animation/ForestD.txt
 o,Goal,Goal,50,30,-80,null,1
 
 # ギミック
-o,Bookmark,leftSheep,-230,25,-50,null,LeftSheep/false
-o,Bookmark,rightSheep,-230,25,-100,null,RightSheep/false
+o,Bookmark,leftSheep,-230,25,-50,null,LeftSheep/true
+o,Bookmark,rightSheep,-230,25,-100,null,RightSheep/true
 
 # ギミック起動変数
 g,2

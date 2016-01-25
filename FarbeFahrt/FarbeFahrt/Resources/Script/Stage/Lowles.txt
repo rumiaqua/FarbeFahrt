@@ -21,8 +21,8 @@ f,lowlesGround,0,0,0,3,Resources/Script/Animation/Lowles.txt
 o,Goal,Goal,50,30,-80,null
 
 # ÉMÉ~ÉbÉN
-o,Bookmark,tentG,90,25,-50,null,Tent/true
-o,Bookmark,herbG,90,25,50,null,Herb/true
+o,Bookmark,tentG,90,25,-50,null,Tent/false
+o,Bookmark,herbG,90,25,50,null,Herb/false
 o,ActionBookmark,herbG,90,25,50,null,herb/Activate
 
 o,Instant,herb,-70,30,20,null,IsKinematic/NonActivate

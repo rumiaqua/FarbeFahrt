@@ -17,6 +17,6 @@ private:
 
 private:
 	
-	bool m_once;
+	bool m_isAddPoint;
 	std::string m_animateName;
 };

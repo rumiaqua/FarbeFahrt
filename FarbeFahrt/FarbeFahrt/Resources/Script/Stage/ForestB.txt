@@ -20,8 +20,8 @@ f,forestBGround,0,0,0,3,Resources/Script/Animation/ForestB.txt
 o,Goal,Goal,50,30,-80,null,1
 
 # ギミック
-o,Bookmark,birdG,90,25,-50,null,Bird/false
-o,Bookmark,flowerG,-230,25,-50,null,Flower/false
+o,Bookmark,birdG,90,25,-50,null,Bird/true
+o,Bookmark,flowerG,-230,25,-50,null,Flower/true
 
 # ギミック起動変数
 g,2
