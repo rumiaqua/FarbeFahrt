@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <atomic>
 #include <functional>
+#include <array>
 #include "DxLib.h"
 #include "Utility/Def.h"
 
@@ -19,6 +20,7 @@
 # include "Vector3.h"
 # include "Matrix.h"
 # include "Pose.h"
+
 
 constexpr int fontSize = 32;
 constexpr int fontPosY = 680;
@@ -195,6 +197,11 @@ public:
 	Point2 getWindowSize();
 	Vector2 getCorrectionSize(const std::string& name, const AspectType& type);
 public:
+	//明るさ変更
+	void ChangeNight();
+	void ChangeDay();
+	//
+public:
 	// -----------------------------------------------------------
 	// プリミティブ型描画
 	// -----------------------------------------------------------
@@ -209,6 +216,7 @@ private:
 	void setFont();
 	void drawFont();
 private:
+	bool m_isNight;
 	std::unordered_map<std::string, ModelData> m_modelData;
 	std::vector<TextureData>m_drawList;
 	std::unordered_map<std::string, int> m_textureData;

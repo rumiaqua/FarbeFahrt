@@ -45,6 +45,11 @@ bool ModelCollider::intersects(const ModelCollider& shape) const
 	return false;
 }
 
+bool ModelCollider::intersects(const Empty& shape) const
+{
+	return false;
+}
+
 void ModelCollider::draw() const
 {
 	MV1DrawModelDebug(Singleton<HandleList>::Instance().getHandle(name),

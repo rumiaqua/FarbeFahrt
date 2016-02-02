@@ -3,9 +3,11 @@
 
 #include "Utility/Debug.h"
 
-Goal::Goal(IWorld& world, const std::string& modelName, const Vector3 & position) :
+# include "Actor/Gimmick/GimmickManager.h"
+
+Goal::Goal(IWorld& world, const std::string& modelName, const Vector3 & position, int threthold) :
 	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI), std::make_unique<Sphere>(Vector3::Zero(), 10.0f))
-	, m_capsule(position, position, 5.0f)
+	, m_threthold(threthold)
 {
 
 	m_name = modelName;
@@ -21,7 +23,11 @@ void Goal::onDraw(Renderer & render) const
 void Goal::onMessage(const std::string& message, void* parameter)
 {
 	auto player = static_cast<BaseActor*>(parameter);
-	if (message == "onCollide" && player->getName() == "Player")
+
+	int gimmick = GimmickManager::get();
+	if (/*gimmick >= m_threthold &&*/
+		message == "onCollide" &&
+		player->getName() == "Player")
 	{
 		m_world->findCamera()->sendMessage("complete", nullptr);
 		m_world->findCamera()->sendMessage("toBookCamera", nullptr);

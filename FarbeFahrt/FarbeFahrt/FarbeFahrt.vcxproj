@@ -25,6 +25,7 @@
     <ClCompile Include="Root\Actor\Gimmick\CommandGimmick.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
     <ClCompile Include="Root\Actor\Instant.cpp" />
+    <ClCompile Include="Root\Collision\Empty.cpp" />
     <ClCompile Include="Root\Experimental\ActionBookmark.cpp" />
     <ClCompile Include="Root\Experimental\AnimateState.cpp" />
     <ClCompile Include="Root\Experimental\AnimationTransitionMachine.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="Root\Actor\Gimmick\CommandGimmick.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Actor\Instant.h" />
+    <ClInclude Include="Root\Collision\Empty.h" />
     <ClInclude Include="Root\Experimental\ActionBookmark.h" />
     <ClInclude Include="Root\Experimental\AnimateState.h" />
     <ClInclude Include="Root\Experimental\AnimationTransitionMachine.h" />
@@ -690,17 +692,14 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Model\MMD魔導姉弟Ver1.1\READ ME.txt" />
-    <Text Include="Resources\Script\Animation\Book.txt" />
     <Text Include="Resources\Script\Animation\DangerSwamp.txt" />
     <Text Include="Resources\Script\Animation\Default.txt" />
     <Text Include="Resources\Script\Animation\DimForest.txt" />
-    <Text Include="Resources\Script\Animation\ForestA.txt" />
     <Text Include="Resources\Script\Animation\ForestB.txt" />
     <Text Include="Resources\Script\Animation\ForestC.txt" />
     <Text Include="Resources\Script\Animation\ForestD.txt" />
     <Text Include="Resources\Script\Animation\Heiles.txt" />
     <Text Include="Resources\Script\Animation\Lowles.txt" />
-    <Text Include="Resources\Script\Animation\PlainA.txt" />
     <Text Include="Resources\Script\Animation\PlainB.txt" />
     <Text Include="Resources\Script\Message\End\Ending1BadEnd.txt" />
     <Text Include="Resources\Script\Message\End\Ending2Clear.txt" />

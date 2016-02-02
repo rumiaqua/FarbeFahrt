@@ -21,6 +21,7 @@
 # include "Manager/MessageManager.h"
 
 # include "Utility/BGM.h"
+# include "Utility/Renderer.h"
 
 # include "Scene.h"
 
@@ -54,7 +55,7 @@ void GameMain::initialize()
 
 	// –{
 	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
-		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Book.txt"));
+		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Default.txt"));
 	// Š÷
 	m_world->addActor(ActorTag::Effect, std::make_shared<StaticObject>(
 		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
@@ -93,6 +94,14 @@ void GameMain::draw(Renderer& render)
 	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
 	Debug::Println("point:%d", GimmickManager::get());*/
 	m_world->draw(render);
+	if (Input::IsPressed(KEY_INPUT_N))
+	{
+		render.ChangeNight();
+	}
+	if (Input::IsPressed(KEY_INPUT_M))
+	{
+		render.ChangeDay();
+	}
 }
 
 void GameMain::post()

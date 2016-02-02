@@ -2,6 +2,8 @@
 
 # include "Actor/Gimmick/GimmickManager.h"
 
+# include "Collision/Empty.h"
+
 # include "Utility/Math.h"
 # include "Utility/Renderer.h"
 
@@ -15,7 +17,7 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 		Matrix::Rotation(Vector3::Up(),
 		Math::HALF_PI),
 		std::make_unique<Sphere>(Vector3::Zero(), 15.0f))
-	, m_once(once)
+	, m_isAddPoint(isAddPoint)
 	, m_animateName(animateName)
 	, m_access(access)
 {
@@ -36,11 +38,12 @@ void Bookmark::onMessage(const std::string& message, void* parameter)
 		if (!m_once)
 		{
 			GimmickManager::add(1);
-			m_once = true;
+			m_isAddPoint = false;
 		}
 		AnimateState state { m_animateName, false };
 		m_world->findGroup(ActorTag::Field)
 			->sendMessage("Animate", &state);
+		m_shape = std::make_unique<Empty>();
 	}
 
 	BaseActor::onMessage(message, parameter);

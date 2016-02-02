@@ -43,6 +43,11 @@ bool Line::intersects(const ModelCollider& shape) const
 	return Collision::intersects(shape, *this);
 }
 
+bool Line::intersects(const Empty& shape) const
+{
+	return false;
+}
+
 void Line::draw() const
 {
 	DrawLine3D(

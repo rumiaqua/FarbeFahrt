@@ -19,8 +19,8 @@ f,plainBGround,0,0,0,3,Resources/Script/Animation/PlainB.txt
 o,Goal,Goal,50,30,-80,null
 
 # ギミック
-o,Bookmark,LeftRabbit,90,25,-50,null,LeftRabbit/false
-o,Bookmark,RightRabbit,90,25,0,null,RightRabbit/false
+o,Bookmark,LeftRabbit,90,25,-50,null,LeftRabbit/true
+o,Bookmark,RightRabbit,90,25,0,null,RightRabbit/true
 
 # ギミック起動変数
 g,2

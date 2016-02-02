@@ -7,7 +7,6 @@ r,boatG,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
 r,DangerSwampGround,Stage/DangerSwamp/Ground/DangerSwampGround.pmx
-#r,DangerSwampBackGround,Stage/DangerSwamp/BackGround/DangetSwampBackGround.pmx
 
 r,DangerSwampBGM,Sound/BGM/danger_swamp.mp3
 
@@ -22,7 +21,7 @@ o,Goal,Goal,73.5,23.0,-33.5,null
 o,Goal,Goal,69.0,22.5,44.5,null
 
 # ギミック
-o,Bookmark,fishG,90,25,-50,null,Fish/true
+o,Bookmark,fishG,90,25,-50,null,Fish/false
 o,ActionBookmark,boatG,90,25,-50,null,Ship/Activate
 o,Boat,Ship,-180,25,0,null
 

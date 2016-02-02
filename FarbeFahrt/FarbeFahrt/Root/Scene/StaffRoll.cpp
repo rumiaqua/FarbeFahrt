@@ -12,7 +12,7 @@
 # include "Utility/Point2.h"
 
 # include "Scene.h"
-
+# include "Utility\BGM.h"
 StaffRoll::StaffRoll()
 	: m_elapsedTime(0.0f)
 	, m_needTime(30.0f * 60.0f)
@@ -63,7 +63,7 @@ void StaffRoll::post()
 
 void StaffRoll::cleanUp()
 {
-
+	BGM::stop();
 }
 
 bool StaffRoll::isSwallow() const

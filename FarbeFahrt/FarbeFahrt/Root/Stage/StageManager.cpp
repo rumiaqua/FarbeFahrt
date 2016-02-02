@@ -85,6 +85,11 @@ void StageManager::next(World* const world)
 		{
 			actor.kill();
 		});
+		world->findGroup(ActorTag::Goal)->eachChildren(
+			[] (BaseActor& actor)
+		{
+			actor.kill();
+		});
 
 		// 現在のフィールドに閉じるアニメーションをさせる
 		/*world->findGroup(ActorTag::Field)->eachChildren(
