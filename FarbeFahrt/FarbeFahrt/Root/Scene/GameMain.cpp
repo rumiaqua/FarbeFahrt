@@ -21,6 +21,7 @@
 # include "Manager/MessageManager.h"
 
 # include "Utility/BGM.h"
+# include "Utility/Renderer.h"
 
 # include "Scene.h"
 
