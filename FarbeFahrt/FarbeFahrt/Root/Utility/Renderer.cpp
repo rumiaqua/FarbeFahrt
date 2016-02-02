@@ -9,9 +9,13 @@
 # include "Collision/IShape.h"
 
 # include "Debug.h"
+#include "Def.h"
 
 Renderer::Renderer()
 {
+	SetLightPosition(LIGHT_POSITION);
+	SetLightDirection(VNorm(LIGHT_TARGET - LIGHT_POSITION));
+	ChangeDay();
 	initDepthBuffer();
 	loadShader();
 	setFont();
@@ -41,7 +45,7 @@ void Renderer::drawPrimitive(const IShape& shape) const
 	{
 		return;
 	}
-	m_primitives.push_back([&shape] () { shape.draw(); });
+	m_primitives.push_back([&shape]() { shape.draw(); });
 }
 void Renderer::initDepthBuffer()
 {
@@ -86,8 +90,6 @@ void Renderer::setTextureData(const ContentMap& textureData)
 // 深度描画
 void Renderer::drawDepth()
 {
-	Vector3 lightPosition = { 20.0f,120.0f,-70.0f };
-	Vector3 lightTarget{ -45.0f,-30.0f,0.0f };
 	SetDrawScreen(m_buffer.depthBuffer);
 	SetBackgroundColor(255, 255, 255);
 	// 描画ターゲットをクリア
@@ -95,9 +97,9 @@ void Renderer::drawDepth()
 	// 背景色を黒でクリア
 	SetBackgroundColor(0, 0, 0);
 
-	SetupCamera_Ortho(500.0f);
+	SetupCamera_Ortho(600.0f);
 	SetCameraNearFar(1.0f, 500.0f);
-	SetCameraPositionAndTarget_UpVecY(lightPosition, lightTarget);
+	SetCameraPositionAndTarget_UpVecY(LIGHT_POSITION, LIGHT_TARGET);
 
 	// 現在の設定を保持
 	m_lightCamera.viewMatrix = GetCameraViewMatrix();
@@ -142,9 +144,11 @@ void Renderer::drawModelWithDepthShadow()
 	// カメラのビュー行列を保存した行列に変更
 	SetCameraPositionAndTarget_UpVecY(m_cameraData.pos, m_cameraData.terget);
 	// 自作シェーダーの使用開始
+
 	MV1SetUseOrigShader(TRUE);
 	// ピクセルシェーダーを指定
 	SetUsePixelShader(m_shaderHandle.render_pixel);
+	SetPSConstSF(0, m_isNight ? 1.0f : 0.5f);
 	// ビュー行列をシェーダーにセット
 	SetVSConstFMtx(43, m_lightCamera.viewMatrix);
 	// 透視射影行列をシェーダーにセット
@@ -204,7 +208,7 @@ void Renderer::draw()
 		func();
 	}
 	m_primitives.clear();
-	
+
 	//2Ｄの描画
 	for (auto& texture : m_drawList)
 	{
@@ -313,7 +317,7 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 {
 	//見辛いから後々関数分けする予定
 	//サンプル丸パクリスペクト
-	
+
 	auto& modelData = m_modelData.at(name);
 	modelData.isSkinMesh = true;
 
@@ -351,7 +355,7 @@ void Renderer::drawSkinModel(const std::string& name, const Vector3& position,
 		modelData.animBlendRate = 1.0f;
 	}
 
-	
+
 
 	if (modelData.playAnim1 != -1)
 	{
@@ -457,7 +461,7 @@ void Renderer::drawSkinModel(const std::string& name, const Pose& pose, int anim
 
 void Renderer::drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle, int alpha)
 {
-	TextureData texture{ m_textureData.at(name) ,x,y,cx,cy,width,height,angle,alpha};
+	TextureData texture{ m_textureData.at(name) ,x,y,cx,cy,width,height,angle,alpha };
 	setDrawList(texture);
 }
 void Renderer::drawTexture(const std::string& name, int x, int y)
@@ -591,4 +595,18 @@ Vector2 Renderer::getCorrectionSize(const std::string& name, const AspectType& t
 	}
 
 	return textureSize * ext;
+}
+
+void Renderer::ChangeNight()
+{
+	m_isNight = true;
+
+	SetLightAmbColor(GetColorF(0.0f, 0.05f, 0.1f, 0.0f));
+	SetLightDifColor(GetColorF(0.4f, 0.4f, 0.4f, 0.0f));
+}
+void Renderer::ChangeDay()
+{
+	m_isNight = false;
+	SetLightAmbColor(GetColorF(0.5f, 0.4f, 0.3f, 0.0f));
+	SetLightDifColor(GetColorF(1.0f, 1.0f, 1.0f, 0.0f));
 }

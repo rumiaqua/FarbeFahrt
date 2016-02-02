@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
 #include <unordered_map>
-
+#include "Vector3.h"
+#include "../../DxLib/DxLib.h"
 // •Ï”‚ğg—p‚µ‚È‚¢‚±‚Æ‚ğ–¾¦‚·‚é
 # define NoUse(Variable) ((void)Variable)
 
@@ -31,3 +32,6 @@ struct ContentData{
 	ContentData(){}
 };
 using ContentMap = std::unordered_map<std::string, ContentData>;
+
+const Vector3 LIGHT_POSITION = { 20.0f,120.0f,-70.0f };
+const Vector3 LIGHT_TARGET = { -45.0f,-30.0f,0.0f };

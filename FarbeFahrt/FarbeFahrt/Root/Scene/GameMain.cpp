@@ -93,6 +93,14 @@ void GameMain::draw(Renderer& render)
 	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
 	Debug::Println("point:%d", GimmickManager::get());*/
 	m_world->draw(render);
+	if (Input::IsPressed(KEY_INPUT_N))
+	{
+		render.ChangeNight();
+	}
+	if (Input::IsPressed(KEY_INPUT_M))
+	{
+		render.ChangeDay();
+	}
 }
 
 void GameMain::post()
