@@ -7,7 +7,7 @@
 
 # include "Experimental/AnimateState.h"
 
-Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& position, const std::string& animateName, bool once)
+Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& position, const std::string& animateName, bool once, const Vector3& access)
 	: BaseActor(
 		world,
 		modelName,
@@ -17,6 +17,7 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 		std::make_unique<Sphere>(Vector3::Zero(), 15.0f))
 	, m_once(once)
 	, m_animateName(animateName)
+	, m_access(access)
 {
 	
 }
@@ -31,6 +32,7 @@ void Bookmark::onMessage(const std::string& message, void* parameter)
 {
 	if (message == "OnGimmick")
 	{
+		m_world->actorSet(m_access);
 		if (!m_once)
 		{
 			GimmickManager::add(1);

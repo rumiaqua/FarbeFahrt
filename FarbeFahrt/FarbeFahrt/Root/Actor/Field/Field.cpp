@@ -14,6 +14,7 @@
 
 # include "Experimental/AnimateState.h"
 
+
 namespace
 {
 	constexpr float ANIMATION_FRAME = 180.0f;
@@ -27,27 +28,41 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	, m_isAnimating(false)
 	, m_isReversed(false)
 	, m_isBackground(false)
+	, m_gimmick(false)
 	, m_machine(transition)
 	, m_current()
+	, m_cameraProgress(false)
 {
 
 }
 
 void Field::onUpdate()
 {
+	auto camera = m_world->findCamera();
+	if (camera == nullptr)return;
+	camera->sendMessage("progress", &m_cameraProgress);
+
 	if (m_isAnimating)
 	{
 		if (m_isReversed)
 		{
 			m_elapsedTime -= 1.0f;
 			m_isAnimating = m_elapsedTime > 0.0f;
-			m_elapsedTime = Math::Max({ m_elapsedTime, 0.0f });
+			m_elapsedTime = Math::Max({ m_elapsedTime, 0.0f });			
 		}
 		else
 		{
-			m_elapsedTime += 1.0f;
-			m_isAnimating = m_elapsedTime < ANIMATION_FRAME;
+			if (m_cameraProgress >= 1)
+			{
+				m_elapsedTime += 1.0f;
+			}
+			m_isAnimating = m_elapsedTime <= ANIMATION_FRAME;
 			m_elapsedTime = Math::Min({ m_elapsedTime, ANIMATION_FRAME });
+		}
+
+		if (m_elapsedTime >= ANIMATION_FRAME)
+		{
+			m_world->findCamera()->sendMessage("toBookCamera", nullptr);
 		}
 
 		if (!m_isAnimating &&

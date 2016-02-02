@@ -2,6 +2,7 @@
 #include "Actor/BaseActor.h"
 #include "Utility/Def.h"
 #include "Experimental/AnimationTransitionMachine.h"
+#include "Actor/Camera/Camera.h"
 
 struct AnimateState;
 
@@ -23,9 +24,11 @@ private:
 	float m_elapsedTime;
 	int m_animationNumber;
 	bool m_isAnimating;
+	bool m_gimmick;
 	bool m_isReversed;
 	int m_previousAnimNo;
 	bool m_isBackground;
 	AnimationTransitionMachine m_machine;
 	std::string m_current;
+	float m_cameraProgress;
 };

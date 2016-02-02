@@ -52,7 +52,7 @@ void Stage::apply(const StageData& data, bool isClear)
 			*m_world, field.name, field.position, field.scale, field.transition);
 		m_actorManager.addActor(ActorTag::Field, actor);
 		// actor->sendMessage("OpenAnimate", nullptr);
-		AnimateState state { "Open", false };
+		AnimateState state{ "Open", false };
 		actor->sendMessage("Animate", &state);
 	}
 
@@ -117,7 +117,7 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position));
-		}		
+		}
 		if (object.name == "Instant")
 		{
 			m_world->addActor(ActorTag::Object, std::make_shared<Instant>(
@@ -128,8 +128,11 @@ void Stage::apply(const StageData& data, bool isClear)
 			auto parameter = String::Split(object.parameter, '/');
 			std::string& animateName = parameter[0];
 			bool once = parameter[1] == "true";
+			Vector3& access = Vector3(String::ToValue<float>(parameter[2]),
+									  String::ToValue<float>(parameter[3]),
+									  String::ToValue<float>(parameter[4]));
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
-				*m_world, object.resource, object.position, animateName, once));
+				*m_world, object.resource, object.position, animateName, once, access));
 		}
 		if (object.name == "Boat")
 		{
@@ -175,11 +178,11 @@ void Stage::update()
 	m_actorManager.collidePlayer(ActorTag::Gimmick);
 	m_actorManager.collidePlayer(ActorTag::Object);
 	m_actorManager.findGroup(ActorTag::Field)
-		->eachChildren([&] (BaseActor& actor) { m_actorManager.findGroup(ActorTag::Object)->collide(&actor); });
+		->eachChildren([&](BaseActor& actor) { m_actorManager.findGroup(ActorTag::Object)->collide(&actor); });
 }
 
 void Stage::draw(Renderer& renderer) const
-{	
+{
 	// •`‰æˆ—
 	m_actorManager.draw(renderer);
 

@@ -41,16 +41,15 @@ Camera::Camera(IWorld& world) :
 	m_cameraState.cameraMode = CameraMode::Default;
 
 	m_progress = 1.0f;
+	m_lockPos = none;
+	actorSet("Player");
+	m_actorRadius = 0.0f;
 }
 void Camera::onUpdate()
 {
-	if (m_actor.expired())
+	if (!m_actor.expired())
 	{
-		actorSet("Player");
-		m_actorRadius = 0.0f;
-	}
-	else
-	{
+		m_lockPos = m_actor.lock()->getPosition();
 		m_actorRadius = static_cast<Sphere*>(m_actor.lock()->getShape())->radius;
 	}
 
@@ -63,6 +62,8 @@ void Camera::onUpdate()
 		cameraInput();
 	}
 	cameraSet();
+
+	
 
 	BaseActor::onUpdate();
 }
@@ -81,6 +82,12 @@ void Camera::cameraInput()
 		m_world->addActor(ActorTag::Collider, std::make_shared<Ray>(*m_world, begin, end));
 	}
 
+	/*if (Mouse::IsClicked(KEY_INPUT_0))
+	{
+		actorSet(Vector3(100, 100, 100));
+		m_cameraState.cameraMode = CameraMode::FadeIn;
+	}*/
+
 	if (m_progress >= 1)
 	{
 		if (Mouse::ScrollValue() > 0)
@@ -96,29 +103,29 @@ void Camera::cameraInput()
 
 void Camera::chaseCamera()
 {
-	if (m_actor.expired())
+
+	if (m_actor.expired() && !m_lockPos)
 	{
 		return;
 	}
-	Actor actor = m_actor.lock();
+
 	m_cameraMatrix.currentPos = getPosition();
-	m_cameraMatrix.targetPos = actor->getPosition() + accessCorrection(accessPos);
+	m_cameraMatrix.targetPos = m_lockPos.ref() + accessCorrection(accessPos);
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	m_cameraMatrix.targetRot = actor->getPosition() + accessRot;
+	m_cameraMatrix.targetRot = m_lockPos.ref() + accessRot;
 }
 
 void Camera::fadeInCamera()
 {
-	if (m_actor.expired())
+	if (m_actor.expired() && !m_lockPos)
 	{
 		return;
 	}
-	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
 	m_progress = 0;
-	m_cameraMatrix.targetPos = actor->getPosition() + accessCorrection(accessPos);
+	m_cameraMatrix.targetPos = m_lockPos.ref() + accessCorrection(accessPos);
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	m_cameraMatrix.targetRot = actor->getPosition() + accessRot;
+	m_cameraMatrix.targetRot = m_lockPos.ref() + accessRot;
 	m_cameraState.chaseFlag = ChaseFlag::Move;
 	m_cameraState.cameraMode = CameraMode::Default;
 }
@@ -134,42 +141,39 @@ void Camera::fadeOutCamera()
 
 void Camera::fadeInFixedCamera()
 {
-	if (m_actor.expired())
+	if (m_actor.expired() && !m_lockPos)
 	{
 		return;
 	}
-	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentPos = getPosition();
 	m_cameraMatrix.targetPos = getPosition();
 	m_progress = 0;
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	m_cameraMatrix.targetRot = actor->getPosition() + accessRot;
+	m_cameraMatrix.targetRot = m_lockPos.ref() + accessRot;
 	m_cameraState.chaseFlag = ChaseFlag::Stay;
 	m_cameraState.cameraMode = CameraMode::Default;
 }
 
 void Camera::lockCamera()
 {
-	if (m_actor.expired())
+	if (m_actor.expired() && !m_lockPos)
 	{
 		return;
 	}
-	Actor actor = m_actor.lock();
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
-	m_cameraMatrix.targetRot = actor->getPosition() + accessRot;
+	m_cameraMatrix.targetRot = m_lockPos.ref() + accessRot;
 }
 
 void Camera::defaultCamera()
 {
-	if (m_actor.expired())
+	if (m_actor.expired() && !m_lockPos)
 	{
 		return;
 	}
-	Actor actor = m_actor.lock();
 	if (m_cameraState.chaseFlag == ChaseFlag::Move)
 	{
-		m_cameraMatrix.targetPos = actor->getPosition() + accessCorrection(accessPos);
-		m_cameraMatrix.targetRot = actor->getPosition() + accessRot;
+		m_cameraMatrix.targetPos = m_lockPos.ref() + accessCorrection(accessPos);
+		m_cameraMatrix.targetRot = m_lockPos.ref() + accessRot;
 		if (m_progress >= 1)
 		{
 			m_cameraState.chaseFlag = ChaseFlag::Void;
@@ -179,7 +183,7 @@ void Camera::defaultCamera()
 	else if (m_cameraState.chaseFlag == ChaseFlag::Stay)
 	{
 		m_cameraMatrix.targetPos = getPosition();
-		m_cameraMatrix.targetRot = actor->getPosition() + accessRot;
+		m_cameraMatrix.targetRot = m_lockPos.ref() + accessRot;
 		if (m_progress >= 1)
 		{
 			m_cameraState.chaseFlag = ChaseFlag::Void;
@@ -253,24 +257,25 @@ void Camera::toFixedCamera()
 
 Vector3 Camera::accessCorrection(Vector3 pos)
 {
-	return { pos.x, pos.y + m_actorRadius, pos.z - m_actorRadius * 2 };
+	return{ pos.x, pos.y + m_actorRadius, pos.z - m_actorRadius * 2 };
 }
 
 void Camera::actorSet(const std::string& actorName)
 {
 	m_actor = m_world->findActor(actorName);
-	if (m_actor.expired())
-	{
-		return;
-	}
+}
+void Camera::actorSet(const Vector3& position)
+{
+	m_actor.reset();
+	m_lockPos = position;
+	m_cameraState.cameraMode = CameraMode::FadeIn;
 }
 
 void Camera::onMessage(const std::string& message, void* parameter)
 {
 	if (message == "actorSet")
-	{
-		actorSet(*(std::string*)parameter);
-		m_cameraState.cameraMode = CameraMode::FadeIn;
+	{		
+		actorSet(*(Vector3*)parameter);
 	}
 	//ê”îCé“Å@Ç»ÇËÇΩÇÒ
 	if (message == "nextStage")
@@ -290,6 +295,11 @@ void Camera::onMessage(const std::string& message, void* parameter)
 		if (message == "toBookCamera")		toBookCamera();
 		if (message == "toPlayerCamera")	toPlayerCamera();
 		if (message == "toFixedCamera")		toFixedCamera();
+	}
+
+	if (message == "progress")
+	{
+		*(float*)parameter = m_progress;
 	}
 
 	BaseActor::onMessage(message, parameter);
