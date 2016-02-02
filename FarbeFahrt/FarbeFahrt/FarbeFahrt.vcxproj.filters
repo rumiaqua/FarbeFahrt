@@ -664,7 +664,6 @@
     <None Include="Resources\Stage\Swamp\SwampGround001.vmd" />
     <None Include="Resources\Stage\Swamp\SwampGround002.vmd" />
     <None Include="Resources\Stage\Swamp\SwampGround003.vmd" />
-    <None Include="Resources\Model\Gimmick\Herb\Textures\Herb.mqo" />
     <None Include="Resources\Model\Gimmick\Herb\Herb.mqo" />
     <None Include="Resources\Model\Gimmick\Herb\Herb.pmx" />
     <None Include="Resources\Model\Gimmick\Herb\Herb.x" />
@@ -676,6 +675,13 @@
     <None Include="Resources\Model\船\Ship.pmx" />
     <None Include="Resources\Model\船\Ship2.mqo" />
     <None Include="Resources\Model\船\Ship2.pmx" />
+    <None Include="Resources\Model\Gimmick\Herb\Textures\Herb.mqo" />
+    <None Include="Resources\Model\Gimmick\薬草.mqo" />
+    <None Include="Resources\Model\Gimmick\岩.mqo" />
+    <None Include="Resources\Model\Gimmick\森ギミック集.mqo" />
+    <None Include="Resources\Model\Gimmick\蔦.mqo" />
+    <None Include="Resources\Model\Gimmick\倒木.mqo" />
+    <None Include="Resources\Model\Gimmick\circle.mqo" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Font\えるまー.ttf" />

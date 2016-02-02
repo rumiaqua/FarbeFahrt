@@ -190,10 +190,16 @@
     <None Include="Resources\Font\meiryo.ttc" />
     <None Include="Resources\Font\meiryob.ttc" />
     <None Include="Resources\Model\Gimmick\bookmark.mqo" />
+    <None Include="Resources\Model\Gimmick\circle.mqo" />
     <None Include="Resources\Model\Gimmick\Herb\Herb.mqo" />
     <None Include="Resources\Model\Gimmick\Herb\Herb.pmx" />
     <None Include="Resources\Model\Gimmick\Herb\Herb.x" />
     <None Include="Resources\Model\Gimmick\Herb\Textures\Herb.mqo" />
+    <None Include="Resources\Model\Gimmick\倒木.mqo" />
+    <None Include="Resources\Model\Gimmick\岩.mqo" />
+    <None Include="Resources\Model\Gimmick\森ギミック集.mqo" />
+    <None Include="Resources\Model\Gimmick\蔦.mqo" />
+    <None Include="Resources\Model\Gimmick\薬草.mqo" />
     <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ガブリエラ.pmx" />
     <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ガブリエラ000L.vmd" />
     <None Include="Resources\Model\MMD魔導姉弟Ver1.1\ガブリエラ001L.vmd" />
