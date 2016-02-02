@@ -21,7 +21,7 @@ public:
 
 public:
 
-	void initialize(const std::string& indexFilename, const std::string& firstStageName);
+	void initialize(const std::string& indexFilename);
 
 	bool isNext() const;
 

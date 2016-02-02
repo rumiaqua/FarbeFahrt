@@ -1,9 +1,0 @@
-Open,-1,000
-Owl,000,004
-Owl,006,007
-Leave,000,006
-Leave,004,005
-Close,004,003
-Close,005,001
-Close,006,002
-Close,007,001

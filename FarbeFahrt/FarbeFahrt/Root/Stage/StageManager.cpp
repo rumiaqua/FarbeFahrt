@@ -24,12 +24,14 @@ StageManager::StageManager()
 
 }
 
-void StageManager::initialize(const std::string& indexFilename, const std::string& firstStageName)
+void StageManager::initialize(const std::string& indexFilename)
 {
 	std::fstream stream { indexFilename };
 
 	std::string currentDirectory = "";
 	std::string buffer;
+
+	std::string firstStageName;
 
 	// ステージ一覧をロード
 	while (std::getline(stream, buffer))
@@ -48,6 +50,17 @@ void StageManager::initialize(const std::string& indexFilename, const std::strin
 		{
 			StageFactory().Load(currentDirectory + split[2], m_stageDatas[split[1]]);
 		}
+
+		// 最初のステージ
+		if (split[0] == "f")
+		{
+			firstStageName = split[1];
+		}
+	}
+
+	if (firstStageName.empty())
+	{
+		firstStageName = m_stageDatas.begin()->first;
 	}
 
 	// 最初のステージ

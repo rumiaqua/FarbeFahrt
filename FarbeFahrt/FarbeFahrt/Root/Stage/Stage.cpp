@@ -129,9 +129,21 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			auto parameter = String::Split(object.parameter, '/');
 			std::string& animateName = parameter[0];
-			bool once = parameter[1] == "true";
+			bool isAddPoint = false;
+			bool isToggle = false;
+			for (size_t i = 1; i < parameter.size(); ++i)
+			{
+				if (parameter[i] == "AddPoint")
+				{
+					isAddPoint = true;
+				}
+				if (parameter[i] == "Toggle")
+				{
+					isToggle = true;
+				}
+			}
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
-				*m_world, object.resource, object.position, animateName, once));
+				*m_world, object.resource, object.position, animateName, isAddPoint, isToggle));
 		}
 		if (object.name == "Boat")
 		{

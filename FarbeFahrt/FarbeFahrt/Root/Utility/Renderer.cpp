@@ -286,6 +286,10 @@ void Renderer::drawFont()
 }
 void Renderer::drawNormalModel(const std::string& name, const Vector3& position, const Matrix& rotation)
 {
+	if (name == "")
+	{
+		return;
+	}
 	const int &handle = m_modelData.at(name).modelHandle;
 	MV1SetPosition(handle, position);
 	MV1SetRotationMatrix(handle, rotation);

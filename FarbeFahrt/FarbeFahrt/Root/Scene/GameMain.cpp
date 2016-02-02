@@ -44,6 +44,8 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("Message", "Texture/end/message.png");
 	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
+	loader.loadContent("Player", "Model/MMD魔導姉弟Ver1.1/ミハイル.pmx");
+	loader.loadContent("Goal", "Model/Gimmick/bookmark.mqo");
 }
 
 void GameMain::initialize()
@@ -63,7 +65,7 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
-	m_stageManager.initialize("Resources/Script/Stage/index.csv", "PlainA");
+	m_stageManager.initialize("Resources/Script/Stage/index.csv");
 	StoryManager::set(BitFlag::GOAL);
 
 	EndManager::Clear();
@@ -93,6 +95,8 @@ void GameMain::draw(Renderer& render)
 	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
 	Debug::Println("point:%d", GimmickManager::get());*/
 	m_world->draw(render);
+
+	Debug::Println(String::Create("Gimmick : ", GimmickManager::get(), " / ", GimmickManager::getMax()));
 }
 
 void GameMain::post()

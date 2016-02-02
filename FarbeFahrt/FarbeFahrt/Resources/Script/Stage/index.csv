@@ -1,11 +1,8 @@
 # カレントディレクトリ,,
 c,Resources/Script/Stage/,
 ,,
-# 平原A,,
-s,PlainA,PlainA.txt
-,,
-# 平原B,,
-s,PlainB,PlainB.txt
+# 最初のステージ,,
+f,ForestA,
 ,,
 # 森A,,
 s,ForestA,ForestA.txt
@@ -13,23 +10,20 @@ s,ForestA,ForestA.txt
 # 森B,,
 s,ForestB,ForestB.txt
 ,,
-# 森C,,
-s,ForestC,ForestC.txt
+# 街,,
+s,City,City.txt
 ,,
-# 森D,,
-s,ForestD,ForestD.txt
+# 闇市,,
+s,BlackMarket,BlackMarket.txt
 ,,
-# 薄暗い森,,
-s,DimForest,DimForest.txt
+# 夜の闇市,,
+s,BlackMarketNight,BlackMarketNight.txt
 ,,
-# 危ない沼,,
-s,DangerSwamp,DangerSwamp.txt
+# 長老の森,,
+s,Elder,Elder.txt
 ,,
-# ハイレス,,
-s,Heiles,Heiles.txt
-,,
-# ローレス,,
-s,Lowles,Lowles.txt
+# 沼,,
+s,Swamp,Swamp.txt
 ,,
 # 家A,,
 s,HouseA,HouseA.txt
@@ -42,6 +36,3 @@ s,HouseC,HouseC.txt
 ,,
 # 家D,,
 s,HouseD,HouseD.txt
-,,
-# 家E,,
-s,HouseE,HouseE.txt

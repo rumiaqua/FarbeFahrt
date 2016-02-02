@@ -532,12 +532,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </None>
     <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス（テクスチャあり）.mqo" />
-    <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス地面.pmx" />
-    <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス地面000.vmd" />
-    <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス地面001.vmd" />
-    <None Include="Resources\Stage\ハイレス\ハイレス背景\ハイレス背景.pmx" />
-    <None Include="Resources\Stage\ハイレス\ハイレス背景\ハイレス背景000.vmd" />
-    <None Include="Resources\Stage\ハイレス\ハイレス背景\ハイレス背景001.vmd" />
     <None Include="Resources\Stage\森\森地面\森地面.pmx" />
     <None Include="Resources\Stage\森\森地面\森地面000.vmd" />
     <None Include="Resources\Stage\森\森地面\森地面001.vmd" />
@@ -545,15 +539,6 @@
     <None Include="Resources\Stage\森\森背景\森背景000.vmd" />
     <None Include="Resources\Stage\森\森背景\森背景001.vmd" />
     <None Include="Resources\Stage\森\森背景\森背景ページ開き.vmd" />
-    <None Include="Resources\Stage\平原\橋\ページ開き橋.vmd" />
-    <None Include="Resources\Stage\平原\橋\ページ閉じ橋.vmd" />
-    <None Include="Resources\Stage\平原\橋\橋.pmx" />
-    <None Include="Resources\Stage\平原\平原地面\平原地面.pmx" />
-    <None Include="Resources\Stage\平原\平原地面\平原地面000.vmd" />
-    <None Include="Resources\Stage\平原\平原地面\平原地面001.vmd" />
-    <None Include="Resources\Stage\平原\平原背景\平原背景.pmx" />
-    <None Include="Resources\Stage\平原\平原背景\平原背景000.vmd" />
-    <None Include="Resources\Stage\平原\平原背景\平原背景001.vmd" />
     <None Include="Resources\Shader\_Render_pixel.pso" />
     <None Include="Resources\Shader\Depthrecord_normal.vso" />
     <None Include="Resources\Shader\Depthrecord_pixel.pso" />
@@ -575,13 +560,6 @@
     <None Include="Resources\Model\本\新本000.vmd" />
     <None Include="Resources\Model\本\新本001.vmd" />
     <None Include="Resources\Model\本\本完成(仮).pmx" />
-    <None Include="Resources\Stage\本\新本.pmx" />
-    <None Include="Resources\Stage\本\本ページ開き59フレーム.vmd" />
-    <None Include="Resources\Stage\本\表紙開き59フレーム.vmd" />
-    <None Include="Resources\Script\Message\index.csv" />
-    <None Include="Resources\Script\Stage\index.csv" />
-    <None Include="Resources\Stage\House\家地面\HouseGround.pmx" />
-    <None Include="Resources\Stage\House\家地面\HouseGround000.vmd" />
     <None Include="Resources\Stage\平原B\地面\平原B地面開き.vmd" />
     <None Include="Resources\Stage\平原B\地面\平原B地面閉じ.vmd" />
     <None Include="Resources\Stage\平原B\背景\背景雲動き.vmd" />
@@ -632,9 +610,76 @@
     <None Include="Resources\Stage\ローレス\ローレス背景\ローレス背景000.vmd" />
     <None Include="Resources\Stage\ローレス\ローレス背景\ローレス背景001.vmd" />
     <None Include="Resources\Stage\ローレス\ローレス地面\ローレス地面002.vmd" />
+    <None Include="Resources\Script\Stage\index.csv" />
+    <None Include="Resources\Script\Message\index.csv" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround.pmx" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround000.vmd" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround001.vmd" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround002.vmd" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround003.vmd" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround004.vmd" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround005.vmd" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround006.vmd" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround007.vmd" />
+    <None Include="Resources\Stage\BlackMarket\BlackMarketGround008.vmd" />
+    <None Include="Resources\Stage\City\CityGround.pmx" />
+    <None Include="Resources\Stage\City\CityGround000.vmd" />
+    <None Include="Resources\Stage\City\CityGround001.vmd" />
+    <None Include="Resources\Stage\City\CityGround002.vmd" />
+    <None Include="Resources\Stage\City\CityGround003.vmd" />
+    <None Include="Resources\Stage\City\CityGround004.vmd" />
+    <None Include="Resources\Stage\City\CityGround005.vmd" />
+    <None Include="Resources\Stage\City\CityGround006.vmd" />
+    <None Include="Resources\Stage\City\CityGround007.vmd" />
+    <None Include="Resources\Stage\City\CityGround008.vmd" />
+    <None Include="Resources\Stage\City\CityGround009.vmd" />
+    <None Include="Resources\Stage\City\CityGround010.vmd" />
+    <None Include="Resources\Stage\Elder\ElderGround.pmx" />
+    <None Include="Resources\Stage\Elder\ElderGround000.vmd" />
+    <None Include="Resources\Stage\Elder\ElderGround001.vmd" />
+    <None Include="Resources\Stage\Elder\ElderGround002.vmd" />
+    <None Include="Resources\Stage\Elder\ElderGround003.vmd" />
+    <None Include="Resources\Stage\Elder\ElderGround004.vmd" />
+    <None Include="Resources\Stage\Elder\ElderGround005.vmd" />
+    <None Include="Resources\Stage\Elder\ElderGround006.vmd" />
+    <None Include="Resources\Stage\Elder\ElderGround007.vmd" />
+    <None Include="Resources\Stage\ForestA\ForestAGround.pmx" />
+    <None Include="Resources\Stage\ForestA\ForestAGround000.vmd" />
+    <None Include="Resources\Stage\ForestA\ForestAGround001.vmd" />
+    <None Include="Resources\Stage\ForestB\ForestBGround.pmx" />
+    <None Include="Resources\Stage\ForestB\ForestBGround000.vmd" />
+    <None Include="Resources\Stage\ForestB\ForestBGround001.vmd" />
+    <None Include="Resources\Stage\ForestB\ForestBGround002.vmd" />
+    <None Include="Resources\Stage\ForestB\ForestBGround003.vmd" />
+    <None Include="Resources\Stage\HouseA\HouseAGround.pmx" />
+    <None Include="Resources\Stage\HouseA\HouseAGround000.vmd" />
+    <None Include="Resources\Stage\HouseB\HouseBGround.pmx" />
+    <None Include="Resources\Stage\HouseB\HouseBGround000.vmd" />
+    <None Include="Resources\Stage\HouseC\HouseCGround.pmx" />
+    <None Include="Resources\Stage\HouseC\HouseCGround000.vmd" />
+    <None Include="Resources\Stage\HouseD\HouseDGround.pmx" />
+    <None Include="Resources\Stage\HouseD\HouseDGround000.vmd" />
+    <None Include="Resources\Stage\Swamp\SwampGround.pmx" />
+    <None Include="Resources\Stage\Swamp\SwampGround000.vmd" />
+    <None Include="Resources\Stage\Swamp\SwampGround001.vmd" />
+    <None Include="Resources\Stage\Swamp\SwampGround002.vmd" />
+    <None Include="Resources\Stage\Swamp\SwampGround003.vmd" />
+    <None Include="Resources\Model\Gimmick\Herb\Textures\Herb.mqo" />
+    <None Include="Resources\Model\Gimmick\Herb\Herb.mqo" />
+    <None Include="Resources\Model\Gimmick\Herb\Herb.pmx" />
+    <None Include="Resources\Model\Gimmick\Herb\Herb.x" />
+    <None Include="Resources\Model\Gimmick\bookmark.mqo" />
+    <None Include="Resources\Model\Ship\Ship.mqo" />
+    <None Include="Resources\Model\机\Textures\つくえ.mqo" />
+    <None Include="Resources\Model\机\つくえ.mqo" />
+    <None Include="Resources\Model\船\Ship.mqo" />
+    <None Include="Resources\Model\船\Ship.pmx" />
+    <None Include="Resources\Model\船\Ship2.mqo" />
+    <None Include="Resources\Model\船\Ship2.pmx" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Font\えるまー.ttf" />
+    <Font Include="Resources\Font\cinecaption2.28.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Texture\bad.png">
@@ -781,9 +826,6 @@
     <Image Include="Resources\Stage\ハイレス\ハイレス地面\薬テント.png">
       <Filter>リソース ファイル</Filter>
     </Image>
-    <Image Include="Resources\Stage\ハイレス\ハイレス背景\町背景.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
     <Image Include="Resources\Stage\森\森地面\wood_texture 2.png">
       <Filter>リソース ファイル</Filter>
     </Image>
@@ -832,24 +874,6 @@
     <Image Include="Resources\Stage\森\森背景\森背景.png">
       <Filter>リソース ファイル</Filter>
     </Image>
-    <Image Include="Resources\Stage\平原\橋\断面.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\平原\橋\木.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\平原\橋\木2.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\平原\平原地面\草.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\平原\平原地面\平原マン.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\平原\平原背景\heigen.jpg">
-      <Filter>リソース ファイル</Filter>
-    </Image>
     <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\bousi.tga" />
     <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\bousidansi.tga" />
     <Image Include="Resources\Model\MMD魔導姉弟Ver1.1\hada.tga" />
@@ -883,75 +907,6 @@
       <Filter>リソース ファイル</Filter>
     </Image>
     <Image Include="Resources\Model\本\本　裏表紙1.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\本\本　背表紙　テクスチャ.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\本\本　表紙　仮.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\本\本　裏表紙1.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\ドア.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\ドアノブ.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\屋根.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\屋根2.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\湖.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\湖水.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\湖地面.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\窓.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\窓2.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家地面\Textures\壁.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\ドア.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\ドアノブ.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\屋根.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\屋根2.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\湖.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\湖水.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\湖地面.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\窓.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\窓2.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="Resources\Stage\House\家背景\Textures\壁.png">
       <Filter>リソース ファイル</Filter>
     </Image>
     <Image Include="Resources\Stage\平原B\Textures\くさ.png">
@@ -1800,61 +1755,760 @@
     <Image Include="Resources\Stage\ローレス\ローレス背景\町背景.png">
       <Filter>リソース ファイル</Filter>
     </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\c1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\c2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\c3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\c4.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\c5.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\c6.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\c7.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\c8.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\cc1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\cc2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\cc3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\cc4.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\cc5.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\cc6.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\cc7.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\cc8.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\flower.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\h11.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\h12.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\h13.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\h14.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\h15.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\h16.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\h17.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\h18.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\hh11.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\hh12.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\hh13.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\hh14.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\hh15.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\hh16.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\hh17.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\hh18.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\kabe.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\yane.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\yuka.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\yuka2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\てんと.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\テント1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\テント2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\てんと２.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\ベル.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\ポール.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\ヤブレ1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\ヤブレ１逆.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\ヤブレ2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\机.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\町背景.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\透過.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\木目2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\薬.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\薬1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\薬2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\薬テント.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\BlackMarket\Textures\薬テント２.jpg">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\c1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\c2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\c3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\c4.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\c5.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\c6.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\c7.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\c8.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\flower.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\h11.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\h12.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\h13.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\h14.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\h15.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\h16.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\h17.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\h18.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\kabe.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\yane.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\yuka.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\yuka2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\てんと.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\テント1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\テント2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\てんと２.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\ベル.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\ポール.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\ヤブレ1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\ヤブレ2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\机.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\木目2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\薬.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\薬1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\薬2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\City\Textures\薬テント.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\wood_texture 2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\wood_texture.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\wood_texture3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\しげしげ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\しげのぶ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\すずらん葉.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\すずらん葉2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\隠し板.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\花畑.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\茎.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\坂.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\森 (1).png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\森 (2).png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\森(3).png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\森1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\森1-1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\森明.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\断面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\鳥体.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\鳥翼.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\盆栽.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\茂み.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\木の葉.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Elder\Textures\葉.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\wood_texture 2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\wood_texture.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\wood_texture3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\いわ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\しげしげ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\しげのぶ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\ね.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\はは.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\森1-1右.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\森1左.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\森小 (1).png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\森小 (2).png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\森明.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\盆栽.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestA\茂み.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\wood_texture 2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\wood_texture.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\wood_texture3.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\いわ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\しげしげ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\しげのぶ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\すずらん花弁.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\すずらん茎.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\すずらん葉.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\すずらん葉2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\ね.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\リス.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\花.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\花弁.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\花葉.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\茎.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\坂.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\森1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\森1-1.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\森小 (1).png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\森小 (2).png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\森明.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\断面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\縄.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\盆栽.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\茂み.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\木の実.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\木の実2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\木の葉.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\ForestB\Textures\葉.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseA\Textures\rainbow.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseA\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseA\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseA\Textures\屋根.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseA\Textures\屋根2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseA\Textures\湖水.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseA\Textures\湖地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseA\Textures\窓2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseA\Textures\壁.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseB\Textures\rainbow.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseB\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseB\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseB\Textures\屋根.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseB\Textures\屋根2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseB\Textures\湖水.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseB\Textures\湖地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseB\Textures\窓2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseB\Textures\壁.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseC\Textures\rainbow.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseC\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseC\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseC\Textures\屋根.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseC\Textures\屋根2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseC\Textures\湖水.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseC\Textures\湖地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseC\Textures\窓2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseC\Textures\壁.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseD\Textures\rainbow.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseD\Textures\ドア.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseD\Textures\ドアノブ.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseD\Textures\屋根.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseD\Textures\屋根2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseD\Textures\湖水.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseD\Textures\湖地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseD\Textures\窓2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\HouseD\Textures\壁.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\ku_.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\mori.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\幹.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\岩.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\魚.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\沼.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\沼地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\沼背景.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\森地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\森地面2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\地面.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\地面沼.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\地面沼２.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\茂み.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\茂み2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\木の実.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\木の実2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Stage\Swamp\Textures\木の葉.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Texture\end\message.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\Gimmick\Herb\Textures\Herb.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\Ship\Textures\船後.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\Ship\Textures\船前.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\Ship\Textures\船板.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\机\Textures\Kabe.jpg">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\机\Textures\木目.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\机\Textures\木目2.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\机\Textures\木目３.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\船\Textures\船後.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\船\Textures\船前.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\船\Textures\船板.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\船\船後.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\船\船前.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="Resources\Model\船\船板.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Model\MMD魔導姉弟Ver1.1\READ ME.txt" />
-    <Text Include="Resources\Stage\本\DangerSwamp.txt" />
-    <Text Include="Resources\Script\Message\End\Ending1BadEnd.txt" />
-    <Text Include="Resources\Script\Message\End\Ending2Clear.txt" />
-    <Text Include="Resources\Script\Message\End\Ending3BadEnd.txt" />
-    <Text Include="Resources\Script\Message\End\Ending4BadEnd.txt" />
-    <Text Include="Resources\Script\Message\End\Ending5TrueEnd.txt" />
-    <Text Include="Resources\Script\Message\End\Ending6BadEnd.txt" />
-    <Text Include="Resources\Script\Message\Stage\Chased.txt" />
-    <Text Include="Resources\Script\Message\Stage\ChasedNot.txt" />
-    <Text Include="Resources\Script\Message\Stage\DangerSwamp.txt" />
-    <Text Include="Resources\Script\Message\Stage\DimForest.txt" />
-    <Text Include="Resources\Script\Message\Stage\Fell.txt" />
-    <Text Include="Resources\Script\Message\Stage\FellNot.txt" />
-    <Text Include="Resources\Script\Message\Stage\ForestA.txt" />
-    <Text Include="Resources\Script\Message\Stage\ForestB.txt" />
-    <Text Include="Resources\Script\Message\Stage\ForestC.txt" />
-    <Text Include="Resources\Script\Message\Stage\ForestD.txt" />
-    <Text Include="Resources\Script\Message\Stage\HasHerb.txt" />
-    <Text Include="Resources\Script\Message\Stage\HasHerbNot.txt" />
-    <Text Include="Resources\Script\Message\Stage\Heiles.txt" />
-    <Text Include="Resources\Script\Message\Stage\HiddenSun.txt" />
-    <Text Include="Resources\Script\Message\Stage\HiddenSunNot.txt" />
-    <Text Include="Resources\Script\Message\Stage\Lowles.txt" />
-    <Text Include="Resources\Script\Message\Stage\Opening.txt" />
-    <Text Include="Resources\Script\Message\Stage\PlainA.txt" />
-    <Text Include="Resources\Script\Message\Stage\PlainB.txt" />
+    <Text Include="Resources\Stage\森B\鳥\鳥について.txt" />
+    <Text Include="Resources\Stage\森B\地面\モーションについて.txt" />
+    <Text Include="Resources\Script\Animation\Default.txt" />
+    <Text Include="Resources\Script\Animation\BlackMarket.txt" />
+    <Text Include="Resources\Script\Animation\City.txt" />
+    <Text Include="Resources\Script\Animation\Elder.txt" />
+    <Text Include="Resources\Script\Animation\ForestA.txt" />
+    <Text Include="Resources\Script\Animation\ForestB.txt" />
+    <Text Include="Resources\Script\Animation\HouseA.txt" />
+    <Text Include="Resources\Script\Animation\HouseC.txt" />
+    <Text Include="Resources\Script\Animation\HouseD.txt" />
+    <Text Include="Resources\Script\Animation\Swamp.txt" />
+    <Text Include="Resources\Script\Animation\HouseB.txt" />
     <Text Include="Resources\Script\Stage\ForestA.txt" />
-    <Text Include="Resources\Script\Stage\DangerSwamp.txt" />
-    <Text Include="Resources\Script\Stage\DimForest.txt" />
+    <Text Include="Resources\Script\Stage\BlackMarket.txt" />
+    <Text Include="Resources\Script\Stage\City.txt" />
+    <Text Include="Resources\Script\Stage\Elder.txt" />
     <Text Include="Resources\Script\Stage\ForestB.txt" />
-    <Text Include="Resources\Script\Stage\ForestC.txt" />
-    <Text Include="Resources\Script\Stage\ForestD.txt" />
-    <Text Include="Resources\Script\Stage\Heiles.txt" />
     <Text Include="Resources\Script\Stage\HouseA.txt" />
     <Text Include="Resources\Script\Stage\HouseB.txt" />
     <Text Include="Resources\Script\Stage\HouseC.txt" />
     <Text Include="Resources\Script\Stage\HouseD.txt" />
-    <Text Include="Resources\Script\Stage\HouseE.txt" />
-    <Text Include="Resources\Script\Stage\Lowles.txt" />
-    <Text Include="Resources\Script\Stage\PlainA.txt" />
-    <Text Include="Resources\Script\Stage\PlainB.txt" />
-    <Text Include="Resources\Stage\森B\鳥\鳥について.txt" />
-    <Text Include="Resources\Stage\森B\地面\モーションについて.txt" />
-    <Text Include="Resources\Script\Animation\Default.txt" />
-    <Text Include="Resources\Script\Animation\Lowles.txt" />
-    <Text Include="Resources\Script\Animation\ForestC.txt" />
-    <Text Include="Resources\Script\Animation\ForestD.txt" />
-    <Text Include="Resources\Script\Animation\ForestB.txt" />
-    <Text Include="Resources\Script\Animation\DimForest.txt" />
-    <Text Include="Resources\Script\Animation\DangerSwamp.txt" />
-    <Text Include="Resources\Script\Animation\PlainB.txt" />
-    <Text Include="Resources\Script\Animation\Heiles.txt" />
+    <Text Include="Resources\Script\Stage\Swamp.txt" />
+    <Text Include="Resources\Script\Stage\BlackMarketNight.txt" />
+    <Text Include="Resources\Script\Message\End\Ending1.txt" />
+    <Text Include="Resources\Script\Message\End\Ending2.txt" />
+    <Text Include="Resources\Script\Message\End\Ending3.txt" />
+    <Text Include="Resources\Script\Message\Stage\BlackMarket.txt" />
+    <Text Include="Resources\Script\Message\Stage\BlackMarketNight.txt" />
+    <Text Include="Resources\Script\Message\Stage\City.txt" />
+    <Text Include="Resources\Script\Message\Stage\ForestA.txt" />
+    <Text Include="Resources\Script\Message\Stage\ForestB.txt" />
+    <Text Include="Resources\Script\Message\Stage\HouseA.txt" />
+    <Text Include="Resources\Script\Message\Stage\HouseB.txt" />
+    <Text Include="Resources\Script\Message\Stage\HouseC.txt" />
+    <Text Include="Resources\Script\Message\Stage\HouseD.txt" />
+    <Text Include="Resources\Script\Message\Stage\Opening.txt" />
+    <Text Include="Resources\Script\Message\Stage\Swamp.txt" />
+    <Text Include="Resources\Script\Message\Stage\Elder.txt" />
+    <Text Include="Resources\Stage\BlackMarket\BlackMarketGround.txt" />
+    <Text Include="Resources\Stage\City\CityGround.txt" />
+    <Text Include="Resources\Stage\Elder\ElderGround.txt" />
+    <Text Include="Resources\Stage\ForestA\ForestAGround.txt" />
+    <Text Include="Resources\Stage\ForestB\ForestBGround.txt" />
+    <Text Include="Resources\Stage\HouseA\HouseAGround.txt" />
+    <Text Include="Resources\Stage\HouseB\HouseBGround.txt" />
+    <Text Include="Resources\Stage\HouseC\HouseCGround.txt" />
+    <Text Include="Resources\Stage\HouseD\HouseDGround.txt" />
+    <Text Include="Resources\Stage\Swamp\SwampGround.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />

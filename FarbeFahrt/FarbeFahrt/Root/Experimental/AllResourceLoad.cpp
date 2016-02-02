@@ -23,7 +23,7 @@ void AllResourceLoad::loadContents(Loader& loader)
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 
 	StageManager manager;
-	manager.initialize("Resources/Script/Stage/index.csv", "PlainA");
+	manager.initialize("Resources/Script/Stage/index.csv");
 	for (auto&& data : manager.allStageData())
 	{
 		for (auto&& resource : data.second.resourceList)
