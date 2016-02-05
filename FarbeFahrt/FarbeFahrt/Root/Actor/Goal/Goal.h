@@ -7,11 +7,11 @@ class Goal :
 	public BaseActor
 {
 public:
-	Goal(IWorld& world, const std::string& modelName, const Vector3& position, int threthold);
+	Goal(IWorld& world, const std::string& modelName, const Vector3& position, int threshold);
 private:
 	virtual void onDraw(Renderer& render)const override;
 	virtual void onMessage(const std::string& message, void* parameter) override;
 
 private:
-	int m_threthold;
+	int m_threshold;
 };
