@@ -12,10 +12,12 @@ p,-180,30,-80
 f,ForestBGround,0,0,0,3
 
 # ゴール
-o,Goal,,50,30,-80,null
+o,Goal,,50,30,-80,null,1
 
 # ギミック
-o,Bookmark,Sign,90,25,0,null,Name:Fall
+o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate
+o,ActionBookmark,Fall,90,25,-50,null,Herb/Activate
+o,ActionBookmark,Fall,90,25,-50,null,Herb/Fall
 
 # ギミック起動変数
 g,1

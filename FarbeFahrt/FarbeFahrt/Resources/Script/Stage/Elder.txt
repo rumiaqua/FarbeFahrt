@@ -12,13 +12,13 @@ p,-180,30,-80
 f,ElderGround,0,0,0,3
 
 # ゴール
-o,Goal,,50,30,-80,null
+o,Goal,,50,30,-80,null,1
 
 # ギミック
-o,Bookmark,Elder,90,25,0,null,Name:Elder
+o,Bookmark,Elder,90,25,0,null,Name:Elder/AddPoint
 
 # ギミック起動変数
-g,0
+g,1
 
 # 次のステージ
 n,HouseA,HouseA

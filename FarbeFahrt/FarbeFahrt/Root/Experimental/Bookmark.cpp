@@ -18,7 +18,7 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 		Math::HALF_PI),
 		std::make_unique<Sphere>(Vector3::Zero(), 15.0f))
 	, m_addPoint(1)
-	, m_isAddPoint(true)
+	, m_isAddPoint(false)
 	, m_isToggle(false)
 	, m_animateName()
 	, m_access()

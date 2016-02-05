@@ -11,9 +11,10 @@ p,-80,30,-25
 f,HouseDGround,0,0,0,3
 
 # ゴール
-o,Goal,,-180,30,-80,null
+o,Goal,,-180,30,-80,null,1
 
 # ギミック
+o,Instant,Herb,-80,30,-25,null
 
 # ギミック起動変数
 
