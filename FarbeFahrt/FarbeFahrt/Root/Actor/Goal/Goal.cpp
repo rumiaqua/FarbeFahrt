@@ -15,7 +15,7 @@ Goal::Goal(IWorld& world, const std::string& modelName, const Vector3 & position
 
 void Goal::onDraw(Renderer & render) const
 {
-	render.drawNormalModel(m_name, getPosition(), getRotation());
+	// render.drawNormalModel(m_name, getPosition(), getRotation());
 
 	BaseActor::onDraw(render);
 }

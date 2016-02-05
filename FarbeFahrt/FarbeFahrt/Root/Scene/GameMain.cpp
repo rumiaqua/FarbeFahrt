@@ -45,6 +45,7 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("Message", "Texture/end/message.png");
 	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
+	loader.loadContent("Player", "Model/MMD魔導姉弟Ver1.1/ミハイル.pmx");
 }
 
 void GameMain::initialize()
@@ -64,7 +65,7 @@ void GameMain::initialize()
 	// m_stageManager.next(m_world.get());
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
-	m_stageManager.initialize("Resources/Script/Stage/index.csv", "Lowles");
+	m_stageManager.initialize("Resources/Script/Stage/index.csv");
 	StoryManager::set(BitFlag::GOAL);
 
 	EndManager::Clear();

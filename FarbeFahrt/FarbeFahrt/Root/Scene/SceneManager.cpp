@@ -145,7 +145,8 @@ void SceneManager::pop()
 
 void SceneManager::clear()
 {
-	for (size_t i = 0; i < m_stack.size(); ++i)
+	size_t size = m_stack.size();
+	for (size_t i = 0; i < size; ++i)
 	{
 		pop();
 	}

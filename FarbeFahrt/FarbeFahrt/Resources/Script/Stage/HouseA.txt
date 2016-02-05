@@ -1,23 +1,26 @@
 # 使用するリソース
-r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
-r,Goal,Model/平原/くさ.pmx
 
 # フィールドリソース
-r,BadEndHouseGround,Stage/House/BadEndGround/BadEndHouseGround.pmx
-
+r,HouseAGround,Stage/HouseA/HouseAGround.pmx
 r,HouseBGM,Sound/BGM/house.mp3
 
 # プレイヤーの座標
-p,-180,50,-80
+p,-180,30,-80
 
 # フィールド
-f,BadEndHouseGround,0,0,0,3
+f,HouseAGround,0,0,0,3
 
 # ゴール
-o,Goal,Goal,-80,30,-25,null
+o,Goal,,-80,30,-25,null
+
+# ギミック
+
+# ギミック起動変数
 
 # 次のステージ
 e,Ending1,show
+
+# 開始時のテキスト
 
 # BGM
 bgm,HouseBGM

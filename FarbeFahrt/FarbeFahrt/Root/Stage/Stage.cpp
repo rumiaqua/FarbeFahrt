@@ -127,14 +127,8 @@ void Stage::apply(const StageData& data, bool isClear)
 		}
 		if (object.name == "Bookmark")
 		{
-			auto parameter = String::Split(object.parameter, '/');
-			std::string& animateName = parameter[0];
-			bool once = parameter[1] == "true";
-			Vector3& access = Vector3(String::ToValue<float>(parameter[2]),
-									  String::ToValue<float>(parameter[3]),
-									  String::ToValue<float>(parameter[4]));
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(
-				*m_world, object.resource, object.position, animateName, once, access));
+				*m_world, object.resource, object.position, object.parameter));
 		}
 		if (object.name == "Boat")
 		{

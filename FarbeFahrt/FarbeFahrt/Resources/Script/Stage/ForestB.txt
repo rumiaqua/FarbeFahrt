@@ -1,30 +1,24 @@
 # 使用するリソース
-r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
-r,Goal,Model/平原/くさ.pmx
-
-r,birdG,Model/Gimmick/bookmark.mqo
-r,flowerG,Model/Gimmick/bookmark.mqo
+r,Fall,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
-r,forestBGround,Stage/ForestB/Ground/ForestBGround.pmx
-
+r,ForestBGround,Stage/ForestB/ForestBGround.pmx
 r,ForestBGM,Sound/BGM/forest.mp3
 
 # プレイヤーの座標
-p,-180,50,-80
+p,-180,30,-80
 
 # フィールド
-f,forestBGround,0,0,0,3,Resources/Script/Animation/ForestB.txt
+f,ForestBGround,0,0,0,3
 
 # ゴール
-o,Goal,Goal,50,30,-80,null,1
+o,Goal,,50,30,-80,null
 
 # ギミック
-o,Bookmark,birdG,90,25,-50,null,Bird/true
-o,Bookmark,flowerG,-230,25,-50,null,Flower/true
+o,Bookmark,Sign,90,25,0,null,Name:Fall
 
 # ギミック起動変数
-g,2
+g,1
 
 # 次のステージ
 n,HouseA,HouseA

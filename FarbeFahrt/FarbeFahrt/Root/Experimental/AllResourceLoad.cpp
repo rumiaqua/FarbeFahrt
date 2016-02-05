@@ -21,9 +21,10 @@ void AllResourceLoad::loadContents(Loader& loader)
 	loader.loadContent("Message", "Texture/end/message.png");
 	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
+	loader.loadContent("Player", "Model/MMD–‚“±Žo’íVer1.1/ƒ~ƒnƒCƒ‹.pmx");
 
 	StageManager manager;
-	manager.initialize("Resources/Script/Stage/index.csv", "PlainA");
+	manager.initialize("Resources/Script/Stage/index.csv");
 	for (auto&& data : manager.allStageData())
 	{
 		for (auto&& resource : data.second.resourceList)
