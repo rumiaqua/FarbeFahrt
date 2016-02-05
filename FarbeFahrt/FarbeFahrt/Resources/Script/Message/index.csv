@@ -2,76 +2,37 @@
 c,Resources/Script/Message/,
 ,,
 # オープニング,,
-t,Opening,Stage/Opening.txt
-,,
-# 平原A 開始時,,
-t,PlainA,Stage/PlainA.txt
+t,Opening,Opening.txt
 ,,
 # 森A 開始時,,
-t,ForestA,Stage/ForestA.txt
-,,
-# ローレス 開始時,,
-t,Lowles,Stage/Lowles.txt
-,,
-# 薬草を手に入れた場合,,
-t,HasHerb,Stage/HasHerb.txt
-,,
-# 薬草を手に入れていない場合,,
-t,HasHerbNot,Stage/HasHerbNot.txt
+t,ForestA,ForestA.txt
 ,,
 # 森B 開始時,,
-t,ForestB,Stage/ForestB.txt
+t,ForestB,ForestB.txt
 ,,
-# 転んだ場合,,
-t,Fell,Stage/Fell.txt
+# 長老の森 開始時,,
+t,Elder,Elder.txt
 ,,
-# 転んでいない場合,,
-t,FellNot,Stage/FellNot.txt
+# 街 開始時,,
+t,City,City.txt
 ,,
-# 森C 開始時,,
-t,ForestC,Stage/ForestC.txt
+# 闇市 開始時,,
+t,BlackMarket,BlackMarket.txt
 ,,
-# 家A バッドエンド1,,
-t,Ending1,End/Ending1BadEnd.txt
+# 夜の闇市 開始時,,
+t,BlackMarketNight,BlackMarketNight.txt
 ,,
-# 家B クリア,,
-t,Ending2,End/Ending2Clear.txt
+# 沼 開始時,,
+t,Swamp,Swamp.txt
 ,,
-# ハイレス 開始時,,
-t,Heiles,Stage/Heiles.txt
+# 家D 開始時,,
+t,HouseD,HouseD.txt
 ,,
-# 平原B 開始時,,
-t,PlainB,Stage/PlainB.txt
+# エンディング1,,
+t,Ending1,Ending1.txt
 ,,
-# 太陽を隠した場合,,
-t,HiddenSun,Stage/HiddenSun.txt
+# エンディング2,,
+t,Ending2,Ending2.txt
 ,,
-# 太陽を隠していない場合,,
-t,HiddenSunNot,Stage/HiddenSunNot.txt
-,,
-# 薄暗い森 開始時,,
-t,DimForest,Stage/DimForest.txt
-,,
-# 追いかけられる場合,,
-t,Chased,Stage/Chased.txt
-,,
-# 追いかけられていない場合,,
-t,ChasedNot,Stage/ChasedNot.txt
-,,
-# 危ない沼 開始時,,
-t,DangerSwamp,Stage/DangerSwamp.txt
-,,
-# 森D 開始時,,
-t,ForestD,Stage/ForestD.txt
-,,
-# 沼エンド バッドエンド,,
-t,Ending4,End/Ending4BadEnd.txt
-,,
-# 家C バッドエンド,,
-t,Ending3,End/Ending3BadEnd.txt
-,,
-# 家D トゥルーエンド,,
-t,Ending5,End/Ending5TrueEnd.txt
-,,
-# 家E バッドエンド,,
-t,Ending6,End/Ending6BadEnd.txt
+# エンディング3,,
+t,Ending3,Ending3.txt

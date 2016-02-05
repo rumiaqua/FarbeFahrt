@@ -1,23 +1,28 @@
 # 使用するリソース
-r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
-r,Goal,Model/平原/くさ.pmx
 
 # フィールドリソース
-r,TrueEndHouseGround,Stage/House/TrueEndGround/TrueEndGround.pmx
-
+r,HouseDGround,Stage/HouseD/HouseDGround.pmx
 r,HouseBGM,Sound/BGM/house.mp3
 
 # プレイヤーの座標
-p,-180,50,-80
+p,-80,30,-25
 
 # フィールド
-f,TrueEndHouseGround,0,0,0,3
+f,HouseDGround,0,0,0,3
 
 # ゴール
-o,Goal,Goal,-80,30,-25,null
+o,Goal,,-180,30,-80,null,1
+
+# ギミック
+o,Instant,Herb,-80,30,-25,null
+
+# ギミック起動変数
 
 # 次のステージ
-e,Ending5,show
+n,BlackMarketNight,BlackMarketNight
+
+# 開始時のテキスト
+t,HouseD
 
 # BGM
 bgm,HouseBGM

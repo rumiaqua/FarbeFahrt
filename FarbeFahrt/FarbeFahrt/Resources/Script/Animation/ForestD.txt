@@ -1,9 +1,0 @@
-Open,-1,000
-LeftSheep,000,001
-RightSheep,001,002
-RightSheep,000,003
-LeftSheep,003,004
-Close,003,005
-Close,001,006
-Close,002,007
-Close,004,007

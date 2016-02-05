@@ -1,0 +1,38 @@
+# 使用するリソース
+r,Tent,Model/Gimmick/bookmark.mqo
+r,Market,Model/Gimmick/bookmark.mqo
+r,Bell,Model/Gimmick/bookmark.mqo
+r,Herb,Model/Herb/Herb.pmx
+
+# フィールドリソース
+r,CityGround,Stage/City/CityGround.pmx
+r,CityBGM,Sound/BGM/town.mp3
+
+# プレイヤーの座標
+p,-180,30,-80
+
+# フィールド
+f,CityGround,0,0,0,3,Resources/Script/Animation/City.txt
+
+# ゴール
+o,Goal,,50,30,-80,null
+
+# ギミック
+o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate
+o,Bookmark,Tent,90,25,50,null,Name:Tent
+o,Bookmark,Market,90,25,0,null,Name:Market
+o,Bookmark,Bell,90,25,-50,null,Name:Bell
+o,ActionBookmark,Bell,90,25,-50,null,Herb/Activate
+o,ActionBookmark,Bell,90,25,-50,null,Herb/Fall
+
+# ギミック起動変数
+g,1
+
+# 次のステージ
+n,Elder,ForestB
+
+# 開始時のテキスト
+t,City
+
+# BGM
+bgm,CityBGM

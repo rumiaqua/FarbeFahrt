@@ -9,7 +9,7 @@
 
 # include "Experimental/AnimateState.h"
 
-Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& position, const std::string& animateName, bool once, const Vector3& access)
+Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& position, const std::string& parameter)
 	: BaseActor(
 		world,
 		modelName,
@@ -17,11 +17,34 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 		Matrix::Rotation(Vector3::Up(),
 		Math::HALF_PI),
 		std::make_unique<Sphere>(Vector3::Zero(), 15.0f))
-	, m_isAddPoint(isAddPoint)
-	, m_animateName(animateName)
-	, m_access(access)
+	, m_addPoint(1)
+	, m_isAddPoint(false)
+	, m_isToggle(false)
+	, m_animateName()
+	, m_access()
 {
-	
+	for (auto&& param : String::Split(parameter, '/'))
+	{
+		if (param.find("Name") != std::string::npos)
+		{
+			m_animateName = String::Split(param, ':')[1];
+		}
+		if (param == "Toggle")
+		{
+			m_isToggle = true;
+		}
+		if (param == "AddPoint")
+		{
+			m_isAddPoint = true;
+		}
+		if (param.find("Access") != std::string::npos)
+		{
+			auto split = String::Split(param, ',');
+			m_access.x = String::ToValue<float>(split[1]);
+			m_access.y = String::ToValue<float>(split[2]);
+			m_access.z = String::ToValue<float>(split[3]);
+		}
+	}
 }
 
 void Bookmark::onDraw(Renderer& renderer) const
@@ -34,16 +57,27 @@ void Bookmark::onMessage(const std::string& message, void* parameter)
 {
 	if (message == "OnGimmick")
 	{
-		m_world->actorSet(m_access);
-		if (!m_once)
+		// m_world->actorSet(m_access);
+
+		if (m_isAddPoint)
 		{
-			GimmickManager::add(1);
-			m_isAddPoint = false;
+			GimmickManager::add(m_addPoint);
+
+			if (m_isToggle)
+			{
+				m_addPoint *= -1;
+			}
+
+			if (!m_isToggle)
+			{
+				m_isAddPoint = false;
+				m_shape = std::make_unique<Empty>();
+			}
 		}
+
 		AnimateState state { m_animateName, false };
 		m_world->findGroup(ActorTag::Field)
 			->sendMessage("Animate", &state);
-		m_shape = std::make_unique<Empty>();
 	}
 
 	BaseActor::onMessage(message, parameter);

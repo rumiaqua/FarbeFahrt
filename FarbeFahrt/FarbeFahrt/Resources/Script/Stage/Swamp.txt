@@ -1,0 +1,34 @@
+# 使用するリソース
+r,Ship,Model/船/Ship2.mqo
+r,Fish,Model/Gimmcik/bookmark.mqo
+
+# フィールドリソース
+r,SwampGround,Stage/Swamp/SwampGround.pmx
+r,SwampBGM,Sound/BGM/danger_swamp.mp3
+
+# プレイヤーの座標
+p,-180,30,-80
+
+# フィールド
+f,SwampGround,0,0,0,3,Resources/Script/Animation/Swamp.txt
+
+# ゴール
+o,Goal,Goal,73.5,23.0,-33.5,null
+o,Goal,Goal,69.0,22.5,44.5,null
+
+# ギミック
+o,Bookmark,Fish,90,25,-50,null,Name:Fish
+o,ActionBookmark,Fish,90,25,-50,null,Ship/Activate
+o,Boat,Ship,-180,25,0,null
+
+# ギミック起動変数
+g,1
+
+# 次のステージ
+n,HouseB,HouseC
+
+# 開始時のテキスト
+t,Swamp
+
+# BGM
+bgm,SwampBGM

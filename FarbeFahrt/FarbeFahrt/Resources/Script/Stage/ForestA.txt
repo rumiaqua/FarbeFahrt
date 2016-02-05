@@ -1,47 +1,27 @@
 # 使用するリソース
-r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
-r,Goal,Model/平原/くさ.pmx
-
-r,flower1G,Model/Gimmick/bookmark.mqo
-r,flower1,Model/Gimmick/ForestA/flower.mqo
-r,flower2G,Model/Gimmick/bookmark.mqo
-r,flower2,Model/Gimmick/ForestA/flower.mqo
-
-r,nuts1G,Model/Gimmick/bookmark.mqo
-r,nuts1,Model/Gimmick/ForestA/nuts1.mqo
-r,nuts2G,Model/Gimmick/bookmark.mqo
-r,nuts2,Model/Gimmick/ForestA/nuts2.mqo
+r,Sign,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
-r,forestGround,Stage/ForestA/Ground/ForestAGround.pmx
-
+r,ForestAGround,Stage/ForestA/ForestAGround.pmx
 r,ForestBGM,Sound/BGM/forest.mp3
 
 # プレイヤーの座標
-p,-180,50,-80
+p,-180,30,-80
 
 # フィールド
-f,forestGround,0,0,0,3
+f,ForestAGround,0,0,0,3
 
 # ゴール
-o,Goal,Goal,50,30,-80,null
+o,Goal,,50,30,-80,null
 
 # ギミック
-o,Gimmick,flower1G,90,25,-50,null,1/1.0f/590.0f/5.0f
-o,SkinObject,flower1,-50,25,-42,null,1/1.0f/59.0f/4.0f/10.0f/0/8.0f
-o,Gimmick,flower2G,90,25,-10,null,1/1.0f/590.0f/5.0f
-o,SkinObject,flower2,-100,25,-42,null,1/1.0f/59.0f/4.0f/-10.0f/0/8.0f
-
-o,Gimmick,nuts1G,-230,25,-50,null,1/1.0f/590.0f/5.0f
-o,SkinObject,nuts1,-45,70,-45,null,1/1.0f/59.0f/10.0f/0.0f/0/8.0f
-o,Gimmick,nuts2G,-230,25,-10,null,1/1.0f/590.0f/5.0f
-o,SkinObject,nuts2,-120,50,-30,null,1/1.0f/59.0f/7.0f/0.0f/0/8.0f
+o,Bookmark,Sign,90,25,0,null,AddPoint/Toggle/Name:Sign
 
 # ギミック起動変数
-g,4
+g,1
 
 # 次のステージ
-n,Heiles,Lowles
+n,City,BlackMarket
 
 # 開始時のテキスト
 t,ForestA

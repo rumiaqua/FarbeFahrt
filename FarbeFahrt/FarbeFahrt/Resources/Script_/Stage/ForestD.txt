@@ -1,0 +1,36 @@
+# 使用するリソース
+r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
+r,Goal,Model/平原/くさ.pmx
+
+
+r,leftSheep,Model/Gimmick/bookmark.mqo
+r,rightSheep,Model/Gimmick/bookmark.mqo
+
+r,forestDGround,Stage/ForestD/Ground/ForestDGround.pmx
+
+r,ForestBGM,Sound/BGM/forest.mp3
+
+# プレイヤーの座標
+p,-180,50,-80
+
+# フィールド
+f,forestDGround,0,0,0,3,Resources/Script/Animation/ForestD.txt
+
+# ゴール
+o,Goal,Goal,50,30,-80,null,1
+
+# ギミック
+o,Bookmark,leftSheep,-230,25,-50,null,LeftSheep/true
+o,Bookmark,rightSheep,-230,25,-100,null,RightSheep/true
+
+# ギミック起動変数
+g,2
+
+# 次のステージ
+n,HouseE,HouseD
+
+# 開始時のテキスト
+t,ForestD
+
+# BGM
+bgm,ForestBGM
