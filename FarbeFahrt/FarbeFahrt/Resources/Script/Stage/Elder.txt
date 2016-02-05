@@ -1,0 +1,30 @@
+# 使用するリソース
+r,Elder,Model/Gimmick/bookmark.mqo
+
+# フィールドリソース
+r,ElderGround,Stage/Elder/ElderGround.pmx
+r,ForestBGM,Sound/BGM/forest.mp3
+
+# プレイヤーの座標
+p,-180,30,-80
+
+# フィールド
+f,ElderGround,0,0,0,3
+
+# ゴール
+o,Goal,,50,30,-80,null
+
+# ギミック
+o,Bookmark,Elder,90,25,0,null,Name:Elder
+
+# ギミック起動変数
+g,0
+
+# 次のステージ
+n,HouseA,HouseA
+
+# 開始時のテキスト
+t,Elder
+
+# BGM
+bgm,ForestBGM

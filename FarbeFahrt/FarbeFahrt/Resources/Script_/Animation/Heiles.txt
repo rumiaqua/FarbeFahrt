@@ -1,0 +1,16 @@
+Open,-1,000
+Market,000,001
+Market,003,002
+Tent,000,003
+Tent,001,004
+Tent,009,004
+Close,000,005
+Close,001,006
+Close,003,007
+Close,002,008
+Close,004,008
+Close,009,006
+Close,010,008
+Bell,001,009
+Bell,002,010
+Bell,004,010
