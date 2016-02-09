@@ -16,10 +16,10 @@ StaticObject::StaticObject(IWorld& world, const std::string& modelName, const Ve
 
 }
 
-void StaticObject::onDraw(Renderer & render) const
+void StaticObject::onDraw(Renderer & renderer) const
 {
-	render.setScale(m_name, { m_scale, m_scale, m_scale });
-	render.drawNormalModel(m_name, getPosition(), getRotation());
+	renderer.setScale(m_name, { m_scale, m_scale, m_scale });
+	renderer.drawNormalModel(m_name, getPosition(), getRotation());
 
-	BaseActor::onDraw(render);
+	BaseActor::onDraw(renderer);
 }

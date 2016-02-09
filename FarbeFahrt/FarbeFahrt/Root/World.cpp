@@ -15,13 +15,13 @@ void World::update()
 		m_camera->update();
 	}
 }
-void World::draw(Renderer& render)const
+void World::draw(Renderer& renderer)const
 {
-	m_stage.draw(render);
+	m_stage.draw(renderer);
 
 	if (m_camera)
 	{
-		m_camera->draw(render);
+		m_camera->draw(renderer);
 	}
 }
 void World::addActor(ActorTag tag, const Actor& actor)

@@ -16,7 +16,7 @@ class World : public IWorld
 public:
 	World();
 	void update();
-	void draw(Renderer& render)const;
+	void draw(Renderer& renderer)const;
 	virtual void addCamera(const Actor& camera);
 	virtual void addActor(ActorTag tag, const Actor& actor);
 

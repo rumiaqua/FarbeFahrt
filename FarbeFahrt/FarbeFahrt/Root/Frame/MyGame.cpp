@@ -76,7 +76,7 @@ void MyGame::run()
 		loader.load();
 
 		// 全モデルのアニメーションを初期化する
-		// render.refreshAnimParam();
+		// renderer.refreshAnimParam();
 	}
 
 	// ロード中なら何もしない
@@ -92,8 +92,8 @@ void MyGame::run()
 		// Singleton<HandleList>::Instance().setHandleData(loader.getModelList());
 		// Singleton<HandleList>::Instance().setHandleData(loader.getTextureList());
 		Singleton<HandleList>::Instance().setHandleData(loader.getContentsList());
-		render.setModelData(loader.getModelList());
-		render.setTextureData(loader.getTextureList());
+		renderer.setModelData(loader.getModelList());
+		renderer.setTextureData(loader.getTextureList());
 		SE::SetData(loader.getSEList());
 		BGM::set(loader.getBGMList());
 	}
@@ -123,8 +123,8 @@ void MyGame::run()
 	/*Debug::Println("GetASyncLoadNum : %d",GetASyncLoadNum());
 	Debug::Println("CanShow : %s", MessageManager::CanShow() ? "true" : "false");*/
 
-	m_sceneManager.draw(render);
-	render.draw();
+	m_sceneManager.draw(renderer);
+	renderer.draw();
 
 	ScreenFlip();
 

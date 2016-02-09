@@ -25,11 +25,11 @@ void TouchGimmick::onUpdate()
 	BaseActor::onUpdate();
 }
 
-void TouchGimmick::onDraw(Renderer & render) const
+void TouchGimmick::onDraw(Renderer & renderer) const
 {
-	render.drawNormalModel(m_name, getPosition(), getRotation());
+	renderer.drawNormalModel(m_name, getPosition(), getRotation());
 
-	BaseActor::onDraw(render);
+	BaseActor::onDraw(renderer);
 }
 
 void TouchGimmick::onMessage(const std::string& message, void* parameter)

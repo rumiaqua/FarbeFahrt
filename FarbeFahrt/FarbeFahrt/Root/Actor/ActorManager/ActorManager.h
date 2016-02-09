@@ -17,7 +17,7 @@ public:
 	
 	void update();
 	
-	void draw(Renderer& render)const;
+	void draw(Renderer& renderer)const;
 	
 	void addActor(ActorTag tag, const Actor& actor);
 

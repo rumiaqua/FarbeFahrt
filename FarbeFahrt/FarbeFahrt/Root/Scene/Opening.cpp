@@ -60,9 +60,9 @@ void Opening::update()
 	m_manager->changeScene(Scene::GameMain);
 }
 
-void Opening::draw(Renderer& render)
+void Opening::draw(Renderer& renderer)
 {
-	m_world->draw(render);
+	m_world->draw(renderer);
 }
 
 void Opening::post()

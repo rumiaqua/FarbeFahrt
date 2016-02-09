@@ -60,26 +60,26 @@ void SkinObject::onUpdate()
 	BaseActor::onUpdate();
 }
 
-void SkinObject::onDraw(Renderer & render) const
+void SkinObject::onDraw(Renderer & renderer) const
 {
 	if (drawFlag)
 	{
 		auto worldPose = getWorldPose();
 		Vector3 position = Matrix::Translation(worldPose);
 		Matrix rotate = Matrix::Rotation(worldPose);
-		render.setScale(m_name, Vector3(m_scale, m_scale, m_scale));
+		renderer.setScale(m_name, Vector3(m_scale, m_scale, m_scale));
 
 		if (MV1GetAnimNum(Singleton<HandleList>::Instance().getHandle(m_name)) > 0)
 		{
-			render.drawSkinModel(m_name, position, rotate, m_anmNo, frame, false);
+			renderer.drawSkinModel(m_name, position, rotate, m_anmNo, frame, false);
 		}
 		else
 		{
-			render.drawNormalModel(m_name, position, rotate);
+			renderer.drawNormalModel(m_name, position, rotate);
 		}
 	}
 
-	BaseActor::onDraw(render);
+	BaseActor::onDraw(renderer);
 }
 
 void SkinObject::onMessage(const std::string& message, void* parameter)

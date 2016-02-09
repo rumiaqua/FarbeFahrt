@@ -26,7 +26,7 @@ public:
 
 private:
 	virtual void onUpdate()override;
-	virtual void onDraw(Renderer& render)const override;
+	virtual void onDraw(Renderer& renderer)const override;
 	void cameraInput();
 	void chaseCamera();
 	void fadeInCamera();

@@ -13,7 +13,7 @@ public:
 	explicit Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition);
 public:
 	virtual void onUpdate()override;
-	virtual void onDraw(Renderer& render)const override;
+	virtual void onDraw(Renderer& renderer)const override;
 	virtual void onMessage(const std::string& message, void* parameter) override;
 private:
 	void workGimmick(int commandNo);

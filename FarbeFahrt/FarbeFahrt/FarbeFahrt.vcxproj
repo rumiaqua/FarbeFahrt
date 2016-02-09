@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Root\Scene\BlackOut.cpp" />
     <ClCompile Include="Root\Actor\AnimateActor.cpp" />
     <ClCompile Include="Root\Actor\Boat.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\CommandGimmick.cpp" />
@@ -93,6 +94,7 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Scene\BlackOut.h" />
     <ClInclude Include="Root\Actor\AnimateActor.h" />
     <ClInclude Include="Root\Actor\Boat.h" />
     <ClInclude Include="Root\Actor\Gimmick\CommandGimmick.h" />

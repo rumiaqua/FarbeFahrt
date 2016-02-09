@@ -57,9 +57,9 @@ void ActorManager::update()
 	// íœˆ—
 	m_root.removeChildren();
 }
-void ActorManager::draw(Renderer& render)const
+void ActorManager::draw(Renderer& renderer)const
 {
-	m_root.draw(render);
+	m_root.draw(renderer);
 }
 void ActorManager::addActor(ActorTag tag, const Actor& actor)
 {

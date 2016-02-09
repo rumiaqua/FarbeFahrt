@@ -43,7 +43,7 @@ void AllResourceLoad::update()
 	m_manager->popScene();
 }
 
-void AllResourceLoad::draw(Renderer & render)
+void AllResourceLoad::draw(Renderer & renderer)
 {
 
 }

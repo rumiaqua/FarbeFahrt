@@ -1,12 +1,10 @@
-# pragma once
-
+#pragma once
 # include "Frame/BaseScene.h"
-
-class Title : public BaseScene
+# include "Utility\Renderer.h"
+class BlackOut : public BaseScene
 {
 public:
-
-	Title();
+	BlackOut();
 	virtual void loadContents(Loader& loader)override;
 	virtual void initialize()override;
 	virtual void update()override;
@@ -14,4 +12,7 @@ public:
 	virtual void post() override;
 	virtual void cleanUp() override;
 	virtual bool isSwallow() const override;
+private:
+	Renderer m_renderer;
 };
+

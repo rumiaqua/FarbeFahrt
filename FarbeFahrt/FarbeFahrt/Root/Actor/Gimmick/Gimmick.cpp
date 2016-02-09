@@ -51,20 +51,20 @@ void Gimmick::onUpdate()
 	BaseActor::onUpdate();
 }
 
-void Gimmick::onDraw(Renderer & render) const
+void Gimmick::onDraw(Renderer & renderer) const
 {
 	if (MV1GetAnimNum(Singleton<HandleList>::Instance().getHandle(m_name)) > 0)
 	{
-		render.drawSkinModel(m_name, getPosition(), getRotation(), m_anmNo, frame, false);
+		renderer.drawSkinModel(m_name, getPosition(), getRotation(), m_anmNo, frame, false);
 	}
 	else
 	{
-		render.drawNormalModel(m_name, getPosition(), getRotation());
+		renderer.drawNormalModel(m_name, getPosition(), getRotation());
 	}
 
 	Debug::Println("gimmickFlag:%d",m_flag);
 
-	BaseActor::onDraw(render);
+	BaseActor::onDraw(renderer);
 }
 
 void Gimmick::onMessage(const std::string& message, void* parameter)

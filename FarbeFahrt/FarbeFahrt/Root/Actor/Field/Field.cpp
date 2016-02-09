@@ -89,14 +89,14 @@ void Field::onUpdate()
 
 	BaseActor::onUpdate();
 }
-void Field::onDraw(Renderer& render) const
+void Field::onDraw(Renderer& renderer) const
 {
-	render.setScale(m_name, VGet(m_scale, m_scale, m_scale));
+	renderer.setScale(m_name, VGet(m_scale, m_scale, m_scale));
 
 	float t = Math::Min({ m_elapsedTime / ANIMATION_FRAME, 0.99999f });
-	render.drawSkinModel(m_name, m_pose, m_animationNumber, t,false);
+	renderer.drawSkinModel(m_name, m_pose, m_animationNumber, t,false);
 
-	BaseActor::onDraw(render);
+	BaseActor::onDraw(renderer);
 }
 
 void Field::onMessage(const std::string& message, void* parameter)

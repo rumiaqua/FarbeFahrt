@@ -58,7 +58,7 @@ void ObjectViewer::update()
 	cameraUpdate();
 }
 
-void ObjectViewer::draw(Renderer& render)
+void ObjectViewer::draw(Renderer& renderer)
 {
 	Debug::Println(String::Create("CurrentModelNum : ", m_currentModelNum));
 	Debug::Println(String::Create("AnimNumber : ", m_animNumber));
@@ -68,7 +68,7 @@ void ObjectViewer::draw(Renderer& render)
 	m_camera.apply();
 
 	// ƒ‚ƒfƒ‹•`‰æ
-	drawModel(render);
+	drawModel(renderer);
 }
 
 void ObjectViewer::post()

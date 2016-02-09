@@ -36,9 +36,9 @@ void Title::update()
 	}
 }
 
-void Title::draw(Renderer& render)
+void Title::draw(Renderer& renderer)
 {
-	render.drawTexture("Title", Renderer::AspectType::LetterBox);
+	renderer.drawTexture("Title", Renderer::AspectType::LetterBox);
 }
 
 void Title::post()

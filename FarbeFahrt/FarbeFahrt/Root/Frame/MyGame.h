@@ -16,7 +16,7 @@ public:
 	MyGame();
 	void run();
 private:
-	Renderer render;
+	Renderer renderer;
 	Loader loader;
 	bool m_breakflag;
 	bool initFlag;

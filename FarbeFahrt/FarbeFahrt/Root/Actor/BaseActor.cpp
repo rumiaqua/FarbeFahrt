@@ -31,9 +31,9 @@ void BaseActor::update()
 	m_previousPose = m_pose;
 	onUpdate();
 }
-void BaseActor::draw(Renderer& render)const
+void BaseActor::draw(Renderer& renderer)const
 {
-	onDraw(render);
+	onDraw(renderer);
 }
 void BaseActor::collide(BaseActor* folder)
 {
@@ -175,14 +175,14 @@ void BaseActor::onUpdate()
 	eachChildren([&] (BaseActor& actor) {actor.update(); });
 }
 
-void BaseActor::onDraw(Renderer& render) const
+void BaseActor::onDraw(Renderer& renderer) const
 {
 	if (m_shape)
 	{
-		render.drawPrimitive(*m_shape->transform(getWorldPose()));
+		renderer.drawPrimitive(*m_shape->transform(getWorldPose()));
 	}
 	
-	eachChildren([&] (const BaseActor& actor) { actor.draw(render); });
+	eachChildren([&] (const BaseActor& actor) { actor.draw(renderer); });
 }
 
 void BaseActor::onCollide(BaseActor* actor)

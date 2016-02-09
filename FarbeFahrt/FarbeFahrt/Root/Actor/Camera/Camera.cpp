@@ -68,9 +68,9 @@ void Camera::onUpdate()
 	BaseActor::onUpdate();
 }
 
-void Camera::onDraw(Renderer& render)const
+void Camera::onDraw(Renderer& renderer)const
 {
-	BaseActor::onDraw(render);
+	BaseActor::onDraw(renderer);
 }
 
 void Camera::cameraInput()

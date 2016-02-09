@@ -160,13 +160,13 @@ void Player::fallDown()
 	m_canControl = false;
 }
 
-void Player::onDraw(Renderer& render)const
+void Player::onDraw(Renderer& renderer)const
 {
 	// Debug::Println(String::Create("Elapsed Time : ", MV1GetAttachAnimTime(Singleton<HandleList>::Instance().getHandle("Player"), 0)));
 	// m_previousFrame
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
-	render.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame, true);
-	BaseActor::onDraw(render);
+	renderer.drawSkinModel("Player", getPosition(), getRotation(), (int)m_state, m_frame, true);
+	BaseActor::onDraw(renderer);
 }
 
 void Player::onMessage(const std::string& message, void* parameter)

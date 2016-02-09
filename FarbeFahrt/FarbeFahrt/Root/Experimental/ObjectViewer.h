@@ -20,7 +20,7 @@ public:
 
 	virtual void update()override;
 
-	virtual void draw(Renderer& render)override;
+	virtual void draw(Renderer& renderer)override;
 
 	virtual void post() override;
 

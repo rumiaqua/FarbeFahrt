@@ -13,11 +13,11 @@ Goal::Goal(IWorld& world, const std::string& modelName, const Vector3 & position
 	m_name = modelName;
 }
 
-void Goal::onDraw(Renderer & render) const
+void Goal::onDraw(Renderer & renderer) const
 {
-	// render.drawNormalModel(m_name, getPosition(), getRotation());
+	// renderer.drawNormalModel(m_name, getPosition(), getRotation());
 
-	BaseActor::onDraw(render);
+	BaseActor::onDraw(renderer);
 }
 
 void Goal::onMessage(const std::string& message, void* parameter)

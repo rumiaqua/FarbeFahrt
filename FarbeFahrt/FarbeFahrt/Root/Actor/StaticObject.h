@@ -10,7 +10,7 @@ public:
 	StaticObject(IWorld& world,const std::string& modelName,const Vector3& position);
 	StaticObject(IWorld& world, const std::string& modelName, const Vector3& position, float angle, float scale);
 private:
-	virtual void onDraw(Renderer& render)const override;
+	virtual void onDraw(Renderer& renderer)const override;
 
 private:
 	float m_scale;

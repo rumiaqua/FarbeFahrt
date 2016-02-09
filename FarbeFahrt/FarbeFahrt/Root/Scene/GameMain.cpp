@@ -88,24 +88,24 @@ void GameMain::update()
 	m_world->update();
 }
 
-void GameMain::draw(Renderer& render)
+void GameMain::draw(Renderer& renderer)
 {
 	/*Debug::Println(String::Create("Gimmick : ", StoryManager::get(BitFlag::GIMMICK) ? "true" : "false"));
 	Debug::Println(String::Create("Goal : ", StoryManager::get(BitFlag::GOAL) ? "true" : "false"));
 	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
 	Debug::Println("point:%d", GimmickManager::get());*/
 
-	m_world->draw(render);
+	m_world->draw(renderer);
 
 	Debug::Println(String::Create("Gimmick : ", GimmickManager::get(), " / ", GimmickManager::getMax()));
 
 	if (Input::IsPressed(KEY_INPUT_N))
 	{
-		render.ChangeNight();
+		renderer.ChangeNight();
 	}
 	if (Input::IsPressed(KEY_INPUT_M))
 	{
-		render.ChangeDay();
+		renderer.ChangeDay();
 	}
 }
 

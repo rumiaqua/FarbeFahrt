@@ -106,7 +106,7 @@ protected:
 	virtual void onUpdate();
 
 	/// <summary>•`‰æ</summary>
-	virtual void onDraw(Renderer& render)const;
+	virtual void onDraw(Renderer& renderer)const;
 
 	/// <summary>Õ“Ë‰“š</summary>
 	virtual void onCollide(BaseActor* actor);

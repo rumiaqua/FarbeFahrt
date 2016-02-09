@@ -9,7 +9,7 @@ class Goal :
 public:
 	Goal(IWorld& world, const std::string& modelName, const Vector3& position, int threshold);
 private:
-	virtual void onDraw(Renderer& render)const override;
+	virtual void onDraw(Renderer& renderer)const override;
 	virtual void onMessage(const std::string& message, void* parameter) override;
 
 private:
