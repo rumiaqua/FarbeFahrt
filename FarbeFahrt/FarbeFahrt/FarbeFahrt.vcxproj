@@ -32,6 +32,8 @@
     <ClCompile Include="Root\Experimental\Bookmark.cpp" />
     <ClCompile Include="Root\Experimental\AllResourceLoad.cpp" />
     <ClCompile Include="Root\Actor\Player.cpp" />
+    <ClCompile Include="Root\Manager\BackLogManager.cpp" />
+    <ClCompile Include="Root\Scene\BackLog.cpp" />
     <ClCompile Include="Root\Scene\Opening.cpp" />
     <ClCompile Include="Root\Scene\Title.cpp" />
     <ClCompile Include="Root\Utility\BGM.cpp" />
@@ -107,6 +109,8 @@
     <ClInclude Include="Root\Experimental\Bookmark.h" />
     <ClInclude Include="Root\Experimental\ExperimentalBookmark.h" />
     <ClInclude Include="Root\Experimental\AllResourceLoad.h" />
+    <ClInclude Include="Root\Manager\BackLogManager.h" />
+    <ClInclude Include="Root\Scene\BackLog.h" />
     <ClInclude Include="Root\Scene\Opening.h" />
     <ClInclude Include="Root\Scene\Scene.h" />
     <ClInclude Include="Root\Scene\Title.h" />

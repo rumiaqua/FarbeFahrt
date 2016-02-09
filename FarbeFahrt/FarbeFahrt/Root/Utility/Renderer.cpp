@@ -470,11 +470,33 @@ void Renderer::drawTexture(const std::string& name, int x, int y)
 	drawTexture(name, x, y, 0, 0, 1.0f, 1.0f, 0.0f);
 }
 
-void Renderer::drawTexture(const std::string& name, const AspectType& type)
+void Renderer::drawTexture(const std::string& name, float marginWidth, float marginHeight, int alpha)
 {
-	drawTexture(name, type, Vector2::Zero(), { 0.5f, 0.5f });
+	Point2 windowSize = getWindowSize();
+
+	// 実際のマージン量
+	marginWidth *= windowSize.x;
+	marginHeight *= windowSize.y;
+
+	// マージン後のウィンドウサイズ
+	windowSize.x -= marginWidth * 2;
+	windowSize.y -= marginHeight * 2;
+
+	// テクスチャのサイズ
+	Point2 textureSize = getTextureSize(name);
+
+	// 拡大率
+	Vector2 expand = Vector2(windowSize) / Vector2(textureSize);
+
+	// 描画
+	drawTexture(name, (int)marginWidth, (int)marginHeight, 0, 0, expand.x, expand.y, 0.0f, alpha);
 }
-void Renderer::drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center)
+
+void Renderer::drawTexture(const std::string& name, const AspectType& type, int alpha)
+{
+	drawTexture(name, type, Vector2::Zero(), { 0.5f, 0.5f }, alpha);
+}
+void Renderer::drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center, int alpha)
 {
 	int handle = m_textureData.at(name);
 	Point2 size;
@@ -512,7 +534,7 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 	Vector2 pos = (windowSize - correctionSize) * center + position;
 
 	/*DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);*/
-	drawTexture(name, (int)pos.x, (int)pos.y, 0, 0, ext.x, ext.y, 0.0f);
+	drawTexture(name, (int)pos.x, (int)pos.y, 0, 0, ext.x, ext.y, 0.0f, alpha);
 }
 void Renderer::drawFont(const std::string& text)
 {

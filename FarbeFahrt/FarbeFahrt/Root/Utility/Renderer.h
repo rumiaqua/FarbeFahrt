@@ -170,8 +170,12 @@ public:
 	void drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t, bool isBlend);
 
 	//2D系関数
-	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle, int alpha = 255);
+	// テクスチャを描画
+	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float widthExpand, float heightExpand, float angle, int alpha = 255);
+	// 座標を指定して描画
 	void drawTexture(const std::string& name, int x, int y);
+	// マージン率を指定して中央描画
+	void drawTexture(const std::string& name, float marginWidth, float marginHeight, int alpha);
 	// アスペクト比
 	enum class AspectType
 	{
@@ -184,8 +188,11 @@ public:
 		// 拡大
 		Expand,
 	};
-	void drawTexture(const std::string& name, const AspectType& type);
-	void drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center);
+	// 拡大方法を指定して描画
+	void drawTexture(const std::string& name, const AspectType& type, int alpha = 255);
+	// 拡大方法と座標を指定して描画
+	void drawTexture(const std::string& name, const AspectType& type, const Vector2& position, const Vector2& center, int alpha = 255);
+
 	//フォント描画系関数
 	void drawFont(const std::string& text);
 	void drawFont(const std::string& text, int x, int y);

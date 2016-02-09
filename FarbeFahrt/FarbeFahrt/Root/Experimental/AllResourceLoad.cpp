@@ -23,6 +23,8 @@ void AllResourceLoad::loadContents(Loader& loader)
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 	loader.loadContent("Player", "Model/MMD–‚“±Žo’íVer1.1/ƒ~ƒnƒCƒ‹.pmx");
 
+	loader.loadContent("curtain", "Texture/curtain.png");
+
 	StageManager manager;
 	manager.initialize("Resources/Script/Stage/index.csv");
 	for (auto&& data : manager.allStageData())
