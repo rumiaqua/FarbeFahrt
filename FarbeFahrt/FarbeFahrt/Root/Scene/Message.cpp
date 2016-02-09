@@ -13,6 +13,7 @@
 # include "ISceneMediator.h"
 
 # include "Manager/MessageManager.h"
+# include "Manager/BackLogManager.h"
 
 # include "Message/MessageOperation.h"
 
@@ -128,7 +129,7 @@ void Message::post()
 
 void Message::cleanUp()
 {
-
+	BackLogManager::Add("");
 }
 
 bool Message::isSwallow() const
@@ -155,6 +156,7 @@ void Message::processMessage()
 		if (op.operation == "t")
 		{
 			m_textStack.push_back(op.message);
+			BackLogManager::Add(op.message);
 		}
 
 		// ‰æ‘œ•\Ž¦

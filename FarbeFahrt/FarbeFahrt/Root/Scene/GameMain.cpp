@@ -19,9 +19,11 @@
 
 # include "Manager/EndManager.h"
 # include "Manager/MessageManager.h"
+# include "Manager/BackLogManager.h"
 
 # include "Utility/BGM.h"
 # include "Utility/Renderer.h"
+# include "Utility/Mouse.h"
 
 # include "Scene.h"
 
@@ -68,6 +70,7 @@ void GameMain::initialize()
 	m_stageManager.initialize("Resources/Script/Stage/index.csv");
 	StoryManager::set(BitFlag::GOAL);
 
+	// エンドの初期化
 	EndManager::Clear();
 
 	AnimateState state { "Open", false };
@@ -85,18 +88,19 @@ void GameMain::update()
 		BGM::play(m_stageManager.bgmName());
 	}
 
+	if (Mouse::IsClicked(MOUSE_INPUT_RIGHT))
+	{
+		m_manager->pushScene(Scene::BackLog);
+	}
+
 	m_world->update();
 }
 
 void GameMain::draw(Renderer& render)
 {
-	/*Debug::Println(String::Create("Gimmick : ", StoryManager::get(BitFlag::GIMMICK) ? "true" : "false"));
-	Debug::Println(String::Create("Goal : ", StoryManager::get(BitFlag::GOAL) ? "true" : "false"));
-	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));
-	Debug::Println("point:%d", GimmickManager::get());*/
-
 	m_world->draw(render);
 
+	// ギミック起動数 / ギミック閾値
 	Debug::Println(String::Create("Gimmick : ", GimmickManager::get(), " / ", GimmickManager::getMax()));
 
 	if (Input::IsPressed(KEY_INPUT_N))
@@ -111,8 +115,10 @@ void GameMain::draw(Renderer& render)
 
 void GameMain::post()
 {
+	// 次ステージが存在する場合
 	if (m_stageManager.isNext())
 	{
+		// エンドシーンへの遷移が可能であれば遷移
 		if (EndManager::CanEnd())
 		{
 			m_manager->changeScene(Scene::End, 60.0f);
@@ -120,14 +126,16 @@ void GameMain::post()
 			return;
 		}
 
+		// 終了ステージだった場合
 		if (m_stageManager.isEnd())
 		{
+			// エンドシーンがセットされている場合
 			if (!EndManager::isEnd())
 			{
 				EndManager::Set(m_stageManager.endName());
+				// フィールドと本のエンドアニメーションを再生する
 				AnimateState state { "End", false };
 				m_world->findGroup(ActorTag::Field)->sendMessage("Animate", &state);
-
 				if (auto book = m_world->findActor("book"))
 				{
 					book->sendMessage("Animate", &state);
@@ -146,8 +154,6 @@ void GameMain::post()
 		{
 			m_loader->loadContent(resource.first, resource.second);
 		}
-		// m_loader->load();
-
 		// 次のシーンのリソースを待機ロード
 		const auto& nexts = m_stageManager.nextStages();
 		for (auto&& resource : nexts.first.resourceList)

@@ -9,6 +9,7 @@
 # include "Scene/Message.h"
 # include "Scene/Opening.h"
 # include "Scene/Title.h"
+# include "Scene/BackLog.h"
 
 # include "Experimental/ObjectViewer.h"
 # include "Experimental/AllResourceLoad.h"
@@ -41,6 +42,7 @@ MyGame::MyGame()
 	m_sceneManager.addScene<Message>(Scene::Message);
 	m_sceneManager.addScene<Title>(Scene::Title);
 	m_sceneManager.addScene<AllResourceLoad>(Scene::AllResourceLoad);
+	m_sceneManager.addScene<BackLog>(Scene::BackLog);
 
 	m_sceneManager.pushScene(Scene::Title);
 	// m_sceneManager.pushScene(Scene::OneShotStage);
@@ -110,6 +112,7 @@ void MyGame::run()
 	{
 		m_sceneManager.changeScene(Scene::Title);
 	}
+	
 	Debug::Println("DebugMode");
 	Debug::Println("F1 : AllResourceLoad");
 	Debug::Println("F2 : Debug Toggle");
