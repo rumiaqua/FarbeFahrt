@@ -125,7 +125,7 @@ void GameMain::post()
 			if (!EndManager::isEnd())
 			{
 				EndManager::Set(m_stageManager.endName());
-				AnimateState state { "Open", true };
+				AnimateState state { "End", false };
 				m_world->findGroup(ActorTag::Field)->sendMessage("Animate", &state);
 
 				if (auto book = m_world->findActor("book"))

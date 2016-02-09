@@ -1888,6 +1888,7 @@
     <Text Include="Resources\Script\Message\HouseD.txt" />
     <Text Include="Resources\Script\Message\Opening.txt" />
     <Text Include="Resources\Script\Message\Swamp.txt" />
+    <Text Include="Resources\Script\Animation\HouseD.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />

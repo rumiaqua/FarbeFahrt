@@ -9,6 +9,18 @@ class AnimationTransitionMachine
 {
 public:
 
+	struct AnimateState
+	{
+	public:
+
+		AnimateState();
+
+	public:
+
+		int handle;
+		bool isReversed;
+	};
+
 	class TransitionState
 	{
 	public:
@@ -17,12 +29,12 @@ public:
 
 	public:
 
-		void add(int current, int next);
-		int next(int current) const;
+		void add(int current, int next, bool isReversed);
+		const AnimateState& next(int current) const;
 
 	private:
 
-		std::unordered_map<int, int> m_transition;
+		std::unordered_map<int, AnimateState> m_transition;
 		bool m_isAny;
 	};
 
@@ -32,7 +44,7 @@ public:
 
 public:
 
-	Optional<int> next(const std::string& identifier, int current) const;
+	Optional<AnimateState> next(const std::string& identifier, int current) const;
 
 private:
 

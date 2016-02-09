@@ -699,6 +699,7 @@
     <Text Include="Resources\Script\Animation\Elder.txt" />
     <Text Include="Resources\Script\Animation\ForestA.txt" />
     <Text Include="Resources\Script\Animation\ForestB.txt" />
+    <Text Include="Resources\Script\Animation\HouseD.txt" />
     <Text Include="Resources\Script\Animation\Swamp.txt" />
     <Text Include="Resources\Script\Message\BlackMarket.txt" />
     <Text Include="Resources\Script\Message\BlackMarketNight.txt" />

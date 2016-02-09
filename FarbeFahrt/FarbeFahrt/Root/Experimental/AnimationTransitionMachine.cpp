@@ -4,6 +4,13 @@
 
 # include <fstream>
 
+AnimationTransitionMachine::AnimateState::AnimateState()
+	: handle(-1)
+	, isReversed(false)
+{
+	
+}
+
 AnimationTransitionMachine::TransitionState::TransitionState()
 	: m_transition()
 	, m_isAny(false)
@@ -11,16 +18,17 @@ AnimationTransitionMachine::TransitionState::TransitionState()
 
 }
 
-void AnimationTransitionMachine::TransitionState::add(int current, int next)
+void AnimationTransitionMachine::TransitionState::add(int current, int next, bool isReversed)
 {
 	if (current == -1)
 	{
 		m_isAny = true;
 	}
-	m_transition[current] = next;
+	m_transition[current].handle = next;
+	m_transition[current].isReversed = isReversed;
 }
 
-int AnimationTransitionMachine::TransitionState::next(int current) const
+const AnimationTransitionMachine::AnimateState& AnimationTransitionMachine::TransitionState::next(int current) const
 {
 	return m_isAny ? m_transition.at(-1) : m_transition.at(current);
 }
@@ -31,14 +39,14 @@ AnimationTransitionMachine::AnimationTransitionMachine(const std::string& name)
 	load(name);
 }
 
-Optional<int> AnimationTransitionMachine::next(const std::string& identifier, int current) const
+Optional<AnimationTransitionMachine::AnimateState> AnimationTransitionMachine::next(const std::string& identifier, int current) const
 {
 	if (m_state.find(identifier) == m_state.end())
 	{
 		return none;
 	}
 	auto& state = m_state.at(identifier);
-	return Optional<int>(state.next(current));
+	return Optional<AnimateState>(state.next(current));
 }
 
 void AnimationTransitionMachine::load(const std::string& filename)
@@ -62,8 +70,11 @@ void AnimationTransitionMachine::load(const std::string& filename)
 		}
 
 		auto split = String::Split(line, ',');
+		size_t pos = split[2].find_last_of('R');
+		std::string name = split[2].substr(0, pos);
+		bool isReversed = (pos != std::string::npos);
 
 		m_state[split[0]].add(
-			String::ToValue<int>(split[1]), String::ToValue<int>(split[2]));
+			String::ToValue<int>(split[1]), String::ToValue<int>(name), isReversed);
 	}
 }

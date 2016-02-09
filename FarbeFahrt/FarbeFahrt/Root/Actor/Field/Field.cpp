@@ -65,8 +65,8 @@ void Field::onUpdate()
 			m_world->findCamera()->sendMessage("toBookCamera", nullptr);
 		}
 
-		if (!m_isAnimating &&
-			m_isReversed)
+		if (m_current == "End" &&
+			!m_isAnimating)
 		{
 			EndManager::SetEnd(true);
 		}
@@ -158,17 +158,19 @@ void Field::workGimmick(int commandNo)
 
 void Field::animateProcess(const AnimateState& state)
 {
-	Optional<int> next = m_machine.next(state.name, m_animationNumber);
+	Optional<AnimationTransitionMachine::AnimateState> next = m_machine.next(state.name, m_animationNumber);
 
 	if (!next)
 	{
 		return;
 	}
 
+	bool isReversed = state.isReversed ^ next.ref().isReversed;
+
 	m_current = state.name;
-	m_elapsedTime = state.isReversed ? ANIMATION_FRAME : 0;
-	m_animationNumber = next.ref();
-	m_isReversed = state.isReversed;
+	m_elapsedTime = isReversed ? ANIMATION_FRAME : 0;
+	m_animationNumber = next.ref().handle;
+	m_isReversed = isReversed;
 	m_isAnimating = true;
 }
 
