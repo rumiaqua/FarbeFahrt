@@ -243,6 +243,9 @@
     <ClCompile Include="Root\Actor\Adele.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Utility\Def.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Root\Actor\Enemy.h">

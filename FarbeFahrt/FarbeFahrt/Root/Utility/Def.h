@@ -9,6 +9,7 @@
 //解像度を取得する
 #define nScreenSizeX GetSystemMetrics(SM_CXSCREEN)
 #define nScreenSizeY GetSystemMetrics(SM_CYSCREEN)
+
 //画面の中心(ウィンドウの中心じゃないよ)
 #define nScreenCenterX (nScreenSizeX / 2)
 #define nScreenCenterY (nScreenSizeY / 2)
@@ -19,19 +20,26 @@
 //BGMクラス
 #define BGM_MAX_VOLUME 128
 //BGMクラスここまで
-struct ContentData{
+struct ContentData {
 	int handle;
 	std::string filename;
 	bool use;
-	ContentData(int handle,const std::string& filename)
+	ContentData(int handle, const std::string& filename)
 	{
 		this->handle = handle;
 		this->filename = filename;
 		this->use = true;
 	}
-	ContentData(){}
+	ContentData() {}
 };
 using ContentMap = std::unordered_map<std::string, ContentData>;
 
 const Vector3 LIGHT_POSITION = { 20.0f,120.0f,-70.0f };
 const Vector3 LIGHT_TARGET = { -45.0f,-30.0f,0.0f };
+
+namespace System
+{
+	RECT GetWindowRect();
+	int GetWindowWidth();
+	int GetWindowHeight();
+};

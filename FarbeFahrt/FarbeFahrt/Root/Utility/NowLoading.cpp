@@ -1,4 +1,5 @@
 #include "NowLoading.h"
+#include "Def.h"
 
 
 
@@ -11,13 +12,14 @@ NowLoading::NowLoading()
 	m_texNum[2] = LoadGraph("Resources/Texture/NowLoading/loading_3.png");
 }
 
-void NowLoading::draw()
+void NowLoading::draw(Renderer& renderer)
 {
-	constexpr int drawPos_x = 1024 - 350;
-	constexpr int drawPos_y = 768 - 300;
+	const int drawPos_x = (System::GetWindowWidth()) - 350;
+	const int drawPos_y = (System::GetWindowHeight()) - 300;
+
 
 	ClearDrawScreen();
-	DrawGraph(0, 0, m_backHandle, TRUE);
+	DrawExtendGraph(0, 0, System::GetWindowWidth(), System::GetWindowHeight(), m_backHandle,TRUE);
 	DrawGraph(drawPos_x, drawPos_y, m_texNum[m_frame / 10], TRUE);
 	ScreenFlip();
 	m_frame++;
