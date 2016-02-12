@@ -14,6 +14,6 @@ private:
 	virtual void onMessage(const std::string& message, void* parameter) override;
 
 private:
-	int m_threthold;
+	int m_threshold;
 	bool m_particled;
 };

@@ -103,17 +103,17 @@ void StageManager::next(World* const world)
 		{
 			actor.kill();
 		});
+		world->findGroup(ActorTag::Effect)->eachChildren(
+			[] (BaseActor& actor)
+		{
+			actor.kill();
+		});
 
+		AnimateState state { "Close", false };
 		// 現在のフィールドに閉じるアニメーションをさせる
-		/*world->findGroup(ActorTag::Field)->eachChildren(
-			[] (BaseActor& actor)
-		{
-			actor.sendMessage("CloseAnimate", nullptr);
-		});*/
 		world->findGroup(ActorTag::Field)->eachChildren(
-			[] (BaseActor& actor)
+			[&state] (BaseActor& actor)
 		{
-			AnimateState state { "Close", false };
 			actor.sendMessage("Animate", &state);
 		});
 	}

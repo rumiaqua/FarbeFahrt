@@ -707,6 +707,7 @@
     <Text Include="Resources\Model\MMD魔導姉弟Ver1.1\READ ME.txt" />
     <Text Include="Resources\Script\Animation\BlackMarket.txt" />
     <Text Include="Resources\Script\Animation\BlackMarketNight.txt" />
+    <Text Include="Resources\Script\Animation\Book.txt" />
     <Text Include="Resources\Script\Animation\City.txt" />
     <Text Include="Resources\Script\Animation\Default.txt" />
     <Text Include="Resources\Script\Animation\Elder.txt" />

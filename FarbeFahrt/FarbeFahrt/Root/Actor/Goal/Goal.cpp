@@ -9,7 +9,7 @@
 
 Goal::Goal(IWorld& world, const std::string& modelName, const Vector3 & position, int threshold) :
 	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI), std::make_unique<Sphere>(Vector3::Zero(), 10.0f))
-	, m_threthold(threthold)
+	, m_threshold(threshold)
 	, m_particled(false)
 {
 	m_name = modelName;

@@ -46,13 +46,13 @@ void Stage::apply(const StageData& data, bool isClear)
 	m_stageName = data.filename;
 
 	// フィールドの初期化
+	AnimateState state { "Open", false };
 	for (auto&& field : data.fieldList)
 	{
 		auto actor = std::make_shared<Field>(
 			*m_world, field.name, field.position, field.scale, field.transition);
 		m_actorManager.addActor(ActorTag::Field, actor);
 		// actor->sendMessage("OpenAnimate", nullptr);
-		AnimateState state{ "Open", false };
 		actor->sendMessage("Animate", &state);
 	}
 

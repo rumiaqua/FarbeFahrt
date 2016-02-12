@@ -58,7 +58,9 @@ void Instant::onMessage(const std::string& message, void* parameter)
 	if (message == "Activate")
 	{
 		m_isActive = true;
-		m_world->addActor(ActorTag::Effect, std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius));
+		auto particleSystem = std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius);
+		m_particleSystem = particleSystem;
+		m_world->addActor(ActorTag::Effect, particleSystem);
 	}
 
 	BaseActor* actor = static_cast<BaseActor*>(parameter);
@@ -68,9 +70,10 @@ void Instant::onMessage(const std::string& message, void* parameter)
 		actor->getName() == "Player")
 	{
 		kill();
-		auto particle = m_world->findActor("LightParticleGenerator");
-		if (particle == nullptr)return;
-		particle->sendMessage("kill",nullptr);
+		if (auto particleSystem = m_particleSystem.lock())
+		{
+			particleSystem->sendMessage("kill", nullptr);
+		}
 		GimmickManager::add(1);
 	}
 

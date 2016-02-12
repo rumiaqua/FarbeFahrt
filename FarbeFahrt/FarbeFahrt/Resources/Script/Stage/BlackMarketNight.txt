@@ -5,7 +5,7 @@ r,BlackMarketGround,Stage/BlackMarket/BlackMarketGround.pmx
 r,BlackMarketNightBGM,Sound/BGM/town.mp3
 
 # プレイヤーの座標
-p,50,40,-80
+p,50,60,-80
 
 # フィールド
 f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarketNight.txt
