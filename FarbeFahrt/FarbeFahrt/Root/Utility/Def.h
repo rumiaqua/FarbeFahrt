@@ -34,7 +34,7 @@ struct ContentData {
 };
 using ContentMap = std::unordered_map<std::string, ContentData>;
 
-const Vector3 LIGHT_POSITION = { 20.0f,120.0f,-70.0f };
+const Vector3 LIGHT_POSITION = { 20.0f,100.0f,-70.0f };
 const Vector3 LIGHT_TARGET = { -45.0f,-30.0f,0.0f };
 
 namespace System
