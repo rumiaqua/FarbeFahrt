@@ -15,7 +15,7 @@ f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarket.txt
 o,Goal,,50,30,-80,null
 
 # ギミック
-o,Bookmark,Hospital,90,25,0,null,Name:Hospital/AddPoint
+o,Bookmark,Hospital,90,25,0,null,Name:Hospital/AddPoint/Access:-70:30:-50
 
 # ギミック起動変数
 g,1
