@@ -3,18 +3,21 @@
 # include "Utility/Loader.h"
 # include "Utility/Input.h"
 # include "Utility/Debug.h"
+#include "Utility/StoryManager/StoryManager.h"
+# include "Utility/SingletonFinalizer.h"
+# include "Utility/Math.h"
 
 # include "Stage/ScriptStageDataBuilder.h"
 # include "ISceneMediator.h"
+
 # include "Actor/Camera/Camera.h"
-#include "Utility/StoryManager/StoryManager.h"
 #include "Actor/Gimmick/GimmickManager.h"
-# include "Utility/SingletonFinalizer.h"
-# include "Manager/EndManager.h"
-# include "Manager/MessageManager.h"
 # include "Actor/Field/Field.h"
 # include "Actor/StaticObject.h"
-# include "Utility/Math.h"
+
+# include "Manager/EndManager.h"
+# include "Manager/MessageManager.h"
+# include "Manager/BackLogManager.h"
 
 # include "Scene.h"
 
@@ -46,6 +49,9 @@ void Opening::initialize()
 	MessageManager::Add("Opening");
 
 	m_isOnce = false;
+
+	// バックログの初期化
+	BackLogManager::Clear();
 }
 
 void Opening::update()
