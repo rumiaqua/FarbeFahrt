@@ -63,7 +63,7 @@ void Camera::onUpdate()
 	}
 	cameraSet();
 
-	
+
 
 	BaseActor::onUpdate();
 }
@@ -75,40 +75,29 @@ void Camera::onDraw(Renderer& renderer)const
 
 void Camera::cameraInput()
 {
-	if (Mouse::IsClicked(MOUSE_INPUT_LEFT))
+	if (Mouse::IsClicked(MOUSE_INPUT_LEFT)/* && m_cameraState.cameraMode == CameraMode::Default*/)
 	{
 		Vector3 begin = Mouse::ScreenPointToWorld(0.0f);
 		Vector3 end = Mouse::ScreenPointToWorld(1.0f);
 		m_world->addActor(ActorTag::Collider, std::make_shared<Ray>(*m_world, begin, end));
 	}
 
-	/*if (Mouse::IsClicked(KEY_INPUT_0))
+	if (Mouse::ScrollValue() > 0)
 	{
-		actorSet(Vector3(100, 100, 100));
-		m_cameraState.cameraMode = CameraMode::FadeIn;
-	}*/
-
-	if (m_progress >= 1)
+		toPlayerCamera();
+	}
+	else if (Mouse::ScrollValue() < 0)
 	{
-		if (Mouse::ScrollValue() > 0)
-		{
-			toPlayerCamera();
-		}
-		else if (Mouse::ScrollValue() < 0)
-		{
-			toBookCamera();
-		}
+		toBookCamera();
 	}
 }
 
 void Camera::chaseCamera()
 {
-
 	if (m_actor.expired() && !m_lockPos)
 	{
 		return;
 	}
-
 	m_cameraMatrix.currentPos = getPosition();
 	m_cameraMatrix.targetPos = m_lockPos.ref() + accessCorrection(accessPos);
 	m_cameraMatrix.currentRot = memory_cast<Vector3>(GetCameraTarget());
@@ -228,6 +217,10 @@ void Camera::toBookCamera()
 		m_progress = 0;
 		m_cameraState.cameraMode = CameraMode::FadeOut;
 		actorSet("Player");
+		if (m_actor.expired())
+		{
+			return;
+		}
 		bool isKill = false;
 		m_actor.lock()->sendMessage("StopControl", &isKill);
 	}
@@ -274,7 +267,7 @@ void Camera::actorSet(const Vector3& position)
 void Camera::onMessage(const std::string& message, void* parameter)
 {
 	if (message == "actorSet")
-	{		
+	{
 		actorSet(*(Vector3*)parameter);
 	}
 	//ê”îCé“Å@Ç»ÇËÇΩÇÒ

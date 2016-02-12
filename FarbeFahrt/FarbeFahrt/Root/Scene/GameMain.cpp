@@ -48,6 +48,7 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 	loader.loadContent("Player", "Model/MMD–‚“±Žo’íVer1.1/ƒ~ƒnƒCƒ‹.pmx");
+	loader.loadContent("LightParticle","Texture/Particle.png");
 }
 
 void GameMain::initialize()

@@ -69,7 +69,7 @@ void Bookmark::onMessage(const std::string& message, void* parameter)
 			}
 
 			if (!m_isToggle)
-			{
+		{
 				m_isAddPoint = false;
 				m_shape = std::make_unique<Empty>();
 			}

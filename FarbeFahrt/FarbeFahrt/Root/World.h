@@ -27,6 +27,7 @@ public:
 	StageData getData() const;
 	void apply(const StageData& data, bool isClear);
 	virtual void actorSet(const std::string& actorName);
+	virtual void actorSet(const Vector3& position);
 	void clearActor();
 
 private:
