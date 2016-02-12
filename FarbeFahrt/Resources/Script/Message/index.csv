@@ -1,0 +1,38 @@
+# カレントディレクトリ,,
+c,Resources/Script/Message/,
+,,
+# オープニング,,
+t,Opening,Opening.txt
+,,
+# 森A 開始時,,
+t,ForestA,ForestA.txt
+,,
+# 森B 開始時,,
+t,ForestB,ForestB.txt
+,,
+# 長老の森 開始時,,
+t,Elder,Elder.txt
+,,
+# 街 開始時,,
+t,City,City.txt
+,,
+# 闇市 開始時,,
+t,BlackMarket,BlackMarket.txt
+,,
+# 夜の闇市 開始時,,
+t,BlackMarketNight,BlackMarketNight.txt
+,,
+# 沼 開始時,,
+t,Swamp,Swamp.txt
+,,
+# 家D 開始時,,
+t,HouseD,HouseD.txt
+,,
+# エンディング1,,
+t,Ending1,Ending1.txt
+,,
+# エンディング2,,
+t,Ending2,Ending2.txt
+,,
+# エンディング3,,
+t,Ending3,Ending3.txt

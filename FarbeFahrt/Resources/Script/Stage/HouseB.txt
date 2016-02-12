@@ -1,0 +1,26 @@
+# 使用するリソース
+
+# フィールドリソース
+r,HouseBGround,Stage/HouseB/HouseBGround.pmx
+r,HouseBGM,Sound/BGM/house.mp3
+
+# プレイヤーの座標
+p,-180,30,-80
+
+# フィールド
+f,HouseBGround,0,0,0,3
+
+# ゴール
+o,Goal,,-80,30,-25,null
+
+# ギミック
+
+# ギミック起動変数
+
+# 次のステージ
+e,Ending2,show
+
+# 開始時のテキスト
+
+# BGM
+bgm,HouseBGM

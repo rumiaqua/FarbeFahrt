@@ -1,0 +1,35 @@
+# 使用するリソース
+r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
+r,Goal,Model/平原/くさ.pmx
+
+# フィールドリソース
+r,LeftRabbit,Model/Gimmick/Bookmark.mqo
+r,RightRabbit,Model/Gimmick/Bookmark.mqo
+
+r,plainBGround,Stage/PlainB/Ground/PlainBGround.pmx
+r,PlainBGM,Sound/BGM/plain.mp3
+
+# プレイヤーの座標
+p,-180,50,-80
+
+# フィールド
+f,plainBGround,0,0,0,3,Resources/Script/Animation/PlainB.txt
+
+# ゴール
+o,Goal,Goal,50,30,-80,null
+
+# ギミック
+o,Bookmark,LeftRabbit,90,25,-50,null,LeftRabbit/true
+o,Bookmark,RightRabbit,90,25,0,null,RightRabbit/true
+
+# ギミック起動変数
+g,2
+
+# 次のステージ
+n,DimForest,ForestD
+
+# 開始時のテキスト
+t,PlainB
+
+# BGM
+bgm,PlainBGM

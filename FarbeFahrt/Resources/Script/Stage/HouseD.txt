@@ -1,0 +1,29 @@
+# 使用するリソース
+r,Herb,Model/Herb/Herb.pmx
+
+# フィールドリソース
+r,HouseDGround,Stage/HouseD/HouseDGround.pmx
+r,HouseBGM,Sound/BGM/house.mp3
+
+# プレイヤーの座標
+p,-180,40,-80
+
+# フィールド
+f,HouseDGround,0,0,0,3,Resources/Script/Animation/HouseD.txt
+
+# ゴール
+o,Goal,,-180,30,-80,null,1
+
+# ギミック
+o,Instant,Herb,-80,30,-25,null,IsKinematic
+
+# ギミック起動変数
+
+# 次のステージ
+n,BlackMarketNight,BlackMarketNight
+
+# 開始時のテキスト
+t,HouseD
+
+# BGM
+bgm,HouseBGM

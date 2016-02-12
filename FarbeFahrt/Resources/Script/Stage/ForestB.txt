@@ -1,0 +1,32 @@
+# 使用するリソース
+r,Fall,Model/Gimmick/bookmark.mqo
+
+# フィールドリソース
+r,ForestBGround,Stage/ForestB/ForestBGround.pmx
+r,ForestBGM,Sound/BGM/forest.mp3
+
+# プレイヤーの座標
+p,-180,30,-80
+
+# フィールド
+f,ForestBGround,0,0,0,3
+
+# ゴール
+o,Goal,,50,30,-80,null,1
+
+# ギミック
+o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate
+o,ActionBookmark,Fall,90,25,-50,null,Herb/Activate
+o,ActionBookmark,Fall,90,25,-50,null,Herb/Fall
+
+# ギミック起動変数
+g,1
+
+# 次のステージ
+n,HouseA,HouseA
+
+# 開始時のテキスト
+t,ForestB
+
+# BGM
+bgm,ForestBGM

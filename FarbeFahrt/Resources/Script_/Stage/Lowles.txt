@@ -1,0 +1,40 @@
+# 使用するリソース
+r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
+r,Goal,Model/平原/くさ.pmx
+
+r,tentG,Model/Gimmick/bookmark.mqo
+r,herb,Model/Herb/Herb.pmx
+r,herbG,Model/Gimmick/bookmark.mqo
+
+# フィールドリソース
+r,lowlesGround,Stage/Lowles/Ground/LowlesGround.pmx
+
+r,TownBGM,Sound/BGM/Town.mp3
+
+# プレイヤーの座標
+p,-180,50,-80
+
+# フィールド
+f,lowlesGround,0,0,0,3,Resources/Script/Animation/Lowles.txt
+
+# ゴール
+o,Goal,Goal,50,30,-80,null
+
+# ギミック
+o,Bookmark,tentG,90,25,-50,null,Tent/true/100/100/100
+o,Bookmark,herbG,90,25,50,null,Herb/true/-70/30/-50
+o,ActionBookmark,herbG,90,25,50,null,herb/Activate
+
+o,Instant,herb,-70,30,20,null,IsKinematic/NonActivate
+
+# ギミック起動変数
+g,1
+
+# 次のステージ
+n,ForestB,ForestC
+
+# 開始時のテキスト
+t,Lowles
+
+# BGM
+bgm,TownBGM

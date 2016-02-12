@@ -1,0 +1,27 @@
+# 使用するリソース
+r,Player,Model/MMD魔導姉弟Ver1.1/ミハイル.pmx
+r,Goal,Model/平原/くさ.pmx
+
+# フィールドリソース
+r,plainGround,Stage/平原/平原地面/平原地面.pmx
+r,plainBackground,Stage/平原/平原背景/平原背景.pmx
+
+r,PlainBGM,Sound/BGM/plain.mp3
+
+# プレイヤーの座標
+p,-180,50,-80
+
+# フィールド
+f,plainGround,0,0,0,3
+
+# ゴール
+o,Goal,Goal,50,30,-80,null
+
+# 次のステージ
+n,ForestA,ForestA
+
+# 開始時のテキスト
+t,PlainA
+
+# BGM
+bgm,PlainBGM

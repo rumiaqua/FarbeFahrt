@@ -1,0 +1,30 @@
+# 使用するリソース
+r,Sign,Model/Gimmick/bookmark.mqo
+
+# フィールドリソース
+r,ForestAGround,Stage/ForestA/ForestAGround.pmx
+r,ForestBGM,Sound/BGM/forest.mp3
+
+# プレイヤーの座標
+p,-180,30,-80
+
+# フィールド
+f,ForestAGround,0,0,0,3
+
+# ゴール
+o,Goal,,50,30,-80,null
+
+# ギミック
+o,Bookmark,Sign,90,25,0,null,AddPoint/Toggle/Name:Sign
+
+# ギミック起動変数
+g,1
+
+# 次のステージ
+n,City,BlackMarket
+
+# 開始時のテキスト
+t,ForestA
+
+# BGM
+bgm,ForestBGM

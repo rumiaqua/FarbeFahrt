@@ -1,0 +1,26 @@
+# 使用するリソース
+
+# フィールドリソース
+r,BlackMarketGround,Stage/BlackMarket/BlackMarketGround.pmx
+r,BlackMarketNightBGM,Sound/BGM/town.mp3
+
+# プレイヤーの座標
+p,50,40,-80
+
+# フィールド
+f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarketNight.txt
+
+# ゴール
+o,Goal,,-180,30,-80,null
+
+# ギミック
+
+# ギミック起動変数
+
+# 次のステージ
+e,Ending3,show
+
+# 開始時のテキスト
+
+# BGM
+bgm,BlackMarketNightBGM
