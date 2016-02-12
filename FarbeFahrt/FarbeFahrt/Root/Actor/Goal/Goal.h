@@ -9,9 +9,11 @@ class Goal :
 public:
 	Goal(IWorld& world, const std::string& modelName, const Vector3& position, int threthold);
 private:
+	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& render)const override;
 	virtual void onMessage(const std::string& message, void* parameter) override;
 
 private:
 	int m_threthold;
+	bool m_particled;
 };

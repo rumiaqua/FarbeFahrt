@@ -21,10 +21,11 @@
   <ItemGroup>
     <ClCompile Include="Root\Actor\AnimateActor.cpp" />
     <ClCompile Include="Root\Actor\Boat.cpp" />
-    <ClCompile Include="Root\Actor\Camera\Camera2.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\CommandGimmick.cpp" />
     <ClCompile Include="Root\Actor\Gimmick\Gimmick.cpp" />
     <ClCompile Include="Root\Actor\Instant.cpp" />
+    <ClCompile Include="Root\Actor\Particle\LightParticle.cpp" />
+    <ClCompile Include="Root\Actor\Particle\LightParticleGenerator.cpp" />
     <ClCompile Include="Root\Collision\Empty.cpp" />
     <ClCompile Include="Root\Experimental\ActionBookmark.cpp" />
     <ClCompile Include="Root\Experimental\AnimateState.cpp" />
@@ -81,6 +82,7 @@
     <ClCompile Include="Root\Utility\Point3.cpp" />
     <ClCompile Include="Root\Utility\Point4.cpp" />
     <ClCompile Include="Root\Utility\Pose.cpp" />
+    <ClCompile Include="Root\Utility\RandomDevice.cpp" />
     <ClCompile Include="Root\Utility\Renderer.cpp" />
     <ClCompile Include="Root\Utility\SE.cpp" />
     <ClCompile Include="Root\Utility\SingletonFinalizer.cpp" />
@@ -96,10 +98,11 @@
   <ItemGroup>
     <ClInclude Include="Root\Actor\AnimateActor.h" />
     <ClInclude Include="Root\Actor\Boat.h" />
-    <ClInclude Include="Root\Actor\Camera\Camera2.h" />
     <ClInclude Include="Root\Actor\Gimmick\CommandGimmick.h" />
     <ClInclude Include="Root\Actor\Gimmick\Gimmick.h" />
     <ClInclude Include="Root\Actor\Instant.h" />
+    <ClInclude Include="Root\Actor\Particle\LightParticle.h" />
+    <ClInclude Include="Root\Actor\Particle\LightParticleGenerator.h" />
     <ClInclude Include="Root\Collision\Empty.h" />
     <ClInclude Include="Root\Experimental\ActionBookmark.h" />
     <ClInclude Include="Root\Experimental\AnimateState.h" />
@@ -174,6 +177,7 @@
     <ClInclude Include="Root\Utility\Point3.h" />
     <ClInclude Include="Root\Utility\Point4.h" />
     <ClInclude Include="Root\Utility\Pose.h" />
+    <ClInclude Include="Root\Utility\RandomDevice.hpp" />
     <ClInclude Include="Root\Utility\Renderer.h" />
     <ClInclude Include="Root\Stage\ScriptStageDataBuilder.h" />
     <ClInclude Include="Root\Utility\SE.h" />
@@ -687,6 +691,7 @@
     <Image Include="Resources\Texture\NowLoading\loading_2.png" />
     <Image Include="Resources\Texture\NowLoading\loading_3.png" />
     <Image Include="Resources\Texture\NowLoading\loading_back.png" />
+    <Image Include="Resources\Texture\particle.png" />
     <Image Include="Resources\Texture\StaffRoll.png" />
     <Image Include="Resources\Texture\title.png" />
   </ItemGroup>

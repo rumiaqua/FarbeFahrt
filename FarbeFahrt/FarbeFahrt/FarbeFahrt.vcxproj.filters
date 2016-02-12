@@ -234,7 +234,16 @@
     <ClCompile Include="Root\Experimental\ActionBookmark.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Actor\Camera\Camera2.cpp">
+    <ClCompile Include="Root\Collision\Empty.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Actor\Particle\LightParticle.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Utility\RandomDevice.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Actor\Particle\LightParticleGenerator.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -518,7 +527,16 @@
     <ClInclude Include="Root\Experimental\ActionBookmark.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Actor\Camera\Camera2.h">
+    <ClInclude Include="Root\Collision\Empty.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Actor\Particle\LightParticle.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Utility\RandomDevice.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Actor\Particle\LightParticleGenerator.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1800,6 +1818,9 @@
     <Image Include="Resources\Stage\ローレス\ローレス背景\町背景.png">
       <Filter>リソース ファイル</Filter>
     </Image>
+    <Image Include="Resources\Texture\particle.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Model\MMD魔導姉弟Ver1.1\READ ME.txt" />
@@ -1846,9 +1867,6 @@
     <Text Include="Resources\Script\Stage\PlainB.txt" />
     <Text Include="Resources\Stage\森B\鳥\鳥について.txt" />
     <Text Include="Resources\Stage\森B\地面\モーションについて.txt" />
-    <Text Include="Resources\Script\Animation\Book.txt" />
-    <Text Include="Resources\Script\Animation\PlainA.txt" />
-    <Text Include="Resources\Script\Animation\ForestA.txt" />
     <Text Include="Resources\Script\Animation\Default.txt" />
     <Text Include="Resources\Script\Animation\Lowles.txt" />
     <Text Include="Resources\Script\Animation\ForestC.txt" />

@@ -39,7 +39,8 @@ struct ShaderHandle
 	int render_normal;
 	int render_pixel;
 };
-struct TextureData {
+struct TextureData
+{
 	int handle;
 	int x;
 	int y;
@@ -48,6 +49,16 @@ struct TextureData {
 	double extRateX;
 	double extRateY;
 	double angle;
+	int alpha;
+};
+struct Texture3DData
+{
+	int handle;
+	Vector3 position;
+	float cx;
+	float cy;
+	float size;
+	float angle;
 	int alpha;
 };
 struct LightCamera
@@ -122,7 +133,7 @@ struct FontData
 	std::vector<FontRenderingData> buffer;
 };
 
-struct ModelData{
+struct ModelData {
 	int modelHandle;
 	int animNumber = -1;
 	int playAnim1;
@@ -140,7 +151,7 @@ struct ModelData{
 		this->animPlayCount1 = animPlayCount1;
 		this->animPlayCount2 = animPlayCount2;
 	}
-	ModelData(){}
+	ModelData() {}
 };
 
 using PrimitiveRenderFunc = std::function<void()>;
@@ -169,9 +180,13 @@ public:
 	/// <param name="t">アニメーション比率(0.0~1.0)</param>
 	void drawSkinModel(const std::string& name, const Pose& pose, int animNumber, float t, bool isBlend);
 
-	//2D系関数
+	//2D系Texture関数
 	void drawTexture(const std::string& name, int x, int y, int cx, int cy, float width, float height, float angle, int alpha = 255);
 	void drawTexture(const std::string& name, int x, int y);
+
+	//3D系Texture関数
+	void draw3DTexture(const std::string& name, Vector3 position, float cx, float cy, float size, float angle, int alpha = 255);
+
 	// アスペクト比
 	enum class AspectType
 	{
@@ -211,6 +226,7 @@ private:
 	void initDepthBuffer();
 	void loadShader();
 	void setDrawList(const TextureData& textureData);
+	void setDrawList(const Texture3DData& textureData);
 	void drawDepth();
 	void drawModelWithDepthShadow();
 	void setFont();
@@ -219,11 +235,12 @@ private:
 	bool m_isNight;
 	std::unordered_map<std::string, ModelData> m_modelData;
 	std::vector<TextureData>m_drawList;
+	std::vector<Texture3DData>m_draw3DList;
 	std::unordered_map<std::string, int> m_textureData;
 	Buffer m_buffer;
 	ShaderHandle m_shaderHandle;
 	FontData m_fontData;
-	LightCamera m_lightCamera; 
+	LightCamera m_lightCamera;
 	CameraData m_cameraData;
 	mutable RenderingList m_primitives;
 };

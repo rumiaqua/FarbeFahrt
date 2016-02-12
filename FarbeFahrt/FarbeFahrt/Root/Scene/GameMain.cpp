@@ -45,6 +45,7 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("Message", "Texture/end/message.png");
 	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
+	loader.loadContent("LightParticle","Texture/Particle.png");
 }
 
 void GameMain::initialize()
