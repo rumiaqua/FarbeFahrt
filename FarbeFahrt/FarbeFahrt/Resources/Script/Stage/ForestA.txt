@@ -2,7 +2,7 @@
 r,Sign,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
-r,ForestAGround,Stage/ForestA/ForestAGround.pmx
+r,ForestAGround,Stage/ForestA/Ground/ForestAGround.pmx
 r,ForestBGM,Sound/BGM/forest.mp3
 
 # プレイヤーの座標

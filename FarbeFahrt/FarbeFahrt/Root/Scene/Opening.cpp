@@ -34,7 +34,7 @@ void Opening::initialize()
 {
 	StoryManager::initialize();
 
-	m_world = std::make_shared<World>();
+	m_world = std::make_shared<World>(m_manager);
 
 	// –{
 	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(

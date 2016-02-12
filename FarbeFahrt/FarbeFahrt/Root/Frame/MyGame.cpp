@@ -9,6 +9,7 @@
 # include "Scene/Message.h"
 # include "Scene/Opening.h"
 # include "Scene/Title.h"
+# include "Scene/BlackOut.h"
 
 # include "Experimental/ObjectViewer.h"
 # include "Experimental/AllResourceLoad.h"
@@ -41,6 +42,7 @@ MyGame::MyGame()
 	m_sceneManager.addScene<Message>(Scene::Message);
 	m_sceneManager.addScene<Title>(Scene::Title);
 	m_sceneManager.addScene<AllResourceLoad>(Scene::AllResourceLoad);
+	m_sceneManager.addScene<BlackOut>(Scene::BlackOut);
 
 	m_sceneManager.pushScene(Scene::Title);
 	// m_sceneManager.pushScene(Scene::OneShotStage);

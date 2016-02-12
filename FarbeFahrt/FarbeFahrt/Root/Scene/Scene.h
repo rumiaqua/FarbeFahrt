@@ -11,4 +11,5 @@ enum class Scene {
 	Opening,
 	Title,
 	AllResourceLoad,
+	BlackOut,
 };

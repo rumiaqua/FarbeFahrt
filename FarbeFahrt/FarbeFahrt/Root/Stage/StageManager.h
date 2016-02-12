@@ -7,6 +7,8 @@
 
 # include <unordered_map>
 
+# include "Scene\SceneManager.h"
+
 class World;
 
 class StageManager
