@@ -90,6 +90,7 @@
     <ClCompile Include="Root\Utility\Point3.cpp" />
     <ClCompile Include="Root\Utility\Point4.cpp" />
     <ClCompile Include="Root\Utility\Pose.cpp" />
+    <ClCompile Include="Root\Utility\Quaternion.cpp" />
     <ClCompile Include="Root\Utility\RandomDevice.cpp" />
     <ClCompile Include="Root\Utility\Renderer.cpp" />
     <ClCompile Include="Root\Utility\SE.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="Root\Utility\Point3.h" />
     <ClInclude Include="Root\Utility\Point4.h" />
     <ClInclude Include="Root\Utility\Pose.h" />
+    <ClInclude Include="Root\Utility\Quaternion.h" />
     <ClInclude Include="Root\Utility\RandomDevice.hpp" />
     <ClInclude Include="Root\Utility\Renderer.h" />
     <ClInclude Include="Root\Stage\ScriptStageDataBuilder.h" />
