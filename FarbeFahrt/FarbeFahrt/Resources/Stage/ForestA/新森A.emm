@@ -1,0 +1,14 @@
+[Info]
+Version = 3
+
+[Object]
+Pmd1 = C:\Users\yukidaruma\Desktop\卒制23班\3Dリソース\ForestA\Ground\ForestAGround0202.pmx
+Pmd2 = C:\Users\yukidaruma\Desktop\卒制23班\3Dリソース\Heiles (3)\Ground\HilesGround.pmx
+Pmd3 = C:\Users\yukidaruma\Desktop\卒制23班\3Dリソース\Book\Book.pmx
+
+[Effect]
+Default = none
+Pmd1 = none
+Pmd2 = none
+Pmd3 = none
+

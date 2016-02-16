@@ -36,3 +36,6 @@ t,Ending2,Ending2.txt
 ,,
 # エンディング3,,
 t,Ending3,Ending3.txt
+,,
+# テストメッセージ
+t,TestMessage,TestMessage.txt

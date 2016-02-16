@@ -17,4 +17,5 @@ private:
 	float m_counta;
 	float m_radius;
 	Vector3 m_genPos;
+	bool m_isActive;
 };

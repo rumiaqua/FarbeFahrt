@@ -1,5 +1,7 @@
 # include "Bookmark.h"
 
+# include "Manager/MessageManager.h"
+
 # include "Actor/Gimmick/GimmickManager.h"
 
 # include "Collision/Empty.h"
