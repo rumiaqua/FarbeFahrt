@@ -4,7 +4,7 @@ r,Herb,Model/Herb/Herb.pmx
 
 # フィールドリソース
 r,BlackMarketGround,Stage/BlackMarket/BlackMarketGround.pmx
-r,BlackMarketBGM,Sound/BGM/town.mp3
+r,BlackMarketBGM,Sound/BGM/town_day.mp3
 
 # プレイヤーの座標
 p,-180,30,-80

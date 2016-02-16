@@ -11,6 +11,9 @@
 # include "Scene/Title.h"
 # include "Scene/BlackOut.h"
 # include "Scene/BackLog.h"
+#include "Utility/Mouse.h"
+#include "Manager/EndManager.h"
+#include "Scene/TitleChoose.h"
 
 # include "Experimental/ObjectViewer.h"
 # include "Experimental/AllResourceLoad.h"
@@ -25,13 +28,19 @@
 
 # include "Manager/MessageManager.h"
 
+namespace
+{
+	const float TitleChangeTime = 2.0f;	//分
+}
+
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 //コンストラクタ
 //シーンの追加、最初のシーン設定
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 MyGame::MyGame()
-	:m_breakflag(false),
-	initFlag(true)
+	:m_breakflag(false)
+	, initFlag(true)
+	, m_timer(0.0f)
 {
 	// Debug::SetEnabled(true);
 
@@ -45,6 +54,7 @@ MyGame::MyGame()
 	m_sceneManager.addScene<AllResourceLoad>(Scene::AllResourceLoad);
 	m_sceneManager.addScene<BlackOut>(Scene::BlackOut);
 	m_sceneManager.addScene<BackLog>(Scene::BackLog);
+	m_sceneManager.addScene<TitleChoose>(Scene::TitleChoose);
 
 	m_sceneManager.pushScene(Scene::Title);
 	// m_sceneManager.pushScene(Scene::OneShotStage);
@@ -68,6 +78,14 @@ MyGame::MyGame()
 //+ ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + ― + *☆*+― + *☆*+― + *☆*+― + *☆*+― + *☆*+― +
 void MyGame::run()
 {
+	checkNotOperation() ? m_timer++ : m_timer = 0;
+
+	if (m_timer >= TitleChangeTime * 60.0f * 60.0f)
+	{
+		m_timer = 0;
+		m_sceneManager.changeScene(Scene::Title);
+	}
+
 	// シーンに変更があった時
 	if (m_sceneManager.hasChanged())
 	{
@@ -114,11 +132,13 @@ void MyGame::run()
 	{
 		m_sceneManager.changeScene(Scene::Title);
 	}
-	
+
 	Debug::Println("DebugMode");
 	Debug::Println("F1 : AllResourceLoad");
 	Debug::Println("F2 : Debug Toggle");
 	Debug::Println("F3 : Goto Title");
+
+	Debug::Println(String::Create("TitleChange", m_timer));
 
 	// 更新
 	m_sceneManager.update();
@@ -135,4 +155,10 @@ void MyGame::run()
 
 	// 事後処理
 	m_sceneManager.post();
+}
+
+bool MyGame::checkNotOperation()
+{
+	EndManager endManager;
+	return !CheckHitKeyAll() && !GetMouseInput() && !Mouse::ScrollValue() && !m_sceneManager.hasChanged() && !loader.isLoad() && !m_sceneManager.isNowStaffRoll();
 }

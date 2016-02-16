@@ -540,8 +540,8 @@ void Renderer::drawTexture(const std::string& name, float marginWidth, float mar
 	marginHeight *= windowSize.y;
 
 	// マージン後のウィンドウサイズ
-	windowSize.x -= marginWidth * 2;
-	windowSize.y -= marginHeight * 2;
+	windowSize.x -= (int)(marginWidth * 2);
+	windowSize.y -= (int)(marginHeight * 2);
 
 	// テクスチャのサイズ
 	Point2 textureSize = getTextureSize(name);

@@ -26,7 +26,7 @@ void init()
 	}
 
 	SetOutApplicationLogValidFlag(FALSE);
-	ChangeWindowMode(!isFullScreen);
+	ChangeWindowMode(true);
 	SetUseDirect3D9Ex(TRUE);
 	MV1SetUseOrigShader(TRUE);
 	SetAlwaysRunFlag(TRUE);
@@ -47,7 +47,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	//ÉQÅ[ÉÄñ{ëÃ
 	auto myGame = std::make_unique<MyGame>();
 
-	while (ProcessMessage() == 0 && !Input::IsClicked(KEY_INPUT_ESCAPE))
+	while (ProcessMessage() == 0/* && !Input::IsClicked(KEY_INPUT_ESCAPE)*/)
 	{
 		ShowCursor(true);
 		Input::Update();

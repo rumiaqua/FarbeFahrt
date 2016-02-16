@@ -70,7 +70,7 @@ public:
 	void post() const;
 
 	/// <summary>シーンの変更があったかどうか</summary>
-	bool hasChanged() const;
+	bool hasChanged() const;	
 
 public:
 
@@ -92,6 +92,10 @@ public:
 	/// <summary>トップシーンをポップする</summary>
 	/// <param name="t">フェードにかかるフレーム数</param>
 	virtual void popScene(float t, bool isSwallow) override;
+
+	virtual void setNowStaffRoll(bool nowStaffRoll);
+
+	virtual bool isNowStaffRoll();
 
 public:
 
@@ -132,4 +136,6 @@ private:
 	Stack m_stack;
 
 	Operations m_ops;
+
+	bool m_nowStaffRoll;
 };

@@ -47,16 +47,19 @@ void GameMain::loadContents(Loader& loader)
 	// ‚Æ‚è‚ ‚¦‚¸‚±‚±‚É‚¨‚¢‚Ä‚¨‚­
 	loader.loadContent("desk", "Model/Š÷/‚Â‚­‚¦.mqo");
 
-	loader.loadContent("TrueEnd", "Texture/end/true.png");
+	loader.loadContent("end1", "Texture/end/end1.png");
+	loader.loadContent("end2", "Texture/end/end2.png");
+
 	loader.loadContent("Message", "Texture/end/message.png");
-	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 	loader.loadContent("Player", "Model/MMD–‚“±Žo’íVer1.1/ƒ~ƒnƒCƒ‹.pmx");
-	loader.loadContent("LightParticle","Texture/Particle.png");
+	loader.loadContent("LightParticle", "Texture/Particle.png");	
 
-	loader.loadContent("HerbAccessory", "Model/3D/ü‚è•r•‰Ô/ü‚è•r•‰Ô.mqo");
-	loader.loadContent("MedicineAccessory", "Model/3D/–ò/–ò.mqo");
-	loader.loadContent("ElderAccessory", "Model/3D/—¢’·¬•r/¬•r.mqo");
+	loader.loadContent("TitleChooseBack", "Texture/TitleChoose/Back.png");
+	loader.loadContent("YesOutMouse", "Texture/TitleChoose/yes.png");
+	loader.loadContent("YesOnMouse", "Texture/TitleChoose/yes_2.png");
+	loader.loadContent("NoOutMouse", "Texture/TitleChoose/no.png");
+	loader.loadContent("NoOnMouse", "Texture/TitleChoose/no_2.png");
 }
 
 void GameMain::initialize()
@@ -70,7 +73,7 @@ void GameMain::initialize()
 		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Book.txt"));
 	// Š÷
 	m_world->addActor(ActorTag::Environment, std::make_shared<StaticObject>(
-		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
+		*m_world, "desk", Vector3(-60.0f, -330.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
 
 	// ƒAƒNƒZƒTƒŠ[
 	m_world->addActor(ActorTag::Environment, std::make_shared<Accessory>(*m_world));
@@ -82,7 +85,7 @@ void GameMain::initialize()
 	// ƒGƒ“ƒh‚Ì‰Šú‰»
 	EndManager::Clear();
 
-	AnimateState state { "Start", false };
+	AnimateState state{ "Start", false };
 	if (auto book = m_world->findActor("book"))
 	{
 		book->sendMessage("Animate", &state);
@@ -99,6 +102,11 @@ void GameMain::update()
 	if (Mouse::IsClicked(MOUSE_INPUT_RIGHT))
 	{
 		m_manager->pushScene(Scene::BackLog);
+	}
+
+	if (Input::IsClicked(KEY_INPUT_ESCAPE))
+	{
+		m_manager->pushScene(Scene::TitleChoose);
 	}
 
 	m_world->update();
