@@ -60,6 +60,10 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("YesOnMouse", "Texture/TitleChoose/yes_2.png");
 	loader.loadContent("NoOutMouse", "Texture/TitleChoose/no.png");
 	loader.loadContent("NoOnMouse", "Texture/TitleChoose/no_2.png");
+
+	loader.loadContent("HerbAccessory", "Model/3D/ü‚è•r•‰Ô/ü‚è•r•‰Ô.mqo");
+	loader.loadContent("MedicineAccessory", "Model/3D/–ò/–ò.mqo");
+	loader.loadContent("ElderAccessory", "Model/3D/—¢’·¬•r/¬•r.mqo");
 }
 
 void GameMain::initialize()
