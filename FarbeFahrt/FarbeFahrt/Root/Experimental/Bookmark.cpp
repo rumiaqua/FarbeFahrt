@@ -1,5 +1,7 @@
 # include "Bookmark.h"
 
+# include "Manager/MessageManager.h"
+
 # include "Actor/Gimmick/GimmickManager.h"
 
 # include "Collision/Empty.h"
@@ -39,7 +41,7 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 		}
 		if (param.find("Access") != std::string::npos)
 		{
-			auto split = String::Split(param, ',');
+			auto split = String::Split(param, ':');
 			m_access.x = String::ToValue<float>(split[1]);
 			m_access.y = String::ToValue<float>(split[2]);
 			m_access.z = String::ToValue<float>(split[3]);
@@ -57,7 +59,7 @@ void Bookmark::onMessage(const std::string& message, void* parameter)
 {
 	if (message == "OnGimmick")
 	{
-		// m_world->actorSet(m_access);
+		m_world->actorSet(m_access);
 
 		if (m_isAddPoint)
 		{
@@ -69,7 +71,7 @@ void Bookmark::onMessage(const std::string& message, void* parameter)
 			}
 
 			if (!m_isToggle)
-			{
+		{
 				m_isAddPoint = false;
 				m_shape = std::make_unique<Empty>();
 			}

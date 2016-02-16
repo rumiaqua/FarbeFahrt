@@ -1,5 +1,4 @@
 # 使用するリソース
-r,Hospital,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
 r,BlackMarketGround,Stage/BlackMarket/BlackMarketGround.pmx
@@ -15,10 +14,9 @@ f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarket.txt
 o,Goal,,50,30,-80,null
 
 # ギミック
-o,Bookmark,Hospital,90,25,0,null,Name:Hospital/AddPoint
 
 # ギミック起動変数
-g,1
+g,0
 
 # 次のステージ
 n,Swamp,HouseD

@@ -31,6 +31,7 @@ public:
 
 		void add(int current, int next, bool isReversed);
 		const AnimateState& next(int current) const;
+		bool isExist(int current) const;
 
 	private:
 

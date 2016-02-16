@@ -62,11 +62,16 @@ void World::apply(const StageData& data, bool isClear)
 	m_stage.apply(data, isClear);
 }
 
+//‚±‚Á‚¿‚Ì‹ŒactorSet‚ÍŒã‚Éíœ
 void World::actorSet(const std::string& actorName)
 {
 	m_camera->sendMessage("actorSet",(void*)&actorName);
 }
 
+void World::actorSet(const Vector3& position)
+{
+	m_camera->sendMessage("actorSet", (void*)&position);
+}
 
 void World::clearActor()
 {

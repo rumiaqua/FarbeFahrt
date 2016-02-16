@@ -38,6 +38,8 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 
 void Field::onUpdate()
 {
+	MessageManager::SetShow(false);
+
 	auto camera = m_world->findCamera();
 	if (camera == nullptr)return;
 	camera->sendMessage("progress", &m_cameraProgress);
@@ -63,12 +65,14 @@ void Field::onUpdate()
 		if (m_elapsedTime >= ANIMATION_FRAME)
 		{
 			m_world->findCamera()->sendMessage("toBookCamera", nullptr);
+			MessageManager::SetShow(true);
 		}
 
 		if (m_current == "End" &&
 			!m_isAnimating)
 		{
 			EndManager::SetEnd(true);
+			MessageManager::SetShow(true);
 		}
 
 		if (m_current == "Open" &&

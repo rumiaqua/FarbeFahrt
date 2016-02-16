@@ -18,6 +18,7 @@ void ActorManager::initialize()
 	m_actors[ActorTag::Collider] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Goal] = std::make_shared<BaseActor>();
 	m_actors[ActorTag::Field] = std::make_shared<BaseActor>();
+	m_actors[ActorTag::Environment] = std::make_shared<BaseActor>();
 	m_root.eachChildren([] (BaseActor& actor) { actor.kill(); });
 	m_root.removeChildren();
 	m_root.addChild(m_actors[ActorTag::Player]);
@@ -29,6 +30,7 @@ void ActorManager::initialize()
 	m_root.addChild(m_actors[ActorTag::Collider]);
 	m_root.addChild(m_actors[ActorTag::Goal]);
 	m_root.addChild(m_actors[ActorTag::Field]);
+	m_root.addChild(m_actors[ActorTag::Environment]);
 }
 void ActorManager::update()
 {

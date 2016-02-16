@@ -191,6 +191,10 @@ void Renderer::setDrawList(const TextureData& textureData)
 {
 	m_drawList.emplace_back(textureData);
 }
+void Renderer::setDrawList(const Texture3DData& textureData)
+{
+	m_draw3DList.emplace_back(textureData);
+}
 
 void Renderer::draw()
 {
@@ -225,7 +229,26 @@ void Renderer::draw()
 				texture.angle, texture.handle, TRUE, FALSE);
 		}
 	}
+
+	//3D‚Ì•`‰æ
+	for (auto& texture : m_draw3DList)
+	{
+		if (texture.alpha != 255)
+		{
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, texture.alpha);
+			SetUseZBuffer3D(TRUE); 
+			SetWriteZBuffer3D(TRUE);
+			DrawBillboard3D(texture.position, texture.cx, texture.cy, texture.size, texture.angle, texture.handle, TRUE, FALSE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		}
+		else
+		{
+			DrawBillboard3D(texture.position, texture.cx, texture.cy, texture.size, texture.angle, texture.handle, TRUE, FALSE);
+		}
+	}
+
 	m_drawList.clear();
+	m_draw3DList.clear();
 	// ƒtƒHƒ“ƒg‚Ì•`‰æ
 	drawFont();
 }
@@ -536,6 +559,13 @@ void Renderer::drawTexture(const std::string& name, const AspectType& type, cons
 	/*DrawRotaGraph3F(pos.x, pos.y, 0.0f, 0.0f, ext.x, ext.y, 0.0, handle, TRUE, FALSE);*/
 	drawTexture(name, (int)pos.x, (int)pos.y, 0, 0, ext.x, ext.y, 0.0f, alpha);
 }
+
+void Renderer::draw3DTexture(const std::string& name, Vector3 position, float cx, float cy, float size, float angle, int alpha)
+{
+	Texture3DData texture3D{ m_textureData.at(name) ,position,cx,cy,size,angle,alpha };
+	setDrawList(texture3D);
+}
+
 void Renderer::drawFont(const std::string& text)
 {
 	m_fontData.buffer.emplace_back(

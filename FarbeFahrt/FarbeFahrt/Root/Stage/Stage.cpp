@@ -48,13 +48,13 @@ void Stage::apply(const StageData& data, bool isClear)
 	m_stageName = data.filename;
 
 	// フィールドの初期化
+	AnimateState state { "Open", false };
 	for (auto&& field : data.fieldList)
 	{
 		auto actor = std::make_shared<Field>(
 			*m_world, field.name, field.position, field.scale, field.transition);
 		m_actorManager.addActor(ActorTag::Field, actor);
 		// actor->sendMessage("OpenAnimate", nullptr);
-		AnimateState state{ "Open", false };
 		actor->sendMessage("Animate", &state);
 	}
 
@@ -118,7 +118,7 @@ void Stage::apply(const StageData& data, bool isClear)
 		if (object.name == "Goal")
 		{
 			auto parameter = String::Split(object.parameter, '/');
-			int threthold = parameter.size() > 0 ? String::ToValue<int>(parameter[0]) : 0;
+			int threthold = parameter[0] != "" ? String::ToValue<int>(parameter[0]) : 0;
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position, threthold));
 		}		

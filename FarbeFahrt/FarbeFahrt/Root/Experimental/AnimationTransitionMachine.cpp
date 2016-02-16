@@ -33,6 +33,11 @@ const AnimationTransitionMachine::AnimateState& AnimationTransitionMachine::Tran
 	return m_isAny ? m_transition.at(-1) : m_transition.at(current);
 }
 
+bool AnimationTransitionMachine::TransitionState::isExist(int current) const
+{
+	return m_isAny || m_transition.find(current) != m_transition.end();
+}
+
 AnimationTransitionMachine::AnimationTransitionMachine(const std::string& name)
 	: m_state()
 {
@@ -46,6 +51,10 @@ Optional<AnimationTransitionMachine::AnimateState> AnimationTransitionMachine::n
 		return none;
 	}
 	auto& state = m_state.at(identifier);
+	if (!state.isExist(current))
+	{
+		return none;
+	}
 	return Optional<AnimateState>(state.next(current));
 }
 

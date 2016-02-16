@@ -50,6 +50,7 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 	loader.loadContent("Player", "Model/MMD魔導姉弟Ver1.1/ミハイル.pmx");
+	loader.loadContent("LightParticle","Texture/Particle.png");
 }
 
 void GameMain::initialize()
@@ -59,10 +60,10 @@ void GameMain::initialize()
 	m_world = std::make_shared<World>(m_manager);
 
 	// 本
-	m_world->addActor(ActorTag::Effect, std::make_shared<Field>(
-		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Default.txt"));
+	m_world->addActor(ActorTag::Environment, std::make_shared<Field>(
+		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Book.txt"));
 	// 机
-	m_world->addActor(ActorTag::Effect, std::make_shared<StaticObject>(
+	m_world->addActor(ActorTag::Environment, std::make_shared<StaticObject>(
 		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
 
 
@@ -75,7 +76,7 @@ void GameMain::initialize()
 	// エンドの初期化
 	EndManager::Clear();
 
-	AnimateState state { "Open", false };
+	AnimateState state { "Start", false };
 	if (auto book = m_world->findActor("book"))
 	{
 		book->sendMessage("Animate", &state);

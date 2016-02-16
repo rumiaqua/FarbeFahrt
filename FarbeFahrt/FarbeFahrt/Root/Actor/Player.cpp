@@ -11,6 +11,8 @@
 # include "Utility/HandleList.h"
 # include "Utility/SingletonFinalizer.h"
 
+#include "Actor/Particle/LightParticleGenerator.h"
+
 #include "Utility/String.h"
 
 # include "Manager/MessageManager.h"
@@ -29,7 +31,7 @@ Player::Player(IWorld& world, const Vector3& position)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI / 2),
 		std::make_unique<Capsule>(Vector3(0, 0, 0), Vector3(0, 10, 0), 5.0f)
 		)
-	, m_canControl(true)
+	, m_canControl(false)
 	, m_isFallDown(false)
 {
 	m_moveSpeed = 1.5f;
@@ -42,6 +44,8 @@ void Player::onUpdate()
 	Vector3 moveVec;
 
 	++m_frame;
+
+	m_pose.position.y -= 2.0f;
 
 	if (m_canControl)
 	{
@@ -112,8 +116,6 @@ Vector3 Player::playerInput()
 		moveVec -= frontVec * m_moveSpeed;
 	}
 
-	m_pose.position.y -= 2.0f;
-
 	// 移動制限
 	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim - Correction, XLim - Correction);
 	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -ZLim, ZLim);
@@ -122,6 +124,12 @@ Vector3 Player::playerInput()
 	{
 		m_pose.position = m_world->findActor("PlayerSpawner")->getPosition();
 	}
+
+	//パーティクル生成
+	/*if (Input::IsClicked(KEY_INPUT_P))
+	{
+		m_world->addActor(ActorTag::Effect, std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius));
+	}*/
 
 	return moveVec;
 }

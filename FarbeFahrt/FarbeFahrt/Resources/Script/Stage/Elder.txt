@@ -9,13 +9,13 @@ r,ForestBGM,Sound/BGM/forest.mp3
 p,-180,30,-80
 
 # フィールド
-f,ElderGround,0,0,0,3
+f,ElderGround,0,0,0,3,Resources/Script/Animation/Elder.txt
 
 # ゴール
 o,Goal,,50,30,-80,null,1
 
 # ギミック
-o,Bookmark,Elder,90,25,0,null,Name:Elder/AddPoint
+o,Bookmark,Elder,90,25,0,null,Name:Elder/AddPoint/Access:-30:30:-30
 
 # ギミック起動変数
 g,1

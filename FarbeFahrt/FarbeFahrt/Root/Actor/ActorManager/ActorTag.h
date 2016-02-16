@@ -10,4 +10,5 @@ enum class ActorTag
 	Collider,
 	Goal,
 	Field,
+	Environment,
 };

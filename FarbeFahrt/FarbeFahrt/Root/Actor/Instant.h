@@ -21,4 +21,5 @@ private:
 
 	bool m_isGravity;
 	bool m_isActive;
+	std::weak_ptr<BaseActor> m_particleSystem;
 };
