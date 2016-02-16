@@ -46,7 +46,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	//ÉQÅ[ÉÄñ{ëÃ
 	auto myGame = std::make_unique<MyGame>();
 
-	while (ProcessMessage() == 0 && !Input::IsClicked(KEY_INPUT_ESCAPE))
+	while (ProcessMessage() == 0/* && !Input::IsClicked(KEY_INPUT_ESCAPE)*/)
 	{
 		ShowCursor(true);
 		Input::Update();

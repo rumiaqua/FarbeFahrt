@@ -22,6 +22,10 @@ public:
 	/// <summary>トップシーンをポップする</summary>
 	virtual void popScene(float t, bool isSwallow = true) = 0;
 
+	virtual void setNowStaffRoll(bool nowStaffRoll) = 0;
+
+	virtual bool isNowStaffRoll() = 0;
+
 public:
 
 	/// <summary>基底シーンを変更する</summary>

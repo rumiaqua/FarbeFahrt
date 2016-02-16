@@ -15,6 +15,10 @@ class MyGame
 public:
 	MyGame();
 	void run();
+
+private:
+	bool checkNotOperation();
+
 private:
 	Renderer renderer;
 	Loader loader;
@@ -22,4 +26,5 @@ private:
 	bool initFlag;
 	SceneManager m_sceneManager;
 	NowLoading m_nowLoading;
+	float m_timer;
 };

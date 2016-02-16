@@ -48,7 +48,13 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 	loader.loadContent("Player", "Model/MMD魔導姉弟Ver1.1/ミハイル.pmx");
-	loader.loadContent("LightParticle","Texture/Particle.png");
+	loader.loadContent("LightParticle", "Texture/Particle.png");	
+
+	loader.loadContent("TitleChooseBack", "Texture/TitleChoose/Back.png");
+	loader.loadContent("YesOutMouse", "Texture/TitleChoose/yes.png");
+	loader.loadContent("YesOnMouse", "Texture/TitleChoose/yes_2.png");
+	loader.loadContent("NoOutMouse", "Texture/TitleChoose/no.png");
+	loader.loadContent("NoOnMouse", "Texture/TitleChoose/no_2.png");
 }
 
 void GameMain::initialize()
@@ -74,7 +80,7 @@ void GameMain::initialize()
 	// エンドの初期化
 	EndManager::Clear();
 
-	AnimateState state { "Start", false };
+	AnimateState state{ "Start", false };
 	if (auto book = m_world->findActor("book"))
 	{
 		book->sendMessage("Animate", &state);
@@ -92,6 +98,11 @@ void GameMain::update()
 	if (Mouse::IsClicked(MOUSE_INPUT_RIGHT))
 	{
 		m_manager->pushScene(Scene::BackLog);
+	}
+
+	if (Input::IsClicked(KEY_INPUT_ESCAPE))
+	{
+		m_manager->pushScene(Scene::TitleChoose);
 	}
 
 	m_world->update();
@@ -140,7 +151,7 @@ void GameMain::post()
 			{
 				EndManager::Set(m_stageManager.endName());
 				// フィールドと本のエンドアニメーションを再生する
-				AnimateState state { "End", false };
+				AnimateState state{ "End", false };
 				m_world->findGroup(ActorTag::Field)->sendMessage("Animate", &state);
 				if (auto book = m_world->findActor("book"))
 				{
