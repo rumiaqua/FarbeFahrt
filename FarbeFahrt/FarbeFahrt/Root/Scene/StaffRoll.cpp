@@ -28,6 +28,7 @@ void StaffRoll::loadContents(Loader& loader)
 void StaffRoll::initialize()
 {
 	m_elapsedTime = 0.0f;
+	m_manager->setNowStaffRoll(true);
 }
 
 void StaffRoll::update()
@@ -35,6 +36,7 @@ void StaffRoll::update()
 	if (m_elapsedTime > m_needTime ||
 		Mouse::IsClicked(MOUSE_INPUT_2))
 	{
+		m_manager->setNowStaffRoll(false);
 		m_manager->changeScene(Scene::Title, 180.0f);
 	}
 

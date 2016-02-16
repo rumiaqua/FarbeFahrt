@@ -17,6 +17,7 @@ public:
 	virtual void post() override;
 	virtual void cleanUp() override;
 	virtual bool isSwallow() const override;
+
 private:
 	Loader* m_loader;
 	std::shared_ptr<World> m_world;

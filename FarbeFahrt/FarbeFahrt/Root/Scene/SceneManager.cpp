@@ -10,6 +10,7 @@
 # include "FadeOut.inl"
 
 SceneManager::SceneManager()
+	: m_nowStaffRoll(false)
 {
 
 }
@@ -60,9 +61,19 @@ bool SceneManager::hasChanged() const
 	return !m_ops.empty();
 }
 
+void SceneManager::setNowStaffRoll(bool staffRoll)
+{
+	m_nowStaffRoll = staffRoll;
+}
+
+bool SceneManager::isNowStaffRoll()
+{
+	return m_nowStaffRoll;
+}
+
 void SceneManager::changeScene(const Scene& scene, float t, bool isSwallow)
 {
-	pushOperation([=] (Loader& loader)
+	pushOperation([=](Loader& loader)
 	{
 		push(create<FadeOut>(
 			t, [=] { changeScene(scene); }, isSwallow), loader);
@@ -71,7 +82,7 @@ void SceneManager::changeScene(const Scene& scene, float t, bool isSwallow)
 
 void SceneManager::replaceScene(const Scene& scene, float t, bool isSwallow)
 {
-	pushOperation([=] (Loader& loader)
+	pushOperation([=](Loader& loader)
 	{
 		push(create<FadeOut>(
 			t, [=] { replaceScene(scene); }, isSwallow), loader);
@@ -80,7 +91,7 @@ void SceneManager::replaceScene(const Scene& scene, float t, bool isSwallow)
 
 void SceneManager::pushScene(const Scene& scene, float t, bool isSwallow)
 {
-	pushOperation([=] (Loader& loader)
+	pushOperation([=](Loader& loader)
 	{
 		push(create<FadeOut>(
 			t, [=] { pushScene(scene); }, isSwallow), loader);
@@ -89,16 +100,16 @@ void SceneManager::pushScene(const Scene& scene, float t, bool isSwallow)
 
 void SceneManager::popScene(float t, bool isSwallow)
 {
-	pushOperation([=] (Loader& loader)
+	pushOperation([=](Loader& loader)
 	{
 		push(create<FadeOut>(
-			t ,[=] { popScene(); }, isSwallow), loader);
+			t, [=] { popScene(); }, isSwallow), loader);
 	});
 }
 
 void SceneManager::changeScene(const Scene& scene)
 {
-	pushOperation([=] (Loader& loader)
+	pushOperation([=](Loader& loader)
 	{
 		clear();
 		push(m_scenes.at(scene), loader);
@@ -107,7 +118,7 @@ void SceneManager::changeScene(const Scene& scene)
 
 void SceneManager::replaceScene(const Scene& scene)
 {
-	pushOperation([=] (Loader& loader)
+	pushOperation([=](Loader& loader)
 	{
 		pop();
 		push(m_scenes.at(scene), loader);
@@ -116,7 +127,7 @@ void SceneManager::replaceScene(const Scene& scene)
 
 void SceneManager::pushScene(const Scene& scene)
 {
-	pushOperation([=] (Loader& loader)
+	pushOperation([=](Loader& loader)
 	{
 		push(m_scenes.at(scene), loader);
 	});
@@ -124,7 +135,7 @@ void SceneManager::pushScene(const Scene& scene)
 
 void SceneManager::popScene()
 {
-	pushOperation([=] (Loader&)
+	pushOperation([=](Loader&)
 	{
 		pop();
 	});
