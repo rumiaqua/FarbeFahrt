@@ -53,8 +53,6 @@
     <ClCompile Include="Root\Message\MessageData.cpp" />
     <ClCompile Include="Root\Message\MessageOperation.cpp" />
     <ClCompile Include="Root\Manager\EndManager.cpp" />
-    <ClCompile Include="Root\Scene\SceneManager.cpp" />
-    <ClCompile Include="Root\Scene\StaffRoll.cpp" />
     <ClCompile Include="Root\Utility\Def.cpp" />
     <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
