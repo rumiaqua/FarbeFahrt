@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Root\Actor\Adele.cpp" />
     <ClCompile Include="Root\Scene\BlackOut.cpp" />
     <ClCompile Include="Root\Actor\AnimateActor.cpp" />
     <ClCompile Include="Root\Actor\Boat.cpp" />
@@ -52,6 +53,10 @@
     <ClCompile Include="Root\Message\MessageData.cpp" />
     <ClCompile Include="Root\Message\MessageOperation.cpp" />
     <ClCompile Include="Root\Manager\EndManager.cpp" />
+    <ClCompile Include="Root\Scene\Message.cpp" />
+    <ClCompile Include="Root\Scene\SceneManager.cpp" />
+    <ClCompile Include="Root\Scene\StaffRoll.cpp" />
+    <ClCompile Include="Root\Utility\Def.cpp" />
     <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
@@ -100,6 +105,7 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Actor\Adele.h" />
     <ClInclude Include="Root\Scene\BlackOut.h" />
     <ClInclude Include="Root\Actor\AnimateActor.h" />
     <ClInclude Include="Root\Actor\Boat.h" />

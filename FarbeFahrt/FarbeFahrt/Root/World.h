@@ -11,10 +11,12 @@
 
 # include <string>
 
+# include "Scene\ISceneMediator.h"
+
 class World : public IWorld
 {
 public:
-	World();
+	World(ISceneMediator* manager);
 	void update();
 	void draw(Renderer& renderer)const;
 	virtual void addCamera(const Actor& camera);
@@ -34,4 +36,5 @@ private:
 	Actor m_skydome;
 	Actor m_camera;
 	Stage m_stage;
+	SceneManager m_manager;
 };

@@ -1,7 +1,7 @@
 #include "World.h"
 
-World::World()
-	: m_stage(this)
+World::World(ISceneMediator* manager)
+	: m_stage(this,manager)
 {
 	// ƒJƒƒ‰‚Ì‰Šú‰»
 	m_camera = std::make_shared<Camera>(*this);

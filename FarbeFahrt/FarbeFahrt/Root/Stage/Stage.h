@@ -3,13 +3,15 @@
 # include "Actor/ActorManager/ActorManager.h"
 # include "StageData.h"
 
+#include "Scene\SceneManager.h"
+
 class World;
 
 class Stage
 {
 public:
 
-	Stage(World* world);
+	Stage(World* world,ISceneMediator* manager);
 
 public:
 
@@ -50,6 +52,6 @@ private:
 	ActorManager m_actorManager;
 
 	std::string m_stageName;
-
+	ISceneMediator* m_manager;
 	int m_point;
 };

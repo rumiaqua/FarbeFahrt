@@ -21,36 +21,42 @@ LightParticleGenerator::LightParticleGenerator(IWorld & world, const Vector3 & p
 	, m_counta(0.0f)
 	, m_radius(radius + 5.0f)
 	, m_genPos(Vector3::Zero())
+	, m_isActive(false)
 {
 }
 
 void LightParticleGenerator::onUpdate()
 {
-	m_timer++;
-
-	if (m_timer / 60 >= Interval)
+	if (m_isActive)
 	{
-		m_genPos = Vector3(
-			getPosition().x + Math::Cos(m_counta) * m_radius, 
-			getPosition().y,
-			getPosition().z + Math::Sin(m_counta) * m_radius);
-		m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
+		m_timer++;
 
-		m_genPos = Vector3(
-			getPosition().x + Math::Cos(m_counta + Math::ToRadian(120.0f)) * m_radius,
-			getPosition().y, 
-			getPosition().z + Math::Sin(m_counta + Math::ToRadian(120.0f)) * m_radius);
-		m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
+		if (m_timer / 60 >= Interval)
+		{
+			m_genPos = Vector3(
+				getPosition().x + Math::Cos(m_counta) * m_radius,
+				getPosition().y,
+				getPosition().z + Math::Sin(m_counta) * m_radius);
+			m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
 
-		m_genPos = Vector3(
-			getPosition().x + Math::Cos(m_counta + Math::ToRadian(240.0f)) * m_radius,
-			getPosition().y, 
-			getPosition().z + Math::Sin(m_counta + Math::ToRadian(240.0f)) * m_radius);
-		m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
+			m_genPos = Vector3(
+				getPosition().x + Math::Cos(m_counta + Math::ToRadian(120.0f)) * m_radius,
+				getPosition().y,
+				getPosition().z + Math::Sin(m_counta + Math::ToRadian(120.0f)) * m_radius);
+			m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
 
-		m_counta += Interval * 2;
-		m_timer = std::fmodf(m_timer, 60 * Interval);
+			m_genPos = Vector3(
+				getPosition().x + Math::Cos(m_counta + Math::ToRadian(240.0f)) * m_radius,
+				getPosition().y,
+				getPosition().z + Math::Sin(m_counta + Math::ToRadian(240.0f)) * m_radius);
+			m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
+
+			m_counta += Interval * 2;
+			m_timer = std::fmodf(m_timer, 60 * Interval);
+		}
 	}
+
+	return BaseActor::onUpdate();
 }
 
 void LightParticleGenerator::onMessage(const std::string & message, void * parameter)
@@ -58,6 +64,15 @@ void LightParticleGenerator::onMessage(const std::string & message, void * param
 	if (message == "kill")
 	{
 		kill();
+	}
+
+	if (message == "Wake")
+	{
+		m_isActive = true;
+	}
+	if (message == "Sleep")
+	{
+		m_isActive = false;
 	}
 
 	BaseActor::onMessage(message, parameter);

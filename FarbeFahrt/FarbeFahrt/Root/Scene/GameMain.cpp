@@ -29,6 +29,8 @@
 
 # include "Experimental/AnimateState.h"
 
+# include "Scene\ISceneMediator.h"
+
 GameMain::GameMain()
 	: m_stageManager()
 {
@@ -61,7 +63,7 @@ void GameMain::initialize()
 {
 	StoryManager::initialize();
 
-	m_world = std::make_shared<World>();
+	m_world = std::make_shared<World>(m_manager);
 
 	// –{
 	m_world->addActor(ActorTag::Environment, std::make_shared<Field>(

@@ -21,7 +21,6 @@ StageManager::StageManager()
 	: m_current()
 	, m_next()
 {
-
 }
 
 void StageManager::initialize(const std::string& indexFilename)

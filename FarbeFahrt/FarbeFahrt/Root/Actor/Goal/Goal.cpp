@@ -17,17 +17,20 @@ Goal::Goal(IWorld& world, const std::string& modelName, const Vector3 & position
 
 void Goal::onUpdate()
 {
-	if (!m_particled)
+	int gimmick = GimmickManager::get();
+	if (!m_particled && gimmick >= m_threshold)
 	{
-		m_world->addActor(ActorTag::Effect, std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius));
+		auto particle = std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius);
+		particle->sendMessage("Wake", nullptr);
+		m_world->addActor(ActorTag::Effect, particle);
 		m_particled = true;
 	}
 }
 
 void Goal::onDraw(Renderer & renderer) const
 {
-	// renderer.drawNormalModel(m_name, getPosition(), getRotation());
-
+	Debug::Println(String::Create("GimmickGet : ", GimmickManager::get()));
+	Debug::Println(String::Create("Threshold : ", m_threshold));
 	BaseActor::onDraw(renderer);
 }
 

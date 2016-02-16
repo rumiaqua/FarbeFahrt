@@ -15,7 +15,8 @@ f,HouseDGround,0,0,0,3,Resources/Script/Animation/HouseD.txt
 o,Goal,,-180,30,-80,null,1
 
 # ギミック
-o,Instant,Herb,-80,30,-25,null,IsKinematic
+#o,Instant,Herb,-80,30,-25,null,IsKinematic
+o,Adele,Adele,-80,30,-25,null
 
 # ギミック起動変数
 

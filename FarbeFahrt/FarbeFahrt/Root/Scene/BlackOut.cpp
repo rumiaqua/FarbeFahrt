@@ -13,16 +13,18 @@ void BlackOut::loadContents(Loader& loader)
 
 void BlackOut::initialize()
 {
+	
 }
 
 void BlackOut::update()
 {
-	//‚±‚±‚ÉˆÃ“]’†‚Ìˆ—‚ð‘‚­—\’è‚¾‚æ
+	m_manager->popScene(60.0f);
 }
 
 void BlackOut::draw(Renderer& renderer)
 {
-	m_renderer = renderer;
+	renderer.drawTexture("curtain",Renderer::AspectType::Fit);
+	renderer.ChangeNight();
 }
 
 void BlackOut::post()

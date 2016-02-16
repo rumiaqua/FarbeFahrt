@@ -28,11 +28,13 @@
 # include "Experimental/Bookmark.h"
 # include "Experimental/ActionBookmark.h"
 
-Stage::Stage(World* world)
+# include "Actor\Adele.h"
+
+Stage::Stage(World* world,ISceneMediator* manager)
 	: m_world(world)
 	, m_actorManager()
 {
-
+	m_manager = manager;
 }
 
 void Stage::apply(const StageData& data, bool isClear)
@@ -116,7 +118,7 @@ void Stage::apply(const StageData& data, bool isClear)
 		if (object.name == "Goal")
 		{
 			auto parameter = String::Split(object.parameter, '/');
-			int threthold = parameter.size() > 0 ? String::ToValue<int>(parameter[0]) : 0;
+			int threthold = parameter[0] != "" ? String::ToValue<int>(parameter[0]) : 0;
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
 				*m_world, object.resource, object.position, threthold));
 		}		
@@ -125,6 +127,13 @@ void Stage::apply(const StageData& data, bool isClear)
 			m_world->addActor(ActorTag::Object, std::make_shared<Instant>(
 				*m_world, object.resource, object.position, String::Split(object.parameter, '/')));
 		}
+		//Ó”CŽÒ‚È‚è‚½‚ñ
+		if (object.name == "Adele")
+		{
+			m_world->addActor(ActorTag::Object, std::make_shared<Adele>(
+				*m_world, object.resource, object.position,m_manager));
+		}
+		//‚È‚è‚½‚ñ‚±‚±‚Ü‚Å
 		if (object.name == "Bookmark")
 		{
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<Bookmark>(

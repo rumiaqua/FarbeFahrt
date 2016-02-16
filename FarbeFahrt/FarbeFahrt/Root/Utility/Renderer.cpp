@@ -98,7 +98,7 @@ void Renderer::drawDepth()
 	SetBackgroundColor(0, 0, 0);
 
 	SetupCamera_Ortho(600.0f);
-	SetCameraNearFar(1.0f, 500.0f);
+	SetCameraNearFar(1.0f, 800.0f);
 	SetCameraPositionAndTarget_UpVecY(LIGHT_POSITION, LIGHT_TARGET);
 
 	// 現在の設定を保持
@@ -140,7 +140,7 @@ void Renderer::drawDepth()
 void Renderer::drawModelWithDepthShadow()
 {
 	// クリップ面の指定
-	SetCameraNearFar(1.0f, 600.0f);
+	SetCameraNearFar(10.0f, 800.0f);
 	// カメラのビュー行列を保存した行列に変更
 	SetCameraPositionAndTarget_UpVecY(m_cameraData.pos, m_cameraData.terget);
 	// 自作シェーダーの使用開始

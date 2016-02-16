@@ -1,3 +1,5 @@
 Open,-1,000
-Close,-1,001
+Fish,000,003
+Close,000,002
+Close,003,001
 End,-1,000R

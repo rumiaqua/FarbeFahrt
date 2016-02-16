@@ -9,6 +9,7 @@
 # include "Scene/Message.h"
 # include "Scene/Opening.h"
 # include "Scene/Title.h"
+# include "Scene/BlackOut.h"
 # include "Scene/BackLog.h"
 #include "Utility/Mouse.h"
 #include "Manager/EndManager.h"
@@ -51,6 +52,7 @@ MyGame::MyGame()
 	m_sceneManager.addScene<Message>(Scene::Message);
 	m_sceneManager.addScene<Title>(Scene::Title);
 	m_sceneManager.addScene<AllResourceLoad>(Scene::AllResourceLoad);
+	m_sceneManager.addScene<BlackOut>(Scene::BlackOut);
 	m_sceneManager.addScene<BackLog>(Scene::BackLog);
 	m_sceneManager.addScene<TitleChoose>(Scene::TitleChoose);
 
@@ -102,7 +104,7 @@ void MyGame::run()
 	// ÉçÅ[ÉhíÜÇ»ÇÁâΩÇ‡ÇµÇ»Ç¢
 	if (loader.isLoad())
 	{
-		m_nowLoading.draw();
+		m_nowLoading.draw(renderer);
 		return;
 	}
 

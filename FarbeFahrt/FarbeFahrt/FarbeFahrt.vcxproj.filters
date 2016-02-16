@@ -234,6 +234,12 @@
     <ClCompile Include="Root\Utility\RandomDevice.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Actor\Adele.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Utility\Def.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="Root\Scene\End.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>

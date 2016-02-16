@@ -7,7 +7,7 @@ public:
 	NowLoading();
 	~NowLoading();
 public:
-	void draw();
+	void draw(Renderer& renderer);
 private:
 	int m_frame;
 	int m_backHandle;
