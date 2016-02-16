@@ -26,6 +26,10 @@ Instant::Instant(IWorld& world, const std::string& name, const Vector3& position
 		{
 			m_message = String::Split(param, ':')[1];
 		}
+		if (param.find("Accessory") != std::string::npos)
+		{
+			m_accessory = String::Split(param, ':')[1];
+		}
 	}
 }
 
@@ -87,6 +91,12 @@ void Instant::onMessage(const std::string& message, void* parameter)
 			MessageManager::Add(m_message.ref());
 			MessageManager::SetShow(true);
 			m_message = none;
+		}
+
+		if (m_accessory)
+		{
+			m_world->findGroup(ActorTag::Environment)
+				->find("Accessory")->sendMessage("VisibleAccessory", &m_accessory.ref());
 		}
 	}
 

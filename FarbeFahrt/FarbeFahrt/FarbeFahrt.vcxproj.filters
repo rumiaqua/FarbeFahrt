@@ -246,6 +246,12 @@
     <ClCompile Include="Root\Scene\BlackOut.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Actor\Adele.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Utility\Def.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="Root\Actor\Particle\LightParticle.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -255,10 +261,7 @@
     <ClCompile Include="Root\Utility\RandomDevice.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Actor\Adele.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Utility\Def.cpp">
+    <ClCompile Include="Root\Actor\Accessory.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -554,6 +557,9 @@
     <ClInclude Include="Root\Scene\BlackOut.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Actor\Adele.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
     <ClInclude Include="Root\Actor\Particle\LightParticle.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -563,7 +569,7 @@
     <ClInclude Include="Root\Utility\RandomDevice.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Actor\Adele.h">
+    <ClInclude Include="Root\Actor\Accessory.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

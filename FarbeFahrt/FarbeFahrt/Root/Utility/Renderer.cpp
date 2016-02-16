@@ -109,6 +109,7 @@ void Renderer::drawDepth()
 	MV1SetUseOrigShader(TRUE);
 	// ピクセルシェーダーを指定
 	SetUsePixelShader(m_shaderHandle.depthRecord_pixel);
+
 	// 全モデルデータの表示
 	for (auto&& model : m_modelData)
 	{
@@ -131,6 +132,7 @@ void Renderer::drawDepth()
 		// モデルの描画
 		MV1DrawModel(model.second.modelHandle);
 	}
+
 	// 自作シェーダーの使用終了
 	MV1SetUseOrigShader(FALSE);
 	// 描画ターゲットを背面に変更
@@ -156,6 +158,38 @@ void Renderer::drawModelWithDepthShadow()
 
 	// 影用深度記録画像をテクスチャ１にセット
 	SetUseTextureToShader(1, m_buffer.depthBuffer);
+
+	// 不透明描画
+	MV1SetSemiTransDrawMode(DX_SEMITRANSDRAWMODE_NOT_SEMITRANS_ONLY);
+
+	// 全モデルデータの描画
+	for (auto& model : m_modelData)
+	{
+		if (model.second.Use == false)
+		{
+			continue;
+		}
+		if (model.second.isSkinMesh)//スキンメッシュの影描画用
+		{
+			// 
+			// スキンメッシュ用の頂点シェーダーを使用
+			SetUseVertexShader(m_shaderHandle.render_skin);
+		}
+		//剛体メッシュの影描画用
+		// そうでなければ
+		else
+		{
+			// 剛体メッシュ用の頂点シェーダーを使用
+			SetUseVertexShader(m_shaderHandle.render_normal);
+		}
+		// モデルの描画
+		MV1DrawModel(model.second.modelHandle);
+		// model.second.Use = false;
+	}
+
+	// 半透明描画
+	MV1SetSemiTransDrawMode(DX_SEMITRANSDRAWMODE_SEMITRANS_ONLY);
+
 	// 全モデルデータの描画
 	for (auto& model : m_modelData)
 	{
@@ -180,6 +214,10 @@ void Renderer::drawModelWithDepthShadow()
 		MV1DrawModel(model.second.modelHandle);
 		model.second.Use = false;
 	}
+
+	// 通常描画
+	MV1SetSemiTransDrawMode(DX_SEMITRANSDRAWMODE_ALWAYS);
+
 	// 自作シェーダーの使用終了
 	MV1SetUseOrigShader(FALSE);
 	// テクスチャ１を無効にする
