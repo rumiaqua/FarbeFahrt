@@ -45,9 +45,10 @@ void GameMain::loadContents(Loader& loader)
 	// ‚Æ‚è‚ ‚¦‚¸‚±‚±‚É‚¨‚¢‚Ä‚¨‚­
 	loader.loadContent("desk", "Model/Š÷/‚Â‚­‚¦.mqo");
 
-	loader.loadContent("TrueEnd", "Texture/end/true.png");
+	loader.loadContent("end1", "Texture/end/end1.png");
+	loader.loadContent("end2", "Texture/end/end2.png");
+
 	loader.loadContent("Message", "Texture/end/message.png");
-	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 	loader.loadContent("Player", "Model/MMD–‚“±Žo’íVer1.1/ƒ~ƒnƒCƒ‹.pmx");
 	loader.loadContent("LightParticle","Texture/Particle.png");
@@ -64,7 +65,7 @@ void GameMain::initialize()
 		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Book.txt"));
 	// Š÷
 	m_world->addActor(ActorTag::Environment, std::make_shared<StaticObject>(
-		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
+		*m_world, "desk", Vector3(-60.0f, -330.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
 
 
 	// m_stageManager.next(m_world.get());
