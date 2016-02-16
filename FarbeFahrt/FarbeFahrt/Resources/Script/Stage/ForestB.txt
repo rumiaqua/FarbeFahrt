@@ -17,7 +17,7 @@ f,ForestBGround,0,0,0,3,Resources/Script/Animation/ForestB.txt
 o,Goal,,50,30,-80,null,1
 
 # ÉMÉ~ÉbÉN
-o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate
+o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Opening
 o,ActionBookmark,Fall,90,25,-50,null,Herb/Activate
 o,ActionBookmark,Fall,90,25,-50,null,Herb/Fall
 o,Bookmark,Ivy,90,25,50,null,Name:Ivy

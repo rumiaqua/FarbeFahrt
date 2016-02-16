@@ -3,12 +3,14 @@
 # include "Gimmick/GimmickManager.h"
 # include "Utility/Math.h"
 
-#include "Actor/Particle/LightParticleGenerator.h"
+# include "Actor/Particle/LightParticleGenerator.h"
+# include "Manager/MessageManager.h"
 
 Instant::Instant(IWorld& world, const std::string& name, const Vector3& position, const std::vector<std::string>& parameter)
 	: BaseActor(world, name, position, Matrix::identity(), std::make_shared<Sphere>(Vector3::Zero(), 3.0f))
 	, m_isGravity(true)
 	, m_isActive(true)
+	, m_message(none)
 {
 	for (auto&& param : parameter)
 	{
@@ -19,6 +21,10 @@ Instant::Instant(IWorld& world, const std::string& name, const Vector3& position
 		if (param == "NonActivate")
 		{
 			m_isActive = false;
+		}
+		if (param.find("Message") != std::string::npos)
+		{
+			m_message = String::Split(param, ':')[1];
 		}
 	}
 }
@@ -75,6 +81,13 @@ void Instant::onMessage(const std::string& message, void* parameter)
 			particleSystem->sendMessage("kill", nullptr);
 		}
 		GimmickManager::add(1);
+
+		if (m_message)
+		{
+			MessageManager::Add(m_message.ref());
+			MessageManager::SetShow(true);
+			m_message = none;
+		}
 	}
 
 	return BaseActor::onMessage(message, parameter);

@@ -1,6 +1,7 @@
 # pragma once
 
 # include "Actor/BaseActor.h"
+# include "Utility/Optional.h"
 
 class Instant : public BaseActor
 {
@@ -21,5 +22,6 @@ private:
 
 	bool m_isGravity;
 	bool m_isActive;
+	Optional<std::string> m_message;
 	std::weak_ptr<BaseActor> m_particleSystem;
 };
