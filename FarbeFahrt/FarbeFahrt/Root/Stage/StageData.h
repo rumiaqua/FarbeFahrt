@@ -17,8 +17,7 @@ struct StageData
 		Vector3 position;
 		float scale;
 		std::string transition;
-		float animationTime;
-		FieldObj(const std::string& name, const Vector3& position, float scale, const std::string& transition, float animationTime);
+		FieldObj(const std::string& name, const Vector3& position, float scale, const std::string& transition);
 	};
 
 	struct Object

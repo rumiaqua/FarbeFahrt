@@ -12,7 +12,7 @@ r,CityBGM,Sound/BGM/town.mp3
 p,-180,30,-80
 
 # フィールド
-f,CityGround,0,0,0,3,Resources/Script/Animation/City.txt,320.0f
+f,CityGround,0,0,0,3,Resources/Script/Animation/City.txt
 
 # ゴール
 o,Goal,,50,30,-80,null

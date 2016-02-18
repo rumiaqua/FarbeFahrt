@@ -76,17 +76,12 @@ public:
 					String::ToValue<float>(split[3]),
 					String::ToValue<float>(split[4]));
 				float scale = String::ToValue<float>(split[5]);
-				float animationTime = 180.0f;
-				if (split.size() > 7)
-				{
-					animationTime = String::ToValue<float>(split[7]);
-				}
 				std::string transition = "Resources/Script/Animation/Default.txt";
 				if (split.size() > 6)
 				{
 					transition = split[6];
 				}
-				output.fieldList.emplace_back(name, position, scale, transition, animationTime);
+				output.fieldList.emplace_back(name, position, scale, transition);
 			}
 
 			// オブジェクト配置

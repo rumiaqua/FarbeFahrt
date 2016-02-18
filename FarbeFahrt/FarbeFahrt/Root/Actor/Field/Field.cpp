@@ -14,7 +14,12 @@
 
 # include "Experimental/AnimateState.h"
 
-Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition, float animationTime)
+namespace
+{
+	const float ANIMATION_FRAME = 180.0f;
+}
+
+Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition)
 	:BaseActor(world, name, position, Matrix::identity(),
 		std::make_unique<ModelCollider>(name)), m_scale(scale)
 	, m_elapsedTime(0.0f)
@@ -26,7 +31,7 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	, m_machine(transition)
 	, m_current()
 	, m_cameraProgress(false)
-	, m_animationTime(animationTime)
+	, m_animationTime(ANIMATION_FRAME)
 {
 
 }
@@ -167,6 +172,7 @@ void Field::animateProcess(const AnimateState& state)
 	bool isReversed = state.isReversed ^ next.ref().isReversed;
 
 	m_current = state.name;
+	m_animationTime = ANIMATION_FRAME * next.ref().time;
 	m_elapsedTime = isReversed ? m_animationTime : 0;
 	m_animationNumber = next.ref().handle;
 	m_isReversed = isReversed;
