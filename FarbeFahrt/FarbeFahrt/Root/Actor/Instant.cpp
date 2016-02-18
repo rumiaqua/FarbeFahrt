@@ -73,6 +73,11 @@ void Instant::onMessage(const std::string& message, void* parameter)
 		m_world->addActor(ActorTag::Effect, particleSystem);
 	}
 
+	if (message == "SubPoint")
+	{
+		GimmickManager::add(-1);
+	}
+
 	BaseActor* actor = static_cast<BaseActor*>(parameter);
 	if (m_isActive &&
 		!isDead() &&

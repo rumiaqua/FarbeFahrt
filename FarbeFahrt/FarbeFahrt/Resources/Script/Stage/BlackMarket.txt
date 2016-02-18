@@ -13,16 +13,14 @@ p,-180,30,-80
 f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarket.txt
 
 # ゴール
-o,Goal,,50,30,-80,null
+o,Goal,,50,30,-80,null,0
 
 # ギミック
 o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Opening/Accessory:MedicineAccessory
 o,ActionBookmark,Medicine,90,25,0,null,Herb/Activate
 o,ActionBookmark,Medicine,90,25,0,null,Herb/Fall
+o,ActionBookmark,Medicine,90,25,0,null,Herb/SubPoint
 o,ToNight,Medicine,90,25,0,null
-
-# ギミック起動変数
-g,0
 
 # 次のステージ
 n,Swamp,HouseD

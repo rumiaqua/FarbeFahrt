@@ -11,8 +11,10 @@ Goal::Goal(IWorld& world, const std::string& modelName, const Vector3 & position
 	BaseActor(world, modelName, position, Matrix::Rotation(Vector3::Up(), Math::PI), std::make_unique<Sphere>(Vector3::Zero(), 10.0f))
 	, m_threshold(threshold)
 	, m_particled(false)
+	, m_particleSystem(std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius))
 {
 	m_name = modelName;
+	m_world->addActor(ActorTag::Effect, m_particleSystem);
 }
 
 void Goal::onUpdate()
@@ -20,10 +22,13 @@ void Goal::onUpdate()
 	int gimmick = GimmickManager::get();
 	if (!m_particled && gimmick >= m_threshold)
 	{
-		auto particle = std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius);
-		particle->sendMessage("Wake", nullptr);
-		m_world->addActor(ActorTag::Effect, particle);
+		m_particleSystem->sendMessage("Wake", nullptr);
 		m_particled = true;
+	}
+	if (m_particled && gimmick < m_threshold)
+	{
+		m_particleSystem->sendMessage("Sleep", nullptr);
+		m_particled = false;
 	}
 }
 
