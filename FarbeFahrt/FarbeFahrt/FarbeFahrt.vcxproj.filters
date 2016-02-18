@@ -590,6 +590,9 @@
     <ClInclude Include="Root\Utility\Quaternion.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Actor\Adele.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Font\meiryo.ttc" />
@@ -1957,11 +1960,15 @@
     <Text Include="Resources\Script\Message\Ending3.txt" />
     <Text Include="Resources\Script\Message\ForestA.txt" />
     <Text Include="Resources\Script\Message\ForestB.txt" />
-    <Text Include="Resources\Script\Message\HouseD.txt" />
     <Text Include="Resources\Script\Message\Opening.txt" />
     <Text Include="Resources\Script\Message\Swamp.txt" />
     <Text Include="Resources\Script\Animation\HouseD.txt" />
     <Text Include="Resources\Script\Animation\Book.txt" />
+    <Text Include="Resources\Script\Message\医者の股間のテント.txt" />
+    <Text Include="Resources\Script\Message\闇市ギミック.txt" />
+    <Text Include="Resources\Script\Message\街で薬を手にいれたとき.txt" />
+    <Text Include="Resources\Script\Message\レオナから薬もらった.txt" />
+    <Text Include="Resources\Script\Message\HouseE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />

@@ -735,9 +735,13 @@
     <Text Include="Resources\Script\Message\Ending3.txt" />
     <Text Include="Resources\Script\Message\ForestA.txt" />
     <Text Include="Resources\Script\Message\ForestB.txt" />
-    <Text Include="Resources\Script\Message\HouseD.txt" />
+    <Text Include="Resources\Script\Message\HouseE.txt" />
+    <Text Include="Resources\Script\Message\レオナから薬もらった.txt" />
+    <Text Include="Resources\Script\Message\医者の股間のテント.txt" />
     <Text Include="Resources\Script\Message\Opening.txt" />
     <Text Include="Resources\Script\Message\Swamp.txt" />
+    <Text Include="Resources\Script\Message\街で薬を手にいれたとき.txt" />
+    <Text Include="Resources\Script\Message\闇市ギミック.txt" />
     <Text Include="Resources\Script\Stage\BlackMarket.txt" />
     <Text Include="Resources\Script\Stage\BlackMarketNight.txt" />
     <Text Include="Resources\Script\Stage\City.txt" />

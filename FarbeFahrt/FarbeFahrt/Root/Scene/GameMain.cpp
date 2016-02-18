@@ -49,6 +49,8 @@ void GameMain::loadContents(Loader& loader)
 
 	loader.loadContent("end1", "Texture/end/end1.png");
 	loader.loadContent("end2", "Texture/end/end2.png");
+	loader.loadContent("end3", "Texture/end/end3.png");
+	loader.loadContent("end5", "Texture/end/end5.png");
 
 	loader.loadContent("Message", "Texture/end/message.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
