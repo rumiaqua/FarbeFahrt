@@ -19,6 +19,7 @@ o,Goal,,50,30,-80,null
 o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Opening/Accessory:MedicineAccessory
 o,ActionBookmark,Medicine,90,25,0,null,Herb/Activate
 o,ActionBookmark,Medicine,90,25,0,null,Herb/Fall
+o,ToNight,Medicine,90,25,0,null
 
 # ギミック起動変数
 g,0

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Root\Actor\Accessory.cpp" />
     <ClCompile Include="Root\Actor\Adele.cpp" />
+    <ClCompile Include="Root\Actor\ToNight.cpp" />
     <ClCompile Include="Root\Scene\BlackOut.cpp" />
     <ClCompile Include="Root\Actor\AnimateActor.cpp" />
     <ClCompile Include="Root\Actor\Boat.cpp" />
@@ -107,6 +108,7 @@
   <ItemGroup>
     <ClInclude Include="Root\Actor\Accessory.h" />
     <ClInclude Include="Root\Actor\Adele.h" />
+    <ClInclude Include="Root\Actor\ToNight.h" />
     <ClInclude Include="Root\Scene\BlackOut.h" />
     <ClInclude Include="Root\Actor\AnimateActor.h" />
     <ClInclude Include="Root\Actor\Boat.h" />
