@@ -14,6 +14,7 @@
 # include "Actor/Gimmick/GimmickManager.h"
 # include "Actor/Instant.h"
 # include "Actor/Boat.h"
+# include "Actor/ToNight.h"
 
 # include "World.h"
 
@@ -151,6 +152,11 @@ void Stage::apply(const StageData& data, bool isClear)
 			std::string& actionName = parameter[1];
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<ActionBookmark>(
 				*m_world, object.resource, object.position, targetName, actionName));
+		}
+		if (object.name == "ToNight")
+		{
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<ToNight>(
+				*m_world, object.resource, object.position, m_manager));
 		}
 	}
 
