@@ -251,6 +251,23 @@ void Renderer::draw()
 	}
 	m_primitives.clear();
 
+	//3D‚Ì•`‰æ
+	for (auto& texture : m_draw3DList)
+	{
+		if (texture.alpha != 255)
+		{
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA, texture.alpha);
+			SetUseZBuffer3D(TRUE);
+			SetWriteZBuffer3D(TRUE);
+			DrawBillboard3D(texture.position, texture.cx, texture.cy, texture.size, texture.angle, texture.handle, TRUE, FALSE);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+		}
+		else
+		{
+			DrawBillboard3D(texture.position, texture.cx, texture.cy, texture.size, texture.angle, texture.handle, TRUE, FALSE);
+		}
+	}
+
 	//2‚c‚Ì•`‰æ
 	for (auto& texture : m_drawList)
 	{
@@ -265,23 +282,6 @@ void Renderer::draw()
 		{
 			DrawRotaGraph3(texture.x, texture.y, texture.cx, texture.cy, texture.extRateX, texture.extRateY,
 				texture.angle, texture.handle, TRUE, FALSE);
-		}
-	}
-
-	//3D‚Ì•`‰æ
-	for (auto& texture : m_draw3DList)
-	{
-		if (texture.alpha != 255)
-		{
-			SetDrawBlendMode(DX_BLENDMODE_ALPHA, texture.alpha);
-			SetUseZBuffer3D(TRUE); 
-			SetWriteZBuffer3D(TRUE);
-			DrawBillboard3D(texture.position, texture.cx, texture.cy, texture.size, texture.angle, texture.handle, TRUE, FALSE);
-			SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-		}
-		else
-		{
-			DrawBillboard3D(texture.position, texture.cx, texture.cy, texture.size, texture.angle, texture.handle, TRUE, FALSE);
 		}
 	}
 

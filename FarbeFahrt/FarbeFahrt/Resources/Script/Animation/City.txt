@@ -1,6 +1,7 @@
 Open,-1,000,1.7f
+Close,000,007
 Close,002,008
-Close,010,007
+Close,010,008
 End,-1,000R
 Market,000,002
 Bell,002,010
