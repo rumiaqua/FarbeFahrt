@@ -12,14 +12,13 @@ r,CityBGM,Sound/BGM/town.mp3
 p,-180,30,-80
 
 # フィールド
-f,CityGround,0,0,0,3,Resources/Script/Animation/City.txt
+f,CityGround,0,0,0,3,Resources/Script/Animation/City.txt,320.0f
 
 # ゴール
 o,Goal,,50,30,-80,null
 
 # ギミック
 o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Opening/Accessory:MedicineAccessory
-o,Bookmark,Tent,90,25,50,null,Name:Tent/Access:-70:30:-50
 o,Bookmark,Market,90,25,0,null,Name:Market/Access:-70:30:-50
 o,Bookmark,Bell,90,25,-50,null,Name:Bell/Access:-70:30:-50
 o,ActionBookmark,Bell,90,25,-50,null,Herb/Activate
