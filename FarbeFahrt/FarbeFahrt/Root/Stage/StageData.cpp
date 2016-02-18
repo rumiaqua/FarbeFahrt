@@ -1,10 +1,11 @@
 # include "StageData.h"
 
-StageData::FieldObj::FieldObj(const std::string& name, const Vector3& position, float scale, const std::string& transition)
+StageData::FieldObj::FieldObj(const std::string& name, const Vector3& position, float scale, const std::string& transition, float animationTime)
 	: name(name)
 	, position(position)
 	, scale(scale)
 	, transition(transition)
+	, animationTime(animationTime)
 {
 
 }

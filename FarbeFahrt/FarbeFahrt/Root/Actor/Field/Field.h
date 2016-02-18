@@ -10,7 +10,7 @@ class Field :
 	public BaseActor
 {
 public:
-	explicit Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition);
+	explicit Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition, float animationTime);
 public:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& renderer)const override;
@@ -31,4 +31,5 @@ private:
 	AnimationTransitionMachine m_machine;
 	std::string m_current;
 	float m_cameraProgress;
+	float m_animationTime;
 };

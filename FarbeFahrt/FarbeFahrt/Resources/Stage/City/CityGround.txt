@@ -1,28 +1,27 @@
 ハイレス
 
-HeilesGround000.vmd
-開く
+HilesGround000.vmd
+開く→両端のテントON
 
-HeilesGround001.vmd
+HilesGround001.vmd
 テントOFFでマーケットON
-HeilesGround002.vmd
+HilesGround002.vmd
 テントONでマーケットON
-HeilesGround003.vmd
+HilesGround003.vmd
 マーケットOFFでテントON
-HeilesGround004.vmd
+HilesGround004.vmd
 マーケットONでテントON
 
-HeilesGround005.vmd
+HilesGround005.vmd
 テントOFF・マーケットOFFで閉じる
-HeilesGround006.vmd
+HilesGround006.vmd
 テントOFF・マーケットONで閉じる
-HeilesGround007.vmd
+HilesGround007.vmd
 テントON・マーケットOFFで閉じる
-HeilesGround008.vmd
+HilesGround008.vmd
 テントON・マーケットONで閉じる
 
-HeilesGround009.vmd
-テントOFFで鈴がなる
-
-HeilesGround010.vmd
-テントONで鈴がなる
+HilesGround009.vmd
+テントOFF・マーケットONでベルなる
+HilesGround010.vmd
+テントON・マーケットONでベルなる
