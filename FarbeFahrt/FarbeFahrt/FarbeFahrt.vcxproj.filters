@@ -63,6 +63,15 @@
     <ClCompile Include="Root\Manager\EndManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Scene\End.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\GameMain.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\StaffRoll.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="Root\Stage\Stage.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -144,6 +153,12 @@
     <ClCompile Include="Root\Manager\MessageManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Scene\Message.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\SceneManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="Root\Message\MessageData.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -154,6 +169,12 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Experimental\ObjectViewer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\Opening.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Scene\Title.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Actor\AnimateActor.cpp">
@@ -225,6 +246,12 @@
     <ClCompile Include="Root\Scene\BlackOut.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Root\Actor\Adele.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Utility\Def.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="Root\Actor\Particle\LightParticle.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -234,34 +261,16 @@
     <ClCompile Include="Root\Utility\RandomDevice.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Root\Actor\Adele.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Utility\Def.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\End.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\GameMain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\Message.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\Opening.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\SceneManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\StaffRoll.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Root\Scene\Title.cpp">
+    <ClCompile Include="Root\Actor\Accessory.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Root\Scene\TitleChoose.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Utility\Easing.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Root\Utility\Quaternion.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -333,6 +342,12 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Manager\EndManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\End.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\StaffRoll.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Stage\IStageDataBuilder.h">
@@ -443,6 +458,18 @@
     <ClInclude Include="Root\Manager\MessageManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Scene\GameMain.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\ISceneMediator.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\Message.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\SceneManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
     <ClInclude Include="Root\Message\MessageData.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -456,6 +483,15 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Experimental\ObjectViewer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\Opening.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\Scene.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Scene\Title.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Actor\AnimateActor.h">
@@ -530,6 +566,9 @@
     <ClInclude Include="Root\Scene\BlackOut.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Root\Actor\Adele.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
     <ClInclude Include="Root\Actor\Particle\LightParticle.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -539,34 +578,16 @@
     <ClInclude Include="Root\Utility\RandomDevice.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Root\Scene\End.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\GameMain.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\ISceneMediator.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\Message.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\Opening.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\Scene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\SceneManager.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\StaffRoll.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Root\Scene\Title.h">
+    <ClInclude Include="Root\Actor\Accessory.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Scene\TitleChoose.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Utility\Easing.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Root\Utility\Quaternion.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Root\Actor\Adele.h">
@@ -576,6 +597,12 @@
   <ItemGroup>
     <None Include="Resources\Font\meiryo.ttc" />
     <None Include="Resources\Font\meiryob.ttc" />
+    <None Include="Root\Scene\FadeIn.inl">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
+    <None Include="Root\Scene\FadeOut.inl">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
     <None Include="Resources\Stage\ハイレス\ハイレス地面\ハイレス（テクスチャあり）.mqo" />
     <None Include="Resources\Stage\森\森地面\森地面.pmx" />
     <None Include="Resources\Stage\森\森地面\森地面000.vmd" />
@@ -679,12 +706,6 @@
     <None Include="Resources\Script_\Stage\index.csv" />
     <None Include="Resources\Script\Stage\index.csv" />
     <None Include="Resources\Script\Message\index.csv" />
-    <None Include="Root\Scene\FadeIn.inl">
-      <Filter>ヘッダー ファイル</Filter>
-    </None>
-    <None Include="Root\Scene\FadeOut.inl">
-      <Filter>ヘッダー ファイル</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Font\えるまー.ttf" />

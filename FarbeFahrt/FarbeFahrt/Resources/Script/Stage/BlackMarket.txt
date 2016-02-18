@@ -1,4 +1,6 @@
 # 使用するリソース
+r,Medicine,Model/Gimmick/bookmark.mqo
+r,Herb,Model/Herb/Herb.pmx
 
 # フィールドリソース
 r,BlackMarketGround,Stage/BlackMarket/BlackMarketGround.pmx
@@ -14,6 +16,9 @@ f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarket.txt
 o,Goal,,50,30,-80,null
 
 # ギミック
+o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Opening/Accessory:MedicineAccessory
+o,ActionBookmark,Medicine,90,25,0,null,Herb/Activate
+o,ActionBookmark,Medicine,90,25,0,null,Herb/Fall
 
 # ギミック起動変数
 g,0

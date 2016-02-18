@@ -23,5 +23,7 @@ private:
 	bool m_isGravity;
 	bool m_isActive;
 	Optional<std::string> m_message;
+	Optional<std::string> m_accessory;
+
 	std::weak_ptr<BaseActor> m_particleSystem;
 };

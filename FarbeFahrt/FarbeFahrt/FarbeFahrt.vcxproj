@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Root\Actor\Accessory.cpp" />
     <ClCompile Include="Root\Actor\Adele.cpp" />
     <ClCompile Include="Root\Scene\BlackOut.cpp" />
     <ClCompile Include="Root\Actor\AnimateActor.cpp" />
@@ -54,6 +55,7 @@
     <ClCompile Include="Root\Message\MessageOperation.cpp" />
     <ClCompile Include="Root\Manager\EndManager.cpp" />
     <ClCompile Include="Root\Utility\Def.cpp" />
+    <ClCompile Include="Root\Utility\Easing.cpp" />
     <ClCompile Include="Root\Utility\NowLoading.cpp" />
     <ClCompile Include="Root\Actor\ActorManager\ActorManager.cpp" />
     <ClCompile Include="Root\Actor\BaseActor.cpp" />
@@ -88,6 +90,7 @@
     <ClCompile Include="Root\Utility\Point3.cpp" />
     <ClCompile Include="Root\Utility\Point4.cpp" />
     <ClCompile Include="Root\Utility\Pose.cpp" />
+    <ClCompile Include="Root\Utility\Quaternion.cpp" />
     <ClCompile Include="Root\Utility\RandomDevice.cpp" />
     <ClCompile Include="Root\Utility\Renderer.cpp" />
     <ClCompile Include="Root\Utility\SE.cpp" />
@@ -102,6 +105,7 @@
     <ClCompile Include="Root\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Root\Actor\Accessory.h" />
     <ClInclude Include="Root\Actor\Adele.h" />
     <ClInclude Include="Root\Scene\BlackOut.h" />
     <ClInclude Include="Root\Actor\AnimateActor.h" />
@@ -139,6 +143,7 @@
     <ClInclude Include="Root\Message\MessageOperation.h" />
     <ClInclude Include="Root\Message\MessageScriptLoader.h" />
     <ClInclude Include="Root\Manager\EndManager.h" />
+    <ClInclude Include="Root\Utility\Easing.h" />
     <ClInclude Include="Root\Utility\NowLoading.h" />
     <ClInclude Include="Root\Actor\Book.h" />
     <ClInclude Include="Root\Actor\Camera\Ray.h" />
@@ -188,6 +193,7 @@
     <ClInclude Include="Root\Utility\Point3.h" />
     <ClInclude Include="Root\Utility\Point4.h" />
     <ClInclude Include="Root\Utility\Pose.h" />
+    <ClInclude Include="Root\Utility\Quaternion.h" />
     <ClInclude Include="Root\Utility\RandomDevice.hpp" />
     <ClInclude Include="Root\Utility\Renderer.h" />
     <ClInclude Include="Root\Stage\ScriptStageDataBuilder.h" />
