@@ -742,6 +742,7 @@
     <Text Include="Resources\Script\Message\医者の股間のテント.txt" />
     <Text Include="Resources\Script\Message\Opening.txt" />
     <Text Include="Resources\Script\Message\Swamp.txt" />
+    <Text Include="Resources\Script\Message\森で危ない薬を手に入れる.txt" />
     <Text Include="Resources\Script\Message\街で薬を手にいれたとき.txt" />
     <Text Include="Resources\Script\Message\闇市ギミック.txt" />
     <Text Include="Resources\Script\Stage\BlackMarket.txt" />

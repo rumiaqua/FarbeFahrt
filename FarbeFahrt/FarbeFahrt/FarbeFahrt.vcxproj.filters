@@ -1975,6 +1975,7 @@
     <Text Include="Resources\Script\Message\街で薬を手にいれたとき.txt" />
     <Text Include="Resources\Script\Message\レオナから薬もらった.txt" />
     <Text Include="Resources\Script\Message\HouseE.txt" />
+    <Text Include="Resources\Script\Message\森で危ない薬を手に入れる.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />

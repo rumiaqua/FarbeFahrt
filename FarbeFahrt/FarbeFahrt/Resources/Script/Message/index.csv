@@ -39,3 +39,15 @@ t,Ending3,Ending3.txt
 ,,
 # テストメッセージ
 t,TestMessage,TestMessage.txt
+,,
+# 闇市で薬もらう
+t,Black_gimmick,闇市ギミック.txt
+,,
+# 街で薬をもらう
+t,City_gimmick,街で薬を手にいれたとき.txt
+,,
+# 森で薬草をとる
+t,ForestB_gimmick,森で危ない薬を手に入れる.txt
+,,
+# エルフから薬もらう
+t,Elder_gimmick,レオナから薬もらった.txt

@@ -1,7 +1,7 @@
 # 使用するリソース
 r,Fall,Model/Gimmick/bookmark.mqo
 r,Ivy,Model/Gimmick/bookmark.mqo
-r,Herb,Model/Herb/Herb.pmx
+r,Herb,Model/Herb/Herb.mqo
 
 # フィールドリソース
 r,ForestBGround,Stage/ForestB/ForestBGround.pmx
@@ -17,7 +17,7 @@ f,ForestBGround,0,0,0,3,Resources/Script/Animation/ForestB.txt
 o,Goal,,50,30,-80,null,1
 
 # ギミック
-o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Opening/Accessory:HerbAccessory
+o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:ForestB_gimmick/Accessory:HerbAccessory
 o,ActionBookmark,Fall,90,25,-50,null,Herb/Activate
 o,ActionBookmark,Fall,90,25,-50,null,Herb/Fall
 o,Bookmark,Ivy,90,25,50,null,Name:Ivy
@@ -26,7 +26,7 @@ o,Bookmark,Ivy,90,25,50,null,Name:Ivy
 g,1
 
 # 次のステージ
-n,HouseA,HouseA
+n,HouseE,HouseE
 
 # 開始時のテキスト
 t,ForestB
