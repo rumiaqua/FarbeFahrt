@@ -2,7 +2,7 @@
 r,Tent,Model/Gimmick/bookmark.mqo
 r,Market,Model/Gimmick/bookmark.mqo
 r,Bell,Model/Gimmick/bookmark.mqo
-r,Herb,Model/Herb/Herb.pmx
+r,Drug,Model/Drug/Drug.mqo
 
 # フィールドリソース
 r,CityGround,Stage/City/CityGround.pmx
@@ -18,11 +18,11 @@ f,CityGround,0,0,0,3,Resources/Script/Animation/City.txt
 o,Goal,,50,30,-80,null
 
 # ギミック
-o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Opening/Accessory:MedicineAccessory
+o,Instant,Drug,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:City_gimmick/Accessory:MedicineAccessory
 o,Bookmark,Market,90,25,0,null,Name:Market/Access:-70:30:-50
 o,Bookmark,Bell,90,25,-50,null,Name:Bell/Access:-70:30:-50
-o,ActionBookmark,Bell,90,25,-50,null,Herb/Activate
-o,ActionBookmark,Bell,90,25,-50,null,Herb/Fall
+o,ActionBookmark,Bell,90,25,-50,null,Drug/Activate
+o,ActionBookmark,Bell,90,25,-50,null,Drug/Fall
 
 # ギミック起動変数
 g,1
