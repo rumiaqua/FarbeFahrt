@@ -31,6 +31,10 @@ Instant::Instant(IWorld& world, const std::string& name, const Vector3& position
 			m_accessory = String::Split(param, ':')[1];
 		}
 	}
+
+	auto particleSystem = std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius);
+	m_particleSystem = particleSystem;
+	m_world->addActor(ActorTag::Effect, particleSystem);
 }
 
 void Instant::onUpdate()
@@ -68,9 +72,7 @@ void Instant::onMessage(const std::string& message, void* parameter)
 	if (message == "Activate")
 	{
 		m_isActive = true;
-		auto particleSystem = std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius);
-		m_particleSystem = particleSystem;
-		m_world->addActor(ActorTag::Effect, particleSystem);
+		m_particleSystem.lock()->sendMessage("Wake", nullptr);
 	}
 
 	if (message == "SubPoint")
