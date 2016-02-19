@@ -7,7 +7,7 @@
 # include "Manager/MessageManager.h"
 
 Instant::Instant(IWorld& world, const std::string& name, const Vector3& position, const std::vector<std::string>& parameter)
-	: BaseActor(world, name, position, Matrix::identity(), std::make_shared<Sphere>(Vector3::Zero(), 3.0f))
+	: BaseActor(world, name, position, Matrix::identity(), std::make_shared<Sphere>(Vector3::Zero(), 5.0f))
 	, m_isGravity(true)
 	, m_isActive(true)
 	, m_message(none)
