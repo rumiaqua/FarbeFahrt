@@ -6,7 +6,6 @@
 class TitleChoose : public BaseScene
 {
 public:
-
 	TitleChoose();
 	virtual ~TitleChoose();
 	virtual void loadContents(Loader& loader) override;
@@ -22,11 +21,14 @@ private:
 	bool isChange();
 	bool isYesRange();
 	bool isNoRange();
+	float textureHeightPos();
+	float yesWidthPos();
+	float noWidthPos();
 
 private:
-	bool m_yes;
-	bool m_no;
+	bool m_yesFlag;
+	bool m_noFlag;
 	float m_yesPosX;
 	float m_noPosX;
-	Point2 m_texturePos;
+	Point2 m_windowSize;
 };
