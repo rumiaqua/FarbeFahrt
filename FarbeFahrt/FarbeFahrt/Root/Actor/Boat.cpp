@@ -3,7 +3,7 @@
 # include "Utility/Renderer.h"
 
 Boat::Boat(IWorld& world, const std::string& name, const Vector3& position)
-	: BaseActor(world, name, position, Matrix::identity(), std::make_shared<Sphere>(Vector3(0.0f, 0.0f, -25.0f), 10.0f))
+	: BaseActor(world, name, position, Matrix::identity(), std::make_shared<Sphere>(Vector3(0.0f, 0.0f, -25.0f), 1.0f))
 	, m_isActive(false)
 	, m_player()
 	, m_delay(120.0f)
@@ -13,17 +13,25 @@ Boat::Boat(IWorld& world, const std::string& name, const Vector3& position)
 
 void Boat::onUpdate()
 {
-	if (m_isActive)
+	if (auto player = m_world->findActor("Player"))
 	{
-		if ((m_delay -= 1.0f) < 0.0f)
+		bool isKill = false;
+		if (m_isActive && this->isCollide(player.get()))
 		{
-			Vector3 Speed = Vector3::Right() * 1.0f;
-			m_pose.position += Speed;
-			if (!m_player.expired())
+			GimmickManager::add(1);
+			m_player = player;
+			m_player.lock()->sendMessage("StopControl", &isKill);
+			m_relative = player->getPosition() - getPosition();
+			if ((m_delay -= 1.0f) < 0.0f)
 			{
-				// m_player->sendMessage("Translate", &Speed);
-				Vector3 position = getPosition() + m_relative;
-				m_player.lock()->sendMessage("SetPosition", &position);
+				Vector3 Speed = Vector3::Right() * 1.0f;
+				m_pose.position += Speed;
+				if (!m_player.expired())
+				{
+					// m_player->sendMessage("Translate", &Speed);
+					Vector3 position = getPosition() + m_relative;
+					m_player.lock()->sendMessage("SetPosition", &position);
+				}
 			}
 		}
 	}
@@ -51,20 +59,10 @@ void Boat::onDraw(Renderer& renderer) const
 
 void Boat::onMessage(const std::string& message, void* parameter)
 {
+	BaseActor* actor = static_cast<BaseActor*>(parameter);
 	if (message == "Activate")
 	{
 		m_isActive = true;
-		bool isKill = false;
-		if (auto player = m_world->findActor("Player"))
-		{
-			if (this->isCollide(player.get()))
-			{
-				GimmickManager::add(1);
-				m_player = player;
-				m_player.lock()->sendMessage("StopControl", &isKill);
-				m_relative = player->getPosition() - getPosition();
-			}
-		}
 	}
 
 	return BaseActor::onMessage(message, parameter);

@@ -1,6 +1,6 @@
 # 使用するリソース
 r,Ship,Model/船/Ship2.mqo
-r,Fish,Model/Gimmcik/bookmark.mqo
+r,Fish,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
 r,SwampGround,Stage/Swamp/SwampGround.pmx
@@ -17,7 +17,7 @@ o,Goal,Goal,73.5,23.0,-33.5,null
 o,Goal,Goal,69.0,22.5,44.5,null
 
 # ギミック
-o,Bookmark,Fish,90,25,-50,null,Name:Fish
+o,Bookmark,Fish,90,25,-50,null,Name:Fish/Access:-70:30:-50
 o,ActionBookmark,Fish,90,25,-50,null,Ship/Activate
 o,Boat,Ship,-180,25,0,null
 
