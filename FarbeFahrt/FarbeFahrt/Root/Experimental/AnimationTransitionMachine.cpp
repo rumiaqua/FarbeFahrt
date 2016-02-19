@@ -7,6 +7,7 @@
 AnimationTransitionMachine::AnimateState::AnimateState()
 	: handle(-1)
 	, isReversed(false)
+	, time(1.0f)
 {
 	
 }
@@ -18,7 +19,7 @@ AnimationTransitionMachine::TransitionState::TransitionState()
 
 }
 
-void AnimationTransitionMachine::TransitionState::add(int current, int next, bool isReversed)
+void AnimationTransitionMachine::TransitionState::add(int current, int next, bool isReversed, float time)
 {
 	if (current == -1)
 	{
@@ -26,6 +27,7 @@ void AnimationTransitionMachine::TransitionState::add(int current, int next, boo
 	}
 	m_transition[current].handle = next;
 	m_transition[current].isReversed = isReversed;
+	m_transition[current].time = time;
 }
 
 const AnimationTransitionMachine::AnimateState& AnimationTransitionMachine::TransitionState::next(int current) const
@@ -82,8 +84,13 @@ void AnimationTransitionMachine::load(const std::string& filename)
 		size_t pos = split[2].find_last_of('R');
 		std::string name = split[2].substr(0, pos);
 		bool isReversed = (pos != std::string::npos);
+		float time = 1.0f;
+		if (split.size() > 3)
+		{
+			time = String::ToValue<float>(split[3]);
+		}
 
 		m_state[split[0]].add(
-			String::ToValue<int>(split[1]), String::ToValue<int>(name), isReversed);
+			String::ToValue<int>(split[1]), String::ToValue<int>(name), isReversed, time);
 	}
 }

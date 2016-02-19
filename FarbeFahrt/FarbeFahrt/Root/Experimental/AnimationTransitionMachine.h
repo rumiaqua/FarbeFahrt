@@ -19,6 +19,7 @@ public:
 
 		int handle;
 		bool isReversed;
+		float time;
 	};
 
 	class TransitionState
@@ -29,7 +30,7 @@ public:
 
 	public:
 
-		void add(int current, int next, bool isReversed);
+		void add(int current, int next, bool isReversed, float time);
 		const AnimateState& next(int current) const;
 		bool isExist(int current) const;
 

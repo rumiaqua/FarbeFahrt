@@ -14,10 +14,9 @@
 
 # include "Experimental/AnimateState.h"
 
-
 namespace
 {
-	constexpr float ANIMATION_FRAME = 180.0f;
+	const float ANIMATION_FRAME = 180.0f;
 }
 
 Field::Field(IWorld& world, const std::string& name, const Vector3& position, float scale, const std::string& transition)
@@ -32,6 +31,7 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	, m_machine(transition)
 	, m_current()
 	, m_cameraProgress(false)
+	, m_animationTime(ANIMATION_FRAME)
 {
 
 }
@@ -50,7 +50,7 @@ void Field::onUpdate()
 		{
 			m_elapsedTime -= 1.0f;
 			m_isAnimating = m_elapsedTime > 0.0f;
-			m_elapsedTime = Math::Max({ m_elapsedTime, 0.0f });			
+			m_elapsedTime = Math::Max({ m_elapsedTime, 0.0f });
 		}
 		else
 		{
@@ -58,11 +58,11 @@ void Field::onUpdate()
 			{
 				m_elapsedTime += 1.0f;
 			}
-			m_isAnimating = m_elapsedTime <= ANIMATION_FRAME;
-			m_elapsedTime = Math::Min({ m_elapsedTime, ANIMATION_FRAME });
+			m_isAnimating = m_elapsedTime <= m_animationTime;
+			m_elapsedTime = Math::Min({ m_elapsedTime, m_animationTime });
 		}
 
-		if (m_elapsedTime >= ANIMATION_FRAME)
+		if (m_elapsedTime >= m_animationTime)
 		{
 			m_world->findCamera()->sendMessage("toBookCamera", nullptr);
 			MessageManager::SetShow(true);
@@ -97,7 +97,7 @@ void Field::onDraw(Renderer& renderer) const
 {
 	renderer.setScale(m_name, VGet(m_scale, m_scale, m_scale));
 
-	float t = Math::Min({ m_elapsedTime / ANIMATION_FRAME, 0.99999f });
+	float t = Math::Min({ m_elapsedTime / m_animationTime, 0.99999f });
 	renderer.drawSkinModel(m_name, m_pose, m_animationNumber, t,false);
 
 	BaseActor::onDraw(renderer);
@@ -172,7 +172,8 @@ void Field::animateProcess(const AnimateState& state)
 	bool isReversed = state.isReversed ^ next.ref().isReversed;
 
 	m_current = state.name;
-	m_elapsedTime = isReversed ? ANIMATION_FRAME : 0;
+	m_animationTime = ANIMATION_FRAME * next.ref().time;
+	m_elapsedTime = isReversed ? m_animationTime : 0;
 	m_animationNumber = next.ref().handle;
 	m_isReversed = isReversed;
 	m_isAnimating = true;

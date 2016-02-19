@@ -31,4 +31,5 @@ private:
 	AnimationTransitionMachine m_machine;
 	std::string m_current;
 	float m_cameraProgress;
+	float m_animationTime;
 };

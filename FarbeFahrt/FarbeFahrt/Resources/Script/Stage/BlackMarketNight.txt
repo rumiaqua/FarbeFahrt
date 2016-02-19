@@ -2,7 +2,7 @@
 
 # フィールドリソース
 r,BlackMarketGround,Stage/BlackMarket/BlackMarketGround.pmx
-r,BlackMarketNightBGM,Sound/BGM/town.mp3
+r,BlackMarketNightBGM,Sound/BGM/town_night.mp3
 
 # プレイヤーの座標
 p,50,60,-80

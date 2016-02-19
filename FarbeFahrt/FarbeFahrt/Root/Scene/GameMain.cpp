@@ -31,6 +31,8 @@
 
 # include "Scene\ISceneMediator.h"
 
+# include "Actor/Accessory.h"
+
 GameMain::GameMain()
 	: m_stageManager()
 {
@@ -45,9 +47,12 @@ void GameMain::loadContents(Loader& loader)
 	// とりあえずここにおいておく
 	loader.loadContent("desk", "Model/机/つくえ.mqo");
 
-	loader.loadContent("TrueEnd", "Texture/end/true.png");
+	loader.loadContent("end1", "Texture/end/end1.png");
+	loader.loadContent("end2", "Texture/end/end2.png");
+	loader.loadContent("end3", "Texture/end/end3.png");
+	loader.loadContent("end5", "Texture/end/end5.png");
+
 	loader.loadContent("Message", "Texture/end/message.png");
-	loader.loadContent("Clear", "Texture/end/clear.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 	loader.loadContent("Player", "Model/MMD魔導姉弟Ver1.1/ミハイル.pmx");
 	loader.loadContent("LightParticle", "Texture/Particle.png");	
@@ -57,6 +62,10 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("YesOnMouse", "Texture/TitleChoose/yes_2.png");
 	loader.loadContent("NoOutMouse", "Texture/TitleChoose/no.png");
 	loader.loadContent("NoOnMouse", "Texture/TitleChoose/no_2.png");
+
+	loader.loadContent("HerbAccessory", "Model/3D/飾り瓶＆花/飾り瓶＆花.mqo");
+	loader.loadContent("MedicineAccessory", "Model/3D/薬/薬.mqo");
+	loader.loadContent("ElderAccessory", "Model/3D/里長小瓶/小瓶.mqo");
 }
 
 void GameMain::initialize()
@@ -70,10 +79,10 @@ void GameMain::initialize()
 		*m_world, "book", Vector3(0.0f, -5.0f, 0.0f), 3.0f, "Resources/Script/Animation/Book.txt"));
 	// 机
 	m_world->addActor(ActorTag::Environment, std::make_shared<StaticObject>(
-		*m_world, "desk", Vector3(-60.0f, -320.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
+		*m_world, "desk", Vector3(-60.0f, -330.0f, 100.0f), (float)Math::ToRadian(-90.0), 0.8f));
 
-
-	// m_stageManager.next(m_world.get());
+	// アクセサリー
+	m_world->addActor(ActorTag::Environment, std::make_shared<Accessory>(*m_world));
 
 	// 次のステージへすぐ飛べるよう特別にフラグをtrueにする
 	m_stageManager.initialize("Resources/Script/Stage/index.csv");
@@ -87,7 +96,6 @@ void GameMain::initialize()
 	{
 		book->sendMessage("Animate", &state);
 	}
-
 }
 
 void GameMain::update()
@@ -153,7 +161,7 @@ void GameMain::post()
 			{
 				EndManager::Set(m_stageManager.endName());
 				// フィールドと本のエンドアニメーションを再生する
-				AnimateState state{ "End", false };
+				AnimateState state { "End", false };
 				m_world->findGroup(ActorTag::Field)->sendMessage("Animate", &state);
 				if (auto book = m_world->findActor("book"))
 				{

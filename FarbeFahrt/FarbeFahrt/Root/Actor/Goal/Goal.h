@@ -16,4 +16,5 @@ private:
 private:
 	int m_threshold;
 	bool m_particled;
+	Actor m_particleSystem;
 };
