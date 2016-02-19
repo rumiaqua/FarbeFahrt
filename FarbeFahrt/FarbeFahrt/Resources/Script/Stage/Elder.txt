@@ -1,6 +1,6 @@
 # 使用するリソース
 r,Elder,Model/Gimmick/bookmark.mqo
-r,Herb,Model/bottle/bottle.mqo
+r,bottle,Model/bottle/bottle.mqo
 
 # フィールドリソース
 r,ElderGround,Stage/Elder/ElderGround.pmx
@@ -16,10 +16,10 @@ f,ElderGround,0,0,0,3,Resources/Script/Animation/Elder.txt
 o,Goal,,50,30,-80,null,1
 
 # ギミック
-o,Instant,Herb,-30,30,-50,null,IsKinematic/NonActivate/Message:Elder_gimmick/Accessory:ElderAccessory
+o,Instant,bottle,-30,30,-50,null,IsKinematic/NonActivate/Message:Elder_gimmick/Accessory:ElderAccessory
 o,Bookmark,Elder,90,25,0,null,Name:Elder/AddPoint/Access:-30:30:-50
-o,ActionBookmark,Elder,90,25,0,null,Herb/Activate
-o,ActionBookmark,Elder,90,25,0,null,Herb/Fall
+o,ActionBookmark,Elder,90,25,0,null,bottle/Activate
+o,ActionBookmark,Elder,90,25,0,null,bottle/Fall
 
 # ギミック起動変数
 g,1
