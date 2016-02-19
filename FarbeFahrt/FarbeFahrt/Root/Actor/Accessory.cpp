@@ -10,15 +10,15 @@ Accessory::Accessory(IWorld& world)
 	, m_elder()
 {
 	m_herb = std::make_shared<StaticObject>(
-		*m_world, "HerbAccessory", Vector3(150.0f, 20.0f, 50.0f), (float)Math::ToRadian(-90.0), 0.75f);
+		*m_world, "HerbAccessory", Vector3(150.0f, 10.0f, 50.0f), (float)Math::ToRadian(-90.0), 0.75f);
 
 	m_medicine = std::make_shared<StaticObject>(
 		// *m_world, "MedicineAccessory", Vector3(-300.0f, 20.0f, 50.0f), (float)Math::ToRadian(-60.0), 0.75f);
-		*m_world, "MedicineAccessory", Vector3(150.0f, 20.0f, 50.0f), (float)Math::ToRadian(-120.0), 0.75f);
+		*m_world, "MedicineAccessory", Vector3(150.0f, 10.0f, 50.0f), (float)Math::ToRadian(-120.0), 0.75f);
 
 	m_elder = std::make_shared<StaticObject>(
 		// *m_world, "ElderAccessory", Vector3(-300.0f, 20.0f, -50.0f), (float)Math::ToRadian(-90.0), 0.75f);
-		*m_world, "ElderAccessory", Vector3(150.0f, 20.0f, 50.0f), (float)Math::ToRadian(-90.0), 0.75f);
+		*m_world, "ElderAccessory", Vector3(150.0f, 10.0f, 50.0f), (float)Math::ToRadian(-90.0), 0.75f);
 
 	addChild(m_herb);
 	addChild(m_medicine);
