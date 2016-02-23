@@ -118,7 +118,7 @@ public:
 			{
 				output.nextStage.first = split[1];
 				output.nextStage.second = split[2];
-				int threshold = 0;
+				int threshold = 1;
 				if (split.size() > 3)
 				{
 					threshold = String::ToValue<int>(split[3]);

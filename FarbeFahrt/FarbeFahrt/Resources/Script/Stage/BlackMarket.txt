@@ -26,7 +26,7 @@ o,ToNight,Medicine,90,25,0,null
 g,1
 
 # 次のステージ
-n,Swamp,HouseD,1
+n,Swamp,HouseD
 
 # 開始時のテキスト
 t,BlackMarket
