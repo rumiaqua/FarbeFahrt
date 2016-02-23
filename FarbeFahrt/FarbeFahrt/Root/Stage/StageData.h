@@ -46,4 +46,5 @@ struct StageData
 	std::string message;
 	int gimmickPoint;
 	std::string bgmName;
+	int threshold;
 };

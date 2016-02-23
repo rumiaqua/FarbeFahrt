@@ -13,19 +13,20 @@ p,-180,30,-80
 f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarket.txt
 
 # ゴール
-o,Goal,,50,30,-80,null,0
+o,Goal,Goal,50,30,-80,null,0
 
 # ギミック
 o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Black_gimmick/Accessory:MedicineAccessory
 o,ActionBookmark,Medicine,90,25,0,null,Herb/Activate
 o,ActionBookmark,Medicine,90,25,0,null,Herb/Fall
-o,ActionBookmark,Medicine,90,25,0,null,Herb/SubPoint
+# o,ActionBookmark,Medicine,90,25,0,null,Herb/SubPoint
+o,ActionBookmark,Medicine,90,25,0,null,Goal/AddThreshold
 o,ToNight,Medicine,90,25,0,null
 
 g,1
 
 # 次のステージ
-n,Swamp,HouseD
+n,Swamp,HouseD,1
 
 # 開始時のテキスト
 t,BlackMarket

@@ -129,6 +129,7 @@ void GameMain::draw(Renderer& renderer)
 
 	// ギミック起動数 / ギミック閾値
 	Debug::Println(String::Create("Gimmick : ", GimmickManager::get(), " / ", GimmickManager::getMax()));
+	Debug::Println(m_stageManager.getThreshold());
 
 	if (Input::IsPressed(KEY_INPUT_N))
 	{

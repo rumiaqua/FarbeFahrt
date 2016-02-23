@@ -41,6 +41,11 @@ void Goal::onDraw(Renderer & renderer) const
 
 void Goal::onMessage(const std::string& message, void* parameter)
 {
+	if (message == "AddThreshold")
+	{
+		m_threshold += 1;
+	}
+
 	auto player = static_cast<BaseActor*>(parameter);
 
 	int gimmick = GimmickManager::get();

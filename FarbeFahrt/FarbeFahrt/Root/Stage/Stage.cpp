@@ -119,9 +119,9 @@ void Stage::apply(const StageData& data, bool isClear)
 		if (object.name == "Goal")
 		{
 			auto parameter = String::Split(object.parameter, '/');
-			int threthold = parameter[0] != "" ? String::ToValue<int>(parameter[0]) : 0;
+			int threshold = parameter[0] != "" ? String::ToValue<int>(parameter[0]) : 0;
 			m_world->addActor(ActorTag::Goal, std::make_shared<Goal>(
-				*m_world, object.resource, object.position, threthold));
+				*m_world, object.resource, object.position, threshold));
 		}		
 		if (object.name == "Instant")
 		{

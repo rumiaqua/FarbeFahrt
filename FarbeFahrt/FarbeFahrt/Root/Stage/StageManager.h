@@ -45,6 +45,8 @@ public:
 
 	const std::unordered_map<std::string, StageData>& allStageData() const;
 
+	std::string getThreshold() const;
+
 private:
 
 	bool isFirst() const;
@@ -58,4 +60,6 @@ private:
 	StageData m_current;
 
 	Stages m_next;
+
+	int m_threshold;
 };
