@@ -71,7 +71,7 @@ void GameMain::loadContents(Loader& loader)
 void GameMain::initialize()
 {
 	StoryManager::initialize();
-
+	
 	m_world = std::make_shared<World>(m_manager);
 
 	// –{
@@ -120,6 +120,7 @@ void GameMain::update()
 
 void GameMain::draw(Renderer& renderer)
 {
+
 	/*Debug::Println(String::Create("Gimmick : ", StoryManager::get(BitFlag::GIMMICK) ? "true" : "false"));
 	Debug::Println(String::Create("Goal : ", StoryManager::get(BitFlag::GOAL) ? "true" : "false"));
 	Debug::Println(String::Create("Next : ", StoryManager::get(BitFlag::NEXT) ? "true" : "false"));

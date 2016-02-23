@@ -7,13 +7,13 @@ r,BlackMarketGround,Stage/BlackMarket/BlackMarketGround.pmx
 r,BlackMarketBGM,Sound/BGM/town_day.mp3
 
 # プレイヤーの座標
-p,-180,30,-80
+p,-180,30,0
 
 # フィールド
 f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarket.txt
 
 # ゴール
-o,Goal,Goal,50,30,-80,null,0
+o,Goal,Goal,50,30,0,null,0
 
 # ギミック
 o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Black_gimmick/Accessory:MedicineAccessory
@@ -26,7 +26,7 @@ o,ToNight,Medicine,90,25,0,null
 g,1
 
 # 次のステージ
-n,Swamp,HouseD
+n,HouseD,Swamp
 
 # 開始時のテキスト
 t,BlackMarket

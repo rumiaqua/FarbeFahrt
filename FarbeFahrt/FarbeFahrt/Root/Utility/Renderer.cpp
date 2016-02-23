@@ -15,6 +15,7 @@ Renderer::Renderer()
 {
 	SetLightPosition(LIGHT_POSITION);
 	SetLightDirection(VNorm(LIGHT_TARGET - LIGHT_POSITION));
+	ChangeDay();
 	initDepthBuffer();
 	loadShader();
 	setFont();
@@ -691,7 +692,7 @@ void Renderer::ChangeNight()
 	m_isNight = true;
 
 	SetLightAmbColor(GetColorF(0.0f, 0.05f, 0.1f, 0.0f));
-	SetLightDifColor(GetColorF(0.4f, 0.4f, 0.4f, 0.0f));
+	SetLightDifColor(GetColorF(0.5f, 0.5f, 0.5f, 0.0f));
 }
 void Renderer::ChangeDay()
 {

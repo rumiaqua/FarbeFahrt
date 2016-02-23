@@ -13,6 +13,5 @@ public:
 	virtual void cleanUp() override;
 	virtual bool isSwallow() const override;
 private:
-	Renderer m_renderer;
 };
 
