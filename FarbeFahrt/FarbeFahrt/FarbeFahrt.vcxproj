@@ -735,6 +735,7 @@
     <Text Include="Resources\Script\Message\Ending1.txt" />
     <Text Include="Resources\Script\Message\Ending2.txt" />
     <Text Include="Resources\Script\Message\Ending3.txt" />
+    <Text Include="Resources\Script\Message\Ending4.txt" />
     <Text Include="Resources\Script\Message\ForestA.txt" />
     <Text Include="Resources\Script\Message\ForestB.txt" />
     <Text Include="Resources\Script\Message\HouseE.txt" />
