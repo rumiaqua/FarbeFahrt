@@ -27,20 +27,20 @@ namespace Utility
 
 		float Sine(float t)
 		{
-			return 1.0f - Math::Cos(Math::HALF_PI * t);
+			return 1.0f - (float)Math::Cos(Math::HALF_PI * t);
 		}
 
 		float Exp(float t)
 		{
 			return t == 0.0f ?
 				0.0f :
-				Math::Pow(2.0f, 10.0f * (t - 1.0f));
+				(float)Math::Pow(2.0, 10.0 * (t - 1.0));
 		}
 
 		float Circ(float t)
 		{
 			t -= 1.0f;
-			return 1.0f - Math::Sqrt(1.0f - t * t);
+			return 1.0f - (float)Math::Sqrt(1.0f - t * t);
 		}
 
 		float Back(float t)
@@ -80,10 +80,10 @@ namespace Utility
 				return 1.0f;
 			}
 
-			float s = 0.04774648292756859813f * Math::Asin(1.0f);
+			float s = 0.04774648292756859813f * (float)Math::Asin(1.0);
 
 			t -= 1.0f;
-			return -Math::Pow(2.0f, 10.0f * t) * Math::Sin((t - s) * 20.94395102393195529f);
+			return (float)(-Math::Pow(2.0f, 10.0f * t) * Math::Sin((t - s) * 20.94395102393195529f));
 		}
 
 		float Linear(float t)

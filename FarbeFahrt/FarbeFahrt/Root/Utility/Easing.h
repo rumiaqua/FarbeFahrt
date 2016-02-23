@@ -18,14 +18,14 @@ namespace Utility
 
 			static float Out(float t)
 			{
-				return 1.0 - In(1.0 - t);
+				return 1.0f - In(1.0f - t);
 			}
 
 			static float InOut(float t)
 			{
-				return t < 0.5 ?
-					In(2.0 * t) / 2.0 :
-					0.5 + Out(2.0 * t - 1.0) / 2.0;
+				return t < 0.5f ?
+					In(2.0f * t) / 2.0f :
+					0.5f + Out(2.0f * t - 1.0f) / 2.0f;
 			}
 		};
 
