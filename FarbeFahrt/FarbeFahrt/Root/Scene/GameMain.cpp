@@ -59,9 +59,9 @@ void GameMain::loadContents(Loader& loader)
 
 	loader.loadContent("TitleChooseBack", "Texture/TitleChoose/Back.png");
 	loader.loadContent("YesOutMouse", "Texture/TitleChoose/yes.png");
-	loader.loadContent("YesOnMouse", "Texture/TitleChoose/yes_2.png");
+	loader.loadContent("YesOnMouse", "Texture/TitleChoose/yes2.png");
 	loader.loadContent("NoOutMouse", "Texture/TitleChoose/no.png");
-	loader.loadContent("NoOnMouse", "Texture/TitleChoose/no_2.png");
+	loader.loadContent("NoOnMouse", "Texture/TitleChoose/no2.png");
 
 	loader.loadContent("HerbAccessory", "Model/3D/ü‚è•r•‰Ô/ü‚è•r•‰Ô.mqo");
 	loader.loadContent("MedicineAccessory", "Model/3D/–ò/–ò.mqo");
