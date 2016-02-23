@@ -5,13 +5,13 @@ r,BlackMarketGround,Stage/BlackMarket/BlackMarketGround.pmx
 r,BlackMarketNightBGM,Sound/BGM/town_night.mp3
 
 # プレイヤーの座標
-p,50,60,-80
+p,50,60,0
 
 # フィールド
 f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarketNight.txt
 
 # ゴール
-o,Goal,,-180,30,-80,null
+o,Goal,,-180,30,0,null
 
 # ギミック
 

@@ -82,11 +82,11 @@ void Camera::cameraInput()
 		m_world->addActor(ActorTag::Collider, std::make_shared<Ray>(*m_world, begin, end));
 	}
 
-	if (Mouse::ScrollValue() > 0)
+	if (Mouse::ScrollValue() >0 && m_world->findActor("Player") != nullptr)
 	{
 		toPlayerCamera();
 	}
-	else if (Mouse::ScrollValue() < 0)
+	else if (Mouse::ScrollValue() < 0 && m_world->findActor("Player") != nullptr)
 	{
 		toBookCamera();
 	}

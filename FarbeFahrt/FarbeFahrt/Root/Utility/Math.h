@@ -147,4 +147,10 @@ namespace Math
 			min <= value &&
 			value <= max;
 	}
+
+	template <typename Type>
+	Type Lerp(const Type& begin, const Type& end, float t)
+	{
+		return begin + (end - begin) * t;
+	}
 }

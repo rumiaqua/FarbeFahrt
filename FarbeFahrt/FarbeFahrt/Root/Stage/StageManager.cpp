@@ -20,6 +20,7 @@
 StageManager::StageManager()
 	: m_current()
 	, m_next()
+	, m_threshold(0)
 {
 }
 
@@ -82,6 +83,7 @@ void StageManager::next(World* const world)
 	//world->findCamera()->sendMessage("toPlayerCamera", nullptr);
 	// 次ページに移動
 	{
+		// 不要なオブジェクトの削除
 		world->findGroup(ActorTag::Object)->eachChildren(
 			[] (BaseActor& actor)
 		{
@@ -117,12 +119,17 @@ void StageManager::next(World* const world)
 		});
 	}
 	
+	// 次のステージを取得して適用
 	m_current = nextStage();
 	world->apply(m_current, false);
+
+	// 次のステージを読み込む
 	m_next.first = m_current.nextStage.first != "" ? m_stageDatas.at(m_current.nextStage.first) : StageData();
 	m_next.second = m_current.nextStage.second != "" ? m_stageDatas.at(m_current.nextStage.second) : StageData();
 	EndManager::SetShowStaffRoll(m_current.showStaffRoll);
+	m_threshold = m_current.threshold;
 
+	// フラグのリセット
 	StoryManager::reset(BitFlag::GOAL);
 	StoryManager::reset(BitFlag::NEXT);
 	GimmickManager::reset();
@@ -167,10 +174,17 @@ const std::unordered_map<std::string, StageData>& StageManager::allStageData() c
 	return m_stageDatas;
 }
 
+std::string StageManager::getThreshold() const
+{
+	return String::Create("Threshold : ", GimmickManager::get(), " / ", m_threshold);
+}
+
 bool StageManager::isFirst() const
 {
-	bool first = StoryManager::get(BitFlag::GIMMICK);
-	return first;
+	// bool first = StoryManager::get(BitFlag::GIMMICK);
+	int numGimmick = GimmickManager::get();
+	int threshold = m_threshold;
+	return numGimmick < threshold;
 }
 
 const StageData& StageManager::nextStage() const
