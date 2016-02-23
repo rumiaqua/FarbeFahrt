@@ -53,6 +53,7 @@ void Goal::onMessage(const std::string& message, void* parameter)
 		message == "onCollide" &&
 		player->getName() == "Player")
 	{
+		m_world->findGroup(ActorTag::Effect)->sendMessage("kill",nullptr);
 		m_world->findCamera()->sendMessage("complete", nullptr);
 		m_world->findCamera()->sendMessage("toBookCamera", nullptr);
 		//Ó”CÒ‚È‚è‚½‚ñ

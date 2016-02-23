@@ -15,7 +15,6 @@ Renderer::Renderer()
 {
 	SetLightPosition(LIGHT_POSITION);
 	SetLightDirection(VNorm(LIGHT_TARGET - LIGHT_POSITION));
-	ChangeDay();
 	initDepthBuffer();
 	loadShader();
 	setFont();
