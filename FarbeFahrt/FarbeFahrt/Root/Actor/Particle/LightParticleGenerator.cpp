@@ -35,19 +35,19 @@ void LightParticleGenerator::onUpdate()
 		{
 			m_genPos = Vector3(
 				getPosition().x + Math::Cos(m_counta) * m_radius,
-				getPosition().y,
+				m_parent == nullptr ? getPosition().y : m_parent->getPosition().y,
 				getPosition().z + Math::Sin(m_counta) * m_radius);
 			m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
 
 			m_genPos = Vector3(
 				getPosition().x + Math::Cos(m_counta + Math::ToRadian(120.0f)) * m_radius,
-				getPosition().y,
+				m_parent == nullptr ? getPosition().y : m_parent->getPosition().y,
 				getPosition().z + Math::Sin(m_counta + Math::ToRadian(120.0f)) * m_radius);
 			m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
 
 			m_genPos = Vector3(
 				getPosition().x + Math::Cos(m_counta + Math::ToRadian(240.0f)) * m_radius,
-				getPosition().y,
+				m_parent == nullptr ? getPosition().y : m_parent->getPosition().y,
 				getPosition().z + Math::Sin(m_counta + Math::ToRadian(240.0f)) * m_radius);
 			m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
 

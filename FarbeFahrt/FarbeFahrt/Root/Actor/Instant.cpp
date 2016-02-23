@@ -34,7 +34,7 @@ Instant::Instant(IWorld& world, const std::string& name, const Vector3& position
 
 	auto particleSystem = std::make_shared<LightParticleGenerator>(*m_world, getPosition(), static_cast<Sphere*>(getShape())->radius);
 	m_particleSystem = particleSystem;
-	m_world->addActor(ActorTag::Effect, particleSystem);
+	this->addChild(particleSystem);
 }
 
 void Instant::onUpdate()

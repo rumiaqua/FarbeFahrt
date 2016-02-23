@@ -58,3 +58,9 @@ void LightParticle::onDraw(Renderer & renderer) const
 
 	BaseActor::onDraw(renderer);
 }
+
+void LightParticle::onMessage(const std::string & message, void * parameter)
+{
+
+	BaseActor::onMessage(message, parameter);
+}

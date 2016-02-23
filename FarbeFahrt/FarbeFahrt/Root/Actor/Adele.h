@@ -21,5 +21,6 @@ private:
 	bool m_isCollide;
 	Renderer m_renderer;
 	ISceneMediator* m_manager;
+	std::weak_ptr<BaseActor> m_particleSystem;
 };
 
