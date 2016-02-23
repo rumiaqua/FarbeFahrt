@@ -1,5 +1,6 @@
 # 使用するリソース
-r,Elder,Model/Gimmick/bookmark.mqo
+r,Elder,Model/
+/bookmark.mqo
 r,bottle,Model/bottle/bottle.mqo
 
 # フィールドリソース

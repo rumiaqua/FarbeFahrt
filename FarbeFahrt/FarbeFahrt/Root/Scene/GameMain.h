@@ -22,4 +22,5 @@ private:
 	Loader* m_loader;
 	std::shared_ptr<World> m_world;
 	StageManager m_stageManager;
+	Renderer* m_renderer;
 };

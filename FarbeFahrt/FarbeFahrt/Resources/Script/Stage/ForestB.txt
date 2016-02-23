@@ -1,6 +1,5 @@
 # 使用するリソース
 r,Fall,Model/Gimmick/bookmark.mqo
-r,Ivy,Model/Gimmick/bookmark.mqo
 r,HerbB,Model/Herb/Herb.mqo
 
 # フィールドリソース
@@ -20,7 +19,6 @@ o,Goal,,50,30,-80,null,1
 o,Instant,HerbB,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:ForestB_gimmick/Accessory:HerbAccessory
 o,ActionBookmark,Fall,90,25,-50,null,HerbB/Activate
 o,ActionBookmark,Fall,90,25,-50,null,HerbB/Fall
-o,Bookmark,Ivy,90,25,50,null,Name:Ivy
 
 # ギミック起動変数
 g,1
