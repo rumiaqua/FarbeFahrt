@@ -21,8 +21,9 @@
 
 # include "Scene.h"
 
-Opening::Opening()
+Opening::Opening(Renderer* renderer)
 	: m_isOnce(false)
+	, m_renderer(renderer)
 {
 
 }
@@ -52,6 +53,8 @@ void Opening::initialize()
 
 	// バックログの初期化
 	BackLogManager::Clear();
+
+	m_renderer->ChangeDay();
 }
 
 void Opening::update()

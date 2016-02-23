@@ -45,7 +45,7 @@ MyGame::MyGame()
 	// Debug::SetEnabled(true);
 
 	m_sceneManager.addScene<GameMain>(Scene::GameMain);
-	m_sceneManager.addScene<Opening>(Scene::Opening);
+	m_sceneManager.addScene<Opening>(Scene::Opening, &renderer);
 	m_sceneManager.addScene<ObjectViewer>(Scene::ObjectViewer);
 	m_sceneManager.addScene<End>(Scene::End);
 	m_sceneManager.addScene<StaffRoll>(Scene::StaffRoll);

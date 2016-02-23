@@ -184,7 +184,7 @@ bool StageManager::isFirst() const
 	// bool first = StoryManager::get(BitFlag::GIMMICK);
 	int numGimmick = GimmickManager::get();
 	int threshold = m_threshold;
-	return numGimmick < threshold;
+	return numGimmick >= threshold;
 }
 
 const StageData& StageManager::nextStage() const

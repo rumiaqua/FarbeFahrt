@@ -11,14 +11,14 @@ p,50,60,0
 f,BlackMarketGround,0,0,0,3,Resources/Script/Animation/BlackMarketNight.txt
 
 # ゴール
-o,Goal,,-180,30,0,null
+o,Goal,,-70,30,5.5,null
 
 # ギミック
 
 # ギミック起動変数
 
 # 次のステージ
-e,Ending3,show
+e,Ending5,show
 
 # 開始時のテキスト
 

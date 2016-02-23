@@ -6,7 +6,7 @@
 class Opening : public BaseScene
 {
 public:
-	Opening();
+	Opening(Renderer* renderer);
 	virtual void loadContents(Loader& loader)override;
 	virtual void initialize()override;
 	virtual void update()override;
@@ -17,4 +17,5 @@ public:
 private:
 	std::shared_ptr<World> m_world;
 	bool m_isOnce;
+	Renderer* m_renderer;
 };
