@@ -44,6 +44,8 @@ Camera::Camera(IWorld& world) :
 	m_lockPos = none;
 	actorSet("Player");
 	m_actorRadius = 0.0f;
+
+	SetCameraPositionAndTarget_UpVecY(outPos, outRot);
 }
 void Camera::onUpdate()
 {

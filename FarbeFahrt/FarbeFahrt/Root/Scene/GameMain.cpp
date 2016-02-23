@@ -158,18 +158,21 @@ void GameMain::post()
 		// 終了ステージだった場合
 		if (m_stageManager.isEnd())
 		{
-			// エンドシーンがセットされている場合
-			if (!EndManager::isEnd())
-			{
-				EndManager::Set(m_stageManager.endName());
-				// フィールドと本のエンドアニメーションを再生する
-				AnimateState state { "End", false };
-				m_world->findGroup(ActorTag::Field)->sendMessage("Animate", &state);
-				if (auto book = m_world->findActor("book"))
-				{
-					book->sendMessage("Animate", &state);
-				}
-			}
+			//// エンドシーンがセットされている場合
+			//if (!EndManager::isEnd())
+			//{
+			//	EndManager::Set(m_stageManager.endName());
+			//	// フィールドと本のエンドアニメーションを再生する
+			//	AnimateState state { "End", false };
+			//	m_world->findGroup(ActorTag::Field)->sendMessage("Animate", &state);
+			//	if (auto book = m_world->findActor("book"))
+			//	{
+			//		book->sendMessage("Animate", &state);
+			//	}
+			//}
+			EndManager::Set(m_stageManager.endName());
+			EndManager::SetEnd(true);
+			MessageManager::SetShow(true);
 			return;
 		}
 
