@@ -1977,6 +1977,7 @@
     <Text Include="Resources\Script\Message\HouseE.txt" />
     <Text Include="Resources\Script\Message\森で危ない薬を手に入れる.txt" />
     <Text Include="Resources\Script\Message\Ending4.txt" />
+    <Text Include="Resources\Script\Message\Ending5.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />
