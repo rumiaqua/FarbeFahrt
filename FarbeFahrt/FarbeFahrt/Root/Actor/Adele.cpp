@@ -16,30 +16,6 @@ Adele::Adele(IWorld& world, const std::string& name, const Vector3& position, IS
 	m_particleSystem.lock()->sendMessage("Wake", nullptr);
 }
 
-void Adele::onUpdate()
-{
-	if (m_isCollide)
-	{
-		m_manager->pushScene(Scene::BlackOut, 60.0f);
-
-		if (auto particleSystem = m_particleSystem.lock())
-		{
-			particleSystem->sendMessage("kill", nullptr);
-		}
-		kill();
-	}
-	BaseActor::onUpdate();
-}
-
-void Adele::onDraw(Renderer& renderer) const
-{
-	if (m_isCollide)
-	{
-
-	}
-	BaseActor::onDraw(renderer);
-}
-
 void Adele::onMessage(const std::string& message, void* parameter)
 {
 
@@ -49,7 +25,16 @@ void Adele::onMessage(const std::string& message, void* parameter)
 		actor->getName() == "Player")
 	{
 		m_isCollide = true;
+		actor->sendMessage("RideOn", nullptr);
+		m_manager->pushScene(Scene::BlackOut, 60.0f);
+		if (auto particleSystem = m_particleSystem.lock())
+		{
+			particleSystem->sendMessage("kill", nullptr);
+		}
+		kill();
 
 		GimmickManager::add(1);
 	}
+
+	BaseActor::onMessage(message, parameter);
 }

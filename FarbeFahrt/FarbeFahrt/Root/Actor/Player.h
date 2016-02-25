@@ -21,7 +21,6 @@ private:
 private:
 	Vector3 playerInput();//“ü—ÍŒni‚½‚¾‚ÌŠÖ”•ª‚¯j
 	void animate(const Vector3& moveVec);
-	void fallDown();
 private:
 	PlayerState m_state;
 	float m_moveSpeed;
@@ -29,7 +28,8 @@ private:
 	float m_frame;
 
 	bool m_canControl;
-	bool m_isFallDown;
+	bool m_isRideOn;
+	bool m_isRidingNow;
 	float m_previousFrame;
 
 	Vector3 m_previousPosition;

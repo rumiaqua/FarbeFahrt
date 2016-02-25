@@ -13,5 +13,6 @@ public:
 	virtual void cleanUp() override;
 	virtual bool isSwallow() const override;
 private:
+	bool m_once;
 };
 

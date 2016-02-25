@@ -9,16 +9,21 @@ BlackOut::BlackOut()
 
 void BlackOut::loadContents(Loader& loader)
 {
+
 }
 
 void BlackOut::initialize()
 {
-	
+	m_once = true;
 }
 
 void BlackOut::update()
 {
-	m_manager->popScene(60.0f);
+	if (m_once)
+	{
+		m_manager->popScene(60.0f, false);
+		m_once = false;
+	}
 }
 
 void BlackOut::draw(Renderer& renderer)
@@ -29,6 +34,7 @@ void BlackOut::draw(Renderer& renderer)
 
 void BlackOut::post()
 {
+
 }
 
 void BlackOut::cleanUp()
