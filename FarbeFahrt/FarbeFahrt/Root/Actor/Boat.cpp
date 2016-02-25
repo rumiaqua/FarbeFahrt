@@ -64,6 +64,7 @@ void Boat::onMessage(const std::string& message, void* parameter)
 					// 操作を無効にする
 					bool isKill = false;
 					player->sendMessage("StopControl", &isKill);
+					player->sendMessage("RefreshNoEntry", nullptr);
 
 					// プレイヤーのセット
 					m_player = player;

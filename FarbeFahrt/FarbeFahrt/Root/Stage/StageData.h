@@ -2,6 +2,7 @@
 
 # include "Utility/String.h"
 # include "Utility/Vector3.h"
+# include "Utility/Vector4.h"
 
 # include "Experimental/AnimationTransitionMachine.h"
 
@@ -34,6 +35,7 @@ struct StageData
 	using FieldList = std::vector<FieldObj>;
 	using ObjectList = std::vector<Object>;
 	using NextStage = std::pair<std::string, std::string>;
+	using NoEntries = std::vector<Vector4>;
 
 	std::string filename;
 	ResourceList resourceList;
@@ -47,4 +49,5 @@ struct StageData
 	int gimmickPoint;
 	std::string bgmName;
 	int threshold;
+	NoEntries noEntries;
 };

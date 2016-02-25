@@ -27,13 +27,14 @@ namespace
 	const float Correction = 145.0f / 2.0f - 4.0f;
 }
 
-Player::Player(IWorld& world, const Vector3& position)
+Player::Player(IWorld& world, const Vector3& position, const std::vector<Vector4>& noEntries)
 	: BaseActor(world, "Player", position, Matrix::Rotation(Vector3::Up(), Math::PI / 2),
 		std::make_unique<Capsule>(Vector3(0, 0, 0), Vector3(0, 10, 0), 5.0f)
 		)
 	, m_canControl(false)
 	, m_isRideOn(false)
 	, m_isRidingNow(false)
+	, m_noEntries(noEntries)
 {
 	m_moveSpeed = 1.5f;
 	m_state = PlayerState::standing;
@@ -42,11 +43,29 @@ Player::Player(IWorld& world, const Vector3& position)
 }
 void Player::onUpdate()
 {
+	m_previousPosition = m_pose.position;
 	++m_frame;
 
 	m_pose.position.y -= 2.0f;
 
 	animate(m_canControl ? playerInput() : Vector3::Zero());
+
+	// à⁄ìÆêßå¿
+	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim - Correction, XLim - Correction);
+	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -ZLim, ZLim);
+
+	// óßÇøì¸ÇËã÷é~îªíË
+	for (auto&& noEntry : m_noEntries)
+	{
+		float& x = m_pose.position.x;
+		float& z = m_pose.position.z;
+		bool entryX = Math::IsContains(x, noEntry.x, noEntry.y);
+		bool entryZ = Math::IsContains(z, noEntry.z, noEntry.w);
+		if (entryX && entryZ)
+		{
+			m_pose.position = m_previousPosition;
+		}
+	}
 
 	if (m_isRidingNow)
 	{
@@ -90,10 +109,6 @@ Vector3 Player::playerInput()
 		moveVec -= frontVec * m_moveSpeed;
 	}
 
-	// à⁄ìÆêßå¿
-	m_pose.position.x = (float)Math::Clamp(m_pose.position.x, -XLim - Correction, XLim - Correction);
-	m_pose.position.z = (float)Math::Clamp(m_pose.position.z, -ZLim, ZLim);
-
 	return moveVec;
 }
 void Player::animate(const Vector3& moveVec)
@@ -119,6 +134,7 @@ void Player::animate(const Vector3& moveVec)
 
 void Player::onDraw(Renderer& renderer)const
 {
+	Debug::Println(String::Create("PlayerPosition : ", m_pose.position.ToString()));
 	//Ç±Ç±Ç≈ï`âÊï˚ñ@ïœÇ¶ÇÁÇÍÇ‹Ç∑ÇÊ
 	std::string name = "Player";
 	name += m_isRideOn ? "Riding" : "";
@@ -181,6 +197,11 @@ void Player::onMessage(const std::string& message, void* parameter)
 	{
 		Vector3* position = static_cast<Vector3*>(parameter);
 		m_pose.position = *position;
+	}
+
+	if (message == "RefreshNoEntry")
+	{
+		m_noEntries.clear();
 	}
 
 	BaseActor::onMessage(message, parameter);

@@ -32,3 +32,6 @@ t,Swamp
 
 # BGM
 bgm,SwampBGM
+
+# “ü‚ê‚é”ÍˆÍ‚ðŽw’è‚·‚é
+NoEntry,-170,75,-90,30

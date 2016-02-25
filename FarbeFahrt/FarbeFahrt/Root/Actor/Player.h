@@ -13,7 +13,7 @@ class Player :
 	public BaseActor
 {
 public:
-	Player(IWorld& world, const Vector3& position);
+	Player(IWorld& world, const Vector3& position, const std::vector<Vector4>& canEntries);
 private:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& renderer)const override;	
@@ -33,4 +33,6 @@ private:
 	float m_previousFrame;
 
 	Vector3 m_previousPosition;
+
+	std::vector<Vector4> m_noEntries;
 };
