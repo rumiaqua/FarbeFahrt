@@ -55,7 +55,7 @@ void Title::update()
 	m_alpha += m_transRate;
 	if (!Math::IsContains(m_alpha, 0.0f, MaxAlpha))
 	{
-		m_alpha = Math::Clamp(m_alpha, 0.0f, MaxAlpha);
+		m_alpha = (float)Math::Clamp(m_alpha, 0.0f, MaxAlpha);
 		m_transRate *= -1;
 	}
 
@@ -77,7 +77,7 @@ void Title::draw(Renderer& renderer)
 	if (System::GetWindowWidth() >= 1024)
 	{
 		renderer.drawTexture("TitleBigBackGround", Renderer::AspectType::LetterBox);
-		renderer.drawTexture("TitleBigBubble", Renderer::AspectType::LetterBox, t * 255.0f);
+		renderer.drawTexture("TitleBigBubble", Renderer::AspectType::LetterBox, (int)(t * 255));
 		renderer.drawTexture("TitleBigIvy", Renderer::AspectType::LetterBox);
 		renderer.drawTexture("TitleBigOther", Renderer::AspectType::LetterBox);
 	}
