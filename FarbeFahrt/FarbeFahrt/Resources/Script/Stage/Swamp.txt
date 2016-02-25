@@ -33,5 +33,5 @@ t,Swamp
 # BGM
 bgm,SwampBGM
 
-# 入れる範囲を指定する
+# 入れないエリアを指定する Xmin,Xmax,Zmin,Zmax
 NoEntry,-170,75,-90,30
