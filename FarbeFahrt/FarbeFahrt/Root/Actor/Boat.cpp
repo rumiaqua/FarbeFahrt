@@ -61,6 +61,8 @@ void Boat::onMessage(const std::string& message, void* parameter)
 				// ƒvƒŒƒCƒ„[‚ÆÕ“Ë‚µ‚Ä‚¢‚ê‚Î
 				if (this->isCollide(player.get()))
 				{
+					GimmickManager::add(1);
+
 					// ‘€ì‚ð–³Œø‚É‚·‚é
 					bool isKill = false;
 					player->sendMessage("StopControl", &isKill);

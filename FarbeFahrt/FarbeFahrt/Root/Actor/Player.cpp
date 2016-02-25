@@ -32,8 +32,6 @@ Player::Player(IWorld& world, const Vector3& position, const std::vector<Vector4
 		std::make_unique<Capsule>(Vector3(0, 0, 0), Vector3(0, 10, 0), 5.0f)
 		)
 	, m_canControl(false)
-	, m_isRideOn(false)
-	, m_isRidingNow(false)
 	, m_noEntries(noEntries)
 {
 	m_moveSpeed = 1.5f;
@@ -65,12 +63,6 @@ void Player::onUpdate()
 		{
 			m_pose.position = m_previousPosition;
 		}
-	}
-
-	if (m_isRidingNow)
-	{
-		m_isRideOn = true;
-		m_isRidingNow = false;
 	}
 
 	BaseActor::onUpdate();
@@ -137,7 +129,7 @@ void Player::onDraw(Renderer& renderer)const
 	Debug::Println(String::Create("PlayerPosition : ", m_pose.position.ToString()));
 	//‚±‚±‚Å•`‰æ•û–@•Ï‚¦‚ç‚ê‚Ü‚·‚æ
 	std::string name = "Player";
-	name += m_isRideOn ? "Riding" : "";
+	name += StoryManager::get(BitFlag::RIDEON) ? "Riding" : "";
 	renderer.drawSkinModel(name, getPosition(), getRotation(), (int)m_state, m_frame, true);
 	BaseActor::onDraw(renderer);
 }
@@ -159,11 +151,6 @@ void Player::onMessage(const std::string& message, void* parameter)
 			m_pose.position = otherPos + movement;
 			m_pose.position.y += 2.0f;
 		}
-	}
-
-	if (message == "RideOn")
-	{
-		m_isRidingNow = true;
 	}
 
 	if (message == "HitBackground")

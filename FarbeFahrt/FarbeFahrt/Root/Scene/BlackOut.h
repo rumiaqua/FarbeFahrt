@@ -12,7 +12,5 @@ public:
 	virtual void post() override;
 	virtual void cleanUp() override;
 	virtual bool isSwallow() const override;
-private:
-	bool m_once;
 };
 

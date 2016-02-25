@@ -28,8 +28,6 @@ private:
 	float m_frame;
 
 	bool m_canControl;
-	bool m_isRideOn;
-	bool m_isRidingNow;
 	float m_previousFrame;
 
 	Vector3 m_previousPosition;

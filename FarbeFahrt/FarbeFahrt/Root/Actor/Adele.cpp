@@ -1,6 +1,6 @@
 #include "Adele.h"
 #include "Actor/Particle/LightParticleGenerator.h"
-
+# include "Utility/StoryManager/StoryManager.h"
 # include "Utility/Math.h"
 # include "Gimmick\GimmickManager.h"
 # include "Scene\Scene.h"
@@ -25,7 +25,7 @@ void Adele::onMessage(const std::string& message, void* parameter)
 		actor->getName() == "Player")
 	{
 		m_isCollide = true;
-		actor->sendMessage("RideOn", nullptr);
+		StoryManager::set(BitFlag::ADELE);
 		m_manager->pushScene(Scene::BlackOut, 60.0f);
 		if (auto particleSystem = m_particleSystem.lock())
 		{

@@ -2,6 +2,8 @@
 
 # include "ISceneMediator.h"
 
+# include "Utility/StoryManager/StoryManager.h"
+
 BlackOut::BlackOut()
 {
 
@@ -14,21 +16,21 @@ void BlackOut::loadContents(Loader& loader)
 
 void BlackOut::initialize()
 {
-	m_once = true;
+
 }
 
 void BlackOut::update()
 {
-	if (m_once)
+	if (StoryManager::get(BitFlag::ADELE))
 	{
-		m_manager->popScene(60.0f, false);
-		m_once = false;
+		StoryManager::set(BitFlag::RIDEON);
 	}
+	m_manager->popScene(60.0f, true);
 }
 
 void BlackOut::draw(Renderer& renderer)
 {
-	renderer.drawTexture("curtain",Renderer::AspectType::Fit);
+	renderer.drawTexture("curtain", Renderer::AspectType::Fit);
 	renderer.ChangeNight();
 }
 

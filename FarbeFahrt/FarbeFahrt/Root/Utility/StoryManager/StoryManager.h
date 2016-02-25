@@ -3,19 +3,23 @@
 enum BitFlag
 {
 	// フラグが立っていない
-	NONE		= 0b00000000,
+	NONE		= 0b000000000,
 	// ギミックが動作している
-	GIMMICK		= 0b00000001,
+	GIMMICK		= 0b000000001,
 	// ゴールした
-	GOAL		= 0b00000010,
+	GOAL		= 0b000000010,
 	// 次のステージに遷移した
-	NEXT        = 0b00000100,
+	NEXT        = 0b000000100,
 	// バッドエンド
-	BADEND      = 0b00010000,
+	BADEND      = 0b000010000,
 	// クリア
-	CLEAR       = 0b00100000,
+	CLEAR       = 0b000100000,
 	// トゥルーエンド
-	TRUEEND     = 0b01000000,
+	TRUEEND     = 0b001000000,
+	// おんぶ
+	RIDEON		= 0b010000000,
+	// アデーレ
+	ADELE		= 0b100000000,
 };
 
 class StoryManager
