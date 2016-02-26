@@ -19,4 +19,5 @@ private:
 	std::string m_actionName;
 	bool m_isActive;
 	bool m_once;
+	bool m_visible;
 };

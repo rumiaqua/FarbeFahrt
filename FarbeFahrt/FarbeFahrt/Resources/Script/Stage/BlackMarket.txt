@@ -17,7 +17,7 @@ o,Goal,Goal,50,30,0,null,0
 
 # ÉMÉ~ÉbÉN
 o,Instant,Herb,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:Black_gimmick/Accessory:MedicineAccessory
-o,ActionBookmark,Medicine,90,25,0,null,Name:Herb/Message:Activate
+o,ActionBookmark,Medicine,90,25,0,null,Name:Herb/Message:Activate/Visible
 o,ActionBookmark,Medicine,90,25,0,null,Name:Herb/Message:Fall
 o,ActionBookmark,Medicine,90,25,0,null,Name:Goal/Message:AddThreshold
 o,ToNight,Medicine,90,25,0,null

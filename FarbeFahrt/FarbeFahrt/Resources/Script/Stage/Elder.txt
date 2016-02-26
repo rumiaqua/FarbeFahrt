@@ -13,13 +13,14 @@ p,-180,30,-80
 f,ElderGround,0,0,0,3,Resources/Script/Animation/Elder.txt
 
 # ゴール
-o,Goal,,50,30,-80,null,1
+o,Goal,Goal,50,30,-80,null,1
 
 # ギミック
 o,Instant,bottle,-30,30,-55,null,IsKinematic/NonActivate/Message:Elder_gimmick/Accessory:ElderAccessory
 o,Bookmark,Elder,90,25,0,null,Name:Elder/AddPoint/Access:-30:30:-50
 o,ActionBookmark,Elder,90,25,0,null,Name:bottle/Message:Activate
 o,ActionBookmark,Elder,90,25,0,null,Name:bottle/Message:Fall
+o,ActionBookmark,Elder,90,25,0,null,Name:Goal/Message:AddThreshold
 
 # ギミック起動変数
 g,1
