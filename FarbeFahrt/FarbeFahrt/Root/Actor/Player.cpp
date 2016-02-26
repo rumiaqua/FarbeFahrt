@@ -176,6 +176,7 @@ void Player::onMessage(const std::string& message, void* parameter)
 	}
 	if (message == "StartControl")
 	{
+		m_world->findCamera()->sendMessage("startInput", nullptr);
 		m_canControl = true;
 	}
 	if (message == "Translate")

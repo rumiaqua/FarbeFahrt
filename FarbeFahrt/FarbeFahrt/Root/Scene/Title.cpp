@@ -48,6 +48,8 @@ void Title::initialize()
 	m_alpha = 0.0f;
 	m_transRate = 1.0f;
 	m_alphaSwitch = false;
+	m_selectStart = false;
+	m_selectFinish = false;
 }
 
 void Title::update()
@@ -69,10 +71,12 @@ void Title::update()
 
 	if (isClickedStart())
 	{
+		m_selectStart = true;
 		m_manager->changeScene(Scene::Opening, 30.0f);
 	}
 	if (isClickedFinish())
 	{
+		m_selectFinish = true;
 		m_manager->popScene(30.0f);
 	}
 }
@@ -84,12 +88,7 @@ void Title::draw(Renderer& renderer)
 	if (System::GetWindowWidth() >= 1024)
 	{
 		renderer.drawTexture("TitleBigBackGround", Renderer::AspectType::LetterBox);
-	/*	if(alphaSwitch(t))
-		{
-			m_alphaSwitch = !m_alphaSwitch;
-		}*/
 		renderer.drawTexture(m_alphaSwitch ? "TitleBigBubble" : "TitleBigBubble2", Renderer::AspectType::LetterBox, t * 255.0f);
-		//renderer.drawTexture("TitleBigBubble2", Renderer::AspectType::LetterBox, t * 255.0f);
 		renderer.drawTexture("TitleBigIvy", Renderer::AspectType::LetterBox);
 		renderer.drawTexture("TitleBigOther", Renderer::AspectType::LetterBox);
 	}
@@ -99,10 +98,13 @@ void Title::draw(Renderer& renderer)
 	}
 	//renderer.drawTexture(System::GetWindowWidth() <= 1024 ? "Title" : "TitleBig", Renderer::AspectType::LetterBox);
 
-	renderer.drawTexture(inAreaStart() ? "StartOnMouse" : "StartOutMouse", (int)getStartButtonPosition().x, (int)getStartButtonPosition().y, 0, 0, Scale, Scale, 0.0f);
-	renderer.drawTexture(inAreaFinish() ? "EndOnMouse" : "EndOutMouse", (int)getFinishButtonPosition().x, (int)getFinishButtonPosition().y, 0, 0, Scale, Scale, 0.0f);
+	renderer.drawTexture(
+		inAreaStart() || m_selectStart ? "StartOnMouse" : "StartOutMouse",
+		(int)getStartButtonPosition().x, (int)getStartButtonPosition().y, 0, 0, Scale, Scale, 0.0f);
 
-	Debug::Println(String::Create("AlphaSwitch:",m_alphaSwitch));
+	renderer.drawTexture(
+		inAreaFinish() || m_selectFinish ? "EndOnMouse" : "EndOutMouse",
+		(int)getFinishButtonPosition().x, (int)getFinishButtonPosition().y, 0, 0, Scale, Scale, 0.0f);
 }
 
 void Title::post()
@@ -136,7 +138,8 @@ bool Title::inAreaStart() const
 
 	return
 		Math::IsContains(mousePosition.x, pos.x, pos.x + x * Scale) &&
-		Math::IsContains(mousePosition.y, pos.y, pos.y + y * Scale);
+		Math::IsContains(mousePosition.y, pos.y, pos.y + y * Scale) &&
+		!m_selectFinish;
 }
 
 bool Title::inAreaFinish() const
@@ -154,7 +157,8 @@ bool Title::inAreaFinish() const
 
 	return
 		Math::IsContains(mousePosition.x, pos.x, pos.x + x * Scale) &&
-		Math::IsContains(mousePosition.y, pos.y, pos.y + y * Scale);
+		Math::IsContains(mousePosition.y, pos.y, pos.y + y * Scale) &&
+		!m_selectStart;
 }
 
 bool Title::isClickedStart() const
@@ -178,5 +182,5 @@ Vector2 Title::getStartButtonPosition() const
 
 Vector2 Title::getFinishButtonPosition() const
 {
-	return{ m_windowSize.x * 0.2f, m_windowSize.y * 0.5f };
+	return{ m_windowSize.x * 0.2f, m_windowSize.y * 0.55f };
 }

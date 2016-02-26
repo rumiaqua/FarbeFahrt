@@ -28,6 +28,7 @@
 # include "Experimental/AnimateState.h"
 # include "Experimental/Bookmark.h"
 # include "Experimental/ActionBookmark.h"
+# include "Experimental/CameraBookmark.h"
 
 # include "Actor\Adele.h"
 
@@ -153,6 +154,13 @@ void Stage::apply(const StageData& data, bool isClear)
 			std::string& actionName = parameter[1];
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<ActionBookmark>(
 				*m_world, object.resource, object.position, targetName, actionName));
+		}
+		if (object.name == "CameraBookmark")
+		{
+			auto parameter = String::Split(object.parameter, '/');
+			std::string& actionName = parameter[0];
+			m_world->addActor(ActorTag::Gimmick, std::make_shared<CameraBookmark>(
+				*m_world, object.resource, object.position, actionName));
 		}
 		if (object.name == "ToNight")
 		{
