@@ -22,9 +22,8 @@ struct ContentDataAndTag
 	ContentData contentData;
 	
 	ContentDataAndTag(ContentTag tag, ContentData contentData)
+		:tag(tag),contentData(contentData)
 	{
-		this->tag = tag;
-		this->contentData = contentData;
 	}
 	ContentDataAndTag(){}
 };
@@ -33,9 +32,8 @@ struct FuncAndTag
 	ContentTag tag;
 	std::function<int(const char*)> loadFunc;
 	FuncAndTag(ContentTag tag, std::function<int(const char*)> loadFunc)
+		:tag(tag), loadFunc(loadFunc)
 	{
-		this->tag = tag;
-		this->loadFunc = loadFunc;
 	}
 	FuncAndTag(){}
 };
