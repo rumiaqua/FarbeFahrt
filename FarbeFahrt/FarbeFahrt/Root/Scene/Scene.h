@@ -14,4 +14,5 @@ enum class Scene {
 	BackLog,
 	BlackOut,
 	TitleChoose,
+	Prologue,
 };
