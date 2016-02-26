@@ -18,8 +18,8 @@ o,Goal,,50,30,-80,null,1
 # ギミック
 o,Instant,bottle,-30,30,-55,null,IsKinematic/NonActivate/Message:Elder_gimmick/Accessory:ElderAccessory
 o,Bookmark,Elder,90,25,0,null,Name:Elder/AddPoint/Access:-30:30:-50
-o,ActionBookmark,Elder,90,25,0,null,bottle/Activate
-o,ActionBookmark,Elder,90,25,0,null,bottle/Fall
+o,ActionBookmark,Elder,90,25,0,null,Name:bottle/Message:Activate
+o,ActionBookmark,Elder,90,25,0,null,Name:bottle/Message:Fall
 
 # ギミック起動変数
 g,1

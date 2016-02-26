@@ -15,6 +15,7 @@
 # include "Actor/Instant.h"
 # include "Actor/Boat.h"
 # include "Actor/ToNight.h"
+# include "Actor/MessageObject.h"
 
 # include "World.h"
 
@@ -149,11 +150,8 @@ void Stage::apply(const StageData& data, bool isClear)
 		}
 		if (object.name == "ActionBookmark")
 		{
-			auto parameter = String::Split(object.parameter, '/');
-			std::string& targetName = parameter[0];
-			std::string& actionName = parameter[1];
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<ActionBookmark>(
-				*m_world, object.resource, object.position, targetName, actionName));
+				*m_world, object.resource, object.position, object.parameter));
 		}
 		if (object.name == "CameraBookmark")
 		{
@@ -166,6 +164,11 @@ void Stage::apply(const StageData& data, bool isClear)
 		{
 			m_world->addActor(ActorTag::Gimmick, std::make_shared<ToNight>(
 				*m_world, object.resource, object.position, m_manager));
+		}
+		if (object.name == "MessageObject")
+		{
+			m_world->addActor(ActorTag::Goal, std::make_shared<MessageObject>(
+				*m_world, object.resource, object.position, object.parameter));
 		}
 	}
 

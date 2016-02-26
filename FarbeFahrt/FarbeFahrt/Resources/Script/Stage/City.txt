@@ -15,14 +15,24 @@ p,-180,30,-80
 f,CityGround,0,0,0,3,Resources/Script/Animation/City.txt
 
 # ゴール
-o,Goal,,50,30,-80,null
+o,Goal,Goal,50,30,-80,null
 
 # ギミック
+o,MessageObject,CantGetMedicine,50,30,-80,null,CantGetMedicine
 o,Instant,Drug,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:City_gimmick/Accessory:MedicineAccessory
+
 o,Bookmark,Market,90,25,0,null,Name:Market/Access:-70:30:-50
-o,Bookmark,Bell,90,25,-50,null,Name:Bell/Access:-70:30:-50
-o,ActionBookmark,Bell,90,25,-50,null,Drug/Activate
-o,ActionBookmark,Bell,90,25,-50,null,Drug/Fall
+o,ActionBookmark,Market,90,25,0,null,Name:Bell/Message:Activate
+o,ActionBookmark,Market,90,25,0,null,Name:ActivateDrug/Message:Activate
+o,ActionBookmark,Market,90,25,0,null,Name:FallDrug/Message:Activate
+o,ActionBookmark,Market,90,25,0,null,Name:CantGetMedicineKill/Message:Activate
+o,ActionBookmark,Market,90,25,0,null,Name:AddThreshold/Message:Activate
+
+o,Bookmark,Bell,90,25,-50,null,Name:Bell/Access:-70:30:-50/NonActivate
+o,ActionBookmark,ActivateDrug,90,25,-50,null,Name:Drug/Message:Activate/NonActivate
+o,ActionBookmark,FallDrug,90,25,-50,null,Name:Drug/Message:Fall/NonActivate
+o,ActionBookmark,CantGetMedicineKill,90,25,-50,null,Name:CantGetMedicine/Message:Kill/NonActivate
+o,ActionBookmark,AddThreshold,90,25,-50,null,Name:Goal/Message:AddThreshold/NonActivate
 
 # ギミック起動変数
 g,1

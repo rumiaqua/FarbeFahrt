@@ -18,7 +18,7 @@ o,Goal,Goal,69.0,22.5,44.5,null
 
 # ÉMÉ~ÉbÉN
 o,Bookmark,Fish,90,25,-50,null,Name:Fish/Access:-70:30:-50
-o,ActionBookmark,Fish,90,25,-50,null,Ship/Activate
+o,ActionBookmark,Fish,90,25,-50,null,Name:Ship/Message:Activate
 o,CameraBookmark,Fish,90,25,-50,null,stopInput
 o,Boat,Ship,-180,25,0,null
 

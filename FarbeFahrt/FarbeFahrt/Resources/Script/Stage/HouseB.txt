@@ -18,7 +18,7 @@ o,Goal,,-80,30,-25,null
 # ギミック起動変数
 
 # 次のステージ
-e,Ending2,show
+e,Ending3,show
 
 # 開始時のテキスト
 
