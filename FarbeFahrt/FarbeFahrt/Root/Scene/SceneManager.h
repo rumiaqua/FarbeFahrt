@@ -97,6 +97,8 @@ public:
 
 	virtual bool isNowStaffRoll();
 
+	bool isEmpty() const;
+
 public:
 
 	/// <summary>Šî’êƒV[ƒ“‚ğ•ÏX‚·‚é</summary>

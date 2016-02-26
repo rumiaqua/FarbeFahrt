@@ -47,13 +47,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	//ÉQÅ[ÉÄñ{ëÃ
 	auto myGame = std::make_unique<MyGame>();
 
-	while (ProcessMessage() == 0/* && !Input::IsClicked(KEY_INPUT_ESCAPE)*/)
+	while (
+		ProcessMessage() == 0)
 	{
 		ShowCursor(true);
 		Input::Update();
 		Mouse::Update();
 		Debug::Update();
 		myGame->run();
+		if (myGame->isEnd())
+		{
+			break;
+		}
 	}
 	SingletonFinalizer::Finalize();
 	DxLib_End();

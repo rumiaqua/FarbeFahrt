@@ -157,6 +157,11 @@ void MyGame::run()
 	m_sceneManager.post();
 }
 
+bool MyGame::isEnd() const
+{
+	return m_sceneManager.isEmpty();
+}
+
 bool MyGame::checkNotOperation()
 {
 	EndManager endManager;

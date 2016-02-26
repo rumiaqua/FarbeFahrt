@@ -71,6 +71,11 @@ bool SceneManager::isNowStaffRoll()
 	return m_nowStaffRoll;
 }
 
+bool SceneManager::isEmpty() const
+{
+	return m_stack.empty();
+}
+
 void SceneManager::changeScene(const Scene& scene, float t, bool isSwallow)
 {
 	pushOperation([=](Loader& loader)
