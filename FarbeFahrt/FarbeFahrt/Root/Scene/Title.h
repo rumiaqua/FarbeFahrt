@@ -31,4 +31,6 @@ private:
 	bool m_alphaSwitch;
 	bool m_selectStart;
 	bool m_selectFinish;
+private:
+	int m_timer;
 };

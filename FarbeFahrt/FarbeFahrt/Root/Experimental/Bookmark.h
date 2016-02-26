@@ -22,4 +22,5 @@ private:
 	bool m_isToggle;
 	std::string m_animateName;
 	Vector3 m_access;
+	bool m_isActive;
 };

@@ -57,3 +57,9 @@ t,ForestB_gimmick,森で危ない薬を手に入れる.txt
 ,,
 # エルフから薬もらう
 t,Elder_gimmick,レオナから薬もらった.txt
+,,
+# 医者のテント前
+t,DoctorTent,医者のテント.txt
+,,
+# 薬が手に入らなかった
+t,CantGetMedicine,街の薬が手に入らなかった.txt

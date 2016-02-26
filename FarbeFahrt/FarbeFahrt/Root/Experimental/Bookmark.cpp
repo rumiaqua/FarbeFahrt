@@ -24,6 +24,7 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 	, m_isToggle(false)
 	, m_animateName()
 	, m_access()
+	, m_isActive(true)
 {
 	for (auto&& param : String::Split(parameter, '/'))
 	{
@@ -46,18 +47,30 @@ Bookmark::Bookmark(IWorld& world, const std::string& modelName, const Vector3& p
 			m_access.y = String::ToValue<float>(split[2]);
 			m_access.z = String::ToValue<float>(split[3]);
 		}
+		if (param == "NonActivate")
+		{
+			m_isActive = false;
+		}
 	}
 }
 
 void Bookmark::onDraw(Renderer& renderer) const
 {
-	renderer.drawNormalModel(m_name, m_pose.position, m_pose.rotation);
+	if (m_isActive)
+	{
+		renderer.drawNormalModel(m_name, m_pose.position, m_pose.rotation);
+	}
 	return BaseActor::onDraw(renderer);
 }
 
 void Bookmark::onMessage(const std::string& message, void* parameter)
 {
-	if (message == "OnGimmick")
+	if (message == "Activate")
+	{
+		m_isActive = true;
+	}
+
+	if (message == "OnGimmick" && m_isActive)
 	{
 		m_world->actorSet(m_access);
 		m_world->findCamera()->sendMessage("addPoint",nullptr);
