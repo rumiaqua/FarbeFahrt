@@ -14,7 +14,6 @@ private:
 	Vector2 getFinishButtonPosition() const;
 
 public:
-
 	Title();
 	virtual void loadContents(Loader& loader)override;
 	virtual void initialize()override;

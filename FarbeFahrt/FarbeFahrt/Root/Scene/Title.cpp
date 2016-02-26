@@ -47,7 +47,7 @@ void Title::initialize()
 	GetWindowSize(&m_windowSize.x, &m_windowSize.y);
 	m_alpha = 0.0f;
 	m_transRate = 1.0f;
-	m_alphaSwitch = true;
+	m_alphaSwitch = false;
 }
 
 void Title::update()
@@ -57,9 +57,15 @@ void Title::update()
 	m_alpha += m_transRate;
 	if (!Math::IsContains(m_alpha, 0.0f, MaxAlpha))
 	{
-		m_alpha = (float)Math::Clamp(m_alpha, 0.0f, MaxAlpha);
 		m_transRate *= -1;
 	}
+
+	if (m_alpha < 0.0f)
+	{
+		m_alphaSwitch = !m_alphaSwitch;
+	}
+
+	m_alpha = (float)Math::Clamp(m_alpha, 0.0f, MaxAlpha);
 
 	if (isClickedStart())
 	{
@@ -78,10 +84,10 @@ void Title::draw(Renderer& renderer)
 	if (System::GetWindowWidth() >= 1024)
 	{
 		renderer.drawTexture("TitleBigBackGround", Renderer::AspectType::LetterBox);
-		if(t <= 255.0f)
+	/*	if(alphaSwitch(t))
 		{
 			m_alphaSwitch = !m_alphaSwitch;
-		}
+		}*/
 		renderer.drawTexture(m_alphaSwitch ? "TitleBigBubble" : "TitleBigBubble2", Renderer::AspectType::LetterBox, t * 255.0f);
 		//renderer.drawTexture("TitleBigBubble2", Renderer::AspectType::LetterBox, t * 255.0f);
 		renderer.drawTexture("TitleBigIvy", Renderer::AspectType::LetterBox);
