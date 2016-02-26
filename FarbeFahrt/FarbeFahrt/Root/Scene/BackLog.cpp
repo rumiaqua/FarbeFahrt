@@ -7,6 +7,7 @@
 # include "Utility/Math.h"
 
 BackLog::BackLog()
+	: m_currentRow(-1)
 {
 	
 }
@@ -64,7 +65,8 @@ void BackLog::draw(Renderer& renderer)
 
 	for (int i = 0; i < drawable; ++i)
 	{
-		renderer.drawFontCenter(BackLogManager::GetRow(i + m_currentRow), outside.y + padding.y * inside.y + i * 48);
+		renderer.drawFontCenter(BackLogManager::GetRow(i + m_currentRow),
+			static_cast<int>(outside.y + padding.y * inside.y + i * 48));
 	}
 }
 

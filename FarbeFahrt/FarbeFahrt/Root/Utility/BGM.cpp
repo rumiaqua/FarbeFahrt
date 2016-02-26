@@ -4,9 +4,12 @@
 
 
 BGM::BGM()
+	: m_oldBGMhandle(-1)
+	, m_oldBGMvolume(0)
+	, m_playBGMhandle(-1)
+	, m_playBGMvolume(0)
 {
-	m_playBGMvolume = 0;
-	m_oldBGMvolume = 0;
+
 }
 
 BGM::~BGM()

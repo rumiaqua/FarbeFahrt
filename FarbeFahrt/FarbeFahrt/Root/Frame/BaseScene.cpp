@@ -2,6 +2,7 @@
 #include "BaseScene.h"
 
 BaseScene::BaseScene()
+	: m_manager(nullptr)
 {
 }
 

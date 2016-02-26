@@ -25,10 +25,11 @@ struct ContentData {
 	std::string filename;
 	bool use;
 	ContentData(int handle, const std::string& filename)
+		: handle(handle)
+		, filename(filename)
+		, use(true)
 	{
-		this->handle = handle;
-		this->filename = filename;
-		this->use = true;
+
 	}
 	ContentData() {}
 };

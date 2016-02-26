@@ -4,6 +4,7 @@
 
 GimmickManager::GimmickManager()
 	: m_point(0)
+	, m_maxPoint(0)
 {
 }
 

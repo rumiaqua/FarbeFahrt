@@ -22,6 +22,11 @@ namespace
 }
 
 Title::Title()
+	: m_selectFinish()
+	, m_selectStart()
+	, m_alpha()
+	, m_alphaSwitch()
+	, m_transRate()
 {
 
 }
@@ -88,7 +93,8 @@ void Title::draw(Renderer& renderer)
 	if (System::GetWindowWidth() >= 1024)
 	{
 		renderer.drawTexture("TitleBigBackGround", Renderer::AspectType::LetterBox);
-		renderer.drawTexture(m_alphaSwitch ? "TitleBigBubble" : "TitleBigBubble2", Renderer::AspectType::LetterBox, t * 255.0f);
+		renderer.drawTexture(m_alphaSwitch ? "TitleBigBubble" : "TitleBigBubble2", Renderer::AspectType::LetterBox,
+			static_cast<int>(t * 255.0f));
 		renderer.drawTexture("TitleBigIvy", Renderer::AspectType::LetterBox);
 		renderer.drawTexture("TitleBigOther", Renderer::AspectType::LetterBox);
 	}

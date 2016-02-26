@@ -53,7 +53,6 @@ Vector3 FreeCamera::right() const
 Vector3 FreeCamera::up() const
 {
 	return Vector3::Up();
-	return Vector3::Normalize(m_up);
 }
 
 Vector3 FreeCamera::forward() const
