@@ -14,7 +14,6 @@ private:
 	Vector2 getFinishButtonPosition() const;
 
 public:
-
 	Title();
 	virtual void loadContents(Loader& loader)override;
 	virtual void initialize()override;
@@ -33,4 +32,5 @@ private:
 	float m_alpha;
 	float m_transRate;
 	float m_bubblePosX;
+	bool m_alphaSwitch;
 };

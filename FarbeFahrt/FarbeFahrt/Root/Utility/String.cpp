@@ -59,6 +59,11 @@ namespace String
 		return std::to_string(value);
 	}
 
+	std::string Create(bool value)
+	{
+		return value ? "true" : "false";
+	}
+
 	std::vector<std::string> Split(const std::string& str, char delim)
 	{
 		std::vector<std::string> res;
