@@ -33,6 +33,7 @@ void Title::loadContents(Loader& loader)
 	loader.loadContent("TitleBigOther", "Texture/titleBigOther.png");
 	loader.loadContent("TitleBigIvy", "Texture/titleBigIvy.png");
 	loader.loadContent("TitleBigBubble", "Texture/titleBigBubble.png");
+	loader.loadContent("TitleBigBubble2", "Texture/titleBigBubble2.png");
 	loader.loadContent("TitleBGM", "Sound/BGM/Title.mp3");
 
 	loader.loadContent("StartOutMouse", "Texture/TitleUI/start.png");
@@ -46,6 +47,7 @@ void Title::initialize()
 	GetWindowSize(&m_windowSize.x, &m_windowSize.y);
 	m_alpha = 0.0f;
 	m_transRate = 1.0f;
+	m_alphaSwitch = false;
 }
 
 void Title::update()
@@ -55,9 +57,15 @@ void Title::update()
 	m_alpha += m_transRate;
 	if (!Math::IsContains(m_alpha, 0.0f, MaxAlpha))
 	{
-		m_alpha = (float)Math::Clamp(m_alpha, 0.0f, MaxAlpha);
 		m_transRate *= -1;
 	}
+
+	if (m_alpha < 0.0f)
+	{
+		m_alphaSwitch = !m_alphaSwitch;
+	}
+
+	m_alpha = (float)Math::Clamp(m_alpha, 0.0f, MaxAlpha);
 
 	if (isClickedStart())
 	{
@@ -71,13 +79,17 @@ void Title::update()
 
 void Title::draw(Renderer& renderer)
 {
-	float t = Utility::Easing::EaseCirc::InOut(m_alpha / MaxAlpha);
-	t = m_alpha / MaxAlpha;
+	float t = Utility::Easing::EaseLinear::InOut(m_alpha / MaxAlpha);
 
 	if (System::GetWindowWidth() >= 1024)
 	{
 		renderer.drawTexture("TitleBigBackGround", Renderer::AspectType::LetterBox);
-		renderer.drawTexture("TitleBigBubble", Renderer::AspectType::LetterBox, (int)(t * 255));
+	/*	if(alphaSwitch(t))
+		{
+			m_alphaSwitch = !m_alphaSwitch;
+		}*/
+		renderer.drawTexture(m_alphaSwitch ? "TitleBigBubble" : "TitleBigBubble2", Renderer::AspectType::LetterBox, t * 255.0f);
+		//renderer.drawTexture("TitleBigBubble2", Renderer::AspectType::LetterBox, t * 255.0f);
 		renderer.drawTexture("TitleBigIvy", Renderer::AspectType::LetterBox);
 		renderer.drawTexture("TitleBigOther", Renderer::AspectType::LetterBox);
 	}
@@ -90,7 +102,7 @@ void Title::draw(Renderer& renderer)
 	renderer.drawTexture(inAreaStart() ? "StartOnMouse" : "StartOutMouse", (int)getStartButtonPosition().x, (int)getStartButtonPosition().y, 0, 0, Scale, Scale, 0.0f);
 	renderer.drawTexture(inAreaFinish() ? "EndOnMouse" : "EndOutMouse", (int)getFinishButtonPosition().x, (int)getFinishButtonPosition().y, 0, 0, Scale, Scale, 0.0f);
 
-	Debug::Println(String::Create("Alpha:",m_alpha));
+	Debug::Println(String::Create("AlphaSwitch:",m_alphaSwitch));
 }
 
 void Title::post()
@@ -161,10 +173,10 @@ bool Title::isClickedFinish() const
 
 Vector2 Title::getStartButtonPosition() const
 {
-	return{ m_windowSize.x * 0.2f, m_windowSize.y * 0.5f };
+	return{ m_windowSize.x * 0.2f, m_windowSize.y * 0.4f };
 }
 
 Vector2 Title::getFinishButtonPosition() const
 {
-	return{ m_windowSize.x * 0.2f, m_windowSize.y * 0.7f };
+	return{ m_windowSize.x * 0.2f, m_windowSize.y * 0.5f };
 }
