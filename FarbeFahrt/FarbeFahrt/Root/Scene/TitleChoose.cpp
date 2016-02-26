@@ -30,6 +30,8 @@ TitleChoose::TitleChoose() :
 	, m_state(State::FadeIn)
 	, m_elapsedTime(0.0f)
 	, m_isYesSelected(none)
+	, m_yesPosX()
+	, m_noPosX()
 {
 }
 

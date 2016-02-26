@@ -35,6 +35,7 @@
 
 GameMain::GameMain()
 	: m_stageManager()
+	, m_loader(nullptr)
 {
 
 }

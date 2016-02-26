@@ -22,6 +22,11 @@ namespace
 }
 
 Title::Title()
+	: m_selectFinish()
+	, m_selectStart()
+	, m_alpha()
+	, m_alphaSwitch()
+	, m_transRate()
 {
 
 }

@@ -5,6 +5,7 @@
 EndManager::EndManager()
 	: m_name()
 	, m_canEnd(false)
+	, m_isShowStaffRoll(false)
 {
 	
 }

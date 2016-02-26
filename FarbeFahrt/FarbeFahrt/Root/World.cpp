@@ -52,9 +52,7 @@ Actor World::findGroup(const ActorTag& tag) const
 
 StageData World::getData() const
 {
-	StageData data;
-
-	return data;
+	return StageData();
 }
 
 void World::apply(const StageData& data, bool isClear)

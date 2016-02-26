@@ -35,6 +35,7 @@
 Stage::Stage(World* world,ISceneMediator* manager)
 	: m_world(world)
 	, m_actorManager()
+	, m_point(-1)
 {
 	m_manager = manager;
 }

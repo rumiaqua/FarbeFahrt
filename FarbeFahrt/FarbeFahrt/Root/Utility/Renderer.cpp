@@ -193,6 +193,7 @@ void Renderer::drawModelWithDepthShadow()
 	// 全モデルデータの描画
 	for (auto& model : m_modelData)
 	{
+		Debug::Println(String::Create("UseFlag = ", model.second.Use ? "true" : "false", " ", model.first));
 		if (model.second.Use == false)
 		{
 			continue;
