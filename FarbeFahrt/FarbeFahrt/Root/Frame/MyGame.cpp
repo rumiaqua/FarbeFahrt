@@ -14,6 +14,7 @@
 #include "Utility/Mouse.h"
 #include "Manager/EndManager.h"
 #include "Scene/TitleChoose.h"
+#include "Scene/Prologue.h"
 
 # include "Experimental/ObjectViewer.h"
 # include "Experimental/AllResourceLoad.h"
@@ -55,6 +56,7 @@ MyGame::MyGame()
 	m_sceneManager.addScene<BlackOut>(Scene::BlackOut);
 	m_sceneManager.addScene<BackLog>(Scene::BackLog);
 	m_sceneManager.addScene<TitleChoose>(Scene::TitleChoose);
+	m_sceneManager.addScene<Prologue>(Scene::Prologue);
 
 	m_sceneManager.pushScene(Scene::Title);
 	// m_sceneManager.pushScene(Scene::OneShotStage);

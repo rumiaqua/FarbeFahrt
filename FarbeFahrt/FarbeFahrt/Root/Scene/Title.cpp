@@ -27,6 +27,7 @@ Title::Title()
 	, m_alpha()
 	, m_alphaSwitch()
 	, m_transRate()
+	, m_timer(0)
 {
 
 }
@@ -59,6 +60,12 @@ void Title::initialize()
 
 void Title::update()
 {
+	++m_timer;
+	if (m_timer >= 300)
+	{
+		m_timer = 0;
+		m_manager->changeScene(Scene::Prologue, 60.0f);
+	}
 	BGM::play("TitleBGM");
 
 	m_alpha += m_transRate;
