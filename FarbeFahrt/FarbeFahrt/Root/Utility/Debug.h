@@ -48,7 +48,7 @@ public:
 		{
 			return;
 		}
-		Print(format.c_str(), std::forward<Args>(args)...);
+		Print(format, std::forward<Args>(args)...);
 		printfDx("\n");
 	}
 
