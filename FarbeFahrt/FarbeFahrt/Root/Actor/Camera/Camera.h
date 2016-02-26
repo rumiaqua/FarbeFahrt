@@ -51,5 +51,5 @@ private:
 	bool m_onCompleted; 
 	float m_actorRadius;
 	Optional<Vector3> m_lockPos;
-	bool m_InputActivate;
+	int m_InputActivate;
 };

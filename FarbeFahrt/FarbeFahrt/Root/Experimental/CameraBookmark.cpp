@@ -26,7 +26,7 @@ void CameraBookmark::onMessage(const std::string& message, void* parameter)
 		if (!m_once)
 		{
 			m_once = true;
-			m_world->findCamera()->sendMessage(m_actionName, nullptr);
+			m_world->findCamera()->sendMessage("addPoint",nullptr);
 			m_shape = std::make_unique<Empty>();
 		}
 	}

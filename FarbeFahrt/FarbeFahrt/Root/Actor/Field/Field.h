@@ -32,4 +32,5 @@ private:
 	std::string m_current;
 	float m_cameraProgress;
 	float m_animationTime;
+	bool m_cameraSub;
 };

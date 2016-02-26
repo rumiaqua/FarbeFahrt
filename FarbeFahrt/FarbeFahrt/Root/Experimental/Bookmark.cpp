@@ -60,6 +60,7 @@ void Bookmark::onMessage(const std::string& message, void* parameter)
 	if (message == "OnGimmick")
 	{
 		m_world->actorSet(m_access);
+		m_world->findCamera()->sendMessage("addPoint",nullptr);
 
 		if (m_isAddPoint)
 		{

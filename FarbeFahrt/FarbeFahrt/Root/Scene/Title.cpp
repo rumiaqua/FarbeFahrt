@@ -15,6 +15,8 @@
 # include "ISceneMediator.h"
 # include "Scene.h"
 
+#include "Utility/SE.h"
+
 namespace
 {
 	const float Scale = 1.0f;
@@ -40,6 +42,7 @@ void Title::loadContents(Loader& loader)
 	loader.loadContent("TitleBigBubble", "Texture/titleBigBubble.png");
 	loader.loadContent("TitleBigBubble2", "Texture/titleBigBubble2.png");
 	loader.loadContent("TitleBGM", "Sound/BGM/Title.mp3");
+
 
 	loader.loadContent("StartOutMouse", "Texture/TitleUI/start.png");
 	loader.loadContent("StartOnMouse", "Texture/TitleUI/start2.png");

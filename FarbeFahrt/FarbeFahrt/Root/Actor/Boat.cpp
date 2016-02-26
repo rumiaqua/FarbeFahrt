@@ -33,6 +33,7 @@ void Boat::onUpdate()
 	if (m_pose.position.x > Limit)
 	{
 		m_pose.position.x = Limit;
+		m_world->findCamera()->sendMessage("resetPoint",nullptr);
 	}
 
 	BaseActor::onUpdate();

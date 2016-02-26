@@ -27,7 +27,7 @@ Camera::Camera(IWorld& world) :
 	BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
 	, m_onCompleted(false)
 	, m_actor()
-	, m_InputActivate(true)
+	, m_InputActivate(0)
 {
 	SetCameraNearFar(1.0f, 12000.0f);
 	// SetCursorPos(nScreenCenterX, nScreenCenterY);
@@ -60,7 +60,7 @@ void Camera::onUpdate()
 	//Debug::Println(String::Create("CameraMode:", (int)m_cameraState.cameraMode));
 	//Debug::Println(String::Create("ChageFlag :", (int)m_cameraState.chaseFlag));
 
-	if (m_InputActivate)
+	if (m_InputActivate <= 0)
 	{
 		if (m_progress >= 1 && m_world->findActor("Player"))
 		{
@@ -69,13 +69,13 @@ void Camera::onUpdate()
 	}
 	cameraSet();
 
-
-
 	BaseActor::onUpdate();
 }
 
 void Camera::onDraw(Renderer& renderer)const
 {
+	Debug::Println(String::Create("camerapoint:",m_InputActivate));
+
 	BaseActor::onDraw(renderer);
 }
 
@@ -103,6 +103,11 @@ void Camera::chaseCamera()
 	if (m_actor.expired() && !m_lockPos)
 	{
 		return;
+	}
+
+	if (auto player = m_world->findActor("Player") && m_progress >= 1)
+	{
+		m_actor.lock()->sendMessage("StartControl", nullptr);
 	}
 	m_cameraMatrix.currentPos = getPosition();
 	m_cameraMatrix.targetPos = m_lockPos.ref() + accessCorrection(accessPos);
@@ -228,7 +233,7 @@ void Camera::toBookCamera()
 			return;
 		}
 		bool isKill = false;
-		m_actor.lock()->sendMessage("StopControl", &isKill);
+		m_actor.lock()->sendMessage("StopControl", &isKill);		
 	}
 }
 
@@ -242,7 +247,7 @@ void Camera::toPlayerCamera()
 		{
 			return;
 		}
-		m_actor.lock()->sendMessage("StartControl", nullptr);
+		//m_actor.lock()->sendMessage("StartControl", nullptr);
 	}
 }
 
@@ -289,13 +294,17 @@ void Camera::onMessage(const std::string& message, void* parameter)
 		m_onCompleted = true;
 	}
 
-	if (message == "startInput")
+	if (message == "resetPoint")
 	{
-		m_InputActivate = true;
+		m_InputActivate = 0;
 	}
-	if (message == "stopInput")
+	if (message == "addPoint")
 	{
-		m_InputActivate = false;
+		m_InputActivate += 1;
+	}
+	if (message == "subPoint")
+	{
+		m_InputActivate -= 1;
 	}
 
 	if (m_progress >= 1)

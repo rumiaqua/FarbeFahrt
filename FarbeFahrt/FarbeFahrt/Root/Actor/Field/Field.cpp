@@ -33,6 +33,7 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	, m_current()
 	, m_cameraProgress(false)
 	, m_animationTime(ANIMATION_FRAME)
+	, m_cameraSub(false)
 {
 
 }
@@ -65,13 +66,20 @@ void Field::onUpdate()
 
 		if (m_elapsedTime >= m_animationTime)
 		{
-			m_world->findCamera()->sendMessage("toBookCamera", nullptr);
+			m_world->findCamera()->sendMessage("toBookCamera", nullptr); 
+			if (auto player = m_world->findActor("Player") && !m_cameraSub)
+			{
+				m_world->findCamera()->sendMessage("subPoint", nullptr);
+				m_cameraSub = true;
+			}
 			MessageManager::SetShow(true);
 		}
 
 		if (m_current == "End" &&
 			!m_isAnimating)
 		{
+			m_world->findCamera()->sendMessage("resetPoint", nullptr);
+			m_cameraSub = false;
 			EndManager::SetEnd(true);
 			MessageManager::SetShow(true);
 		}
@@ -88,6 +96,8 @@ void Field::onUpdate()
 		if (m_current == "Close" &&
 			!m_isAnimating)
 		{
+			m_world->findCamera()->sendMessage("resetPoint", nullptr);
+			m_cameraSub = false;
 			kill();
 		}
 	}
