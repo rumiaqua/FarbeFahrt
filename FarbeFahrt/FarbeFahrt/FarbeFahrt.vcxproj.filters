@@ -1998,6 +1998,7 @@
     <Text Include="Resources\Script\Message\街の薬が手に入らなかった.txt" />
     <Text Include="Resources\Script\Message\医者のテント.txt" />
     <Text Include="Resources\Script\Message\HouseD.txt" />
+    <Text Include="Resources\Script\Stage\HouseE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sound\BGM\bad_end.mp3" />

@@ -11,6 +11,7 @@ ActionBookmark::ActionBookmark(IWorld& world, const std::string& modelName, cons
 	, m_actionName()
 	, m_once(false)
 	, m_isActive(true)
+	, m_visible(false)
 {
 	for (auto&& param : String::Split(parameter, '/'))
 	{
@@ -26,11 +27,19 @@ ActionBookmark::ActionBookmark(IWorld& world, const std::string& modelName, cons
 		{
 			m_actionName = String::Split(param, ':')[1];
 		}
+		if (param == "Visible")
+		{
+			m_visible = true;
+		}
 	}
 }
 
 void ActionBookmark::onDraw(Renderer& renderer) const
 {
+	if (m_visible)
+	{
+		renderer.drawNormalModel(m_name, m_pose.position, m_pose.rotation);
+	}
 	BaseActor::onDraw(renderer);
 }
 

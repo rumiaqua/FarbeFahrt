@@ -17,7 +17,7 @@ o,Goal,,50,30,-80,null,1
 
 # ギミック
 o,Instant,HerbB,-94.5,50,5.5,null,IsKinematic/NonActivate/Message:ForestB_gimmick/Accessory:HerbAccessory
-o,ActionBookmark,Fall,90,25,-50,null,Name:HerbB/Message:Activate
+o,ActionBookmark,Fall,90,25,-50,null,Name:HerbB/Message:Activate/Visible
 o,ActionBookmark,Fall,90,25,-50,null,Name:HerbB/Message:Fall
 
 # ギミック起動変数
