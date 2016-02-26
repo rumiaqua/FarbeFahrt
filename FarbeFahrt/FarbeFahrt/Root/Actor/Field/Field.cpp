@@ -23,6 +23,7 @@ Field::Field(IWorld& world, const std::string& name, const Vector3& position, fl
 	:BaseActor(world, name, position, Matrix::identity(),
 		std::make_unique<ModelCollider>(name)), m_scale(scale)
 	, m_elapsedTime(0.0f)
+	, m_previousAnimNo(-1)
 	, m_animationNumber(0)
 	, m_isAnimating(false)
 	, m_isReversed(false)

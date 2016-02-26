@@ -7,6 +7,7 @@
 # include "Utility/Math.h"
 
 BackLog::BackLog()
+	: m_currentRow(-1)
 {
 	
 }
