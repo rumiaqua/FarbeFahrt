@@ -32,7 +32,7 @@ void LightParticle::onUpdate()
 {
 	m_timer++;
 	//m_angle += Math::ToRadian(m_rand);
-	m_angle += Math::ToRadian(1);
+	m_angle += (float)Math::ToRadian(1);
 	getPosition().y += Rise;
 
 	if (m_timer <= Death * 60 / 2)

@@ -34,21 +34,21 @@ void LightParticleGenerator::onUpdate()
 		if (m_timer / 60 >= Interval)
 		{
 			m_genPos = Vector3(
-				getPosition().x + Math::Cos(m_counta) * m_radius,
+				getPosition().x + (float)Math::Cos(m_counta) * m_radius,
 				m_parent == nullptr ? getPosition().y : m_parent->getPosition().y,
-				getPosition().z + Math::Sin(m_counta) * m_radius);
+				getPosition().z + (float)Math::Sin(m_counta) * m_radius);
 			m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
 
 			m_genPos = Vector3(
-				getPosition().x + Math::Cos(m_counta + Math::ToRadian(120.0f)) * m_radius,
+				getPosition().x + (float)Math::Cos(m_counta + Math::ToRadian(120.0f)) * m_radius,
 				m_parent == nullptr ? getPosition().y : m_parent->getPosition().y,
-				getPosition().z + Math::Sin(m_counta + Math::ToRadian(120.0f)) * m_radius);
+				getPosition().z + (float)Math::Sin(m_counta + Math::ToRadian(120.0f)) * m_radius);
 			m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
 
 			m_genPos = Vector3(
-				getPosition().x + Math::Cos(m_counta + Math::ToRadian(240.0f)) * m_radius,
+				getPosition().x + (float)Math::Cos(m_counta + Math::ToRadian(240.0f)) * m_radius,
 				m_parent == nullptr ? getPosition().y : m_parent->getPosition().y,
-				getPosition().z + Math::Sin(m_counta + Math::ToRadian(240.0f)) * m_radius);
+				getPosition().z + (float)Math::Sin(m_counta + Math::ToRadian(240.0f)) * m_radius);
 			m_world->addActor(ActorTag::Effect, std::make_shared<LightParticle>(*m_world, m_genPos));
 
 			m_counta += Interval * 2;
