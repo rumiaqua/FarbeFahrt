@@ -34,7 +34,6 @@ Player::Player(IWorld& world, const Vector3& position, const std::vector<Vector4
 	, m_canControl(false)
 	, m_noEntries(noEntries)
 	, m_previousFrame(0.0f)
-	, m_previousPose()
 	, m_previousPosition()
 {
 	m_moveSpeed = 1.5f;
