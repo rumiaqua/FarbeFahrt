@@ -27,6 +27,7 @@ Camera::Camera(IWorld& world) :
 	BaseActor(world, "Camera", Vector3::Zero(), Matrix::identity(), nullptr)
 	, m_onCompleted(false)
 	, m_actor()
+	, m_InputActivate(true)
 {
 	SetCameraNearFar(1.0f, 12000.0f);
 	// SetCursorPos(nScreenCenterX, nScreenCenterY);
@@ -59,9 +60,12 @@ void Camera::onUpdate()
 	//Debug::Println(String::Create("CameraMode:", (int)m_cameraState.cameraMode));
 	//Debug::Println(String::Create("ChageFlag :", (int)m_cameraState.chaseFlag));
 
-	if (m_progress >= 1)
+	if (m_InputActivate)
 	{
-		cameraInput();
+		if (m_progress >= 1 && m_world->findActor("Player"))
+		{
+			cameraInput();
+		}
 	}
 	cameraSet();
 
@@ -77,18 +81,18 @@ void Camera::onDraw(Renderer& renderer)const
 
 void Camera::cameraInput()
 {
-	if (Mouse::IsClicked(MOUSE_INPUT_LEFT)/* && m_cameraState.cameraMode == CameraMode::Default*/)
+	if (Mouse::IsClicked(MOUSE_INPUT_LEFT) && m_cameraState.cameraMode == CameraMode::Default)
 	{
 		Vector3 begin = Mouse::ScreenPointToWorld(0.0f);
 		Vector3 end = Mouse::ScreenPointToWorld(1.0f);
 		m_world->addActor(ActorTag::Collider, std::make_shared<Ray>(*m_world, begin, end));
 	}
 
-	if (Mouse::ScrollValue() >0 && m_world->findActor("Player") != nullptr)
+	if (Mouse::ScrollValue() > 0/* && m_world->findActor("Player") != nullptr*/)
 	{
 		toPlayerCamera();
 	}
-	else if (Mouse::ScrollValue() < 0 && m_world->findActor("Player") != nullptr)
+	else if (Mouse::ScrollValue() < 0/* && m_world->findActor("Player") != nullptr*/)
 	{
 		toBookCamera();
 	}
@@ -283,6 +287,15 @@ void Camera::onMessage(const std::string& message, void* parameter)
 	if (message == "complete")
 	{
 		m_onCompleted = true;
+	}
+
+	if (message == "startInput")
+	{
+		m_InputActivate = true;
+	}
+	if (message == "stopInput")
+	{
+		m_InputActivate = false;
 	}
 
 	if (m_progress >= 1)

@@ -63,7 +63,7 @@ void Goal::onMessage(const std::string& message, void* parameter)
 		//4.プレイヤーの位置をセット
 		//5.カメラを近づける
 		// m_world->findCamera()->sendMessage("nextStage",nullptr);
-		bool isKill = true;
+		bool isKill = true; 
 		player->sendMessage("StopControl", &isKill);
 		kill();
 	}
