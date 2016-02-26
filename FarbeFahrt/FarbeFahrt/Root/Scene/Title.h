@@ -2,6 +2,7 @@
 
 # include "Frame/BaseScene.h"
 #include "Utility/Point2.h"
+#include "Utility/Optional.h"
 
 class Title : public BaseScene
 {
@@ -24,13 +25,10 @@ public:
 	virtual bool isSwallow() const override;
 
 private:
-	bool m_startFlag;
-	bool m_finishFlag;
-	float m_startPosX;
-	float m_finishPosX;
 	Point2 m_windowSize;
 	float m_alpha;
 	float m_transRate;
-	float m_bubblePosX;
 	bool m_alphaSwitch;
+	bool m_selectStart;
+	bool m_selectFinish;
 };
