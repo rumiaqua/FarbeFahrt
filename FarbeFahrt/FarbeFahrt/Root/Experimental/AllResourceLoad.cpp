@@ -15,6 +15,7 @@ AllResourceLoad::AllResourceLoad()
 
 void AllResourceLoad::loadContents(Loader& loader)
 {
+	loader.loadContent("book", "Model/Book/Book.pmx");
 	loader.loadContent("desk", "Model/Š÷/‚Â‚­‚¦.mqo");
 
 	loader.loadContent("TrueEnd", "Texture/end/true.png");

@@ -30,7 +30,7 @@ Opening::Opening(Renderer* renderer)
 
 void Opening::loadContents(Loader& loader)
 {
-	loader.loadContent("book", "Model/–{/V–{.pmx");
+	loader.loadContent("book", "Model/Book/Book.pmx");
 	loader.loadContent("desk", "Model/Š÷/‚Â‚­‚¦.mqo");
 }
 
