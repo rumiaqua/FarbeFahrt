@@ -69,12 +69,11 @@ void Bookmark::onMessage(const std::string& message, void* parameter)
 			{
 				m_addPoint *= -1;
 			}
-
-			if (!m_isToggle)
+		}
+		if (!m_isToggle)
 		{
-				m_isAddPoint = false;
-				m_shape = std::make_unique<Empty>();
-			}
+			m_isAddPoint = false;
+			m_shape = std::make_unique<Empty>();
 		}
 
 		AnimateState state { m_animateName, false };

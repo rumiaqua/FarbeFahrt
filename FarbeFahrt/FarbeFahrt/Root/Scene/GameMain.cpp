@@ -55,7 +55,8 @@ void GameMain::loadContents(Loader& loader)
 	loader.loadContent("Message", "Texture/end/message.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 	loader.loadContent("Player", "Model/MMD–‚“±Žo’íVer1.1/ƒ~ƒnƒCƒ‹.pmx");
-	loader.loadContent("LightParticle", "Texture/Particle.png");	
+	loader.loadContent("PlayerRiding", "Model/MMD–‚“±Žo’íVer1.1/Žo’í.pmx");
+	loader.loadContent("LightParticle", "Texture/Particle.png");
 
 	loader.loadContent("TitleChooseBack", "Texture/TitleChoose/Back.png");
 	loader.loadContent("YesOutMouse", "Texture/TitleChoose/yes.png");

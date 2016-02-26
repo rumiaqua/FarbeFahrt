@@ -15,6 +15,7 @@ class MyGame
 public:
 	MyGame();
 	void run();
+	bool isEnd() const;
 
 private:
 	bool checkNotOperation();

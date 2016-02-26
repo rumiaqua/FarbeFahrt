@@ -57,7 +57,7 @@ void Title::update()
 	m_alpha += m_transRate;
 	if (!Math::IsContains(m_alpha, 0.0f, MaxAlpha))
 	{
-		m_alpha = Math::Clamp(m_alpha, 0.0f, MaxAlpha);
+		m_alpha = (float)Math::Clamp(m_alpha, 0.0f, MaxAlpha);
 		m_transRate *= -1;
 	}
 

@@ -28,6 +28,8 @@ namespace String
 
 	std::string Create(int value);
 
+	std::string Create(bool value);
+
 	template <typename Type, typename ...Args>
 	std::string Create(const Type& value, Args&& ...args)
 	{

@@ -2,7 +2,7 @@
 r,Herb,Model/Herb/Herb.pmx
 
 # フィールドリソース
-r,HouseDGround,Stage/HouseD/HouseDGround.pmx
+r,HouseDGround,Stage/DelayHouseD/DelayHouseDGround.pmx
 r,HouseBGM,Sound/BGM/house.mp3
 
 # プレイヤーの座標

@@ -153,6 +153,16 @@ public:
 			{
 				output.bgmName = split[1];
 			}
+
+			// —§‚¿“ü‚è‹ÖŽ~
+			if (split[0] == "NoEntry")
+			{
+				output.noEntries.emplace_back(
+					String::ToValue<float>(split[1]),
+					String::ToValue<float>(split[2]),
+					String::ToValue<float>(split[3]),
+					String::ToValue<float>(split[4]));
+			}
 		}
 
 		return output;

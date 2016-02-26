@@ -13,7 +13,7 @@ class Player :
 	public BaseActor
 {
 public:
-	Player(IWorld& world, const Vector3& position);
+	Player(IWorld& world, const Vector3& position, const std::vector<Vector4>& canEntries);
 private:
 	virtual void onUpdate()override;
 	virtual void onDraw(Renderer& renderer)const override;	
@@ -21,7 +21,6 @@ private:
 private:
 	Vector3 playerInput();//“ü—ÍŒni‚½‚¾‚ÌŠÖ”•ª‚¯j
 	void animate(const Vector3& moveVec);
-	void fallDown();
 private:
 	PlayerState m_state;
 	float m_moveSpeed;
@@ -29,8 +28,9 @@ private:
 	float m_frame;
 
 	bool m_canControl;
-	bool m_isFallDown;
 	float m_previousFrame;
 
 	Vector3 m_previousPosition;
+
+	std::vector<Vector4> m_noEntries;
 };

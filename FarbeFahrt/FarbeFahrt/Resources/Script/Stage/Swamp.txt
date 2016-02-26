@@ -3,7 +3,7 @@ r,Ship,Model/船/Ship2.mqo
 r,Fish,Model/Gimmick/bookmark.mqo
 
 # フィールドリソース
-r,SwampGround,Stage/Swamp/SwampGround.pmx
+r,SwampGround,Stage/DelaySwamp/DelaySwampGround.pmx
 r,SwampBGM,Sound/BGM/danger_swamp.mp3
 
 # プレイヤーの座標
@@ -32,3 +32,6 @@ t,Swamp
 
 # BGM
 bgm,SwampBGM
+
+# 入れないエリアを指定する Xmin,Xmax,Zmin,Zmax
+NoEntry,-170,75,-90,30
