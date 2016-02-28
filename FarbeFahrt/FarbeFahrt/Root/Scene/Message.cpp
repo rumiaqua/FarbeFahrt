@@ -74,7 +74,7 @@ void Message::update()
 		m_elapsedTime = totalTime;
 	}
 
-	if (Input::IsClicked(KEY_INPUT_RETURN) ||
+	if (/*Input::IsClicked(KEY_INPUT_RETURN) ||*/
 		Mouse::IsClicked(MOUSE_INPUT_1))
 	{
 		if (m_elapsedTime < totalTime)

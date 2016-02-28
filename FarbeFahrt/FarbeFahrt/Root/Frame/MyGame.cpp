@@ -59,12 +59,13 @@ MyGame::MyGame()
 	m_sceneManager.addScene<Prologue>(Scene::Prologue);
 
 	m_sceneManager.pushScene(Scene::Title);
+	m_sceneManager.pushScene(Scene::AllResourceLoad);
 	// m_sceneManager.pushScene(Scene::OneShotStage);
 	// m_sceneManager.pushScene(Scene::Message);
 	// m_sceneManager.pushScene(Scene::ObjectViewer);
 	// m_sceneManager.pushScene(Scene::End);
 
-	Debug::SetEnabled(true);
+	// Debug::SetEnabled(true);
 	Debug::SetClear(true);
 
 	MessageManager::Initialize("Resources/Script/Message/index.csv");
@@ -122,7 +123,7 @@ void MyGame::run()
 		BGM::set(loader.getBGMList());
 	}
 
-	if (Input::IsClicked(KEY_INPUT_F1))
+	/*if (Input::IsClicked(KEY_INPUT_F1))
 	{
 		m_sceneManager.pushScene(Scene::AllResourceLoad);
 	}
@@ -133,7 +134,7 @@ void MyGame::run()
 	if (Input::IsClicked(KEY_INPUT_F3))
 	{
 		m_sceneManager.changeScene(Scene::Title);
-	}
+	}*/
 
 	Debug::Println("DebugMode");
 	Debug::Println("F1 : AllResourceLoad");

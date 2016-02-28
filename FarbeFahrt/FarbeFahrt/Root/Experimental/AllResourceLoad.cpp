@@ -15,6 +15,14 @@ AllResourceLoad::AllResourceLoad()
 
 void AllResourceLoad::loadContents(Loader& loader)
 {
+	loader.loadContent("BadEndBGM", "Sound/BGM/bad_end.mp3");
+	loader.loadContent("ClearBGM", "Sound/BGM/end2.mp3");
+
+	loader.loadContent("page0", "Texture/demo0.png");
+	loader.loadContent("page1", "Texture/demo1.png");
+	loader.loadContent("page2", "Texture/demo2.png");
+	loader.loadContent("page3", "Texture/demo3.png");
+
 	loader.loadContent("book", "Model/Book/Book.pmx");
 	loader.loadContent("desk", "Model/Š÷/‚Â‚­‚¦.mqo");
 

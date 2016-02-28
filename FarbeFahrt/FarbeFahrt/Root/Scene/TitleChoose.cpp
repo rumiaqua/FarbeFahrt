@@ -106,22 +106,6 @@ void TitleChoose::update()
 
 void TitleChoose::draw(Renderer& renderer)
 {
-	/*renderer.drawTexture("curtain", 0, 0, 0, 0, (float)m_windowSize.x, (float)m_windowSize.y, 0.0f, 180);
-	renderer.drawTexture("TitleChooseBack", Renderer::AspectType::LetterBox, 255);
-
-	renderer.drawTexture(m_yesFlag ? "YesOnMouse" : "YesOutMouse", (int)m_yesPosX, (int)textureHeightPos(), 0, 0, Scale, Scale, 0.0f);
-
-	renderer.drawTexture(m_noFlag ? "NoOnMouse" : "NoOutMouse", (int)m_noPosX, (int)textureHeightPos(), 0, 0, Scale, Scale, 0.0f);
-
-	int x, y;
-	int handle = Singleton<HandleList>::Instance().getHandle("YesOutMouse");
-	DxLib::GetGraphSize(handle, &x, &y);
-	Debug::Println(String::Create("MousePos:", Point2::ToString(Mouse::Position())));
-	Debug::Println(String::Create("yesPos:", m_yesPosX));
-	Debug::Println(String::Create("yesWidthPos:", yesWidthPos()));
-
-	Debug::Println(String::Create("Time : ", m_elapsedTime, " / ", DurationTime));*/
-
 	renderer.drawTexture("TitleChooseBack", Renderer::AspectType::LetterBox, 255);
 	renderer.drawTexture(inAreaYes() ? "YesOnMouse" : "YesOutMouse", (int)m_yesPosX, (int)textureHeightPos(), 0, 0, Scale, Scale, 0.0f);
 	renderer.drawTexture(inAreaNo() ? "NoOnMouse" : "NoOutMouse", (int)m_noPosX, (int)textureHeightPos(), 0, 0, Scale, Scale, 0.0f);

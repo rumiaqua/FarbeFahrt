@@ -89,11 +89,11 @@ void Title::update()
 		m_selectStart = true;
 		m_manager->changeScene(Scene::Opening, 30.0f);
 	}
-	if (isClickedFinish())
+	/*if (isClickedFinish())
 	{
 		m_selectFinish = true;
 		m_manager->popScene(30.0f);
-	}
+	}*/
 }
 
 void Title::draw(Renderer& renderer)
@@ -118,9 +118,9 @@ void Title::draw(Renderer& renderer)
 		inAreaStart() || m_selectStart ? "StartOnMouse" : "StartOutMouse",
 		(int)getStartButtonPosition().x, (int)getStartButtonPosition().y, 0, 0, Scale, Scale, 0.0f);
 
-	renderer.drawTexture(
+	/*renderer.drawTexture(
 		inAreaFinish() || m_selectFinish ? "EndOnMouse" : "EndOutMouse",
-		(int)getFinishButtonPosition().x, (int)getFinishButtonPosition().y, 0, 0, Scale, Scale, 0.0f);
+		(int)getFinishButtonPosition().x, (int)getFinishButtonPosition().y, 0, 0, Scale, Scale, 0.0f);*/
 }
 
 void Title::post()

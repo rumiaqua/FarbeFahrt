@@ -134,14 +134,14 @@ void GameMain::draw(Renderer& renderer)
 	Debug::Println(String::Create("Gimmick : ", GimmickManager::get(), " / ", GimmickManager::getMax()));
 	Debug::Println(m_stageManager.getThreshold());
 
-	if (Input::IsPressed(KEY_INPUT_N))
+	/*if (Input::IsPressed(KEY_INPUT_N))
 	{
 		renderer.ChangeNight();
 	}
 	if (Input::IsPressed(KEY_INPUT_M))
 	{
 		renderer.ChangeDay();
-	}
+	}*/
 }
 
 void GameMain::post()

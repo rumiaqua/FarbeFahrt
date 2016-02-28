@@ -74,7 +74,7 @@ void Camera::onUpdate()
 
 void Camera::onDraw(Renderer& renderer)const
 {
-	Debug::Println(String::Create("camerapoint:",m_InputActivate));
+	Debug::Println(String::Create("CameraPoint : ",m_InputActivate));
 
 	BaseActor::onDraw(renderer);
 }
@@ -105,7 +105,7 @@ void Camera::chaseCamera()
 		return;
 	}
 
-	if (auto player = m_world->findActor("Player") && m_progress >= 1)
+	if (!m_actor.expired() && m_progress >= 1)
 	{
 		m_actor.lock()->sendMessage("StartControl", nullptr);
 	}

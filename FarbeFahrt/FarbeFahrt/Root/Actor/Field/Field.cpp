@@ -152,6 +152,7 @@ void Field::onMessage(const std::string& message, void* parameter)
 	{
 		const AnimateState& state = *(AnimateState*)parameter;
 		animateProcess(state);
+		m_cameraSub = false;
 	}
 
 	if (message == "WorkGimmick" && isGround())
