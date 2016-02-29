@@ -26,13 +26,29 @@ void AllResourceLoad::loadContents(Loader& loader)
 	loader.loadContent("book", "Model/Book/Book.pmx");
 	loader.loadContent("desk", "Model/Š÷/‚Â‚­‚¦.mqo");
 
-	loader.loadContent("TrueEnd", "Texture/end/true.png");
-	loader.loadContent("Message", "Texture/end/message.png");
 	loader.loadContent("Clear", "Texture/end/clear.png");
+	loader.loadContent("curtain", "Texture/curtain.png");
+
+	loader.loadContent("end1", "Texture/end/end1.png");
+	loader.loadContent("end2", "Texture/end/end2.png");
+	loader.loadContent("end3", "Texture/end/end3.png");
+	loader.loadContent("end5", "Texture/end/end5.png");
+
+	loader.loadContent("Message", "Texture/end/message.png");
 	loader.loadContent("staffRoll", "Texture/StaffRoll.png");
 	loader.loadContent("Player", "Model/MMD–‚“±o’íVer1.1/ƒ~ƒnƒCƒ‹.pmx");
+	loader.loadContent("PlayerRiding", "Model/MMD–‚“±o’íVer1.1/o’í.pmx");
+	loader.loadContent("LightParticle", "Texture/Particle.png");
 
-	loader.loadContent("curtain", "Texture/curtain.png");
+	loader.loadContent("TitleChooseBack", "Texture/TitleChoose/Back.png");
+	loader.loadContent("YesOutMouse", "Texture/TitleChoose/yes.png");
+	loader.loadContent("YesOnMouse", "Texture/TitleChoose/yes2.png");
+	loader.loadContent("NoOutMouse", "Texture/TitleChoose/no.png");
+	loader.loadContent("NoOnMouse", "Texture/TitleChoose/no2.png");
+
+	loader.loadContent("HerbAccessory", "Model/3D/ü‚è•r•‰Ô/ü‚è•r•‰Ô.mqo");
+	loader.loadContent("MedicineAccessory", "Model/3D/–ò/–ò.mqo");
+	loader.loadContent("ElderAccessory", "Model/3D/—¢’·¬•r/¬•r.mqo");
 
 	StageManager manager;
 	manager.initialize("Resources/Script/Stage/index.csv");
