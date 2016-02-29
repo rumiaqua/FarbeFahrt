@@ -287,6 +287,5 @@ void TitleChoose::fadeOut()
 		{
 			m_manager->popScene();
 		}
-		BGM::stop();
 	}
 }

@@ -34,6 +34,7 @@ void BGM::play(const std::string& name)
 	{
 		return;
 	}
+
 	std::thread fadeOut(fadeOut);
 	std::thread fadeIn(fadeIn);
 	fadeOut.detach();
@@ -48,7 +49,7 @@ void BGM::fadeOut()
 	int volume = BGM_MAX_VOLUME;
 	while (volume >= 0)
 	{
-		std::this_thread::sleep_for(std::chrono::milliseconds(20));
+		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 		--volume;
 		ChangeVolumeSoundMem(volume, handle);
 	}
@@ -59,17 +60,13 @@ void BGM::fadeIn()
 {
 	BGM& bgm = instance();
 	int handle = bgm.m_playBGMhandle;
+
 	int volume = 0;
 	while (volume <= BGM_MAX_VOLUME)
 	{
-		std::this_thread::sleep_for(std::chrono::milliseconds(20));
+		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 		++volume;
 		ChangeVolumeSoundMem(volume, handle);
 	}
 	volume = BGM_MAX_VOLUME;
-}
-void BGM::stop()
-{
-	std::thread fadeOut(fadeOut);
-	fadeOut.detach();
 }

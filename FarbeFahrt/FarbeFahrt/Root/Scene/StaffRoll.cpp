@@ -65,7 +65,6 @@ void StaffRoll::post()
 
 void StaffRoll::cleanUp()
 {
-	BGM::stop();
 }
 
 bool StaffRoll::isSwallow() const

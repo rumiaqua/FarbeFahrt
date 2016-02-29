@@ -12,7 +12,6 @@ public:
 public:
 	static void set(const ContentMap& contentMap);
 	static void play(const std::string& name);
-	static void stop();
 private:
 	static void fadeOut();
 	static void fadeIn();
